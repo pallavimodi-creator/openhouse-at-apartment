@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 64" fill="none">
+  <!-- simple apartment-building glyph -->
+  <g transform="translate(0 8)" fill="#F25E35">
+    <!-- roof -->
+    <path d="M4 20 L26 4 L48 20 Z"/>
+    <!-- body -->
+    <rect x="8" y="20" width="36" height="28" rx="2"/>
+    <!-- windows -->
+    <rect x="14" y="26" width="6" height="6" rx="1" fill="#F9F2E8"/>
+    <rect x="32" y="26" width="6" height="6" rx="1" fill="#F9F2E8"/>
+    <rect x="14" y="36" width="6" height="6" rx="1" fill="#F9F2E8"/>
+    <rect x="32" y="36" width="6" height="6" rx="1" fill="#F9F2E8"/>
+    <!-- door -->
+    <rect x="23" y="38" width="6" height="10" rx="1" fill="#F9F2E8"/>
+  </g>
+  <text
+    x="60"
+    y="46"
+    fill="#F25E35"
+    font-family="Nunito, system-ui, sans-serif"
+    font-weight="900"
+    font-size="44"
+    letter-spacing="-1.5"
+  >apartment</text>
+</svg>

@@ -1,0 +1,197 @@
+import { cn } from "@/lib/utils";
+import { SEGMENT_COLORS } from "@/lib/content";
+import {
+  Dumbbell,
+  Palette,
+  Notebook,
+  Zap,
+  Gamepad2,
+  Star,
+  BookOpen,
+} from "lucide-react";
+import Link from "next/link";
+
+export interface ArtiverseUnitInfo {
+  medium: string;
+  technique: string;
+  whatChildrenMake: string;
+  days: number;
+  topicOptions: string[];
+  heroImageUrl: string;
+}
+
+export interface SegmentInfo {
+  segmentId: string;
+  segmentName: string;
+  title: string;
+  description: string;
+  subText?: string;
+  bookLinkSlug?: string;
+  artiverseUnit?: ArtiverseUnitInfo;
+  /**
+   * Optional hero image for non-artiverse segments (e.g. the art-gym primer
+   * shows a gym book cover; the log-book primer shows the experience-book
+   * cover for the programme). Falls back to the gradient + icon panel when
+   * undefined.
+   */
+  heroImageUrl?: string;
+}
+
+const SEGMENT_ICONS: Record<string, React.ReactNode> = {
+  "roll-call": <Zap className="h-10 w-10" strokeWidth={1.6} />,
+  playground: <Gamepad2 className="h-10 w-10" strokeWidth={1.6} />,
+  showtime: <Star className="h-10 w-10" strokeWidth={1.6} />,
+  "log-book": <Notebook className="h-10 w-10" strokeWidth={1.6} />,
+  "art-gym": <Dumbbell className="h-10 w-10" strokeWidth={1.6} />,
+  "art-games": <Gamepad2 className="h-10 w-10" strokeWidth={1.6} />,
+  artiverse: <Palette className="h-10 w-10" strokeWidth={1.6} />,
+};
+
+const SEGMENT_PANEL: Record<string, string> = {
+  "roll-call":
+    "linear-gradient(135deg, #F8B074 0%, #F25E35 100%)",
+  playground:
+    "linear-gradient(135deg, #A3C996 0%, #6DA35A 100%)",
+  showtime:
+    "linear-gradient(135deg, #F3C520 0%, #E89A4E 100%)",
+  "log-book":
+    "linear-gradient(135deg, #FFE1B8 0%, #F8B074 100%)",
+  "art-gym":
+    "linear-gradient(135deg, #FFD69A 0%, #E89A4E 100%)",
+  "art-games":
+    "linear-gradient(135deg, #F3C520 0%, #F25E35 100%)",
+  artiverse:
+    "linear-gradient(135deg, #F8B074 0%, #C44017 100%)",
+};
+
+export function SegmentInfoPopup({ info }: { info: SegmentInfo }) {
+  const unit = info.artiverseUnit;
+  const heroSrc = unit?.heroImageUrl ?? info.heroImageUrl;
+
+  return (
+    <div className="flex flex-col gap-5">
+      {/* Image panel — shows artwork image if artiverse unit available, else
+          any hero image provided (book cover, gym book), else icon panel */}
+      {heroSrc ? (
+        <div className="relative overflow-hidden rounded-card">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={heroSrc}
+            alt={unit?.whatChildrenMake ?? info.title}
+            className="max-h-64 w-full bg-ink/[0.02] object-contain"
+          />
+          <span className="absolute left-4 top-4 rounded-chip bg-black/40 px-2.5 py-0.5 text-[10px] font-semibold tracking-normal text-white backdrop-blur-sm">
+            {info.segmentName}
+          </span>
+        </div>
+      ) : (
+        <div
+          className="relative flex h-44 items-center justify-center overflow-hidden rounded-card text-white"
+          style={{
+            background:
+              SEGMENT_PANEL[info.segmentId] ??
+              "linear-gradient(135deg, #F8B074 0%, #F25E35 100%)",
+          }}
+        >
+          <div className="flex h-20 w-20 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm">
+            {SEGMENT_ICONS[info.segmentId] ?? (
+              <Star className="h-10 w-10" strokeWidth={1.6} />
+            )}
+          </div>
+          <span className="absolute left-4 top-4 rounded-chip bg-white/25 px-2.5 py-0.5 text-[10px] font-semibold tracking-normal text-white">
+            {info.segmentName}
+          </span>
+        </div>
+      )}
+
+      {/* Title + description */}
+      <div>
+        <span
+          className={cn(
+            "inline-block rounded-chip px-2 py-0.5 text-[10px] font-semibold tracking-normal",
+            SEGMENT_COLORS[info.segmentId] ?? "bg-ink/10 text-ink-muted"
+          )}
+        >
+          {info.segmentName}
+        </span>
+        <h2 className="mt-2 text-[22px] font-bold leading-tight text-ink">
+          {info.title}
+        </h2>
+        {info.subText && (
+          <p className="mt-1 text-[12px] font-medium text-ink-subtle">
+            {info.subText}
+          </p>
+        )}
+        <p className="mt-3 text-[13px] leading-relaxed text-ink-muted">
+          {info.description}
+        </p>
+      </div>
+
+      {/* Artiverse-specific details: medium, technique, what-children-make, topic options */}
+      {unit && (
+        <div className="space-y-3">
+          <div className="grid grid-cols-2 gap-2">
+            <div className="rounded-card bg-ink/[0.03] p-3">
+              <p className="text-[10px] font-semibold tracking-wider text-ink-subtle">
+                medium
+              </p>
+              <p className="mt-1 text-[13px] font-medium text-ink">{unit.medium}</p>
+            </div>
+            <div className="rounded-card bg-ink/[0.03] p-3">
+              <p className="text-[10px] font-semibold tracking-wider text-ink-subtle">
+                days
+              </p>
+              <p className="mt-1 text-[13px] font-medium text-ink">
+                {unit.days} {unit.days === 1 ? "session" : "sessions"}
+              </p>
+            </div>
+          </div>
+          <div className="rounded-card bg-ink/[0.03] p-3">
+            <p className="text-[10px] font-semibold tracking-wider text-ink-subtle">
+              technique
+            </p>
+            <p className="mt-1 text-[12px] leading-relaxed text-ink-muted">
+              {unit.technique}
+            </p>
+          </div>
+          <div className="rounded-card bg-brand-orange/5 p-3">
+            <p className="text-[10px] font-semibold tracking-wider text-brand-orange">
+              what children make
+            </p>
+            <p className="mt-1 text-[13px] font-medium text-ink">
+              {unit.whatChildrenMake}
+            </p>
+          </div>
+          <div>
+            <p className="text-[10px] font-semibold tracking-wider text-ink-subtle">
+              topic options
+            </p>
+            <div className="mt-2 space-y-1.5">
+              {unit.topicOptions.map((t, i) => (
+                <div
+                  key={i}
+                  className="flex items-start gap-2 rounded-lg bg-ink/[0.03] px-3 py-2"
+                >
+                  <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-brand-orange text-[9px] font-bold text-white">
+                    {i + 1}
+                  </span>
+                  <p className="text-[12px] leading-relaxed text-ink-muted">{t}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {info.bookLinkSlug && (
+        <Link
+          href={`/book/${info.bookLinkSlug}`}
+          className="flex items-center justify-center gap-2 rounded-card bg-brand-orange py-3 text-[13px] font-bold text-white shadow-card transition hover:opacity-95 active:scale-[0.98]"
+        >
+          <BookOpen className="h-4 w-4" />
+          open experience book
+        </Link>
+      )}
+    </div>
+  );
+}

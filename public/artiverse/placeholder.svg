@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" width="1000" height="700">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F9F2E8"/>
+      <stop offset="50%" stop-color="#FFE1B8"/>
+      <stop offset="100%" stop-color="#F8B074"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="75%" cy="25%" r="45%">
+      <stop offset="0%" stop-color="#FFF" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#FFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1000" height="700" fill="url(#bg)"/>
+  <rect width="1000" height="700" fill="url(#glow)"/>
+  <g opacity="0.25">
+    <circle cx="180" cy="560" r="70" fill="#F25E35"/>
+    <circle cx="260" cy="520" r="35" fill="#A33E3E"/>
+    <rect x="780" y="150" width="120" height="120" rx="14" fill="#F3C520" transform="rotate(8 840 210)"/>
+    <path d="M 120 180 Q 200 120 280 180 T 440 180" stroke="#C44017" stroke-width="6" fill="none" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(500 340)" text-anchor="middle">
+    <text font-family="'Nunito', 'Avenir Next Rounded Std', system-ui, sans-serif" font-weight="800" font-size="72" fill="#2C2B28">artiverse</text>
+    <text font-family="'Nunito', system-ui, sans-serif" font-weight="600" font-size="22" fill="#6B6B6B" y="42" letter-spacing="3">ARTWORK IMAGE</text>
+  </g>
+</svg>

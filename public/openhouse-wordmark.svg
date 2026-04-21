@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 40" fill="none">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@800&amp;display=swap');
+    .wm { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 32px; fill: #F25E35; }
+  </style>
+  <text x="0" y="30" class="wm">openh</text>
+  <!-- lightbulb "o" -->
+  <g transform="translate(119, 8)">
+    <!-- bulb outline -->
+    <path d="M10 2C5.6 2 2 5.6 2 10c0 2.8 1.4 5.2 3.6 6.6.4.3.6.7.6 1.2V20c0 .6.4 1 1 1h5.6c.6 0 1-.4 1-1v-2.2c0-.4.2-.9.6-1.2C16.6 15.2 18 12.8 18 10c0-4.4-3.6-8-8-8z" stroke="#F25E35" stroke-width="2.2" fill="none"/>
+    <!-- filament -->
+    <line x1="10" y1="7" x2="10" y2="14" stroke="#F25E35" stroke-width="2" stroke-linecap="round"/>
+    <!-- bulb tip -->
+    <circle cx="10" cy="4.5" r="1.8" fill="#F25E35"/>
+    <!-- base lines -->
+    <line x1="7" y1="22" x2="13" y2="22" stroke="#F25E35" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="8" y1="24" x2="12" y2="24" stroke="#F25E35" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+  <text x="142" y="30" class="wm">use</text>
+</svg>

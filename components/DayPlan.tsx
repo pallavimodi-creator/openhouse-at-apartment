@@ -1,0 +1,532 @@
+"use client";
+
+import { useState } from "react";
+import { cn } from "@/lib/utils";
+import { SEGMENT_COLORS, GYM_BOOK_IMAGES, getActivityImage } from "@/lib/content";
+import { ChevronDown } from "lucide-react";
+import { Modal } from "./Modal";
+import { ActivityPopup } from "./ActivityPopup";
+import { SegmentInfoPopup, type SegmentInfo } from "./SegmentInfoPopup";
+import {
+  Brain, Eye, Ear, Hand, Mic, Zap, Gamepad2, Star,
+  Dumbbell, Palette, Sparkles, PenTool, Notebook,
+  FlaskConical, Wrench,
+} from "lucide-react";
+import type {
+  CurriculumProgramme,
+  CurriculumSessionEntry,
+  CurriculumActivity,
+  ArtiverseUnit,
+} from "@/content/types";
+
+const CARD_ICONS: Record<string, React.ReactNode> = {
+  Brain: <Brain className="h-3.5 w-3.5" />,
+  Body: <Hand className="h-3.5 w-3.5" />,
+  Voice: <Mic className="h-3.5 w-3.5" />,
+  Eyes: <Eye className="h-3.5 w-3.5" />,
+  Ears: <Ear className="h-3.5 w-3.5" />,
+};
+
+const PROGRAMME_BOOK_MAP: Record<string, string> = {
+  "public-speaking-5-8": "speaking-5-8",
+  "public-speaking-8-12": "speaking-8-12",
+  "art-design-5-8": "art-5-8",
+  "art-design-8-12": "art-8-12",
+  "robotics-5-8": "robotics-5-8",
+  "robotics-8-12": "robotics-8-12",
+};
+
+const PROGRAMME_BOOK_COVER_URL: Record<string, string> = {
+  "public-speaking-5-8": "/book-covers/speaking-5-8.png",
+  "public-speaking-8-12": "/book-covers/speaking-8-12.png",
+  "art-design-5-8": "/book-covers/art-5-8.png",
+  "art-design-8-12": "/book-covers/art-8-12.png",
+};
+
+const SEGMENT_ICONS: Record<string, React.ReactNode> = {
+  "roll-call": <Zap className="h-3.5 w-3.5" />,
+  playground: <Gamepad2 className="h-3.5 w-3.5" />,
+  showtime: <Star className="h-3.5 w-3.5" />,
+  "log-book": <Notebook className="h-3.5 w-3.5" />,
+  "art-gym": <Dumbbell className="h-3.5 w-3.5" />,
+  "art-games": <Gamepad2 className="h-3.5 w-3.5" />,
+  artiverse: <Palette className="h-3.5 w-3.5" />,
+  experiment: <FlaskConical className="h-3.5 w-3.5" />,
+  build: <Wrench className="h-3.5 w-3.5" />,
+  "experience-book": <Notebook className="h-3.5 w-3.5" />,
+};
+
+// Labels for art-gym cycle positions
+const ART_GYM_LABELS: Record<string, string> = {
+  "book-3": "book 3 — laminated art gym book",
+  "book-4": "book 4 — laminated art gym book",
+  "book-5": "book 5 — laminated art gym book",
+  "book-6": "book 6 — laminated art gym book",
+  "ext-book": "extension (sketchbook) — technique to sketchbook",
+  "cue-card-b1": "cue card b1 — step-by-step drawing",
+  "cue-card-b2": "cue card b2 — step-by-step drawing",
+  "cue-cards": "cue cards — step-by-step drawing",
+  "ext-cue-card": "extension (sketchbook) — extend cue card drawing in sketchbook",
+  flex: "flex — child's choice",
+};
+
+interface ResolvedSegment {
+  segmentId: string;
+  segmentName: string;
+  durationRange: string;
+  type: "rotating" | "fixed";
+  assignedActivity: CurriculumActivity | null;
+  rotationPool: CurriculumActivity[];
+  artiverseUnit?: number;
+  artiverseDay?: number;
+  artiverseUnitName?: string;
+  artiverseUnitData?: ArtiverseUnit;
+  artGymLabel?: string;
+  buildModel?: string;
+  buildDay?: number;
+  buildDayLabel?: string;
+}
+
+// Maps segment IDs to session entry fields
+const SEGMENT_FIELD_MAP: Record<string, keyof CurriculumSessionEntry> = {
+  "roll-call": "rollCall",
+  playground: "playground",
+  showtime: "showtime",
+  "sign-off": "signOff",
+  "art-gym": "artGym",
+  "art-games": "artGames",
+  artiverse: "artiverse",
+  experiment: "experiment",
+  build: "build",
+  "experience-book": "experienceBook",
+};
+
+function resolveSegments(
+  programme: CurriculumProgramme,
+  session: CurriculumSessionEntry
+): ResolvedSegment[] {
+  return programme.segmentDefinitions.map((segDef) => {
+    const actMap = programme.activities;
+    const fieldKey = SEGMENT_FIELD_MAP[segDef.id];
+    const assignedId = fieldKey ? (session[fieldKey] as string | undefined) : undefined;
+
+    // For fixed segments (log-book, art-care) or segments without a rotation pool
+    if (segDef.type === "fixed") {
+      const unitData =
+        segDef.id === "artiverse" && session.artiverseUnit !== undefined
+          ? programme.artiverseUnits?.find(
+              (u) => u.unitNumber === session.artiverseUnit
+            )
+          : undefined;
+      return {
+        segmentId: segDef.id,
+        segmentName: segDef.name,
+        durationRange: segDef.durationRange,
+        type: "fixed" as const,
+        assignedActivity: null,
+        rotationPool: [],
+        artiverseUnit: session.artiverseUnit,
+        artiverseDay: session.artiverseDay,
+        artiverseUnitName: session.artiverseUnitName,
+        artiverseUnitData: unitData,
+      };
+    }
+
+    // Art Gym is a structural cycle, not activity-based
+    if (segDef.id === "art-gym") {
+      return {
+        segmentId: segDef.id,
+        segmentName: segDef.name,
+        durationRange: segDef.durationRange,
+        type: "fixed" as const,
+        assignedActivity: null,
+        rotationPool: [],
+        artGymLabel: assignedId ? (ART_GYM_LABELS[assignedId] ?? assignedId) : undefined,
+      };
+    }
+
+    // Robotics "build" segment — thread through session's model/day metadata
+    const isBuild = segDef.id === "build";
+    return {
+      segmentId: segDef.id,
+      segmentName: segDef.name,
+      durationRange: segDef.durationRange,
+      type: segDef.type,
+      assignedActivity: assignedId ? (actMap[assignedId] ?? null) : null,
+      rotationPool: (segDef.rotationPool ?? []).map((id) => actMap[id]).filter(Boolean),
+      buildModel: isBuild ? session.buildModel : undefined,
+      buildDay: isBuild ? session.buildDay : undefined,
+      buildDayLabel: isBuild ? session.buildDayLabel : undefined,
+    };
+  });
+}
+
+function SegmentRow({
+  segment,
+  onTapActivity,
+  onTapSegmentInfo,
+  isTrial,
+  bookSlug,
+  bookCoverUrl,
+  gymBookUrl,
+}: {
+  segment: ResolvedSegment;
+  onTapActivity: (activity: CurriculumActivity) => void;
+  onTapSegmentInfo: (info: SegmentInfo) => void;
+  isTrial?: boolean;
+  bookSlug?: string;
+  bookCoverUrl?: string;
+  gymBookUrl?: string;
+}) {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [viewingActivity, setViewingActivity] = useState<CurriculumActivity | null>(
+    segment.assignedActivity
+  );
+  // Rotation blocking: track which activities have been selected from the dropdown
+  // Rule: once selected, cannot be selected again until all others have been used
+  const [selectionHistory, setSelectionHistory] = useState<string[]>([]);
+
+  const currentActivity = viewingActivity ?? segment.assignedActivity;
+
+  const isBlocked = (actId: string) => {
+    if (selectionHistory.length === 0) return false;
+    // If all activities have been used, reset — nothing blocked
+    if (selectionHistory.length >= segment.rotationPool.length - 1) return false;
+    // Block if already in selection history
+    return selectionHistory.includes(actId);
+  };
+
+  const handleSelectActivity = (act: CurriculumActivity) => {
+    setViewingActivity(act);
+    setDropdownOpen(false);
+    setSelectionHistory((prev) => {
+      const next = [...prev, act.id];
+      // If all activities have now been selected, reset history
+      if (next.length >= segment.rotationPool.length) {
+        return [];
+      }
+      return next;
+    });
+  };
+
+  return (
+    <div className="rounded-card bg-brand-white p-3.5 shadow-card ring-1 ring-ink/5">
+      {/* Segment header */}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <span
+            className={cn(
+              "rounded-chip px-2 py-0.5 text-[9px] font-semibold tracking-normal",
+              SEGMENT_COLORS[segment.segmentId] ?? "bg-ink/10 text-ink-muted"
+            )}
+          >
+            {SEGMENT_ICONS[segment.segmentId] && (
+              <span className="mr-1 inline-flex">{SEGMENT_ICONS[segment.segmentId]}</span>
+            )}
+            {segment.segmentName}
+          </span>
+          <span className="text-[11px] text-ink-subtle">
+            {segment.durationRange}
+          </span>
+        </div>
+      </div>
+
+      {/* Activity content */}
+      {segment.type === "fixed" ? (
+        <button
+          onClick={() => {
+            let info: SegmentInfo;
+            if (segment.segmentId === "art-gym") {
+              info = {
+                segmentId: segment.segmentId,
+                segmentName: segment.segmentName,
+                title: segment.artGymLabel ?? "art gym warm-up",
+                description:
+                  "a short warm-up to wake up the hand and eye. children practise a specific technique — lines, shapes, or colour — that prepares them for the main making session.",
+                heroImageUrl: gymBookUrl,
+              };
+            } else if (segment.segmentId === "artiverse") {
+              const unit = segment.artiverseUnitData;
+              info = {
+                segmentId: segment.segmentId,
+                segmentName: segment.segmentName,
+                title: unit?.whatChildrenMake ?? segment.artiverseUnitName ?? "artiverse",
+                subText:
+                  segment.artiverseUnit !== undefined && segment.artiverseDay !== undefined
+                    ? `unit ${segment.artiverseUnit} — day ${segment.artiverseDay}`
+                    : undefined,
+                description:
+                  "the main making session. children work on a3 paper using the medium of this unit. each unit runs over several sessions so technique can deepen.",
+                artiverseUnit: unit
+                  ? {
+                      medium: unit.medium,
+                      technique: unit.technique,
+                      whatChildrenMake: unit.whatChildrenMake,
+                      days: unit.days,
+                      topicOptions: unit.topicOptions,
+                      heroImageUrl: unit.heroImageUrl,
+                    }
+                  : undefined,
+              };
+            } else if (segment.segmentId === "log-book" || segment.segmentId === "experience-book") {
+              info = {
+                segmentId: segment.segmentId,
+                segmentName: segment.segmentName,
+                title: "experience book",
+                description:
+                  "in the last 10 minutes of every session, children fill in the \"what happened in class today\" part of the experience book together with the teacher. the teacher opens a short discussion — what was your favourite part today? what did you enjoy? what did you not enjoy so much? what game or activity would you like to do again? — encouraging every child to speak. after children leave, the teacher fills in the skill-assessment part of the book privately. these daily notes compile into the child's monthly report card — a specific, warm record of growth that goes home every month.",
+                bookLinkSlug: bookSlug,
+                heroImageUrl: bookCoverUrl,
+              };
+            } else {
+              info = {
+                segmentId: segment.segmentId,
+                segmentName: segment.segmentName,
+                title: segment.segmentName,
+                description:
+                  "every child writes or draws what happened today. book goes home.",
+              };
+            }
+            onTapSegmentInfo(info);
+          }}
+          className="mt-2 w-full rounded-lg text-left transition active:scale-[0.99]"
+        >
+          {segment.segmentId === "art-gym" && segment.artGymLabel ? (
+            (() => {
+              // Pick book image if the label references a numbered book
+              const bookMatch = segment.artGymLabel.match(/book\s*(\d+)/);
+              const bookNum = bookMatch ? parseInt(bookMatch[1], 10) : null;
+              const bookImg = bookNum ? GYM_BOOK_IMAGES[bookNum] : null;
+              return (
+                <div className="flex items-start gap-2.5">
+                  {bookImg && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={bookImg}
+                      alt=""
+                      className="h-12 w-12 shrink-0 rounded-md bg-ink/[0.03] object-contain"
+                    />
+                  )}
+                  <p className="flex-1 text-[12px] font-medium leading-snug text-ink">
+                    {segment.artGymLabel}
+                  </p>
+                </div>
+              );
+            })()
+          ) : segment.segmentId === "artiverse" &&
+            (segment.artiverseUnitData || segment.artiverseUnitName) ? (
+            <div className="flex items-start gap-2.5">
+              {segment.artiverseUnitData?.heroImageUrl && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={segment.artiverseUnitData.heroImageUrl}
+                  alt=""
+                  className="h-12 w-12 shrink-0 rounded-md bg-ink/[0.03] object-contain"
+                />
+              )}
+              <div className="flex-1">
+                <p className="text-[12px] font-medium text-ink">
+                  unit {segment.artiverseUnit} — day {segment.artiverseDay}
+                </p>
+                <p className="mt-0.5 text-[11px] text-ink-muted">
+                  {segment.artiverseUnitData
+                    ? `${segment.artiverseUnitData.medium.toLowerCase()} — ${segment.artiverseUnitData.whatChildrenMake.toLowerCase()}`
+                    : segment.artiverseUnitName}
+                </p>
+              </div>
+            </div>
+          ) : (
+            <p className="text-[12px] text-ink-muted">
+              {segment.segmentId === "log-book" || segment.segmentId === "experience-book"
+                ? "last 10 minutes — children fill \"what happened in class today\" with the teacher. favourite part? what you enjoyed? what you didn't? what to do again? every child speaks. after children leave, teacher fills the skill-assessment privately."
+                : "every child writes or draws what happened today. book goes home."}
+            </p>
+          )}
+          <p className="mt-1.5 text-[11px] font-medium text-brand-orange">
+            tap for full details →
+          </p>
+        </button>
+      ) : currentActivity ? (
+        <div className="mt-2">
+          {/* Rotating selector */}
+          {segment.rotationPool.length > 1 && !isTrial && (
+            <div className="relative mb-2">
+              <button
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+                className="flex w-full items-center justify-between rounded-lg border border-ink/10 bg-ink/[0.02] px-3 py-2 text-left transition hover:bg-ink/[0.04]"
+              >
+                <span className="flex items-center gap-1.5 text-[12px] font-medium text-ink">
+                  {currentActivity.cardName && CARD_ICONS[currentActivity.cardName] && (
+                    <span className="text-ink-muted">{CARD_ICONS[currentActivity.cardName]}</span>
+                  )}
+                  {currentActivity.cardName
+                    ? `${currentActivity.cardName}: ${currentActivity.title}`
+                    : currentActivity.title}
+                </span>
+                <ChevronDown
+                  className={cn(
+                    "h-3.5 w-3.5 text-ink-subtle transition-transform",
+                    dropdownOpen && "rotate-180"
+                  )}
+                />
+              </button>
+
+              {dropdownOpen && (
+                <div className="absolute left-0 right-0 top-full z-20 mt-1 max-h-56 overflow-y-auto rounded-card border border-ink/10 bg-brand-white shadow-float">
+                  {selectionHistory.length > 0 && (
+                    <div className="border-b border-ink/5 px-3 py-1.5 text-[9px] text-ink-subtle">
+                      {segment.rotationPool.length - selectionHistory.length} of {segment.rotationPool.length} available · greyed out = already used this cycle
+                    </div>
+                  )}
+                  {segment.rotationPool.map((act) => {
+                    const blocked = isBlocked(act.id);
+                    return (
+                    <button
+                      key={act.id}
+                      onClick={() => !blocked && handleSelectActivity(act)}
+                      disabled={blocked}
+                      className={cn(
+                        "flex w-full items-center gap-2 px-3 py-2 text-left text-[12px] transition",
+                        blocked
+                          ? "opacity-35 cursor-not-allowed"
+                          : "hover:bg-ink/[0.03]",
+                        act.id === currentActivity?.id
+                          ? "font-semibold text-brand-orange"
+                          : "text-ink"
+                      )}
+                    >
+                      {act.cardName && CARD_ICONS[act.cardName] && (
+                        <span className="text-ink-subtle">{CARD_ICONS[act.cardName]}</span>
+                      )}
+                      {act.cardName
+                        ? `${act.cardName}: ${act.title}`
+                        : act.title}
+                      {act.id === segment.assignedActivity?.id && (
+                        <span className="ml-auto text-[9px] font-medium text-ink-subtle">
+                          today
+                        </span>
+                      )}
+                    </button>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Build-segment meta strip — shows model + build day */}
+          {segment.segmentId === "build" && (segment.buildModel || segment.buildDayLabel) && (
+            <div className="mb-2 flex flex-wrap items-center gap-1.5">
+              {segment.buildModel && (
+                <span className="rounded-chip bg-brand-orange/10 px-2 py-0.5 text-[10px] font-semibold tracking-normal text-brand-orange">
+                  {segment.buildModel.toLowerCase()}
+                </span>
+              )}
+              {segment.buildDayLabel && (
+                <span className="rounded-chip bg-ink/5 px-2 py-0.5 text-[10px] font-medium text-ink-muted">
+                  {segment.buildDayLabel.toLowerCase()}
+                </span>
+              )}
+            </div>
+          )}
+
+          {/* Tappable activity preview */}
+          <button
+            onClick={() => currentActivity && onTapActivity(currentActivity)}
+            className="flex w-full items-start gap-2.5 text-left transition active:scale-[0.99]"
+          >
+            {(() => {
+              const img = getActivityImage(currentActivity.id);
+              return img ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={img}
+                  alt=""
+                  className="h-12 w-12 shrink-0 rounded-md bg-ink/[0.03] object-contain"
+                />
+              ) : null;
+            })()}
+            <div className="flex-1 min-w-0">
+              <p className="line-clamp-2 text-[12px] italic leading-relaxed text-ink-muted">
+                &ldquo;{currentActivity.setupLine}&rdquo;
+              </p>
+              <p className="mt-1.5 text-[11px] font-medium text-brand-orange">
+                tap for full details →
+              </p>
+            </div>
+          </button>
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+export function DayPlan({
+  programme,
+  session,
+}: {
+  programme: CurriculumProgramme;
+  session: CurriculumSessionEntry;
+}) {
+  const [modalActivity, setModalActivity] = useState<CurriculumActivity | null>(null);
+  const [segmentInfo, setSegmentInfo] = useState<SegmentInfo | null>(null);
+  const segments = resolveSegments(programme, session);
+  const bookSlug = PROGRAMME_BOOK_MAP[programme.slug];
+  const bookCoverUrl = PROGRAMME_BOOK_COVER_URL[programme.slug];
+  const gymBookUrl =
+    programme.ageGroup === "8-12"
+      ? GYM_BOOK_IMAGES[5]
+      : GYM_BOOK_IMAGES[3];
+
+  return (
+    <div>
+      {/* Session header */}
+      <div className="mb-3 flex items-center justify-between px-1">
+        <h3 className="text-[13px] font-semibold text-ink">
+          session {session.sessionNumber} plan
+        </h3>
+        <div className="flex items-center gap-2">
+          <span className="text-[11px] text-ink-subtle">
+            topic layer {session.topicLayer}
+          </span>
+          {session.isCheckpoint && (
+            <span className="rounded-chip bg-brand-orange/15 px-2 py-0.5 text-[9px] font-semibold tracking-normal text-brand-orange">
+              checkpoint
+            </span>
+          )}
+          {session.isFlex && (
+            <span className="rounded-chip bg-ink/10 px-2 py-0.5 text-[9px] font-semibold tracking-normal text-ink-muted">
+              flex
+            </span>
+          )}
+        </div>
+      </div>
+
+      {/* Segment rows */}
+      <div className="space-y-2">
+        {segments.map((seg) => (
+          <SegmentRow
+            key={seg.segmentId}
+            segment={seg}
+            onTapActivity={setModalActivity}
+            onTapSegmentInfo={setSegmentInfo}
+            isTrial={session.sessionNumber === 0}
+            bookSlug={bookSlug}
+            bookCoverUrl={bookCoverUrl}
+            gymBookUrl={gymBookUrl}
+          />
+        ))}
+      </div>
+
+      {/* Activity modal */}
+      <Modal isOpen={!!modalActivity} onClose={() => setModalActivity(null)}>
+        {modalActivity && <ActivityPopup activity={modalActivity} />}
+      </Modal>
+
+      {/* Segment info modal */}
+      <Modal isOpen={!!segmentInfo} onClose={() => setSegmentInfo(null)}>
+        {segmentInfo && <SegmentInfoPopup info={segmentInfo} />}
+      </Modal>
+    </div>
+  );
+}
