@@ -18,10 +18,131 @@ import {
   ChevronRight,
   FlaskConical,
   Wrench,
+  Droplet,
+  Brush,
+  Pencil,
+  Hand,
+  Layers,
+  Sparkles,
+  Lightbulb,
+  PenTool,
+  Moon,
+  CirclePlus,
 } from "lucide-react";
 import { getCurriculumProgramme, getActivityImage, GYM_BOOK_IMAGES } from "@/lib/content";
 import { cn } from "@/lib/utils";
 import { TeacherGate } from "@/components/TeacherGate";
+
+// ─── Artiverse — how it works · sequence data ────────────────
+
+const ARTIVERSE_SEQUENCE_5_8: {
+  n: number;
+  name: string;
+  icon: typeof Palette;
+  blurb: string;
+  whyHere: string;
+}[] = [
+  {
+    n: 1,
+    name: "brush pen",
+    icon: Brush,
+    blurb: "dry. direct. no water. no mess. the child makes marks immediately and sees results immediately.",
+    whyHere: "builds line confidence before any other variable is introduced.",
+  },
+  {
+    n: 2,
+    name: "colour pencil",
+    icon: Pencil,
+    blurb: "dry. slow. layerable. the child learns to combine shapes and fill the whole page.",
+    whyHere: "still no water — two dry tools before anything more complex.",
+  },
+  {
+    n: 3,
+    name: "tempera · fingerprinting",
+    icon: Hand,
+    blurb: "first encounter with paint — but no brush. the child uses their hands directly on the material.",
+    whyHere: "the child feels what paint is before they have to control a brush. hands first, tool second.",
+  },
+  {
+    n: 4,
+    name: "oil pastel",
+    icon: CirclePlus,
+    blurb: "waxy. bold. forgiving. no water. press hard and the colour fills the shape.",
+    whyHere: "ready for a richer material but still without the variable of water.",
+  },
+  {
+    n: 5,
+    name: "watercolour",
+    icon: Droplet,
+    blurb: "first time with brush and water together. transparent. light. the colour moves on its own.",
+    whyHere: "dry tools and hand printing have built enough confidence that water does not overwhelm. the child focuses on what the water does rather than fighting the brush.",
+  },
+  {
+    n: 6,
+    name: "mixed media",
+    icon: Sparkles,
+    blurb: "cut. tear. paint. stick. layer. everything learned so far works together in one artwork.",
+    whyHere: "the child has enough experience with individual materials to combine them with intention rather than at random.",
+  },
+  {
+    n: 7,
+    name: "acrylic paint",
+    icon: Palette,
+    blurb: "opaque. covers completely. mixes richly. the most complex medium — it can correct, layer, and transform.",
+    whyHere: "saved for when the child has enough experience across other materials to use it well rather than to fix mistakes.",
+  },
+];
+
+const ARTIVERSE_SEQUENCE_8_12: {
+  n: number;
+  name: string;
+  icon: typeof Palette;
+  blurb: string;
+  whyHere: string;
+}[] = [
+  {
+    n: 1,
+    name: "oil pastel and colour pencil",
+    icon: Pencil,
+    blurb: "bold and controlled. layerable and expressive. the child builds mark-making confidence and learns to layer colour before introducing water.",
+    whyHere: "dry tools allow full focus on line, shape, proportion, and colour relationships.",
+  },
+  {
+    n: 2,
+    name: "watercolour",
+    icon: Droplet,
+    blurb: "transparent washes. light to dark. the most demanding colour discipline.",
+    whyHere: "the child has colour understanding from step 1. watercolour demands working light to dark — you cannot paint over a mistake. this precision is only useful after the child has some colour experience.",
+  },
+  {
+    n: 3,
+    name: "acrylic paint",
+    icon: Palette,
+    blurb: "opaque. gestural. correctable.",
+    whyHere: "after transparent watercolour, the child understands the difference between a medium that forgives and one that does not. acrylic becomes a deliberate choice, not a default.",
+  },
+  {
+    n: 4,
+    name: "oil pastel and colour pencil — at greater depth",
+    icon: Layers,
+    blurb: "the same tools as step 1, now used for tonal gradients, layered texture, complex surfaces.",
+    whyHere: "the child now brings observational skill and tonal awareness that was not present at the start.",
+  },
+  {
+    n: 5,
+    name: "black paper and chalk pastel",
+    icon: Moon,
+    blurb: "the whole game reverses. you are painting with light, not colour.",
+    whyHere: "working light on dark is a conceptual shift that requires a strong prior understanding of how tone and contrast work. it only makes sense after step 4.",
+  },
+  {
+    n: 6,
+    name: "mixed media",
+    icon: Sparkles,
+    blurb: "all tools. all techniques. one composition.",
+    whyHere: "genuine creative combination is only possible when the child knows what each material does individually. mixed media at the end is not chaos — it is intentional.",
+  },
+];
 
 // ─── Art 5-8 programme overview data ──────────────────────────
 
@@ -317,6 +438,39 @@ function ProgrammeOverviewContent() {
 
   const isArt = programme.category === "art";
   const isRobotics = programme.category === "stem";
+  const isLanguage = programme.category === "language";
+
+  // Per-programme section numbering so each overview counts 01, 02, 03…
+  // without gaps, regardless of which sections are gated off.
+  const SECTION_NUMS_BY_CATEGORY: Record<string, Record<string, string>> = {
+    art: {
+      "daily-flow": "01",
+      "art-gym-cycle": "02",
+      "skills": "03",
+      "segment-logic": "04",
+      "artiverse-how": "05",
+      "artiverse-units": "06",
+      "checkpoints": "07",
+    },
+    stem: {
+      "daily-flow": "01",
+      "skills": "02",
+      "segment-logic": "03",
+      "three-models": "04",
+      "checkpoints": "05",
+    },
+    language: {
+      "daily-flow": "01",
+      "skills": "02",
+      "segment-logic": "03",
+      "debrief-approaches": "04",
+      "checkpoints": "05",
+    },
+    music: { "daily-flow": "01", "skills": "02", "segment-logic": "03", "checkpoints": "04" },
+    movement: { "daily-flow": "01", "skills": "02", "segment-logic": "03", "checkpoints": "04" },
+  };
+  const sectionNum = (key: string) =>
+    SECTION_NUMS_BY_CATEGORY[programme.category]?.[key] ?? "—";
 
   // Build skills list from this programme's own skill areas so the abilities
   // match the age group & category.
@@ -535,7 +689,7 @@ function ProgrammeOverviewContent() {
 
       {/* ─── DAILY FLOW ─── */}
       <section className="mt-8 px-4 md:px-8">
-        <SectionTitle num="01" label="daily flow" />
+        <SectionTitle num={sectionNum("daily-flow")} label="daily flow" />
         <p className="mt-2 text-[13px] font-medium leading-relaxed text-ink md:text-[14px]">
           a 90-minute session — four segments, in this order.
         </p>
@@ -651,7 +805,7 @@ function ProgrammeOverviewContent() {
       {/* ─── ART GYM CYCLE (art only) ─── */}
       {isArt && (
       <section className="mt-10 px-4 md:px-8">
-        <SectionTitle num="02" label="art gym cycle" />
+        <SectionTitle num={sectionNum("art-gym-cycle")} label="art gym cycle" />
         <p className="mt-2 text-[12px] leading-relaxed text-ink-muted md:text-[13px]">
           art gym runs as two paired units. the <span className="font-semibold text-ink">book</span> and the <span className="font-semibold text-ink">cue card</span> each rotate; their extensions always follow the previous day — not independent.
         </p>
@@ -817,7 +971,7 @@ function ProgrammeOverviewContent() {
 
       {/* ─── SKILLS & ABILITIES ─── */}
       <section className="mt-10 px-4 md:px-8">
-        <SectionTitle num="03" label="skills & abilities">
+        <SectionTitle num={sectionNum("skills")} label="skills & abilities">
           {skills.length} skills · {skills[0]?.abilities.length ?? 0} abilities each
         </SectionTitle>
 
@@ -899,7 +1053,7 @@ function ProgrammeOverviewContent() {
 
       {/* ─── WHERE SKILLS LIVE ─── */}
       <section className="mt-10 px-4 md:px-8">
-        <SectionTitle num="04" label="segment logic">
+        <SectionTitle num={sectionNum("segment-logic")} label="segment logic">
           what happens inside each segment
         </SectionTitle>
 
@@ -986,7 +1140,7 @@ function ProgrammeOverviewContent() {
       {/* ─── ROBOTICS MODELS (stem only) ─── */}
       {isRobotics && (
         <section className="mt-10 px-4 md:px-8">
-          <SectionTitle num="04" label="the three models">
+          <SectionTitle num={sectionNum("three-models")} label="the three models">
             built in order, all year long
           </SectionTitle>
 
@@ -1071,7 +1225,7 @@ function ProgrammeOverviewContent() {
       {/* ─── STANDARDISED DEBRIEF APPROACHES (public speaking only) ─── */}
       {programme.category === "language" && (
         <section className="mt-10 px-4 md:px-8">
-          <SectionTitle num="04" label="debrief approaches">
+          <SectionTitle num={sectionNum("debrief-approaches")} label="debrief approaches">
             always conduct debriefs for playground and showtime — every session
           </SectionTitle>
 
@@ -1146,10 +1300,228 @@ function ProgrammeOverviewContent() {
         </section>
       )}
 
+      {/* ─── ARTIVERSE — HOW IT WORKS (art only) ─── */}
+      {isArt && (
+        <section className="mt-10 px-4 md:px-8">
+          <SectionTitle num={sectionNum("artiverse-how")} label="artiverse — how it works">
+            every session has three elements · the medium and technique follow a fixed order
+          </SectionTitle>
+
+          {/* The three elements */}
+          <div className="mt-4 grid gap-3 md:grid-cols-3">
+            {[
+              {
+                icon: Palette,
+                tag: "element 1",
+                name: "medium",
+                blurb:
+                  "what material you use. oil pastel · watercolour · acrylic · brush pen.",
+                status: "mandatory · fixed sequence · same for every child",
+                accent: "bg-[#F5D547]/25 text-amber-900",
+              },
+              {
+                icon: PenTool,
+                tag: "element 2",
+                name: "tool & technique",
+                blurb:
+                  "how you use that material. how to hold it. what marks it makes. what skill you are building.",
+                status: "mandatory · fixed sequence · same for every child",
+                accent: "bg-category-stem/20 text-blue-900",
+              },
+              {
+                icon: Lightbulb,
+                tag: "element 3",
+                name: "topic & theme",
+                blurb:
+                  "what you make with it. an animal · a food · a place. something real or something imagined.",
+                status: "always the child's choice · always open",
+                accent: "bg-category-language/25 text-green-900",
+              },
+            ].map((el) => {
+              const Icon = el.icon;
+              return (
+                <div
+                  key={el.name}
+                  className="rounded-xl bg-brand-white p-3.5 shadow-card ring-1 ring-ink/5"
+                >
+                  <div className="flex items-start gap-2.5">
+                    <span
+                      className={cn(
+                        "flex h-10 w-10 shrink-0 items-center justify-center rounded-full",
+                        el.accent
+                      )}
+                    >
+                      <Icon className="h-5 w-5" strokeWidth={1.8} />
+                    </span>
+                    <div className="flex-1">
+                      <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-ink-subtle">
+                        {el.tag}
+                      </p>
+                      <p className="mt-0.5 text-[14px] font-extrabold text-ink">
+                        {el.name}
+                      </p>
+                    </div>
+                  </div>
+                  <p className="mt-2 text-[12px] leading-relaxed text-ink-muted">
+                    {el.blurb}
+                  </p>
+                  <p className="mt-2 text-[10.5px] italic leading-relaxed text-ink-subtle">
+                    {el.status}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Topic examples */}
+          <div className="mt-4 rounded-xl bg-brand-orange/5 p-4">
+            <p className="text-[11px] font-bold uppercase tracking-wider text-brand-orange">
+              topics — always the child's choice
+            </p>
+            <p className="mt-1 text-[12px] leading-relaxed text-ink-muted">
+              drawn from the world the child knows and the worlds they invent.
+              the stranger and more personal, the better.
+            </p>
+            <div className="mt-2 flex flex-wrap gap-1.5">
+              {[
+                "an animal I have seen",
+                "a food I love",
+                "a creature that does not exist",
+                "a place I want to go",
+                "a machine I made up",
+                "a feeling I can't explain in words",
+              ].map((t) => (
+                <span
+                  key={t}
+                  className="rounded-chip bg-brand-white px-2.5 py-1 text-[10.5px] font-medium text-ink shadow-sm ring-1 ring-ink/5"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Why fixed order */}
+          <div className="mt-6 rounded-xl bg-ink/[0.03] p-4">
+            <p className="text-[12px] font-bold text-ink">
+              why the medium and technique follow a fixed order
+            </p>
+            <p className="mt-1 text-[11.5px] leading-relaxed text-ink-muted">
+              the sequence is not arbitrary. each medium is introduced when the child is ready for it — because they have already built the skill the new medium requires.
+            </p>
+          </div>
+
+          {/* The sequence — age-group specific */}
+          <div className="mt-4">
+            <p className="text-[11px] font-bold uppercase tracking-wider text-ink-subtle">
+              the sequence · ages {programme.ageLabel.replace(/ages? /i, "")}
+            </p>
+            <div className="mt-2 space-y-2">
+              {(programme.ageGroup === "8-12"
+                ? ARTIVERSE_SEQUENCE_8_12
+                : ARTIVERSE_SEQUENCE_5_8
+              ).map((step) => {
+                const Icon = step.icon;
+                return (
+                  <div
+                    key={step.n}
+                    className="rounded-xl bg-brand-white p-3.5 shadow-card ring-1 ring-ink/5"
+                  >
+                    <div className="flex items-start gap-2.5">
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-orange text-[12px] font-extrabold text-white">
+                        {step.n}
+                      </span>
+                      <div className="flex-1">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <Icon
+                            className="h-4 w-4 text-brand-orange"
+                            strokeWidth={2}
+                          />
+                          <p className="text-[14px] font-extrabold text-ink">
+                            {step.name}
+                          </p>
+                        </div>
+                        <p className="mt-1 text-[11.5px] leading-relaxed text-ink-muted">
+                          {step.blurb}
+                        </p>
+                        <p className="mt-2 text-[11px] leading-relaxed text-ink">
+                          <span className="font-semibold">why here: </span>
+                          <span className="text-ink-muted">{step.whyHere}</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* The four principles */}
+          <div className="mt-6">
+            <p className="text-[11px] font-bold uppercase tracking-wider text-ink-subtle">
+              the four principles behind both sequences
+            </p>
+            <div className="mt-2 grid gap-2 md:grid-cols-2">
+              {[
+                {
+                  icon: Droplet,
+                  name: "dry before wet",
+                  blurb:
+                    "confidence is built before complexity is introduced. water adds a variable — only introduced once the child has established control without it.",
+                },
+                {
+                  icon: Hand,
+                  name: "hands before tools",
+                  blurb:
+                    "touching the material directly before managing a tool gives the child a physical understanding of what paint actually is. this cannot be achieved through a brush alone.",
+                },
+                {
+                  icon: Layers,
+                  name: "transparent before opaque",
+                  blurb:
+                    "watercolour demands that the child understand colour — there is no covering mistakes. opaque paint comes after, so it becomes a deliberate choice, not a shortcut.",
+                },
+                {
+                  icon: Sparkles,
+                  name: "one material before many",
+                  blurb:
+                    "mixed media only becomes creative when the child knows what each individual material contributes. introduced too early, it produces accidental results. at the right time, it produces intentional ones.",
+                },
+              ].map((p) => {
+                const Icon = p.icon;
+                return (
+                  <div
+                    key={p.name}
+                    className="rounded-xl bg-brand-white p-3.5 shadow-card ring-1 ring-ink/5"
+                  >
+                    <div className="flex items-start gap-2.5">
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-orange/10">
+                        <Icon
+                          className="h-4.5 w-4.5 text-brand-orange"
+                          strokeWidth={2}
+                        />
+                      </span>
+                      <div className="flex-1">
+                        <p className="text-[13px] font-extrabold text-ink">
+                          {p.name}
+                        </p>
+                        <p className="mt-1 text-[11.5px] leading-relaxed text-ink-muted">
+                          {p.blurb}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ─── ARTIVERSE TIMELINE (art only) ─── */}
       {isArt && programme.artiverseUnits && programme.artiverseUnits.length > 0 && (
       <section className="mt-10 px-4 md:px-8">
-        <SectionTitle num="05" label="the artiverse units">
+        <SectionTitle num={sectionNum("artiverse-units")} label="the artiverse units">
           a progression from simple marks to layered compositions
         </SectionTitle>
 
@@ -1228,7 +1600,7 @@ function ProgrammeOverviewContent() {
 
       {/* ─── CHECKPOINTS ─── */}
       <section className="mt-10 px-4 md:px-8">
-        <SectionTitle num="06" label="progression checkpoints">
+        <SectionTitle num={sectionNum("checkpoints")} label="progression checkpoints">
           every 8 sessions, a note home
         </SectionTitle>
 
