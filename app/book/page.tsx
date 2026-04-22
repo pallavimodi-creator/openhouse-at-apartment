@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { TeacherGate } from "@/components/TeacherGate";
 
 const books = [
   {
@@ -52,6 +53,14 @@ const books = [
 ];
 
 export default function BookSelectorPage() {
+  return (
+    <TeacherGate>
+      <BookSelectorContent />
+    </TeacherGate>
+  );
+}
+
+function BookSelectorContent() {
   return (
     <div className="flex flex-col px-4 pt-4 pb-6 md:px-8">
       <h1 className="text-[24px] font-extrabold text-ink md:text-[32px]">

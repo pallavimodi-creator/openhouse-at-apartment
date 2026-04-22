@@ -4,6 +4,7 @@ import { useParams, notFound } from "next/navigation";
 import Link from "next/link";
 import { getBookConfig } from "@/content/books";
 import { getManualConfig } from "@/content/books/manuals";
+import { TeacherGate } from "@/components/TeacherGate";
 
 /* ── helpers ─────────────────────────────────────────────── */
 
@@ -140,6 +141,14 @@ function ContentBlock({ text }: { text: string }) {
 /* ── page ────────────────────────────────────────────────── */
 
 export default function TeacherManualPage() {
+  return (
+    <TeacherGate>
+      <TeacherManualContent />
+    </TeacherGate>
+  );
+}
+
+function TeacherManualContent() {
   const params = useParams();
   const slug = params.slug as string;
   const book = getBookConfig(slug);

@@ -6,6 +6,7 @@ import { getBookConfig, type BookConfig } from "@/content/books";
 import { getManualConfig, type ManualConfig } from "@/content/books/manuals";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import { TeacherGate } from "@/components/TeacherGate";
 
 /* ─── Cloud wave SVG divider ───────────────────────────────── */
 
@@ -631,6 +632,14 @@ function TeacherManualSection({ manual }: { manual: ManualConfig }) {
 /* ─── Main Page ────────────────────────────────────────────── */
 
 export default function ExperienceBookPage() {
+  return (
+    <TeacherGate>
+      <ExperienceBookContent />
+    </TeacherGate>
+  );
+}
+
+function ExperienceBookContent() {
   const params = useParams();
   const slug = params.slug as string;
   const book = getBookConfig(slug);

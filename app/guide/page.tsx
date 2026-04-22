@@ -1,4 +1,16 @@
+"use client";
+
+import { TeacherGate } from "@/components/TeacherGate";
+
 export default function GuidePage() {
+  return (
+    <TeacherGate>
+      <GuideContent />
+    </TeacherGate>
+  );
+}
+
+function GuideContent() {
   return (
     <div className="flex flex-col px-4 pt-4 pb-6 md:px-8 md:pt-6">
       <h1 className="text-[24px] font-extrabold text-ink md:text-[32px]">

@@ -1,7 +1,10 @@
 "use client";
 
-// Simple localStorage-backed teacher state.
-// No backend — lives entirely in the browser for now.
+// Simple in-browser teacher state.
+// - Session identity lives in sessionStorage so it clears when the browser/tab
+//   closes — every fresh visit lands on /login.
+// - Completed-days progress lives in localStorage so it persists across visits
+//   (that's the teacher's own work tracking, not their identity).
 
 const TEACHER_KEY = "oh-teacher";
 const COMPLETED_PREFIX = "oh-completed-";
@@ -51,7 +54,7 @@ export function canAccessProgramme(
 export function getTeacher(): TeacherState | null {
   if (typeof window === "undefined") return null;
   try {
-    const raw = localStorage.getItem(TEACHER_KEY);
+    const raw = sessionStorage.getItem(TEACHER_KEY);
     if (!raw) return null;
     return JSON.parse(raw) as TeacherState;
   } catch {
@@ -61,12 +64,19 @@ export function getTeacher(): TeacherState | null {
 
 export function setTeacher(state: TeacherState): void {
   if (typeof window === "undefined") return;
-  localStorage.setItem(TEACHER_KEY, JSON.stringify(state));
+  sessionStorage.setItem(TEACHER_KEY, JSON.stringify(state));
 }
 
 export function clearTeacher(): void {
   if (typeof window === "undefined") return;
-  localStorage.removeItem(TEACHER_KEY);
+  sessionStorage.removeItem(TEACHER_KEY);
+  // Also clear any older localStorage entry from previous builds so users on
+  // a revisit don't get auto-signed-in from stale data.
+  try {
+    localStorage.removeItem(TEACHER_KEY);
+  } catch {
+    /* ignore */
+  }
 }
 
 // ─── Completed days per programme ──────────────

@@ -6,6 +6,7 @@ import type {
   CurriculumSkillArea,
   CurriculumSegmentDef,
 } from "@/content/types";
+import { ROBOTICS_TRIAL_SESSION } from "./robotics-trial";
 
 // ─── Shared helpers ─────────────────────────────────────────
 
@@ -468,6 +469,17 @@ function s(
 }
 
 const sessionTable: CurriculumSessionEntry[] = [
+  // Trial session — kit orientation + start of crane build
+  {
+    sessionNumber: 0,
+    experiment: "l1-pulleys-e1",
+    build: "build-crane",
+    experienceBook: "rob-experience-book",
+    buildModel: "Crane",
+    buildDay: 1,
+    buildDayLabel: "Day 1 — Explore (trial)",
+    topicLayer: 0,
+  },
   // See-saw · L1 Levers
   s(1, "l1-levers-e1", "See-saw", "build-see-saw", 1),
   s(2, "l1-levers-e1", "See-saw", "build-see-saw", 2),
@@ -558,4 +570,5 @@ export const robotics58: CurriculumProgramme = {
     "rob-experience-book": experienceBookActivity,
   },
   checkpoints,
+  trialSession: ROBOTICS_TRIAL_SESSION,
 };

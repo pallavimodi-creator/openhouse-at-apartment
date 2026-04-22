@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { getCurriculumProgramme, getActivityImage, GYM_BOOK_IMAGES } from "@/lib/content";
 import { cn } from "@/lib/utils";
+import { TeacherGate } from "@/components/TeacherGate";
 
 // ─── Art 5-8 programme overview data ──────────────────────────
 
@@ -295,6 +296,14 @@ const mediumColor: Record<string, string> = {
 // ─── Main component ───────────────────────────────────────────
 
 export default function ProgrammeOverviewPage() {
+  return (
+    <TeacherGate>
+      <ProgrammeOverviewContent />
+    </TeacherGate>
+  );
+}
+
+function ProgrammeOverviewContent() {
   const params = useParams();
   const slug = params.programmeSlug as string;
   const programme = getCurriculumProgramme(slug);
