@@ -197,11 +197,22 @@ export interface ArtiverseUnit {
   heroImageUrl: string;
 }
 
+/**
+ * Richer ability representation used by programmes (like robotics) that
+ * present each ability as a named, described, potentially north-star item.
+ * Simpler programmes can still pass bare strings — renderers handle both.
+ */
+export interface CurriculumAbility {
+  name: string;
+  description: string;
+  isNorthStar?: boolean;
+}
+
 export interface CurriculumSkillArea {
   id: string;
   name: string;
   shortName: string;
-  abilities: string[];
+  abilities: (string | CurriculumAbility)[];
 }
 
 export interface CurriculumSegmentDef {
@@ -238,8 +249,18 @@ export interface CurriculumSessionEntry {
   artiverseUnitName?: string;
   // Robotics-specific metadata
   buildModel?: string; // "See-saw" | "Weighing Scale" | "Crane"
-  buildDay?: number; // 1..8 for 5-8, 1..6 for 8-12
-  buildDayLabel?: string; // "Day 1 — Explore", "Day 6 — Complete and test", etc.
+  buildDay?: number; // 1..6 for 5-8, 1..4 for 8-12
+  buildDayLabel?: string; // "Day 1 — Explore", "Day 6 — Disassemble", etc.
+  /**
+   * Engage question — asked at the start of the 40-min Build segment.
+   * Short, curiosity-opening; teacher takes 3-4 answers and moves on.
+   */
+  engageQuestion?: string;
+  /**
+   * Concept question — asked in the closing debrief. One direct question
+   * about today's concept; one child answers; teacher confirms.
+   */
+  conceptQuestion?: string;
 }
 
 export interface CurriculumActivity {
@@ -257,6 +278,12 @@ export interface CurriculumActivity {
   type: "physical-game" | "digital-game" | "facilitated";
   prompts?: string[];
   promptHeading?: string;
+  /**
+   * Optional PDF the activity references (e.g. an experiment cue card or a
+   * model manual). Auto-injected into the materials list as a clickable
+   * link by `ActivityPopup`.
+   */
+  pdfUrl?: string;
 }
 
 export interface CurriculumVariation {

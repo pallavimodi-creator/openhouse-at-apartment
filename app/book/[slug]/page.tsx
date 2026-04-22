@@ -289,11 +289,28 @@ function SkillsMapPage({ book }: { book: BookConfig }) {
             </div>
             <p className="mt-0.5 text-[10px] text-ink/50">{skill.desc}</p>
             <div className="mt-2 space-y-1">
-              {skill.abilities.map((a) => (
-                <p key={a} className="text-[10px] leading-relaxed text-ink/60">
-                  {a}
-                </p>
-              ))}
+              {skill.abilities.map((a, i) => {
+                // Support both plain strings and the richer named-ability shape.
+                if (typeof a === "string") {
+                  return (
+                    <p key={i} className="text-[10px] leading-relaxed text-ink/60">
+                      {a}
+                    </p>
+                  );
+                }
+                return (
+                  <p key={i} className="text-[10px] leading-relaxed text-ink/60">
+                    <span className="font-bold text-ink/80">{a.name}</span>
+                    {a.isNorthStar && (
+                      <span aria-label="north star" className="ml-1 text-brand-orange">
+                        ★
+                      </span>
+                    )}
+                    <span className="text-ink/40"> — </span>
+                    {a.description}
+                  </p>
+                );
+              })}
             </div>
           </div>
         ))}

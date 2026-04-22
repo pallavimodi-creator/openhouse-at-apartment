@@ -19,7 +19,14 @@ export interface BookConfig {
     name: string;
     color: string;
     desc: string;
-    abilities: string[];
+    /**
+     * Simple programmes pass bare strings. Richer programmes (robotics)
+     * pass named abilities with an optional ★ marker on the North Star.
+     */
+    abilities: (
+      | string
+      | { name: string; description: string; isNorthStar?: boolean }
+    )[];
   }[];
   dailyLogFields: { label: string; placeholder: string }[];
   dailyLogTracker: {
@@ -850,60 +857,49 @@ const robotics58: BookConfig = {
       tag: "B&M",
       name: "building & making",
       color: "bg-brand-orange/12 text-brand-orange",
-      desc: "putting parts together, fixing what breaks, making it better.",
+      desc: "putting parts together, adjusting when something fails, improving on purpose.",
       abilities: [
-        "puts parts together so they fit and work",
-        "follows the step card one step at a time",
-        "finds what is broken and fixes it",
-        "improves the model on purpose and checks if it worked",
+        { name: "fits and functions", description: "puts parts together so they fit and work" },
+        { name: "follows the card", description: "follows the step card one step at a time" },
+        { name: "adjusts and fixes", description: "adjusts a part that is not working — tightens, repositions, or reconnects it" },
+        { name: "improves deliberately", description: "makes one deliberate change to improve the model and checks whether it worked", isNorthStar: true },
       ],
     },
     {
       tag: "PS",
       name: "problem solving",
       color: "bg-brand-orange/12 text-brand-orange",
-      desc: "noticing when something is wrong, finding the cause, fixing it.",
+      desc: "noticing when something is wrong, finding the exact cause, reaching a clear goal.",
       abilities: [
-        "notices when something is not working — without being told",
-        "tries a different approach when the first one fails",
-        "finds the exact part causing the problem",
-        "keeps going until the model reaches a clear goal",
+        { name: "notices independently", description: "notices when the model is not doing what it should — without being told" },
+        { name: "tries differently", description: "tries a genuinely different approach when the first one fails" },
+        { name: "locates the cause", description: "points to the specific part causing the problem before touching anything" },
+        { name: "reaches the goal", description: "keeps trying until the model does what it is supposed to do", isNorthStar: true },
       ],
     },
     {
       tag: "O&U",
       name: "observing & understanding",
       color: "bg-brand-orange/12 text-brand-orange",
-      desc: "watching closely, measuring carefully, thinking before trying, explaining why.",
+      desc: "watching closely, measuring carefully, predicting before trying, explaining why.",
       abilities: [
-        "spots one specific thing that changed — without being asked",
-        "measures carefully and writes the number in the right place",
-        "thinks about what will happen before trying",
-        "explains why a result happened — not just what happened",
-      ],
-    },
-    {
-      tag: "LT",
-      name: "logical thinking",
-      color: "bg-brand-orange/12 text-brand-orange",
-      desc: "understanding that results have causes — figuring out what caused each one.",
-      abilities: [
-        "understands that results have causes",
-        "knows which specific change made the difference",
-        "draws on what they found before when approaching something new",
-        "thinks through what to test and how they will know if it worked",
+        { name: "spots what changed", description: "watches and names one specific thing that changed — without being asked" },
+        { name: "measures and records", description: "measures carefully and writes the number in the right place" },
+        { name: "predicts before trying", description: "writes what they think will happen before trying" },
+        { name: "explains why", description: "says what happened and gives a reason why", isNorthStar: true },
       ],
     },
   ],
   dailyLogFields: [
     { label: "experiment", placeholder: "which experiment today" },
     { label: "build", placeholder: "model name" },
-    { label: "day", placeholder: "build day (1–8)" },
+    { label: "day", placeholder: "build day (1–6)" },
     { label: "worth remembering", placeholder: "one specific thing noticed today" },
+    { label: "focus next session", placeholder: "one thing to focus on next session" },
   ],
   dailyLogTracker: {
-    label: "daily marks · ✓ observed clearly · — not observed",
-    levels: ["O&U (experiment)", "LT (experiment)", "B&M (build)", "PS (build)", "concept understood"],
+    label: "circle the ability seen clearly today for each skill · ★ = North Star",
+    levels: ["🔧 B&M — Fits · Follows · Adjusts · Improves ★", "🔍 PS — Notices · Tries · Locates · Reaches ★", "👁 O&U — Spots · Measures · Predicts · Explains ★"],
   },
   journeyLabel: "robotics journey",
   journeys: [
@@ -1034,10 +1030,10 @@ const robotics812: BookConfig = {
       color: "bg-brand-orange/12 text-brand-orange",
       desc: "connecting, constructing, fixing, and deliberately improving a working mechanical model.",
       abilities: [
-        "puts parts together deliberately — checks each connection works before moving on",
-        "follows the step card and notices when a step has not worked as expected",
-        "finds the exact part that failed and fixes it without being told",
-        "improves the model deliberately — states what they expect to change before testing",
+        { name: "fits and functions", description: "puts parts together deliberately — checks each connection works before moving on" },
+        { name: "follows the card", description: "follows the step card and notices when a step has not produced the expected result" },
+        { name: "adjusts and fixes", description: "finds the exact part that failed and fixes it without being told which part" },
+        { name: "improves deliberately", description: "makes a deliberate improvement and states what they expect to change before testing it", isNorthStar: true },
       ],
     },
     {
@@ -1046,10 +1042,10 @@ const robotics812: BookConfig = {
       color: "bg-brand-orange/12 text-brand-orange",
       desc: "recognising failure, trying genuinely different approaches, locating the specific cause, working toward a measurable goal.",
       abilities: [
-        "notices when the model is not working and names what it should be doing",
-        "tries genuinely different approaches — does not repeat what already failed",
-        "names the specific part that is failing and explains what it is failing to do",
-        "sets a measurable goal and keeps adjusting until the model reaches it",
+        { name: "notices independently", description: "notices when the model is not working and names what it should be doing instead" },
+        { name: "tries differently", description: "tries genuinely different approaches — does not repeat the same failed attempt" },
+        { name: "locates the cause", description: "names the specific part causing the failure and says what it is failing to do" },
+        { name: "reaches the goal", description: "sets a measurable goal and keeps adjusting until the model reaches it", isNorthStar: true },
       ],
     },
     {
@@ -1058,34 +1054,23 @@ const robotics812: BookConfig = {
       color: "bg-brand-orange/12 text-brand-orange",
       desc: "watching closely, measuring accurately, writing specific predictions before testing, explaining what caused a result.",
       abilities: [
-        "names one specific thing that changed — what moved, shifted, or read differently",
-        "takes measurements accurately and records every reading correctly",
-        "writes a specific prediction before testing — a value or a reason, not just a direction",
-        "explains what caused the result — names the cause and connects it to what the data shows",
-      ],
-    },
-    {
-      tag: "LT",
-      name: "logical thinking",
-      color: "bg-brand-orange/12 text-brand-orange",
-      desc: "understanding causality, identifying what specifically made the difference, applying reasoning to new situations, planning before testing.",
-      abilities: [
-        "understands that results come from specific causes — not from everything changing at once",
-        "identifies which specific change caused the result",
-        "applies what they found in one situation to reason about a different one",
-        "plans what to test, how to test it, and what a good result looks like — before starting",
+        { name: "spots what changed", description: "names one specific thing that changed — what moved, shifted, or read differently" },
+        { name: "measures and records", description: "takes measurements accurately and records every reading correctly" },
+        { name: "predicts before trying", description: "writes a specific prediction before testing — a value or a reason, not just a direction" },
+        { name: "explains why", description: "explains what caused the result — names the cause and connects it to the data", isNorthStar: true },
       ],
     },
   ],
   dailyLogFields: [
     { label: "experiment", placeholder: "which experiment today" },
     { label: "build", placeholder: "model name" },
-    { label: "day", placeholder: "build day (1–6)" },
+    { label: "day", placeholder: "build day (1–4)" },
     { label: "worth remembering", placeholder: "specific detail — especially reasoning" },
+    { label: "focus next session", placeholder: "one thing to focus on next session" },
   ],
   dailyLogTracker: {
-    label: "daily marks · ✓ observed clearly · — not observed",
-    levels: ["O&U (experiment)", "LT (experiment)", "B&M (build)", "PS (build)", "concept understood (causal)"],
+    label: "circle the ability seen clearly today for each skill · ★ = North Star",
+    levels: ["🔧 B&M — Fits · Follows · Adjusts · Improves ★", "🔍 PS — Notices · Tries · Locates · Reaches ★", "👁 O&U — Spots · Measures · Predicts · Explains ★"],
   },
   journeyLabel: "robotics journey",
   journeys: [

@@ -225,6 +225,27 @@ export const ACTIVITY_IMAGES: Record<string, string> = {
   artventure: "/games/art/artventure.png",
   "imagine-that": "/games/art/imagine-that.png",
   "doodle-dash": "/games/art/doodle-dash.png",
+  // Robotics — experiment cue cards (thumbnail = first page of the PDF)
+  "l1-levers-e1": "/robotics-manuals/l1-levers.png",
+  "l1-levers-e2": "/robotics-manuals/l1-levers.png",
+  "l1-levers-e3": "/robotics-manuals/l1-levers.png",
+  "l1-levers-e4": "/robotics-manuals/l1-levers.png",
+  "l2-levers-e1": "/robotics-manuals/l2-levers.png",
+  "l2-levers-e2": "/robotics-manuals/l2-levers.png",
+  "l2-levers-e3": "/robotics-manuals/l2-levers.png",
+  "l2-levers-e4": "/robotics-manuals/l2-levers.png",
+  "l2-levers-e5": "/robotics-manuals/l2-levers.png",
+  "l2-levers-e6": "/robotics-manuals/l2-levers.png",
+  "l1-pulleys-e1": "/robotics-manuals/l1-pulley.png",
+  "l1-pulleys-e2": "/robotics-manuals/l1-pulley.png",
+  "l1-pulleys-e3": "/robotics-manuals/l1-pulley.png",
+  "l1-pulleys-e4": "/robotics-manuals/l1-pulley.png",
+  "l2-pulleys-e4": "/robotics-manuals/l2-pulley.png",
+  "l2-pulleys-e5": "/robotics-manuals/l2-pulley.png",
+  // Robotics — model manuals (thumbnail = first page of the PDF)
+  "build-see-saw": "/robotics-manuals/see-saw.png",
+  "build-weighing-scale": "/robotics-manuals/weighing-scale.png",
+  "build-crane": "/robotics-manuals/crane.png",
 };
 
 // Art gym book images, keyed by book number.

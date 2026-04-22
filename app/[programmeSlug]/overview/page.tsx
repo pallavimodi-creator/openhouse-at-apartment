@@ -503,7 +503,11 @@ function ProgrammeOverviewContent() {
     name: s.name.toLowerCase(),
     color: skillStyle[s.id]?.color ?? "bg-ink/10",
     accent: skillStyle[s.id]?.accent ?? "border-ink/20",
-    abilities: s.abilities.map((a) => a.toLowerCase()),
+    abilities: s.abilities.map((a) =>
+      typeof a === "string"
+        ? a.toLowerCase()
+        : { ...a, name: a.name.toLowerCase(), description: a.description.toLowerCase() }
+    ),
   }));
 
   // Build the games table per segment from this programme's own activities
@@ -828,6 +832,13 @@ function ProgrammeOverviewContent() {
                   <div className="space-y-3 border-t border-ink/5 bg-bg/30 p-4">
                     {skill.abilities.map((ability, i) => {
                       const locs = abilityLocations[`${skill.id}-${i}`] || [];
+                      // Ability may be either a plain string (legacy) or a
+                      // richer object with a name, description, and a
+                      // ★ north-star flag (robotics).
+                      const isObj = typeof ability === "object" && ability !== null;
+                      const abilityName = isObj ? (ability as { name: string }).name : null;
+                      const abilityDesc = isObj ? (ability as { description: string }).description : (ability as string);
+                      const isNorthStar = isObj && (ability as { isNorthStar?: boolean }).isNorthStar;
                       return (
                         <div key={i} className="flex items-start gap-3">
                           <span
@@ -839,8 +850,21 @@ function ProgrammeOverviewContent() {
                             {i + 1}
                           </span>
                           <div className="flex-1">
-                            <p className="text-[12px] leading-relaxed text-ink md:text-[13px]">
-                              {ability}
+                            {abilityName && (
+                              <p className="text-[12.5px] font-extrabold text-ink md:text-[13.5px]">
+                                {abilityName}
+                                {isNorthStar && (
+                                  <span
+                                    aria-label="north star ability"
+                                    className="ml-1.5 text-brand-orange"
+                                  >
+                                    ★
+                                  </span>
+                                )}
+                              </p>
+                            )}
+                            <p className={cn("text-[12px] leading-relaxed md:text-[13px]", abilityName ? "mt-0.5 text-ink-muted" : "text-ink")}>
+                              {abilityDesc}
                             </p>
                             <div className="mt-1.5 flex flex-wrap gap-1">
                               {locs.map((loc) => (

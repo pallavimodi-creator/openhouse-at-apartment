@@ -319,25 +319,36 @@ export function ActivityPopup({
         </div>
       )}
 
-      {/* Materials */}
-      {activity.materials && activity.materials.length > 0 && (
-        <div>
-          <h3 className="text-[12px] font-semibold tracking-normal text-ink-muted">
-            materials
-          </h3>
-          <ul className="mt-2 space-y-1">
-            {activity.materials.map((m, i) => (
-              <li
-                key={i}
-                className="flex items-start gap-2 text-[12px] text-ink-muted"
-              >
-                <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-ink-subtle" />
-                <span className="flex-1">{linkifyMaterial(m)}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      {/* Materials — pdfUrl auto-appended as a clickable reference link */}
+      {(() => {
+        const materials = [...(activity.materials ?? [])];
+        if (activity.pdfUrl) {
+          // Derive a readable label — "L1 Levers cue cards (PDF)"
+          const label = activity.cardName
+            ? `${activity.cardName} cue card (PDF)`
+            : `reference (PDF)`;
+          materials.push(`${label} — ${activity.pdfUrl}`);
+        }
+        if (materials.length === 0) return null;
+        return (
+          <div>
+            <h3 className="text-[12px] font-semibold tracking-normal text-ink-muted">
+              materials
+            </h3>
+            <ul className="mt-2 space-y-1">
+              {materials.map((m, i) => (
+                <li
+                  key={i}
+                  className="flex items-start gap-2 text-[12px] text-ink-muted"
+                >
+                  <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-ink-subtle" />
+                  <span className="flex-1">{linkifyMaterial(m)}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      })()}
 
       {/* Debrief */}
       {activity.debriefPrompts.length > 0 && (

@@ -988,49 +988,57 @@ const robotics58Manual: ManualConfig = {
   title: "teacher manual",
   subtitle: "robotics · ages 5-8 · facilitation guide",
   intro:
-    "this book tracks two things in parallel every session: what the child is discovering in the experiment and what they are building. the five daily marks take under two minutes. without them the robotics journey letter is generic — with them it writes itself. read this manual once before your first session.",
+    "three skills. three marking rows. four pieces of information per session. under 2 minutes to fill in. the ability name you circle and the note you write are what make the robotics journey specific to this child.",
   sections: [
     {
       title: "what this book is for",
       content:
-        "the robotics experience book is a year-long record of one child's growth in mechanical thinking. it is not a portfolio of finished models — it is a log of what they ran, what they built, and what you observed about how they thought through it.\n\nyour job is to observe, not evaluate. you are watching for four specific skills — building & making, problem solving, observing & understanding, and logical thinking — and marking each one as present or not-yet in each session. the marks compile into a monthly robotics journey letter that goes home after every eighth session.",
+        "three skills — building & making, problem solving, observing & understanding. each skill has four abilities. one ability per skill is the ★ north star — what consistent excellent practice looks like by session 48. all abilities are spiral — observable from session 1, deepening across 50 sessions.\n\nyour job is to observe, not evaluate. you are watching for the ability that was seen clearly and circling it. do not circle an ability you did not see. do not skip forward to encourage — only mark what you saw.",
     },
     {
-      title: "the five daily marks",
+      title: "how to mark abilities",
       content:
-        "five ticks or dashes per child per session. under two minutes.",
+        "circle the ability name you observed clearly and without prompting today. do not circle an ability you did not see. the goal over 50 sessions is Improves deliberately ★, Reaches the goal ★, and Explains why ★ for every child.",
+    },
+    {
+      title: "B&M — what to look for",
+      content: "",
       subsections: [
-        {
-          title: "O&U (experiment)",
-          content:
-            "did the child watch closely, measure accurately, think before testing, or explain why? mark ✓ if you saw any of these clearly and unprompted. mark — if none were visible.",
-        },
-        {
-          title: "LT (experiment)",
-          content:
-            "did the child connect a result to its cause, or bring prior knowledge to a new situation? ✓ if visible. — if not.",
-        },
-        {
-          title: "B&M (build)",
-          content:
-            "did the child put things together correctly, follow the step card, fix what was broken, or make a deliberate improvement? ✓ if visible. — if not.",
-        },
-        {
-          title: "PS (build)",
-          content:
-            "did the child notice a problem, try something different, find the specific cause, or work toward a clear goal? ✓ if visible. — if not.",
-        },
-        {
-          title: "concept",
-          content:
-            "at the end of the session, ask one direct question: \"what did we find out today?\" or \"why did that happen?\" ✓ if the child explains it in their own words. — if they say they don't know or repeat the question back.",
-        },
+        { title: "fits and functions", content: "does each part connect correctly and function — not just look assembled?" },
+        { title: "follows the card", content: "does the child complete each step before moving to the next?" },
+        { title: "adjusts and fixes", content: "when something fails, does the child identify and fix the specific part without waiting for the teacher?" },
+        { title: "improves deliberately ★", content: "at the improve day — does the child make a deliberate change and check whether it worked?" },
+      ],
+    },
+    {
+      title: "PS — what to look for",
+      content: "",
+      subsections: [
+        { title: "notices independently", content: "does the child stop and name the problem without being asked?" },
+        { title: "tries differently", content: "does the child try something genuinely different — or repeat the same thing?" },
+        { title: "locates the cause", content: "does the child point to or name the specific part before touching anything?" },
+        { title: "reaches the goal ★", content: "does the child keep going until the model does what it is supposed to do — and stop when it does?" },
+      ],
+    },
+    {
+      title: "O&U — what to look for",
+      content: "",
+      subsections: [
+        { title: "spots what changed", content: "does the child name something specific — not \"it moved\" but \"the reading went from 180 to 120\"?" },
+        { title: "measures and records", content: "is the number correct and in the right place in the table?" },
+        { title: "predicts before trying", content: "does the child write something in the prediction box before touching any equipment?" },
+        { title: "explains why ★", content: "does the child give a reason — not what happened but why it happened?" },
       ],
     },
     {
       title: "worth remembering",
       content:
-        "one sentence. specific. not \"built well\" — write \"tightened the left screw before the right without being asked\" or \"predicted the heavier bag would need more effort and was right.\" these notes are what make the robotics journey letter personal to this child.",
+        "one sentence. specific. \"noticed the pan arm was uneven and tightened the left screw without being asked\" tells you everything. \"did well\" tells you nothing.",
+    },
+    {
+      title: "the three-move debrief — every session, under 3 minutes",
+      content:
+        "move 1 — name what you saw. teacher names one specific observed behaviour linked to an ability name. not \"good job\" — a specific moment.\n\nmove 2 — name the next step. the next ability up from what was observed. described as an invitation.\n\nmove 3 — one concept question to the group. one direct question about today's concept. one child answers. teacher confirms in one sentence.",
     },
     {
       title: "the four teacher questions — build only",
@@ -1038,36 +1046,31 @@ const robotics58Manual: ManualConfig = {
         "one per child per session. move on immediately. never fix. never tell.\n\n\"what is not working? what will you try?\"\n\"what did you change? what happened?\"\n\"which change made the bigger difference?\"\n\"point to the part that did the most important job.\"",
     },
     {
-      title: "tool orientation — when and how",
-      content:
-        "tool orientation happens during the experiment segment, at the moment the tool is first needed. it is a short practical demonstration — 3–4 minutes — after which the child uses the tool immediately. it is never taught as a separate lesson. for a new child joining mid-programme, run the relevant orientation at the start of their first experiment segment.\n\nspring scale — session 1. hangs one washer, reads the number, tries the wrong angle, corrects.\nmeasuring tape — session 1. measures the table, tries starting from 1, sees the error, restarts from zero.\nprediction box — session 2. writes a sentence before the experiment starts.\nresult table — session 3. fills row by row, checks nothing is skipped.\nscrews and nuts + spanner — day 1 of the first model. bolt through hole, nut from the other side, spanner turns firm but not stripped.\ntray map — first disassembly day. every component has a home.",
-    },
-    {
       title: "robotics journey — paragraph options",
       content:
-        "when you write the monthly letter, use the ability wording as your starting point. the final test on every paragraph: would i be proud if someone wrote this about my child? if yes — write it. if no — rewrite it.",
+        "when you write the monthly letter, pick the ability observed most consistently this month as your starting line.",
       subsections: [
         {
           title: "B&M",
           content:
-            "\"they are putting parts together and getting them to fit and function.\" · \"they are following the step card accurately — each step before moving on.\" · \"they are finding what is broken and fixing it without needing to be pointed there.\" · \"they are improving the model on purpose and checking whether it worked.\"",
+            "\"they are putting parts together and getting them to fit and function\" (Fits and functions) · \"they are following the step card accurately — each step before moving on\" (Follows the card) · \"they are finding what is broken and fixing it — without needing to be pointed to the right part\" (Adjusts and fixes) · \"they are improving the model on purpose — making a change and checking whether it worked\" (Improves deliberately ★)",
         },
         {
           title: "PS",
           content:
-            "\"they notice when something is not working and say so without being prompted.\" · \"they try different approaches — not repeating what did not work.\" · \"they find the exact part causing the problem before they start fixing.\" · \"they keep going until the model does what it is supposed to do.\"",
+            "\"they notice when something is not working and say so without being prompted\" (Notices independently) · \"they try different approaches — not repeating what did not work\" (Tries differently) · \"they find the exact part causing the problem before they start fixing\" (Locates the cause) · \"they keep going until the model does what it is supposed to do\" (Reaches the goal ★)",
         },
         {
           title: "O&U",
           content:
-            "\"they spot specific things that changed — naming them without being asked.\" · \"their measurements are careful and their numbers go in the right place.\" · \"they think about what will happen before trying — not just act and see.\" · \"they explain why a result happened — not just what happened.\"",
-        },
-        {
-          title: "LT",
-          content:
-            "\"they understand that results have causes — they look for what caused each one.\" · \"they know which specific change made the difference.\" · \"they draw on what they found before when approaching something new.\" · \"they think through what to test and how they will know if it worked.\"",
+            "\"they spot specific things that changed — naming them without being asked\" (Spots what changed) · \"their measurements are careful and their numbers go in the right place\" (Measures and records) · \"they think about what will happen before trying — they do not just act and see\" (Predicts before trying) · \"they explain why a result happened — not just what happened\" (Explains why ★)",
         },
       ],
+    },
+    {
+      title: "the final test",
+      content:
+        "would i be proud if someone wrote this about my child? if yes — write it. if no — rewrite it.",
     },
   ],
 };
@@ -1079,48 +1082,57 @@ const robotics812Manual: ManualConfig = {
   title: "teacher manual",
   subtitle: "robotics · ages 8-12 · facilitation guide",
   intro:
-    "this book tracks the experiment and the build simultaneously every session. at 8–12, what matters above all is whether the child can explain why — not just what happened. five marks per session take under two minutes. the notes make the robotics journey letter specific to this child.",
+    "three skills. three marking rows. under 2 minutes to fill in. at 8–12, what matters above all is whether the child can explain why — not just what happened. the ability name you circle and the note you write are what make the robotics journey specific to this child.",
   sections: [
     {
       title: "what this book is for",
       content:
-        "at 8–12 the robotics experience book records whether a child is developing the habits of mechanical reasoning — not just building. observe whether their predictions are specific, their explanations are causal, and their builds are diagnosed before they are fixed.",
+        "at 8–12 the robotics experience book records whether a child is developing the habits of mechanical reasoning — not just building. three skills, four named abilities each, one ★ north star per skill. observe whether predictions are specific, explanations are causal, and builds are diagnosed before they are fixed.",
     },
     {
-      title: "the five daily marks",
-      content: "five ticks or dashes. under two minutes.",
+      title: "how to mark abilities",
+      content:
+        "circle the ability name observed clearly and without prompting. do not mark what you did not see. the goal across 50 sessions: Improves deliberately ★, Reaches the goal ★, and Explains why ★ for every child.",
+    },
+    {
+      title: "B&M — what to look for",
+      content: "",
       subsections: [
-        {
-          title: "O&U (experiment)",
-          content:
-            "did the child name something specific that changed, measure accurately, write a real prediction before testing, or explain a cause? ✓ if visible and unprompted. — if not.",
-        },
-        {
-          title: "LT (experiment)",
-          content:
-            "did the child connect a result to the specific thing that caused it, or apply prior reasoning to a new situation? ✓ if visible. — if not.",
-        },
-        {
-          title: "B&M (build)",
-          content:
-            "did the child connect deliberately, follow the card accurately, fix the right part, or state what they expected to change before improving? ✓ if visible. — if not.",
-        },
-        {
-          title: "PS (build)",
-          content:
-            "did the child name what the model should be doing, try genuinely different approaches, name the failing part, or work toward a measurable goal? ✓ if visible. — if not.",
-        },
-        {
-          title: "concept",
-          content:
-            "at the end of the session, ask one direct question that requires a causal answer: \"why did that happen?\" ✓ if the child names a cause and connects it to evidence. — if they only describe what happened.",
-        },
+        { title: "fits and functions", content: "does the child check each connection works before moving to the next step?" },
+        { title: "follows the card", content: "does the child notice when a step has not produced the expected result?" },
+        { title: "adjusts and fixes", content: "does the child name the specific failed part and fix it — without being told which part?" },
+        { title: "improves deliberately ★", content: "does the child state what they expect to change before making the improvement?" },
+      ],
+    },
+    {
+      title: "PS — what to look for",
+      content: "",
+      subsections: [
+        { title: "notices independently", content: "does the child name what the model should be doing — not just that something is wrong?" },
+        { title: "tries differently", content: "does the child try something genuinely different — or return to the same failed approach?" },
+        { title: "locates the cause", content: "does the child name the specific part and say what it is failing to do — before touching anything?" },
+        { title: "reaches the goal ★", content: "does the child name a measurable target and keep adjusting until the model reaches it?" },
+      ],
+    },
+    {
+      title: "O&U — what to look for",
+      content: "",
+      subsections: [
+        { title: "spots what changed", content: "does the child name something specific — what moved, shifted, or read differently?" },
+        { title: "measures and records", content: "is every reading accurate and in the correct cell of the table?" },
+        { title: "predicts before trying", content: "does the child write a value or a reason — not just \"i think it will go down\"?" },
+        { title: "explains why ★", content: "does the child name a cause and connect it to what the data shows?" },
       ],
     },
     {
       title: "worth remembering",
       content:
-        "one sentence. specific. at 8–12 the most valuable notes capture reasoning. \"predicted 150g based on the previous session and was 10g off — tried to explain the gap\" is worth ten times more than \"did the experiment well.\"",
+        "one sentence. specific. at 8–12 the most valuable notes capture reasoning. \"predicted 150g based on the previous session and was 10g off — then tried to explain the gap\" is worth ten times more than \"did the experiment well.\"",
+    },
+    {
+      title: "the three-move debrief — every session, under 3 minutes",
+      content:
+        "move 1 — name what you saw. teacher names one specific observed behaviour linked to an ability name. not \"good job\" — a specific moment.\n\nmove 2 — name the next step. the next ability up from what was observed. described as an invitation.\n\nmove 3 — one concept question to the group. one direct question that requires a causal answer: \"why did that happen?\" one child answers. teacher confirms in one sentence.",
     },
     {
       title: "the four teacher questions — build only",
@@ -1130,29 +1142,29 @@ const robotics812Manual: ManualConfig = {
     {
       title: "robotics journey — paragraph options",
       content:
-        "the final test on every paragraph: would this paragraph be true of no other child in the class? if yes — write it. if no — add one specific detail from your daily notes until it is.",
+        "when you write the monthly letter, pick the ability observed most consistently this month as your starting line.",
       subsections: [
         {
           title: "B&M",
           content:
-            "\"they are putting parts together deliberately — checking each connection before moving on.\" · \"they are following the step card accurately and noticing when a step has not produced the expected result.\" · \"they are finding the exact part that failed and fixing it — naming it before touching anything.\" · \"they are improving the model deliberately — stating what they expect to change before testing.\"",
+            "\"they are putting parts together deliberately — checking each connection before moving on\" (Fits and functions) · \"they are following the step card accurately and noticing when a step has not produced the expected result\" (Follows the card) · \"they are finding the exact part that failed and fixing it — naming it before touching anything\" (Adjusts and fixes) · \"they are improving the model deliberately — stating what they expect to change before testing\" (Improves deliberately ★)",
         },
         {
           title: "PS",
           content:
-            "\"they notice when the model is not working and name what it should be doing.\" · \"they try genuinely different approaches — not repeating what already failed.\" · \"they name the specific part that is failing and explain what it is failing to do.\" · \"they set a measurable goal and keep adjusting until the model reaches it.\"",
+            "\"they notice when the model is not working and name what it should be doing\" (Notices independently) · \"they try genuinely different approaches — not repeating what already failed\" (Tries differently) · \"they name the specific part that is failing and explain what it is failing to do\" (Locates the cause) · \"they set a measurable goal and keep adjusting until the model reaches it\" (Reaches the goal ★)",
         },
         {
           title: "O&U",
           content:
-            "\"their observations are specific — they name one clear thing that changed.\" · \"their measurements are accurate and every reading goes in the right place.\" · \"their predictions are specific — a value or a reason connected to what they found before.\" · \"their explanations are causal — they name the cause and connect it to the data.\"",
-        },
-        {
-          title: "LT",
-          content:
-            "\"they understand that results have specific causes — they look for what caused each one.\" · \"they identify which specific change made the difference.\" · \"they apply what they found in one situation to reason about a different one.\" · \"they plan before testing — they know what they want to find out and what a good result looks like.\"",
+            "\"their observations are specific — they name one clear thing that changed\" (Spots what changed) · \"their measurements are accurate and every reading goes in the right place\" (Measures and records) · \"their predictions are specific — a value or a reason connected to what they found before\" (Predicts before trying) · \"their explanations are causal — they name the cause and connect it to the data\" (Explains why ★)",
         },
       ],
+    },
+    {
+      title: "the final test",
+      content:
+        "would this paragraph be true of no other child in the class? if yes — write it. if no — add one specific detail from your daily notes until it is.",
     },
   ],
 };

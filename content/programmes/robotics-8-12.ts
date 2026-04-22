@@ -8,16 +8,7 @@ import type {
 } from "@/content/types";
 import { ROBOTICS_TRIAL_SESSION } from "./robotics-trial";
 
-const COMMON_DEBRIEF = [
-  {
-    notice: "which children wrote a specific prediction before touching anything — a number or a reason, not just a direction.",
-    name: "that is the shift we want at 8–12 — prediction with reasoning.",
-    connect:
-      "ask the child: how close was your prediction? if you were off — what does the gap tell you about what you thought was true?",
-  },
-];
-
-// ─── Experiment activities (16 cards) ───────────────────────
+// ─── Experiment activities — L1 + L2 Levers, L1 + L2 Pulleys ─
 
 const experimentActivities: Record<string, CurriculumActivity> = {
   "l1-levers-e1": {
@@ -28,7 +19,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "same load, three lever lengths. how does effort change as the arm grows?",
     howToPlay:
-      "Hang 1kg at the load end. Pull spring scale at the effort end. Take readings for 20cm, 30cm, 40cm arms. Each child takes at least one reading independently. Record every reading. Pair with L2 e1 next session — same concept, heavier weights, calculate the exact reduction.",
+      "Hang 1kg at the load end. Pull spring scale at the effort end. Take readings for 20cm, 30cm, 40cm arms. Each child takes at least one reading independently. Record every reading. Pair with L2 e1 within the same session — heavier weights, calculate the exact reduction.",
     materials: [
       "Experiment Card: L1 Levers e1",
       "PVC pipes 20/30/40cm · T-connector · spring scale 2kg · 1kg weight · plastic cup · measuring tape",
@@ -38,8 +29,9 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       { level: "Medium", description: "Child reads the card, predicts a direction before each reading, checks." },
       { level: "Hard", description: "Child predicts the ratio of the three readings before testing — \"I expect the 40cm to be about half the 20cm\" — and checks." },
     ],
-    debriefPrompts: COMMON_DEBRIEF,
+    debriefPrompts: [],
     type: "physical-game",
+    pdfUrl: "/robotics-manuals/l1-levers.pdf",
   },
   "l2-levers-e1": {
     id: "l2-levers-e1",
@@ -49,9 +41,9 @@ const experimentActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "same concept, heavier weights. if the arm doubles, does the effort actually halve?",
     howToPlay:
-      "Repeat the lever setup at 20cm, 30cm, 40cm with 2kg load. Fulcrum sits at one-third of lever length from the load end (not the centre — correction). Read the spring scale at each arm length. Calculate the ratio reading-to-reading. Does doubling the arm length halve the effort reading? Record each calculation in the result table.",
+      "Repeat the lever setup at 20cm, 30cm, 40cm with 2kg load. Fulcrum sits at one-third of lever length from the load end. Read the spring scale at each arm length. Calculate the ratio reading-to-reading. Does doubling the arm length halve the effort reading? Record each calculation in the result table.",
     materials: [
-      "Experiment Card: L2 Levers e1 (fulcrum position specified as 1/3 from load end)",
+      "Experiment Card: L2 Levers e1",
       "PVC pipes · T-connector · spring scale 3kg · 2kg weight · measuring tape · calculator (allowed)",
     ],
     difficultyLevels: [
@@ -59,8 +51,9 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       { level: "Medium", description: "Child measures and calculates the ratio for each pair of readings." },
       { level: "Hard", description: "Child predicts the 40cm reading from the 20cm reading using the ratio rule before measuring. Records the error." },
     ],
-    debriefPrompts: COMMON_DEBRIEF,
+    debriefPrompts: [],
     type: "physical-game",
+    pdfUrl: "/robotics-manuals/l2-levers.pdf",
   },
   "l1-levers-e2": {
     id: "l1-levers-e2",
@@ -70,15 +63,16 @@ const experimentActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "same arm length. change the load. how does effort change?",
     howToPlay:
-      "Fix the 30cm arm. Take readings at 0.5kg, 1kg, 2kg. Pair with L2 e2 next session — calculate whether the increase is proportional.",
+      "Fix the 30cm arm. Take readings at 0.5kg, 1kg, 2kg. Pair with L2 e2 within the same session — calculate whether the increase is proportional.",
     materials: ["Experiment Card: L1 Levers e2", "PVC pipe 30cm · fulcrum · spring scale · 0.5/1/2kg weights"],
     difficultyLevels: [
       { level: "Easy", description: "Child records every reading." },
       { level: "Medium", description: "Child predicts a direction and checks." },
       { level: "Hard", description: "Child predicts the exact reading using doubling — \"if 0.5kg reads X, 1kg should read 2X.\"" },
     ],
-    debriefPrompts: COMMON_DEBRIEF,
+    debriefPrompts: [],
     type: "physical-game",
+    pdfUrl: "/robotics-manuals/l1-levers.pdf",
   },
   "l2-levers-e2": {
     id: "l2-levers-e2",
@@ -95,8 +89,9 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       { level: "Medium", description: "Child measures and calculates each ratio." },
       { level: "Hard", description: "Child predicts the full table from the first reading using proportional reasoning." },
     ],
-    debriefPrompts: COMMON_DEBRIEF,
+    debriefPrompts: [],
     type: "physical-game",
+    pdfUrl: "/robotics-manuals/l2-levers.pdf",
   },
   "l1-levers-e3": {
     id: "l1-levers-e3",
@@ -113,8 +108,9 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       { level: "Medium", description: "Child sets up and writes the rule in their own words." },
       { level: "Hard", description: "Child explains why balance happens using the concept of equal torque (age-appropriate language)." },
     ],
-    debriefPrompts: COMMON_DEBRIEF,
+    debriefPrompts: [],
     type: "physical-game",
+    pdfUrl: "/robotics-manuals/l1-levers.pdf",
   },
   "l2-levers-e3": {
     id: "l2-levers-e3",
@@ -125,14 +121,15 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "unequal weights. can you calculate where the fulcrum must sit?",
     howToPlay:
       "Hang 1kg on left at fixed distance. Hang 2kg on right — where must the fulcrum sit for the lever to balance? Calculate before testing using weight × distance on each side. Test. Record prediction and measured position.",
-    materials: ["Experiment Card: L2 Levers e3 (result column for fulcrum position)", "PVC pipe 40cm · fulcrum · 1kg + 2kg weights · measuring tape · calculator"],
+    materials: ["Experiment Card: L2 Levers e3", "PVC pipe 40cm · fulcrum · 1kg + 2kg weights · measuring tape · calculator"],
     difficultyLevels: [
       { level: "Easy", description: "Teacher shows the calculation. Child places fulcrum and checks." },
       { level: "Medium", description: "Child does the calculation and tests." },
       { level: "Hard", description: "Child solves for three different weight pairs and records predicted vs actual for each." },
     ],
-    debriefPrompts: COMMON_DEBRIEF,
+    debriefPrompts: [],
     type: "physical-game",
+    pdfUrl: "/robotics-manuals/l2-levers.pdf",
   },
   "l1-levers-e4": {
     id: "l1-levers-e4",
@@ -149,8 +146,9 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       { level: "Medium", description: "Child predicts before testing, explains why shape does not matter." },
       { level: "Hard", description: "Child weighs each object on a real scale first, then predicts using the balance rule." },
     ],
-    debriefPrompts: COMMON_DEBRIEF,
+    debriefPrompts: [],
     type: "physical-game",
+    pdfUrl: "/robotics-manuals/l1-levers.pdf",
   },
   "l2-levers-e4": {
     id: "l2-levers-e4",
@@ -167,8 +165,9 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       { level: "Medium", description: "Child does the calculation independently and checks against a real scale." },
       { level: "Hard", description: "Child predicts the unknown weight before balancing using a rough estimate, then refines using the measurement." },
     ],
-    debriefPrompts: COMMON_DEBRIEF,
+    debriefPrompts: [],
     type: "physical-game",
+    pdfUrl: "/robotics-manuals/l2-levers.pdf",
   },
   "l2-levers-e5": {
     id: "l2-levers-e5",
@@ -179,14 +178,15 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "1kg on one side, 0.5kg on the other. calculate how far to move the fulcrum.",
     howToPlay:
       "Use the balance equation to calculate the fulcrum position. Mark the predicted position. Test. How close was the prediction? Repeat with a second weight pair.",
-    materials: ["Experiment Card: L2 Levers e5 (includes column for fulcrum position from left end)", "PVC pipe 40cm · fulcrum · 0.5kg + 1kg weights · cups · measuring tape · masking tape · calculator"],
+    materials: ["Experiment Card: L2 Levers e5", "PVC pipe 40cm · fulcrum · 0.5kg + 1kg weights · cups · measuring tape · masking tape · calculator"],
     difficultyLevels: [
       { level: "Easy", description: "Child follows the calculation steps guided by teacher." },
       { level: "Medium", description: "Child solves independently." },
       { level: "Hard", description: "Child solves for three weight pairs and records prediction error for each." },
     ],
-    debriefPrompts: COMMON_DEBRIEF,
+    debriefPrompts: [],
     type: "physical-game",
+    pdfUrl: "/robotics-manuals/l2-levers.pdf",
   },
   "l2-levers-e6": {
     id: "l2-levers-e6",
@@ -196,15 +196,16 @@ const experimentActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "fulcrum at 5cm from the load end. how much less effort?",
     howToPlay:
-      "Place fulcrum at exactly 5cm from the load end (specified correction) on a 40cm lever. Hang 1kg at the load end. Read the spring scale. Calculate the expected reduction using the balance equation. Compare to the actual reading. Discuss class-of-lever (this is a second-class lever — bottle opener, wheelbarrow).",
-    materials: ["Experiment Card: L2 Levers e6 (fulcrum at 5cm from load end for all lever lengths)", "PVC pipe 40cm · fulcrum · 1kg weight · spring scale · measuring tape · calculator"],
+      "Place fulcrum at exactly 5cm from the load end on a 40cm lever. Hang 1kg at the load end. Read the spring scale. Calculate the expected reduction using the balance equation. Compare to the actual reading. Discuss class-of-lever (this is a second-class lever — bottle opener, wheelbarrow).",
+    materials: ["Experiment Card: L2 Levers e6", "PVC pipe 40cm · fulcrum · 1kg weight · spring scale · measuring tape · calculator"],
     difficultyLevels: [
       { level: "Easy", description: "Teacher sets fulcrum. Child reads and names the everyday machine this matches." },
       { level: "Medium", description: "Child sets fulcrum, reads, calculates expected value." },
       { level: "Hard", description: "Child compares to L1 e2 reading and explains the principle of mechanical advantage." },
     ],
-    debriefPrompts: COMMON_DEBRIEF,
+    debriefPrompts: [],
     type: "physical-game",
+    pdfUrl: "/robotics-manuals/l2-levers.pdf",
   },
   "l1-pulleys-e1": {
     id: "l1-pulleys-e1",
@@ -221,8 +222,9 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       { level: "Medium", description: "Child takes readings and checks proportionality." },
       { level: "Hard", description: "Child predicts the 2kg reading from the 0.5kg reading before testing." },
     ],
-    debriefPrompts: COMMON_DEBRIEF,
+    debriefPrompts: [],
     type: "physical-game",
+    pdfUrl: "/robotics-manuals/l1-pulley.pdf",
   },
   "l1-pulleys-e2": {
     id: "l1-pulleys-e2",
@@ -232,15 +234,16 @@ const experimentActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "lift without the pulley. lift with the pulley. direction of pull changes — does effort?",
     howToPlay:
-      "Read the spring scale lifting 1kg straight up by hand. Then lift 1kg through a fixed pulley, pulling down. Compare readings. They should be equal — a fixed pulley changes direction, not effort. Record.",
+      "Read the spring scale lifting 1kg straight up by hand. Then lift 1kg through a fixed pulley, pulling down. Compare readings. They should be equal — a fixed pulley changes direction, not effort.",
     materials: ["Experiment Card: L1 Pulleys e2", "Pulley · rope · spring scale · 1kg · cup"],
     difficultyLevels: [
       { level: "Easy", description: "Child measures both scenarios." },
       { level: "Medium", description: "Child predicts whether the readings will match before measuring." },
       { level: "Hard", description: "Child explains why they match — the rope carries the same tension on both sides." },
     ],
-    debriefPrompts: COMMON_DEBRIEF,
+    debriefPrompts: [],
     type: "physical-game",
+    pdfUrl: "/robotics-manuals/l1-pulley.pdf",
   },
   "l1-pulleys-e3": {
     id: "l1-pulleys-e3",
@@ -250,15 +253,16 @@ const experimentActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "raise the pulley. does the spring scale read a different number?",
     howToPlay:
-      "Take reading with pulley at low position. Raise pulley (use a riser). Take reading again with same 1kg load. They match. Raising the pulley changes the rope length pulled, not the force.",
+      "Take reading with pulley at low position. Raise pulley. Take reading again with same 1kg load. They match. Raising the pulley changes the rope length pulled, not the force.",
     materials: ["Experiment Card: L1 Pulleys e3", "Pulley · rope · spring scale · 1kg · riser"],
     difficultyLevels: [
       { level: "Easy", description: "Child reads in both positions." },
       { level: "Medium", description: "Child predicts whether the reading will change." },
       { level: "Hard", description: "Child explains why height does not change effort using tension." },
     ],
-    debriefPrompts: COMMON_DEBRIEF,
+    debriefPrompts: [],
     type: "physical-game",
+    pdfUrl: "/robotics-manuals/l1-pulley.pdf",
   },
   "l1-pulleys-e4": {
     id: "l1-pulleys-e4",
@@ -268,15 +272,16 @@ const experimentActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "pull straight down. pull at 45°. same reading?",
     howToPlay:
-      "Record reading pulling straight down. Record reading pulling at an angle. Match — effort reading is the same. Comfort (how easy it feels on the arm) is different.",
+      "Record reading pulling straight down. Record reading pulling at an angle. Match — effort reading is the same. Comfort is different.",
     materials: ["Experiment Card: L1 Pulleys e4", "Pulley · rope · spring scale · 1kg · cup"],
     difficultyLevels: [
       { level: "Easy", description: "Child pulls in two directions, records." },
       { level: "Medium", description: "Child tries three angles and records all readings." },
       { level: "Hard", description: "Child explains why only comfort changes — the weight is constant, so the tension must be too." },
     ],
-    debriefPrompts: COMMON_DEBRIEF,
+    debriefPrompts: [],
     type: "physical-game",
+    pdfUrl: "/robotics-manuals/l1-pulley.pdf",
   },
   "l2-pulleys-e4": {
     id: "l2-pulleys-e4",
@@ -293,8 +298,9 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       { level: "Medium", description: "Child sets up and calculates the ratio." },
       { level: "Hard", description: "Child predicts the mechanical advantage from the pulley count before measuring." },
     ],
-    debriefPrompts: COMMON_DEBRIEF,
+    debriefPrompts: [],
     type: "physical-game",
+    pdfUrl: "/robotics-manuals/l2-pulley.pdf",
   },
   "l2-pulleys-e5": {
     id: "l2-pulleys-e5",
@@ -311,12 +317,13 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       { level: "Medium", description: "Child sets up and calculates mechanical advantage." },
       { level: "Hard", description: "Child predicts the ratio from the number of rope segments and checks against measurement." },
     ],
-    debriefPrompts: COMMON_DEBRIEF,
+    debriefPrompts: [],
     type: "physical-game",
+    pdfUrl: "/robotics-manuals/l2-pulley.pdf",
   },
 };
 
-// ─── Build activities (3 models) ────────────────────────────
+// ─── Build activities — 4 days per model ────────────────────
 
 const buildActivities: Record<string, CurriculumActivity> = {
   "build-see-saw": {
@@ -324,9 +331,9 @@ const buildActivities: Record<string, CurriculumActivity> = {
     segment: "build",
     title: "see-saw build",
     setupLine:
-      "each child builds their own see-saw from a personal kit. six sessions — day by day.",
+      "each child builds their own see-saw from a personal kit. four sessions — day by day.",
     howToPlay:
-      "The see-saw is a simple lever — a beam on a central fulcrum. Intuitive entry into lever concepts. · Day 1 Explore: read the full Model Manual, identify every component, lay them out in manual order, begin first build stage. · Days 2–3 Make: open manual to where you left off, build, teacher uses only four questions. · Day 4 Complete and test: finish, test balance behaviour, record best result. · Day 5 Improve: state a specific expected change, make one deliberate change, test, record before-and-after with numbers. · Day 6 Disassemble: at 8–12 this is done from memory, not the tray map. Teacher names each component as it goes back.",
+      "The see-saw is a simple lever — a beam on a central fulcrum. Intuitive entry into lever concepts. Day 1 Explore: read the full Model Manual, identify every component, lay them out in manual order, begin first build stage. Day 2 Make: open manual to where you left off, build, teacher uses only four questions. Day 3 Complete and Test: finish, test balance behaviour, record best result. Day 4 Improve and Disassemble: each child makes one deliberate improvement, states expected change, tests, records before-and-after. Then disassembles from memory — no tray map. Teacher names each component as it goes back.",
     materials: [
       "Personal See-saw kit per child",
       "Model Manual — See Saw.pdf (1 per child)",
@@ -337,14 +344,9 @@ const buildActivities: Record<string, CurriculumActivity> = {
       { level: "Medium", description: "Child reads and builds independently, tests build-as-you-go." },
       { level: "Hard", description: "Child anticipates the function of each sub-assembly before building, predicts failure modes." },
     ],
-    debriefPrompts: [
-      {
-        notice: "which child, when something did not fit, paused and named what was wrong before trying again.",
-        name: "that is diagnosis before action — the engineering habit at 8–12.",
-        connect: "ask: what part was failing? what was it failing to do?",
-      },
-    ],
+    debriefPrompts: [],
     type: "physical-game",
+    pdfUrl: "/robotics-manuals/see-saw.pdf",
   },
   "build-weighing-scale": {
     id: "build-weighing-scale",
@@ -353,7 +355,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "same cycle, more complex lever. two pan arms that must balance perfectly.",
     howToPlay:
-      "Complex two-pan lever. Every lever experiment directly explains what the build is doing. Same 6-day cycle: Explore · Make · Make · Complete and test · Improve · Disassemble (from memory).",
+      "Complex two-pan lever. Every lever experiment directly explains what the build is doing. Same 4-day cycle: Explore · Make · Complete and Test · Improve and Disassemble (from memory).",
     materials: [
       "Weighing Scale kit additions per child (distributed at Day 1)",
       "Model Manual — Weighing Scale.pdf",
@@ -363,14 +365,9 @@ const buildActivities: Record<string, CurriculumActivity> = {
       { level: "Medium", description: "Child builds independently and checks connections as they go." },
       { level: "Hard", description: "Child anticipates each sub-assembly's function and predicts issues before they occur." },
     ],
-    debriefPrompts: [
-      {
-        notice: "whether the child linked their current lever experiment result to what they are building today.",
-        name: "that is connecting theory to practice — the bridge we want them to walk on their own.",
-        connect: "ask: which experiment explains what you built today? which reading told you why?",
-      },
-    ],
+    debriefPrompts: [],
     type: "physical-game",
+    pdfUrl: "/robotics-manuals/weighing-scale.pdf",
   },
   "build-crane": {
     id: "build-crane",
@@ -379,25 +376,20 @@ const buildActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "pulley model. the crane lifts a load through a rope and pulley system.",
     howToPlay:
-      "Crane uses a pulley system. Same 6-day cycle: Explore · Make · Make · Complete and test · Improve · Disassemble (from memory). At 8–12 the Improve day can include tweaking rope angle, repositioning the pulley, or adding a second rope segment for mechanical advantage.",
+      "Crane uses a pulley system. Same 4-day cycle: Explore · Make · Complete and Test · Improve and Disassemble (from memory).",
     materials: [
       "Crane kit additions per child (distributed at Day 1)",
-      "Model Manual — L1_Crane.pdf",
+      "Model Manual — Crane.pdf",
       "Pulleys, rope, couplers (in kit)",
     ],
     difficultyLevels: [
       { level: "Easy", description: "Child reads and builds with teacher check per step." },
       { level: "Medium", description: "Child builds independently, tests each subsystem." },
-      { level: "Hard", description: "Child proposes the Improve-day change before Day 5, states expected effect, tests, measures." },
+      { level: "Hard", description: "Child proposes the Improve-day change before Day 4, states expected effect, tests, measures." },
     ],
-    debriefPrompts: [
-      {
-        notice: "which child explained the function of a pulley without being asked.",
-        name: "that is applying the experiment to the build — the skill we want at 8–12.",
-        connect: "ask: which principle from the pulley experiments is inside your crane? how does it make the lift easier?",
-      },
-    ],
+    debriefPrompts: [],
     type: "physical-game",
+    pdfUrl: "/robotics-manuals/crane.pdf",
   },
 };
 
@@ -408,25 +400,19 @@ const experienceBookActivity: CurriculumActivity = {
   segment: "experience-book",
   title: "experience book",
   setupLine:
-    "ten minutes. five marks. one specific note per child. goes home every day.",
+    "ten minutes. circle the ability seen clearly today for each skill. one specific note per child. goes home every day.",
   howToPlay:
-    "Teacher fills five things per child: experiment name, build day, four ability marks (O&U and LT from the experiment · B&M and PS from the build · concept understood when asked a causal question), and one specific note (\"worth remembering\"). At 8–12 the most valuable notes capture reasoning — predicting a value and checking it. The book also carries the Ability Reference, Concept Tracker, and six monthly Robotics Journey letters at sessions 8, 16, 24, 32, 40, 48.",
+    "Teacher fills four things per child: experiment name, build day, three ability rows (B&M, PS, O&U — one circled per row), and one specific note (\"worth remembering\"). At 8–12 the most valuable notes capture reasoning. The book also carries the Ability Reference and six monthly Robotics Journey letters. Always conduct a 3-move closing debrief: name what you saw · name the next step · one concept question.",
   materials: [
     "My Robotics Experience Book (ages 8–12) — per child, hardbound",
-    "Ability Reference card (glued inside cover)",
+    "Ability Reference card (inside cover)",
     "Tray map (reference inside back cover)",
   ],
-  debriefPrompts: [
-    {
-      notice: "which children can explain a result causally — name the cause, connect it to the data.",
-      name: "that is concept understanding at 8–12, not just memorisation.",
-      connect: "if the child only describes what happened, ask 'why?' — if they still cannot explain the cause, the concept is not yet learnt.",
-    },
-  ],
+  debriefPrompts: [],
   type: "facilitated",
 };
 
-// ─── Skills (8-12 version — quantitative, deliberate) ───────
+// ─── Skills — 3 skills, 4 named abilities each, one North Star per skill ─
 
 const skillAreas: CurriculumSkillArea[] = [
   {
@@ -434,10 +420,10 @@ const skillAreas: CurriculumSkillArea[] = [
     name: "building & making",
     shortName: "B&M",
     abilities: [
-      "puts parts together deliberately — checks each connection works before moving on",
-      "follows the step card and notices when a step has not worked as expected",
-      "finds the exact part that failed and fixes it without being told",
-      "improves the model deliberately — states what they expect to change before testing",
+      { name: "fits and functions", description: "puts parts together deliberately — checks each connection works before moving on" },
+      { name: "follows the card", description: "follows the step card and notices when a step has not produced the expected result" },
+      { name: "adjusts and fixes", description: "finds the exact part that failed and fixes it without being told which part" },
+      { name: "improves deliberately", description: "makes a deliberate improvement and states what they expect to change before testing it", isNorthStar: true },
     ],
   },
   {
@@ -445,10 +431,10 @@ const skillAreas: CurriculumSkillArea[] = [
     name: "problem solving",
     shortName: "PS",
     abilities: [
-      "notices when the model is not working and names what it should be doing",
-      "tries genuinely different approaches — does not repeat what already failed",
-      "names the specific part that is failing and explains what it is failing to do",
-      "sets a measurable goal and keeps adjusting until the model reaches it",
+      { name: "notices independently", description: "notices when the model is not working and names what it should be doing instead" },
+      { name: "tries differently", description: "tries genuinely different approaches — does not repeat the same failed attempt" },
+      { name: "locates the cause", description: "names the specific part causing the failure and says what it is failing to do" },
+      { name: "reaches the goal", description: "sets a measurable goal and keeps adjusting until the model reaches it", isNorthStar: true },
     ],
   },
   {
@@ -456,21 +442,10 @@ const skillAreas: CurriculumSkillArea[] = [
     name: "observing & understanding",
     shortName: "O&U",
     abilities: [
-      "names one specific thing that changed — what moved, shifted, or read differently",
-      "takes measurements accurately and records every reading correctly",
-      "writes a specific prediction before testing — a value or a reason, not just a direction",
-      "explains what caused the result — names the cause and connects it to what the data shows",
-    ],
-  },
-  {
-    id: "lt",
-    name: "logical thinking",
-    shortName: "LT",
-    abilities: [
-      "understands that results come from specific causes — not from everything changing at once",
-      "identifies which specific change caused the result",
-      "applies what they found in one situation to reason about a different one",
-      "plans what to test, how to test it, and what a good result looks like — before starting",
+      { name: "spots what changed", description: "names one specific thing that changed — what moved, shifted, or read differently" },
+      { name: "measures and records", description: "takes measurements accurately and records every reading correctly" },
+      { name: "predicts before trying", description: "writes a specific prediction before testing — a value or a reason, not just a direction" },
+      { name: "explains why", description: "explains what caused the result — names the cause and connects it to the data", isNorthStar: true },
     ],
   },
 ];
@@ -483,7 +458,7 @@ const segmentDefinitions: CurriculumSegmentDef[] = [
     name: "experiment",
     durationRange: "40 min",
     objective:
-      "groups of 2–4. every child takes at least one measurement independently. teacher asks one question per group. at 8–12, predictions are specific values or reasoned statements — not just directions.",
+      "groups of 2–4. every child takes at least one measurement independently. teacher asks one question per group. at 8–12, L1 and L2 cards pair within the same session — L1 first (qualitative), L2 next (calculate). tool orientation is embedded for any new child in the first 3–4 experiment segments.",
     type: "rotating",
     rotationPool: [],
   },
@@ -492,7 +467,7 @@ const segmentDefinitions: CurriculumSegmentDef[] = [
     name: "build",
     durationRange: "40 min",
     objective:
-      "each child builds their own model from a personal kit. at 8–12 the teacher asks four questions only and the child diagnoses before acting.",
+      "5-minute engage question opens the segment — one question, 3–4 answers, connect to today's build. then each child builds their own model from a personal kit. the teacher never fixes and never tells. four questions only.",
     type: "rotating",
     rotationPool: [],
   },
@@ -501,28 +476,35 @@ const segmentDefinitions: CurriculumSegmentDef[] = [
     name: "experience book",
     durationRange: "10 min",
     objective:
-      "five marks per child. specific notes that capture reasoning. compiles into six monthly robotics journey letters through the year.",
+      "circle the ability seen clearly today for each of the three skills. specific notes that capture reasoning. three-move closing debrief.",
     type: "fixed",
   },
 ];
 
-// ─── Session table — 18 sessions ────────────────────────────
+// ─── Session table — 12 sessions ────────────────────────────
 
 const DAY_LABELS_8_12: Record<number, string> = {
   1: "Day 1 — Explore",
   2: "Day 2 — Make",
-  3: "Day 3 — Make",
-  4: "Day 4 — Complete and test",
-  5: "Day 5 — Improve",
-  6: "Day 6 — Disassemble",
+  3: "Day 3 — Complete and Test",
+  4: "Day 4 — Improve and Disassemble",
 };
 
+/**
+ * 8-12 uses a "primary experiment" field — the L1 card the session opens
+ * with. The paired L2 card runs within the same 40-minute segment but is
+ * not modelled in the session table today (activities fire one at a time
+ * in DayPlan). Teachers see the pairing through the experiment-card popup's
+ * how-to-play copy which names the L2 pair explicitly.
+ */
 function s(
   sessionNumber: number,
   experiment: string,
   buildModel: string,
   buildId: string,
-  buildDay: number
+  buildDay: number,
+  engageQuestion: string,
+  conceptQuestion: string
 ): CurriculumSessionEntry {
   return {
     sessionNumber,
@@ -533,46 +515,53 @@ function s(
     buildDay,
     buildDayLabel: DAY_LABELS_8_12[buildDay],
     topicLayer: 1,
+    engageQuestion,
+    conceptQuestion,
   };
 }
 
 const sessionTable: CurriculumSessionEntry[] = [
-  // Trial session — kit orientation + start of crane build
-  {
-    sessionNumber: 0,
-    experiment: "l1-pulleys-e1",
-    build: "build-crane",
-    experienceBook: "rob-experience-book",
-    buildModel: "Crane",
-    buildDay: 1,
-    buildDayLabel: "Day 1 — Explore (trial)",
-    topicLayer: 0,
-  },
-  // See-saw · L1 & L2 Levers paired
-  s(1, "l1-levers-e1", "See-saw", "build-see-saw", 1),
-  s(2, "l2-levers-e1", "See-saw", "build-see-saw", 2),
-  s(3, "l1-levers-e2", "See-saw", "build-see-saw", 3),
-  s(4, "l2-levers-e2", "See-saw", "build-see-saw", 4),
-  s(5, "l1-levers-e3", "See-saw", "build-see-saw", 5),
-  s(6, "l2-levers-e3", "See-saw", "build-see-saw", 6),
-  // Weighing Scale · L1 e4, L2 e4, L2 e5, L2 e6, repeats
-  s(7, "l1-levers-e4", "Weighing Scale", "build-weighing-scale", 1),
-  s(8, "l2-levers-e4", "Weighing Scale", "build-weighing-scale", 2),
-  s(9, "l2-levers-e5", "Weighing Scale", "build-weighing-scale", 3),
-  s(10, "l2-levers-e6", "Weighing Scale", "build-weighing-scale", 4),
-  s(11, "l2-levers-e3", "Weighing Scale", "build-weighing-scale", 5),
-  s(12, "l2-levers-e4", "Weighing Scale", "build-weighing-scale", 6),
-  // Crane · L1 & L2 Pulleys
-  s(13, "l1-pulleys-e1", "Crane", "build-crane", 1),
-  s(14, "l1-pulleys-e2", "Crane", "build-crane", 2),
-  s(15, "l1-pulleys-e3", "Crane", "build-crane", 3),
-  s(16, "l1-pulleys-e4", "Crane", "build-crane", 4),
-  s(17, "l2-pulleys-e4", "Crane", "build-crane", 5),
-  s(18, "l2-pulleys-e5", "Crane", "build-crane", 6),
+  s(1, "l1-levers-e1", "See-saw", "build-see-saw", 1,
+    "In a market, a shopkeeper uses a balance scale — no electricity, no digital display. It has worked for thousands of years. How does it tell you the exact weight of something?",
+    "What does a lever do that makes lifting easier — in one sentence?"),
+  s(2, "l1-levers-e2", "See-saw", "build-see-saw", 2,
+    "If a load doubles — does the effort always exactly double? Or could the relationship be different? What would it mean if it was not exactly proportional?",
+    "When we moved further from the middle — did the effort go up or down? Why?"),
+  s(3, "l1-levers-e3", "See-saw", "build-see-saw", 3,
+    "Engineers design bridges so that loads are balanced across the structure. How do they calculate where to put the supports before any concrete is poured?",
+    "If the load doubles — does the effort double? What did our numbers show?"),
+  s(4, "l1-levers-e4", "See-saw", "build-see-saw", 4,
+    "Before digital scales existed, every gold market in the world used a balance lever. How accurate do you think they were — and what made them accurate without electronics?",
+    "Can a lever find the weight of something unknown — how?"),
+  s(5, "l2-levers-e5", "Weighing Scale", "build-weighing-scale", 1,
+    "A wheelbarrow carries a heavy load near the wheel — close to the fulcrum. The handles extend far back. Why is it designed that way? What would happen if the load were at the back?",
+    "When does a lever balance perfectly? What has to be true on both sides?"),
+  s(6, "l2-levers-e6", "Weighing Scale", "build-weighing-scale", 2,
+    "A bottle opener, a nutcracker, a pair of pliers — all levers. But they work differently from a see-saw. The fulcrum is at the end, not the middle. Why does that change everything?",
+    "What happens to effort when the fulcrum moves very close to the load?"),
+  s(7, "l1-pulleys-e1", "Weighing Scale", "build-weighing-scale", 3,
+    "Your Weighing Scale is complete. What is the one part that makes the biggest difference to accuracy — and how would you verify that before taking it apart?",
+    "Which part of the Weighing Scale does the most important job?"),
+  s(8, "l1-pulleys-e2", "Weighing Scale", "build-weighing-scale", 4,
+    "If a single fixed pulley doesn't reduce effort — what would? How would you design a system that actually makes a heavy load easier to lift?",
+    "What does a pulley do — what is the one thing it changes?"),
+  s(9, "l1-pulleys-e3", "Crane", "build-crane", 1,
+    "Construction cranes use compound pulley systems — multiple wheels and ropes working together. Why not just use one big motor? What does adding more pulleys actually achieve?",
+    "Does changing pulley height change the effort needed?"),
+  s(10, "l1-pulleys-e4", "Crane", "build-crane", 2,
+    "Your crane is taking shape. Three ways to lift the same load: direct lift, single pulley, compound pulley. Which do you predict uses least effort — and by how much?",
+    "Does the direction you pull change the effort — or only the comfort?"),
+  s(11, "l2-pulleys-e4", "Crane", "build-crane", 3,
+    "Your crane is complete. Test it. Then run the experiment with the crane's real load. Do your results match what you predicted?",
+    "What job does the pulley do inside the crane that the crane couldn't do without it?"),
+  s(12, "l2-pulleys-e5", "Crane", "build-crane", 4,
+    "At the end of every engineering project there is a review — what worked, what failed, what we would do differently. If you were the engineer on this crane, what would your review say?",
+    "What is the one most important thing you found out across all these sessions?"),
 ];
 
-sessionTable.forEach((e) => {
-  if ([8, 16].includes(e.sessionNumber)) e.isCheckpoint = true;
+// Monthly checkpoint — after 8 sessions
+sessionTable.forEach((entry) => {
+  if ([8].includes(entry.sessionNumber)) entry.isCheckpoint = true;
 });
 
 // ─── Checkpoints ────────────────────────────────────────────
@@ -581,19 +570,9 @@ const checkpoints: CurriculumCheckpoint[] = [
   {
     afterSession: 8,
     descriptors: [
-      { skillArea: "B&M", beginning: "follows with teacher check", developing: "checks each connection before moving on", secure: "fixes the exact part that failed without being told" },
-      { skillArea: "PS", beginning: "stops when stuck", developing: "tries genuinely different approaches", secure: "names the specific part that is failing and what it should do" },
-      { skillArea: "O&U", beginning: "measures with support", developing: "records every reading correctly", secure: "writes a specific prediction — a value or reason — before testing" },
-      { skillArea: "LT", beginning: "identifies causes with prompting", developing: "identifies which specific change caused the result", secure: "applies prior findings to a different situation" },
-    ],
-  },
-  {
-    afterSession: 16,
-    descriptors: [
-      { skillArea: "B&M", beginning: "builds independently", developing: "diagnoses before fixing", secure: "improves deliberately — states expected change before testing" },
-      { skillArea: "PS", beginning: "reaches the goal", developing: "keeps adjusting", secure: "sets a measurable goal and keeps adjusting until the model reaches it" },
-      { skillArea: "O&U", beginning: "prediction is a value", developing: "prediction has a reason", secure: "explanation names the cause and connects it to the data" },
-      { skillArea: "LT", beginning: "plans in outline", developing: "plans what to test and how", secure: "plans what to test, how to test, and what a good result looks like — before starting" },
+      { skillArea: "B&M", beginning: "connects parts with teacher checks", developing: "follows the card and notices when a step has not produced the expected result", secure: "finds the exact part that failed and fixes it without being told which part" },
+      { skillArea: "PS", beginning: "names general failure", developing: "tries genuinely different approaches", secure: "names the specific part causing the failure and says what it is failing to do" },
+      { skillArea: "O&U", beginning: "records readings", developing: "writes a specific prediction before testing — a value or a reason", secure: "explains what caused the result — names the cause and connects it to the data" },
     ],
   },
 ];
@@ -611,8 +590,8 @@ export const robotics812: CurriculumProgramme = {
   tagline:
     "calculate it. predict it. build it. explain why it works — every time.",
   description:
-    "level 1 — mechanics. same three models as 5–8 but each build is six days and every experiment is quantitative. children finish the year able to calculate mechanical advantage, predict before testing, and explain causally after.",
-  totalSessions: 18,
+    "level 1 — mechanics. same three models as 5–8 but each build is four days and every experiment is quantitative. children finish the year able to calculate mechanical advantage, predict before testing, and explain causally after.",
+  totalSessions: 12,
   skillAreas,
   segmentDefinitions,
   sessionTable,

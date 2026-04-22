@@ -508,6 +508,36 @@ export function DayPlan({
         </div>
       </div>
 
+      {/* Engage question — shown when the session carries one (robotics) */}
+      {session.engageQuestion && (
+        <div className="mb-3 rounded-card bg-brand-orange/5 p-3.5 ring-1 ring-brand-orange/10">
+          <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-brand-orange">
+            engage · 5 min · start of build
+          </p>
+          <p className="mt-1 text-[12px] italic leading-relaxed text-ink">
+            &ldquo;{session.engageQuestion}&rdquo;
+          </p>
+          <p className="mt-1.5 text-[10px] leading-relaxed text-ink-subtle">
+            take 3–4 answers. connect the last answer to today&apos;s build or experiment. no instruction — only curiosity.
+          </p>
+        </div>
+      )}
+
+      {/* Concept question — asked in the closing debrief (robotics) */}
+      {session.conceptQuestion && (
+        <div className="mb-3 rounded-card bg-category-language/10 p-3.5 ring-1 ring-green-800/15">
+          <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-green-800">
+            concept question · closing debrief
+          </p>
+          <p className="mt-1 text-[12px] italic leading-relaxed text-ink">
+            &ldquo;{session.conceptQuestion}&rdquo;
+          </p>
+          <p className="mt-1.5 text-[10px] leading-relaxed text-ink-subtle">
+            one direct question. one child answers. teacher confirms in one sentence.
+          </p>
+        </div>
+      )}
+
       {/* Segment rows */}
       <div className="space-y-2">
         {segments.map((seg) => (
