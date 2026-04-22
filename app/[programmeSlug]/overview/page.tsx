@@ -440,37 +440,16 @@ function ProgrammeOverviewContent() {
   const isRobotics = programme.category === "stem";
   const isLanguage = programme.category === "language";
 
-  // Per-programme section numbering so each overview counts 01, 02, 03…
-  // without gaps, regardless of which sections are gated off.
-  const SECTION_NUMS_BY_CATEGORY: Record<string, Record<string, string>> = {
-    art: {
-      "daily-flow": "01",
-      "skills": "02",
-      "segment-logic": "03",
-      "art-gym-cycle": "04",
-      "artiverse-how": "05",
-      "artiverse-units": "06",
-      "checkpoints": "07",
-    },
-    stem: {
-      "daily-flow": "01",
-      "skills": "02",
-      "segment-logic": "03",
-      "three-models": "04",
-      "checkpoints": "05",
-    },
-    language: {
-      "daily-flow": "01",
-      "skills": "02",
-      "segment-logic": "03",
-      "debrief-approaches": "04",
-      "checkpoints": "05",
-    },
-    music: { "daily-flow": "01", "skills": "02", "segment-logic": "03", "checkpoints": "04" },
-    movement: { "daily-flow": "01", "skills": "02", "segment-logic": "03", "checkpoints": "04" },
+  // Every overview has the same four top-level sections now: daily flow
+  // · skills · segments (each segment card contains its full info inline)
+  // · checkpoints. No per-category overrides needed.
+  const SECTION_NUM: Record<string, string> = {
+    "daily-flow": "01",
+    "skills": "02",
+    "segment-logic": "03",
+    "checkpoints": "04",
   };
-  const sectionNum = (key: string) =>
-    SECTION_NUMS_BY_CATEGORY[programme.category]?.[key] ?? "—";
+  const sectionNum = (key: string) => SECTION_NUM[key] ?? "—";
 
   // Build skills list from this programme's own skill areas so the abilities
   // match the age group & category.
@@ -885,96 +864,100 @@ function ProgrammeOverviewContent() {
         </div>
       </section>
 
-      {/* ─── WHERE SKILLS LIVE ─── */}
+      {/* ─── SEGMENTS (pool + all extras inlined per segment) ─── */}
       <section className="mt-10 px-4 md:px-8">
-        <SectionTitle num={sectionNum("segment-logic")} label="segment logic">
-          what happens inside each segment
+        <SectionTitle num={sectionNum("segment-logic")} label="segments">
+          what happens inside each segment — everything in one place
         </SectionTitle>
 
-        <div className="mt-4 space-y-3">
+        <div className="mt-4 space-y-8">
           {gamesTable.map((seg) => {
             const Icon = seg.icon;
             return (
-              <div key={seg.segment} className="overflow-hidden rounded-xl bg-brand-white shadow-card">
-                <div className={cn("flex items-center gap-2 px-4 py-3", seg.color)}>
-                  <Icon className="h-4 w-4 text-ink" />
-                  <p className="text-[14px] font-extrabold text-ink">{seg.segment}</p>
-                  <span className="ml-auto flex items-center gap-1 text-[10px] font-bold text-ink-muted">
-                    {seg.type === "rotating" ? (
-                      <><RotateCw className="h-3 w-3" /> rotating</>
-                    ) : (
-                      <><Lock className="h-3 w-3" /> fixed</>
-                    )}
-                    <span className="mx-1">·</span>
-                    {seg.time}
-                  </span>
-                </div>
-                <div className="divide-y divide-ink/5">
-                  {seg.games.map((g) => {
-                    const slug = g.name.toLowerCase().replace(/\s+/g, "-");
-                    const img =
-                      getActivityImage(slug) ??
-                      getActivityImage(slug.replace(/s$/, ""));
-                    return (
-                      <div key={g.name} className="flex items-center gap-3 px-4 py-3">
-                        {img ? (
-                          // eslint-disable-next-line @next/next/no-img-element
-                          <img
-                            src={img}
-                            alt=""
-                            className="h-11 w-11 shrink-0 rounded-lg bg-ink/[0.03] object-contain"
-                          />
-                        ) : (
-                          <div
-                            className={cn(
-                              "flex h-11 w-11 shrink-0 items-center justify-center rounded-lg",
-                              seg.color
-                            )}
-                          >
-                            <Icon className="h-5 w-5 text-ink/70" />
+              <div key={seg.segment} className="space-y-3">
+                {/* Pool card */}
+                <div className="overflow-hidden rounded-xl bg-brand-white shadow-card">
+                  <div className={cn("flex items-center gap-2 px-4 py-3", seg.color)}>
+                    <Icon className="h-4 w-4 text-ink" />
+                    <p className="text-[14px] font-extrabold text-ink">{seg.segment}</p>
+                    <span className="ml-auto flex items-center gap-1 text-[10px] font-bold text-ink-muted">
+                      {seg.type === "rotating" ? (
+                        <><RotateCw className="h-3 w-3" /> rotating · {seg.games.length} games</>
+                      ) : (
+                        <><Lock className="h-3 w-3" /> fixed</>
+                      )}
+                      <span className="mx-1">·</span>
+                      {seg.time}
+                    </span>
+                  </div>
+                  <div className="divide-y divide-ink/5">
+                    {seg.games.map((g) => {
+                      const slug = g.name.toLowerCase().replace(/\s+/g, "-");
+                      const img =
+                        getActivityImage(slug) ??
+                        getActivityImage(slug.replace(/s$/, ""));
+                      return (
+                        <div key={g.name} className="flex items-center gap-3 px-4 py-3">
+                          {img ? (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img
+                              src={img}
+                              alt=""
+                              className="h-11 w-11 shrink-0 rounded-lg bg-ink/[0.03] object-contain"
+                            />
+                          ) : (
+                            <div
+                              className={cn(
+                                "flex h-11 w-11 shrink-0 items-center justify-center rounded-lg",
+                                seg.color
+                              )}
+                            >
+                              <Icon className="h-5 w-5 text-ink/70" />
+                            </div>
+                          )}
+                          <div className="flex-1">
+                            <p className="text-[13px] font-bold text-ink">{g.name}</p>
+                            <div className="mt-1 flex flex-wrap gap-1">
+                              {g.skills.map((s) => (
+                                <span
+                                  key={s}
+                                  className="rounded-chip bg-brand-orange/10 px-2 py-0.5 text-[10px] font-medium text-brand-orange"
+                                >
+                                  {s}
+                                </span>
+                              ))}
+                            </div>
                           </div>
-                        )}
-                        <div className="flex-1">
-                          <p className="text-[13px] font-bold text-ink">{g.name}</p>
-                          <div className="mt-1 flex flex-wrap gap-1">
-                            {g.skills.map((s) => (
-                              <span
-                                key={s}
-                                className="rounded-chip bg-brand-orange/10 px-2 py-0.5 text-[10px] font-medium text-brand-orange"
-                              >
-                                {s}
-                              </span>
-                            ))}
-                          </div>
+                          <span className="shrink-0 rounded-chip bg-ink/5 px-2 py-0.5 text-[9px] font-bold text-ink-muted">
+                            {g.rotation}
+                          </span>
                         </div>
-                        <span className="shrink-0 rounded-chip bg-ink/5 px-2 py-0.5 text-[9px] font-bold text-ink-muted">
-                          {g.rotation}
-                        </span>
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
 
-        <div className="mt-4 rounded-xl bg-brand-orange/5 p-4">
-          <p className="text-[12px] font-bold text-ink">
-            {isRobotics ? "how it runs" : "how rotation works"}
-          </p>
-          <p className="mt-1 text-[11px] leading-relaxed text-ink-muted">
-            {isRobotics
-              ? "robotics has no rotation — every session is fixed. the experiment and build for each session are set in advance so children can join at any session and pick up exactly where the class is. the four teacher questions work identically regardless of which build day each child is on."
-              : "art games rotate across 8 games — each activity can only repeat after all others have been used. variations change how children play. levels adjust difficulty for each child within the same game, without separating them."}
-          </p>
-        </div>
-      </section>
+                {/* Rotation rule note (rotating segments only) */}
+                {seg.type === "rotating" && (
+                  <div className="rounded-xl bg-brand-orange/5 p-4">
+                    <p className="text-[12px] font-bold text-ink">how rotation works</p>
+                    <p className="mt-1 text-[11px] leading-relaxed text-ink-muted">
+                      rotates across {seg.games.length} games — each activity can only repeat after all others have been used. variations change how children play. levels adjust difficulty within the same game, without separating children.
+                    </p>
+                  </div>
+                )}
+                {seg.type === "fixed" && isRobotics && (seg.segment === "experiment" || seg.segment === "build") && (
+                  <div className="rounded-xl bg-brand-orange/5 p-4">
+                    <p className="text-[12px] font-bold text-ink">how it runs</p>
+                    <p className="mt-1 text-[11px] leading-relaxed text-ink-muted">
+                      no rotation — every session is fixed. experiments and build-day steps are set in advance so children can join at any session and pick up exactly where the class is.
+                    </p>
+                  </div>
+                )}
 
-      {/* ─── ART GYM CYCLE (art only) ─── */}
-      {isArt && (
-      <section className="mt-10 px-4 md:px-8">
-        <SectionTitle num={sectionNum("art-gym-cycle")} label="art gym cycle" />
+                {/* ═══ ART GYM — cycle, book pairings, cue card pool ═══ */}
+                {seg.segment === "art gym" && isArt && (
+                  <div className="space-y-3">
         <p className="mt-2 text-[12px] leading-relaxed text-ink-muted md:text-[13px]">
           art gym runs as two paired units. the <span className="font-semibold text-ink">book</span> and the <span className="font-semibold text-ink">cue card</span> each rotate; their extensions always follow the previous day — not independent.
         </p>
@@ -1135,177 +1118,12 @@ function ProgrammeOverviewContent() {
             )}
           </div>
         </div>
-      </section>
-      )}
-      {/* ─── ROBOTICS MODELS (stem only) ─── */}
-      {isRobotics && (
-        <section className="mt-10 px-4 md:px-8">
-          <SectionTitle num={sectionNum("three-models")} label="the three models">
-            built in order, all year long
-          </SectionTitle>
-
-          <div className="mt-4 space-y-3">
-            {[
-              {
-                n: 1,
-                name: "See-saw",
-                runs: "lever experiments",
-                blurb:
-                  "a simple lever — beam balancing on a central fulcrum. introduces lever ideas in the most physical way a child can feel.",
-              },
-              {
-                n: 2,
-                name: "Weighing Scale",
-                runs: "lever experiments continue",
-                blurb:
-                  "a more complex lever. two pan arms that must balance when equal weights are placed. every lever experiment directly explains something being built.",
-              },
-              {
-                n: 3,
-                name: "Crane",
-                runs: "pulley experiments",
-                blurb:
-                  "a pulley-based model. the crane lifts a load using rope and pulley. pulley experiments explain the lifting system directly.",
-              },
-            ].map((m) => (
-              <div key={m.n} className="rounded-xl bg-brand-white p-3.5 shadow-card ring-1 ring-ink/5">
-                <div className="flex items-center gap-2.5">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-orange text-[12px] font-extrabold text-white">
-                    {m.n}
-                  </span>
-                  <p className="text-[14px] font-extrabold text-ink">{m.name.toLowerCase()}</p>
-                  <span className="ml-auto rounded-chip bg-brand-orange/10 px-2 py-0.5 text-[9px] font-semibold text-brand-orange">
-                    {m.runs}
-                  </span>
-                </div>
-                <p className="mt-2 text-[12px] leading-relaxed text-ink-muted">{m.blurb}</p>
-                <p className="mt-2 text-[11px] font-semibold text-ink">
-                  {programme.ageGroup === "8-12" ? "6 build sessions" : "8 build sessions"}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-4 rounded-xl bg-brand-orange/5 p-4">
-            <p className="text-[12px] font-bold text-ink">the build day cycle</p>
-            <ul className="mt-2 space-y-1 text-[11px] leading-relaxed text-ink-muted">
-              <li>
-                <span className="font-semibold text-ink">day 1 — explore.</span> read the full model manual, lay every component out in manual order, begin first build stage.
-              </li>
-              <li>
-                <span className="font-semibold text-ink">{programme.ageGroup === "8-12" ? "days 2–3" : "days 2–5"} — make.</span> open the manual where you left off, build, the teacher uses only four questions.
-              </li>
-              <li>
-                <span className="font-semibold text-ink">{programme.ageGroup === "8-12" ? "day 4" : "day 6"} — complete and test.</span> finish, run the test, record the best result.
-              </li>
-              <li>
-                <span className="font-semibold text-ink">{programme.ageGroup === "8-12" ? "day 5" : "day 7"} — improve.</span> one deliberate change, state the expected effect, test, record before and after.
-              </li>
-              <li>
-                <span className="font-semibold text-ink">{programme.ageGroup === "8-12" ? "day 6" : "day 8"} — disassemble.</span> {programme.ageGroup === "8-12" ? "from memory — teacher names each component as it goes back." : "sorted back using the tray map. teacher names each component."}
-              </li>
-            </ul>
-          </div>
-
-          <div className="mt-3 rounded-xl bg-brand-white p-4 shadow-card ring-1 ring-ink/5">
-            <p className="text-[12px] font-bold text-ink">the four teacher questions — build only</p>
-            <ol className="mt-2 space-y-1 text-[11px] leading-relaxed text-ink-muted">
-              <li>1. &ldquo;what is not working? what will you try?&rdquo;</li>
-              <li>2. &ldquo;what did you change? what happened?&rdquo;</li>
-              <li>3. &ldquo;which change made the bigger difference?&rdquo;</li>
-              <li>4. &ldquo;point to the part that did the most important job.&rdquo;</li>
-            </ol>
-            <p className="mt-2 text-[10px] italic text-ink-subtle">
-              one per child per session. move on immediately. never fix. never tell.
-            </p>
-          </div>
-        </section>
-      )}
-
-      {/* ─── STANDARDISED DEBRIEF APPROACHES (public speaking only) ─── */}
-      {programme.category === "language" && (
-        <section className="mt-10 px-4 md:px-8">
-          <SectionTitle num={sectionNum("debrief-approaches")} label="debrief approaches">
-            always conduct debriefs for playground and showtime — every session
-          </SectionTitle>
-
-          <p className="mt-3 text-[12px] leading-relaxed text-ink-muted md:text-[13px]">
-            four approaches a teacher can reach for after any playground or showtime game. each takes under 2 minutes. they are not all used every session — the teacher picks one that fits what actually happened in that particular round.
-          </p>
-
-          <div className="mt-4 space-y-3">
-            {[
-              {
-                n: 1,
-                name: "Spotlight one moment",
-                blurb:
-                  "point to or name one specific observable moment from the game — not a general feeling about how it went. the question must be precise enough that only a child who was paying attention can answer it.",
-                when: "when a specific moment visibly changed the direction or outcome of the game.",
-                example:
-                  "\"which one card changed the whole direction of the story — point to it on the mat. why did that card change things?\"",
-              },
-              {
-                n: 2,
-                name: "What happened when you got stuck",
-                blurb:
-                  "ask what was genuinely hard and specifically what the child did in that moment. this is different from asking what they enjoyed — it requires children to notice their own thinking rather than their feeling.",
-                when: "after any game where children had to push through a difficult moment in real time.",
-                example:
-                  "\"was there a moment when you couldn't think of how to connect your card to the story? what did you actually do in that moment?\"",
-              },
-              {
-                n: 3,
-                name: "What would you change",
-                blurb:
-                  "ask one forward-looking question — not general reflection but a specific named change. keeps it brief and actionable.",
-                when: "after any game the group will play again in future sessions.",
-                example:
-                  "\"if we played this again right now — one thing you would do differently with your card. one thing.\"",
-              },
-              {
-                n: 4,
-                name: "Peer spotlight",
-                blurb:
-                  "ask children to name one specific thing a peer did that made the game stronger. not a general compliment — a specific observable action. this builds the listening habit alongside the speaking habit.",
-                when: "after any game where children were both contributing and watching others contribute.",
-                example:
-                  "\"whose sentence surprised you the most — not the best one, the most unexpected one. what did it do to the story?\"",
-              },
-            ].map((a) => (
-              <div key={a.n} className="rounded-xl bg-brand-white p-3.5 shadow-card ring-1 ring-ink/5">
-                <div className="flex items-start gap-2.5">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-orange text-[12px] font-extrabold text-white">
-                    {a.n}
-                  </span>
-                  <div className="flex-1">
-                    <p className="text-[14px] font-extrabold text-ink">
-                      approach {a.n} — {a.name.toLowerCase()}
-                    </p>
-                    <p className="mt-1.5 text-[12px] leading-relaxed text-ink-muted">
-                      {a.blurb}
-                    </p>
-                    <p className="mt-2 text-[11px] leading-relaxed text-ink">
-                      <span className="font-semibold">when to use: </span>
-                      {a.when}
-                    </p>
-                    <p className="mt-1 text-[11px] italic leading-relaxed text-ink-muted">
-                      <span className="font-semibold not-italic">example for tale trail — </span>
-                      {a.example}
-                    </p>
                   </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
+                )}
 
-      {/* ─── ARTIVERSE — HOW IT WORKS (art only) ─── */}
-      {isArt && (
-        <section className="mt-10 px-4 md:px-8">
-          <SectionTitle num={sectionNum("artiverse-how")} label="artiverse — how it works">
-            every session has three elements · the medium and technique follow a fixed order
-          </SectionTitle>
+                {/* ═══ ARTIVERSE — how it works + units ═══ */}
+                {seg.segment === "artiverse" && isArt && (
+                  <div className="space-y-3">
 
           {/* The three elements */}
           <div className="mt-4 grid gap-3 md:grid-cols-3">
@@ -1515,15 +1333,6 @@ function ProgrammeOverviewContent() {
               })}
             </div>
           </div>
-        </section>
-      )}
-
-      {/* ─── ARTIVERSE TIMELINE (art only) ─── */}
-      {isArt && programme.artiverseUnits && programme.artiverseUnits.length > 0 && (
-      <section className="mt-10 px-4 md:px-8">
-        <SectionTitle num={sectionNum("artiverse-units")} label="the artiverse units">
-          a progression from simple marks to layered compositions
-        </SectionTitle>
 
         {/* Flipbook link — opens the artiverse portfolio as a page-turn book */}
         <Link
@@ -1550,6 +1359,10 @@ function ProgrammeOverviewContent() {
           />
         </Link>
 
+        <p className="mt-4 rounded-lg bg-brand-orange/5 px-3 py-2 text-[11.5px] leading-relaxed text-ink-muted">
+          each unit is defined by its <span className="font-semibold text-ink">medium</span>. the reference listed beside it is <span className="font-semibold text-ink">inspiration only</span> — the actual topic is the child&apos;s choice from the three options in the session.
+        </p>
+
         <div className="mt-4 space-y-2">
           {(programme.artiverseUnits ?? []).map((unit) => (
             <div
@@ -1568,22 +1381,15 @@ function ProgrammeOverviewContent() {
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2">
                   <p className="text-[13px] font-bold text-ink truncate">
-                    {unit.whatChildrenMake.toLowerCase()}
+                    {unit.medium.toLowerCase()}
                   </p>
                   <span className="shrink-0 rounded-chip bg-ink/5 px-1.5 py-0.5 text-[9px] font-medium text-ink-muted">
                     {unit.days} {unit.days === 1 ? "day" : "days"}
                   </span>
                 </div>
-                <div className="mt-1 flex flex-wrap items-center gap-1.5">
-                  <span
-                    className={cn(
-                      "rounded-chip px-1.5 py-0.5 text-[9px] font-bold text-ink",
-                      mediumColor[unit.medium.toLowerCase()] || "bg-ink/5"
-                    )}
-                  >
-                    {unit.medium.toLowerCase()}
-                  </span>
-                </div>
+                <p className="mt-0.5 text-[11px] leading-relaxed text-ink-muted truncate">
+                  reference: {unit.whatChildrenMake.toLowerCase()}
+                </p>
               </div>
             </div>
           ))}
@@ -1595,8 +1401,170 @@ function ProgrammeOverviewContent() {
             units progress from simple single-mark techniques to complex layered compositions. each unit builds on the last — children don't see the progression, they just feel ready for the next challenge.
           </p>
         </div>
+                  </div>
+                )}
+
+                {/* ═══ ROBOTICS BUILD — three models + day cycle + 4 questions ═══ */}
+                {seg.segment === "build" && isRobotics && (
+                  <div className="space-y-3">
+
+          <div className="mt-4 space-y-3">
+            {[
+              {
+                n: 1,
+                name: "See-saw",
+                runs: "lever experiments",
+                blurb:
+                  "a simple lever — beam balancing on a central fulcrum. introduces lever ideas in the most physical way a child can feel.",
+              },
+              {
+                n: 2,
+                name: "Weighing Scale",
+                runs: "lever experiments continue",
+                blurb:
+                  "a more complex lever. two pan arms that must balance when equal weights are placed. every lever experiment directly explains something being built.",
+              },
+              {
+                n: 3,
+                name: "Crane",
+                runs: "pulley experiments",
+                blurb:
+                  "a pulley-based model. the crane lifts a load using rope and pulley. pulley experiments explain the lifting system directly.",
+              },
+            ].map((m) => (
+              <div key={m.n} className="rounded-xl bg-brand-white p-3.5 shadow-card ring-1 ring-ink/5">
+                <div className="flex items-center gap-2.5">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-orange text-[12px] font-extrabold text-white">
+                    {m.n}
+                  </span>
+                  <p className="text-[14px] font-extrabold text-ink">{m.name.toLowerCase()}</p>
+                  <span className="ml-auto rounded-chip bg-brand-orange/10 px-2 py-0.5 text-[9px] font-semibold text-brand-orange">
+                    {m.runs}
+                  </span>
+                </div>
+                <p className="mt-2 text-[12px] leading-relaxed text-ink-muted">{m.blurb}</p>
+                <p className="mt-2 text-[11px] font-semibold text-ink">
+                  {programme.ageGroup === "8-12" ? "6 build sessions" : "8 build sessions"}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-4 rounded-xl bg-brand-orange/5 p-4">
+            <p className="text-[12px] font-bold text-ink">the build day cycle</p>
+            <ul className="mt-2 space-y-1 text-[11px] leading-relaxed text-ink-muted">
+              <li>
+                <span className="font-semibold text-ink">day 1 — explore.</span> read the full model manual, lay every component out in manual order, begin first build stage.
+              </li>
+              <li>
+                <span className="font-semibold text-ink">{programme.ageGroup === "8-12" ? "days 2–3" : "days 2–5"} — make.</span> open the manual where you left off, build, the teacher uses only four questions.
+              </li>
+              <li>
+                <span className="font-semibold text-ink">{programme.ageGroup === "8-12" ? "day 4" : "day 6"} — complete and test.</span> finish, run the test, record the best result.
+              </li>
+              <li>
+                <span className="font-semibold text-ink">{programme.ageGroup === "8-12" ? "day 5" : "day 7"} — improve.</span> one deliberate change, state the expected effect, test, record before and after.
+              </li>
+              <li>
+                <span className="font-semibold text-ink">{programme.ageGroup === "8-12" ? "day 6" : "day 8"} — disassemble.</span> {programme.ageGroup === "8-12" ? "from memory — teacher names each component as it goes back." : "sorted back using the tray map. teacher names each component."}
+              </li>
+            </ul>
+          </div>
+
+          <div className="mt-3 rounded-xl bg-brand-white p-4 shadow-card ring-1 ring-ink/5">
+            <p className="text-[12px] font-bold text-ink">the four teacher questions — build only</p>
+            <ol className="mt-2 space-y-1 text-[11px] leading-relaxed text-ink-muted">
+              <li>1. &ldquo;what is not working? what will you try?&rdquo;</li>
+              <li>2. &ldquo;what did you change? what happened?&rdquo;</li>
+              <li>3. &ldquo;which change made the bigger difference?&rdquo;</li>
+              <li>4. &ldquo;point to the part that did the most important job.&rdquo;</li>
+            </ol>
+            <p className="mt-2 text-[10px] italic text-ink-subtle">
+              one per child per session. move on immediately. never fix. never tell.
+            </p>
+          </div>
+                  </div>
+                )}
+
+                {/* ═══ DEBRIEF APPROACHES — shown under playground (PS only) ═══ */}
+                {seg.segment === "playground" && isLanguage && (
+                  <div className="space-y-3">
+
+          <p className="mt-3 text-[12px] leading-relaxed text-ink-muted md:text-[13px]">
+            four approaches a teacher can reach for after any playground or showtime game. each takes under 2 minutes. they are not all used every session — the teacher picks one that fits what actually happened in that particular round.
+          </p>
+
+          <div className="mt-4 space-y-3">
+            {[
+              {
+                n: 1,
+                name: "Spotlight one moment",
+                blurb:
+                  "point to or name one specific observable moment from the game — not a general feeling about how it went. the question must be precise enough that only a child who was paying attention can answer it.",
+                when: "when a specific moment visibly changed the direction or outcome of the game.",
+                example:
+                  "\"which one card changed the whole direction of the story — point to it on the mat. why did that card change things?\"",
+              },
+              {
+                n: 2,
+                name: "What happened when you got stuck",
+                blurb:
+                  "ask what was genuinely hard and specifically what the child did in that moment. this is different from asking what they enjoyed — it requires children to notice their own thinking rather than their feeling.",
+                when: "after any game where children had to push through a difficult moment in real time.",
+                example:
+                  "\"was there a moment when you couldn't think of how to connect your card to the story? what did you actually do in that moment?\"",
+              },
+              {
+                n: 3,
+                name: "What would you change",
+                blurb:
+                  "ask one forward-looking question — not general reflection but a specific named change. keeps it brief and actionable.",
+                when: "after any game the group will play again in future sessions.",
+                example:
+                  "\"if we played this again right now — one thing you would do differently with your card. one thing.\"",
+              },
+              {
+                n: 4,
+                name: "Peer spotlight",
+                blurb:
+                  "ask children to name one specific thing a peer did that made the game stronger. not a general compliment — a specific observable action. this builds the listening habit alongside the speaking habit.",
+                when: "after any game where children were both contributing and watching others contribute.",
+                example:
+                  "\"whose sentence surprised you the most — not the best one, the most unexpected one. what did it do to the story?\"",
+              },
+            ].map((a) => (
+              <div key={a.n} className="rounded-xl bg-brand-white p-3.5 shadow-card ring-1 ring-ink/5">
+                <div className="flex items-start gap-2.5">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-orange text-[12px] font-extrabold text-white">
+                    {a.n}
+                  </span>
+                  <div className="flex-1">
+                    <p className="text-[14px] font-extrabold text-ink">
+                      approach {a.n} — {a.name.toLowerCase()}
+                    </p>
+                    <p className="mt-1.5 text-[12px] leading-relaxed text-ink-muted">
+                      {a.blurb}
+                    </p>
+                    <p className="mt-2 text-[11px] leading-relaxed text-ink">
+                      <span className="font-semibold">when to use: </span>
+                      {a.when}
+                    </p>
+                    <p className="mt-1 text-[11px] italic leading-relaxed text-ink-muted">
+                      <span className="font-semibold not-italic">example for tale trail — </span>
+                      {a.example}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </section>
-      )}
 
       {/* ─── CHECKPOINTS ─── */}
       <section className="mt-10 px-4 md:px-8">

@@ -194,10 +194,13 @@ export function SegmentInfoPopup({ info }: { info: SegmentInfo }) {
           </div>
           <div className="rounded-card bg-brand-orange/5 p-3">
             <p className="text-[10px] font-semibold tracking-wider text-brand-orange">
-              what children make
+              reference topic
             </p>
             <p className="mt-1 text-[13px] font-medium text-ink">
               {unit.whatChildrenMake}
+            </p>
+            <p className="mt-1 text-[11px] italic leading-relaxed text-ink-subtle">
+              inspiration only — the actual topic is the child&apos;s choice.
             </p>
           </div>
           <div>

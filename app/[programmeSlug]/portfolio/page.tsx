@@ -408,14 +408,17 @@ function UnitPage({
 
         <div>
           <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-brand-orange">
-            unit {unit.unitNumber} · {unit.medium}
+            unit {unit.unitNumber}
           </p>
           <h2
             className="mt-2 text-[34px] font-extrabold leading-[0.95] text-ink md:text-[42px]"
             style={{ fontFamily: "'Caveat', 'Kalam', cursive" }}
           >
-            {unit.whatChildrenMake}
+            {unit.medium.toLowerCase()}
           </h2>
+          <p className="mt-2 text-[12px] italic leading-relaxed text-ink-muted">
+            reference: {unit.whatChildrenMake.toLowerCase()}
+          </p>
           <p className="mt-3 text-[13px] leading-relaxed text-ink-muted">
             {unit.technique}
           </p>

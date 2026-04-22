@@ -376,10 +376,10 @@ export default function LibraryPage() {
       setSelectedInfo({
         segmentId: "artiverse",
         segmentName: "Artiverse",
-        title: u.whatChildrenMake,
-        subText: `unit ${u.unitNumber}`,
+        title: u.medium,
+        subText: `unit ${u.unitNumber} · reference: ${u.whatChildrenMake.toLowerCase()}`,
         description:
-          "the main making session. children work on a3 paper using the medium of this unit. each unit runs over several sessions so technique can deepen.",
+          "the main making session. children work on a3 paper using the medium of this unit. each unit runs over several sessions so technique can deepen. the reference topic below is inspiration only — the actual topic is the child's choice.",
         artiverseUnit: {
           medium: u.medium,
           technique: u.technique,
@@ -503,13 +503,13 @@ export default function LibraryPage() {
             it.kind === "activity"
               ? it.item.title
               : it.kind === "artiverse"
-                ? `unit ${it.item.unitNumber} — ${it.item.whatChildrenMake}`
+                ? `unit ${it.item.unitNumber} · ${it.item.medium.toLowerCase()}`
                 : it.title;
           const subline =
             it.kind === "activity"
               ? it.item.setupLine
               : it.kind === "artiverse"
-                ? `${it.item.medium} · ${it.item.technique}`
+                ? `reference: ${it.item.whatChildrenMake.toLowerCase()}`
                 : it.description;
           const cardName =
             it.kind === "activity"

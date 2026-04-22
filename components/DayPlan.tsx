@@ -257,13 +257,13 @@ function SegmentRow({
               info = {
                 segmentId: segment.segmentId,
                 segmentName: segment.segmentName,
-                title: unit?.whatChildrenMake ?? segment.artiverseUnitName ?? "artiverse",
+                title: unit?.medium ?? segment.artiverseUnitName ?? "artiverse",
                 subText:
                   segment.artiverseUnit !== undefined && segment.artiverseDay !== undefined
-                    ? `unit ${segment.artiverseUnit} — day ${segment.artiverseDay}`
+                    ? `unit ${segment.artiverseUnit} — day ${segment.artiverseDay}${unit?.whatChildrenMake ? ` · reference: ${unit.whatChildrenMake.toLowerCase()}` : ""}`
                     : undefined,
                 description:
-                  "the main making session. children work on a3 paper using the medium of this unit. each unit runs over several sessions so technique can deepen.",
+                  "the main making session. children work on a3 paper using the medium of this unit. each unit runs over several sessions so technique can deepen. the reference topic is inspiration only — the actual topic is the child's choice.",
                 artiverseUnit: unit
                   ? {
                       medium: unit.medium,
@@ -333,11 +333,11 @@ function SegmentRow({
               )}
               <div className="flex-1">
                 <p className="text-[12px] font-medium text-ink">
-                  unit {segment.artiverseUnit} — day {segment.artiverseDay}
+                  unit {segment.artiverseUnit} · {segment.artiverseUnitData?.medium.toLowerCase() ?? "artiverse"} — day {segment.artiverseDay}
                 </p>
                 <p className="mt-0.5 text-[11px] text-ink-muted">
                   {segment.artiverseUnitData
-                    ? `${segment.artiverseUnitData.medium.toLowerCase()} — ${segment.artiverseUnitData.whatChildrenMake.toLowerCase()}`
+                    ? `reference: ${segment.artiverseUnitData.whatChildrenMake.toLowerCase()}`
                     : segment.artiverseUnitName}
                 </p>
               </div>
