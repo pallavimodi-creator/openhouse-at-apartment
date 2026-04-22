@@ -28,6 +28,14 @@ export const ROBOTICS_TRIAL_SESSION: TrialSession = {
         "each child picks up one component. some will pick the pulley. some will pick a beam. some will pick a screw. \"what do you think it does?\" fast round — every child holds up their piece and says one guess. teacher does not confirm or correct anything — just listens. \"by the end of today you are going to know exactly what every single one of these does. and you are going to have started building a crane with them.\"",
     },
     {
+      name: "Game context — say this early",
+      time: "1 min",
+      objective:
+        "a short framing the teacher reads to the group once they've picked up a part — sets expectation for what today's build is and how much choice children have.",
+      howToPlay:
+        "\"did you know we're going to play lots of different building games today? we'll use parts and connectors to build things that move, roll, and spin. we'll try different challenges and see what works and what doesn't. you can build on your own or work with others to create something bigger. every game is different — sometimes you build, sometimes you test, and sometimes you improve!\"",
+    },
+    {
       name: "Kit orientation",
       time: "10 min",
       objective:

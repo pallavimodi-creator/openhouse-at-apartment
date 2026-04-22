@@ -25,6 +25,14 @@ export const ART_TRIAL_SESSION: TrialSession = {
         "children grab. teacher watches — noticing who dives in, who is cautious, who goes straight for a colour. once everyone has tiles, teacher asks: \"what colour did you grab the most of? and why that one?\" fast round — every child answers. teacher is genuinely curious, celebrates unexpected reasons, moves straight on.",
     },
     {
+      name: "Game context — say this early",
+      time: "1 min",
+      objective:
+        "a short framing the teacher reads to the group once they've picked up their tiles — sets expectation for what today's games are and how much choice children have.",
+      howToPlay:
+        "\"did you know we're going to play lots of different art games today? we'll use magna tiles to build shapes, play the shape fusion game, and create our own worlds. we'll also paint using brushes and watercolours to make food and fun creatures. you can choose what you want to build or paint, and sometimes we'll play in teams too. every game is different — sometimes you build, sometimes you paint, and sometimes you do both!\"",
+    },
+    {
       name: "Magna Tiles",
       time: "12 min",
       objective:
@@ -61,11 +69,11 @@ export const ART_TRIAL_SESSION: TrialSession = {
       setupLine:
         "this is the part of every oh. art session i look forward to most. it's called artiverse — your universe of creation. every session this is the time where you make something completely yours. and this artwork goes home with you today. not next week. today.",
       howToPlay:
-        "food cue cards face-down in a fan. animal cue cards face-down in another fan beside them. watercolour sets and brushes in front of each child. a3 paper. \"pick one food card. don't show anyone yet.\" children pick secretly. \"now pick one animal card.\" \"your job: paint the food and the creature who would love to eat it. together, on the same page. maybe they're friends. maybe the creature is sneaking up on the food. maybe the food is bigger than the creature. that's your story.\" teacher steps all the way back. children work. after 15 minutes — two or three children share by holding up their artwork. teacher asks each one: \"what did you make? why that food? why that animal? this is going home with you today — where are you going to put it?\" children say: fridge, bedroom wall, give it to someone. teacher takes masking tape, folds it into a loop sticky side out, presses it to the back of one piece of artwork, and sticks it briefly to the nearest wall. \"four loops of masking tape on the back — one for each corner — and it goes up on any wall without damaging it. your artwork deserves a wall. that's how you put it up.\" all artwork goes home.",
+        "food cue cards face-down in a fan. animal cue cards face-down in another fan beside them. a3 paper in front of each child. medium trays ready — children can choose what they want to make their art with: watercolour set + brushes + water pot · colour pencils · brush pens · oil pastels · poster paints. teacher lays out the options so each child can see and reach them. \"today you pick your medium too — colour pencils, brush pens, watercolour, oil pastels, poster paint. whichever feels right for what you're going to make.\" \"pick one food card. don't show anyone yet.\" children pick secretly. \"now pick one animal card.\" \"your job: make the food and the creature who would love to eat it. together, on the same page. maybe they're friends. maybe the creature is sneaking up on the food. maybe the food is bigger than the creature. that's your story.\" teacher steps all the way back. children work. after 15 minutes — two or three children share by holding up their artwork. teacher asks each one: \"what did you make? why that food? why that animal? why that medium? this is going home with you today — where are you going to put it?\" children say: fridge, bedroom wall, give it to someone. teacher takes masking tape, folds it into a loop sticky side out, presses it to the back of one piece of artwork, and sticks it briefly to the nearest wall. \"four loops of masking tape on the back — one for each corner — and it goes up on any wall without damaging it. your artwork deserves a wall. that's how you put it up.\" all artwork goes home.",
       materials: [
         "Food Cue Cards",
         "Animal Cue Cards",
-        "Watercolour set + brushes + water pot (per child)",
+        "Choice of mediums — watercolour set + brushes + water pot · colour pencils · brush pens · oil pastels · poster paints",
         "A3 paper",
         "Masking tape",
       ],

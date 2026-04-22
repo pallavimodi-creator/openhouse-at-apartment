@@ -1108,6 +1108,14 @@ export const publicSpeaking58: CurriculumProgramme = {
           "fast round — every child answers. teacher celebrates the most outrageous answer with genuine enthusiasm. \"did you notice what just happened? every single one of you spoke. just now. without being asked twice. because the question was fun enough that your voice came out before your brain said no.\" \"that's what every game in this class does — makes the question so interesting that speaking becomes the easy part.\" \"today — three games. real games. let's go.\"",
       },
       {
+        name: "Game context — say this early",
+        time: "1 min",
+        objective:
+          "a short framing the teacher reads to the group once they've settled — sets expectation for what today's games are and how much choice children have.",
+        howToPlay:
+          "\"did you know we're going to play lots of different speaking games today? we'll use fun prompts to tell stories, act like characters, and share our ideas. we'll play games where you speak on your own, with a partner, and even in teams. for older children, we'll also try a fun debate duel game. every game is different — sometimes you perform, sometimes you answer, and sometimes you lead!\"",
+      },
+      {
         name: "Roll Call — Sentence Chain",
         time: "12 min",
         objective:
