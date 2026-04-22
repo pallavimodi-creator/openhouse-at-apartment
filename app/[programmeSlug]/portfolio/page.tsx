@@ -454,23 +454,14 @@ function UnitPage({
           </div>
         )}
 
-        {unit.topicOptions.length > 0 && (
-          <div>
-            <h3 className="text-[10px] font-semibold uppercase tracking-wider text-ink-subtle">
-              prompts I could choose from
-            </h3>
-            <ul className="mt-2 space-y-1">
-              {unit.topicOptions.map((t, i) => (
-                <li
-                  key={i}
-                  className="rounded-md bg-ink/[0.03] px-2.5 py-1.5 text-[11.5px] italic leading-relaxed text-ink"
-                >
-                  &ldquo;{t}&rdquo;
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+        <div>
+          <h3 className="text-[10px] font-semibold uppercase tracking-wider text-ink-subtle">
+            reference images
+          </h3>
+          <p className="mt-2 rounded-md bg-ink/[0.03] px-2.5 py-1.5 text-[11.5px] italic leading-relaxed text-ink">
+            use cue card of choice to assist with drawing.
+          </p>
+        </div>
       </div>
     </div>
   );

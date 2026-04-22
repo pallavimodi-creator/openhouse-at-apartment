@@ -100,7 +100,23 @@ const rollCallActivities: Record<string, CurriculumActivity> = {
       "P15A · camera — solo: zoom · partner: pose",
       "P15B · mirror — solo: crack · partner: three-way mirror",
     ],
-    debriefPrompts: [],
+    debriefPrompts: [
+      {
+        questions: [
+          "How easy or difficult was it to form these images?",
+          "Was it easy or difficult to work as a team? Could they have formed these images alone?",
+          "Which image would they like to try making again?",
+          "What did they do when they were stuck?",
+          "Were there any specific challenges they faced? How did they overcome it?",
+          "Is there anything they could have done differently or better?",
+          "Was there ever a time when they could have collaborated better?",
+          "Was there any shape created by another team that they liked?",
+          "Did they ever have moments where they felt excited, apprehensive, or frustrated?",
+          "Recognise individual achievements and uniqueness through tokens.",
+          "Discuss how working together can lead to better results — highlight particularly effective teamwork moments during the game.",
+        ],
+      },
+    ],
     type: "physical-game",
   },
   voice: {
@@ -163,7 +179,13 @@ const rollCallActivities: Record<string, CurriculumActivity> = {
       "Portable Bluetooth speaker",
       "Curated music playlist — https://www.youtube.com/watch?v=-oO7Vk3lNXM&list=RDEMm-K3475YJ1af4D0F6JvchA&start_radio=1",
     ],
-    debriefPrompts: [],
+    debriefPrompts: [
+      {
+        questions: [
+          "Reflect on the experience — how did maintaining eye contact affect your interactions? How might you use this in public speaking?",
+        ],
+      },
+    ],
     type: "physical-game",
   },
   ears: {
@@ -192,7 +214,16 @@ const rollCallActivities: Record<string, CurriculumActivity> = {
       "What's That Sound card deck (objects with a ticked sound on each)",
       "Set cards — groups of related objects (instruments, kitchen sounds, animals, etc.)",
     ],
-    debriefPrompts: [],
+    debriefPrompts: [
+      {
+        questions: [
+          "What were some sounds that were difficult to make?",
+          "Are there different ways to make the sound for a specific prompt?",
+          "Was any prompt confusing?",
+          "Is there any room for improvement?",
+        ],
+      },
+    ],
     type: "facilitated",
   },
 };
@@ -224,7 +255,28 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
       { level: "Medium", description: "Use B2 cards." },
       { level: "Hard", description: "Also use tone prompts to write the script and to perform — https://wordwall.net/resource/84260671/script-flip-digital-tones" },
     ],
-    debriefPrompts: [],
+    debriefPrompts: [
+      {
+        questions: [
+          "After the narration, players can reflect on how well they matched the tone in both their word choices and their storytelling style.",
+          "Tone Awareness:",
+          "Did the chosen words match the assigned tone (e.g. silly, spooky)?",
+          "How did sticking to the tone make the story more engaging or challenging?",
+          "Creativity and Word Choice:",
+          "What was your favourite word or phrase that you added?",
+          "Did thinking about the tone make you more creative with your word selection?",
+          "Storytelling and Expression:",
+          "How did using the tone while speaking bring the story to life?",
+          "What did you enjoy most about performing your story in the assigned tone?",
+          "Listening and Connection:",
+          "What was your favourite story or performance by another player?",
+          "How did their tone and word choice make the story memorable?",
+          "Takeaway Skills:",
+          "How can using tones and expressive words help in real-life situations, like storytelling or presentations?",
+          "What would you do differently next time to make your story even better?",
+        ],
+      },
+    ],
     type: "physical-game",
   },
   "tale-trail": {
@@ -264,7 +316,17 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
       { level: "Medium", description: "Standard play, players choose their cards." },
       { level: "Hard", description: "Cards drawn randomly face-down; 5-minute time limit on the full tale." },
     ],
-    debriefPrompts: [],
+    debriefPrompts: [
+      {
+        questions: [
+          "Highlight key events that changed the story.",
+          "Ask players to consider how the story or ending could be different.",
+          "Reflect on moments when they couldn't think of an idea or connect to the previous card.",
+          "Discuss what helped them generate ideas.",
+          "Highlight skills displayed by each player.",
+        ],
+      },
+    ],
     type: "physical-game",
   },
   shuffle: {
@@ -298,7 +360,16 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
       "Story 9 — The Wind and the Sun (Aesop)",
       "Story 10 — The Brahmin's Pot of Dreams (Panchatantra) · make the dream visible through narration",
     ],
-    debriefPrompts: [],
+    debriefPrompts: [
+      {
+        questions: [
+          "Conduct a discussion around the importance of understanding story structure and sequencing.",
+          "Emphasise how different interpretations can lead to unique storytelling.",
+          "Ask story-specific questions to gauge their understanding of the story.",
+          "Discuss how to give structure to a story.",
+        ],
+      },
+    ],
     type: "physical-game",
   },
   spaggle: {
@@ -322,9 +393,16 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     ],
     debriefPrompts: [
       {
-        notice: "which part of the speech structure was hardest to fill.",
-        name: "that is the section that needs the most practice.",
-        connect: "What is the difference between an argument and an opinion? Which one is more convincing and why?",
+        questions: [
+          "Challenge Spotlight (3 minutes):",
+          "Each player shares one challenge they faced during the game. Example: \"It was hard to think quickly when my card was swapped.\"",
+          "Encourage quick follow-up questions or ideas from others: \"How did you handle it?\" · \"What could you try next time?\"",
+          "Champion Recognition (5 minutes):",
+          "Players take turns nominating someone as a \"Champion\" for something they did well. Example: \"I nominate Mia for her creative argument about space travel!\"",
+          "New Challenge Goal (2 minutes):",
+          "End by setting a group challenge for the next session, such as: \"Let's focus on making our openings more exciting next time!\"",
+          "Rotate who suggests the group challenge to keep it fresh.",
+        ],
       },
     ],
     type: "physical-game",
@@ -350,9 +428,13 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     ],
     debriefPrompts: [
       {
-        notice: "which pitch stated problem and solution clearly in first 30 seconds.",
-        name: "that is a strong opening structure.",
-        connect: "Did the pitch have a clear problem and solution \u2014 or did it jump straight to the product?",
+        questions: [
+          "Start a \"reflection chain\" where each player completes one of the following sentences:",
+          "\"I learned that good pitches need…\"",
+          "\"Next time, I'll try to…\"",
+          "\"What I enjoyed most was…\"",
+          "Example: \"I learned that good pitches need a clear idea.\" or \"Next time, I'll try to use more gestures when presenting.\"",
+        ],
       },
     ],
     type: "physical-game",
@@ -378,9 +460,15 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     ],
     debriefPrompts: [
       {
-        notice: "which follow-up question forced the speaker to think in a completely new direction.",
-        name: "that is genuine follow-up.",
-        connect: "What happens to answer quality when you cannot repeat? Where does the new thinking come from?",
+        questions: [
+          "Conduct a discussion around all the challenges that were completed during the game.",
+          "Ask students what tasks they found fun, weird, or particularly challenging.",
+          "Ask how they overcame the challenging tasks.",
+          "What did they think were the most fun moments of the game?",
+          "Bring out the various skills of public speaking that were showcased.",
+          "Suggest areas for improvement and highlight notable performances.",
+          "The players can collect their challenge cards that can also be used in the debrief.",
+        ],
       },
     ],
     type: "physical-game",
@@ -423,7 +511,27 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
       { level: "Medium", description: "Standard topics, 3-word incorporation optional." },
       { level: "Hard", description: "Complex or abstract topics, 3-word incorporation required and words must appear naturally." },
     ],
-    debriefPrompts: [],
+    debriefPrompts: [
+      {
+        questions: [
+          "Most Fun Moments:",
+          "What was the most enjoyable part of the game for you?",
+          "Which Risk or Reward card made you laugh or feel excited?",
+          "Challenges Faced:",
+          "What was the hardest part of the game (e.g. speaking on time, Risk cards)?",
+          "How did you overcome it, or what would you do differently next time?",
+          "Teamwork Reflection:",
+          "How well did your team work together?",
+          "What could you or your teammates improve for better collaboration?",
+          "Learnings from Speaking:",
+          "What did you learn about speaking (e.g. staying on topic, avoiding hesitation)?",
+          "How did you feel while speaking — nervous, excited, or confident?",
+          "Celebrate Success:",
+          "What are you most proud of from the game today?",
+          "Share one thing you appreciated about a teammate's effort.",
+        ],
+      },
+    ],
     type: "physical-game",
   },
   "train-of-thoughts": {
@@ -451,9 +559,12 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     ],
     debriefPrompts: [
       {
-        notice: "which type of task was hardest for most children.",
-        name: "that is the skill that needs the most work.",
-        connect: "When you are speaking to someone in real life, which of those things do you do most often? Which do you do least?",
+        questions: [
+          "Highlight some of the interesting answers shared during the game.",
+          "Ask if they found any questions particularly challenging — and how they tackled answering those questions.",
+          "Applaud any unique answers or interpretations of questions.",
+          "Explain why listening to questions and answering them effectively is an important skill in any conversation.",
+        ],
       },
     ],
     type: "physical-game",
@@ -488,9 +599,12 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     ],
     debriefPrompts: [
       {
-        notice: "which physical performance made the answer most obvious without any sound.",
-        name: "that is clear body communication.",
-        connect: "What did you have to do with your body to make the other person understand without words? When do you use that same skill while speaking?",
+        questions: [
+          "Ask players which cards were their favourite — and if any were particularly easy or difficult.",
+          "Reflect on the cards that were enacted or described — understand whether there is room for improvement.",
+          "Highlight the performance of various players.",
+          "Suggest some alternative actions that they can try next time.",
+        ],
       },
     ],
     type: "physical-game",
@@ -516,13 +630,7 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
       { level: "Medium", description: "Subtle rules, 3 rounds." },
       { level: "Hard", description: "Group changes rule halfway, questioner identifies both rules and the change point." },
     ],
-    debriefPrompts: [
-      {
-        notice: "the question that got closest to revealing the rule.",
-        name: "that is a precise question.",
-        connect: "What made some questions more revealing than others? What would a precise question look like in a real conversation?",
-      },
-    ],
+    debriefPrompts: [],
     type: "facilitated",
   },
   "improv-survival": {
@@ -549,9 +657,24 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     ],
     debriefPrompts: [
       {
-        notice: "which quadrant shift was handled most smoothly.",
-        name: "that is adapting in real time.",
-        connect: "What did you have to do to stay in character? When do you need that skill in real speaking?",
+        questions: [
+          "Fun and Engagement:",
+          "What was the most fun or surprising part of the game for you?",
+          "Did any audience-directed movements or scenarios make you laugh or think creatively?",
+          "Challenges and Adaptation:",
+          "Which quadrant was the hardest to adapt to (Emotion, Accent, or Setting)? Why?",
+          "How did you manage to stay in character during difficult moments?",
+          "Teamwork:",
+          "How did you and your partner support each other during the performance?",
+          "What strategies helped your team maintain the flow of the improv?",
+          "Learning Takeaways:",
+          "What did you learn about communication or adaptability from this game?",
+          "How can these skills help in real-life situations, like teamwork or public speaking?",
+          "Audience Insights:",
+          "For the audience: what was the most impressive performance or adaptation you observed?",
+          "How did it feel to participate in directing the performers?",
+          "NOTE: Encourage students to retry performing in specific quadrants they struggled with, and encourage peers to help them through active feedback and demonstrations.",
+        ],
       },
     ],
     type: "physical-game",
@@ -597,14 +720,7 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
       "My mother always keeps the house neat.",
       "I often wake up early without help.",
     ],
-    debriefPrompts: [
-      {
-        notice: "which reversals felt most natural, and which felt forced.",
-        name: "that is the difference between a real opposite and a logical opposite.",
-        connect:
-          "In a real argument, when does someone take the opposite side genuinely versus just for effect? How do you tell?",
-      },
-    ],
+    debriefPrompts: [],
     type: "facilitated",
   },
 };
@@ -636,9 +752,12 @@ const showtimeActivities: Record<string, CurriculumActivity> = {
     ],
     debriefPrompts: [
       {
-        notice: "the specific moment that made most audience members award their vote.",
-        name: "that is the moment of conviction.",
-        connect: "What did that speaker do \u2014 was it a word, a pause, a gesture, a change of volume? How do you create that moment deliberately?",
+        questions: [
+          "Who did you think used their strategy well? Why?",
+          "What clues can we find that show someone was confident?",
+          "Did anyone hear a speaker who used great body language?",
+          "Did someone answer a tough question well?",
+        ],
       },
     ],
     type: "physical-game",
@@ -672,13 +791,7 @@ const showtimeActivities: Record<string, CurriculumActivity> = {
       { level: "Medium", description: "Standard themes, no model." },
       { level: "Hard", description: "Abstract or challenging themes, no preparation time." },
     ],
-    debriefPrompts: [
-      {
-        notice: "which follow-up question opened something up that the speaker had not planned to share.",
-        name: "that is a genuine question.",
-        connect: "What is the difference between a genuine question and one you prepared before the person finished speaking?",
-      },
-    ],
+    debriefPrompts: [],
     type: "facilitated",
   },
   "magic-box": {
@@ -698,13 +811,7 @@ const showtimeActivities: Record<string, CurriculumActivity> = {
       { level: "Medium", description: "No frame, child begins independently." },
       { level: "Hard", description: "Two objects, both must appear at named points in the story." },
     ],
-    debriefPrompts: [
-      {
-        notice: "which story had an ending that felt earned rather than just surprising.",
-        name: "that is setup and payoff.",
-        connect: "What is the difference between a surprising ending and one that does not make sense?",
-      },
-    ],
+    debriefPrompts: [],
     type: "physical-game",
   },
 };
@@ -724,13 +831,7 @@ const signOffActivities: Record<string, CurriculumActivity> = {
       { level: "Medium", description: "1 minute, one example, clear closing." },
       { level: "Hard", description: "90 seconds, two angles, closes with intention, no visible hesitation." },
     ],
-    debriefPrompts: [
-      {
-        notice: "who recovered fastest when they lost the thread.",
-        name: "that is thinking on your feet.",
-        connect: "What did they do in that moment \u2014 pause, restart, change direction? Which strategy worked best?",
-      },
-    ],
+    debriefPrompts: [],
     type: "facilitated",
   },
   "point-of-view": {
@@ -747,13 +848,7 @@ const signOffActivities: Record<string, CurriculumActivity> = {
       { level: "Medium", description: "Full structure, two reasons, counter acknowledged." },
       { level: "Hard", description: "Full structure with examples, counter pre-empted, handles challenge without repeating." },
     ],
-    debriefPrompts: [
-      {
-        notice: "which argument felt strongest even when the speaker did not agree with it.",
-        name: "that is conviction in delivery.",
-        connect: "What made it convincing \u2014 the reasons or the way it was said?",
-      },
-    ],
+    debriefPrompts: [],
     type: "facilitated",
   },
   "news-report": {
@@ -770,13 +865,7 @@ const signOffActivities: Record<string, CurriculumActivity> = {
       { level: "Medium", description: "Full report with reporter voice." },
       { level: "Hard", description: "Full report with invented detail plus live interview question to partner mid-report." },
     ],
-    debriefPrompts: [
-      {
-        notice: "which report felt most like a real broadcast.",
-        name: "that is vocal authority.",
-        connect: "What did their voice do that made it sound like news rather than a conversation?",
-      },
-    ],
+    debriefPrompts: [],
     type: "facilitated",
   },
   "story-in-a-minute": {
@@ -793,13 +882,7 @@ const signOffActivities: Record<string, CurriculumActivity> = {
       { level: "Medium", description: "Full structure without notes, one magic word." },
       { level: "Hard", description: "Full structure, one unexpected detail, voice differentiates characters." },
     ],
-    debriefPrompts: [
-      {
-        notice: "which story had a turning point that changed everything.",
-        name: "that is narrative structure.",
-        connect: "What made that moment feel like a real shift \u2014 was it the words or the way they were said?",
-      },
-    ],
+    debriefPrompts: [],
     type: "facilitated",
   },
   defence: {
@@ -816,13 +899,7 @@ const signOffActivities: Record<string, CurriculumActivity> = {
       { level: "Medium", description: "Full structure, handles challenge with new reason." },
       { level: "Hard", description: "Full structure with conviction, handles challenge without repeating, closing feels like final word." },
     ],
-    debriefPrompts: [
-      {
-        notice: "which defence was hardest to argue against.",
-        name: "that is a well-built argument.",
-        connect: "What made it hard to challenge \u2014 the evidence or the delivery?",
-      },
-    ],
+    debriefPrompts: [],
     type: "facilitated",
   },
   "what-if": {
@@ -839,13 +916,7 @@ const signOffActivities: Record<string, CurriculumActivity> = {
       { level: "Medium", description: "Full structure in connected sentences." },
       { level: "Hard", description: "Reasoning goes two steps forward, handles partner's \"and then what?\" with specific answer." },
     ],
-    debriefPrompts: [
-      {
-        notice: "which response went furthest into the future.",
-        name: "that is extended reasoning.",
-        connect: "What happens to your thinking when someone asks \"and then what?\" a second time?",
-      },
-    ],
+    debriefPrompts: [],
     type: "facilitated",
   },
   "rapid-fire": {
@@ -862,13 +933,7 @@ const signOffActivities: Record<string, CurriculumActivity> = {
       { level: "Medium", description: "All three, one unprompted detail." },
       { level: "Hard", description: "All three fluently, then asks partner one genuine follow-up based on what partner said." },
     ],
-    debriefPrompts: [
-      {
-        notice: "which answer surprised the questioner.",
-        name: "that is spontaneous thinking.",
-        connect: "What happens when you answer before you have time to plan? Is the answer better or worse?",
-      },
-    ],
+    debriefPrompts: [],
     type: "facilitated",
   },
   "superhero-sales": {
@@ -900,13 +965,7 @@ const signOffActivities: Record<string, CurriculumActivity> = {
       "A superhero who can solve small problems quickly.",
       "A superhero who can give everyone exactly the right amount of sleep they need.",
     ],
-    debriefPrompts: [
-      {
-        notice: "which pitch made the vote closest.",
-        name: "that is a compelling argument.",
-        connect: "What made the vote hard to decide? What did that speaker do that made you genuinely consider it?",
-      },
-    ],
+    debriefPrompts: [],
     type: "facilitated",
   },
 };

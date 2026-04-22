@@ -1068,6 +1068,84 @@ function ProgrammeOverviewContent() {
         </section>
       )}
 
+      {/* ─── STANDARDISED DEBRIEF APPROACHES (public speaking only) ─── */}
+      {programme.category === "language" && (
+        <section className="mt-10 px-4 md:px-8">
+          <SectionTitle num="04" label="debrief approaches">
+            always conduct debriefs for playground and showtime — every session
+          </SectionTitle>
+
+          <p className="mt-3 text-[12px] leading-relaxed text-ink-muted md:text-[13px]">
+            four approaches a teacher can reach for after any playground or showtime game. each takes under 2 minutes. they are not all used every session — the teacher picks one that fits what actually happened in that particular round.
+          </p>
+
+          <div className="mt-4 space-y-3">
+            {[
+              {
+                n: 1,
+                name: "Spotlight one moment",
+                blurb:
+                  "point to or name one specific observable moment from the game — not a general feeling about how it went. the question must be precise enough that only a child who was paying attention can answer it.",
+                when: "when a specific moment visibly changed the direction or outcome of the game.",
+                example:
+                  "\"which one card changed the whole direction of the story — point to it on the mat. why did that card change things?\"",
+              },
+              {
+                n: 2,
+                name: "What happened when you got stuck",
+                blurb:
+                  "ask what was genuinely hard and specifically what the child did in that moment. this is different from asking what they enjoyed — it requires children to notice their own thinking rather than their feeling.",
+                when: "after any game where children had to push through a difficult moment in real time.",
+                example:
+                  "\"was there a moment when you couldn't think of how to connect your card to the story? what did you actually do in that moment?\"",
+              },
+              {
+                n: 3,
+                name: "What would you change",
+                blurb:
+                  "ask one forward-looking question — not general reflection but a specific named change. keeps it brief and actionable.",
+                when: "after any game the group will play again in future sessions.",
+                example:
+                  "\"if we played this again right now — one thing you would do differently with your card. one thing.\"",
+              },
+              {
+                n: 4,
+                name: "Peer spotlight",
+                blurb:
+                  "ask children to name one specific thing a peer did that made the game stronger. not a general compliment — a specific observable action. this builds the listening habit alongside the speaking habit.",
+                when: "after any game where children were both contributing and watching others contribute.",
+                example:
+                  "\"whose sentence surprised you the most — not the best one, the most unexpected one. what did it do to the story?\"",
+              },
+            ].map((a) => (
+              <div key={a.n} className="rounded-xl bg-brand-white p-3.5 shadow-card ring-1 ring-ink/5">
+                <div className="flex items-start gap-2.5">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-orange text-[12px] font-extrabold text-white">
+                    {a.n}
+                  </span>
+                  <div className="flex-1">
+                    <p className="text-[14px] font-extrabold text-ink">
+                      approach {a.n} — {a.name.toLowerCase()}
+                    </p>
+                    <p className="mt-1.5 text-[12px] leading-relaxed text-ink-muted">
+                      {a.blurb}
+                    </p>
+                    <p className="mt-2 text-[11px] leading-relaxed text-ink">
+                      <span className="font-semibold">when to use: </span>
+                      {a.when}
+                    </p>
+                    <p className="mt-1 text-[11px] italic leading-relaxed text-ink-muted">
+                      <span className="font-semibold not-italic">example for tale trail — </span>
+                      {a.example}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* ─── ARTIVERSE TIMELINE (art only) ─── */}
       {isArt && programme.artiverseUnits && programme.artiverseUnits.length > 0 && (
       <section className="mt-10 px-4 md:px-8">

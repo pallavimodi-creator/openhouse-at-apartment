@@ -270,9 +270,16 @@ export interface CurriculumDifficulty {
 }
 
 export interface CurriculumDebrief {
-  notice: string;
-  name: string;
-  connect: string;
+  notice?: string;
+  name?: string;
+  connect?: string;
+  /**
+   * Richer, programme-specific debrief content.
+   * Each string is rendered on its own line in the popup. A line that ends
+   * with a colon (e.g. "Tone Awareness:") or is all-uppercase is treated as
+   * a section heading; all other lines render as bulleted questions.
+   */
+  questions?: string[];
 }
 
 export interface CurriculumCheckpoint {

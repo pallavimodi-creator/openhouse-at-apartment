@@ -164,21 +164,11 @@ export function SegmentInfoPopup({ info }: { info: SegmentInfo }) {
           </div>
           <div>
             <p className="text-[10px] font-semibold tracking-wider text-ink-subtle">
-              topic options
+              reference images
             </p>
-            <div className="mt-2 space-y-1.5">
-              {unit.topicOptions.map((t, i) => (
-                <div
-                  key={i}
-                  className="flex items-start gap-2 rounded-lg bg-ink/[0.03] px-3 py-2"
-                >
-                  <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-brand-orange text-[9px] font-bold text-white">
-                    {i + 1}
-                  </span>
-                  <p className="text-[12px] leading-relaxed text-ink-muted">{t}</p>
-                </div>
-              ))}
-            </div>
+            <p className="mt-2 rounded-lg bg-ink/[0.03] px-3 py-2 text-[12px] leading-relaxed text-ink-muted">
+              use cue card of choice to assist with drawing.
+            </p>
           </div>
         </div>
       )}

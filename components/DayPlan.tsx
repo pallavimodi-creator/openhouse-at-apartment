@@ -10,7 +10,7 @@ import { SegmentInfoPopup, type SegmentInfo } from "./SegmentInfoPopup";
 import {
   Brain, Eye, Ear, Hand, Mic, Zap, Gamepad2, Star,
   Dumbbell, Palette, Sparkles, PenTool, Notebook,
-  FlaskConical, Wrench,
+  FlaskConical, Wrench, Ribbon,
 } from "lucide-react";
 import type {
   CurriculumProgramme,
@@ -212,8 +212,8 @@ function SegmentRow({
   return (
     <div className="rounded-card bg-brand-white p-3.5 shadow-card ring-1 ring-ink/5">
       {/* Segment header */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
+      <div className="flex flex-wrap items-center justify-between gap-y-1">
+        <div className="flex flex-wrap items-center gap-2">
           <span
             className={cn(
               "rounded-chip px-2 py-0.5 text-[9px] font-semibold tracking-normal",
@@ -228,6 +228,13 @@ function SegmentRow({
           <span className="text-[11px] text-ink-subtle">
             {segment.durationRange}
           </span>
+          {/* Lanyard + debrief reminder — playground & showtime (PS only) */}
+          {(segment.segmentId === "playground" || segment.segmentId === "showtime") && (
+            <span className="inline-flex items-center gap-1 rounded-chip bg-category-language/20 px-2 py-0.5 text-[10px] font-semibold text-green-900">
+              <Ribbon className="h-3 w-3" strokeWidth={2.2} />
+              use lanyard + debrief time
+            </span>
+          )}
         </div>
       </div>
 
@@ -353,19 +360,25 @@ function SegmentRow({
             <div className="relative mb-2">
               <button
                 onClick={() => setDropdownOpen(!dropdownOpen)}
-                className="flex w-full items-center justify-between rounded-lg border border-ink/10 bg-ink/[0.02] px-3 py-2 text-left transition hover:bg-ink/[0.04]"
+                className="flex w-full items-center justify-between gap-2 rounded-lg border border-ink/10 bg-ink/[0.02] px-3 py-2 text-left transition hover:bg-ink/[0.04]"
               >
-                <span className="flex items-center gap-1.5 text-[12px] font-medium text-ink">
+                <span className="flex min-w-0 flex-1 items-center gap-1.5 text-[12px] font-medium text-ink">
                   {currentActivity.cardName && CARD_ICONS[currentActivity.cardName] && (
                     <span className="text-ink-muted">{CARD_ICONS[currentActivity.cardName]}</span>
                   )}
-                  {currentActivity.cardName
-                    ? `${currentActivity.cardName}: ${currentActivity.title}`
-                    : currentActivity.title}
+                  <span className="truncate">
+                    {currentActivity.cardName
+                      ? `${currentActivity.cardName}: ${currentActivity.title}`
+                      : currentActivity.title}
+                  </span>
+                </span>
+                {/* Pool-size chip — rotates through N games before any can repeat */}
+                <span className="shrink-0 rounded-chip bg-ink/5 px-2 py-0.5 text-[9px] font-semibold tracking-normal text-ink-muted">
+                  rotates · {segment.rotationPool.length} games
                 </span>
                 <ChevronDown
                   className={cn(
-                    "h-3.5 w-3.5 text-ink-subtle transition-transform",
+                    "h-3.5 w-3.5 shrink-0 text-ink-subtle transition-transform",
                     dropdownOpen && "rotate-180"
                   )}
                 />
@@ -373,40 +386,33 @@ function SegmentRow({
 
               {dropdownOpen && (
                 <div className="absolute left-0 right-0 top-full z-20 mt-1 max-h-56 overflow-y-auto rounded-card border border-ink/10 bg-brand-white shadow-float">
-                  {selectionHistory.length > 0 && (
-                    <div className="border-b border-ink/5 px-3 py-1.5 text-[9px] text-ink-subtle">
-                      {segment.rotationPool.length - selectionHistory.length} of {segment.rotationPool.length} available · greyed out = already used this cycle
-                    </div>
-                  )}
+                  <div className="border-b border-ink/5 px-3 py-1.5 text-[9px] text-ink-subtle">
+                    {segment.rotationPool.length - selectionHistory.length} of {segment.rotationPool.length} available · once a game is chosen it cannot be picked again until every other game in this pool has been used
+                  </div>
                   {segment.rotationPool.map((act) => {
                     const blocked = isBlocked(act.id);
                     return (
-                    <button
-                      key={act.id}
-                      onClick={() => !blocked && handleSelectActivity(act)}
-                      disabled={blocked}
-                      className={cn(
-                        "flex w-full items-center gap-2 px-3 py-2 text-left text-[12px] transition",
-                        blocked
-                          ? "opacity-35 cursor-not-allowed"
-                          : "hover:bg-ink/[0.03]",
-                        act.id === currentActivity?.id
-                          ? "font-semibold text-brand-orange"
-                          : "text-ink"
-                      )}
-                    >
-                      {act.cardName && CARD_ICONS[act.cardName] && (
-                        <span className="text-ink-subtle">{CARD_ICONS[act.cardName]}</span>
-                      )}
-                      {act.cardName
-                        ? `${act.cardName}: ${act.title}`
-                        : act.title}
-                      {act.id === segment.assignedActivity?.id && (
-                        <span className="ml-auto text-[9px] font-medium text-ink-subtle">
-                          today
-                        </span>
-                      )}
-                    </button>
+                      <button
+                        key={act.id}
+                        onClick={() => !blocked && handleSelectActivity(act)}
+                        disabled={blocked}
+                        className={cn(
+                          "flex w-full items-center gap-2 px-3 py-2 text-left text-[12px] transition",
+                          blocked
+                            ? "opacity-35 cursor-not-allowed"
+                            : "hover:bg-ink/[0.03]",
+                          act.id === currentActivity?.id
+                            ? "font-semibold text-brand-orange"
+                            : "text-ink"
+                        )}
+                      >
+                        {act.cardName && CARD_ICONS[act.cardName] && (
+                          <span className="text-ink-subtle">{CARD_ICONS[act.cardName]}</span>
+                        )}
+                        {act.cardName
+                          ? `${act.cardName}: ${act.title}`
+                          : act.title}
+                      </button>
                     );
                   })}
                 </div>

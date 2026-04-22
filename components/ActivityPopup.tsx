@@ -347,15 +347,56 @@ export function ActivityPopup({
           </h3>
           {activity.debriefPrompts.map((d, i) => (
             <div key={i} className="mt-2 space-y-1.5">
-              <p className="text-[12px] leading-relaxed text-ink">
-                <span className="font-semibold">notice:</span> {d.notice}
-              </p>
-              <p className="text-[12px] leading-relaxed text-ink">
-                <span className="font-semibold">name:</span> {d.name}
-              </p>
-              <p className="text-[12px] leading-relaxed text-ink">
-                <span className="font-semibold">connect:</span> {d.connect}
-              </p>
+              {d.questions && d.questions.length > 0 ? (
+                <ul className="space-y-1">
+                  {d.questions.map((q, j) => {
+                    const trimmed = q.trim();
+                    // Section heading heuristic: ends in ":" or is short ALL-CAPS
+                    const isHeading =
+                      trimmed.endsWith(":") ||
+                      (trimmed.length <= 40 &&
+                        trimmed === trimmed.toUpperCase() &&
+                        /[A-Z]/.test(trimmed));
+                    if (isHeading) {
+                      return (
+                        <li
+                          key={j}
+                          className="mt-2 text-[11px] font-bold uppercase tracking-wider text-green-800 first:mt-0"
+                        >
+                          {trimmed.replace(/:$/, "")}
+                        </li>
+                      );
+                    }
+                    return (
+                      <li
+                        key={j}
+                        className="flex items-start gap-2 text-[12px] leading-relaxed text-ink"
+                      >
+                        <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-green-800/40" />
+                        <span className="flex-1">{trimmed}</span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              ) : (
+                <>
+                  {d.notice && (
+                    <p className="text-[12px] leading-relaxed text-ink">
+                      <span className="font-semibold">notice:</span> {d.notice}
+                    </p>
+                  )}
+                  {d.name && (
+                    <p className="text-[12px] leading-relaxed text-ink">
+                      <span className="font-semibold">name:</span> {d.name}
+                    </p>
+                  )}
+                  {d.connect && (
+                    <p className="text-[12px] leading-relaxed text-ink">
+                      <span className="font-semibold">connect:</span> {d.connect}
+                    </p>
+                  )}
+                </>
+              )}
             </div>
           ))}
         </div>
