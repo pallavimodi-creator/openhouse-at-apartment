@@ -445,9 +445,9 @@ function ProgrammeOverviewContent() {
   const SECTION_NUMS_BY_CATEGORY: Record<string, Record<string, string>> = {
     art: {
       "daily-flow": "01",
-      "art-gym-cycle": "02",
-      "skills": "03",
-      "segment-logic": "04",
+      "skills": "02",
+      "segment-logic": "03",
+      "art-gym-cycle": "04",
       "artiverse-how": "05",
       "artiverse-units": "06",
       "checkpoints": "07",
@@ -802,172 +802,6 @@ function ProgrammeOverviewContent() {
         </p>
       </section>
 
-      {/* ─── ART GYM CYCLE (art only) ─── */}
-      {isArt && (
-      <section className="mt-10 px-4 md:px-8">
-        <SectionTitle num={sectionNum("art-gym-cycle")} label="art gym cycle" />
-        <p className="mt-2 text-[12px] leading-relaxed text-ink-muted md:text-[13px]">
-          art gym runs as two paired units. the <span className="font-semibold text-ink">book</span> and the <span className="font-semibold text-ink">cue card</span> each rotate; their extensions always follow the previous day — not independent.
-        </p>
-
-        <div className="mt-4 space-y-4">
-          {/* PAIR 1: Book + Extension */}
-          <div className="overflow-hidden rounded-xl bg-[#F5D547]/15 p-4">
-            <div className="flex items-center justify-between">
-              <p className="text-[12px] font-extrabold text-ink">
-                unit 1 · book + extension
-              </p>
-              <span className="rounded-chip bg-brand-orange text-white px-2.5 py-0.5 text-[10px] font-semibold">
-                rotates
-              </span>
-            </div>
-            <p className="mt-1 text-[11px] text-ink-muted">
-              the book rotates across the cycle. its extension always follows the same book the next day.
-            </p>
-            <div className="mt-3 grid gap-3 md:grid-cols-2">
-              <div className="rounded-lg bg-brand-white p-3 shadow-card">
-                <div className="flex items-center gap-2">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#F5D547] text-[11px] font-bold text-amber-900">1</span>
-                  <span className="rounded-chip bg-brand-orange/10 px-2 py-0.5 text-[9px] font-semibold text-brand-orange">book</span>
-                </div>
-                <p className="mt-2 text-[13px] font-bold text-ink">art gym book</p>
-                <p className="mt-1 text-[11px] leading-relaxed text-ink-muted">
-                  child works in their personal laminated art gym book, at their own pace.
-                </p>
-                <div className="mt-2 flex gap-1.5">
-                  {(programme.ageGroup === "8-12" ? [5, 6] : [3, 4]).map((n) => (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      key={n}
-                      src={GYM_BOOK_IMAGES[n]}
-                      alt={`art gym book ${n}`}
-                      className="h-20 flex-1 rounded-md bg-ink/[0.03] object-contain ring-1 ring-ink/10"
-                    />
-                  ))}
-                </div>
-                <p className="mt-2 text-[10px] italic text-brand-orange">
-                  rotates: {programme.ageGroup === "8-12" ? "book 5 · book 6" : "book 3 · book 4"}
-                </p>
-              </div>
-              <div className="rounded-lg bg-brand-white p-3 shadow-card">
-                <div className="flex items-center gap-2">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-ink/10 text-[11px] font-bold text-ink-muted">2</span>
-                  <span className="rounded-chip bg-ink/10 px-2 py-0.5 text-[9px] font-semibold text-ink-muted">paired extension</span>
-                </div>
-                <p className="mt-2 text-[13px] font-bold text-ink">extension (sketchbook)</p>
-                <p className="mt-1 text-[11px] leading-relaxed text-ink-muted">
-                  child extends yesterday&apos;s book technique into the sketchbook.
-                </p>
-                <p className="mt-2 text-[10px] italic text-ink-subtle">always follows day 1 — never independent.</p>
-              </div>
-            </div>
-          </div>
-
-          {/* PAIR 2: Cue card + Extension */}
-          <div className="overflow-hidden rounded-xl bg-[#F5D547]/15 p-4">
-            <div className="flex items-center justify-between">
-              <p className="text-[12px] font-extrabold text-ink">
-                unit 2 · cue card + extension
-              </p>
-              <span className="rounded-chip bg-brand-orange text-white px-2.5 py-0.5 text-[10px] font-semibold">
-                rotates
-              </span>
-            </div>
-            <p className="mt-1 text-[11px] text-ink-muted">
-              the teacher picks the cue card type from the pool. its extension always follows the same cue card the next day.
-            </p>
-            <div className="mt-3 grid gap-3 md:grid-cols-2">
-              <div className="rounded-lg bg-brand-white p-3 shadow-card">
-                <div className="flex items-center gap-2">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#F5D547] text-[11px] font-bold text-amber-900">3</span>
-                  <span className="rounded-chip bg-brand-orange/10 px-2 py-0.5 text-[9px] font-semibold text-brand-orange">cue card</span>
-                </div>
-                <p className="mt-2 text-[13px] font-bold text-ink">cue card (teacher picks)</p>
-                <p className="mt-1 text-[11px] leading-relaxed text-ink-muted">
-                  child follows a step-by-step illustrated cue card of the teacher&apos;s choice.
-                </p>
-                <p className="mt-2 text-[10px] italic text-brand-orange">
-                  rotates across types (see pool below)
-                </p>
-              </div>
-              <div className="rounded-lg bg-brand-white p-3 shadow-card">
-                <div className="flex items-center gap-2">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-ink/10 text-[11px] font-bold text-ink-muted">4</span>
-                  <span className="rounded-chip bg-ink/10 px-2 py-0.5 text-[9px] font-semibold text-ink-muted">paired extension</span>
-                </div>
-                <p className="mt-2 text-[13px] font-bold text-ink">extension (sketchbook)</p>
-                <p className="mt-1 text-[11px] leading-relaxed text-ink-muted">
-                  child extends yesterday&apos;s cue card drawing into the sketchbook.
-                </p>
-                <p className="mt-2 text-[10px] italic text-ink-subtle">always follows day 3 — never independent.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-4 overflow-hidden rounded-xl bg-[#F5D547]/15 p-4">
-
-          {/* Cue card types — rotating */}
-          <div className="mt-4 rounded-lg bg-white/60 p-3.5">
-            <p className="text-[11px] font-bold text-ink">cue card pool — rotates</p>
-            <p className="mt-1 text-[11px] text-ink-muted">
-              {programme.ageGroup === "8-12" ? (
-                <>
-                  uses <span className="font-semibold text-ink">B1 + B2</span> sets across all six types, plus landscape &amp; portrait backgrounds.
-                </>
-              ) : (
-                <>
-                  uses the <span className="font-semibold text-ink">B1</span> set across all six types.
-                </>
-              )}
-            </p>
-            <div className="mt-3 flex flex-wrap gap-1.5">
-              {["animals", "birds", "buildings", "food", "nature", "vehicles"].map((t) => (
-                <span
-                  key={t}
-                  className="rounded-chip bg-[#F5D547]/40 px-2.5 py-1 text-[10px] font-semibold text-amber-900"
-                >
-                  {t}
-                </span>
-              ))}
-              {programme.ageGroup === "8-12" && (
-                <>
-                  <span className="rounded-chip bg-category-stem/30 px-2.5 py-1 text-[10px] font-semibold text-blue-900">
-                    landscape backgrounds
-                  </span>
-                  <span className="rounded-chip bg-category-stem/30 px-2.5 py-1 text-[10px] font-semibold text-blue-900">
-                    portrait backgrounds
-                  </span>
-                </>
-              )}
-            </div>
-          </div>
-
-          <div className="mt-3 rounded-lg bg-white/60 p-3">
-            <p className="text-[11px] font-bold text-ink">book rotation</p>
-            {programme.ageGroup === "8-12" ? (
-              <>
-                <p className="mt-1 text-[11px] text-ink-muted">
-                  <span className="font-semibold text-ink">months 1–3:</span> book 5
-                </p>
-                <p className="mt-0.5 text-[11px] text-ink-muted">
-                  <span className="font-semibold text-ink">months 4–6:</span> book 6
-                </p>
-              </>
-            ) : (
-              <>
-                <p className="mt-1 text-[11px] text-ink-muted">
-                  <span className="font-semibold text-ink">months 1–3:</span> book 3 · cue cards B1
-                </p>
-                <p className="mt-0.5 text-[11px] text-ink-muted">
-                  <span className="font-semibold text-ink">months 4–6:</span> book 4 · cue cards B2
-                </p>
-              </>
-            )}
-          </div>
-        </div>
-      </section>
-      )}
 
       {/* ─── SKILLS & ABILITIES ─── */}
       <section className="mt-10 px-4 md:px-8">
@@ -1137,6 +971,172 @@ function ProgrammeOverviewContent() {
         </div>
       </section>
 
+      {/* ─── ART GYM CYCLE (art only) ─── */}
+      {isArt && (
+      <section className="mt-10 px-4 md:px-8">
+        <SectionTitle num={sectionNum("art-gym-cycle")} label="art gym cycle" />
+        <p className="mt-2 text-[12px] leading-relaxed text-ink-muted md:text-[13px]">
+          art gym runs as two paired units. the <span className="font-semibold text-ink">book</span> and the <span className="font-semibold text-ink">cue card</span> each rotate; their extensions always follow the previous day — not independent.
+        </p>
+
+        <div className="mt-4 space-y-4">
+          {/* PAIR 1: Book + Extension */}
+          <div className="overflow-hidden rounded-xl bg-[#F5D547]/15 p-4">
+            <div className="flex items-center justify-between">
+              <p className="text-[12px] font-extrabold text-ink">
+                unit 1 · book + extension
+              </p>
+              <span className="rounded-chip bg-brand-orange text-white px-2.5 py-0.5 text-[10px] font-semibold">
+                rotates
+              </span>
+            </div>
+            <p className="mt-1 text-[11px] text-ink-muted">
+              the book rotates across the cycle. its extension always follows the same book the next day.
+            </p>
+            <div className="mt-3 grid gap-3 md:grid-cols-2">
+              <div className="rounded-lg bg-brand-white p-3 shadow-card">
+                <div className="flex items-center gap-2">
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#F5D547] text-[11px] font-bold text-amber-900">1</span>
+                  <span className="rounded-chip bg-brand-orange/10 px-2 py-0.5 text-[9px] font-semibold text-brand-orange">book</span>
+                </div>
+                <p className="mt-2 text-[13px] font-bold text-ink">art gym book</p>
+                <p className="mt-1 text-[11px] leading-relaxed text-ink-muted">
+                  child works in their personal laminated art gym book, at their own pace.
+                </p>
+                <div className="mt-2 flex gap-1.5">
+                  {(programme.ageGroup === "8-12" ? [5, 6] : [3, 4]).map((n) => (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      key={n}
+                      src={GYM_BOOK_IMAGES[n]}
+                      alt={`art gym book ${n}`}
+                      className="h-20 flex-1 rounded-md bg-ink/[0.03] object-contain ring-1 ring-ink/10"
+                    />
+                  ))}
+                </div>
+                <p className="mt-2 text-[10px] italic text-brand-orange">
+                  rotates: {programme.ageGroup === "8-12" ? "book 5 · book 6" : "book 3 · book 4"}
+                </p>
+              </div>
+              <div className="rounded-lg bg-brand-white p-3 shadow-card">
+                <div className="flex items-center gap-2">
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-ink/10 text-[11px] font-bold text-ink-muted">2</span>
+                  <span className="rounded-chip bg-ink/10 px-2 py-0.5 text-[9px] font-semibold text-ink-muted">paired extension</span>
+                </div>
+                <p className="mt-2 text-[13px] font-bold text-ink">extension (sketchbook)</p>
+                <p className="mt-1 text-[11px] leading-relaxed text-ink-muted">
+                  child extends yesterday&apos;s book technique into the sketchbook.
+                </p>
+                <p className="mt-2 text-[10px] italic text-ink-subtle">always follows day 1 — never independent.</p>
+              </div>
+            </div>
+          </div>
+
+          {/* PAIR 2: Cue card + Extension */}
+          <div className="overflow-hidden rounded-xl bg-[#F5D547]/15 p-4">
+            <div className="flex items-center justify-between">
+              <p className="text-[12px] font-extrabold text-ink">
+                unit 2 · cue card + extension
+              </p>
+              <span className="rounded-chip bg-brand-orange text-white px-2.5 py-0.5 text-[10px] font-semibold">
+                rotates
+              </span>
+            </div>
+            <p className="mt-1 text-[11px] text-ink-muted">
+              the teacher picks the cue card type from the pool. its extension always follows the same cue card the next day.
+            </p>
+            <div className="mt-3 grid gap-3 md:grid-cols-2">
+              <div className="rounded-lg bg-brand-white p-3 shadow-card">
+                <div className="flex items-center gap-2">
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#F5D547] text-[11px] font-bold text-amber-900">3</span>
+                  <span className="rounded-chip bg-brand-orange/10 px-2 py-0.5 text-[9px] font-semibold text-brand-orange">cue card</span>
+                </div>
+                <p className="mt-2 text-[13px] font-bold text-ink">cue card (teacher picks)</p>
+                <p className="mt-1 text-[11px] leading-relaxed text-ink-muted">
+                  child follows a step-by-step illustrated cue card of the teacher&apos;s choice.
+                </p>
+                <p className="mt-2 text-[10px] italic text-brand-orange">
+                  rotates across types (see pool below)
+                </p>
+              </div>
+              <div className="rounded-lg bg-brand-white p-3 shadow-card">
+                <div className="flex items-center gap-2">
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-ink/10 text-[11px] font-bold text-ink-muted">4</span>
+                  <span className="rounded-chip bg-ink/10 px-2 py-0.5 text-[9px] font-semibold text-ink-muted">paired extension</span>
+                </div>
+                <p className="mt-2 text-[13px] font-bold text-ink">extension (sketchbook)</p>
+                <p className="mt-1 text-[11px] leading-relaxed text-ink-muted">
+                  child extends yesterday&apos;s cue card drawing into the sketchbook.
+                </p>
+                <p className="mt-2 text-[10px] italic text-ink-subtle">always follows day 3 — never independent.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-4 overflow-hidden rounded-xl bg-[#F5D547]/15 p-4">
+
+          {/* Cue card types — rotating */}
+          <div className="mt-4 rounded-lg bg-white/60 p-3.5">
+            <p className="text-[11px] font-bold text-ink">cue card pool — rotates</p>
+            <p className="mt-1 text-[11px] text-ink-muted">
+              {programme.ageGroup === "8-12" ? (
+                <>
+                  uses <span className="font-semibold text-ink">B1 + B2</span> sets across all six types, plus landscape &amp; portrait backgrounds.
+                </>
+              ) : (
+                <>
+                  uses the <span className="font-semibold text-ink">B1</span> set across all six types.
+                </>
+              )}
+            </p>
+            <div className="mt-3 flex flex-wrap gap-1.5">
+              {["animals", "birds", "buildings", "food", "nature", "vehicles"].map((t) => (
+                <span
+                  key={t}
+                  className="rounded-chip bg-[#F5D547]/40 px-2.5 py-1 text-[10px] font-semibold text-amber-900"
+                >
+                  {t}
+                </span>
+              ))}
+              {programme.ageGroup === "8-12" && (
+                <>
+                  <span className="rounded-chip bg-category-stem/30 px-2.5 py-1 text-[10px] font-semibold text-blue-900">
+                    landscape backgrounds
+                  </span>
+                  <span className="rounded-chip bg-category-stem/30 px-2.5 py-1 text-[10px] font-semibold text-blue-900">
+                    portrait backgrounds
+                  </span>
+                </>
+              )}
+            </div>
+          </div>
+
+          <div className="mt-3 rounded-lg bg-white/60 p-3">
+            <p className="text-[11px] font-bold text-ink">book rotation</p>
+            {programme.ageGroup === "8-12" ? (
+              <>
+                <p className="mt-1 text-[11px] text-ink-muted">
+                  <span className="font-semibold text-ink">months 1–3:</span> book 5
+                </p>
+                <p className="mt-0.5 text-[11px] text-ink-muted">
+                  <span className="font-semibold text-ink">months 4–6:</span> book 6
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="mt-1 text-[11px] text-ink-muted">
+                  <span className="font-semibold text-ink">months 1–3:</span> book 3 · cue cards B1
+                </p>
+                <p className="mt-0.5 text-[11px] text-ink-muted">
+                  <span className="font-semibold text-ink">months 4–6:</span> book 4 · cue cards B2
+                </p>
+              </>
+            )}
+          </div>
+        </div>
+      </section>
+      )}
       {/* ─── ROBOTICS MODELS (stem only) ─── */}
       {isRobotics && (
         <section className="mt-10 px-4 md:px-8">

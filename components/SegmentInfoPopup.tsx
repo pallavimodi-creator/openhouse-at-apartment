@@ -20,6 +20,24 @@ export interface ArtiverseUnitInfo {
   heroImageUrl: string;
 }
 
+/**
+ * Split a description paragraph into readable bullet points.
+ * Each sentence becomes its own line. Short strings (one sentence) are
+ * returned as-is in a single-item array so the caller can still render
+ * a list unconditionally.
+ */
+function descriptionToBullets(text: string): string[] {
+  const trimmed = text.trim();
+  if (!trimmed) return [];
+  // Split on sentence boundary — period/question/exclamation followed by
+  // whitespace + a capital letter or an opening quote/dash.
+  const parts = trimmed
+    .split(/(?<=[.?!])\s+(?=["“”A-Z—])/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+  return parts.length > 0 ? parts : [trimmed];
+}
+
 export interface SegmentInfo {
   segmentId: string;
   segmentName: string;
@@ -122,9 +140,29 @@ export function SegmentInfoPopup({ info }: { info: SegmentInfo }) {
             {info.subText}
           </p>
         )}
-        <p className="mt-3 text-[13px] leading-relaxed text-ink-muted">
-          {info.description}
-        </p>
+        {(() => {
+          const bullets = descriptionToBullets(info.description);
+          if (bullets.length <= 1) {
+            return (
+              <p className="mt-3 text-[13px] leading-relaxed text-ink-muted">
+                {info.description}
+              </p>
+            );
+          }
+          return (
+            <ul className="mt-3 space-y-1.5">
+              {bullets.map((b, i) => (
+                <li
+                  key={i}
+                  className="flex items-start gap-2 text-[12.5px] leading-relaxed text-ink-muted"
+                >
+                  <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brand-orange" />
+                  <span className="flex-1">{b}</span>
+                </li>
+              ))}
+            </ul>
+          );
+        })()}
       </div>
 
       {/* Artiverse-specific details: medium, technique, what-children-make, topic options */}
