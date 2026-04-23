@@ -73,7 +73,7 @@ const art58: BookConfig = {
     {
       icon: "🏋️",
       name: "art gym",
-      desc: "warm up your eyes and hands with drawing exercises from books and cue cards.",
+      desc: "warm up your eyes and hands with drawing exercises from books and cue cards. the books are laminated — mark them with thread, clay, sequins, or erasable markers.",
     },
     {
       icon: "🎲",
@@ -275,7 +275,7 @@ const art812: BookConfig = {
     {
       icon: "🏋️",
       name: "art gym",
-      desc: "observational drawing from books and cue cards — with extension challenges to push further.",
+      desc: "observational drawing from books and cue cards — with extension challenges to push further. the books are laminated — mark them with thread, clay, sequins, or erasable markers.",
     },
     {
       icon: "🎲",

@@ -217,13 +217,13 @@ function buildItemsFor(prog: CurriculumProgramme): LibraryItem[] {
       segment: "art-gym",
       title: "art gym — 4-session cycle",
       description:
-        "a structured opening segment using books, cue cards, and their extensions. each session builds directly on the previous one.",
+        "a structured opening segment using books, cue cards, and their extensions. each session builds directly on the previous one. art gym books are laminated — children mark them with resources of choice: thread, clay, sequins, or erasable markers.",
       info: {
         segmentId: "art-gym",
         segmentName: "Art Gym",
         title: "art gym — 4-session cycle",
         description:
-          "a self-paced warm-up. the cycle runs: book → extension (book) → cue card → extension (cue card). each extension day belongs to the day before it — the book session and its extension are one unit, and the cue card session and its extension are one unit. an extension day is never independent.",
+          "a self-paced warm-up. the cycle runs: book → extension (book) → cue card → extension (cue card). each extension day belongs to the day before it — the book session and its extension are one unit, and the cue card session and its extension are one unit. an extension day is never independent. art gym books are laminated — children mark them with resources of choice: thread, clay, sequins, or erasable markers.",
         heroImageUrl: gymThumb,
       },
       thumbImageUrl: gymThumb,

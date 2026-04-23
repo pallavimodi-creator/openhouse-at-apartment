@@ -154,7 +154,7 @@ const dailyFlow = [
     time: "15–20 min",
     durationFlex: 17.5,
     meaning:
-      "a structured opening segment using books, cue cards, and their extensions, where each session builds directly on the previous one.",
+      "a structured opening segment using books, cue cards, and their extensions, where each session builds directly on the previous one. art gym books are laminated — children mark them with resources of choice: thread, clay, sequins, or erasable markers.",
     color: "bg-[#F5D547]",
     textColor: "text-amber-900",
   },
@@ -472,7 +472,7 @@ function ProgrammeOverviewContent() {
 
   // Build daily flow dynamically from this programme's segment definitions.
   const segmentStyle: Record<string, { color: string; textColor: string; icon: typeof Dumbbell; durationFlex: number; meaning: string }> = {
-    "art-gym": { color: "bg-[#F5D547]", textColor: "text-amber-900", icon: Dumbbell, durationFlex: 17.5, meaning: "a structured opening segment using books, cue cards, and their extensions, where each session builds directly on the previous one." },
+    "art-gym": { color: "bg-[#F5D547]", textColor: "text-amber-900", icon: Dumbbell, durationFlex: 17.5, meaning: "a structured opening segment using books, cue cards, and their extensions, where each session builds directly on the previous one. art gym books are laminated — children mark them with resources of choice: thread, clay, sequins, or erasable markers." },
     "art-games": { color: "bg-category-language/40", textColor: "text-green-900", icon: Gamepad2, durationFlex: 17.5, meaning: "one art game that builds a specific skill. all children play simultaneously." },
     artiverse: { color: "bg-category-stem/40", textColor: "text-blue-900", icon: Palette, durationFlex: 42.5, meaning: "a structured making programme combining medium, technique, and outcome over multiple sessions." },
     "roll-call": { color: "bg-[#F5D547]", textColor: "text-amber-900", icon: Zap, durationFlex: 9, meaning: "a quick energetic start. group games that wake up voice, body, and attention — every child playing simultaneously within 2 minutes." },

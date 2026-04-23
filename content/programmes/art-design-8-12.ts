@@ -922,7 +922,7 @@ export const artDesign812: CurriculumProgramme = {
       name: "Art Gym",
       durationRange: "15–20 min",
       objective:
-        "4-session cycle: book → extension(book) → cue card → extension(cue card). each extension day follows directly from the preceding book or cue card day. educator always adds extension challenge after cue card steps.",
+        "4-session cycle: book → extension(book) → cue card → extension(cue card). each extension day follows directly from the preceding book or cue card day. educator always adds extension challenge after cue card steps. art gym books are laminated — children mark them with resources of choice: thread, clay, sequins, or erasable markers.",
       type: "rotating",
       rotationPool: ["book", "extension-book", "cue-card", "extension-cue-card"],
     },

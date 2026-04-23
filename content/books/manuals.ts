@@ -47,7 +47,7 @@ const art58Manual: ManualConfig = {
         {
           title: "art gym",
           content:
-            "write what the warm-up exercise was. keep it factual: 'drew shells from observation cards' or 'blind contour of a shoe'. one line is enough.",
+            "write what the warm-up exercise was. keep it factual: 'drew shells from observation cards' or 'blind contour of a shoe'. one line is enough. note: art gym books are laminated — children mark them with resources of choice (thread, clay, sequins, or erasable markers), so you can record the marking resource used alongside the exercise.",
         },
         {
           title: "artgames",
@@ -264,7 +264,7 @@ const art812Manual: ManualConfig = {
         {
           title: "art gym",
           content:
-            "write what the warm-up exercise was. at this level, art gym includes extension challenges: 'drew shells from observation — extension: drew the same shell from memory'. record both.",
+            "write what the warm-up exercise was. at this level, art gym includes extension challenges: 'drew shells from observation — extension: drew the same shell from memory'. record both. note: art gym books are laminated — children mark them with resources of choice (thread, clay, sequins, or erasable markers), so you can record the marking resource used alongside the exercise.",
         },
         {
           title: "artgames",
