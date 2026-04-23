@@ -392,6 +392,9 @@ function s(
 }
 
 const sessionTable: CurriculumSessionEntry[] = [
+  s(0, "l1-levers-e1", "Crane", "build-crane", 1,
+    "Did you know we're going to play building games today? We'll try things with our body first, and then build a real crane. You'll use real parts to make something that moves. You can try again if it doesn't work. By the end, you'll have made your own crane.",
+    "What part of your crane did the most important job today?"),
   s(1, "l1-levers-e1", "See-saw", "build-see-saw", 1,
     "Has anyone played on a see-saw? When you sit on one end and your friend sits on the other — what makes it go up and what makes it go down?",
     "What does a lever do that makes lifting easier — in one sentence?"),
