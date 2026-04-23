@@ -478,17 +478,18 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "each child has a 9-grid template. pick a bead from the bowl without looking. if it matches a square on your grid, place it.",
     howToPlay:
-      "Coloured beads sit in a bowl or box in the centre. On their turn, a child picks one bead without looking, compares it to their grid, and places it if it matches. No match = bead goes back. Three in a row or a full grid wins.",
+      "Coloured beads sit in a bowl or box in the centre. On their turn, a child picks one bead without looking, compares it to their grid, and places it if it matches. No match = bead goes back. First to finish a row or grid wins. Variation — Picture Cards: child draws a picture card from a deck and places it on the matching colour grid; if no match, discard. First to finish a row or grid wins. Variation — Pattern Bingo: teacher calls out a colour + pattern combination (e.g. \"yellow straight lines\") and children mark if present. First to finish a row or grid wins.",
     materials: [
-      "9-grid template per child",
+      "9-grid template card",
       "Coloured beads in a bowl or box",
       "Coloured object cards",
       "Timer",
+      "Dry-erase markers (optional)",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "match only colours — the grid has coloured squares, child matches bead to colour." },
-      { level: "Medium", description: "match the picture cards to the colour cards — grid uses coloured object cards, child matches each drawn bead or card to the right colour." },
-      { level: "Hard", description: "mark on the grid like bingo whether a particular colour + pattern combination is present — child scans the grid and marks every square that matches the drawn item's colour and pattern." },
+      { level: "Easy", description: "match colours only — with beads or picture cards." },
+      { level: "Medium", description: "Pattern Bingo — teacher calls out a colour + pattern combination and children mark if present." },
+      { level: "Hard", description: "children play Bingo without teacher's cues — each child takes a turn to call out a colour + pattern." },
     ],
     debriefPrompts: [],
     type: "physical-game",
@@ -509,7 +510,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     ],
     difficultyLevels: [
       { level: "Easy", description: "colour recognition only." },
-      { level: "Medium", description: "Variation 2, Easy and Medium Mixing Cards." },
+      { level: "Medium", description: "Easy and Medium Mixing Cards." },
       { level: "Hard", description: "Difficult Mixing Cards, child identifies missing colours." },
     ],
     debriefPrompts: [],
@@ -542,7 +543,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "build a subject from geometric pieces without speaking. your team guesses what you are making.",
     howToPlay:
-      "One child per team builds a subject from geometric pieces silently while their team guesses what it is. · Variation 1 — Child's choice: the child picks which subject they want to create from the Shape Card and the other children guess. · Variation 2 — Relay / race: the group splits into teams and the teams compete to make the most subjects — whichever team finishes a card, or a set number of cards, first wins. · Variation 3 — Work through the Shape Card sequentially in order.",
+      "Each child builds a subject from geometric pieces silently while their team guesses what it is. · Variation 1 — Child's choice: the child picks which subject they want to create from the Shape Card and the other children guess. · Variation 2 — Relay / race: the group splits into teams and the teams compete to make the most subjects — whichever team finishes a card, or a set number of cards, first wins. · Variation 3 — Create the subjects in the Shape Cards sequentially, letting everyone guess turn by turn.",
     materials: [
       "Two sets of 60 transparent geometric pieces",
       "Shape Cards B1 and B2",
@@ -571,7 +572,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     difficultyLevels: [
       { level: "Easy", description: "B1 cards, visible throughout, no timer." },
       { level: "Medium", description: "B1 or B2, educator names one thing to observe." },
-      { level: "Hard", description: "B2, card shown 60 seconds then removed, draw from memory." },
+      { level: "Hard", description: "B2 card shown for a minute then removed, drawn from memory." },
     ],
     debriefPrompts: [],
     type: "physical-game",
@@ -583,15 +584,16 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "scene card in the centre. i name an object — you find and draw it.",
     howToPlay:
-      "Scene card visible. Educator names object. Children find and draw simultaneously. Variation 2: card shown 30 seconds then removed, draw from memory.",
+      "Scene card visible. Educator names object. Child finds object, then draws. Variation 2: card shown 30 seconds then removed, draw from memory.",
     materials: [
       "Scene cards (A5)",
       "Blank drawing sheets",
+      "Pencils or crayons",
     ],
     difficultyLevels: [
       { level: "Easy", description: "direct name, card visible." },
       { level: "Medium", description: "card visible, draw as much detail as you choose." },
-      { level: "Hard", description: "card removed, abstract descriptions." },
+      { level: "Hard", description: "card shown 30 seconds then removed, drawn from memory." },
     ],
     debriefPrompts: [],
     type: "physical-game",
@@ -601,15 +603,19 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     segment: "art-games",
     title: "artventure",
     setupLine:
-      "roll, move your token, land on an art zone, draw a challenge card, and complete it within 2 minutes.",
+      "roll the dice, move your token, land on an art zone, draw a challenge card (draw, colour, build or mixed media), and complete it within the time limit.",
     howToPlay:
-      "Board game. Roll, move, land on art zone, draw challenge card, complete in 2 minutes. Cooperative variation: whole group plays as one team.",
+      "Set up board game. Roll dice, move, land on art zone, draw challenge card (draw, colour, build or mixed media), complete within the time limit. Cooperative variation: whole group plays as one team.",
     materials: [
       "Game board",
       "Player tokens",
       "Dice",
       "Timer",
       "Challenge card decks per zone",
+      "Pencils or crayons",
+      "Clay",
+      "Blocks or pipe cleaners",
+      "Colour sheets",
     ],
     difficultyLevels: [
       { level: "Easy", description: "simpler cards, 3-minute timer." },
@@ -628,7 +634,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     howToPlay:
       "One child is the describer. The describer describes the card without naming the subject. The other children draw what they hear. After everyone is done, the describer picks the drawing that best matches what they had in mind. Variation — the child invents an imaginary subject and describes it while drawing simultaneously — for example, a whale with the body of a horse.",
     materials: [
-      "Physical card decks — Animals and Objects (not digital)",
+      "Physical card decks — Animals and Objects",
       "Drawing paper",
       "Colour pencils or markers",
     ],
@@ -649,7 +655,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     howToPlay:
       "The teacher reads out the prompt to draw. All children draw simultaneously for a set time, then reveal. Example prompt — \"something that starts with the letter C.\" If two or more children draw the same thing, they each score 0; a unique drawing scores a point. Bonus points for the funniest or most artistic drawing, voted by the group. Variation — children draw individually or as a team taking turns.",
     materials: [
-      "Prompt cards (Sketch It Up deck)",
+      "Drawing prompts — https://wordwall.net/resource/86438051/sketch-it-up-deck-2",
       "Drawing paper or whiteboards",
       "Pencils or markers",
       "Timer",

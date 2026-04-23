@@ -376,14 +376,16 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "look at this finished artwork. name the tool or medium used. what specific mark tells you?",
     howToPlay:
-      "Teacher shows image card of finished artwork. Children examine and name tool/medium. Group discusses. Teacher confirms and names mark characteristic. Variation 2: cards spread face-up, children group by tool/medium.",
+      "Variation 1 — Guess: Teacher shows image card of finished artwork. Children examine and name the tool/medium. Group discusses. Teacher confirms and names the mark characteristic. · Variation 2 — Making: After guessing, children make the drawing.",
     materials: [
       "Image cards showing finished artworks (A5, laminated)",
+      "Drawing paper",
+      "Pencils, crayons, and the identified tools/mediums",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "clearly distinct media, choice of two." },
-      { level: "Medium", description: "mixed media, no prompts, name tool and one reason." },
-      { level: "Hard", description: "subtle/mixed media, name tool, explain identification, name one technique for own work." },
+      { level: "Easy", description: "identify tool or medium (variation 1)." },
+      { level: "Medium", description: "use that tool or medium to replicate the drawing." },
+      { level: "Hard", description: "use the tool or medium to draw creatively." },
     ],
     debriefPrompts: [],
     type: "physical-game",
@@ -404,7 +406,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     difficultyLevels: [
       { level: "Easy", description: "B1 cards, visible throughout." },
       { level: "Medium", description: "B1 or B2, educator names one thing to observe." },
-      { level: "Hard", description: "B2, shown 60 seconds then removed, extension required." },
+      { level: "Hard", description: "B2 card shown for a minute then removed, drawn from memory. Extension required." },
     ],
     debriefPrompts: [],
     type: "physical-game",
@@ -416,7 +418,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "build a composition with one dominant shape supported by two smaller ones. then sketch it capturing proportions and negative space.",
     howToPlay:
-      "Educator gives composition brief. Children arrange transparent pieces freely. After building, sketch arrangement on paper capturing proportions and negative space. Compare sketch to tile arrangement.",
+      "Each child builds a composition from transparent geometric pieces with one dominant shape supported by two smaller ones. After building, sketch the arrangement on paper capturing proportions and negative space. Compare sketch to tile arrangement. · Variation — Create the subjects in the Shape Cards sequentially, letting everyone guess turn by turn.",
     materials: [
       "Two sets of 60 transparent geometric pieces",
       "Shape Cards B1 and B2",
@@ -436,15 +438,16 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "scene card in the centre. i name an object — you find and draw it.",
     howToPlay:
-      "Scene card visible. Educator names object. Children find and draw simultaneously. Variation 2: card shown 30 seconds then removed, draw from memory. Variation 3: draw only the negative space around the named object.",
+      "Scene card visible. Educator names object. Child finds object, then draws. Variation 2: card shown 30 seconds then removed, draw from memory.",
     materials: [
       "Scene cards (A5)",
       "Blank drawing sheets",
+      "Pencils or crayons",
     ],
     difficultyLevels: [
       { level: "Easy", description: "direct name, card visible." },
       { level: "Medium", description: "card visible, draw as much detail as you choose." },
-      { level: "Hard", description: "Variation 2 or 3, proportions accurate, child names one specific thing observed and applied." },
+      { level: "Hard", description: "card shown 30 seconds then removed, drawn from memory. Proportions accurate; child names one specific thing observed and applied." },
     ],
     debriefPrompts: [],
     type: "physical-game",
@@ -454,15 +457,19 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     segment: "art-games",
     title: "artventure",
     setupLine:
-      "roll, move your token, land on an art zone, draw a challenge card, and complete it within 2 minutes. after completing challenge, child gives one sentence explaining one decision they made.",
+      "roll the dice, move your token, land on an art zone, draw a challenge card (draw, colour, build or mixed media), and complete it within the time limit. after completing the challenge, child gives one sentence explaining one decision they made.",
     howToPlay:
-      "Board game. Roll, move, land on art zone, draw challenge card, complete in 2 minutes. Cooperative variation: whole group plays as one team. After completing challenge, child gives one sentence explaining one decision they made.",
+      "Set up board game. Roll dice, move, land on art zone, draw challenge card (draw, colour, build or mixed media), complete within the time limit. Cooperative variation: whole group plays as one team. After completing the challenge, child gives one sentence explaining one decision they made.",
     materials: [
       "Game board",
       "Player tokens",
       "Dice",
       "Timer",
       "Challenge card decks per zone",
+      "Pencils or crayons",
+      "Clay",
+      "Blocks or pipe cleaners",
+      "Colour sheets",
     ],
     difficultyLevels: [
       { level: "Easy", description: "simpler cards, 3-minute timer." },
@@ -481,7 +488,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     howToPlay:
       "One child is the describer. The describer describes the card without naming the subject. The other children draw what they hear. After everyone is done, the describer picks the drawing that best matches what they had in mind. Variation — the child invents an imaginary subject and describes it while drawing simultaneously — for example, a whale with the body of a horse.",
     materials: [
-      "Physical card decks — Animals and Objects (not digital)",
+      "Physical card decks — Animals and Objects",
       "Drawing paper",
       "Colour pencils or markers",
     ],
@@ -502,7 +509,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     howToPlay:
       "The teacher reads out the prompt to draw. All children draw simultaneously for a set time, then reveal. Example prompt — \"something that starts with the letter C.\" If two or more children draw the same thing, they each score 0; a unique drawing scores a point. Bonus points for the funniest or most artistic drawing, voted by the group. Variation — children draw individually or as a team taking turns.",
     materials: [
-      "Prompt cards (Sketch It Up deck)",
+      "Drawing prompts — https://wordwall.net/resource/86438051/sketch-it-up-deck-2",
       "Drawing paper or whiteboards",
       "Pencils or markers",
       "Timer",

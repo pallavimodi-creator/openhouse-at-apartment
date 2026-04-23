@@ -60,45 +60,30 @@ const rollCallActivities: Record<string, CurriculumActivity> = {
       },
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Solo — each child forms the object on their own body." },
-      { level: "Medium", description: "Partner — two children form the object together, adding the partner action on the card." },
-      { level: "Hard", description: "Additional group or pair tasks — extra prompts layered on top of the base formation (e.g. \"chimney appears,\" \"two arches meet,\" \"flying in formation\")." },
+      { level: "Easy", description: "Solo / partner action on the card — child forms the object using the solo or partner action printed on the card." },
+      { level: "Medium", description: "Additional group or pair tasks — extra prompts layered on top of the base formation (e.g. \"chimney appears,\" \"two arches meet,\" \"flying in formation\")." },
+      { level: "Hard", description: "Find your pair — cards come in matching pairs. Each child draws one card without showing others; on the signal, everyone forms their object with their body and finds their matching pair. First pair to lock in wins." },
     ],
     materials: [
       "Every Body Says object image cards (30 cards · 15 pairs)",
     ],
-    promptHeading: "prompts — card · object · solo action · partner action",
+    promptHeading: "prompts — 15 pair blocks · card A + card B",
     prompts: [
-      "P1A · chair — solo: glide · partner: one leg breaks",
-      "P1B · table — solo: wobble · partner: set the table",
-      "P2A · spoon — solo: stir · partner: scoop",
-      "P2B · bowl — solo: spin · partner: fill up",
-      "P3A · bed — solo: bounce · partner: tuck in",
-      "P3B · pillow — solo: squish · partner: two pillows",
-      "P4A · tree — solo: grow · partner: a bird lands",
-      "P4B · flower — solo: wilt · partner: a bee arrives",
-      "P5A · car — solo: accelerate · partner: traffic jam",
-      "P5B · bus — solo: brake · partner: passengers board",
-      "P6A · bridge — solo: sway · partner: someone crosses",
-      "P6B · arch — solo: crumble · partner: two arches meet",
-      "P7A · lamp — solo: flicker · partner: switch on",
-      "P7B · book — solo: flip · partner: someone reads",
-      "P8A · house — solo: shrink · partner: chimney appears",
-      "P8B · door — solo: creak · partner: knock knock",
-      "P9A · airplane — solo: soar · partner: flying in formation",
-      "P9B · rocket — solo: launch · partner: countdown",
-      "P10A · bicycle — solo: pedal · partner: flat tyre",
-      "P10B · wheel — solo: spin · partner: two wheels",
-      "P11A · guitar — solo: strum · partner: duet",
-      "P11B · drum — solo: rumble · partner: drumstick snaps",
-      "P12A · umbrella — solo: inside out · partner: share",
-      "P12B · rain — solo: pour · partner: puddle forms",
-      "P13A · ladder — solo: wobble · partner: someone climbs",
-      "P13B · stairs — solo: crumble · partner: third step",
-      "P14A · toothbrush — solo: brush · partner: giant tooth",
-      "P14B · tooth — solo: wobbly · partner: toothbrush arrives",
-      "P15A · camera — solo: zoom · partner: pose",
-      "P15B · mirror — solo: crack · partner: three-way mirror",
+      "Pair 1 · chair (solo: glide · partner: one leg breaks) + table (solo: wobble · partner: set the table)",
+      "Pair 2 · spoon (solo: stir · partner: scoop) + bowl (solo: spin · partner: fill up)",
+      "Pair 3 · bed (solo: bounce · partner: tuck in) + pillow (solo: squish · partner: two pillows)",
+      "Pair 4 · tree (solo: grow · partner: a bird lands) + flower (solo: wilt · partner: a bee arrives)",
+      "Pair 5 · car (solo: accelerate · partner: traffic jam) + bus (solo: brake · partner: passengers board)",
+      "Pair 6 · bridge (solo: sway · partner: someone crosses) + arch (solo: crumble · partner: two arches meet)",
+      "Pair 7 · lamp (solo: flicker · partner: switch on) + book (solo: flip · partner: someone reads)",
+      "Pair 8 · house (solo: shrink · partner: chimney appears) + door (solo: creak · partner: knock knock)",
+      "Pair 9 · airplane (solo: soar · partner: flying in formation) + rocket (solo: launch · partner: countdown)",
+      "Pair 10 · bicycle (solo: pedal · partner: flat tyre) + wheel (solo: spin · partner: two wheels)",
+      "Pair 11 · guitar (solo: strum · partner: duet) + drum (solo: rumble · partner: drumstick snaps)",
+      "Pair 12 · umbrella (solo: inside out · partner: share) + rain (solo: pour · partner: puddle forms)",
+      "Pair 13 · ladder (solo: wobble · partner: someone climbs) + stairs (solo: crumble · partner: third step)",
+      "Pair 14 · toothbrush (solo: brush · partner: giant tooth) + tooth (solo: wobbly · partner: toothbrush arrives)",
+      "Pair 15 · camera (solo: zoom · partner: pose) + mirror (solo: crack · partner: three-way mirror)",
     ],
     debriefPrompts: [
       {
@@ -196,8 +181,34 @@ const rollCallActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "I'm going to start a gesture with a sound. Copy it exactly and pass it on.",
     howToPlay:
-      "Everyone stands in a circle. One player makes a small gesture with a small sound \u2014 for example, slowly raising one hand and humming softly. Their neighbour copies exactly and passes it around. Variations in what subtly changes are observed and discussed after. Also watch for small unplanned sounds \u2014 sighs, clicks, breaths \u2014 these should be copied too.",
+      "Everyone stands in a circle. One player makes a small gesture with a small sound — for example, slowly raising one hand and humming softly. Their neighbour copies exactly and passes it around. Variations in what subtly changes are observed and discussed after. Also watch for small unplanned sounds — sighs, clicks, breaths — these should be copied too.",
     materials: [],
+    promptHeading: "prompts — gesture + sound combinations",
+    prompts: [
+      "Touch one shoulder slowly and hum one soft note.",
+      "Open your eyes wide and make a tiny gasp.",
+      "Scrunch your nose and sniff two times.",
+      "Wave one hand gently and whisper \"hi.\"",
+      "Put your hands on your cheeks and say \"oh!\"",
+      "Raise both eyebrows and make a short \"hmm.\"",
+      "Pat your knees two times and say \"tap tap.\"",
+      "Clap once softly and smile wide.",
+      "Touch your chin and say \"hmm hmm.\"",
+      "Wiggle your fingers and whisper \"tickle tickle.\"",
+      "Stamp one foot lightly and say \"thump.\"",
+      "Cover your mouth and make a tiny giggle.",
+      "Point to your ear and say \"listen.\"",
+      "Make a surprised face and say \"wow!\"",
+      "Rub your hands together and say \"ready ready.\"",
+      "Tilt your head to one side and hum softly.",
+      "Tap your elbow and make a quiet \"pop.\"",
+      "Stretch both arms out and say \"ta-da!\"",
+      "Blink three times and make a soft \"bloop.\"",
+      "Pat your shoulders and say \"brrr.\"",
+      "Make a sleepy face and yawn quietly.",
+      "Lift one hand high and say \"hello there!\"",
+      "Tap your head twice and say \"beep beep.\"",
+    ],
     debriefPrompts: [],
     type: "facilitated",
   },
@@ -209,10 +220,9 @@ const rollCallActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "Pick a card. Don't show anyone. Make the sound of the ticked object — the rest of us guess.",
     howToPlay:
-      "Children take turns. One child picks a card from the deck without showing it. On the card is a ticked object — a bell, a door, a cat, a kettle, a clap, a drum. The child makes the sound of that object using only their voice and body. The other children listen and guess. First correct guess picks the next card. After a correct guess, the child explains one specific mark-quality of their sound — pitch, rhythm, attack — that made it recognisable. To extend the game — children play to complete a set of sounds by asking their friends for the set card and making that sound too. For example: collect all instrument cards to make a set — bell + drum + guitar + flute — every child who has one of those cards makes its sound as they hand it over.",
+      "Children take turns. One child picks a card from the deck without showing it. On the card is a ticked object — a bell, a door, a cat, a kettle, a clap, a drum. The child makes the sound of that object using only their voice and body. The other children listen and guess. First correct guess picks the next card. After a correct guess, the child explains one specific mark-quality of their sound — pitch, rhythm, attack — that made it recognisable. To extend the game — children play to complete a set of sounds by asking their friends for the set card and making that sound in order to get that card. For example, if a child gets a card with 4 animal images and one ticked (like a dog), the child has to find the other 3 cards with the other animals ticked — a ticked cat, a ticked cow, and so on. The child asks friends for those cards and gets them only after making the matching sound.",
     materials: [
       "What's That Sound card deck (objects with a ticked sound on each)",
-      "Set cards — groups of related objects (instruments, kitchen sounds, animals, etc.)",
     ],
     debriefPrompts: [
       {
@@ -253,7 +263,7 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     difficultyLevels: [
       { level: "Easy", description: "Use B1 cards." },
       { level: "Medium", description: "Use B2 cards." },
-      { level: "Hard", description: "Also use tone prompts to write the script and to perform — https://wordwall.net/resource/84260671/script-flip-digital-tones" },
+      { level: "Hard", description: "Also use tone prompts to write the script and to perform." },
     ],
     debriefPrompts: [
       {
@@ -286,22 +296,22 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "Shuffle Story Cards and place face-up in 4 piles (character, object, event, emotion). Pick one card from any pile. Children place it on the story mat and each child continues the story line through the cards they pick and place.",
     howToPlay:
-      "Each child picks one card from any pile and places it on the Story Mat. Say the line in the story as you place the card. Next child picks another card, places it on the mat, and continues the story line. The tale builds card by card around the circle.",
+      "First child places their card and begins the story. The next child picks a card from any pile, places it on the Story Mat, and continues the story line from where the previous child left off. The tale builds card by card around the circle. The child placing the last card ends the story, or the teacher ends it. At the end, the children give their story a title.",
     variations: [
       {
         name: "Transition cards",
         description:
-          "Use transition cards alongside the story cards — when a child places one, they use the word or phrase on it to link their line to the previous one (e.g. \"meanwhile…,\" \"suddenly,\" \"later that day\").",
+          "Use transition cards alongside the story cards — when a child places one, they use the word or phrase on it to link their line to the previous one (e.g. \"meanwhile…,\" \"suddenly,\" \"later that day\"). One child narrates the full story at the end.",
       },
       {
         name: "Theme dice",
         description:
-          "The teacher rolls the theme dice to set the theme for the story. All children keep their contributions inside that theme.",
+          "The teacher rolls the theme dice to set the theme for the story. All children keep their contributions inside that theme. One child narrates the full story at the end.",
       },
       {
         name: "Re-arrange the story",
         description:
-          "After the first telling, the teacher places the beginning / middle / end arrow cards over the row and interchanges them — the group has to re-tell the story in the new order using the same cards.",
+          "After the first telling, the teacher places the beginning / middle / end arrow cards over the row and interchanges them — the group has to re-tell the story in the new order using the same cards. One child narrates the rearranged story at the end.",
       },
     ],
     materials: [
@@ -314,7 +324,7 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     difficultyLevels: [
       { level: "Easy", description: "Educator gives opening sentence." },
       { level: "Medium", description: "Standard play, players choose their cards." },
-      { level: "Hard", description: "Cards drawn randomly face-down; 5-minute time limit on the full tale." },
+      { level: "Hard", description: "Use the theme dice — teacher rolls and all children keep their contributions inside the rolled theme." },
     ],
     debriefPrompts: [
       {
@@ -336,7 +346,7 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "Divide into Performing Team and Questioning Team. Performing team gets cards, creates a story, and performs. Questioning team asks using their Question Bands.",
     howToPlay:
-      "Divide into Performing Team (2–3) and Questioning Team. The Performing Team draws one story — 6 cards — and lays them face-up in the story's printed order. They have preparation time to create and prepare their performance. Perform within 2–3 minutes. Questioning team asks questions using Question Bands — at least one Why and one How. One player summarises in 2–3 sentences. Roles rotate.",
+      "Divide into Performing Team and Questioning Team. The Performing Team draws one story — 6 cards — and lays them face-up in the story's printed order. They have preparation time to create and prepare their performance. Perform within set time. Questioning team asks questions using Question Bands — at least one Why and one How — and the Performing Team answers. One player summarises in 2–3 sentences. Roles rotate.",
     materials: [
       "Story Combination Cards — 10 stories × 6 cards = 60 A5 cards total (laminated, matte, openhouse green stripe)",
       "Question Bands (Who, What, When, Where, Why, How)",
@@ -352,13 +362,13 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
       "Story 1 — The Tortoise and the Hare (Aesop)",
       "Story 2 — The Boy Who Cried Wolf (Aesop)",
       "Story 3 — The Lion and the Mouse (Aesop)",
-      "Story 4 — The Emperor's New Clothes (Hans Christian Andersen) · works best with 3 children",
+      "Story 4 — The Emperor's New Clothes (Hans Christian Andersen)",
       "Story 5 — The Ant and the Grasshopper (Aesop)",
-      "Story 6 — The Crow and the Pitcher (Aesop) · one child acts, others narrate",
+      "Story 6 — The Crow and the Pitcher (Aesop)",
       "Story 7 — The Ugly Duckling (Hans Christian Andersen)",
       "Story 8 — Androcles and the Lion (Aesop)",
       "Story 9 — The Wind and the Sun (Aesop)",
-      "Story 10 — The Brahmin's Pot of Dreams (Panchatantra) · make the dream visible through narration",
+      "Story 10 — The Brahmin's Pot of Dreams (Panchatantra)",
     ],
     debriefPrompts: [
       {
@@ -377,19 +387,22 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     segment: "playground",
     title: "spaggle",
     setupLine:
-      "Note your topic from the digital deck. Assemble your Speech Puzzle Board \u2014 Topic, Opening, Argument, Evidence, Conclusion \u2014 using your cards. Then deliver your speech.",
+      "Each player receives a topic card. Assemble your Speech Puzzle Board — Topic, Opening, Argument, Evidence, Conclusion — using your cards. Then deliver your speech in the order of the cards on the board.",
     howToPlay:
-      "Each player notes their topic from the digital topic deck. Deal 5 Puzzle Cards and 2 Action Cards per player. Players assemble their Speech Puzzle Board simultaneously. On each turn, draw 1 Puzzle Card, may play one Action Card (Swap/Steal/Block), then deliver speech using cards on board in order. After delivering, ask one question to any other player. If they cannot answer correctly, they lose 1 token. Game ends at 15 tokens or after fixed rounds.",
+      "Each player notes their topic from the digital topic deck on their topic card. Teacher gives out 2 Action Cards per player. Players assemble their Speech Puzzle Board simultaneously. On each turn, a player draws one Puzzle Card; other players may use one Action Card (Swap / Steal / Block) on them when they draw. After all puzzle cards are placed, the child delivers their speech using the cards on the board in order. After delivering, the speaker asks one question to any other player. If they cannot answer correctly, they lose 1 token. Game ends at 15 tokens or after fixed rounds.",
     materials: [
       "Speech Puzzle Board (1 per child)",
+      "Topic Cards",
       "Speech Puzzle Cards",
-      "Action Cards",
+      "Action Cards (Swap / Steal / Block)",
       "Player Tokens and Tracker",
+      "Digital prompts — https://wordwall.net/resource/84114197",
+      "Digital prompts — https://wordwall.net/resource/84261693",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Educator suggests topic and helps fill Opening." },
-      { level: "Medium", description: "Child assembles independently." },
-      { level: "Hard", description: "Must use all five sections; Conclusion must connect back to Opening." },
+      { level: "Easy", description: "Educator helps the child deliver their speech." },
+      { level: "Medium", description: "Child delivers independently — standard gameplay." },
+      { level: "Hard", description: "Conclusion must connect back to the opening." },
     ],
     debriefPrompts: [
       {
@@ -412,19 +425,20 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     segment: "playground",
     title: "pitch perfect",
     setupLine:
-      "Your team has invented something that solves a problem. Plan your pitch: name the problem, describe the solution, explain why it works. Incorporate the Twist card. Present to the investor panel.",
+      "Investors draw a Problem Card. Teams select a Solution Card from their hand that best matches the problem and prepare their pitch. Investors evaluate and award tokens based on structure and how convincing the pitch is.",
     howToPlay:
-      "Teams of 2\u20133 draw a pitch prompt card. 5\u20137 minutes to plan. Educator gives each team one Twist card to incorporate. Each team pitches for 2 minutes. Non-pitching groups are the investor panel and ask at least two questions. Panel awards tokens to most structured and convincing pitch.",
+      "Investors draw a Problem Card that presents a problem. Teams select 1 Solution Card from their hand that they feel best matches the Problem Card, and prepare their pitch. Each team pitches to the Investors. The Investors are allowed to ask questions. The Investors evaluate and award tokens (1, 2 or 3) to each team based on the structure of the pitch and how convincing it was.",
     materials: [
-      "Pitch prompt cards",
-      "Investor tokens",
+      "Problem Cards",
+      "Solution Cards",
+      "Investor tokens (1, 2, 3)",
       "Twist cards",
       "Index cards for planning",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "7-minute prep, Twist optional, panel asks one question." },
-      { level: "Medium", description: "5-minute prep, Twist required, two questions." },
-      { level: "Hard", description: "5-minute prep, Twist required, panel must challenge one assumption." },
+      { level: "Easy", description: "Twist optional, panel / Investors asks one question." },
+      { level: "Medium", description: "Twist required, panel / Investors asks two questions." },
+      { level: "Hard", description: "Use a Twist card — teams must balance completing the twist with creating a pitch that appeals to the Investors." },
     ],
     debriefPrompts: [
       {
@@ -444,19 +458,21 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     segment: "playground",
     title: "speech-a-palooza",
     setupLine:
-      "Roll, move, draw a challenge card. Complete the speaking challenge. Then answer one follow-up question without repeating anything you already said.",
+      "Each player rolls the dice, moves their meeple, and follows the action on the block they land on. Complete a challenge or fortune or simple action to earn tokens.",
     howToPlay:
-      "Each player rolls, moves, draws challenge card. Complete speaking challenge. One other player asks one genuine follow-up question. Speaker must answer without repeating anything already said. Repeat = lose one token.",
+      "Each player is given a meeple and a set amount of tokens. Each player rolls the dice, moves, and follows the action on the block they land on. The player draws a level-based challenge card or a fortune card, or does the simple action mentioned on the block. Completing the challenge or action earns the player tokens.",
     materials: [
       "Board",
-      "Challenge cards",
-      "Tokens",
+      "Meeples (one per player)",
       "Dice",
+      "Level-based Challenge cards (easy / medium / hard)",
+      "Fortune cards",
+      "Tokens",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Follow-up questions optional." },
-      { level: "Medium", description: "Follow-up required, no repeats." },
-      { level: "Hard", description: "After follow-up, peer speaks on same topic for 20 seconds starting from where speaker left off." },
+      { level: "Easy", description: "Easy challenge cards." },
+      { level: "Medium", description: "Medium challenge cards." },
+      { level: "Hard", description: "Difficult challenge cards." },
     ],
     debriefPrompts: [
       {
@@ -480,7 +496,7 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "Speak on your topic for a set time to move a set number of steps. Hesitate or stop, and the timer stops — you move by however many steps the time board gives you.",
     howToPlay:
-      "Pieces start at the bottom of the gameboard. The time board at the side maps speaking time to steps — e.g. 15 seconds = 1 step, 30s = 2, 45s = 3, 60s = 4, and so on. Players can see the board the whole time so they can plan how long they want to keep speaking. On their turn, an individual / team draws a topic card and starts speaking. The timer runs visibly. Hesitation, repetition, or going off-topic stops the timer — the piece moves by the number of steps the time board allows for that clock reading. Landing on a Slippery Step moves the piece back. Landing on a Risk Step: player attempts a Risk Card challenge — completing it earns a Reward Card. First individual / team to the top of the board wins. In team play, the whole team shares one piece but each team member speaks on a different topic on their turn — every member takes at least one turn.",
+      "Pieces start at the bottom of the gameboard. The time board at the side maps speaking time to steps — e.g. 15 seconds = 1 step, 30s = 2, 45s = 3, 60s = 4, and so on. Players can see the board so they can plan how long they want to keep speaking. On their turn, an individual / team rolls the dice and moves. Teacher reads out a prompt from the digital deck in the app. Player starts speaking on that prompt. The timer runs. Hesitation, repetition, or going off-topic stops the timer — the piece moves by the number of steps the time board allows for that clock reading. Landing on a Slippery Step moves the piece back. Landing on a Risk Step: player attempts a Risk Card challenge — completing it earns a Reward Card. First individual / team to the top of the board wins.",
     variations: [
       {
         name: "Individual play",
@@ -503,13 +519,14 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
       "Player pieces",
       "Risk Cards",
       "Reward Cards",
-      "App for topic cards",
-      "Visible timer",
+      "Digital prompts — https://wordwall.net/resource/84114197",
+      "Digital prompts — https://wordwall.net/resource/84261693",
+      "Timer",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Simple familiar topics, 3-word variation not used." },
-      { level: "Medium", description: "Standard topics, 3-word incorporation optional." },
-      { level: "Hard", description: "Complex or abstract topics, 3-word incorporation required and words must appear naturally." },
+      { level: "Easy", description: "Timer visible to the speaker." },
+      { level: "Medium", description: "Timer not visible to the speaker." },
+      { level: "Hard", description: "Use of 3-word incorporation — the opposing player gives the speaker 3 words to incorporate into their speech before the turn begins." },
     ],
     debriefPrompts: [
       {
@@ -528,7 +545,6 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
           "How did you feel while speaking — nervous, excited, or confident?",
           "Celebrate Success:",
           "What are you most proud of from the game today?",
-          "Share one thing you appreciated about a teammate's effort.",
         ],
       },
     ],
@@ -541,21 +557,21 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "Three coloured card decks are in the centre. On your turn, draw one card from each deck and complete the speaking tasks one after another.",
     howToPlay:
-      "Three coloured card decks are placed in the centre \u2014 each colour is a different type of speaking task. On their turn, a child draws one card from each of the three decks and completes the speaking tasks one after another, laying each completed card face-up in front of them. This line of completed cards is their train. Wild Cards are shuffled into the decks \u2014 when a child draws a Wild Card, they decide how to use it as a bonus or a skip within their turn. At 8\u201312, no notes are permitted at any difficulty level.",
+      "Three coloured card decks are placed in the centre — each colour is a different type of speaking task. On their turn, a child draws one card and completes the speaking task, laying the completed card face-up in front of them. This line of completed cards is their train. The child wins by making a set of 3 cards of each colour — a total of 9 cards. Action cards may be used during play depending on the difficulty level. At 8–12, no notes are permitted at any difficulty level.",
     variations: [
       {
         name: "Longest train",
-        description: "At the end of the session, the child with the longest train \u2014 most cards completed in sequence \u2014 wins.",
+        description: "At the end of the session, the child with the longest train — most cards completed in sequence — wins.",
       },
     ],
     materials: [
-      "Three-category card deck (three coloured decks)",
-      "Wild Cards shuffled into decks",
+      "Coloured Question Cards — with 6 compartments (Package, Suitcase, Food, Beverage, Pet, Passenger)",
+      "Wild cards and action cards",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher reads each card aloud, short pauses between." },
-      { level: "Medium", description: "Child reads independently, completes in sequence." },
-      { level: "Hard", description: "Must connect all three into one continuous response; any pause means starting again." },
+      { level: "Easy", description: "Set of same colour only — no use of action cards." },
+      { level: "Medium", description: "Use action cards." },
+      { level: "Hard", description: "Use action cards + all cards in a set must belong to the same compartment and be of the same colour." },
     ],
     debriefPrompts: [
       {
@@ -576,7 +592,7 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "One child holds a card to their forehead without looking at it. The group acts out what is on the card.",
     howToPlay:
-      "One child holds a card to their forehead without looking at it. The group acts out what is on the card. At 8\u201312, child must use the word in a sentence demonstrating genuine contextual understanding. Another player may challenge.",
+      "One child holds a card to their forehead without looking at it. The group acts out what is on the card. The child guesses what is on the card based on the group's enactment. At 8–12, the child must also use the word in a sentence demonstrating genuine contextual understanding. Another player may challenge.",
     variations: [
       {
         name: "Body and face only",
@@ -591,7 +607,7 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
         description: "Child asks yes/no questions to guide themselves to the answer. Hardest: child uses the guessed word in a sentence that shows they understand what it means.",
       },
     ],
-    materials: ["Vocabulary card deck"],
+    materials: ["Guess Me Cards"],
     difficultyLevels: [
       { level: "Easy", description: "Simple cards, no time limit, no challenge." },
       { level: "Medium", description: "Standard cards, 30-second limit, sentence must show contextual understanding." },
@@ -624,11 +640,33 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
           "Before the questioner returns, one group member secretly receives a different hidden rule (decided by a simple chit draw from a bag). That person is the imposter. The questioner must identify both the group's rule and the imposter.",
       },
     ],
-    materials: ["Simple chits (for imposter variation \u2014 two types: Rule and Imposter)"],
+    materials: ["Simple chits (for imposter variation — two types: Rule and Imposter)"],
     difficultyLevels: [
-      { level: "Easy", description: "Obvious rules, unlimited rounds." },
-      { level: "Medium", description: "Subtle rules, 3 rounds." },
-      { level: "Hard", description: "Group changes rule halfway, questioner identifies both rules and the change point." },
+      { level: "Easy", description: "Unlimited rounds — questioner can ask as many rounds as they need to identify the rule." },
+      { level: "Medium", description: "Limited rounds — questioner has a set number of rounds to identify the rule." },
+      { level: "Hard", description: "Imposter variation — one group member secretly has a different hidden rule. Questioner must identify both the group's rule and the imposter." },
+    ],
+    promptHeading: "reference prompts — hidden rules the group can agree on",
+    prompts: [
+      "Use a colour word in every answer.",
+      "Include a number in every answer.",
+      "Start every answer with \"I think.\"",
+      "End every answer with the same word.",
+      "Speak only in questions.",
+      "Give opposite answers.",
+      "Use only 3 words per answer.",
+      "Add an animal name in every answer.",
+      "Never use the word \"I.\"",
+      "Always say \"yes\" before answering.",
+      "Include a food item in every answer.",
+      "Act and speak — add one action before answering.",
+      "Give only very short answers.",
+      "Give only long or detailed answers.",
+      "Stretch one word in every answer.",
+      "Smile while answering.",
+      "Speak like a robot.",
+      "Speak in a whisper.",
+      "Answer like a baby.",
     ],
     debriefPrompts: [],
     type: "facilitated",
@@ -644,16 +682,45 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     materials: [
       "Quadrant Mats (4)",
       "Slates with stands (4)",
-      "App for scenario cards",
+      "Scenario prompts — Improv Survival | Topics",
       "Number Cards (1 per audience member)",
       "Block Tokens (1 per performer)",
       "Penalty Tokens",
+      "Script Book",
       "Timer",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Educator performs as one performer, simple scenarios, audience shifts once." },
-      { level: "Medium", description: "Two student performers, standard scenarios, audience shifts twice, Block Tokens in play." },
-      { level: "Hard", description: "No Block Tokens, audience shifts twice, final round each performer through all 4 quadrants in 60 seconds." },
+      { level: "Easy", description: "Use Script Book — performers reference the script book while performing." },
+      { level: "Medium", description: "Normal gameplay without the script book — Block Token can be used twice." },
+      { level: "Hard", description: "Without the Script Book and without the Block Card — performers adapt on the fly." },
+    ],
+    promptHeading: "reference quadrant prompts — one per quadrant mat",
+    prompts: [
+      "Slow Motion",
+      "Underwater",
+      "Whisper",
+      "Scream",
+      "Happy",
+      "Sad",
+      "Angry",
+      "Surprised",
+      "Scared",
+      "Speak Fast",
+      "American Accent",
+      "Indian Accent",
+      "Excited",
+      "Silly",
+      "Sleepy",
+      "Windy",
+      "Speak in \"n\" word sentences",
+      "Sing your lines",
+      "Speak in questions",
+      "Curious",
+      "Bored",
+      "Anxious",
+      "Disgusted",
+      "Sarcastic",
+      "Loving",
     ],
     debriefPrompts: [
       {
@@ -684,25 +751,25 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     segment: "playground",
     title: "reverse gear",
     setupLine:
-      "I'll read a statement. One child says it. The next child reverses it — changing the quantifier and the action.",
+      "Teacher gives a sentence prompt. A child starts speaking. Another player can call \"reverse gear\" on any word — the speaker then has to say the opposite of what was originally said.",
     howToPlay:
-      "Teacher reads a statement from the prompt bank. The first child repeats it. The next child reverses it — flipping the quantifier (always → never, usually → rarely) and optionally the action. The difficulty level determines how much gets reversed. Group listens for whether the reversal is genuinely speakable and makes sense in real life.",
+      "Teacher gives a sentence prompt to speak. A child starts speaking. Another player can choose to call \"reverse gear\" on a specific word in between. The child then has to say the opposite of what was originally said, continuing from that point.",
     materials: ["Reverse Gear prompt deck (app)"],
     difficultyLevels: [
       {
         level: "Easy",
         description:
-          "Teacher reads the statement aloud. Child reverses the quantifier only — e.g. \"always\" → \"never.\"",
+          "One reverse gear, one sentence — the reverse gear call can only be made once and only within one sentence.",
       },
       {
         level: "Medium",
         description:
-          "Child reads independently. Child reverses both quantifier and action — e.g. \"I always like playing in the park\" → \"I never like staying indoors.\"",
+          "Reverse gear can be called up to 2 times within a sentence.",
       },
       {
         level: "Hard",
         description:
-          "Child reverses the statement AND adds one extra sentence extending the reversed idea — e.g. \"I never like staying indoors — I need to be outside or I go crazy.\"",
+          "Continue and add a new sentence relating to the reversed sentence. The child can also choose to call reverse gear one more time in the newly added sentences.",
       },
     ],
     promptHeading: "prompts — statements to reverse",
@@ -731,29 +798,25 @@ const showtimeActivities: Record<string, CurriculumActivity> = {
     segment: "showtime",
     title: "debate duel",
     setupLine:
-      "Two debaters, one topic. One argues For, one argues Against. The audience awards their vote to whoever was more convincing in how they delivered \u2014 not who they agreed with.",
+      "Two debaters, one topic. One argues For, one argues Against. Each draws a Challenge Card — a constraint they must handle during their debate.",
     howToPlay:
-      "Arrange in circle. Give each child a Vote Card. Select moderator. Moderator draws Topic Card and selects topic. Selects two debaters. Debaters draw For/Against chits. Each draws a Strategy Card. 1 minute preparation. For speaks first \u2014 1 minute. Against \u2014 1 minute. Non-debating players ask questions. Audience awards Vote Cards based on delivery. Losing debater gets Strike Card. Two Strikes = become moderator. Last debater standing wins.",
+      "Arrange in a circle. Select a moderator. Moderator draws a Topic Card and selects the topic. Moderator selects two debaters. Debaters draw For/Against chits. Each debater draws a Challenge Card that introduces a constraint they must incorporate. 1 minute of preparation. For speaks first — 1 minute. Against — 1 minute. Non-debating players ask questions. Losing debater gets a Strike Card. Two Strikes = become moderator. Last debater standing wins.",
     materials: [
       "Debate Duel Topic Cards (Booklet 1 + 2)",
-      "Strategy Cards",
+      "Challenge Cards",
       "Moderator Card",
-      "Voting Cards (10)",
       "Strike Cards (10)",
       "For & Against Cards (2)",
-      "Volume Meter (educator)",
-      "Small whiteboard + dry-erase markers (educator)",
-      "Index cards",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Booklet 1 topics, 1-min prep, Strategy Cards optional." },
-      { level: "Medium", description: "Booklet 1 or 2, Strategy Cards required, audience names specific moment." },
-      { level: "Hard", description: "Booklet 2, Strategy Cards required, educator names one word losing debater should have stressed." },
+      { level: "Easy", description: "Booklet 1 topics, 1-min prep, Challenge Cards optional." },
+      { level: "Medium", description: "Booklet 1 or 2, Challenge Cards required." },
+      { level: "Hard", description: "Booklet 2, Challenge Cards required, educator names one word the losing debater should have stressed." },
     ],
     debriefPrompts: [
       {
         questions: [
-          "Who did you think used their strategy well? Why?",
+          "Who did you think handled their challenge card well? Why?",
           "What clues can we find that show someone was confident?",
           "Did anyone hear a speaker who used great body language?",
           "Did someone answer a tough question well?",
@@ -801,7 +864,7 @@ const showtimeActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "Reach in without looking. Whatever you pull out \u2014 build a story around it. Named character, a problem connected to the object, a surprising ending. Two minutes to think.",
     howToPlay:
-      "Each child draws one object. 2 minutes to think. Tell story \u2014 2.5 min max. Named character, problem connected to object, surprising ending required. After all stories: Round 1 \u2014 group names strongest structural moment. Round 2 \u2014 group names most clearly structured story overall and explains why.",
+      "Each child reaches into the Magic Box without looking and draws one object. Children build a story around the drawn object — beginning, middle, end. Named character, problem connected to object, surprising ending required.",
     materials: [
       "Magic Box (decorated)",
       "30 small objects \u2014 10 animals, 10 vehicles, 10 everyday objects",
@@ -809,7 +872,7 @@ const showtimeActivities: Record<string, CurriculumActivity> = {
     difficultyLevels: [
       { level: "Easy", description: "Teacher provides a sentence frame: \"One day, [object] was...\"" },
       { level: "Medium", description: "No frame, child begins independently." },
-      { level: "Hard", description: "Two objects, both must appear at named points in the story." },
+      { level: "Hard", description: "Child draws two objects — both must appear at named points in the story." },
     ],
     debriefPrompts: [],
     type: "physical-game",
@@ -943,7 +1006,7 @@ const signOffActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "You have a superpower. Sell it to the group. Tell us what it is, why it is the best, and answer two challenge questions.",
     howToPlay:
-      "One child draws a superpower prompt from the app. 30 seconds to prepare. Child pitches their superpower to the class — what it is, why it is the best, how it would be used. The group votes — useful or useless. Child responds to two challenge questions from the group.",
+      "The child is given a superpower prompt from the app by the teacher. 30 seconds to prepare. Child pitches their superpower to the class — what it is, why it is the best, how it would be used. The group votes — useful or useless. Child responds to two challenge questions from the group.",
     materials: ["App for superpower prompts"],
     difficultyLevels: [
       { level: "Easy", description: "1 minute prep, teacher provides the opening frame." },

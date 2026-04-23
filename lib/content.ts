@@ -214,6 +214,7 @@ export const ACTIVITY_IMAGES: Record<string, string> = {
   "whats-that-sound": "/games/ps/whats-that-sound.png",
   body: "/games/ps/every-body-says.png",
   shuffle: "/games/ps/shuffle.png",
+  "magic-box": "/games/ps/magic-box.svg",
   // Art games
   "match-me": "/games/art/match-me.png",
   "colour-flip": "/games/art/colour-flip.png",

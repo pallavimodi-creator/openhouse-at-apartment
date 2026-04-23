@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFE1B8"/>
+      <stop offset="100%" stop-color="#F8B074"/>
+    </linearGradient>
+    <linearGradient id="box" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8B4513"/>
+      <stop offset="100%" stop-color="#5C2E0E"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="260" fill="url(#bg)"/>
+
+  <!-- Stars -->
+  <g fill="#FFF4D6" opacity="0.9">
+    <polygon points="90,60 94,70 104,72 96,78 98,88 90,82 82,88 84,78 76,72 86,70"/>
+    <polygon points="320,50 323,57 330,58 325,62 326,69 320,65 314,69 315,62 310,58 317,57"/>
+    <polygon points="340,140 343,146 350,147 345,151 346,158 340,154 334,158 335,151 330,147 337,146"/>
+    <polygon points="60,170 63,176 70,177 65,181 66,188 60,184 54,188 55,181 50,177 57,176"/>
+  </g>
+
+  <!-- Box body -->
+  <g transform="translate(120,100)">
+    <!-- Shadow -->
+    <ellipse cx="80" cy="155" rx="90" ry="10" fill="#000" opacity="0.15"/>
+    <!-- Box side -->
+    <polygon points="0,40 160,40 160,145 0,145" fill="url(#box)" stroke="#3B1C05" stroke-width="2"/>
+    <!-- Box top -->
+    <polygon points="0,40 30,15 190,15 160,40" fill="#A0522D" stroke="#3B1C05" stroke-width="2"/>
+    <!-- Box right side -->
+    <polygon points="160,40 190,15 190,120 160,145" fill="#6B3210" stroke="#3B1C05" stroke-width="2"/>
+    <!-- Ribbon vertical -->
+    <rect x="72" y="15" width="16" height="130" fill="#F25E35"/>
+    <rect x="72" y="40" width="16" height="105" fill="#D94523"/>
+    <!-- Ribbon horizontal -->
+    <rect x="0" y="80" width="160" height="14" fill="#F25E35"/>
+    <polygon points="160,80 190,55 190,69 160,94" fill="#D94523"/>
+    <!-- Bow -->
+    <g transform="translate(80,22)">
+      <ellipse cx="-12" cy="0" rx="14" ry="9" fill="#F25E35"/>
+      <ellipse cx="12" cy="0" rx="14" ry="9" fill="#F25E35"/>
+      <circle cx="0" cy="0" r="6" fill="#D94523"/>
+    </g>
+  </g>
+
+  <!-- Sparkle rays above -->
+  <g stroke="#FFF4D6" stroke-width="3" stroke-linecap="round" opacity="0.85">
+    <line x1="200" y1="30" x2="200" y2="50"/>
+    <line x1="170" y1="55" x2="180" y2="68"/>
+    <line x1="230" y1="55" x2="220" y2="68"/>
+  </g>
+</svg>

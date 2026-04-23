@@ -73,7 +73,6 @@ const DIGITAL_ONLY_ICONS: Record<string, LucideIcon> = {
   "whacky-news": Newspaper,
   "mad-ad": Megaphone,
   "experience-share": Users,
-  "magic-box": Box,
   "story-spine": BookOpen,
   "superhero-sales": Sparkles,
   "tell-the-story": BookText,
