@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { SEGMENT_COLORS, getActivityImage } from "@/lib/content";
+import { SEGMENT_COLORS, getActivityImage, getActivityVideo } from "@/lib/content";
 import type { CurriculumActivity } from "@/content/types";
 import {
   Zap,
@@ -126,11 +126,26 @@ export function ActivityPopup({
   activity: CurriculumActivity;
 }) {
   const img = getActivityImage(activity.id);
+  const video = getActivityVideo(activity.id);
 
   return (
     <div className="flex flex-col gap-5">
-      {/* Activity hero — real image if we have one, else gradient + icon fallback */}
-      {img ? (
+      {/* Activity hero — video if present (poster = image), else image, else gradient + icon */}
+      {video ? (
+        <div className="relative overflow-hidden rounded-card bg-black">
+          <video
+            src={video}
+            poster={img}
+            controls
+            playsInline
+            preload="metadata"
+            className="max-h-72 w-full bg-ink/[0.02] object-contain"
+          />
+          <span className="absolute left-4 top-4 rounded-chip bg-black/50 px-2.5 py-0.5 text-[10px] font-semibold tracking-normal text-white backdrop-blur-sm">
+            {activity.segment.replace("-", " ")}
+          </span>
+        </div>
+      ) : img ? (
         <div className="relative overflow-hidden rounded-card">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -274,25 +289,62 @@ export function ActivityPopup({
             difficulty levels
           </h3>
           <div className="mt-2 space-y-2">
-            {activity.difficultyLevels.map((d, i) => (
-              <div key={i} className="flex gap-3">
-                <span
-                  className={cn(
-                    "mt-0.5 shrink-0 rounded-chip px-2 py-0.5 text-[10px] font-semibold",
-                    d.level === "Easy"
-                      ? "bg-green-100 text-green-700"
-                      : d.level === "Medium"
-                        ? "bg-amber-100 text-amber-700"
-                        : "bg-red-100 text-red-700"
-                  )}
-                >
-                  {d.level}
-                </span>
-                <p className="text-[12px] leading-relaxed text-ink-muted">
-                  {d.description}
-                </p>
-              </div>
-            ))}
+            {activity.difficultyLevels.map((d, i) => {
+              // Split on "·" so labels like "Easy · Add an Emotion" render cleanly:
+              // the base level goes in the pill, the qualifier goes bold inline
+              // in the description. Keeps pill shapes uniform even with long labels.
+              const [rawBase, ...rest] = d.level.split("·");
+              const base = (rawBase ?? d.level).trim();
+              const qualifier = rest.join("·").trim();
+              const tone = base.startsWith("Easy")
+                ? {
+                    pill: "bg-green-100 text-green-700 ring-green-200/60",
+                    dot: "bg-green-500",
+                  }
+                : base.startsWith("Medium")
+                  ? {
+                      pill: "bg-amber-100 text-amber-700 ring-amber-200/60",
+                      dot: "bg-amber-500",
+                    }
+                  : {
+                      pill: "bg-red-100 text-red-700 ring-red-200/60",
+                      dot: "bg-red-500",
+                    };
+              const dots = base.startsWith("Easy")
+                ? 1
+                : base.startsWith("Medium")
+                  ? 2
+                  : 3;
+              return (
+                <div key={i} className="flex items-start gap-3">
+                  <span
+                    className={cn(
+                      "mt-px inline-flex h-6 w-[76px] shrink-0 items-center justify-center gap-1 rounded-full px-2.5 text-[10px] font-semibold uppercase tracking-wide ring-1 ring-inset",
+                      tone.pill
+                    )}
+                  >
+                    <span className="flex gap-[2px]" aria-hidden="true">
+                      {Array.from({ length: dots }).map((_, j) => (
+                        <span
+                          key={j}
+                          className={cn("h-[4px] w-[4px] rounded-full", tone.dot)}
+                        />
+                      ))}
+                    </span>
+                    <span>{base}</span>
+                  </span>
+                  <p className="pt-0.5 text-[12px] leading-relaxed text-ink-muted">
+                    {qualifier && (
+                      <span className="font-semibold text-ink">
+                        {qualifier}
+                        {" — "}
+                      </span>
+                    )}
+                    {d.description}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       )}

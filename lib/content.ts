@@ -260,6 +260,18 @@ export function getActivityImage(id: string): string | undefined {
   return ACTIVITY_IMAGES[id];
 }
 
+// ─── Activity video lookup ─────────────────────────────────
+// Maps CurriculumActivity.id → static video URL (mp4 in /public).
+// When present, the activity popup renders a video player with the
+// matching ACTIVITY_IMAGES entry used as the poster frame.
+export const ACTIVITY_VIDEOS: Record<string, string> = {
+  "improv-survival": "/games/ps/improv-survival.mp4",
+};
+
+export function getActivityVideo(id: string): string | undefined {
+  return ACTIVITY_VIDEOS[id];
+}
+
 export const SEGMENT_COLORS: Record<string, string> = {
   "roll-call": "bg-brand-orange/12 text-brand-orange",
   playground: "bg-brand-orange/12 text-brand-orange",

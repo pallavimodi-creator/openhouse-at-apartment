@@ -511,15 +511,41 @@ export function DayPlan({
       {/* Engage question — shown when the session carries one (robotics) */}
       {session.engageQuestion && (
         <div className="mb-3 rounded-card bg-brand-orange/5 p-3.5 ring-1 ring-brand-orange/10">
-          <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-brand-orange">
-            engage · 5 min · start of build
-          </p>
-          <p className="mt-1 text-[12px] italic leading-relaxed text-ink">
-            &ldquo;{session.engageQuestion}&rdquo;
-          </p>
-          <p className="mt-1.5 text-[10px] leading-relaxed text-ink-subtle">
-            take 3–4 answers. connect the last answer to today&apos;s build or experiment. no instruction — only curiosity.
-          </p>
+          <div className="flex items-start gap-2.5">
+            <span
+              aria-hidden="true"
+              className="mt-0.5 flex h-7 w-7 flex-none items-center justify-center rounded-full bg-brand-orange/15 text-brand-orange"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                {/* lightbulb — curiosity / opening the mind */}
+                <path d="M9 18h6" />
+                <path d="M10 22h4" />
+                <path d="M12 2a7 7 0 0 0-4 12.7c.7.6 1 1.4 1 2.3v1h6v-1c0-.9.3-1.7 1-2.3A7 7 0 0 0 12 2Z" />
+                {/* spark */}
+                <path d="M19 4l.8 1.6L21.5 6.3 19.9 7 19.2 8.6 18.5 7 17 6.3 18.5 5.6 19 4Z" fill="currentColor" stroke="none" />
+              </svg>
+            </span>
+            <div className="min-w-0 flex-1">
+              <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-brand-orange">
+                engage · 5 min · start of build
+              </p>
+              <p className="mt-1 text-[12px] italic leading-relaxed text-ink">
+                &ldquo;{session.engageQuestion}&rdquo;
+              </p>
+              <p className="mt-1.5 text-[10px] leading-relaxed text-ink-subtle">
+                take 3–4 answers. connect the last answer to today&apos;s build or experiment. no instruction — only curiosity.
+              </p>
+            </div>
+          </div>
         </div>
       )}
 
