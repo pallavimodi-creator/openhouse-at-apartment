@@ -6,7 +6,7 @@ import type {
   CurriculumSkillArea,
   CurriculumSegmentDef,
 } from "@/content/types";
-import { ROBOTICS_TRIAL_SESSION } from "./robotics-trial";
+import { ROBOTICS_TRIAL_SESSION_5_8 } from "./robotics-trial";
 
 // ─── Experiment activities (8 cards — L1 only) ──────────────
 
@@ -498,5 +498,5 @@ export const robotics58: CurriculumProgramme = {
     "rob-experience-book": experienceBookActivity,
   },
   checkpoints,
-  trialSession: ROBOTICS_TRIAL_SESSION,
+  trialSession: ROBOTICS_TRIAL_SESSION_5_8,
 };
