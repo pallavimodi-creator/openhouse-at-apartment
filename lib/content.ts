@@ -222,8 +222,12 @@ export const ACTIVITY_IMAGES: Record<string, string> = {
   "shape-stitch": "/games/art/shape-stitch.png",
   "shape-fusion": "/games/art/shape-fusion.png",
   "cue-cards-game": "/games/art/cue-cards-game.png",
+  // Alias for slug derived from title "cue cards" (used on the overview tab).
+  "cue-cards": "/games/art/cue-cards-game.png",
   "i-spy-i-make": "/games/art/i-spy-i-make.png",
   "i-spot": "/games/art/i-spot.png",
+  // Alias for slug derived from title "i spot tool/medium".
+  "i-spot-tool/medium": "/games/art/i-spot.png",
   artventure: "/games/art/artventure.png",
   "imagine-that": "/games/art/imagine-that.png",
   "doodle-dash": "/games/art/doodle-dash.png",

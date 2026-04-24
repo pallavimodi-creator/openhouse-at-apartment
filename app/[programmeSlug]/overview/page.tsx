@@ -1081,6 +1081,91 @@ function ProgrammeOverviewContent() {
           </div>
         </div>
 
+        {/* Book-day note: 1–3 pages + sketchbook replication */}
+        <div className="mt-4 rounded-xl bg-brand-white p-4 shadow-card ring-1 ring-[#F5D547]/30">
+          <div className="flex items-start gap-3">
+            <span className="mt-0.5 flex h-7 w-7 flex-none items-center justify-center rounded-full bg-[#F5D547]/40 text-amber-900">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+            </span>
+            <div className="flex-1">
+              <p className="text-[12px] font-extrabold text-ink">on a book day</p>
+              <p className="mt-1 text-[11.5px] leading-relaxed text-ink-muted">
+                children always complete <span className="font-semibold text-ink">1–3 pages</span> in their laminated art gym book, then <span className="font-semibold text-ink">replicate what they drew freely in their sketchbook</span> — materials of choice.
+              </p>
+              <div className="mt-2 flex flex-wrap gap-1.5">
+                {["crayons", "colour pencils", "brush pens", "yarn + glue"].map((m) => (
+                  <span
+                    key={m}
+                    className="rounded-chip bg-[#F5D547]/25 px-2 py-0.5 text-[10px] font-semibold text-amber-900"
+                  >
+                    {m}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Extension-day progression ladder — 4 stages with arrows */}
+        <div className="mt-4 rounded-xl bg-brand-white p-4 shadow-card ring-1 ring-[#F5D547]/30">
+          <p className="text-[12px] font-extrabold text-ink">on an extension day — apply the same lines</p>
+          <p className="mt-1 text-[11.5px] leading-relaxed text-ink-muted">
+            children replicate yesterday&apos;s lines inside a new form. the same ladder applies to book extensions and cue card extensions — the teacher picks the rung that matches the child.
+          </p>
+          <div className="mt-3 grid gap-2 md:grid-cols-4 md:gap-1">
+            {[
+              { icon: "⬛", label: "shape", example: "e.g. a square", tone: "bg-[#F5D547]/25 text-amber-900" },
+              { icon: "🍦", label: "simple object", example: "e.g. ice cream", tone: "bg-brand-orange/15 text-brand-orange" },
+              { icon: "🚀", label: "imaginary object", example: "e.g. a funny rocket", tone: "bg-category-stem/25 text-blue-900" },
+              { icon: "🏖️", label: "scene", example: "e.g. a beach scene", tone: "bg-category-movement/40 text-green-900" },
+            ].map((step, i, arr) => (
+              <div key={step.label} className="relative flex md:block">
+                <div className="flex-1 rounded-lg bg-ink/[0.02] p-3 ring-1 ring-ink/5">
+                  <div className="flex items-center gap-2">
+                    <span
+                      className="flex h-9 w-9 flex-none items-center justify-center rounded-full text-[20px]"
+                      style={{ filter: "saturate(1.1)" }}
+                    >
+                      {step.icon}
+                    </span>
+                    <span
+                      className={cn(
+                        "rounded-chip px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide",
+                        step.tone
+                      )}
+                    >
+                      step {i + 1}
+                    </span>
+                  </div>
+                  <p className="mt-2 text-[12px] font-bold text-ink">{step.label}</p>
+                  <p className="mt-0.5 text-[10.5px] italic text-ink-subtle">{step.example}</p>
+                  <p className="mt-1 text-[10.5px] leading-relaxed text-ink-muted">
+                    draw a {step.label} and replicate the lines inside it.
+                  </p>
+                </div>
+                {/* Arrow between steps — horizontal on md+, vertical on mobile */}
+                {i < arr.length - 1 && (
+                  <>
+                    <div className="hidden flex-none self-center px-1 text-brand-orange md:block">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <path d="M5 12h14"/><path d="m13 5 7 7-7 7"/>
+                      </svg>
+                    </div>
+                    <div className="block text-brand-orange md:hidden" aria-hidden="true">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="mx-1 self-center">
+                        <path d="M5 12h14"/><path d="m13 5 7 7-7 7"/>
+                      </svg>
+                    </div>
+                  </>
+                )}
+              </div>
+            ))}
+          </div>
+          <p className="mt-3 text-[10.5px] italic text-ink-subtle">
+            each rung is more advanced than the last — teacher chooses the rung that fits the child.
+          </p>
+        </div>
+
         <div className="mt-4 overflow-hidden rounded-xl bg-[#F5D547]/15 p-4">
 
           {/* Cue card types — rotating */}

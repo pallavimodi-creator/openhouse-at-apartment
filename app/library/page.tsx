@@ -216,13 +216,13 @@ function buildItemsFor(prog: CurriculumProgramme): LibraryItem[] {
       segment: "art-gym",
       title: "art gym — 4-session cycle",
       description:
-        "a structured opening segment using books, cue cards, and their extensions. each session builds directly on the previous one. art gym books are laminated — children mark them with resources of choice: thread, clay, sequins, or erasable markers.",
+        "a structured opening segment using books, cue cards, and their extensions. each session builds directly on the previous one. books are laminated — children mark them with resources of choice (thread, clay, sequins, erasable markers). every book day children do 1–3 pages, then replicate what they drew in their sketchbook freely with materials of choice.",
       info: {
         segmentId: "art-gym",
         segmentName: "Art Gym",
         title: "art gym — 4-session cycle",
         description:
-          "a self-paced warm-up. the cycle runs: book → extension (book) → cue card → extension (cue card). each extension day belongs to the day before it — the book session and its extension are one unit, and the cue card session and its extension are one unit. an extension day is never independent. art gym books are laminated — children mark them with resources of choice: thread, clay, sequins, or erasable markers.",
+          "a self-paced warm-up. the cycle runs: book → extension (book) → cue card → extension (cue card). each extension day belongs to the day before it — the book session and its extension are one unit, and the cue card session and its extension are one unit. an extension day is never independent. art gym books are laminated — children mark them with resources of choice: thread, clay, sequins, or erasable markers. every book day children do 1–3 pages and then replicate what they drew in their sketchbook freely with materials of choice (crayons, colour pencils, brush pens, yarn + glue, etc.). on extension days children apply the same lines onto simple daily objects or shapes — progression goes shape → simple object → imaginary object → scene.",
         heroImageUrl: gymThumb,
       },
       thumbImageUrl: gymThumb,
