@@ -152,6 +152,23 @@ function CoverSection({ book }: { book: BookConfig }) {
             ))}
           </div>
 
+          {book.pdfUrl && (
+            <a
+              href={book.pdfUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-orange px-4 py-2 text-[12px] font-bold text-white shadow-sm ring-1 ring-brand-orange/20 transition hover:opacity-90"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/>
+                <path d="M14 2v6h6"/>
+                <path d="M12 18v-6"/>
+                <path d="m9 15 3 3 3-3"/>
+              </svg>
+              download full experience book (pdf)
+            </a>
+          )}
+
           <p className="mt-8 pb-4 text-[10px] font-bold tracking-wide text-ink/30">
             oh. · choose to be better.
           </p>

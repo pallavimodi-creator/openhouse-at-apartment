@@ -11,6 +11,8 @@ export interface BookConfig {
   tagline: string;
   coverColor: string;
   coverImageUrl?: string;
+  /** Full printable experience book PDF — linked from the book's cover page. */
+  pdfUrl?: string;
   nameFields: { label: string; placeholder: string }[];
   preferences: string[];
   segments: { icon: string; name: string; desc: string }[];
@@ -57,6 +59,7 @@ const art58: BookConfig = {
     "this book belongs to a young artist. every mark you made. every colour you mixed. every time you tried something new and kept going.",
   coverColor: "bg-[#F5D547]",
   coverImageUrl: "/book-covers/art-5-8.png",
+  pdfUrl: "/books/art-5-8.pdf",
   nameFields: [
     { label: "name", placeholder: "your name" },
     { label: "teacher", placeholder: "your teacher's name" },
@@ -259,6 +262,7 @@ const art812: BookConfig = {
     "this book belongs to a maker who looks closely. every observation you drew. every idea you pushed past the obvious. every time you chose the harder path.",
   coverColor: "bg-[#F5D547]",
   coverImageUrl: "/book-covers/art-8-12.png",
+  pdfUrl: "/books/art-8-12.pdf",
   nameFields: [
     { label: "name", placeholder: "your name" },
     { label: "teacher", placeholder: "your teacher's name" },
@@ -462,6 +466,7 @@ const speaking58: BookConfig = {
   tagline:
     "this book belongs to a speaker who is finding their voice. every story you told. every idea you shared. every time you stood up and started talking.",
   coverImageUrl: "/book-covers/speaking-5-8.png",
+  pdfUrl: "/books/speaking-5-8.pdf",
   coverColor: "bg-category-language/40",
   nameFields: [
     { label: "name", placeholder: "your name" },
@@ -642,6 +647,7 @@ const speaking812: BookConfig = {
     "this book belongs to a speaker who is learning to argue, persuade, and mean what they say. every argument you built. every idea you pushed past the obvious. every time you spoke with conviction.",
   coverColor: "bg-category-language/40",
   coverImageUrl: "/book-covers/speaking-8-12.png",
+  pdfUrl: "/books/speaking-8-12.pdf",
   nameFields: [
     { label: "name", placeholder: "your name" },
     { label: "teacher", placeholder: "your teacher's name" },
