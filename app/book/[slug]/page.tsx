@@ -7,6 +7,7 @@ import { getManualConfig, type ManualConfig } from "@/content/books/manuals";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { TeacherGate } from "@/components/TeacherGate";
+import { PdfFlipbook } from "@/components/PdfFlipbook";
 
 /* ─── Cloud wave SVG divider ───────────────────────────────── */
 
@@ -678,15 +679,11 @@ function ExperienceBookContent() {
   const slug = params.slug as string;
   const book = getBookConfig(slug);
   const manual = getManualConfig(slug);
-  const [showAll, setShowAll] = useState(false);
 
   if (!book) {
     notFound();
     return null;
   }
-
-  // Journey pages start after the daily log tracker (page 7)
-  const journeyBaseStart = 8;
 
   return (
     <div className="flex flex-col">
@@ -700,60 +697,64 @@ function ExperienceBookContent() {
         </Link>
       </div>
 
-      {/* Cover */}
-      <CoverSection book={book} />
+      {/* Title band */}
+      <section className={`${book.coverColor} px-5 py-6 md:px-8`}>
+        <div className="mx-auto max-w-4xl">
+          <p className="text-[12px] font-extrabold text-ink/50">oh.</p>
+          <h1 className="mt-1 text-[22px] font-extrabold leading-tight text-ink md:text-[30px]">
+            {book.title}
+          </h1>
+          <p className="mt-1 text-[12px] font-semibold text-ink/60">
+            {book.subtitle}
+          </p>
+          <p className="mt-3 max-w-md text-[12px] italic leading-relaxed text-ink/70">
+            {book.tagline}
+          </p>
+          {book.pdfUrl && (
+            <a
+              href={book.pdfUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex items-center gap-2 rounded-full bg-brand-orange px-4 py-2 text-[12px] font-bold text-white shadow-sm ring-1 ring-brand-orange/20 transition hover:opacity-90"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z" />
+                <path d="M14 2v6h6" />
+                <path d="M12 18v-6" />
+                <path d="m9 15 3 3 3-3" />
+              </svg>
+              download full pdf
+            </a>
+          )}
+        </div>
+      </section>
 
-      {/* All About Me */}
-      <ThisIsMePage book={book} />
-      <PageDivider />
-      <AboutMePage book={book} />
-      <PageDivider />
+      <CloudWave from={book.coverColor} to="white" />
 
-      {/* What We Do */}
-      <WhatWeDoPage book={book} />
-      <PageDivider />
-
-      {/* Skills Map */}
-      <SkillsMapPage book={book} />
-      <PageDivider />
-
-      {/* Daily Log Template */}
-      <DailyLogFieldsPage book={book} />
-      <PageDivider />
-      <DailyLogTrackerPage book={book} />
-
-      {/* Journeys — show/hide toggle for length */}
-      <div className="mx-auto mt-6 w-full max-w-2xl px-5">
-        <button
-          onClick={() => setShowAll(!showAll)}
-          className="w-full rounded-2xl bg-bg-subtle py-3 text-center text-[12px] font-bold text-ink/60 transition hover:bg-bg active:scale-[0.99]"
-        >
-          {showAll
-            ? `hide ${book.journeyLabel}s ▲`
-            : `show all 6 ${book.journeyLabel}s ▼`}
-        </button>
-      </div>
-
-      {showAll && (
-        <>
-          {book.journeys.map((journey, i) => (
-            <div key={journey.number}>
-              <PageDivider />
-              <JourneySection
-                book={book}
-                journey={journey}
-                basePageNumber={journeyBaseStart + i * 2}
-              />
+      {/* Flipbook */}
+      <section className="bg-white px-3 py-6 md:px-8">
+        <div className="mx-auto w-full max-w-5xl">
+          {book.pdfUrl ? (
+            <PdfFlipbook pdfUrl={book.pdfUrl} />
+          ) : (
+            <div className="rounded-card bg-ink/[0.02] p-6 text-center text-[12px] italic text-ink-muted">
+              the pdf for this book is coming soon.
             </div>
-          ))}
-        </>
-      )}
+          )}
+        </div>
+      </section>
 
-      {/* Back Cover */}
-      <PageDivider />
-      <BackCover book={book} />
-
-      {/* Teacher Manual — expandable in-page section */}
+      {/* Teacher Manual — only interactive UI left on the page */}
       {manual && <TeacherManualSection manual={manual} />}
     </div>
   );

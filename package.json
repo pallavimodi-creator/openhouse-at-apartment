@@ -10,12 +10,14 @@
     "sync:assets": "tsx scripts/sync-drive-assets.ts"
   },
   "dependencies": {
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.441.0",
     "next": "14.2.5",
+    "pdfjs-dist": "^5.6.205",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "clsx": "^2.1.1",
-    "tailwind-merge": "^2.5.2",
-    "lucide-react": "^0.441.0"
+    "react-pageflip": "^2.0.3",
+    "tailwind-merge": "^2.5.2"
   },
   "devDependencies": {
     "@types/node": "^22.5.5",
@@ -24,7 +26,7 @@
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.11",
-    "typescript": "^5.6.2",
-    "tsx": "^4.19.1"
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2"
   }
 }
