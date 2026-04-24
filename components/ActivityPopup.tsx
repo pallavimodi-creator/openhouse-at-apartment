@@ -43,6 +43,36 @@ function SegmentIcon({ segment }: { segment: string }) {
 }
 
 /**
+ * Extract a YouTube video id from any of the common URL shapes:
+ *   https://www.youtube.com/watch?v=ID
+ *   https://youtu.be/ID
+ *   https://www.youtube.com/shorts/ID
+ *   https://www.youtube.com/embed/ID
+ * Returns null if the URL is not a YouTube link we recognise.
+ */
+function extractYouTubeId(url: string): string | null {
+  if (!url) return null;
+  try {
+    const u = new URL(url);
+    const host = u.hostname.replace(/^www\./, "");
+    if (host === "youtu.be") {
+      const id = u.pathname.replace(/^\//, "").split("/")[0];
+      return id || null;
+    }
+    if (host === "youtube.com" || host === "m.youtube.com" || host === "youtube-nocookie.com") {
+      if (u.pathname === "/watch") return u.searchParams.get("v");
+      const parts = u.pathname.split("/").filter(Boolean);
+      if (parts[0] === "shorts" || parts[0] === "embed" || parts[0] === "v") {
+        return parts[1] ?? null;
+      }
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+/**
  * Render a materials-list string with any http(s) URLs turned into clickable
  * links. Keeps the rest of the text as plain text. Splits on the URL regex so
  * the result is an alternating sequence of [text, url, text, url, ...].
@@ -132,11 +162,30 @@ export function ActivityPopup({
 }) {
   const img = getActivityImage(activity.id);
   const video = getActivityVideo(activity.id);
+  // Detect YouTube URLs so we can render a responsive embed instead of a
+  // <video> tag. Accepts watch?v=ID, youtu.be/ID, shorts/ID, and embed/ID.
+  const youTubeId = video ? extractYouTubeId(video) : null;
 
   return (
     <div className="flex flex-col gap-5">
-      {/* Activity hero — video if present (poster = image), else image, else gradient + icon */}
-      {video ? (
+      {/* Activity hero — YouTube embed > self-hosted video > image > gradient */}
+      {youTubeId ? (
+        <div className="relative overflow-hidden rounded-card bg-black">
+          <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${youTubeId}?rel=0&modestbranding=1`}
+              title={activity.title}
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              className="absolute inset-0 h-full w-full"
+            />
+          </div>
+          <span className="absolute left-4 top-4 z-10 rounded-chip bg-black/50 px-2.5 py-0.5 text-[10px] font-semibold tracking-normal text-white backdrop-blur-sm">
+            {activity.segment.replace("-", " ")}
+          </span>
+        </div>
+      ) : video ? (
         <div className="relative overflow-hidden rounded-card bg-black">
           <video
             src={video}
