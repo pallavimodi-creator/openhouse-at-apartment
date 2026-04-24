@@ -208,6 +208,7 @@ export const ACTIVITY_IMAGES: Record<string, string> = {
   "train-of-thoughts": "/games/ps/train-of-thoughts.png",
   "guess-me": "/games/ps/guess-me.png",
   spaggle: "/games/ps/spaggle.png",
+  "pitch-perfect": "/games/ps/pitch-perfect.png",
   "speech-a-palooza": "/games/ps/speech-a-palooza.png",
   "debate-duel": "/games/ps/debate-duel.png",
   "improv-survival": "/games/ps/improv-survival.png",

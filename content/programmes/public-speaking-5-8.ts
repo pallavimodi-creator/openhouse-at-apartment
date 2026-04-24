@@ -18,7 +18,7 @@ const rollCallActivities: Record<string, CurriculumActivity> = {
     howToPlay:
       "Sit in a circle. Teacher reads one opening sentence — the last word is a bold starter word the next child must open with. The chain continues around the circle. If a child cannot continue within 5 seconds, they say \"pass\" and the next child continues.",
     example:
-      "Teacher — \"I saw a puppy near my building gate.\" Child 1 — \"Gate was closed when I tried to open it.\" Child 2 — \"It took me a minute to figure out why.\"",
+      "Teacher — \"I saw a puppy near my building gate.\" Child 1 — \"Gate was closed when I tried to open it.\" Child 2 — \"It took me a minute to figure out why.\" No requirements — the child can make a sentence that does not necessarily continue the story.",
     materials: ["Opening-sentence prompt deck"],
     promptHeading: "prompts — last word is the starter for the next child",
     prompts: [
@@ -60,9 +60,9 @@ const rollCallActivities: Record<string, CurriculumActivity> = {
       },
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Solo / partner action on the card — child forms the object using the solo or partner action printed on the card." },
+      { level: "Easy", description: "Solo / partner action on the card." },
       { level: "Medium", description: "Additional group or pair tasks — extra prompts layered on top of the base formation (e.g. \"chimney appears,\" \"two arches meet,\" \"flying in formation\")." },
-      { level: "Hard", description: "Find your pair — cards come in matching pairs (table + chair, bowl + spoon). Each child draws one card without showing others; on the signal, everyone forms their object with their body and finds their matching pair. First pair to lock in wins." },
+      { level: "Hard", description: "Find your pair." },
     ],
     materials: [
       "Every Body Says object image cards (30 cards · 15 pairs)",
@@ -220,7 +220,14 @@ const rollCallActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "Pick a card. Don't show anyone. Make the sound of the ticked object — the rest of us guess.",
     howToPlay:
-      "Children take turns. One child picks a card from the deck without showing it. On the card is a ticked object — a bell, a door, a cat, a kettle, a clap, a drum. The child makes the sound of that object using only their voice and body. The other children listen and guess. First correct guess picks the next card. To extend the game — children play to complete a set of sounds by asking their friends for the set card and making that sound in order to get that card. For example, if a child gets a card with 4 animal images and one ticked (like a dog), the child has to find the other 3 cards with the other animals ticked — a ticked cat, a ticked cow, and so on. The child asks friends for those cards and gets them only after making the matching sound.",
+      "Children take turns. One child picks a card from the deck without showing it. On the card is a ticked object — a bell, a door, a cat, a kettle, a clap, a drum. The child makes the sound of that object using only their voice and body. The other children listen and guess. First correct guess picks the next card.",
+    variations: [
+      {
+        name: "Variation — Quartets",
+        description:
+          "Shuffle and deal 4 cards to each player. Place the rest face down in the centre. Goal: make sets of 4 matching cards of the same series (quartets). On your turn, ask any player for a series (e.g. nature, animals, vehicles) you need — if they have it, ask for the card by acting out or saying its sound. If you get the card, continue your turn. If not, draw one card from the centre and your turn ends. The first player to collect 1 or 2 full quartets wins.",
+      },
+    ],
     materials: [
       "What's That Sound card deck (objects with a ticked sound on each)",
     ],
@@ -296,35 +303,22 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "Shuffle Story Cards and place face-up in 4 piles (character, object, event, emotion). Pick one card from any pile. Children place it on the story mat and each child continues the story line through the cards they pick and place.",
     howToPlay:
-      "First child places their card and begins the story. The next child picks a card from any pile, places it on the Story Mat, and continues the story line from where the previous child left off. The tale builds card by card around the circle. The child placing the last card ends the story, or the teacher ends it. At the end, the children give their story a title.",
+      "Teacher places the Story Mat and the deck of story cards in 4 piles. First child places their card and begins the story. The next child picks a card from any pile, places it on the Story Mat, and continues the story line from where the previous child left off. The tale builds card by card around the circle. The child placing the last card ends the story, or the teacher ends it.",
     variations: [
       {
-        name: "Transition cards",
+        name: "Variation — Mixed cards",
         description:
-          "Use transition cards alongside the story cards — when a child places one, they use the word or phrase on it to link their line to the previous one (e.g. \"meanwhile…,\" \"suddenly,\" \"later that day\"). One child narrates the full story at the end.",
-      },
-      {
-        name: "Theme dice",
-        description:
-          "The teacher rolls the theme dice to set the theme for the story. All children keep their contributions inside that theme. One child narrates the full story at the end.",
-      },
-      {
-        name: "Re-arrange the story",
-        description:
-          "After the first telling, the teacher places the beginning / middle / end arrow cards over the row and interchanges them — the group has to re-tell the story in the new order using the same cards. One child narrates the rearranged story at the end.",
+          "Teacher places all category cards in a single pile faced down. The player draws cards turn by turn, randomly.",
       },
     ],
     materials: [
       "Story Mat",
       "Story Cards (Object 15, Character 15, Emotion 12, Event 15)",
-      "Theme dice",
-      "Transition word cards",
-      "Beginning / middle / end arrow cards",
     ],
     difficultyLevels: [
       { level: "Easy", description: "Educator provides an opening sentence." },
-      { level: "Medium", description: "Standard play, players choose their cards." },
-      { level: "Hard", description: "Use the theme dice — teacher rolls and all children keep their contributions inside the rolled theme." },
+      { level: "Medium", description: "Variation 1 — children or teacher can choose a theme card for a child." },
+      { level: "Hard", description: "Variation 2 — child draws a random card from the deck." },
     ],
     debriefPrompts: [
       {
@@ -348,7 +342,7 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     howToPlay:
       "Divide children into a Performing Team and a Questioning Team. The Performing Team draws one story — 6 cards — and lays them face-up in the story's printed order. They have preparation time to build a story using the cards in that order. They perform — roleplay and narration — within set time. Questioning team asks questions using their Question Bands, and the Performing Team answers. One player summarises in 2–3 sentences. Roles rotate.",
     materials: [
-      "Story Combination Cards — 10 stories × 6 cards = 60 A5 cards total (laminated, matte, openhouse green stripe)",
+      "Story Combination Cards — 10 stories × 6 cards = 60 A5 cards",
       "Question Bands (Who, What, When, Where, Why, How)",
       "Timer",
     ],
@@ -426,7 +420,7 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "Speak on your topic for a set time to move a set number of steps. Hesitate or stop, and the timer stops — you move by however many steps the time board gives you.",
     howToPlay:
-      "Pieces start at the bottom of the gameboard. The time board at the side maps speaking time to steps — e.g. 15 seconds = 1 step, 30s = 2, 45s = 3, 60s = 4, and so on. Players can see the board so they can plan how long they want to keep speaking. On their turn, an individual / team rolls the dice and moves. Teacher reads out a prompt from the digital deck in the app. Player starts speaking on that prompt. The timer runs. Hesitation, repetition, or going off-topic stops the timer — the piece moves by the number of steps the time board allows for that clock reading. Landing on a Slippery Step moves the piece back. Landing on a Risk Step: player attempts a Risk Card challenge — completing it earns a Reward Card. First individual / team to the top of the board wins.",
+      "Pieces start at the bottom of the gameboard. The time board at the side maps speaking time to steps — e.g. 15 seconds = 1 step, 30s = 2, 45s = 3, 60s = 4, and so on. Players can see the board so they can plan how long they want to keep speaking. Teacher reads out a prompt from the digital deck in the app. Player starts speaking on that prompt. The timer runs. Hesitation, repetition, or going off-topic stops the timer — the piece moves by the number of steps the time board allows for that clock reading. Landing on a Slippery Step moves the piece back. Landing on a Risk Step: player attempts a Risk Card challenge — completing it earns a Reward Card. First individual / team to the top of the board wins.",
     variations: [
       {
         name: "Individual play",
@@ -437,10 +431,6 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
         name: "Team play",
         description:
           "Teams share one piece on the board but turns are taken by team members — each member speaking on a different topic. Every member must take at least one turn before the team piece reaches the top.",
-      },
-      {
-        name: "3-word incorporation",
-        description: "The opposing team / player gives the speaker 3 words to incorporate into their speech before the turn begins.",
       },
     ],
     materials: [
@@ -487,7 +477,7 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "Three coloured card decks are in the centre. On your turn, draw one card from each deck and complete the speaking tasks one after another.",
     howToPlay:
-      "Three coloured card decks are placed in the centre — each colour is a different type of speaking task. On their turn, a child draws one card and completes the speaking task, laying the completed card face-up in front of them. This line of completed cards is their train. The child wins by making a set of 3 cards of each colour — a total of 9 cards. Action cards may be used during play depending on the difficulty level.",
+      "Three coloured card decks are placed in the centre — each colour is a different type of speaking task. On their turn, a child draws one card and completes the speaking task, laying the completed card face-up in front of them. This line of completed cards is their train. The child wins by making a set of 3 cards of each colour — a total of 9 cards.",
     variations: [
       {
         name: "Longest train",
@@ -532,16 +522,15 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
         name: "Body, face, and sounds",
         description: "Group can add sounds but not say the word.",
       },
-      {
-        name: "Yes/No questions",
-        description: "Child asks yes/no questions to guide themselves to the answer. Hardest: child uses the guessed word in a sentence that shows they understand what it means.",
-      },
     ],
-    materials: ["Guess Me Cards"],
+    materials: [
+      "Guess Me Cards",
+      "Timer (optional)",
+    ],
     difficultyLevels: [
-      { level: "Easy", description: "Simple concrete cards, no time limit." },
-      { level: "Medium", description: "30-second limit per card, standard variation." },
-      { level: "Hard", description: "Variation 3, child uses the word in a meaningful sentence." },
+      { level: "Easy", description: "Easier cards to be used." },
+      { level: "Medium", description: "All cards can be used." },
+      { level: "Hard", description: "Child has to guess within set time." },
     ],
     debriefPrompts: [
       {
@@ -608,7 +597,7 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "Teacher gives a sentence prompt. A child starts speaking. Another player can call \"reverse gear\" on any word — the speaker then has to say the opposite of what was originally said.",
     howToPlay:
-      "Teacher gives a sentence prompt to speak. A child starts speaking. Another player can choose to call \"reverse gear\" on a specific word in between. The child then has to say the opposite of what was originally said, continuing from that point.",
+      "Teacher gives a sentence prompt to speak. A child starts speaking. Another player can choose to call \"reverse gear\" on a specific word in between. The child then has to say the opposite of what was originally said, or change the original word to a different word, continuing from that point. For example, a player says \"I love eating mangoes.\" Another child calls \"reverse gear on I.\" The player repeats the sentence — \"You love eating mangoes.\"",
     materials: ["Reverse Gear prompt deck (app)"],
     difficultyLevels: [
       {
@@ -624,7 +613,7 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
       {
         level: "Hard",
         description:
-          "Continue and add a new sentence relating to the reversed sentence. The child can also choose to call reverse gear one more time in the newly added sentences.",
+          "After the player says the reversed sentence, they add 2–3 lines of their own, continuing that sentence.",
       },
     ],
     promptHeading: "prompts — statements to reverse",

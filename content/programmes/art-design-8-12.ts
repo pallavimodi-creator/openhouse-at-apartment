@@ -376,14 +376,21 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "look at this finished artwork. name the tool or medium used. what specific mark tells you?",
     howToPlay:
-      "Variation 1 — Guess: Teacher shows image card of finished artwork. Children examine and name the tool/medium. Group discusses. Teacher confirms and names the mark characteristic. · Variation 2 — Making: After guessing, children make the drawing.",
+      "Teacher shows image card of finished artwork. Children examine and name the tool/medium. Group discusses. Teacher confirms and names the mark characteristic.",
+    variations: [
+      {
+        name: "Variation — Making",
+        description:
+          "After guessing, children make the drawing using the identified tool or medium.",
+      },
+    ],
     materials: [
       "Image cards showing finished artworks (A5, laminated)",
       "Drawing paper",
       "Pencils, crayons, and the identified tools/mediums",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "identify tool or medium (variation 1)." },
+      { level: "Easy", description: "identify tool or medium only." },
       { level: "Medium", description: "use that tool or medium to replicate the drawing." },
       { level: "Hard", description: "use the tool or medium to draw creatively." },
     ],
@@ -416,17 +423,29 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     segment: "art-games",
     title: "shape fusion",
     setupLine:
-      "build a composition with one dominant shape supported by two smaller ones. then sketch it capturing proportions and negative space.",
+      "build with transparent geometric pieces — either silently for your team to guess, or from a teacher cue, then sketch it capturing proportions and negative space.",
     howToPlay:
-      "Each child builds a composition from transparent geometric pieces with one dominant shape supported by two smaller ones. After building, sketch the arrangement on paper capturing proportions and negative space. Compare sketch to tile arrangement. · Variation — Create the subjects in the Shape Cards sequentially, letting everyone guess turn by turn.",
+      "Two ways to play — see variations.",
+    variations: [
+      {
+        name: "Variation 1 — Build and guess",
+        description:
+          "Each child builds a subject from geometric pieces silently while their team guesses what it is. Child's choice: the child picks which subject they want to create from the Shape Card and the other children guess. Relay / race: the group splits into teams and the teams compete to make the most subjects — whichever team finishes a card, or a set number of cards, first wins.",
+      },
+      {
+        name: "Variation 2 — Composition from cues",
+        description:
+          "Each child builds a composition from transparent geometric pieces based on teacher cues (for example: teacher says \"build a composition with one dominant shape supported by two smaller ones\"). After building, sketch the arrangement on paper capturing proportions and negative space. Compare sketch to tile arrangement.",
+      },
+    ],
     materials: [
       "Two sets of 60 transparent geometric pieces",
       "Shape Cards B1 and B2",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "B1 cards, educator names category." },
-      { level: "Medium", description: "B1 or B2, no hints." },
-      { level: "Hard", description: "sketch must capture proportions accurately, child explains one compositional decision." },
+      { level: "Easy", description: "Variation 1 — build and guess." },
+      { level: "Medium", description: "Variation 2 — standard gameplay." },
+      { level: "Hard", description: "The opposite team chooses specific geometric shapes to be used, or gives cues instead of the teacher." },
     ],
     debriefPrompts: [],
     type: "physical-game",
@@ -438,16 +457,17 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "scene card in the centre. i name an object — you find and draw it.",
     howToPlay:
-      "Scene card visible. Educator names object. Child finds object, then draws. Variation 2: card shown 30 seconds then removed, draw from memory.",
+      "Teacher shows a scene card or places multiple line/texture cards in a row. Educator names a texture, line/shape, or texture. Child finds it, then draws.",
     materials: [
       "Scene cards (A5)",
+      "Line / shape / texture cards",
       "Blank drawing sheets",
       "Pencils or crayons",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "direct name, card visible." },
-      { level: "Medium", description: "card visible, draw as much detail as you choose." },
-      { level: "Hard", description: "card shown 30 seconds then removed, drawn from memory. Proportions accurate; child names one specific thing observed and applied." },
+      { level: "Easy", description: "Easy cards (scene cards) shown — child draws chosen object." },
+      { level: "Medium", description: "Use of Texture or lines/shapes cards." },
+      { level: "Hard", description: "Any card shown 30 seconds then removed, drawn from memory." },
     ],
     debriefPrompts: [],
     type: "physical-game",
@@ -459,7 +479,14 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "roll the dice, move your token, land on an art zone, draw a challenge card (draw, colour, build or mixed media), and complete it within the time limit. after completing the challenge, child gives one sentence explaining one decision they made.",
     howToPlay:
-      "Set up board game. Roll dice, move, land on art zone, draw challenge card (draw, colour, build or mixed media), complete within the time limit. Cooperative variation: whole group plays as one team. After completing the challenge, child gives one sentence explaining one decision they made.",
+      "Set up board game. Roll dice, move, land on an art zone. Draw a challenge card (draw, colour, build or mixed media) and complete it within the time limit. After completing the challenge, the child gives one sentence explaining one decision they made.",
+    variations: [
+      {
+        name: "Cooperative variation",
+        description:
+          "The whole group plays as a team. Each child takes a turn rolling the dice, and all the children do the same challenge as on the card drawn by that child. Then the next player rolls.",
+      },
+    ],
     materials: [
       "Game board",
       "Player tokens",
@@ -472,9 +499,16 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "Colour sheets",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "simpler cards, 3-minute timer." },
-      { level: "Medium", description: "all zones, 2-minute timer." },
-      { level: "Hard", description: "90-second timer, child must articulate one decision." },
+      { level: "Easy", description: "B1 challenges from challenge cards." },
+      { level: "Medium", description: "B2 challenges from challenge cards." },
+      { level: "Hard", description: "B2 challenges with limited time." },
+    ],
+    promptHeading: "art zones",
+    prompts: [
+      "Sketch zone (Yellow tile/card) — children complete a simple sketch activity.",
+      "Colour zone (Teal tile/card) — children complete a colouring activity on given sheets.",
+      "Build zone (Pink tile/card) — children build a structure using blocks or pipe cleaners.",
+      "Mixed media zone (Light blue tile/card) — children complete the given activity using mixed mediums.",
     ],
     debriefPrompts: [],
     type: "physical-game",
@@ -518,40 +552,6 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       { level: "Easy", description: "no time limit — take as long as you need." },
       { level: "Medium", description: "a set time per prompt — draw before the timer runs out." },
       { level: "Hard", description: "rapid sketching — a set number of prompts in a limited time, team or individual. must complete every drawing before time is up." },
-    ],
-    promptHeading: "drawing prompts",
-    prompts: [
-      "What lives in water?",
-      "What can you find in the ocean?",
-      "What is a 3-letter word that starts with C?",
-      "What thing starts with the letter S?",
-      "What thing starts with the letter M?",
-      "What thing starts with the letter P?",
-      "What is a 4-letter word?",
-      "What are 2 words or things that rhyme?",
-      "What is always seen at a birthday party?",
-      "What can fly?",
-      "What is a breakfast food?",
-      "What can you find in a bathroom?",
-      "What can you wear?",
-      "What can you find on trees?",
-      "What can you find in a forest?",
-      "What can be cut?",
-      "What is round and edible?",
-      "What is a heavy object in the house?",
-      "What has 4 legs?",
-      "What can you find in a fridge?",
-      "What can you find in a kitchen?",
-      "What can you find in a garden?",
-      "What is something we use every day?",
-      "What can you find at a beach?",
-      "What is smaller than you?",
-      "What crawls?",
-      "What can you play with?",
-      "What is bigger than you?",
-      "What can you find in a classroom?",
-      "What can you find in a zoo?",
-      "What can float on water?",
     ],
     debriefPrompts: [],
     type: "physical-game",

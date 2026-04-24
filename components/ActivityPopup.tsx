@@ -56,15 +56,20 @@ function linkifyMaterial(text: string): React.ReactNode {
     if (part) nodes.push(<span key={`t${idx}`}>{part}</span>);
     if (idx < matches.length) {
       const url = matches[idx];
+      // Detect whether the URL has a human label preceding it in the same line.
+      // If the text before the URL ends with "— " or ": " or " " preceded by
+      // other words, we treat it as already-labelled and show "open link". If
+      // the URL is truly bare (no prefix text), also show "open link" — the
+      // raw URL is never a useful label.
       nodes.push(
         <a
           key={`u${idx}`}
           href={url}
           target="_blank"
           rel="noopener noreferrer"
-          className="break-all font-medium text-brand-orange underline underline-offset-2 hover:opacity-80"
+          className="font-medium text-brand-orange underline underline-offset-2 hover:opacity-80"
         >
-          {url}
+          open link
         </a>
       );
     }

@@ -18,7 +18,7 @@ const rollCallActivities: Record<string, CurriculumActivity> = {
     howToPlay:
       "Sit in a circle. Teacher reads one opening sentence from the prompt bank \u2014 the last word is a bold starter word the next child must open with. The chain continues. If a child cannot continue within 5 seconds, they say \"pass\" and the next child continues. At 8\u201312, no starter word may repeat across the whole chain.",
     example:
-      "Teacher \u2014 \"I missed the bus because I woke up late.\" Child 1 \u2014 \"Late nights always make the next morning harder.\" Child 2 \u2014 \"Harder days teach you more than easy ones.\"",
+      "Teacher — \"I missed the bus because I woke up late.\" Child 1 — \"Late nights always make the next morning harder.\" Child 2 — \"Harder days teach you more than easy ones.\" No requirements — the child can make a sentence that does not necessarily continue the story.",
     materials: ["Opening-sentence prompt deck"],
     promptHeading: "prompts — last word is the starter for the next child",
     prompts: [
@@ -60,9 +60,9 @@ const rollCallActivities: Record<string, CurriculumActivity> = {
       },
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Solo / partner action on the card — child forms the object using the solo or partner action printed on the card." },
+      { level: "Easy", description: "Solo / partner action on the card." },
       { level: "Medium", description: "Additional group or pair tasks — extra prompts layered on top of the base formation (e.g. \"chimney appears,\" \"two arches meet,\" \"flying in formation\")." },
-      { level: "Hard", description: "Find your pair — cards come in matching pairs. Each child draws one card without showing others; on the signal, everyone forms their object with their body and finds their matching pair. First pair to lock in wins." },
+      { level: "Hard", description: "Find your pair." },
     ],
     materials: [
       "Every Body Says object image cards (30 cards · 15 pairs)",
@@ -220,7 +220,14 @@ const rollCallActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "Pick a card. Don't show anyone. Make the sound of the ticked object — the rest of us guess.",
     howToPlay:
-      "Children take turns. One child picks a card from the deck without showing it. On the card is a ticked object — a bell, a door, a cat, a kettle, a clap, a drum. The child makes the sound of that object using only their voice and body. The other children listen and guess. First correct guess picks the next card. After a correct guess, the child explains one specific mark-quality of their sound — pitch, rhythm, attack — that made it recognisable. To extend the game — children play to complete a set of sounds by asking their friends for the set card and making that sound in order to get that card. For example, if a child gets a card with 4 animal images and one ticked (like a dog), the child has to find the other 3 cards with the other animals ticked — a ticked cat, a ticked cow, and so on. The child asks friends for those cards and gets them only after making the matching sound.",
+      "Children take turns. One child picks a card from the deck without showing it. On the card is a ticked object — a bell, a door, a cat, a kettle, a clap, a drum. The child makes the sound of that object using only their voice and body. The other children listen and guess. First correct guess picks the next card. After a correct guess, the child explains one specific mark-quality of their sound — pitch, rhythm, attack — that made it recognisable.",
+    variations: [
+      {
+        name: "Variation — Quartets",
+        description:
+          "Shuffle and deal 4 cards to each player. Place the rest face down in the centre. Goal: make sets of 4 matching cards of the same series (quartets). On your turn, ask any player for a series (e.g. nature, animals, vehicles) you need — if they have it, ask for the card by acting out or saying its sound. If you get the card, continue your turn. If not, draw one card from the centre and your turn ends. The first player to collect 1 or 2 full quartets wins.",
+      },
+    ],
     materials: [
       "What's That Sound card deck (objects with a ticked sound on each)",
     ],
@@ -348,7 +355,7 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     howToPlay:
       "Divide into Performing Team and Questioning Team. The Performing Team draws one story — 6 cards — and lays them face-up in the story's printed order. They have preparation time to create and prepare their performance. Perform within set time. Questioning team asks questions using Question Bands — at least one Why and one How — and the Performing Team answers. One player summarises in 2–3 sentences. Roles rotate.",
     materials: [
-      "Story Combination Cards — 10 stories × 6 cards = 60 A5 cards total (laminated, matte, openhouse green stripe)",
+      "Story Combination Cards — 10 stories × 6 cards = 60 A5 cards",
       "Question Bands (Who, What, When, Where, Why, How)",
       "Timer",
     ],
@@ -389,12 +396,19 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "Each player receives a topic card. Assemble your Speech Puzzle Board — Topic, Opening, Argument, Evidence, Conclusion — using your cards. Then deliver your speech in the order of the cards on the board.",
     howToPlay:
-      "Each player notes their topic from the digital topic deck on their topic card. Teacher gives out 2 Action Cards per player. Players assemble their Speech Puzzle Board simultaneously. On each turn, a player draws one Puzzle Card; other players may use one Action Card (Swap / Steal / Block) on them when they draw. After all puzzle cards are placed, the child delivers their speech using the cards on the board in order. After delivering, the speaker asks one question to any other player. If they cannot answer correctly, they lose 1 token. Game ends at 15 tokens or after fixed rounds.",
+      "Each player notes their topic from the digital topic deck on their topic card. Children pick any 5 puzzle cards from the shuffled deck placed face down by the teacher. Teacher gives out any 2 action cards to each player. On each turn, a child places one puzzle card on the Puzzle Board following the order (Topic, Opening, Argument, Evidence, Conclusion). During play, players use the action cards given to Swap / Steal / Stop and fill the puzzle board with cards. After all puzzle cards are placed, the child delivers their speech using the cards placed on the board. One token is awarded for each puzzle card successfully used in a sentence.",
+    variations: [
+      {
+        name: "Variation — Ability lanyard",
+        description:
+          "Teacher assigns a lanyard of a specific ability to the player, which the child focuses on while delivering their speech. The child earns bonus tokens for correctly using the assigned ability.",
+      },
+    ],
     materials: [
       "Speech Puzzle Board (1 per child)",
       "Topic Cards",
       "Speech Puzzle Cards",
-      "Action Cards (Swap / Steal / Block)",
+      "Action Cards (Swap / Steal / Stop)",
       "Player Tokens and Tracker",
       "Digital prompts — https://wordwall.net/resource/84114197",
       "Digital prompts — https://wordwall.net/resource/84261693",
@@ -427,17 +441,16 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "Investors draw a Problem Card. Teams select a Solution Card from their hand that best matches the problem and prepare their pitch. Investors evaluate and award tokens based on structure and how convincing the pitch is.",
     howToPlay:
-      "Investors draw a Problem Card that presents a problem. Teams select 1 Solution Card from their hand that they feel best matches the Problem Card, and prepare their pitch. Each team pitches to the Investors. The Investors are allowed to ask questions. The Investors evaluate and award tokens (1, 2 or 3) to each team based on the structure of the pitch and how convincing it was.",
+      "Choose one pair to start as the Investors. This role rotates every round. Form teams of 2–3 children. Investors draw a Problem Card that presents a problem. Each team receives 3 Solution Cards. Teams select 1 Solution Card from their hand that they feel best matches the Problem Card, and prepare their pitch. Each team pitches to the Investors. The Investors are allowed to ask questions. The Investors evaluate and award tokens to each team based on the structure of the pitch and how convincing it was.",
     materials: [
       "Problem Cards",
       "Solution Cards",
-      "Investor tokens (1, 2, 3)",
+      "Investor tokens",
       "Twist cards",
-      "Index cards for planning",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Twist optional, panel / Investors asks one question." },
-      { level: "Medium", description: "Twist required, panel / Investors asks two questions." },
+      { level: "Easy", description: "Twist card not used." },
+      { level: "Medium", description: "Twist card optional." },
       { level: "Hard", description: "Use a Twist card — teams must balance completing the twist with creating a pitch that appeals to the Investors." },
     ],
     debriefPrompts: [
@@ -496,7 +509,7 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "Speak on your topic for a set time to move a set number of steps. Hesitate or stop, and the timer stops — you move by however many steps the time board gives you.",
     howToPlay:
-      "Pieces start at the bottom of the gameboard. The time board at the side maps speaking time to steps — e.g. 15 seconds = 1 step, 30s = 2, 45s = 3, 60s = 4, and so on. Players can see the board so they can plan how long they want to keep speaking. On their turn, an individual / team rolls the dice and moves. Teacher reads out a prompt from the digital deck in the app. Player starts speaking on that prompt. The timer runs. Hesitation, repetition, or going off-topic stops the timer — the piece moves by the number of steps the time board allows for that clock reading. Landing on a Slippery Step moves the piece back. Landing on a Risk Step: player attempts a Risk Card challenge — completing it earns a Reward Card. First individual / team to the top of the board wins.",
+      "Pieces start at the bottom of the gameboard. The time board at the side maps speaking time to steps — e.g. 15 seconds = 1 step, 30s = 2, 45s = 3, 60s = 4, and so on. Players can see the board so they can plan how long they want to keep speaking. Teacher reads out a prompt from the digital deck in the app. Player starts speaking on that prompt. The timer runs. Hesitation, repetition, or going off-topic stops the timer — the piece moves by the number of steps the time board allows for that clock reading. Landing on a Slippery Step moves the piece back. Landing on a Risk Step: player attempts a Risk Card challenge — completing it earns a Reward Card. First individual / team to the top of the board wins.",
     variations: [
       {
         name: "Individual play",
@@ -507,10 +520,6 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
         name: "Team play",
         description:
           "Teams share one piece on the board but turns are taken by team members — each member speaking on a different topic. Every member must take at least one turn before the team piece reaches the top.",
-      },
-      {
-        name: "3-word incorporation",
-        description: "The opposing team / player gives the speaker 3 words to incorporate into their speech before the turn begins.",
       },
     ],
     materials: [
@@ -557,7 +566,7 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "Three coloured card decks are in the centre. On your turn, draw one card from each deck and complete the speaking tasks one after another.",
     howToPlay:
-      "Three coloured card decks are placed in the centre — each colour is a different type of speaking task. On their turn, a child draws one card and completes the speaking task, laying the completed card face-up in front of them. This line of completed cards is their train. The child wins by making a set of 3 cards of each colour — a total of 9 cards. Action cards may be used during play depending on the difficulty level. At 8–12, no notes are permitted at any difficulty level.",
+      "Three coloured card decks are placed in the centre — each colour is a different type of speaking task. On their turn, a child draws one card and completes the speaking task, laying the completed card face-up in front of them. This line of completed cards is their train. The child wins by making a set of 3 cards of each colour — a total of 9 cards. At 8–12, no notes are permitted at any difficulty level.",
     variations: [
       {
         name: "Longest train",
@@ -592,7 +601,7 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "One child holds a card to their forehead without looking at it. The group acts out what is on the card.",
     howToPlay:
-      "One child holds a card to their forehead without looking at it. The group acts out what is on the card. The child guesses what is on the card based on the group's enactment. At 8–12, the child must also use the word in a sentence demonstrating genuine contextual understanding. Another player may challenge.",
+      "One child holds a card to their forehead without looking at it. The group acts out what is on the card. The child guesses what is on the card based on the group's enactment.",
     variations: [
       {
         name: "Body and face only",
@@ -602,16 +611,15 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
         name: "Body, face, and sounds",
         description: "Group can add sounds but not say the word.",
       },
-      {
-        name: "Yes/No questions",
-        description: "Child asks yes/no questions to guide themselves to the answer. Hardest: child uses the guessed word in a sentence that shows they understand what it means.",
-      },
     ],
-    materials: ["Guess Me Cards"],
+    materials: [
+      "Guess Me Cards",
+      "Timer (optional)",
+    ],
     difficultyLevels: [
-      { level: "Easy", description: "Simple cards, no time limit, no challenge." },
-      { level: "Medium", description: "Standard cards, 30-second limit, sentence must show contextual understanding." },
-      { level: "Hard", description: "Abstract cards, 20-second limit, any player may challenge sentence accuracy." },
+      { level: "Easy", description: "Standard gameplay with no time limit." },
+      { level: "Medium", description: "Standard gameplay within set time." },
+      { level: "Hard", description: "With time limit — player asked to make sentences after guessing." },
     ],
     debriefPrompts: [
       {
@@ -678,11 +686,19 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "Two performers, four quadrant zones, each with a different challenge. Perform a scene. The audience can move you between zones.",
     howToPlay:
-      "Set up four quadrant mats, each with a slate showing a different challenge (e.g. speak only in questions, whisper, no hand gestures, rhyme every sentence). Two performers start a scene in one quadrant. Audience members hold Number Cards corresponding to quadrants. At any point, an audience member raises their card to move a performer to that quadrant \u2014 the performer must immediately switch to that quadrant's challenge while staying in character. Each performer has one Block Token to reject a move. Penalty Tokens for breaking a quadrant rule. Scene runs for a set time. Post-scene: audience names the smoothest transition.",
+      "Set up four quadrant mats, each with a slate showing a different challenge (e.g. speak only in questions, whisper, no hand gestures, rhyme every sentence). Two performers start a scene in one quadrant. Audience members hold Number Cards corresponding to quadrants. At any point, an audience member raises their card to move a performer to that quadrant — the performer must immediately switch to that quadrant's challenge while staying in character. Each performer has one Block Token to reject a move. Penalty Tokens for breaking a quadrant rule. Scene runs for a set time. Post-scene: audience names the smoothest transition.",
+    variations: [
+      {
+        name: "Variation 2",
+        description:
+          "Performers must rotate through all 4 quadrants during a single performance while still keeping the scene flowing.",
+      },
+    ],
     materials: [
       "Quadrant Mats (4)",
       "Slates with stands (4)",
-      "Scenario prompts — Improv Survival | Topics",
+      "Scenario prompts",
+      "Improv Survival Topics — https://docs.google.com/presentation/d/1TWcBf9YU3XrrPi5YrBoRvi94AZMS-sZTGxs5PoPbD1M/preview?usp=sharing",
       "Number Cards (1 per audience member)",
       "Block Tokens (1 per performer)",
       "Penalty Tokens",
@@ -690,9 +706,9 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
       "Timer",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Use Script Book — performers reference the script book while performing." },
-      { level: "Medium", description: "Normal gameplay without the script book — Block Token can be used twice." },
-      { level: "Hard", description: "Without the Script Book and without the Block Card — performers adapt on the fly." },
+      { level: "Easy", description: "Refer Script Book — performers refer to the script book while performing." },
+      { level: "Medium", description: "Normal gameplay without the script book." },
+      { level: "Hard", description: "Without the Script Book and Variation 2 — performers rotate through all 4 quadrants without the script book." },
     ],
     promptHeading: "reference quadrant prompts — one per quadrant mat",
     prompts: [
@@ -753,7 +769,7 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "Teacher gives a sentence prompt. A child starts speaking. Another player can call \"reverse gear\" on any word — the speaker then has to say the opposite of what was originally said.",
     howToPlay:
-      "Teacher gives a sentence prompt to speak. A child starts speaking. Another player can choose to call \"reverse gear\" on a specific word in between. The child then has to say the opposite of what was originally said, continuing from that point.",
+      "Teacher gives a sentence prompt to speak. A child starts speaking. Another player can choose to call \"reverse gear\" on a specific word in between. The child then has to say the opposite of what was originally said, or change the original word to a different word, continuing from that point. For example, a player says \"I love eating mangoes.\" Another child calls \"reverse gear on I.\" The player repeats the sentence — \"You love eating mangoes.\"",
     materials: ["Reverse Gear prompt deck (app)"],
     difficultyLevels: [
       {
@@ -769,7 +785,7 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
       {
         level: "Hard",
         description:
-          "Continue and add a new sentence relating to the reversed sentence. The child can also choose to call reverse gear one more time in the newly added sentences.",
+          "After the player says the reversed sentence, they add 2–3 lines of their own, continuing that sentence.",
       },
     ],
     promptHeading: "prompts — statements to reverse",
@@ -800,18 +816,18 @@ const showtimeActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "Two debaters, one topic. One argues For, one argues Against. Each draws a Challenge Card — a constraint they must handle during their debate.",
     howToPlay:
-      "Arrange in a circle. Select a moderator. Moderator draws a Topic Card and selects the topic. Moderator selects two debaters. Debaters draw For/Against chits. Each debater draws a Challenge Card that introduces a constraint they must incorporate. 1 minute of preparation. For speaks first — 1 minute. Against — 1 minute. Non-debating players ask questions. Losing debater gets a Strike Card. Two Strikes = become moderator. Last debater standing wins.",
+      "Arrange in a circle and select a moderator. Moderator draws a Topic Card and selects the topic. Moderator selects two debaters. Debaters draw For/Against chits. Each debater draws a Challenge Card that introduces a constraint they must incorporate. 1 minute of preparation. For and Against speak in turn, within set time. Non-debating players ask questions. Losing debater gets a Strike Card. Two Strikes = become moderator. Last debater standing wins.",
     materials: [
-      "Debate Duel Topic Cards (Booklet 1 + 2)",
+      "Debate Duel Topic Cards (B1 + B2)",
       "Challenge Cards",
       "Moderator Card",
       "Strike Cards (10)",
       "For & Against Cards (2)",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Booklet 1 topics, 1-min prep, Challenge Cards optional." },
-      { level: "Medium", description: "Booklet 1 or 2, Challenge Cards required." },
-      { level: "Hard", description: "Booklet 2, Challenge Cards required, educator names one word the losing debater should have stressed." },
+      { level: "Easy", description: "B1 topics, 1-min prep, Challenge Cards optional." },
+      { level: "Medium", description: "B1, Challenge Cards required." },
+      { level: "Hard", description: "B2, Challenge Cards required." },
     ],
     debriefPrompts: [
       {

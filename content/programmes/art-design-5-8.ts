@@ -478,7 +478,19 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "each child has a 9-grid template. pick a bead from the bowl without looking. if it matches a square on your grid, place it.",
     howToPlay:
-      "Coloured beads sit in a bowl or box in the centre. On their turn, a child picks one bead without looking, compares it to their grid, and places it if it matches. No match = bead goes back. First to finish a row or grid wins. Variation — Picture Cards: child draws a picture card from a deck and places it on the matching colour grid; if no match, discard. First to finish a row or grid wins. Variation — Pattern Bingo: teacher calls out a colour + pattern combination (e.g. \"yellow straight lines\") and children mark if present. First to finish a row or grid wins.",
+      "Coloured beads sit in a bowl or box in the centre. On their turn, a child picks one bead without looking, compares it to their grid, and places it if it matches. No match = bead goes back. First to finish a row or grid wins.",
+    variations: [
+      {
+        name: "Variation 1 — Picture matching",
+        description:
+          "Child draws a picture card from a deck and places it on the matching colour grid. If no match, discard. First to finish a row or grid wins.",
+      },
+      {
+        name: "Variation 2 — Pattern Bingo",
+        description:
+          "Teacher calls out a colour + pattern combination (e.g. \"yellow straight lines\"). Children mark if present. First to finish a row or grid wins.",
+      },
+    ],
     materials: [
       "9-grid template card",
       "Coloured beads in a bowl or box",
@@ -501,7 +513,24 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "56 colour cards face-down. flip two. matching colour = keep the pair. most pairs wins.",
     howToPlay:
-      "Children take turns flipping two cards. Match = keep pair. No match = flip back. In Variation 2, each child has a Mixing Card and flips to find formula colours.",
+      "Shuffle cards and place them face down. Children take turns flipping two cards on each turn.",
+    variations: [
+      {
+        name: "Variation 1 — Colour matching",
+        description:
+          "Each player flips two Colour Cards on their turn. If both cards are the same colour, they keep the pair. If not, they flip the cards back. The player with the most pairs at the end wins.",
+      },
+      {
+        name: "Variation 2 — Colour Mixing cards",
+        description:
+          "Each player starts with an Easy Mixing Card. On their turn, flip two Colour Cards from the grid. If the flipped colours match the formula on the Mixing Card, they keep the cards — if not, they place them back.",
+      },
+      {
+        name: "Variation 3 — Missing mixing card",
+        description:
+          "The teacher gives a Medium or Difficult Mixing Card with either 1 or 2 colours missing. Children find the matching pair by flipping 2 cards.",
+      },
+    ],
     materials: [
       "56 Colour Cards",
       "Easy Mixing Cards (14)",
@@ -509,9 +538,9 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "Difficult Mixing Cards (28)",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "colour recognition only." },
+      { level: "Easy", description: "Colour matching only." },
       { level: "Medium", description: "Easy and Medium Mixing Cards." },
-      { level: "Hard", description: "Difficult Mixing Cards, child identifies missing colours." },
+      { level: "Hard", description: "Difficult Mixing Cards. Timer can be used to limit time." },
     ],
     debriefPrompts: [],
     type: "physical-game",
@@ -523,15 +552,15 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "sew through templates using shoelaces. running stitch, backstitch, or a pattern combining stitches of your choice.",
     howToPlay:
-      "Children sew through templates. Running Stitch = dashed line. Backstitch = continuous joined line. Pattern Stitching = combines stitch types in a design of the child's choosing.",
+      "Children sew through templates using shoelaces. Running Stitch = dashed line. Backstitch = continuous joined line. Whip stitch = over the edges in a loop. Pattern Stitching = combines stitch types in a design of the child's choosing.",
     materials: [
       "Sewing templates (numbers, alphabets, and object outlines)",
       "Shoelaces",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Running Stitch on a simple template, educator demonstrates first." },
-      { level: "Medium", description: "Backstitch only — no demo, child works along the template line." },
-      { level: "Hard", description: "Pattern stitching — child combines stitches of their choice into a design before starting." },
+      { level: "Easy", description: "Running Stitch and Whip stitch." },
+      { level: "Medium", description: "Backstitch." },
+      { level: "Hard", description: "Pattern stitching." },
     ],
     debriefPrompts: [],
     type: "physical-game",
@@ -543,7 +572,19 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "build a subject from geometric pieces without speaking. your team guesses what you are making.",
     howToPlay:
-      "Each child builds a subject from geometric pieces silently while their team guesses what it is. · Variation 1 — Child's choice: the child picks which subject they want to create from the Shape Card and the other children guess. · Variation 2 — Relay / race: the group splits into teams and the teams compete to make the most subjects — whichever team finishes a card, or a set number of cards, first wins. · Variation 3 — Create the subjects in the Shape Cards sequentially, letting everyone guess turn by turn.",
+      "Each child builds a subject from geometric pieces silently while their team guesses what it is.",
+    variations: [
+      {
+        name: "Variation 1 — Child's choice",
+        description:
+          "The child picks which subject they want to create from the Shape Card and the other children guess.",
+      },
+      {
+        name: "Variation 2 — Relay / race",
+        description:
+          "The group splits into teams and the teams compete to make the most subjects — whichever team finishes a card, or a set number of cards, first wins.",
+      },
+    ],
     materials: [
       "Two sets of 60 transparent geometric pieces",
       "Shape Cards B1 and B2",
@@ -584,16 +625,17 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "scene card in the centre. i name an object — you find and draw it.",
     howToPlay:
-      "Scene card visible. Educator names object. Child finds object, then draws. Variation 2: card shown 30 seconds then removed, draw from memory.",
+      "Teacher shows a scene card or places multiple line/texture cards in a row. Educator names a texture, line/shape, or texture. Child finds it, then draws.",
     materials: [
       "Scene cards (A5)",
+      "Line / shape / texture cards",
       "Blank drawing sheets",
       "Pencils or crayons",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "direct name, card visible." },
-      { level: "Medium", description: "card visible, draw as much detail as you choose." },
-      { level: "Hard", description: "card shown 30 seconds then removed, drawn from memory." },
+      { level: "Easy", description: "Easy cards (scene cards) shown — child draws chosen object." },
+      { level: "Medium", description: "Use of Texture or lines/shapes cards." },
+      { level: "Hard", description: "Any card shown 30 seconds then removed, drawn from memory." },
     ],
     debriefPrompts: [],
     type: "physical-game",
@@ -605,7 +647,14 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "roll the dice, move your token, land on an art zone, draw a challenge card (draw, colour, build or mixed media), and complete it within the time limit.",
     howToPlay:
-      "Set up board game. Roll dice, move, land on art zone, draw challenge card (draw, colour, build or mixed media), complete within the time limit. Cooperative variation: whole group plays as one team.",
+      "Set up board game. Roll dice, move, land on an art zone. Draw a challenge card (draw, colour, build or mixed media) and complete it within the time limit.",
+    variations: [
+      {
+        name: "Cooperative variation",
+        description:
+          "The whole group plays as a team. Each child takes a turn rolling the dice, and all the children do the same challenge as on the card drawn by that child. Then the next player rolls.",
+      },
+    ],
     materials: [
       "Game board",
       "Player tokens",
@@ -618,9 +667,16 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "Colour sheets",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "simpler cards, 3-minute timer." },
-      { level: "Medium", description: "all zones, 2-minute timer." },
-      { level: "Hard", description: "all zones, 90-second timer." },
+      { level: "Easy", description: "B1 challenges from challenge cards." },
+      { level: "Medium", description: "B2 challenges from challenge cards." },
+      { level: "Hard", description: "B2 challenges with limited time." },
+    ],
+    promptHeading: "art zones",
+    prompts: [
+      "Sketch zone (Yellow tile/card) — children complete a simple sketch activity.",
+      "Colour zone (Teal tile/card) — children complete a colouring activity on given sheets.",
+      "Build zone (Pink tile/card) — children build a structure using blocks or pipe cleaners.",
+      "Mixed media zone (Light blue tile/card) — children complete the given activity using mixed mediums.",
     ],
     debriefPrompts: [],
     type: "physical-game",
@@ -664,40 +720,6 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       { level: "Easy", description: "no time limit — take as long as you need." },
       { level: "Medium", description: "a set time per prompt — draw before the timer runs out." },
       { level: "Hard", description: "rapid sketching — a set number of prompts in a limited time, team or individual. must complete every drawing before time is up." },
-    ],
-    promptHeading: "drawing prompts",
-    prompts: [
-      "What lives in water?",
-      "What can you find in the ocean?",
-      "What is a 3-letter word that starts with C?",
-      "What thing starts with the letter S?",
-      "What thing starts with the letter M?",
-      "What thing starts with the letter P?",
-      "What is a 4-letter word?",
-      "What are 2 words or things that rhyme?",
-      "What is always seen at a birthday party?",
-      "What can fly?",
-      "What is a breakfast food?",
-      "What can you find in a bathroom?",
-      "What can you wear?",
-      "What can you find on trees?",
-      "What can you find in a forest?",
-      "What can be cut?",
-      "What is round and edible?",
-      "What is a heavy object in the house?",
-      "What has 4 legs?",
-      "What can you find in a fridge?",
-      "What can you find in a kitchen?",
-      "What can you find in a garden?",
-      "What is something we use every day?",
-      "What can you find at a beach?",
-      "What is smaller than you?",
-      "What crawls?",
-      "What can you play with?",
-      "What is bigger than you?",
-      "What can you find in a classroom?",
-      "What can you find in a zoo?",
-      "What can float on water?",
     ],
     debriefPrompts: [],
     type: "physical-game",
