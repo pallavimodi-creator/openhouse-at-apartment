@@ -300,16 +300,28 @@ function SegmentRow({
         >
           {segment.segmentId === "art-gym" && segment.artGymLabel ? (
             (() => {
-              // Pick book image if the label references a numbered book
-              const bookMatch = segment.artGymLabel.match(/book\s*(\d+)/);
+              // Pick the right thumb for this art-gym day:
+              // · book N  → GYM_BOOK_IMAGES[N]
+              // · cue card → cue-cards-game hero
+              // · extension (sketchbook) → fall back to the supplied gymBookUrl
+              //   which the parent has already resolved for this session
+              const label = segment.artGymLabel.toLowerCase();
+              const bookMatch = label.match(/book\s*(\d+)/);
               const bookNum = bookMatch ? parseInt(bookMatch[1], 10) : null;
-              const bookImg = bookNum ? GYM_BOOK_IMAGES[bookNum] : null;
+              let thumb: string | undefined;
+              if (bookNum && GYM_BOOK_IMAGES[bookNum]) {
+                thumb = GYM_BOOK_IMAGES[bookNum];
+              } else if (label.includes("cue card")) {
+                thumb = "/games/art/cue-cards-game.png";
+              } else {
+                thumb = gymBookUrl;
+              }
               return (
                 <div className="flex items-start gap-2.5">
-                  {bookImg && (
+                  {thumb && (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
-                      src={bookImg}
+                      src={thumb}
                       alt=""
                       className="h-12 w-12 shrink-0 rounded-md bg-ink/[0.03] object-contain"
                     />
@@ -479,10 +491,24 @@ export function DayPlan({
   const segments = resolveSegments(programme, session);
   const bookSlug = PROGRAMME_BOOK_MAP[programme.slug];
   const bookCoverUrl = PROGRAMME_BOOK_COVER_URL[programme.slug];
-  const gymBookUrl =
+  // Pick the right art-gym hero image for this session's assigned position
+  // in the 4-day cycle. Book days show the laminated gym book cover; cue card
+  // days show the cue-card game hero; extension days currently fall back to
+  // the gym book (there is no dedicated sketchbook asset yet).
+  const defaultGymBookUrl =
     programme.ageGroup === "8-12"
       ? GYM_BOOK_IMAGES[5]
       : GYM_BOOK_IMAGES[3];
+  const artGymAssignedId = session.artGym;
+  let gymBookUrl = defaultGymBookUrl;
+  if (artGymAssignedId === "book-3") gymBookUrl = GYM_BOOK_IMAGES[3];
+  else if (artGymAssignedId === "book-4") gymBookUrl = GYM_BOOK_IMAGES[4];
+  else if (artGymAssignedId === "book-5") gymBookUrl = GYM_BOOK_IMAGES[5];
+  else if (artGymAssignedId === "book-6") gymBookUrl = GYM_BOOK_IMAGES[6];
+  else if (artGymAssignedId && artGymAssignedId.startsWith("cue-card"))
+    gymBookUrl = "/games/art/cue-cards-game.png";
+  // ext-book / ext-cue-card keep the default (sketchbook — visual continuity
+  // with the gym book until a dedicated sketchbook asset exists).
 
   return (
     <div>
