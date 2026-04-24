@@ -267,11 +267,19 @@ export function getActivityImage(id: string): string | undefined {
 }
 
 // ─── Activity video lookup ─────────────────────────────────
-// Maps CurriculumActivity.id → static video URL (mp4 in /public).
-// When present, the activity popup renders a video player with the
-// matching ACTIVITY_IMAGES entry used as the poster frame.
+// Maps CurriculumActivity.id → video URL. Two kinds are supported:
+//   · YouTube URL — rendered as a responsive youtube-nocookie iframe
+//   · Self-hosted /public/…mp4 — rendered with the HTML <video> tag
+// The popup auto-detects YouTube URLs via extractYouTubeId().
 export const ACTIVITY_VIDEOS: Record<string, string> = {
-  "improv-survival": "/games/ps/improv-survival.mp4",
+  // Public Speaking
+  "tale-trail": "https://youtu.be/i4uz_IFvLpU",
+  "watch-your-step": "https://youtu.be/AoDBt-FEi5w",
+  "speech-a-palooza": "https://youtu.be/bEZCo9Ay0Lk",
+  spaggle: "https://youtu.be/bvpnvWKhhws",
+  "improv-survival": "https://youtu.be/QoufaYiNAmE",
+  // Art & Design
+  "colour-flip": "https://youtu.be/Um9c5L71xGE",
 };
 
 export function getActivityVideo(id: string): string | undefined {
