@@ -331,9 +331,9 @@ const buildActivities: Record<string, CurriculumActivity> = {
     segment: "build",
     title: "see-saw build",
     setupLine:
-      "each child builds their own see-saw from a personal kit. four sessions — day by day.",
+      "each child builds their own see-saw from a personal kit. six sessions — day by day.",
     howToPlay:
-      "The see-saw is a simple lever — a beam on a central fulcrum. Intuitive entry into lever concepts. Day 1 Explore: read the full Model Manual, identify every component, lay them out in manual order, begin first build stage. Day 2 Make: open manual to where you left off, build, teacher uses only four questions. Day 3 Complete and Test: finish, test balance behaviour, record best result. Day 4 Improve and Disassemble: each child makes one deliberate improvement, states expected change, tests, records before-and-after. Then disassembles from memory — no tray map. Teacher names each component as it goes back.",
+      "The see-saw is a simple lever — a beam on a central fulcrum. Intuitive entry into lever concepts. Day 1 Explore: read the full Model Manual, identify and name every component, lay them out in manual order, begin first build stage. Days 2–3 Make: open manual to where you left off, build, teacher uses only four questions. Day 4 Complete and Test: finish, run the full test sequence, record best result with actual measurement. Day 5 Improve: state what you expect to change before touching anything, make one deliberate change, test, record before-and-after. Day 6 Disassemble: sort back from memory — no tray map. Teacher names each component as it goes back.",
     materials: [
       "Personal See-saw kit per child",
       "Model Manual — See Saw.pdf (1 per child)",
@@ -355,7 +355,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "same cycle, more complex lever. two pan arms that must balance perfectly.",
     howToPlay:
-      "Complex two-pan lever. Every lever experiment directly explains what the build is doing. Same 4-day cycle: Explore · Make · Complete and Test · Improve and Disassemble (from memory).",
+      "Complex two-pan lever. Every lever experiment directly explains what the build is doing. Same 6-day cycle: Day 1 Explore · Days 2–3 Make · Day 4 Complete and Test · Day 5 Improve · Day 6 Disassemble (from memory).",
     materials: [
       "Weighing Scale kit additions per child (distributed at Day 1)",
       "Model Manual — Weighing Scale.pdf",
@@ -376,7 +376,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "pulley model. the crane lifts a load through a rope and pulley system.",
     howToPlay:
-      "Crane uses a pulley system. Same 4-day cycle: Explore · Make · Complete and Test · Improve and Disassemble (from memory).",
+      "Crane uses a pulley system. Same 6-day cycle: Day 1 Explore · Days 2–3 Make · Day 4 Complete and Test · Day 5 Improve · Day 6 Disassemble (from memory).",
     materials: [
       "Crane kit additions per child (distributed at Day 1)",
       "Model Manual — Crane.pdf",
@@ -420,10 +420,10 @@ const skillAreas: CurriculumSkillArea[] = [
     name: "building & making",
     shortName: "B&M",
     abilities: [
-      { name: "fits and functions", description: "puts parts together deliberately — checks each connection works before moving on" },
-      { name: "follows the card", description: "follows the step card and notices when a step has not produced the expected result" },
-      { name: "adjusts and fixes", description: "finds the exact part that failed and fixes it without being told which part" },
-      { name: "improves deliberately", description: "makes a deliberate improvement and states what they expect to change before testing it", isNorthStar: true },
+      { name: "Fit", description: "connects parts deliberately — checks that each connection is secure and functional before moving on" },
+      { name: "Follow", description: "builds in the correct sequence using the step card — and notices when a step has not produced the expected result" },
+      { name: "Adjust", description: "identifies the specific connection or component that is not working and corrects it within the given design" },
+      { name: "Improve", description: "makes a deliberate change to improve performance — states what they expect to change before testing, then records the before and after", isNorthStar: true },
     ],
   },
   {
@@ -431,10 +431,10 @@ const skillAreas: CurriculumSkillArea[] = [
     name: "problem solving",
     shortName: "PS",
     abilities: [
-      { name: "notices independently", description: "notices when the model is not working and names what it should be doing instead" },
-      { name: "tries differently", description: "tries genuinely different approaches — does not repeat the same failed attempt" },
-      { name: "locates the cause", description: "names the specific part causing the failure and says what it is failing to do" },
-      { name: "reaches the goal", description: "sets a measurable goal and keeps adjusting until the model reaches it", isNorthStar: true },
+      { name: "Notice", description: "recognises that the model is not working and names specifically what it should be doing but is not" },
+      { name: "Try", description: "attempts a genuinely different approach — does not repeat what already failed" },
+      { name: "Change", description: "identifies the specific part that is failing, explains what it is failing to do, and tries a new approach that goes beyond the given steps" },
+      { name: "Persist", description: "sets a measurable goal for the model's performance and keeps adjusting until that goal is reached", isNorthStar: true },
     ],
   },
   {
@@ -442,10 +442,10 @@ const skillAreas: CurriculumSkillArea[] = [
     name: "observing & understanding",
     shortName: "O&U",
     abilities: [
-      { name: "spots what changed", description: "names one specific thing that changed — what moved, shifted, or read differently" },
-      { name: "measures and records", description: "takes measurements accurately and records every reading correctly" },
-      { name: "predicts before trying", description: "writes a specific prediction before testing — a value or a reason, not just a direction" },
-      { name: "explains why", description: "explains what caused the result — names the cause and connects it to the data", isNorthStar: true },
+      { name: "Observe", description: "names one specific thing that changed — what moved, shifted, or read differently — without being prompted" },
+      { name: "Measure", description: "takes measurements accurately and records every reading correctly, including units, with no gaps in the result table" },
+      { name: "Predict", description: "states a specific prediction before testing — includes a value or a reason connected to what was found in a prior session, not just a direction" },
+      { name: "Explain", description: "explains what caused the result — names the specific cause and connects it to what the data shows", isNorthStar: true },
     ],
   },
 ];
@@ -486,8 +486,10 @@ const segmentDefinitions: CurriculumSegmentDef[] = [
 const DAY_LABELS_8_12: Record<number, string> = {
   1: "Day 1 — Explore",
   2: "Day 2 — Make",
-  3: "Day 3 — Complete and Test",
-  4: "Day 4 — Improve and Disassemble",
+  3: "Day 3 — Make",
+  4: "Day 4 — Complete and Test",
+  5: "Day 5 — Improve",
+  6: "Day 6 — Disassemble",
 };
 
 /**
@@ -521,50 +523,72 @@ function s(
 }
 
 const sessionTable: CurriculumSessionEntry[] = [
-  s(0, "l1-levers-e1", "Crane", "build-crane", 1,
+  // ─── Trial session (day 0) — Crane preview ─────────────────
+  s(0, "l1-pulleys-e1", "Crane", "build-crane", 1,
     "Today we're going to build a real crane model. You'll use parts to make something that actually works. It may not work the first time — that's expected. You'll figure out what to change and improve it. By the end, you'll understand how cranes work in real life.",
     "Where do you see cranes in real life — and which part of your crane is doing the main job?"),
+  // ─── See-saw build · L1 + L2 levers paired ─ Sessions 1–6 ──
   s(1, "l1-levers-e1", "See-saw", "build-see-saw", 1,
     "A see-saw is one of the oldest machines in the world. But it is also one of the most precisely engineered things on a playground. What makes a see-saw actually balance — not tip — when two people of different weights sit on it?",
     "What does a lever do that makes lifting easier — in one sentence?"),
-  s(2, "l1-levers-e2", "See-saw", "build-see-saw", 2,
-    "Architects designing a cantilever bridge — a bridge that extends out with no support underneath — use the same principle as a see-saw. The bridge doesn't fall because of balance. How do you think they calculate where to put the counterweight?",
-    "When we moved further from the middle — did the effort go up or down? Why?"),
-  s(3, "l1-levers-e3", "See-saw", "build-see-saw", 3,
-    "Your see-saw is almost complete. If I gave you two objects of unknown weight and your see-saw — how would you figure out which one is heavier? Could you calculate the exact difference?",
-    "If the load doubles — does the effort double? What did our numbers show?"),
-  s(4, "l1-levers-e4", "See-saw", "build-see-saw", 4,
+  s(2, "l2-levers-e1", "See-saw", "build-see-saw", 2,
+    "If arm length halves the effort in one experiment — does it halve it again if we halve the arm again? Or does the relationship change as you push further?",
+    "When arm length doubles, what happens to effort? Can you calculate it?"),
+  s(3, "l1-levers-e2", "See-saw", "build-see-saw", 3,
+    "Architects designing a cantilever bridge — a bridge that extends out with no support underneath — use the same principle as a see-saw. How do you think they calculate where to put the counterweight?",
+    "How does the load-to-effort relationship change across our readings?"),
+  s(4, "l2-levers-e2", "See-saw", "build-see-saw", 4,
+    "Is the increase in effort proportional to the load? Exactly double load = exactly double effort — or not quite? What does the data say?",
+    "Is the load-to-effort increase proportional? What does the calculation show?"),
+  s(5, "l1-levers-e3", "See-saw", "build-see-saw", 5,
+    "Your see-saw balances when weights are equal. What one change could you make to make it balance better or more accurately? Name the change and the measurable improvement you expect.",
+    "When does a lever balance perfectly? What exact condition has to be true?"),
+  s(6, "l2-levers-e3", "See-saw", "build-see-saw", 6,
     "Before we disassemble — if you were designing a better see-saw, what would you change about the structure to make it more precise? Name one specific improvement and what you would expect it to do.",
-    "Can a lever find the weight of something unknown — how?"),
-  s(5, "l2-levers-e5", "Weighing Scale", "build-weighing-scale", 1,
-    "Before digital scales existed, jewellers weighed gold using a balance lever accurate to a fraction of a gram. What do you think made them that accurate — what aspect of the design had to be perfect?",
-    "When does a lever balance perfectly? What has to be true on both sides?"),
-  s(6, "l2-levers-e6", "Weighing Scale", "build-weighing-scale", 2,
-    "A balance scale and a see-saw use the same mechanical principle. But a weighing scale is used to measure — it needs to give you a number. What has to be true about the design for it to give you a reliable number every time?",
-    "What happens to effort when the fulcrum moves very close to the load?"),
-  s(7, "l1-pulleys-e1", "Weighing Scale", "build-weighing-scale", 3,
-    "Your Weighing Scale is complete. What is the heaviest thing in this room you predict it could weigh accurately? What do you think the limit is — and why?",
-    "Which part of the Weighing Scale does the most important job?"),
-  s(8, "l1-pulleys-e2", "Weighing Scale", "build-weighing-scale", 4,
+    "Can you calculate the exact balance point for two different weights?"),
+  // ─── Weighing Scale build · L2 levers + repeats ─ Sessions 7–12
+  s(7, "l1-levers-e4", "Weighing Scale", "build-weighing-scale", 1,
+    "Before digital scales existed, jewellers weighed gold using a balance lever accurate to a fraction of a gram. What aspect of the design had to be perfect for that accuracy?",
+    "How can any equal-weight object tell you when a lever is balanced?"),
+  s(8, "l2-levers-e4", "Weighing Scale", "build-weighing-scale", 2,
+    "A balance scale and a see-saw use the same mechanical principle. But a weighing scale is used to measure — it needs to give a number. What has to be true about the design for it to give you a reliable number every time?",
+    "Can you calculate an unknown weight using the ratio of arm lengths?"),
+  s(9, "l2-levers-e5", "Weighing Scale", "build-weighing-scale", 3,
+    "A wheelbarrow carries a heavy load near the wheel — close to the fulcrum. The handles extend far back. Why is it designed that way? What would happen if the load were at the back?",
+    "How does moving the fulcrum change the required effort — can you calculate where to place it?"),
+  s(10, "l2-levers-e6", "Weighing Scale", "build-weighing-scale", 4,
+    "A bottle opener, a nutcracker, a pair of pliers — all levers. But they work differently from a see-saw. The fulcrum is at the end, not the middle. Why does that change everything?",
+    "Why does a fulcrum near the load dramatically reduce effort — and by how much?"),
+  s(11, "l2-levers-e3", "Weighing Scale", "build-weighing-scale", 5,
+    "Your Weighing Scale is complete. What is the one part that makes the biggest difference to accuracy — and how would you verify that before your next session?",
+    "Can you use your weighing scale arm to calculate an exact balance point?"),
+  s(12, "l2-levers-e4", "Weighing Scale", "build-weighing-scale", 6,
     "If you were manufacturing this Weighing Scale for real — to be sold in a market — what would you change about the design to make it more robust, more accurate, or easier to use? Name one change and the expected result.",
-    "What does a pulley do — what is the one thing it changes?"),
-  s(9, "l1-pulleys-e3", "Crane", "build-crane", 1,
-    "The Sky Crane — the system NASA used to lower the Curiosity rover onto Mars — was a hovering rocket with a pulley and cable system that lowered the rover slowly so it wouldn't smash on impact. Why would engineers design something that complex instead of just dropping the rover with a parachute?",
-    "Does changing pulley height change the effort needed?"),
-  s(10, "l1-pulleys-e4", "Crane", "build-crane", 2,
-    "On a construction site, a crane lifts a steel beam that weighs several tons. The operator does not exert several tons of force. The pulley system multiplies what they can do. If you added a second pulley to the crane system — what do you predict would happen to the effort needed?",
-    "Does the direction you pull change the effort — or only the comfort?"),
-  s(11, "l2-pulleys-e4", "Crane", "build-crane", 3,
-    "Your crane is complete. Before you test it — what is the maximum load you predict it will lift? And if you had to improve the lifting capacity without rebuilding the whole model, what would you change first?",
-    "What job does the pulley do inside the crane that the crane couldn't do without it?"),
-  s(12, "l2-pulleys-e5", "Crane", "build-crane", 4,
-    "Engineers who designed the cranes that built the Burj Khalifa — the tallest building in the world — had to solve one specific problem: as the building gets taller, the crane has to climb the building itself. What mechanical principle would you use to design a crane that can lift itself?",
-    "What is the one most important thing you found out across all these sessions?"),
+    "Can your weighing scale find the weight of something unknown — accurately?"),
+  // ─── Crane build · Pulley experiments ─ Sessions 13–18 ─────
+  s(13, "l1-pulleys-e1", "Crane", "build-crane", 1,
+    "The Sky Crane — the system NASA used to lower the Curiosity rover onto Mars — was a hovering rocket with a pulley and cable system that lowered the rover slowly. Why would engineers design something that complex instead of just dropping the rover with a parachute?",
+    "What happens to effort when the load gets heavier through a single pulley — is it proportional?"),
+  s(14, "l1-pulleys-e2", "Crane", "build-crane", 2,
+    "When you raise a flag on a flagpole — you pull the rope down and the flag goes up. You are pulling the wrong direction. How does that work? What does the pulley actually change?",
+    "What does a fixed pulley change — direction or mechanical advantage?"),
+  s(15, "l1-pulleys-e3", "Crane", "build-crane", 3,
+    "Your crane has a pulley — the small wheel with a groove for the rope. What do you think that pulley is doing that the crane couldn't do without it?",
+    "Does pulley height change the effort reading — yes or no, and why?"),
+  s(16, "l1-pulleys-e4", "Crane", "build-crane", 4,
+    "On a construction site, a crane lifts a steel beam that weighs several tons. The operator does not exert several tons of force. The pulley system multiplies what they can do. If you added a second pulley — what do you predict would happen to the effort needed?",
+    "Does pull direction change the effort reading — or only the comfort?"),
+  s(17, "l2-pulleys-e4", "Crane", "build-crane", 5,
+    "Your crane is complete. Before you test it — what is the maximum load you predict it will lift? If you had to improve the lifting capacity without rebuilding the whole model, what would you change first?",
+    "Can you calculate the exact effort reduction from a compound pulley system?"),
+  s(18, "l2-pulleys-e5", "Crane", "build-crane", 6,
+    "Engineers who designed the cranes that built the Burj Khalifa had to solve one problem: as the building gets taller, the crane has to climb the building itself. What mechanical principle would you use to design a crane that can lift itself?",
+    "What is the mechanical advantage of a multi-pulley system — and how does rope distance relate to effort?"),
 ];
 
-// Monthly checkpoint — after 8 sessions
+// Monthly checkpoints — after 8 and 16
 sessionTable.forEach((entry) => {
-  if ([8].includes(entry.sessionNumber)) entry.isCheckpoint = true;
+  if ([8, 16].includes(entry.sessionNumber)) entry.isCheckpoint = true;
 });
 
 // ─── Checkpoints ────────────────────────────────────────────
@@ -573,9 +597,17 @@ const checkpoints: CurriculumCheckpoint[] = [
   {
     afterSession: 8,
     descriptors: [
-      { skillArea: "B&M", beginning: "connects parts with teacher checks", developing: "follows the card and notices when a step has not produced the expected result", secure: "finds the exact part that failed and fixes it without being told which part" },
-      { skillArea: "PS", beginning: "names general failure", developing: "tries genuinely different approaches", secure: "names the specific part causing the failure and says what it is failing to do" },
-      { skillArea: "O&U", beginning: "records readings", developing: "writes a specific prediction before testing — a value or a reason", secure: "explains what caused the result — names the cause and connects it to the data" },
+      { skillArea: "B&M", beginning: "connects parts with teacher checks (Fit)", developing: "follows the card and notices when a step has not produced the expected result (Follow)", secure: "identifies the specific component that failed and fixes it without being told which part (Adjust)" },
+      { skillArea: "PS", beginning: "names general failure", developing: "tries genuinely different approaches (Try)", secure: "names the specific part causing the failure and explains what it is failing to do (Change)" },
+      { skillArea: "O&U", beginning: "records readings with gaps", developing: "records every reading correctly including units (Measure)", secure: "writes a specific prediction before testing — a value or a reason connected to prior data (Predict)" },
+    ],
+  },
+  {
+    afterSession: 16,
+    descriptors: [
+      { skillArea: "B&M", beginning: "adjusts within the design (Adjust)", developing: "makes a deliberate improvement and records before/after", secure: "states what they expect to change before testing, then verifies the result (Improve ★)" },
+      { skillArea: "PS", beginning: "identifies the specific failing part (Change)", developing: "tries new approaches that go beyond the given steps", secure: "sets a measurable goal and keeps adjusting until the model reaches it (Persist ★)" },
+      { skillArea: "O&U", beginning: "predicts a direction", developing: "predicts with a value or a reason (Predict)", secure: "explains what caused the result — names the cause and connects it to what the data shows (Explain ★)" },
     ],
   },
 ];
@@ -593,8 +625,8 @@ export const robotics812: CurriculumProgramme = {
   tagline:
     "calculate it. predict it. build it. explain why it works — every time.",
   description:
-    "level 1 — mechanics. same three models as 5–8 but each build is four days and every experiment is quantitative. children finish the year able to calculate mechanical advantage, predict before testing, and explain causally after.",
-  totalSessions: 12,
+    "level 1 — mechanics. same three models as 5–8 but each build is six days and every experiment runs L1 and L2 on consecutive sessions — qualitative first, quantitative next. children finish the year able to calculate mechanical advantage, predict before testing, and explain causally after.",
+  totalSessions: 18,
   skillAreas,
   segmentDefinitions,
   sessionTable,
