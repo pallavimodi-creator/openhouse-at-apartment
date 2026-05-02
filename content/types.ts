@@ -195,6 +195,11 @@ export interface ArtiverseUnit {
   abilitiesCovered: string[];
   topicOptions: string[];
   heroImageUrl: string;
+  /**
+   * Additional reference images for this unit (e.g. a "day 2" or alternate
+   * spread). Renderers can show these alongside the hero in a small gallery.
+   */
+  extraImages?: string[];
 }
 
 /**

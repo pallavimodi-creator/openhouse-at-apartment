@@ -276,6 +276,7 @@ function SegmentRow({
                       days: unit.days,
                       topicOptions: unit.topicOptions,
                       heroImageUrl: unit.heroImageUrl,
+                      extraImages: unit.extraImages,
                     }
                   : undefined,
               };

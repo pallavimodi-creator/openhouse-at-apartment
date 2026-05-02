@@ -18,6 +18,9 @@ export interface ArtiverseUnitInfo {
   days: number;
   topicOptions: string[];
   heroImageUrl: string;
+  /** Optional reference images shown in a small thumbnail strip below the
+   *  hero — e.g. day-2 spreads or alternates. */
+  extraImages?: string[];
 }
 
 /**
@@ -95,16 +98,31 @@ export function SegmentInfoPopup({ info }: { info: SegmentInfo }) {
       {/* Image panel — shows artwork image if artiverse unit available, else
           any hero image provided (book cover, gym book), else icon panel */}
       {heroSrc ? (
-        <div className="relative overflow-hidden rounded-card">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={heroSrc}
-            alt={unit?.whatChildrenMake ?? info.title}
-            className="max-h-64 w-full bg-ink/[0.02] object-contain"
-          />
-          <span className="absolute left-4 top-4 rounded-chip bg-black/40 px-2.5 py-0.5 text-[10px] font-semibold tracking-normal text-white backdrop-blur-sm">
-            {info.segmentName}
-          </span>
+        <div className="space-y-2">
+          <div className="relative overflow-hidden rounded-card">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={heroSrc}
+              alt={unit?.whatChildrenMake ?? info.title}
+              className="max-h-64 w-full bg-ink/[0.02] object-contain"
+            />
+            <span className="absolute left-4 top-4 rounded-chip bg-black/40 px-2.5 py-0.5 text-[10px] font-semibold tracking-normal text-white backdrop-blur-sm">
+              {info.segmentName}
+            </span>
+          </div>
+          {unit?.extraImages && unit.extraImages.length > 0 && (
+            <div className="flex gap-2 overflow-x-auto pb-1">
+              {unit.extraImages.map((src, i) => (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  key={src}
+                  src={src}
+                  alt={`${unit.medium} reference ${i + 2}`}
+                  className="h-24 flex-none rounded-md bg-ink/[0.02] object-contain ring-1 ring-ink/10"
+                />
+              ))}
+            </div>
+          )}
         </div>
       ) : (
         <div

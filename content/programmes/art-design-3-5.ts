@@ -246,6 +246,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
  */
 
 const PLACEHOLDER = "/artiverse/placeholder.svg";
+const AV = "/artiverse/art-3-5";
 
 const artiverseUnits: ArtiverseUnit[] = [
   // ── Colourful Papers ──
@@ -258,7 +259,7 @@ const artiverseUnits: ArtiverseUnit[] = [
     days: 2,
     abilitiesCovered: ["Tool Precision", "Tracing", "Integrating Artistic Choices"],
     topicOptions: ["A folding fan", "A fold-out card for a friend", "A creature whose body opens and closes"],
-    heroImageUrl: PLACEHOLDER,
+    heroImageUrl: `${AV}/av35-1-accordion.png`,
   },
   {
     id: "av35-2",
@@ -269,7 +270,8 @@ const artiverseUnits: ArtiverseUnit[] = [
     days: 2,
     abilitiesCovered: ["Tool Precision", "Drawing Figures and Patterns", "Integrating Artistic Choices"],
     topicOptions: ["A face I know", "An animal made of circles", "Bubbles in a story"],
-    heroImageUrl: PLACEHOLDER,
+    heroImageUrl: `${AV}/av35-2-circles.png`,
+    extraImages: [`${AV}/av35-2-circles-day-2.png`],
   },
   {
     id: "av35-3",
@@ -280,7 +282,7 @@ const artiverseUnits: ArtiverseUnit[] = [
     days: 2,
     abilitiesCovered: ["Tool Precision", "Names and recognises", "Explores Artistic Concepts"],
     topicOptions: ["My favourite animal in mosaic", "The first letter of my name", "A garden of torn pieces"],
-    heroImageUrl: PLACEHOLDER,
+    heroImageUrl: `${AV}/av35-3-mosaic.png`,
   },
   {
     id: "av35-4",
@@ -291,7 +293,7 @@ const artiverseUnits: ArtiverseUnit[] = [
     days: 2,
     abilitiesCovered: ["Tool Precision", "Names and recognises", "Explores Artistic Concepts"],
     topicOptions: ["A chain for a celebration", "A long snake of loops", "A pattern of two colours"],
-    heroImageUrl: PLACEHOLDER,
+    heroImageUrl: `${AV}/av35-4-loops-and-chains.png`,
   },
 
   // ── Crayons ──
@@ -304,7 +306,7 @@ const artiverseUnits: ArtiverseUnit[] = [
     days: 2,
     abilitiesCovered: ["Drawing Figures and Patterns", "Explores freely", "Explores Artistic Concepts"],
     topicOptions: ["My doodle of nothing in particular", "A scribble that becomes a creature", "Lines that go everywhere"],
-    heroImageUrl: PLACEHOLDER,
+    heroImageUrl: `${AV}/av35-5-doodling.png`,
   },
   {
     id: "av35-6",
@@ -315,7 +317,7 @@ const artiverseUnits: ArtiverseUnit[] = [
     days: 2,
     abilitiesCovered: ["Tracing", "Names and recognises", "Fine Motor Integration"],
     topicOptions: ["A colouring page from the book", "A drawing I make and then colour", "A picture in only my favourite colour"],
-    heroImageUrl: PLACEHOLDER,
+    heroImageUrl: `${AV}/av35-6-colouring.png`,
   },
   {
     id: "av35-7",
@@ -326,7 +328,7 @@ const artiverseUnits: ArtiverseUnit[] = [
     days: 2,
     abilitiesCovered: ["Mixes and notices", "Colour Integration", "Integrating Artistic Choices"],
     topicOptions: ["A sunset I have seen", "A made-up colour I name myself", "A leaf in autumn"],
-    heroImageUrl: PLACEHOLDER,
+    heroImageUrl: `${AV}/av35-7-mixing.png`,
   },
 
   // ── Watercolour ──
@@ -339,7 +341,7 @@ const artiverseUnits: ArtiverseUnit[] = [
     days: 2,
     abilitiesCovered: ["Explores freely", "Names and recognises", "Emotional Expression through Art"],
     topicOptions: ["A card for someone I love", "Hand-prints that turn into a creature", "A thank-you card"],
-    heroImageUrl: PLACEHOLDER,
+    heroImageUrl: `${AV}/av35-8-hand-printing.png`,
   },
   {
     id: "av35-9",
@@ -350,7 +352,7 @@ const artiverseUnits: ArtiverseUnit[] = [
     days: 2,
     abilitiesCovered: ["Tool Precision", "Mixes and notices", "Emotional Expression through Art"],
     topicOptions: ["A field of flowers", "A celebration card", "Bugs and butterflies in a garden"],
-    heroImageUrl: PLACEHOLDER,
+    heroImageUrl: `${AV}/av35-9-finger-painting.png`,
   },
   {
     id: "av35-10",
@@ -361,7 +363,8 @@ const artiverseUnits: ArtiverseUnit[] = [
     days: 2,
     abilitiesCovered: ["Tool Precision", "Mixes and notices", "Integrating Artistic Choices"],
     topicOptions: ["A sky I see in the morning", "A storm cloud", "Mountains far away"],
-    heroImageUrl: PLACEHOLDER,
+    heroImageUrl: `${AV}/av35-10-sponge.png`,
+    extraImages: [`${AV}/av35-10-sponge-day-2.png`],
   },
   {
     id: "av35-11",
@@ -372,7 +375,7 @@ const artiverseUnits: ArtiverseUnit[] = [
     days: 2,
     abilitiesCovered: ["Tool Precision", "Drawing Figures and Patterns", "Integrating Artistic Choices"],
     topicOptions: ["A tree of dots", "A starry night", "A polka-dot fish"],
-    heroImageUrl: PLACEHOLDER,
+    heroImageUrl: `${AV}/av35-11-qtip.png`,
   },
   {
     id: "av35-12",
@@ -383,7 +386,8 @@ const artiverseUnits: ArtiverseUnit[] = [
     days: 2,
     abilitiesCovered: ["Explores freely", "Mixes and notices", "Visual Arts Integration"],
     topicOptions: ["A firework in the sky", "A windy day with leaves", "A splatter that becomes a creature"],
-    heroImageUrl: PLACEHOLDER,
+    heroImageUrl: `${AV}/av35-12-blow-splatter.png`,
+    extraImages: [`${AV}/av35-12-blow-splatter-day-2.png`],
   },
 
   // ── Artistotle illustrator projects (3 sessions each) ──
