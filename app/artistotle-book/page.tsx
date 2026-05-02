@@ -20,7 +20,6 @@ const ARTISTOTLE_PAGES = [
   "/artistotle-book/09-lois-ehlert-cover.png",
   "/artistotle-book/10-lois-ehlert-project-1.png",
   "/artistotle-book/11-lois-ehlert-project-2-formatted.png",
-  "/artistotle-book/12-lois-ehlert-project-2-process.png",
   "/artistotle-book/13-taro-gomi-cover.png",
   "/artistotle-book/14-taro-gomi-about.png",
   "/artistotle-book/15-taro-gomi-project-1.png",
