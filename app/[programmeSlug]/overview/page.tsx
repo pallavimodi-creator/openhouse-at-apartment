@@ -472,7 +472,18 @@ function ProgrammeOverviewContent() {
 
   // Build daily flow dynamically from this programme's segment definitions.
   const segmentStyle: Record<string, { color: string; textColor: string; icon: typeof Dumbbell; durationFlex: number; meaning: string }> = {
-    "art-gym": { color: "bg-[#F5D547]", textColor: "text-amber-900", icon: Dumbbell, durationFlex: 17.5, meaning: "a structured opening segment using books, cue cards, and their extensions, where each session builds directly on the previous one. art gym books are laminated — children mark them with resources of choice: thread, clay, sequins, or erasable markers." },
+    "art-gym": {
+      color: "bg-[#F5D547]",
+      textColor: "text-amber-900",
+      icon: Dumbbell,
+      durationFlex: 17.5,
+      // Pull the live objective from the programme's segment definition so the
+      // 3-5 programme (book + scribble, no cue cards/extensions) gets its own
+      // copy without being overridden by the older 5-8 / 8-12 wording.
+      meaning:
+        programme.segmentDefinitions.find((s) => s.id === "art-gym")?.objective ??
+        "a structured opening segment.",
+    },
     "art-games": { color: "bg-category-language/40", textColor: "text-green-900", icon: Gamepad2, durationFlex: 17.5, meaning: "one art game that builds a specific skill. all children play simultaneously." },
     artiverse: { color: "bg-category-stem/40", textColor: "text-blue-900", icon: Palette, durationFlex: 42.5, meaning: "a structured making programme combining medium, technique, and outcome over multiple sessions." },
     "roll-call": { color: "bg-[#F5D547]", textColor: "text-amber-900", icon: Zap, durationFlex: 9, meaning: "a quick energetic start. group games that wake up voice, body, and attention — every child playing simultaneously within 2 minutes." },
@@ -517,32 +528,38 @@ function ProgrammeOverviewContent() {
       segment: "art gym",
       icon: Dumbbell,
       color: "bg-[#F5D547]",
-      time: "15–20 min",
+      time: programme.ageGroup === "3-5" ? "15 min" : "15–20 min",
       type: "fixed" as const,
-      games: [
-        { name: programme.ageGroup === "8-12" ? "art gym book 5 & 6" : "art gym book 3 & 4", skills: ["line & texture", "shape & form"], rotation: "fixed" as const },
-        { name: "extension (sketchbook, book day)", skills: ["imagination & collaboration"], rotation: "fixed" as const },
-        { name: programme.ageGroup === "8-12" ? "cue cards b1 & b2 + backgrounds" : "cue cards b1 & b2", skills: ["line & texture", "shape & form"], rotation: "fixed" as const },
-        { name: "extension (sketchbook, cue card day)", skills: ["balance & composition"], rotation: "fixed" as const },
-      ],
+      games:
+        programme.ageGroup === "3-5"
+          ? [
+              { name: "art gym book", skills: ["fine motor", "creative expression"], rotation: "fixed" as const },
+              { name: "scribble book", skills: ["fine motor", "creative expression"], rotation: "fixed" as const },
+            ]
+          : [
+              { name: programme.ageGroup === "8-12" ? "art gym book 5 & 6" : "art gym book 3 & 4", skills: ["line & texture", "shape & form"], rotation: "fixed" as const },
+              { name: "extension (sketchbook, book day)", skills: ["imagination & collaboration"], rotation: "fixed" as const },
+              { name: programme.ageGroup === "8-12" ? "cue cards b1 & b2 + backgrounds" : "cue cards b1 & b2", skills: ["line & texture", "shape & form"], rotation: "fixed" as const },
+              { name: "extension (sketchbook, cue card day)", skills: ["balance & composition"], rotation: "fixed" as const },
+            ],
     },
     {
       segment: "art games",
       icon: Gamepad2,
       color: "bg-category-language/40",
-      time: "15–20 min",
+      time: programme.ageGroup === "3-5" ? "25 min" : "15–20 min",
       type: "rotating" as const,
       games: Object.values(programme.activities)
         .filter((a) => a.segment === "art-games")
         .map((a) => ({ name: a.title.toLowerCase(), skills: [] as string[], rotation: "rotating" as const })),
     },
     {
-      segment: "artiverse",
+      segment: programme.ageGroup === "3-5" ? "artiverse + artistotle" : "artiverse",
       icon: Palette,
       color: "bg-category-stem/40",
-      time: "40–45 min",
+      time: programme.ageGroup === "3-5" ? "35 min" : "40–45 min",
       type: "fixed" as const,
-      games: [{ name: `${programme.artiverseUnits?.length ?? 0} artiverse units`, skills: ["all five skills"], rotation: "fixed" as const }],
+      games: [{ name: `${programme.artiverseUnits?.length ?? 0} ${programme.ageGroup === "3-5" ? "projects" : "artiverse units"}`, skills: ["all five skills"], rotation: "fixed" as const }],
     },
     {
       segment: "experience book",
@@ -979,8 +996,67 @@ function ProgrammeOverviewContent() {
                   </div>
                 )}
 
-                {/* ═══ ART GYM — cycle, book pairings, cue card pool ═══ */}
-                {seg.segment === "art gym" && isArt && (
+                {/* ═══ ART GYM — 3-5 simplified version (book + scribble book) ═══ */}
+                {seg.segment === "art gym" && isArt && programme.ageGroup === "3-5" && (
+                  <div className="space-y-3">
+                    <p className="mt-2 text-[12px] leading-relaxed text-ink-muted md:text-[13px]">
+                      art gym is a daily 15-minute warm-up that rotates between two resources on consecutive sessions. <span className="font-semibold text-ink">no cue cards, no extensions at this age</span> — just the laminated <span className="font-semibold text-ink">art gym book</span> and the <span className="font-semibold text-ink">scribble book</span>.
+                    </p>
+
+                    <div className="mt-4 grid gap-3 md:grid-cols-2">
+                      {/* Art Gym Book */}
+                      <div className="overflow-hidden rounded-xl bg-[#F5D547]/15 p-4">
+                        <div className="flex items-center justify-between">
+                          <p className="text-[12px] font-extrabold text-ink">art gym book</p>
+                          <span className="rounded-chip bg-brand-orange text-white px-2.5 py-0.5 text-[10px] font-semibold">
+                            rotates
+                          </span>
+                        </div>
+                        <p className="mt-1 text-[11px] text-ink-muted">
+                          one page per session. each page shows a pattern, a path, or a mark sequence to complete or extend.
+                        </p>
+                        <div className="mt-3 rounded-lg bg-brand-white p-3 shadow-card">
+                          <p className="text-[11px] font-semibold text-ink">book rotation</p>
+                          <p className="mt-1 text-[11px] text-ink-muted">
+                            <span className="font-semibold text-ink">sessions 1–25:</span> book 1
+                          </p>
+                          <p className="mt-0.5 text-[11px] text-ink-muted">
+                            <span className="font-semibold text-ink">sessions 26+:</span> book 2
+                          </p>
+                          <p className="mt-2 text-[10px] italic text-ink-subtle">
+                            child chooses material — erasable markers, play-doh, thread, sequins.
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Scribble Book */}
+                      <div className="overflow-hidden rounded-xl bg-[#F5D547]/15 p-4">
+                        <div className="flex items-center justify-between">
+                          <p className="text-[12px] font-extrabold text-ink">scribble book</p>
+                          <span className="rounded-chip bg-brand-orange text-white px-2.5 py-0.5 text-[10px] font-semibold">
+                            rotates
+                          </span>
+                        </div>
+                        <p className="mt-1 text-[11px] text-ink-muted">
+                          a4 spiral-bound book with illustrated pages. each page shows a partially complete scene with a single prompt at the bottom.
+                        </p>
+                        <div className="mt-3 rounded-lg bg-brand-white p-3 shadow-card">
+                          <p className="text-[11px] font-semibold text-ink">how it runs</p>
+                          <p className="mt-1 text-[11px] leading-relaxed text-ink-muted">
+                            child draws their response in the open space. one page per session. there is no correct response. the teacher does not instruct what to draw.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <p className="mt-3 text-[11px] italic text-ink-subtle">
+                      sessions alternate book ↔ scribble. teacher does not teach or correct during art gym — they circulate and name what they see.
+                    </p>
+                  </div>
+                )}
+
+                {/* ═══ ART GYM — 5-8 / 8-12 cycle with book + cue cards + extensions ═══ */}
+                {seg.segment === "art gym" && isArt && programme.ageGroup !== "3-5" && (
                   <div className="space-y-3">
         <p className="mt-2 text-[12px] leading-relaxed text-ink-muted md:text-[13px]">
           art gym runs as two paired units. the <span className="font-semibold text-ink">book</span> and the <span className="font-semibold text-ink">cue card</span> each rotate; their extensions always follow the previous day — not independent.

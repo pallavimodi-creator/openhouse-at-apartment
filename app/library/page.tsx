@@ -208,21 +208,28 @@ function buildItemsFor(prog: CurriculumProgramme): LibraryItem[] {
   });
 
   if (prog.segmentDefinitions.some((s) => s.id === "art-gym")) {
+    const is35 = prog.ageGroup === "3-5";
     const gymThumb =
-      prog.ageGroup === "8-12" ? GYM_BOOK_IMAGES[5] : GYM_BOOK_IMAGES[3];
+      prog.ageGroup === "8-12"
+        ? GYM_BOOK_IMAGES[5]
+        : prog.ageGroup === "3-5"
+          ? GYM_BOOK_IMAGES[3] // reusing book 3 thumbnail until 3-5 cover ships
+          : GYM_BOOK_IMAGES[3];
     items.push({
       kind: "primer",
       id: `${programmeSlug}/art-gym-overview`,
       segment: "art-gym",
-      title: "art gym — 4-session cycle",
-      description:
-        "a structured opening segment using books, cue cards, and their extensions. each session builds directly on the previous one. books are laminated — children mark them with resources of choice (thread, clay, sequins, erasable markers). every book day children do 1–3 pages, then replicate what they drew in their sketchbook freely with materials of choice.",
+      title: is35 ? "art gym — daily warm-up" : "art gym — 4-session cycle",
+      description: is35
+        ? "a daily 15-minute warm-up that rotates between two resources on consecutive sessions — the laminated art gym book (book 1 for s1–25, book 2 for s26+) and the scribble book. children choose their material — erasable markers, play-doh, thread, sequins. no cue cards, no extensions at this age."
+        : "a structured opening segment using books, cue cards, and their extensions. each session builds directly on the previous one. books are laminated — children mark them with resources of choice (thread, clay, sequins, erasable markers). every book day children do 1–3 pages, then replicate what they drew in their sketchbook freely with materials of choice.",
       info: {
         segmentId: "art-gym",
         segmentName: "Art Gym",
-        title: "art gym — 4-session cycle",
-        description:
-          "a self-paced warm-up. the cycle runs: book → extension (book) → cue card → extension (cue card). each extension day belongs to the day before it — the book session and its extension are one unit, and the cue card session and its extension are one unit. an extension day is never independent. art gym books are laminated — children mark them with resources of choice: thread, clay, sequins, or erasable markers. every book day children do 1–3 pages and then replicate what they drew in their sketchbook freely with materials of choice (crayons, colour pencils, brush pens, yarn + glue, etc.). on extension days children apply the same lines onto simple daily objects or shapes — progression goes shape → simple object → imaginary object → scene.",
+        title: is35 ? "art gym — daily warm-up" : "art gym — 4-session cycle",
+        description: is35
+          ? "art gym is a daily 15-minute warm-up that builds fine motor control and creative expression through short, focused mark-making. it rotates between two resources on consecutive sessions: the laminated art gym book (book 1 for sessions 1–25, book 2 for sessions 26 onward) and the scribble book — an a4 spiral-bound book with illustrated pages and one prompt per page. children choose their material from the table before starting — erasable markers, play-doh, thread, or sequins. there are no cue cards or extensions at this age. the teacher does not teach or correct during art gym — they circulate and name what they see."
+          : "a self-paced warm-up. the cycle runs: book → extension (book) → cue card → extension (cue card). each extension day belongs to the day before it — the book session and its extension are one unit, and the cue card session and its extension are one unit. an extension day is never independent. art gym books are laminated — children mark them with resources of choice: thread, clay, sequins, or erasable markers. every book day children do 1–3 pages and then replicate what they drew in their sketchbook freely with materials of choice (crayons, colour pencils, brush pens, yarn + glue, etc.). on extension days children apply the same lines onto simple daily objects or shapes — progression goes shape → simple object → imaginary object → scene.",
         heroImageUrl: gymThumb,
       },
       thumbImageUrl: gymThumb,

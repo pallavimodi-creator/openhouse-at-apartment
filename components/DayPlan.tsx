@@ -67,6 +67,10 @@ const ART_GYM_LABELS: Record<string, string> = {
   "cue-card-b2": "cue card b2 — step-by-step drawing",
   "cue-cards": "cue cards — step-by-step drawing",
   "ext-cue-card": "extension (sketchbook) — extend cue card drawing in sketchbook",
+  // Ages 3-5 — no cue cards or extensions; just book + scribble book.
+  "ag-book-1": "art gym book 1 — laminated, child's choice of material",
+  "ag-book-2": "art gym book 2 — laminated, child's choice of material",
+  "scribble-book": "scribble book — illustrated prompt page, child draws response",
   flex: "flex — child's choice",
 };
 
@@ -505,6 +509,11 @@ export function DayPlan({
   else if (artGymAssignedId === "book-4") gymBookUrl = GYM_BOOK_IMAGES[4];
   else if (artGymAssignedId === "book-5") gymBookUrl = GYM_BOOK_IMAGES[5];
   else if (artGymAssignedId === "book-6") gymBookUrl = GYM_BOOK_IMAGES[6];
+  // 3-5 books — reuse the closest existing thumbnails until dedicated assets
+  // ship for the 3-5 age group.
+  else if (artGymAssignedId === "ag-book-1") gymBookUrl = GYM_BOOK_IMAGES[3];
+  else if (artGymAssignedId === "ag-book-2") gymBookUrl = GYM_BOOK_IMAGES[4];
+  else if (artGymAssignedId === "scribble-book") gymBookUrl = defaultGymBookUrl;
   else if (artGymAssignedId && artGymAssignedId.startsWith("cue-card"))
     gymBookUrl = "/games/art/cue-cards-game.png";
   // ext-book / ext-cue-card keep the default (sketchbook — visual continuity
