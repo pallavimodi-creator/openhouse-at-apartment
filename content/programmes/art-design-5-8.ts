@@ -1004,7 +1004,7 @@ export const artDesign58: CurriculumProgramme = {
   slug: "art-design-5-8",
   title: "art and design",
   category: "art",
-  heroImageUrl: "/prog-art-5-8.gif",
+  heroImageUrl: "/prog-art-5-8.png",
   ageGroup: "5-8",
   ageLabel: "ages 5\u20138",
   tagline:
