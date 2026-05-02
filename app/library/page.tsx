@@ -238,9 +238,30 @@ function buildItemsFor(prog: CurriculumProgramme): LibraryItem[] {
     });
   }
 
-  // Artistotle book — only for the 3-5 art programme.
+  // Artiverse + Artistotle books — only for the 3-5 art programme.
   if (prog.slug === "art-design-3-5") {
-    const cover = "/artistotle-book/01-cover.png";
+    const artistotleCover = "/artistotle-book/01-cover.png";
+    const artiverseCover = "/artiverse-book/01-accordion.png";
+    items.push({
+      kind: "primer",
+      id: `${programmeSlug}/artiverse-book`,
+      segment: "artiverse",
+      title: "the artiverse book",
+      description:
+        "a digital flipbook of all 12 artiverse projects — colourful papers, crayons, and watercolour. used across the 24 artiverse sessions in the 3–5 programme.",
+      info: {
+        segmentId: "artiverse",
+        segmentName: "Artiverse Book",
+        title: "the artiverse book",
+        description:
+          "twelve projects across three media families. each project runs over 2 sessions and goes home with the child. flip through to plan the next session, or read with the children before they begin.",
+        heroImageUrl: artiverseCover,
+        externalLink: { href: "/artiverse-book", label: "open the artiverse book" },
+      },
+      thumbImageUrl: artiverseCover,
+      programmeSlug,
+      programmeLabel,
+    });
     items.push({
       kind: "primer",
       id: `${programmeSlug}/artistotle-book`,
@@ -254,10 +275,10 @@ function buildItemsFor(prog: CurriculumProgramme): LibraryItem[] {
         title: "the artistotle book",
         description:
           "meet the illustrators, then make in their spirit. each illustrator gets an opening page, a technique spotlight where relevant, and 2 projects. the book runs across artistotle days; flip through to plan or to read with the children.",
-        heroImageUrl: cover,
+        heroImageUrl: artistotleCover,
         externalLink: { href: "/artistotle-book", label: "open the artistotle book" },
       },
-      thumbImageUrl: cover,
+      thumbImageUrl: artistotleCover,
       programmeSlug,
       programmeLabel,
     });

@@ -554,7 +554,7 @@ function ProgrammeOverviewContent() {
         .map((a) => ({ name: a.title.toLowerCase(), skills: [] as string[], rotation: "rotating" as const })),
     },
     {
-      segment: programme.ageGroup === "3-5" ? "artiverse + artistotle" : "artiverse",
+      segment: programme.ageGroup === "3-5" ? "artiverse / artistotle" : "artiverse",
       icon: Palette,
       color: "bg-category-stem/40",
       time: programme.ageGroup === "3-5" ? "35 min" : "40–45 min",
@@ -1307,7 +1307,7 @@ function ProgrammeOverviewContent() {
                 )}
 
                 {/* ═══ ARTIVERSE + ARTISTOTLE — 3-5 only ═══ */}
-                {seg.segment === "artiverse + artistotle" && isArt && programme.ageGroup === "3-5" && (
+                {seg.segment === "artiverse / artistotle" && isArt && programme.ageGroup === "3-5" && (
                   <div className="space-y-3">
                     <p className="mt-2 text-[12px] leading-relaxed text-ink-muted md:text-[13px]">
                       this segment alternates between two modes — they never share a session.
@@ -1319,8 +1319,15 @@ function ProgrammeOverviewContent() {
                           artiverse
                         </p>
                         <p className="mt-2 text-[12px] leading-relaxed text-ink-muted">
-                          free making across <span className="font-semibold text-ink">colourful papers</span>, <span className="font-semibold text-ink">crayons</span>, and <span className="font-semibold text-ink">watercolour</span>. each project runs 2 sessions. children choose what to make and take the work home.
+                          free making across <span className="font-semibold text-ink">colourful papers</span>, <span className="font-semibold text-ink">crayons</span>, and <span className="font-semibold text-ink">watercolour</span>. 12 projects, each over 2 sessions. children choose what to make and take the work home.
                         </p>
+                        <Link
+                          href="/artiverse-book"
+                          className="mt-3 inline-flex items-center gap-2 rounded-full bg-blue-900 px-3.5 py-1.5 text-[11px] font-bold text-white shadow-sm hover:opacity-90"
+                        >
+                          <BookOpen className="h-3.5 w-3.5" />
+                          open the artiverse book
+                        </Link>
                       </div>
                       <div className="rounded-xl bg-brand-orange/10 p-4">
                         <p className="text-[11px] font-bold uppercase tracking-wide text-brand-orange">

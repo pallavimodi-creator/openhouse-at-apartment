@@ -49,13 +49,7 @@ export default function LoginPage() {
     <div className="flex min-h-[calc(100dvh-60px)] flex-col items-center px-4 pt-6 pb-8 md:px-8 md:pt-10">
       {/* Hero */}
       <div className="mb-8 w-full max-w-md text-center">
-        <h1
-          className="text-[32px] font-extrabold leading-[1.05] tracking-tight text-ink md:text-[40px]"
-          style={{
-            fontFamily:
-              '"Avenir Next Rounded Std", "Avenir Next", "Nunito", system-ui, sans-serif',
-          }}
-        >
+        <h1 className="text-[32px] font-extrabold leading-[1.05] tracking-tight text-ink md:text-[40px]">
           openhouse at apartment
         </h1>
         <p className="mt-3 max-w-sm text-[13px] leading-relaxed text-ink-muted md:text-[14px]">

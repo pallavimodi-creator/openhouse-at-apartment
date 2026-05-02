@@ -65,7 +65,7 @@ export function FooterNav() {
         paddingBottom: "max(env(safe-area-inset-bottom), 12px)",
       }}
     >
-      <div className="mx-auto flex max-w-4xl items-center justify-around">
+      <div className="mx-auto flex max-w-4xl items-center justify-around lg:max-w-7xl">
         {items.map((item) => {
           const active =
             item.href === "/"
