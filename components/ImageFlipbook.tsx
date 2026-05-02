@@ -1,7 +1,11 @@
 "use client";
 
 import { forwardRef, useEffect, useRef, useState } from "react";
-import HTMLFlipBook from "react-pageflip";
+import dynamic from "next/dynamic";
+
+// Load HTMLFlipBook only on the client — the package touches the DOM at
+// module load and crashes during SSR if imported eagerly.
+const HTMLFlipBook = dynamic(() => import("react-pageflip"), { ssr: false });
 
 /**
  * Image flipbook — renders an ordered list of image URLs as flippable pages.
@@ -27,9 +31,16 @@ export function ImageFlipbook({
 }: ImageFlipbookProps) {
   const [aspect, setAspect] = useState<number>(1.414); // h/w; A4-ish default
   const [currentPage, setCurrentPage] = useState(0);
+  // HTMLFlipBook touches the DOM on first render — defer until after mount so
+  // SSR doesn't crash trying to access window.
+  const [mounted, setMounted] = useState(false);
   const flipRef = useRef<any>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [containerWidth, setContainerWidth] = useState(0);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Track container width for responsive sizing.
   useEffect(() => {
@@ -59,6 +70,19 @@ export function ImageFlipbook({
     return (
       <div className="flex h-64 items-center justify-center rounded-card bg-ink/[0.02] text-[12px] text-ink-muted">
         no pages to display
+      </div>
+    );
+  }
+
+  // Skip rendering HTMLFlipBook on the server — it touches the DOM at import
+  // time. Show a sized placeholder so layout doesn't jump on hydration.
+  if (!mounted) {
+    return (
+      <div ref={containerRef} className="flex h-96 w-full items-center justify-center rounded-card bg-ink/[0.02]">
+        <div className="flex flex-col items-center gap-2">
+          <div className="h-8 w-8 animate-spin rounded-full border-2 border-brand-orange border-t-transparent" />
+          <p className="text-[11px] text-ink-muted">loading flipbook…</p>
+        </div>
       </div>
     );
   }

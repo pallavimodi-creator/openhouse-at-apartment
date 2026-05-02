@@ -1,7 +1,11 @@
 "use client";
 
 import { forwardRef, useEffect, useRef, useState } from "react";
-import HTMLFlipBook from "react-pageflip";
+import dynamic from "next/dynamic";
+
+// Load HTMLFlipBook only on the client — the package touches the DOM at
+// module load and crashes during SSR if imported eagerly.
+const HTMLFlipBook = dynamic(() => import("react-pageflip"), { ssr: false });
 
 /**
  * PDF flipbook — renders a PDF file as flippable pages.
