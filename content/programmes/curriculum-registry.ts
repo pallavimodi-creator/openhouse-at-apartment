@@ -1,6 +1,7 @@
 import type { CurriculumProgramme } from "@/content/types";
 import { publicSpeaking58 } from "./public-speaking-5-8";
 import { publicSpeaking812 } from "./public-speaking-8-12";
+import { artDesign35 } from "./art-design-3-5";
 import { artDesign58 } from "./art-design-5-8";
 import { artDesign812 } from "./art-design-8-12";
 import { robotics58 } from "./robotics-5-8";
@@ -11,24 +12,7 @@ import { robotics812 } from "./robotics-8-12";
 
 export const curriculumProgrammes: CurriculumProgramme[] = [
   // ── Art & Design ──
-  {
-    id: "art-design-3-5",
-    slug: "art-design-3-5",
-    title: "art and design",
-    category: "art",
-    ageGroup: "3-5",
-    ageLabel: "ages 3–5",
-    heroImageUrl: "/prog-art-3-5.gif",
-    tagline: "explore colour, shape, and imagination through hands-on art making.",
-    description:
-      "children develop fine motor skills, visual literacy, and creative expression through painting, drawing, sculpting, and mixed media. every session is an exploration. every mark matters.",
-    totalSessions: 0,
-    skillAreas: [],
-    segmentDefinitions: [],
-    sessionTable: [],
-    activities: {},
-    checkpoints: [],
-  },
+  artDesign35,
   artDesign58,
   artDesign812,
 

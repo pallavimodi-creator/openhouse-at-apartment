@@ -4,6 +4,7 @@ Every game, segment, and unit across the live programmes — extracted from the 
 
 **Programmes covered**
 
+- [art and design · ages 3–5](#art-and-design-ages35)
 - [art and design · ages 5–8](#art-and-design-ages58)
 - [art and design · ages 8–12](#art-and-design-ages812)
 - [public speaking · ages 5–8](#public-speaking-ages58)
@@ -12,6 +13,478 @@ Every game, segment, and unit across the live programmes — extracted from the 
 - [robotics · ages 8–12](#robotics-ages812)
 
 ---
+
+## art and design · ages 3–5
+
+_build the physical control, colour awareness, and creative confidence that makes a child someone who makes things — for the rest of their life._
+
+- **Slug:** `art-design-3-5`
+- **Category:** art
+- **Total sessions:** 60
+
+60 sessions across five segments — art gym warm-up, art games, artiverse and artistotle making, experience book, and art care. children encounter every idea three ways: through a structured game, through the work of a famous illustrator, and through making something of their own.
+
+---
+
+### Art Games segment
+
+### shape stitch
+
+_Art Games · physical game_
+
+> Sew through the stitching template using shoelaces. Running stitch, whip stitch, or chain stitch.
+
+**How to play**
+
+1. Children sew through stitching templates using shoelaces.
+2. Running Stitch = dashed line.
+3. Whip Stitch = over the edge in a loop.
+4. Chain Stitch = each stitch loops through the previous one.
+5. Templates range from simple outlines to more complex forms.
+
+**Difficulty**
+
+- **Easy:** Running stitch on a simple template — educator demonstrates first.
+- **Medium:** Whip stitch — child works around the edge of the template.
+- **Hard:** Chain stitch — each loop threads through the previous one.
+
+**Materials**
+
+- Sewing templates (numbers, alphabets, simple object outlines)
+- Shoelaces
+
+
+### stitch me
+
+_Art Games · physical game_
+
+> Thread the beads in the right sequence — colour, number, or riddle.
+
+**How to play**
+
+1. Children thread beads onto a shoelace following a specific sequence.
+2. The sequence is given as a prompt card or spoken by the teacher.
+3. Three difficulty levels — pure colour sequence, colour + count combinations, and riddle prompts where the answer is the next bead.
+
+**Difficulty**
+
+- **Easy:** Colour sequence — match the order on the prompt card.
+- **Medium:** Colour + count — e.g. "3 red, 2 blue, 1 yellow."
+- **Hard:** Riddle prompts — the teacher gives a clue and the child threads the bead that fits.
+
+**Materials**
+
+- Coloured beads in a tray
+- Shoelaces with a stiff tip
+- Sequence prompt cards
+
+
+### magna tiles
+
+_Art Games · physical game_
+
+> Build using Magna-Tiles — match the prompt card, or build something of your own.
+
+**How to play**
+
+1. Children build structures using Magna-Tiles, guided by prompt cards across five levels of difficulty — from flat 2D matching to free 3D building.
+
+**Difficulty**
+
+- **Easy:** Flat 2D — copy the shape on the card using single tiles laid flat.
+- **Medium:** 2D into 3D — fold flat shapes up into simple 3D forms (cube, pyramid).
+- **Hard:** Free 3D — build a structure of the child's choice without a card.
+
+**Materials**
+
+- Magna-Tiles set
+- Prompt cards (5 levels)
+
+
+### shape mats — tile placement
+
+_Art Games · physical game_
+
+> Place the shape tiles onto the mat outlines, or build your own arrangement.
+
+**How to play**
+
+1. Large illustrated shape mats are placed on the table.
+2. Children either place matching shape tiles onto the printed mat outlines, or arrange tiles freely to build their own composition.
+
+**Difficulty**
+
+- **Easy:** Place tiles onto the matching outlines printed on the mat.
+- **Medium:** Place tiles on the mat using only the shape clue (no outline).
+- **Hard:** Free arrangement — child builds their own composition on the mat.
+
+**Materials**
+
+- Large illustrated shape mats
+- Shape tiles in matching shapes and colours
+
+
+### match me
+
+_Art Games · physical game_
+
+> Match the coloured beads or pictures to the right squares on the grid.
+
+**How to play**
+
+1. Children match coloured beads or object cards to the correct grid squares.
+2. Three variations — simultaneous Colour Match, Pattern Memory (flip and remember), and timed Speed Match.
+
+**Variations**
+
+- **Variation 1 — Colour match** — Place beads onto the grid square that matches their colour.
+- **Variation 2 — Pattern memory** — Cards face-down — flip two; if they match, keep the pair.
+- **Variation 3 — Speed match** — On a timer — match as many beads as possible before the time runs out.
+
+**Difficulty**
+
+- **Easy:** Colour match — no time limit.
+- **Medium:** Pattern Memory — find matching pairs from face-down cards.
+- **Hard:** Speed Match — beat the timer.
+
+**Materials**
+
+- 9-grid template card
+- Coloured beads
+- Picture cards (Pattern Memory variation)
+- Timer (Speed Match variation)
+
+
+### mix it up
+
+_Art Games · physical game_
+
+> Sort the object cards by colour. Use the swatch cards as your guide.
+
+**How to play**
+
+1. 30 object cards are spread on the table. 6 colour swatch cards act as category markers.
+2. Children sort each object card under the colour it most closely matches.
+3. The third variation asks each child to draw an object in its real-world colours.
+
+**Variations**
+
+- **Variation 1 — Sort** — Sort all 30 object cards under the 6 colour swatches.
+- **Variation 2 — Hunt** — Teacher names a colour; children find every object card of that colour as fast as they can.
+- **Variation 3 — Draw** — Child picks an object card and draws the same object in its real-world colours.
+
+**Difficulty**
+
+- **Easy:** Sort — match objects to swatches.
+- **Medium:** Hunt — race to find objects of a named colour.
+- **Hard:** Draw — reproduce a chosen object in its real-world colours.
+
+**Materials**
+
+- 30 object cards
+- 6 colour swatch cards
+- Drawing paper + crayons (variation 3)
+
+
+### the game of red, yellow and blue
+
+_Art Games · physical game_
+
+> Build colour mixtures with the tiles. Discover what new colour comes out.
+
+**How to play**
+
+1. Shape tiles in primary and secondary colours sit in the centre.
+2. Children build tile equations — for example, 2 red + 1 yellow — to discover or predict the secondary colour produced.
+3. Three variations across difficulty levels.
+
+**Variations**
+
+- **Variation 1 — Build the mix** — Teacher names a target colour (e.g. "orange") and children build an equation that produces it.
+- **Variation 2 — Story mix** — Teacher reads a colour story; children pick the tile combination that matches each beat of the story.
+- **Variation 3 — Predict and build** — Child picks any two primary tiles, predicts the secondary colour aloud, then builds and checks.
+
+**Difficulty**
+
+- **Easy:** Build the mix — known target.
+- **Medium:** Story mix — listen and respond.
+- **Hard:** Predict and build — child commits to a prediction first.
+
+**Materials**
+
+- Primary colour tiles (red, yellow, blue)
+- Secondary colour tiles (orange, green, purple)
+
+
+### miniartventure
+
+_Art Games · physical game_
+
+> Roll, move your token, land on a zone, and complete the art challenge from that zone's card.
+
+**How to play**
+
+1. A board game in which children roll, move, land on a zone (Draw, Colour, Mould, or Build), and complete a 2-minute art challenge from that zone's card deck.
+
+**Variations**
+
+- **Individual play** — Each child plays with their own token. Their roll, their challenge.
+- **Cooperative variation** — The whole group plays as a team. One child rolls and draws the card; everyone does the same challenge together.
+
+**Difficulty**
+
+- **Easy:** Simpler cards, 3-minute timer.
+- **Medium:** All zones, 2-minute timer.
+- **Hard:** All zones, 90-second timer.
+
+**Materials**
+
+- Game board (Draw / Colour / Mould / Build zones)
+- Player tokens
+- Dice
+- Timer
+- Challenge card decks per zone
+- Pencils, crayons, clay, blocks or pipe cleaners
+
+
+---
+
+### Artiverse units (18)
+
+#### Unit 1 — Colourful Papers — Accordions
+
+- **Technique:** Folding · making a back-and-forth zig-zag fold; using fold lines to create movement
+
+- **What children make:** Accordion fans · fold-out greeting cards · accordion creatures
+
+- **Days:** 2
+
+- **Topic options:**
+  - A folding fan
+  - A fold-out card for a friend
+  - A creature whose body opens and closes
+
+#### Unit 2 — Colourful Papers — Circles
+
+- **Technique:** Cutting and arranging circles · combining circles of different sizes to build a subject
+
+- **What children make:** Faces · animals · simple scenes
+
+- **Days:** 2
+
+- **Topic options:**
+  - A face I know
+  - An animal made of circles
+  - Bubbles in a story
+
+#### Unit 3 — Colourful Papers — Mosaics
+
+- **Technique:** Tearing and arranging small pieces · filling a shape with torn paper
+
+- **What children make:** Mosaic animals · landscapes · letters of own name
+
+- **Days:** 2
+
+- **Topic options:**
+  - My favourite animal in mosaic
+  - The first letter of my name
+  - A garden of torn pieces
+
+#### Unit 4 — Colourful Papers — Loops and Chains
+
+- **Technique:** Cutting strips and looping into chains · linking colours into patterns
+
+- **What children make:** Paper chains · loop garlands · chain animals
+
+- **Days:** 2
+
+- **Topic options:**
+  - A chain for a celebration
+  - A long snake of loops
+  - A pattern of two colours
+
+#### Unit 5 — Crayons — Doodling
+
+- **Technique:** Free mark-making with wax crayons · scribbling, scratching, swirling
+
+- **What children make:** Doodle pages · marks that turn into things
+
+- **Days:** 2
+
+- **Topic options:**
+  - My doodle of nothing in particular
+  - A scribble that becomes a creature
+  - Lines that go everywhere
+
+#### Unit 6 — Crayons — Colouring
+
+- **Technique:** Colouring inside lines · controlling pressure and direction · staying with one colour or many
+
+- **What children make:** Coloured worksheets · child's own outline drawings
+
+- **Days:** 2
+
+- **Topic options:**
+  - A colouring page from the book
+  - A drawing I make and then colour
+  - A picture in only my favourite colour
+
+#### Unit 7 — Crayons — Colour Mixing
+
+- **Technique:** Layering crayons to make new colours · pressing hard or soft for tone
+
+- **What children make:** Mixed-colour swatches · scenes that need new colours
+
+- **Days:** 2
+
+- **Topic options:**
+  - A sunset I have seen
+  - A made-up colour I name myself
+  - A leaf in autumn
+
+#### Unit 8 — Watercolour — Hand Painting (greeting cards)
+
+- **Technique:** Hand-print as composition · layering hand-prints into figures
+
+- **What children make:** Greeting cards with hand-print as the central image
+
+- **Days:** 2
+
+- **Topic options:**
+  - A card for someone I love
+  - Hand-prints that turn into a creature
+  - A thank-you card
+
+#### Unit 9 — Watercolour — Finger Painting (greeting cards)
+
+- **Technique:** Finger-print as mark · combining finger-prints into pattern or figures
+
+- **What children make:** Greeting cards with finger-print pattern or figures
+
+- **Days:** 2
+
+- **Topic options:**
+  - A field of flowers
+  - A celebration card
+  - Bugs and butterflies in a garden
+
+#### Unit 10 — Watercolour — Sponge Painting
+
+- **Technique:** Sponge as mark-maker · soft edges, layered colour, big coverage
+
+- **What children make:** Skies · landscapes · cloud scenes
+
+- **Days:** 2
+
+- **Topic options:**
+  - A sky I see in the morning
+  - A storm cloud
+  - Mountains far away
+
+#### Unit 11 — Watercolour — Q-tip Painting
+
+- **Technique:** Q-tip as a small precise brush · dotted patterns and small details
+
+- **What children make:** Dot paintings · pointillist scenes · small creatures
+
+- **Days:** 2
+
+- **Topic options:**
+  - A tree of dots
+  - A starry night
+  - A polka-dot fish
+
+#### Unit 12 — Watercolour — Blow and Splatter
+
+- **Technique:** Blowing paint with straws · flicking paint for splatter · controlled chaos
+
+- **What children make:** Splatter trees · firework scenes · abstract bursts
+
+- **Days:** 2
+
+- **Topic options:**
+  - A firework in the sky
+  - A windy day with leaves
+  - A splatter that becomes a creature
+
+#### Unit 13 — Artistotle — Illustrator 1
+
+- **Technique:** Look at the illustrator's characters and palette · make in their spirit
+
+- **What children make:** A piece in the style of the chosen illustrator
+
+- **Days:** 3
+
+- **Topic options:**
+  - A character from the illustrator's world
+  - A scene I would add to their world
+  - A version of myself in their world
+
+#### Unit 14 — Artistotle — Illustrator 2
+
+- **Technique:** Look at the illustrator's characters and palette · make in their spirit
+
+- **What children make:** A piece in the style of the chosen illustrator
+
+- **Days:** 3
+
+- **Topic options:**
+  - A character from the illustrator's world
+  - A scene I would add to their world
+  - A version of myself in their world
+
+#### Unit 15 — Artistotle — Illustrator 3
+
+- **Technique:** Look at the illustrator's characters and palette · make in their spirit
+
+- **What children make:** A piece in the style of the chosen illustrator
+
+- **Days:** 3
+
+- **Topic options:**
+  - A character from the illustrator's world
+  - A scene I would add to their world
+  - A version of myself in their world
+
+#### Unit 16 — Artistotle — Illustrator 4
+
+- **Technique:** Look at the illustrator's characters and palette · make in their spirit
+
+- **What children make:** A piece in the style of the chosen illustrator
+
+- **Days:** 3
+
+- **Topic options:**
+  - A character from the illustrator's world
+  - A scene I would add to their world
+  - A version of myself in their world
+
+#### Unit 17 — Artistotle — Illustrator 5
+
+- **Technique:** Look at the illustrator's characters and palette · make in their spirit
+
+- **What children make:** A piece in the style of the chosen illustrator
+
+- **Days:** 3
+
+- **Topic options:**
+  - A character from the illustrator's world
+  - A scene I would add to their world
+  - A version of myself in their world
+
+#### Unit 18 — Artistotle — Illustrator 6
+
+- **Technique:** Look at the illustrator's characters and palette · make in their spirit
+
+- **What children make:** A piece in the style of the chosen illustrator
+
+- **Days:** 3
+
+- **Topic options:**
+  - A character from the illustrator's world
+  - A scene I would add to their world
+  - A version of myself in their world
+
 
 ## art and design · ages 5–8
 

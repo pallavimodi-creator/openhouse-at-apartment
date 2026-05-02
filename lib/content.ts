@@ -231,6 +231,15 @@ export const ACTIVITY_IMAGES: Record<string, string> = {
   artventure: "/games/art/artventure.png",
   "imagine-that": "/games/art/imagine-that.png",
   "doodle-dash": "/games/art/doodle-dash.png",
+  // Art & Design 3-5 game placeholders (replace with real artwork later)
+  "shape-stitch-3-5": "/games/art-3-5/shape-stitch.svg",
+  "stitch-me": "/games/art-3-5/stitch-me.svg",
+  "magna-tiles": "/games/art-3-5/magna-tiles.svg",
+  "shape-mats": "/games/art-3-5/shape-mats.svg",
+  "match-me-3-5": "/games/art-3-5/match-me.svg",
+  "mix-it-up": "/games/art-3-5/mix-it-up.svg",
+  "ryb-tiles": "/games/art-3-5/ryb-tiles.svg",
+  "mini-artventure": "/games/art-3-5/mini-artventure.svg",
   // Robotics — experiment cue cards (thumbnail = first page of the PDF)
   "l1-levers-e1": "/robotics-manuals/l1-levers.png",
   "l1-levers-e2": "/robotics-manuals/l1-levers.png",

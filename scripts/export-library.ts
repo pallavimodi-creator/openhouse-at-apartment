@@ -188,20 +188,6 @@ function renderProgramme(p: CurriculumProgramme): string {
     });
   }
 
-  // Robotics builds
-  if (p.builds && p.builds.length) {
-    out.push(`---`);
-    out.push("");
-    out.push(`### Builds (${p.builds.length})`);
-    out.push("");
-    p.builds.forEach((b) => {
-      out.push(`#### ${b.name}`);
-      out.push("");
-      out.push(bullet("Days", String(b.days)));
-      out.push("");
-    });
-  }
-
   return out.join("\n");
 }
 
