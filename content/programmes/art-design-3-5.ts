@@ -353,6 +353,7 @@ const artiverseUnits: ArtiverseUnit[] = [
     abilitiesCovered: ["Tool Precision", "Mixes and notices", "Emotional Expression through Art"],
     topicOptions: ["A field of flowers", "A celebration card", "Bugs and butterflies in a garden"],
     heroImageUrl: `${AV}/av35-9-finger-painting.png`,
+    extraImages: [`${AV}/av35-9-finger-painting-day-2.png`],
   },
   {
     id: "av35-10",
