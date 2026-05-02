@@ -1306,6 +1306,45 @@ function ProgrammeOverviewContent() {
                   </div>
                 )}
 
+                {/* ═══ ARTIVERSE + ARTISTOTLE — 3-5 only ═══ */}
+                {seg.segment === "artiverse + artistotle" && isArt && programme.ageGroup === "3-5" && (
+                  <div className="space-y-3">
+                    <p className="mt-2 text-[12px] leading-relaxed text-ink-muted md:text-[13px]">
+                      this segment alternates between two modes — they never share a session.
+                    </p>
+
+                    <div className="mt-3 grid gap-3 md:grid-cols-2">
+                      <div className="rounded-xl bg-category-stem/15 p-4">
+                        <p className="text-[11px] font-bold uppercase tracking-wide text-blue-900">
+                          artiverse
+                        </p>
+                        <p className="mt-2 text-[12px] leading-relaxed text-ink-muted">
+                          free making across <span className="font-semibold text-ink">colourful papers</span>, <span className="font-semibold text-ink">crayons</span>, and <span className="font-semibold text-ink">watercolour</span>. each project runs 2 sessions. children choose what to make and take the work home.
+                        </p>
+                      </div>
+                      <div className="rounded-xl bg-brand-orange/10 p-4">
+                        <p className="text-[11px] font-bold uppercase tracking-wide text-brand-orange">
+                          artistotle
+                        </p>
+                        <p className="mt-2 text-[12px] leading-relaxed text-ink-muted">
+                          illustrator-led projects. 6 illustrators, 3 sessions each. children meet the work, then make in the same spirit.
+                        </p>
+                        <Link
+                          href="/artistotle-book"
+                          className="mt-3 inline-flex items-center gap-2 rounded-full bg-brand-orange px-3.5 py-1.5 text-[11px] font-bold text-white shadow-sm hover:opacity-90"
+                        >
+                          <BookOpen className="h-3.5 w-3.5" />
+                          open the artistotle book
+                        </Link>
+                      </div>
+                    </div>
+
+                    <p className="mt-3 text-[10.5px] italic text-ink-subtle">
+                      within each mode activities are linear in difficulty.
+                    </p>
+                  </div>
+                )}
+
                 {/* ═══ ARTIVERSE — how it works + units ═══ */}
                 {seg.segment === "artiverse" && isArt && (
                   <div className="space-y-3">

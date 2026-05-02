@@ -238,6 +238,31 @@ function buildItemsFor(prog: CurriculumProgramme): LibraryItem[] {
     });
   }
 
+  // Artistotle book — only for the 3-5 art programme.
+  if (prog.slug === "art-design-3-5") {
+    const cover = "/artistotle-book/01-cover.png";
+    items.push({
+      kind: "primer",
+      id: `${programmeSlug}/artistotle-book`,
+      segment: "artiverse",
+      title: "the artistotle book",
+      description:
+        "a digital flipbook of the printed artistotle book — eric carle, lois ehlert, taro gomi. used across the 18 artistotle sessions in the 3–5 programme.",
+      info: {
+        segmentId: "artiverse",
+        segmentName: "Artistotle Book",
+        title: "the artistotle book",
+        description:
+          "meet the illustrators, then make in their spirit. each illustrator gets an opening page, a technique spotlight where relevant, and 2 projects. the book runs across artistotle days; flip through to plan or to read with the children.",
+        heroImageUrl: cover,
+        externalLink: { href: "/artistotle-book", label: "open the artistotle book" },
+      },
+      thumbImageUrl: cover,
+      programmeSlug,
+      programmeLabel,
+    });
+  }
+
   if (prog.segmentDefinitions.some((s) => s.id === "log-book")) {
     items.push({
       kind: "primer",

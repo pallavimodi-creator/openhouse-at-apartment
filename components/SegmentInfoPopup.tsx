@@ -45,6 +45,10 @@ export interface SegmentInfo {
   description: string;
   subText?: string;
   bookLinkSlug?: string;
+  /** Generic call-to-action for primers that don't fit the experience-book
+   *  pattern — e.g. the Artistotle book lives at /artistotle-book, not at
+   *  /book/[slug]. */
+  externalLink?: { href: string; label: string };
   artiverseUnit?: ArtiverseUnitInfo;
   /**
    * Optional hero image for non-artiverse segments (e.g. the art-gym primer
@@ -221,6 +225,16 @@ export function SegmentInfoPopup({ info }: { info: SegmentInfo }) {
         >
           <BookOpen className="h-4 w-4" />
           open experience book
+        </Link>
+      )}
+
+      {info.externalLink && (
+        <Link
+          href={info.externalLink.href}
+          className="flex items-center justify-center gap-2 rounded-card bg-brand-orange py-3 text-[13px] font-bold text-white shadow-card transition hover:opacity-95 active:scale-[0.98]"
+        >
+          <BookOpen className="h-4 w-4" />
+          {info.externalLink.label}
         </Link>
       )}
     </div>
