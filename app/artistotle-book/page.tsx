@@ -16,7 +16,6 @@ const ARTISTOTLE_PAGES = [
   "/artistotle-book/04-eric-carle-about.png",
   "/artistotle-book/05-eric-carle-technique.png",
   "/artistotle-book/06-eric-carle-project-1-formatted.png",
-  "/artistotle-book/07-eric-carle-project-1-process.png",
   "/artistotle-book/08-eric-carle-project-2.png",
   "/artistotle-book/09-lois-ehlert-cover.png",
   "/artistotle-book/10-lois-ehlert-project-1.png",
@@ -26,7 +25,6 @@ const ARTISTOTLE_PAGES = [
   "/artistotle-book/14-taro-gomi-about.png",
   "/artistotle-book/15-taro-gomi-project-1.png",
   "/artistotle-book/16-taro-gomi-project-2-formatted.png",
-  "/artistotle-book/17-taro-gomi-project-2-process.png",
 ];
 
 export default function ArtistotleBookPage() {
