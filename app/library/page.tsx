@@ -60,6 +60,7 @@ import { Modal } from "@/components/Modal";
 import { ActivityPopup } from "@/components/ActivityPopup";
 import { SegmentInfoPopup, type SegmentInfo } from "@/components/SegmentInfoPopup";
 import { getTeacher } from "@/lib/teacher-state";
+import { segmentPalette } from "@/components/segmentPalette";
 
 // Unique per-activity icons for digital-only games (no physical material).
 const DIGITAL_ONLY_ICONS: Record<string, LucideIcon> = {
@@ -376,7 +377,11 @@ export default function LibraryPage() {
   const filtered = useMemo(() => {
     let result = allItems;
     if (segmentFilter !== "all") {
-      result = result.filter((i) => i.segment === segmentFilter);
+      // Treat experience-book and log-book as the same segment for filtering.
+      const wanted = new Set([segmentFilter]);
+      if (segmentFilter === "experience-book") wanted.add("log-book");
+      if (segmentFilter === "log-book") wanted.add("experience-book");
+      result = result.filter((i) => wanted.has(i.segment));
     }
     if (query.trim()) {
       const q = query.trim().toLowerCase();
@@ -411,6 +416,81 @@ export default function LibraryPage() {
     }
     return result;
   }, [allItems, segmentFilter, query]);
+
+  // Group filtered items by programme → segment in conduction order.
+  // Programme order follows listCurriculumProgrammes(). Within each
+  // programme, segments follow the order of programme.segmentDefinitions.
+  const grouped = useMemo(() => {
+    const allProgs = listCurriculumProgrammes().filter(
+      (p) => p.totalSessions > 0
+    );
+
+    type Section = {
+      segmentId: string;
+      label: string;
+      items: LibraryItem[];
+    };
+    type ProgrammeGroup = {
+      slug: string;
+      title: string;
+      ageLabel: string;
+      sections: Section[];
+    };
+
+    return allProgs.flatMap<ProgrammeGroup>((prog) => {
+      // Items belonging to this programme, preserving their existing order.
+      const itemsForProg = filtered.filter(
+        (i) => i.programmeSlug === prog.slug
+      );
+      if (itemsForProg.length === 0) return [];
+
+      // Build segment rank from segmentDefinitions order. log-book and
+      // experience-book share a rank — whichever the programme uses sits
+      // in its definitions list, the other slot still resolves.
+      const segmentRank: Record<string, number> = {};
+      prog.segmentDefinitions.forEach((s, i) => {
+        segmentRank[s.id] = i;
+        if (s.id === "log-book") segmentRank["experience-book"] = i;
+        if (s.id === "experience-book") segmentRank["log-book"] = i;
+      });
+      const rankFor = (segId: string) =>
+        segmentRank[segId] ?? Number.POSITIVE_INFINITY;
+
+      // Bucket items by segment id (using a normalised id so log-book and
+      // experience-book group together).
+      const buckets = new Map<string, LibraryItem[]>();
+      itemsForProg.forEach((it) => {
+        const segId =
+          it.segment === "log-book" ? "experience-book" : it.segment;
+        const bucket = buckets.get(segId) ?? [];
+        bucket.push(it);
+        buckets.set(segId, bucket);
+      });
+
+      // Convert buckets to sections in segment order.
+      const sections: Section[] = Array.from(buckets.entries())
+        .map(([segId, items]) => {
+          // 3-5 art's "artiverse" segment is rendered as Artiverse / Artistotle.
+          const label =
+            segId === "artiverse" && prog.slug === "art-design-3-5"
+              ? "artiverse · artistotle"
+              : segId === "experience-book" || segId === "log-book"
+                ? "experience book"
+                : segId.replace(/-/g, " ");
+          return { segmentId: segId, label, items };
+        })
+        .sort((a, b) => rankFor(a.segmentId) - rankFor(b.segmentId));
+
+      return [
+        {
+          slug: prog.slug,
+          title: prog.title,
+          ageLabel: prog.ageLabel,
+          sections,
+        },
+      ];
+    });
+  }, [filtered]);
 
   if (!authReady) {
     return (
@@ -559,119 +639,166 @@ export default function LibraryPage() {
         {query.trim() ? ` for "${query.trim()}"` : ""}
       </p>
 
-      {/* Results */}
-      <div className="mt-3 space-y-2">
-        {filtered.map((it) => {
-          const title =
-            it.kind === "activity"
-              ? it.item.title
-              : it.kind === "artiverse"
-                ? `unit ${it.item.unitNumber} · ${it.item.medium.toLowerCase()}`
-                : it.title;
-          const subline =
-            it.kind === "activity"
-              ? it.item.setupLine
-              : it.kind === "artiverse"
-                ? `reference: ${it.item.whatChildrenMake.toLowerCase()}`
-                : it.description;
-          const cardName =
-            it.kind === "activity"
-              ? it.item.cardName
-              : undefined;
-
-          const thumbImg =
-            it.kind === "artiverse"
-              ? it.item.heroImageUrl
-              : it.kind === "activity"
-                ? getActivityImage(it.item.id) ?? null
-                : it.kind === "primer"
-                  ? it.thumbImageUrl ?? null
-                  : null;
-
+      {/* Results — grouped programme → segment in conduction order */}
+      <div className="mt-4 space-y-8">
+        {grouped.map((prog) => {
+          const showProgrammeHeader =
+            isAdmin && selectedProgSlug === "all" && grouped.length > 1;
           return (
-            <button
-              key={it.id}
-              onClick={() => openItem(it)}
-              className="flex w-full items-start gap-3 rounded-card bg-brand-white p-3 text-left shadow-card ring-1 ring-ink/5 transition hover:shadow-float active:scale-[0.99]"
-            >
-              {/* Thumbnail */}
-              {thumbImg ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={thumbImg}
-                  alt=""
-                  className="h-16 w-16 shrink-0 rounded-lg bg-ink/[0.03] object-contain"
-                />
-              ) : (
-                <div
-                  className="relative flex h-16 w-16 shrink-0 items-center justify-center rounded-lg"
-                  style={{
-                    background:
-                      SEGMENT_THUMB_BG[it.segment] ??
-                      "linear-gradient(135deg, #F8B074 0%, #F25E35 100%)",
-                  }}
-                >
-                  {(() => {
-                    if (it.kind === "activity") {
-                      const UniqueIcon = DIGITAL_ONLY_ICONS[it.item.id];
-                      if (UniqueIcon) {
-                        return (
-                          <UniqueIcon
-                            className="h-7 w-7 text-white"
-                            strokeWidth={1.8}
-                          />
-                        );
-                      }
-                    }
-                    return <SegmentThumbIcon segment={it.segment} />;
-                  })()}
-                  {/* Digital-only indicator for activities with no physical image */}
-                  {it.kind === "activity" && (
-                    <span
-                      className="absolute bottom-0.5 right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-white/90 shadow-sm"
-                      title="no physical material — digital / facilitated game"
-                    >
-                      <Smartphone className="h-2.5 w-2.5 text-ink-muted" strokeWidth={2.2} />
-                    </span>
-                  )}
-                </div>
+            <section key={prog.slug} className="space-y-4">
+              {showProgrammeHeader && (
+                <header className="flex items-baseline justify-between gap-3 border-b border-ink/10 pb-2">
+                  <h2 className="text-[16px] font-extrabold lowercase text-ink">
+                    {prog.title} · {prog.ageLabel}
+                  </h2>
+                  <span className="rounded-chip bg-ink/5 px-2 py-0.5 text-[10px] font-semibold text-ink-muted">
+                    {prog.sections.reduce((n, s) => n + s.items.length, 0)} entries
+                  </span>
+                </header>
               )}
 
-              <div className="flex-1">
-                <div className="flex flex-wrap items-center gap-1.5">
-                  <span
-                    className={cn(
-                      "rounded-chip px-2 py-0.5 text-[9px] font-semibold tracking-normal",
-                      SEGMENT_COLORS[it.segment] ?? "bg-ink/10 text-ink-muted"
-                    )}
-                  >
-                    {it.segment.replace("-", " ")}
-                  </span>
-                  {it.kind === "activity" && !thumbImg && (
-                    <span className="inline-flex items-center gap-1 rounded-chip bg-ink/5 px-2 py-0.5 text-[9px] font-semibold tracking-normal text-ink-muted">
-                      <Smartphone className="h-2.5 w-2.5" strokeWidth={2.2} />
-                      digital only
-                    </span>
-                  )}
-                  {isAdmin && selectedProgSlug === "all" && (
-                    <span className="rounded-chip bg-ink/5 px-2 py-0.5 text-[9px] font-medium text-ink-muted">
-                      {it.programmeLabel}
-                    </span>
-                  )}
-                  {cardName && (
-                    <span className="text-[10px] font-medium text-ink-subtle">
-                      {cardName}
-                    </span>
-                  )}
-                </div>
-                <h3 className="mt-1 text-[14px] font-semibold leading-tight text-ink">
-                  {title}
-                </h3>
-                <p className="mt-0.5 line-clamp-2 text-[11px] leading-relaxed text-ink-muted">
-                  {subline}
-                </p>
+              <div className="space-y-6">
+                {prog.sections.map((section) => {
+                  const palette = segmentPalette(section.segmentId);
+                  return (
+                    <div key={section.segmentId} className="space-y-2">
+                      {/* Segment header band */}
+                      <div className="flex items-center justify-between gap-3">
+                        <div className="flex items-center gap-2.5">
+                          <span
+                            className={cn(
+                              "h-6 w-6 flex-none rounded-md",
+                              palette.fill
+                            )}
+                            aria-hidden="true"
+                          />
+                          <h3 className="text-[13px] font-extrabold lowercase text-ink">
+                            {section.label}
+                          </h3>
+                        </div>
+                        <span className="rounded-chip bg-ink/5 px-2 py-0.5 text-[10px] font-semibold text-ink-muted">
+                          {section.items.length}
+                        </span>
+                      </div>
+
+                      {/* Section cards */}
+                      <ul className="space-y-2">
+                        {section.items.map((it) => {
+                          const itemPalette = segmentPalette(it.segment);
+                          const title =
+                            it.kind === "activity"
+                              ? it.item.title
+                              : it.kind === "artiverse"
+                                ? it.item.id.startsWith("atl")
+                                  ? `project ${it.item.unitNumber - 12} · ${it.item.medium.toLowerCase()}`
+                                  : `unit ${it.item.unitNumber} · ${it.item.medium.toLowerCase()}`
+                                : it.title;
+                          const subline =
+                            it.kind === "activity"
+                              ? it.item.setupLine
+                              : it.kind === "artiverse"
+                                ? `reference: ${it.item.whatChildrenMake.toLowerCase()}`
+                                : it.description;
+                          const cardName =
+                            it.kind === "activity" ? it.item.cardName : undefined;
+                          const thumbImg =
+                            it.kind === "artiverse"
+                              ? it.item.heroImageUrl
+                              : it.kind === "activity"
+                                ? getActivityImage(it.item.id) ?? null
+                                : it.kind === "primer"
+                                  ? it.thumbImageUrl ?? null
+                                  : null;
+                          return (
+                            <li key={it.id}>
+                              <button
+                                onClick={() => openItem(it)}
+                                className="flex w-full overflow-hidden rounded-card bg-brand-white text-left shadow-card ring-1 ring-ink/5 transition hover:shadow-float active:scale-[0.99]"
+                              >
+                                {/* Segment-coloured left edge bar */}
+                                <span
+                                  aria-hidden="true"
+                                  className={cn(
+                                    "w-1 flex-none",
+                                    itemPalette.fill
+                                  )}
+                                />
+
+                                <div className="flex flex-1 items-start gap-3 p-3">
+                                  {/* Thumbnail */}
+                                  {thumbImg ? (
+                                    // eslint-disable-next-line @next/next/no-img-element
+                                    <img
+                                      src={thumbImg}
+                                      alt=""
+                                      className="h-16 w-16 shrink-0 rounded-lg bg-ink/[0.03] object-contain"
+                                    />
+                                  ) : (
+                                    <div
+                                      className="relative flex h-16 w-16 shrink-0 items-center justify-center rounded-lg"
+                                      style={{
+                                        background:
+                                          SEGMENT_THUMB_BG[it.segment] ??
+                                          "linear-gradient(135deg, #F8B074 0%, #F25E35 100%)",
+                                      }}
+                                    >
+                                      {(() => {
+                                        if (it.kind === "activity") {
+                                          const UniqueIcon = DIGITAL_ONLY_ICONS[it.item.id];
+                                          if (UniqueIcon) {
+                                            return (
+                                              <UniqueIcon
+                                                className="h-7 w-7 text-white"
+                                                strokeWidth={1.8}
+                                              />
+                                            );
+                                          }
+                                        }
+                                        return <SegmentThumbIcon segment={it.segment} />;
+                                      })()}
+                                      {it.kind === "activity" && (
+                                        <span
+                                          className="absolute bottom-0.5 right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-white/90 shadow-sm"
+                                          title="no physical material — digital / facilitated game"
+                                        >
+                                          <Smartphone className="h-2.5 w-2.5 text-ink-muted" strokeWidth={2.2} />
+                                        </span>
+                                      )}
+                                    </div>
+                                  )}
+
+                                  <div className="flex-1">
+                                    <div className="flex flex-wrap items-center gap-1.5">
+                                      {it.kind === "activity" && !thumbImg && (
+                                        <span className="inline-flex items-center gap-1 rounded-chip bg-ink/5 px-2 py-0.5 text-[9px] font-semibold text-ink-muted">
+                                          <Smartphone className="h-2.5 w-2.5" strokeWidth={2.2} />
+                                          digital only
+                                        </span>
+                                      )}
+                                      {cardName && (
+                                        <span className="text-[10px] font-medium text-ink-subtle">
+                                          {cardName}
+                                        </span>
+                                      )}
+                                    </div>
+                                    <h4 className="mt-0.5 text-[14px] font-semibold leading-tight text-ink">
+                                      {title}
+                                    </h4>
+                                    <p className="mt-0.5 line-clamp-2 text-[11px] leading-relaxed text-ink-muted">
+                                      {subline}
+                                    </p>
+                                  </div>
+                                </div>
+                              </button>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                  );
+                })}
               </div>
-            </button>
+            </section>
           );
         })}
 
