@@ -510,11 +510,11 @@ export function DayPlan({
   else if (artGymAssignedId === "book-4") gymBookUrl = GYM_BOOK_IMAGES[4];
   else if (artGymAssignedId === "book-5") gymBookUrl = GYM_BOOK_IMAGES[5];
   else if (artGymAssignedId === "book-6") gymBookUrl = GYM_BOOK_IMAGES[6];
-  // 3-5 books — reuse the closest existing thumbnails until dedicated assets
-  // ship for the 3-5 age group.
-  else if (artGymAssignedId === "ag-book-1") gymBookUrl = GYM_BOOK_IMAGES[3];
-  else if (artGymAssignedId === "ag-book-2") gymBookUrl = GYM_BOOK_IMAGES[4];
-  else if (artGymAssignedId === "scribble-book") gymBookUrl = defaultGymBookUrl;
+  // 3-5 books — dedicated thumbnails (covers + scribble book) live in
+  // public/gym-books/.
+  else if (artGymAssignedId === "ag-book-1") gymBookUrl = "/gym-books/3-5-book.png";
+  else if (artGymAssignedId === "ag-book-2") gymBookUrl = "/gym-books/3-5-book.png";
+  else if (artGymAssignedId === "scribble-book") gymBookUrl = "/gym-books/3-5-scribble.png";
   else if (artGymAssignedId && artGymAssignedId.startsWith("cue-card"))
     gymBookUrl = "/games/art/cue-cards-game.png";
   // ext-book / ext-cue-card keep the default (sketchbook — visual continuity

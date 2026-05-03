@@ -164,38 +164,76 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     debriefPrompts: [],
     type: "physical-game",
   },
-  "ryb-tiles": {
-    id: "ryb-tiles",
+  "colour-riddles": {
+    id: "colour-riddles",
     segment: "art-games",
-    title: "the game of red, yellow and blue",
-    setupLine: "Build colour mixtures with the tiles. Discover what new colour comes out.",
+    title: "colour riddles",
+    setupLine:
+      "Solve colour riddles. \"Red plus yellow plus blue — can you solve me too?\"",
     howToPlay:
-      "Shape tiles in primary and secondary colours sit in the centre. Children build tile equations — for example, 2 red + 1 yellow — to discover or predict the secondary colour produced. Three variations across difficulty levels.",
+      "A deck of riddle cards sits face-down in the centre. The teacher (or a child) draws one card and reads the riddle aloud. Children look at the picture on the card and use their colour knowledge to solve the riddle — naming or pointing to the new colour, or filling in the missing colour. Cards include classic primary-secondary mixes (\"the caterpillar coloured circles — now it's a butterfly! the same colours are still there but everything changed\") and observation riddles (\"two snakes had a baby hidden in this egg — both are a different colour. what colour is the baby? draw it hatching!\").",
     variations: [
       {
-        name: "Variation 1 — Build the mix",
+        name: "Variation 1 — Solve the riddle",
         description:
-          "Teacher names a target colour (e.g. \"orange\") and children build an equation that produces it.",
+          "Teacher reads the riddle; children answer aloud or by pointing at the right colour swatch.",
       },
       {
-        name: "Variation 2 — Story mix",
+        name: "Variation 2 — Draw your answer",
         description:
-          "Teacher reads a colour story; children pick the tile combination that matches each beat of the story.",
+          "Children draw or colour the missing piece on a sheet — the butterfly, the baby snake, the next bead in the chain.",
       },
       {
-        name: "Variation 3 — Predict and build",
+        name: "Variation 3 — Make your own riddle",
         description:
-          "Child picks any two primary tiles, predicts the secondary colour aloud, then builds and checks.",
+          "Each child invents their own riddle on a blank card and asks the rest of the group to solve it.",
       },
     ],
     materials: [
-      "Primary colour tiles (red, yellow, blue)",
-      "Secondary colour tiles (orange, green, purple)",
+      "Colour Riddles card deck",
+      "Drawing paper + crayons (variations 2 and 3)",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Build the mix — known target." },
-      { level: "Medium", description: "Story mix — listen and respond." },
-      { level: "Hard", description: "Predict and build — child commits to a prediction first." },
+      { level: "Easy", description: "Solve the riddle aloud — primary and secondary colour mixes only." },
+      { level: "Medium", description: "Draw your answer on paper." },
+      { level: "Hard", description: "Make your own riddle and ask the group to solve it." },
+    ],
+    debriefPrompts: [],
+    type: "physical-game",
+  },
+
+  // ── Texture / Observation ──
+  "i-spot-texture": {
+    id: "i-spot-texture",
+    segment: "art-games",
+    title: "i spot texture",
+    setupLine:
+      "Match each scene card to the textures inside it. The garden has flower textures, the cafe has stripes and grids, the parking has zebra crossings.",
+    howToPlay:
+      "Two card decks sit on the table — Texture cards (zigzag, wave, grid, herringbone, stripes, mesh, brick) and Scene cards (garden, cafe, mall, parking). Children pick a Scene card and find the texture cards that match the patterns hidden inside that scene. Variation: instead of cards, children walk around the room and spot real textures on the floor, walls, fabric, or windows.",
+    variations: [
+      {
+        name: "Variation 1 — Match the scene",
+        description: "Place a Scene card down and find the Texture cards that match patterns inside it.",
+      },
+      {
+        name: "Variation 2 — Spot in the room",
+        description: "Each child picks a Texture card and spots that pattern somewhere in the room.",
+      },
+      {
+        name: "Variation 3 — Draw the texture",
+        description: "Child picks a Texture card and draws a small object using only that pattern.",
+      },
+    ],
+    materials: [
+      "Texture pattern cards",
+      "Scene cards (garden · cafe · mall · parking)",
+      "Drawing paper + pencils (variation 3)",
+    ],
+    difficultyLevels: [
+      { level: "Easy", description: "Match — pair textures to scenes on the table." },
+      { level: "Medium", description: "Spot in the room — find each texture in the real space." },
+      { level: "Hard", description: "Draw — reproduce the texture inside an object of the child's choice." },
     ],
     debriefPrompts: [],
     type: "physical-game",
@@ -205,32 +243,31 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
   "mini-artventure": {
     id: "mini-artventure",
     segment: "art-games",
-    title: "miniartventure",
+    title: "mini artventure",
     setupLine:
-      "Roll, move your token, land on a zone, and complete the art challenge from that zone's card.",
+      "Spin the wheel. Land on a zone — Draw, Colour, Mould, or Build. Pick a prompt card and make it.",
     howToPlay:
-      "A board game in which children roll, move, land on a zone (Draw, Colour, Mould, or Build), and complete a 2-minute art challenge from that zone's card deck.",
+      "A spinner sits in the centre of the table with four colour-coded zones — Draw (yellow), Colour (teal), Mould (pink), Build (light blue). Each zone has its own deck of simple prompt cards (fruits, apple, circle, tower …). On their turn the child spins, lands on a zone, and picks the top card from that zone's deck. They have a short window to make the prompt using the right material. Then the next child spins.",
     variations: [
       {
         name: "Individual play",
-        description: "Each child plays with their own token. Their roll, their challenge.",
+        description: "Each child spins on their turn. Their zone, their card, their make.",
       },
       {
         name: "Cooperative variation",
         description:
-          "The whole group plays as a team. One child rolls and draws the card; everyone does the same challenge together.",
+          "The whole group plays as a team. One child spins and picks the card; everyone does the same prompt together.",
       },
     ],
     materials: [
-      "Game board (Draw / Colour / Mould / Build zones)",
-      "Player tokens",
-      "Dice",
+      "Mini Artventure spinner board (Draw / Colour / Mould / Build zones)",
+      "Prompt card decks — one per zone",
       "Timer",
-      "Challenge card decks per zone",
       "Pencils, crayons, clay, blocks or pipe cleaners",
+      "Pre-printed colouring sheets",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Simpler cards, 3-minute timer." },
+      { level: "Easy", description: "Simpler prompts, 3-minute timer." },
       { level: "Medium", description: "All zones, 2-minute timer." },
       { level: "Hard", description: "All zones, 90-second timer." },
     ],
@@ -473,8 +510,9 @@ const ART_GAMES_CYCLE = [
   "shape-stitch-3-5",
   "mix-it-up",
   "magna-tiles",
-  "ryb-tiles",
+  "colour-riddles",
   "shape-mats",
+  "i-spot-texture",
   "mini-artventure",
 ];
 
