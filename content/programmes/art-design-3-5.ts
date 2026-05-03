@@ -852,7 +852,7 @@ export const artDesign35: CurriculumProgramme = {
       name: "Experience Book",
       durationRange: "10 min",
       objective:
-        "the teacher records the session through a short reflection with the children, capturing their experience, voice, and learning for the monthly report.",
+        "children fill in \"what happened in class today\" with the teacher, who opens a short discussion: favourite part? what you enjoyed? what you didn't? what to do again? every child speaks. after children leave, the teacher fills in the skill-assessment part privately. these daily notes compile into the monthly report card that goes home.",
       type: "fixed",
     },
     {

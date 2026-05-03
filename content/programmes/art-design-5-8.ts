@@ -1101,7 +1101,8 @@ export const artDesign58: CurriculumProgramme = {
       id: "log-book",
       name: "Experience Book",
       durationRange: "10 min",
-      objective: "child fills in log book with teacher's help. book goes home.",
+      objective:
+        "children fill in \"what happened in class today\" with the teacher, who opens a short discussion: favourite part? what you enjoyed? what you didn't? what to do again? every child speaks. after children leave, the teacher fills in the skill-assessment part privately. these daily notes compile into the monthly report card that goes home.",
       type: "fixed",
     },
   ],
