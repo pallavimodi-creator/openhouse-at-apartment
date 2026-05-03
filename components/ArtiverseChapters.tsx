@@ -14,9 +14,9 @@ const CHAPTERS: Chapter[] = [
   {
     name: "Paper",
     tone: {
-      bg: "bg-[#F5D547]/15",
-      pill: "bg-[#F5D547]/40 text-amber-900",
-      text: "text-amber-900",
+      bg: "bg-segment-yellow/15",
+      pill: "bg-segment-yellow/30 text-ink",
+      text: "text-ink",
     },
     coverLine:
       "Paper is easy to tear, fold, and move. It builds finger strength, control, and early planning without needing tools.",
@@ -70,9 +70,9 @@ const CHAPTERS: Chapter[] = [
   {
     name: "Paint",
     tone: {
-      bg: "bg-category-stem/15",
-      pill: "bg-category-stem/30 text-blue-900",
-      text: "text-blue-900",
+      bg: "bg-segment-blue/15",
+      pill: "bg-segment-blue/25 text-ink",
+      text: "text-ink",
     },
     coverLine:
       "Paint is fluid and responsive. It helps children explore movement, pressure, and cause-effect while expressing ideas more freely.",

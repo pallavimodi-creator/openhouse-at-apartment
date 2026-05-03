@@ -42,7 +42,7 @@ export default function ArtistotleBookPage() {
         </div>
 
         {/* Title band */}
-        <section className="bg-[#F5D547] px-5 py-6 md:px-8">
+        <section className="bg-segment-yellow px-5 py-6 md:px-8">
           <div className="mx-auto max-w-4xl">
             <p className="text-[12px] font-extrabold text-ink/50">oh.</p>
             <h1 className="mt-1 text-[22px] font-extrabold leading-tight text-ink md:text-[30px]">

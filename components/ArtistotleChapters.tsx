@@ -16,9 +16,9 @@ const CHAPTERS: ArtistotleChapter[] = [
   {
     illustrator: "Eric Carle",
     tone: {
-      bg: "bg-[#F5D547]/15",
-      pill: "bg-[#F5D547]/40 text-amber-900",
-      text: "text-amber-900",
+      bg: "bg-segment-yellow/15",
+      pill: "bg-segment-yellow/30 text-ink",
+      text: "text-ink",
     },
     coverLine:
       "Big, bold, joyful. Eric Carle's collage characters are made from layers of hand-painted paper. Children meet the technique, then make their own collage pieces in the same spirit.",
@@ -58,9 +58,9 @@ const CHAPTERS: ArtistotleChapter[] = [
   {
     illustrator: "Taro Gomi",
     tone: {
-      bg: "bg-category-stem/15",
-      pill: "bg-category-stem/30 text-blue-900",
-      text: "text-blue-900",
+      bg: "bg-segment-blue/15",
+      pill: "bg-segment-blue/25 text-ink",
+      text: "text-ink",
     },
     coverLine:
       "Loose, playful, alive. Taro Gomi draws people and places with simple lines and big personality. Children learn to draw without worrying about perfection.",

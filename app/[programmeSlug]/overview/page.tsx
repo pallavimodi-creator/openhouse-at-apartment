@@ -39,6 +39,7 @@ import { cn } from "@/lib/utils";
 import { TeacherGate } from "@/components/TeacherGate";
 import { ArtiverseChapters } from "@/components/ArtiverseChapters";
 import { ArtistotleChapters } from "@/components/ArtistotleChapters";
+import { segmentPalette } from "@/components/segmentPalette";
 
 // ─── Artiverse — how it works · sequence data ────────────────
 
@@ -162,8 +163,8 @@ const dailyFlow = [
     durationFlex: 17.5,
     meaning:
       "a structured opening segment using books, cue cards, and their extensions, where each session builds directly on the previous one. art gym books are laminated — children mark them with resources of choice: thread, clay, sequins, or erasable markers.",
-    color: "bg-[#F5D547]",
-    textColor: "text-amber-900",
+    color: "bg-segment-yellow",
+    textColor: "text-ink",
   },
   {
     id: "art-games",
@@ -173,8 +174,8 @@ const dailyFlow = [
     durationFlex: 17.5,
     meaning:
       "openhouse art games using varied formats and materials. children experiment, create, and develop core art skills through playful exploration.",
-    color: "bg-category-language/40",
-    textColor: "text-green-900",
+    color: "bg-segment-green/30",
+    textColor: "text-ink",
   },
   {
     id: "artiverse",
@@ -184,8 +185,8 @@ const dailyFlow = [
     durationFlex: 42.5,
     meaning:
       "a structured making programme combining medium, technique, and outcome over multiple sessions.",
-    color: "bg-category-stem/40",
-    textColor: "text-blue-900",
+    color: "bg-segment-blue/30",
+    textColor: "text-ink",
   },
   {
     id: "log-book",
@@ -195,8 +196,8 @@ const dailyFlow = [
     durationFlex: 10,
     meaning:
       "last 10 minutes — children fill in \"what happened in class today\" with the teacher, who opens a short discussion: favourite part? what you enjoyed? what you didn't? what to do again? every child speaks. after children leave, the teacher fills in the skill-assessment part privately. these daily notes compile into the monthly report card that goes home.",
-    color: "bg-category-movement/40",
-    textColor: "text-pink-900",
+    color: "bg-segment-pink/30",
+    textColor: "text-ink",
   },
 ];
 
@@ -204,8 +205,8 @@ const skills = [
   {
     id: "lt",
     name: "line & texture",
-    color: "bg-[#D4A88C]",
-    accent: "border-[#D4A88C]",
+    color: "bg-segment-yellow",
+    accent: "border-segment-yellow",
     abilities: [
       "identifies the marks different tools make and experiments freely",
       "makes different line types with intention — straight, wavy, zigzag, curved",
@@ -216,8 +217,8 @@ const skills = [
   {
     id: "sf",
     name: "shape & form",
-    color: "bg-[#7EB5D6]",
-    accent: "border-[#7EB5D6]",
+    color: "bg-segment-blue",
+    accent: "border-segment-blue",
     abilities: [
       "traces and draws basic 2d shapes using any medium",
       "combines shapes to draw recognisable objects",
@@ -228,8 +229,8 @@ const skills = [
   {
     id: "cp",
     name: "colour & painting",
-    color: "bg-[#E8B5B8]",
-    accent: "border-[#E8B5B8]",
+    color: "bg-segment-pink",
+    accent: "border-segment-pink",
     abilities: [
       "paints with reasonable control and makes early attempts at mixing",
       "mixes primary colours to produce secondary colours reliably",
@@ -240,8 +241,8 @@ const skills = [
   {
     id: "bc",
     name: "balance & composition",
-    color: "bg-[#B8D4A8]",
-    accent: "border-[#B8D4A8]",
+    color: "bg-segment-green",
+    accent: "border-segment-green",
     abilities: [
       "fills the whole page rather than drawing only in the centre",
       "understands foreground and background",
@@ -252,8 +253,8 @@ const skills = [
   {
     id: "ic",
     name: "imagination & collaboration",
-    color: "bg-[#C4D8F0]",
-    accent: "border-[#C4D8F0]",
+    color: "bg-brand-orange",
+    accent: "border-brand-orange",
     abilities: [
       "experiments freely with colours, materials, and marks",
       "generates new and unusual ideas",
@@ -291,7 +292,7 @@ const segmentGames = [
   {
     segment: "art gym",
     icon: Dumbbell,
-    color: "bg-[#F5D547]",
+    color: "bg-segment-yellow",
     time: "15–20 min",
     type: "fixed" as const,
     games: [
@@ -320,7 +321,7 @@ const segmentGames = [
   {
     segment: "art games",
     icon: Gamepad2,
-    color: "bg-category-language/40",
+    color: "bg-segment-green/30",
     time: "15–20 min",
     type: "rotating" as const,
     games: [
@@ -353,7 +354,7 @@ const segmentGames = [
   {
     segment: "artiverse",
     icon: Palette,
-    color: "bg-category-stem/40",
+    color: "bg-segment-blue/30",
     time: "40–45 min",
     type: "fixed" as const,
     games: [
@@ -367,7 +368,7 @@ const segmentGames = [
   {
     segment: "experience book",
     icon: Notebook,
-    color: "bg-category-movement/40",
+    color: "bg-segment-pink/30",
     time: "10 min",
     type: "fixed" as const,
     games: [
@@ -409,15 +410,15 @@ const artiverseUnits = [
 ];
 
 const mediumColor: Record<string, string> = {
-  "brush pen": "bg-[#7EB5D6]/40",
-  "colour pencil": "bg-[#E8B5B8]/40",
-  tempera: "bg-[#D4A88C]/40",
-  "oil pastel": "bg-[#C4D8F0]/40",
-  watercolour: "bg-[#B8D4A8]/40",
-  "watercolour + collage": "bg-[#B8D4A8]/60",
-  "mixed media": "bg-[#F5D547]/40",
-  "acrylic paint": "bg-[#F5D547]/60",
-  "brush pen + accent": "bg-[#7EB5D6]/60",
+  "brush pen": "bg-segment-blue/30",
+  "colour pencil": "bg-segment-pink/30",
+  tempera: "bg-segment-yellow/30",
+  "oil pastel": "bg-brand-orange/15",
+  watercolour: "bg-segment-green/30",
+  "watercolour + collage": "bg-segment-green/45",
+  "mixed media": "bg-segment-yellow/30",
+  "acrylic paint": "bg-segment-yellow/60",
+  "brush pen + accent": "bg-segment-blue/45",
   "acrylic on black paper": "bg-brand-charcoal/20",
 };
 
@@ -490,70 +491,67 @@ function ProgrammeOverviewContent() {
 
   const skillStyle: Record<string, { color: string; accent: string }> = {
     // art skill families
-    lt: { color: "bg-[#D4A88C]", accent: "border-[#D4A88C]" },
-    sf: { color: "bg-[#7EB5D6]", accent: "border-[#7EB5D6]" },
-    cp: { color: "bg-[#E8B5B8]", accent: "border-[#E8B5B8]" },
-    bc: { color: "bg-[#B8D4A8]", accent: "border-[#B8D4A8]" },
-    ic: { color: "bg-[#C4D8F0]", accent: "border-[#C4D8F0]" },
+    lt: { color: "bg-segment-yellow", accent: "border-segment-yellow" },
+    sf: { color: "bg-segment-blue", accent: "border-segment-blue" },
+    cp: { color: "bg-segment-pink", accent: "border-segment-pink" },
+    bc: { color: "bg-segment-green", accent: "border-segment-green" },
+    ic: { color: "bg-brand-orange", accent: "border-brand-orange" },
     // 3-5 art skill families
-    fm: { color: "bg-[#D4A88C]", accent: "border-[#D4A88C]" }, // sand — fine motor
-    co: { color: "bg-[#E8B5B8]", accent: "border-[#E8B5B8]" }, // pink — colour
-    ce: { color: "bg-[#C4D8F0]", accent: "border-[#C4D8F0]" }, // sky — creative expression
+    fm: { color: "bg-segment-yellow", accent: "border-segment-yellow" },
+    co: { color: "bg-segment-pink", accent: "border-segment-pink" },
+    ce: { color: "bg-segment-blue", accent: "border-segment-blue" },
     // public speaking skill families
-    cs: { color: "bg-[#D4A88C]", accent: "border-[#D4A88C]" },
-    bl: { color: "bg-[#7EB5D6]", accent: "border-[#7EB5D6]" },
-    vs: { color: "bg-[#E8B5B8]", accent: "border-[#E8B5B8]" },
+    cs: { color: "bg-segment-yellow", accent: "border-segment-yellow" },
+    bl: { color: "bg-segment-blue", accent: "border-segment-blue" },
+    vs: { color: "bg-segment-pink", accent: "border-segment-pink" },
     // robotics skill families (lt re-uses the art lt colour — not shown together on any page)
-    bm: { color: "bg-[#E8B5B8]", accent: "border-[#E8B5B8]" },
-    ps: { color: "bg-[#7EB5D6]", accent: "border-[#7EB5D6]" },
-    ou: { color: "bg-[#B8D4A8]", accent: "border-[#B8D4A8]" },
+    bm: { color: "bg-segment-pink", accent: "border-segment-pink" },
+    ps: { color: "bg-segment-blue", accent: "border-segment-blue" },
+    ou: { color: "bg-segment-green", accent: "border-segment-green" },
   };
 
   // Build daily flow dynamically from this programme's segment definitions.
-  const segmentStyle: Record<string, { color: string; textColor: string; icon: typeof Dumbbell; durationFlex: number; meaning: string }> = {
+  // Colour tokens come from segmentPalette so every segment-coloured surface
+  // in the codebase reads from one source. Per-segment meaning + icon lives
+  // here; meaning falls back to the programme's own segment.objective when
+  // a programme-specific copy is needed (e.g. 3-5 art gym).
+  const segmentMeta: Record<string, { icon: typeof Dumbbell; durationFlex: number; meaning: string }> = {
     "art-gym": {
-      color: "bg-[#F5D547]",
-      textColor: "text-amber-900",
       icon: Dumbbell,
       durationFlex: 17.5,
-      // Pull the live objective from the programme's segment definition so the
-      // 3-5 programme (book + scribble, no cue cards/extensions) gets its own
-      // copy without being overridden by the older 5-8 / 8-12 wording.
       meaning:
         programme.segmentDefinitions.find((s) => s.id === "art-gym")?.objective ??
         "a structured opening segment.",
     },
-    "art-games": { color: "bg-category-language/40", textColor: "text-green-900", icon: Gamepad2, durationFlex: 17.5, meaning: "one art game that builds a specific skill. all children play simultaneously." },
-    artiverse: { color: "bg-category-stem/40", textColor: "text-blue-900", icon: Palette, durationFlex: 42.5, meaning: "a structured making programme combining medium, technique, and outcome over multiple sessions." },
-    "roll-call": { color: "bg-[#F5D547]", textColor: "text-amber-900", icon: Zap, durationFlex: 9, meaning: "a quick energetic start. group games that wake up voice, body, and attention — every child playing simultaneously within 2 minutes." },
-    playground: { color: "bg-category-language/40", textColor: "text-green-900", icon: Gamepad2, durationFlex: 22, meaning: "one group game played deeply, with a full debrief. children practise speaking through play." },
-    showtime: { color: "bg-category-stem/40", textColor: "text-blue-900", icon: Star, durationFlex: 32, meaning: "children step into the spotlight. structured formats that build performance, argument, and conviction." },
-    "log-book": { color: "bg-category-movement/40", textColor: "text-pink-900", icon: Notebook, durationFlex: 10, meaning: "last 10 minutes — children fill in \"what happened in class today\" with the teacher, who opens a short discussion: favourite part? what you enjoyed? what you didn't? what to do again? every child speaks. after children leave, the teacher fills the skill-assessment part privately. the daily notes compile into the monthly report card that goes home." },
+    "art-games": { icon: Gamepad2, durationFlex: 17.5, meaning: "one art game that builds a specific skill. all children play simultaneously." },
+    artiverse: { icon: Palette, durationFlex: 42.5, meaning: "a structured making programme combining medium, technique, and outcome over multiple sessions." },
+    "roll-call": { icon: Zap, durationFlex: 9, meaning: "a quick energetic start. group games that wake up voice, body, and attention — every child playing simultaneously within 2 minutes." },
+    playground: { icon: Gamepad2, durationFlex: 22, meaning: "one group game played deeply, with a full debrief. children practise speaking through play." },
+    showtime: { icon: Star, durationFlex: 32, meaning: "children step into the spotlight. structured formats that build performance, argument, and conviction." },
+    "log-book": { icon: Notebook, durationFlex: 10, meaning: "last 10 minutes — children fill in \"what happened in class today\" with the teacher, who opens a short discussion: favourite part? what you enjoyed? what you didn't? what to do again? every child speaks. after children leave, the teacher fills the skill-assessment part privately. the daily notes compile into the monthly report card that goes home." },
     "art-care": {
-      color: "bg-violet-200/60",
-      textColor: "text-violet-900",
       icon: Sparkles,
       durationFlex: 5,
       meaning:
         programme.segmentDefinitions.find((s) => s.id === "art-care")?.objective ??
         "children sort all materials back to the correct shelf sections and clean the making space. the standard is care, not speed.",
     },
-    // Robotics segments — no rotation; every session is fixed.
-    experiment: { color: "bg-[#F5D547]", textColor: "text-amber-900", icon: FlaskConical, durationFlex: 40, meaning: "groups of 2–4 children find the answer to one specific question. every child takes at least one measurement independently. teacher asks one question per group and never gives the answer. tool orientation is embedded here — each tool introduced once, confirmed once, never revisited." },
-    build: { color: "bg-category-language/40", textColor: "text-green-900", icon: Wrench, durationFlex: 40, meaning: "each child builds their own mechanical model using a personal kit and a step card. the teacher never fixes anything and never tells anyone what to do next. four questions only. when something doesn't work, the child figures it out." },
-    "experience-book": { color: "bg-category-movement/40", textColor: "text-pink-900", icon: Notebook, durationFlex: 10, meaning: "five marks per child per session — O&U and LT from the experiment, B&M and PS from the build, concept ticked when the child can explain it. one specific note per child. compiles into a monthly robotics journey letter." },
+    experiment: { icon: FlaskConical, durationFlex: 40, meaning: "groups of 2–4 children find the answer to one specific question. every child takes at least one measurement independently. teacher asks one question per group and never gives the answer. tool orientation is embedded here — each tool introduced once, confirmed once, never revisited." },
+    build: { icon: Wrench, durationFlex: 40, meaning: "each child builds their own mechanical model using a personal kit and a step card. the teacher never fixes anything and never tells anyone what to do next. four questions only. when something doesn't work, the child figures it out." },
+    "experience-book": { icon: Notebook, durationFlex: 10, meaning: "five marks per child per session — O&U and LT from the experiment, B&M and PS from the build, concept ticked when the child can explain it. one specific note per child. compiles into a monthly robotics journey letter." },
   };
   const dailyFlow = programme.segmentDefinitions.map((s) => {
-    const style = segmentStyle[s.id] ?? segmentStyle["log-book"];
+    const meta = segmentMeta[s.id] ?? segmentMeta["log-book"];
+    const palette = segmentPalette(s.id);
     return {
       id: s.id,
-      icon: style.icon,
+      icon: meta.icon,
       name: (s.id === "log-book" || s.id === "experience-book") ? "experience book" : s.name.toLowerCase(),
       time: s.durationRange,
-      durationFlex: style.durationFlex,
-      meaning: style.meaning,
-      color: style.color,
-      textColor: style.textColor,
+      durationFlex: meta.durationFlex,
+      meaning: meta.meaning,
+      color: palette.fill,
+      textColor: palette.text,
     };
   });
 
@@ -575,7 +573,7 @@ function ProgrammeOverviewContent() {
     {
       segment: "art gym",
       icon: Dumbbell,
-      color: "bg-[#F5D547]",
+      color: "bg-segment-yellow",
       time: programme.ageGroup === "3-5" ? "15 min" : "15–20 min",
       type: "fixed" as const,
       games:
@@ -594,7 +592,7 @@ function ProgrammeOverviewContent() {
     {
       segment: "art games",
       icon: Gamepad2,
-      color: "bg-category-language/40",
+      color: "bg-segment-green/30",
       time: programme.ageGroup === "3-5" ? "25 min" : "15–20 min",
       type: "rotating" as const,
       games: Object.values(programme.activities)
@@ -604,7 +602,7 @@ function ProgrammeOverviewContent() {
     {
       segment: programme.ageGroup === "3-5" ? "artiverse / artistotle" : "artiverse",
       icon: Palette,
-      color: "bg-category-stem/40",
+      color: "bg-segment-blue/30",
       time: programme.ageGroup === "3-5" ? "35 min" : "40–45 min",
       type: "fixed" as const,
       games: [{ name: `${programme.artiverseUnits?.length ?? 0} ${programme.ageGroup === "3-5" ? "projects" : "artiverse units"}`, skills: ["all five skills"], rotation: "fixed" as const }],
@@ -612,7 +610,7 @@ function ProgrammeOverviewContent() {
     {
       segment: "experience book",
       icon: Notebook,
-      color: "bg-category-movement/40",
+      color: "bg-segment-pink/30",
       time: "10 min",
       type: "fixed" as const,
       games: [{ name: "personal experience book", skills: ["reflection"], rotation: "fixed" as const }],
@@ -624,7 +622,7 @@ function ProgrammeOverviewContent() {
     {
       segment: "roll call",
       icon: Zap,
-      color: "bg-[#F5D547]",
+      color: "bg-segment-yellow",
       time: "8–10 min",
       type: "rotating" as const,
       games: Object.values(programme.activities)
@@ -634,7 +632,7 @@ function ProgrammeOverviewContent() {
     {
       segment: "playground",
       icon: Gamepad2,
-      color: "bg-category-language/40",
+      color: "bg-segment-green/30",
       time: "20–25 min",
       type: "rotating" as const,
       games: Object.values(programme.activities)
@@ -644,7 +642,7 @@ function ProgrammeOverviewContent() {
     {
       segment: "showtime",
       icon: Star,
-      color: "bg-category-stem/40",
+      color: "bg-segment-blue/30",
       time: "30–35 min",
       type: "rotating" as const,
       games: Object.values(programme.activities)
@@ -654,7 +652,7 @@ function ProgrammeOverviewContent() {
     {
       segment: "experience book",
       icon: Notebook,
-      color: "bg-category-movement/40",
+      color: "bg-segment-pink/30",
       time: "8–10 min",
       type: "fixed" as const,
       games: [{ name: "personal experience book", skills: ["reflection"], rotation: "fixed" as const }],
@@ -669,7 +667,7 @@ function ProgrammeOverviewContent() {
     {
       segment: "experiment",
       icon: FlaskConical,
-      color: "bg-[#F5D547]",
+      color: "bg-segment-yellow",
       time: "40 min",
       type: "fixed" as const,
       games: Object.values(programme.activities)
@@ -683,7 +681,7 @@ function ProgrammeOverviewContent() {
     {
       segment: "build",
       icon: Wrench,
-      color: "bg-category-language/40",
+      color: "bg-segment-green/30",
       time: "40 min",
       type: "fixed" as const,
       games: Object.values(programme.activities)
@@ -693,7 +691,7 @@ function ProgrammeOverviewContent() {
     {
       segment: "experience book",
       icon: Notebook,
-      color: "bg-category-movement/40",
+      color: "bg-segment-pink/30",
       time: "10 min",
       type: "fixed" as const,
       games: [{ name: "daily five-mark log · monthly robotics journey letter", skills: ["reflection"], rotation: "fixed" as const }],
@@ -1091,7 +1089,7 @@ function ProgrammeOverviewContent() {
 
                     <div className="mt-4 grid gap-3 md:grid-cols-2">
                       {/* Art Gym Book */}
-                      <div className="overflow-hidden rounded-xl bg-[#F5D547]/15 p-4">
+                      <div className="overflow-hidden rounded-xl bg-segment-yellow/15 p-4">
                         <div className="flex items-center justify-between">
                           <p className="text-[12px] font-extrabold text-ink">art gym book</p>
                           <span className="rounded-chip bg-brand-orange text-white px-2.5 py-0.5 text-[10px] font-semibold">
@@ -1116,7 +1114,7 @@ function ProgrammeOverviewContent() {
                       </div>
 
                       {/* Scribble Book */}
-                      <div className="overflow-hidden rounded-xl bg-[#F5D547]/15 p-4">
+                      <div className="overflow-hidden rounded-xl bg-segment-yellow/15 p-4">
                         <div className="flex items-center justify-between">
                           <p className="text-[12px] font-extrabold text-ink">scribble book</p>
                           <span className="rounded-chip bg-brand-orange text-white px-2.5 py-0.5 text-[10px] font-semibold">
@@ -1150,7 +1148,7 @@ function ProgrammeOverviewContent() {
 
         <div className="mt-4 space-y-4">
           {/* PAIR 1: Book + Extension */}
-          <div className="overflow-hidden rounded-xl bg-[#F5D547]/15 p-4">
+          <div className="overflow-hidden rounded-xl bg-segment-yellow/15 p-4">
             <div className="flex items-center justify-between">
               <p className="text-[12px] font-extrabold text-ink">
                 unit 1 · book + extension
@@ -1165,7 +1163,7 @@ function ProgrammeOverviewContent() {
             <div className="mt-3 grid gap-3 md:grid-cols-2">
               <div className="rounded-lg bg-brand-white p-3 shadow-card">
                 <div className="flex items-center gap-2">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#F5D547] text-[11px] font-bold text-amber-900">1</span>
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-segment-yellow text-[11px] font-bold text-ink">1</span>
                   <span className="rounded-chip bg-brand-orange/10 px-2 py-0.5 text-[9px] font-semibold text-brand-orange">book</span>
                 </div>
                 <p className="mt-2 text-[13px] font-bold text-ink">art gym book</p>
@@ -1202,7 +1200,7 @@ function ProgrammeOverviewContent() {
           </div>
 
           {/* PAIR 2: Cue card + Extension */}
-          <div className="overflow-hidden rounded-xl bg-[#F5D547]/15 p-4">
+          <div className="overflow-hidden rounded-xl bg-segment-yellow/15 p-4">
             <div className="flex items-center justify-between">
               <p className="text-[12px] font-extrabold text-ink">
                 unit 2 · cue card + extension
@@ -1217,7 +1215,7 @@ function ProgrammeOverviewContent() {
             <div className="mt-3 grid gap-3 md:grid-cols-2">
               <div className="rounded-lg bg-brand-white p-3 shadow-card">
                 <div className="flex items-center gap-2">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#F5D547] text-[11px] font-bold text-amber-900">3</span>
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-segment-yellow text-[11px] font-bold text-ink">3</span>
                   <span className="rounded-chip bg-brand-orange/10 px-2 py-0.5 text-[9px] font-semibold text-brand-orange">cue card</span>
                 </div>
                 <p className="mt-2 text-[13px] font-bold text-ink">cue card (teacher picks)</p>
@@ -1244,9 +1242,9 @@ function ProgrammeOverviewContent() {
         </div>
 
         {/* Book-day note: 1–3 pages + sketchbook replication */}
-        <div className="mt-4 rounded-xl bg-brand-white p-4 shadow-card ring-1 ring-[#F5D547]/30">
+        <div className="mt-4 rounded-xl bg-brand-white p-4 shadow-card ring-1 ring-segment-yellow/30">
           <div className="flex items-start gap-3">
-            <span className="mt-0.5 flex h-7 w-7 flex-none items-center justify-center rounded-full bg-[#F5D547]/40 text-amber-900">
+            <span className="mt-0.5 flex h-7 w-7 flex-none items-center justify-center rounded-full bg-segment-yellow/30 text-ink">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
             </span>
             <div className="flex-1">
@@ -1258,7 +1256,7 @@ function ProgrammeOverviewContent() {
                 {["crayons", "colour pencils", "brush pens", "yarn + glue"].map((m) => (
                   <span
                     key={m}
-                    className="rounded-chip bg-[#F5D547]/25 px-2 py-0.5 text-[10px] font-semibold text-amber-900"
+                    className="rounded-chip bg-segment-yellow/20 px-2 py-0.5 text-[10px] font-semibold text-ink"
                   >
                     {m}
                   </span>
@@ -1269,17 +1267,17 @@ function ProgrammeOverviewContent() {
         </div>
 
         {/* Extension-day progression ladder — 4 stages with arrows */}
-        <div className="mt-4 rounded-xl bg-brand-white p-4 shadow-card ring-1 ring-[#F5D547]/30">
+        <div className="mt-4 rounded-xl bg-brand-white p-4 shadow-card ring-1 ring-segment-yellow/30">
           <p className="text-[12px] font-extrabold text-ink">on an extension day — apply the same lines</p>
           <p className="mt-1 text-[11.5px] leading-relaxed text-ink-muted">
             children replicate yesterday&apos;s lines inside a new form. the same ladder applies to book extensions and cue card extensions — the teacher picks the rung that matches the child.
           </p>
           <div className="mt-3 grid gap-2 md:grid-cols-4 md:gap-1">
             {[
-              { icon: "⬛", label: "shape", example: "e.g. a square", tone: "bg-[#F5D547]/25 text-amber-900" },
+              { icon: "⬛", label: "shape", example: "e.g. a square", tone: "bg-segment-yellow/20 text-ink" },
               { icon: "🍦", label: "simple object", example: "e.g. ice cream", tone: "bg-brand-orange/15 text-brand-orange" },
-              { icon: "🚀", label: "imaginary object", example: "e.g. a funny rocket", tone: "bg-category-stem/25 text-blue-900" },
-              { icon: "🏖️", label: "scene", example: "e.g. a beach scene", tone: "bg-category-movement/40 text-green-900" },
+              { icon: "🚀", label: "imaginary object", example: "e.g. a funny rocket", tone: "bg-segment-blue/20 text-ink" },
+              { icon: "🏖️", label: "scene", example: "e.g. a beach scene", tone: "bg-segment-pink/30 text-ink" },
             ].map((step, i, arr) => (
               <div key={step.label} className="relative flex md:block">
                 <div className="flex-1 rounded-lg bg-ink/[0.02] p-3 ring-1 ring-ink/5">
@@ -1328,7 +1326,7 @@ function ProgrammeOverviewContent() {
           </p>
         </div>
 
-        <div className="mt-4 overflow-hidden rounded-xl bg-[#F5D547]/15 p-4">
+        <div className="mt-4 overflow-hidden rounded-xl bg-segment-yellow/15 p-4">
 
           {/* Cue card types — rotating */}
           <div className="mt-4 rounded-lg bg-white/60 p-3.5">
@@ -1348,17 +1346,17 @@ function ProgrammeOverviewContent() {
               {["animals", "birds", "buildings", "food", "nature", "vehicles"].map((t) => (
                 <span
                   key={t}
-                  className="rounded-chip bg-[#F5D547]/40 px-2.5 py-1 text-[10px] font-semibold text-amber-900"
+                  className="rounded-chip bg-segment-yellow/30 px-2.5 py-1 text-[10px] font-semibold text-ink"
                 >
                   {t}
                 </span>
               ))}
               {programme.ageGroup === "8-12" && (
                 <>
-                  <span className="rounded-chip bg-category-stem/30 px-2.5 py-1 text-[10px] font-semibold text-blue-900">
+                  <span className="rounded-chip bg-segment-blue/25 px-2.5 py-1 text-[10px] font-semibold text-ink">
                     landscape backgrounds
                   </span>
-                  <span className="rounded-chip bg-category-stem/30 px-2.5 py-1 text-[10px] font-semibold text-blue-900">
+                  <span className="rounded-chip bg-segment-blue/25 px-2.5 py-1 text-[10px] font-semibold text-ink">
                     portrait backgrounds
                   </span>
                 </>
@@ -1400,8 +1398,8 @@ function ProgrammeOverviewContent() {
                     </p>
 
                     <div className="mt-3 grid gap-3 md:grid-cols-2">
-                      <div className="rounded-xl bg-category-stem/15 p-4">
-                        <p className="text-[11px] font-bold text-blue-900">
+                      <div className="rounded-xl bg-segment-blue/15 p-4">
+                        <p className="text-[11px] font-bold text-ink">
                           artiverse
                         </p>
                         <p className="mt-2 text-[12px] leading-relaxed text-ink-muted">
@@ -1409,7 +1407,7 @@ function ProgrammeOverviewContent() {
                         </p>
                         <Link
                           href="/artiverse-book"
-                          className="mt-3 inline-flex items-center gap-2 rounded-full bg-blue-900 px-3.5 py-1.5 text-[11px] font-bold text-white shadow-sm hover:opacity-90"
+                          className="mt-3 inline-flex items-center gap-2 rounded-full bg-brand-orange px-3.5 py-1.5 text-[11px] font-bold text-white shadow-sm hover:opacity-90"
                         >
                           <BookOpen className="h-3.5 w-3.5" />
                           open the artiverse book
@@ -1478,7 +1476,7 @@ function ProgrammeOverviewContent() {
                 blurb:
                   "what material you use. oil pastel · watercolour · acrylic · brush pen.",
                 status: "mandatory · fixed sequence · same for every child",
-                accent: "bg-[#F5D547]/25 text-amber-900",
+                accent: "bg-segment-yellow/20 text-ink",
               },
               {
                 icon: PenTool,
@@ -1487,7 +1485,7 @@ function ProgrammeOverviewContent() {
                 blurb:
                   "how you use that material. how to hold it. what marks it makes. what skill you are building.",
                 status: "mandatory · fixed sequence · same for every child",
-                accent: "bg-category-stem/20 text-blue-900",
+                accent: "bg-segment-blue/20 text-ink",
               },
               {
                 icon: Lightbulb,
@@ -1496,7 +1494,7 @@ function ProgrammeOverviewContent() {
                 blurb:
                   "what you make with it. an animal · a food · a place. something real or something imagined.",
                 status: "always the child's choice · always open",
-                accent: "bg-category-language/25 text-green-900",
+                accent: "bg-segment-green/20 text-ink",
               },
             ].map((el) => {
               const Icon = el.icon;
