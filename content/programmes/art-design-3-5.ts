@@ -57,36 +57,104 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     id: "magna-tiles",
     segment: "art-games",
     title: "magna tiles",
-    setupLine: "Build using Magna-Tiles — match the prompt card, or build something of your own.",
+    setupLine: "Build with Magna-Tiles. Each card tells you what to make and how many tiles to use.",
     howToPlay:
-      "Children build structures using Magna-Tiles, guided by prompt cards across five levels of difficulty — from flat 2D matching to free 3D building.",
+      "A deck of laminated prompt cards sits next to the Magna-Tiles. Each card shows a target build (a fish, a tablecloth, a cube tower …) along with the colours and the number of tiles required. The child picks a card, counts out the right tiles, and builds. Five levels run from flat 2D copies to fully open-ended challenges.",
+    variations: [
+      {
+        name: "Level 1 — Match & Build (2D single layer)",
+        description:
+          "Card shows a flat shape (house, rocket, fish) made of Magna-Tiles, with the exact number and colours of tiles. Child counts the tiles and builds the shape flat on the floor.",
+      },
+      {
+        name: "Level 2 — Stack & Copy (2D double layer)",
+        description:
+          "Card shows a layered image — bottom and top. Child builds the bottom first, then adds the top. Tile count given.",
+      },
+      {
+        name: "Level 3 — Fill the Frame (border + tile count)",
+        description:
+          "Card shows only the outline of a shape and a tile count. Child has to fill the outline using exactly that many tiles.",
+      },
+      {
+        name: "Level 4 — Build It Tall (3D structures)",
+        description:
+          "Card shows a simple 3D build — a tower, bridge, cube house. Child builds vertically with the teacher's support to balance it.",
+      },
+      {
+        name: "Level 5 — Creative Builders (open-ended)",
+        description:
+          "Card sets a goal or a tile limit but no fixed picture. Child experiments freely, then describes the build to the group.",
+      },
+    ],
     materials: [
-      "Magna-Tiles set",
-      "Prompt cards (5 levels)",
+      "Magna-Tiles (variety of shapes and colours)",
+      "Prompt flashcards — Level 1: 2D flat shapes + tile count",
+      "Prompt flashcards — Level 2: 2D double-layered prompts + tile count",
+      "Prompt flashcards — Level 3: outlined borders + tile count",
+      "Prompt flashcards — Level 4: 3D shaped prompts + tile count",
+      "Prompt flashcards — Level 5: open-ended challenges",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Flat 2D — copy the shape on the card using single tiles laid flat." },
-      { level: "Medium", description: "2D into 3D — fold flat shapes up into simple 3D forms (cube, pyramid)." },
-      { level: "Hard", description: "Free 3D — build a structure of the child's choice without a card." },
+      { level: "Easy", description: "Levels 1 and 2 — flat copies and double-layer builds." },
+      { level: "Medium", description: "Levels 3 and 4 — fill the frame and build it tall." },
+      { level: "Hard", description: "Level 5 — open-ended creative builds." },
     ],
     debriefPrompts: [],
     type: "physical-game",
   },
-  "shape-mats": {
-    id: "shape-mats",
+  "shape-art": {
+    id: "shape-art",
     segment: "art-games",
-    title: "shape mats — tile placement",
-    setupLine: "Place the shape tiles onto the mat outlines, or build your own arrangement.",
+    title: "shape art",
+    setupLine:
+      "Pick a cue card. Find the right foam shapes from the central tray. Recreate the object in 2 minutes.",
     howToPlay:
-      "Large illustrated shape mats are placed on the table. Children either place matching shape tiles onto the printed mat outlines, or arrange tiles freely to build their own composition.",
+      "Each child picks a cue card based on their difficulty level. All foam (or paper) shape pieces are mixed in a central tray — children search and select the ones they need. Using the cue card as a guide, they assemble the shapes on a flat surface to recreate the object on the card. Each round runs for 2 minutes. After the timer, a teacher or peer reviews the build and players rotate cards or roles.",
+    variations: [
+      {
+        name: "Individual play",
+        description:
+          "Each child works solo with their own cue card and assembles their object using shapes from the central tray.",
+      },
+      {
+        name: "Group play",
+        description:
+          "Children split into teams. One player draws the card, the team gathers shapes and builds the object together. Teams rotate the card-drawer each round, or run it as a relay.",
+      },
+    ],
     materials: [
-      "Large illustrated shape mats",
-      "Shape tiles in matching shapes and colours",
+      "Foam (or paper) shape pieces in mixed colours and forms",
+      "Cue card decks — Easy, Medium, Hard",
+      "Central tray for the shape pile",
+      "Timer (2 minutes per round)",
+      "Flat building surface (table or floor mat)",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Place tiles onto the matching outlines printed on the mat." },
-      { level: "Medium", description: "Place tiles on the mat using only the shape clue (no outline)." },
-      { level: "Hard", description: "Free arrangement — child builds their own composition on the mat." },
+      { level: "Easy", description: "Cue card shows the object (e.g. a house) with the exact shapes and colours needed, illustrated next to the object." },
+      { level: "Medium", description: "Cue card shows the object name and a simple icon (e.g. 🐸, 🚗) but no shape hints — the child interprets how to build it." },
+      { level: "Hard", description: "Cue card lists shapes and quantities only (e.g. \"Make an OWL: 2 circles, 1 triangle, 1 oval\") — the child visualises and constructs without a picture." },
+    ],
+    debriefPrompts: [],
+    type: "physical-game",
+  },
+  "imagine-that-3-5": {
+    id: "imagine-that-3-5",
+    segment: "art-games",
+    title: "imagine that",
+    setupLine:
+      "One child describes a card image without naming it. The others draw what they hear.",
+    howToPlay:
+      "One child is the describer. They pick a card from the deck — animals or objects — and describe it without naming the subject. The other children draw what they hear. After everyone is done, the describer picks the drawing that best matches what they had in mind. Variation — the child invents an imaginary subject and describes it while drawing simultaneously (e.g. a whale with the body of a horse).",
+    materials: [
+      "Physical card decks — Animals and Objects",
+      "Drawing paper",
+      "Colour pencils or markers",
+    ],
+    difficultyLevels: [
+      { level: "Easy", description: "Easy cards — the guessing audience can ask the describer 2 questions." },
+      { level: "Medium", description: "Easy cards — no questions allowed." },
+      { level: "Hard", description: "Difficult cards — no clues allowed." },
     ],
     debriefPrompts: [],
     type: "physical-game",
@@ -511,8 +579,9 @@ const ART_GAMES_CYCLE = [
   "mix-it-up",
   "magna-tiles",
   "colour-riddles",
-  "shape-mats",
+  "shape-art",
   "i-spot-texture",
+  "imagine-that-3-5",
   "mini-artventure",
 ];
 

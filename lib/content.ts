@@ -238,9 +238,10 @@ export const ACTIVITY_IMAGES: Record<string, string> = {
   "colour-riddles": "/games/art-3-5/colour-riddles.png",
   "mini-artventure": "/games/art-3-5/mini-artventure.png",
   "i-spot-texture": "/games/art-3-5/i-spot-texture.png",
-  // Games still on placeholder SVGs until real renders ship
-  "magna-tiles": "/games/art-3-5/magna-tiles.svg",
-  "shape-mats": "/games/art-3-5/shape-mats.svg",
+  "magna-tiles": "/games/art-3-5/magna-tiles.png",
+  "shape-art": "/games/art-3-5/shape-art.png",
+  "imagine-that-3-5": "/games/art-3-5/imagine-that.png",
+  // Match Me 3-5 still on placeholder SVG until a real render ships
   "match-me-3-5": "/games/art-3-5/match-me.svg",
   // Robotics — experiment cue cards (thumbnail = first page of the PDF)
   "l1-levers-e1": "/robotics-manuals/l1-levers.png",
