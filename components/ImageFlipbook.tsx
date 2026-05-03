@@ -9,17 +9,15 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 // like flipPrev/flipNext become unreachable from the parent's ref.
 
 /**
- * Image flipbook — renders an ordered list of image URLs as a real
+ * Image flipbook — renders an ordered list of flipbook pages as a real
  * page-flipping book. Two-page spread with curl animation on desktop,
  * single-page portrait on phones.
  *
- * Reads the first image's natural aspect to size the book. Cover-style
- * chrome around the spread: rounded corners, soft inner shadow, cream
- * page background that matches the brand, centre gutter shadow.
- *
- * Optional captions sync with the current page — when supplied, a
- * caption card under the book shows the chapter / project / description
- * for the page the reader is on.
+ * Pages are a heterogeneous list of image pages and text pages. To render
+ * a "real picture book" with image-on-one-side and text-on-the-other,
+ * pass pages as alternating pairs: [img1, txt1, img2, txt2, ...]. With
+ * showCover=false react-pageflip pairs them as [L,R][L,R]... so each
+ * spread becomes image | text.
  */
 export interface FlipbookCaption {
   /** Small uppercase eyebrow above the title (e.g. "paper chapter"). */
@@ -30,20 +28,18 @@ export interface FlipbookCaption {
   description?: string;
 }
 
+export type FlipbookPage =
+  | { kind: "image"; src: string; alt?: string }
+  | { kind: "text"; caption: FlipbookCaption };
+
 interface ImageFlipbookProps {
-  /** Page image URLs in reading order. Page 1 = first item. */
-  pages: string[];
-  /** Optional captions, one per page (same length as `pages`). */
-  captions?: FlipbookCaption[];
+  /** Pages in reading order. Page 1 = first item. */
+  pages: FlipbookPage[];
   /** Alt-text prefix for screen readers, e.g. "artistotle book". */
   altPrefix?: string;
 }
 
-export function ImageFlipbook({
-  pages,
-  captions,
-  altPrefix = "page",
-}: ImageFlipbookProps) {
+export function ImageFlipbook({ pages, altPrefix = "page" }: ImageFlipbookProps) {
   const [aspect, setAspect] = useState(1.414); // h / w; A4-ish default
   const [currentPage, setCurrentPage] = useState(0);
   const [HTMLFlipBook, setHTMLFlipBook] = useState<any>(null);
@@ -78,16 +74,20 @@ export function ImageFlipbook({
 
   const mounted = !!HTMLFlipBook;
 
-  // First image's aspect ratio sets the book proportions.
+  // First image's aspect ratio sets the book proportions. Look for the
+  // first image page (text pages don't have a natural aspect).
   useEffect(() => {
-    if (!pages.length) return;
+    const firstImage = pages.find((p) => p.kind === "image") as
+      | Extract<FlipbookPage, { kind: "image" }>
+      | undefined;
+    if (!firstImage) return;
     const img = new Image();
     img.onload = () => {
       if (img.naturalWidth > 0) {
         setAspect(img.naturalHeight / img.naturalWidth);
       }
     };
-    img.src = pages[0];
+    img.src = firstImage.src;
   }, [pages]);
 
   if (!pages.length) {
@@ -112,30 +112,11 @@ export function ImageFlipbook({
   const atStart = currentPage === 0;
   const atEnd = currentPage >= pages.length - 1;
 
-  const currentCaption = captions?.[currentPage];
+  const totalSpreads = Math.ceil(pages.length / 2);
+  const currentSpread = Math.floor(currentPage / 2) + 1;
 
   return (
     <div ref={containerRef} className="w-full">
-      {/* Chapter / page caption rendered ABOVE the book so the reader sees
-          the chapter context while looking at the spread. The same data
-          renders again below for mobile readers who scroll past the book. */}
-      {currentCaption && (
-        <div className="mx-auto mb-4 max-w-2xl rounded-2xl bg-brand-white p-4 shadow-card ring-1 ring-ink/5 md:p-5">
-          {currentCaption.eyebrow && (
-            <p className="text-[11px] font-bold lowercase tracking-tight text-brand-orange">
-              {currentCaption.eyebrow}
-            </p>
-          )}
-          <p className="mt-1 text-[16px] font-extrabold lowercase leading-tight text-ink md:text-[18px]">
-            {currentCaption.title}
-          </p>
-          {currentCaption.description && (
-            <p className="mt-2 text-[12.5px] leading-relaxed text-ink-muted md:text-[13px]">
-              {currentCaption.description}
-            </p>
-          )}
-        </div>
-      )}
       {/* Mounting placeholder so layout doesn't jump while the dynamic
           chunk loads. */}
       {!mounted ? (
@@ -170,9 +151,20 @@ export function ImageFlipbook({
               className="bg-brand-cream"
               onFlip={(e: any) => setCurrentPage(e.data)}
             >
-              {pages.map((src, i) => (
-                <FlipPage key={src} src={src} alt={`${altPrefix} ${i + 1}`} />
-              ))}
+              {pages.map((page, i) =>
+                page.kind === "image" ? (
+                  <FlipImagePage
+                    key={`img-${i}-${page.src}`}
+                    src={page.src}
+                    alt={page.alt ?? `${altPrefix} ${i + 1}`}
+                  />
+                ) : (
+                  <FlipTextPage
+                    key={`txt-${i}-${page.caption.title}`}
+                    caption={page.caption}
+                  />
+                )
+              )}
             </HTMLFlipBook>
           </div>
 
@@ -198,7 +190,9 @@ export function ImageFlipbook({
         </div>
       )}
 
-      {/* Page counter + mobile prev/next */}
+      {/* Page counter + mobile prev/next.
+          On desktop spread mode: "spread N of M" (each spread = 2 pages).
+          On portrait mobile: "page N of total" (one page at a time). */}
       <div className="mt-4 flex items-center justify-center gap-3 text-[12px]">
         <button
           type="button"
@@ -209,7 +203,9 @@ export function ImageFlipbook({
           ← prev
         </button>
         <span className="font-semibold text-ink-muted">
-          page {Math.min(currentPage + 1, pages.length)} of {pages.length}
+          {isSpread
+            ? `spread ${Math.min(currentSpread, totalSpreads)} of ${totalSpreads}`
+            : `page ${Math.min(currentPage + 1, pages.length)} of ${pages.length}`}
         </span>
         <button
           type="button"
@@ -220,13 +216,12 @@ export function ImageFlipbook({
           next →
         </button>
       </div>
-
     </div>
   );
 }
 
-const FlipPage = forwardRef<HTMLDivElement, { src: string; alt: string }>(
-  function FlipPage({ src, alt }, ref) {
+const FlipImagePage = forwardRef<HTMLDivElement, { src: string; alt: string }>(
+  function FlipImagePage({ src, alt }, ref) {
     return (
       <div ref={ref} className="bg-brand-cream">
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -236,6 +231,33 @@ const FlipPage = forwardRef<HTMLDivElement, { src: string; alt: string }>(
           className="block h-full w-full select-none object-contain"
           draggable={false}
         />
+      </div>
+    );
+  }
+);
+
+const FlipTextPage = forwardRef<HTMLDivElement, { caption: FlipbookCaption }>(
+  function FlipTextPage({ caption }, ref) {
+    return (
+      <div
+        ref={ref}
+        className="flex h-full w-full flex-col justify-center bg-brand-cream p-6 md:p-10"
+      >
+        <div className="mx-auto w-full max-w-md">
+          {caption.eyebrow && (
+            <p className="text-[11px] font-bold lowercase tracking-tight text-brand-orange md:text-[12px]">
+              {caption.eyebrow}
+            </p>
+          )}
+          <h3 className="mt-2 text-[22px] font-extrabold lowercase leading-tight text-ink md:text-[28px]">
+            {caption.title}
+          </h3>
+          {caption.description && (
+            <p className="mt-4 text-[13px] leading-relaxed text-ink-muted md:text-[15px]">
+              {caption.description}
+            </p>
+          )}
+        </div>
       </div>
     );
   }

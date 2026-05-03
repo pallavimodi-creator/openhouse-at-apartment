@@ -1,7 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { ImageFlipbook, type FlipbookCaption } from "@/components/ImageFlipbook";
+import {
+  ImageFlipbook,
+  type FlipbookCaption,
+  type FlipbookPage,
+} from "@/components/ImageFlipbook";
 import { ArtiverseChapters } from "@/components/ArtiverseChapters";
 import { TeacherGate } from "@/components/TeacherGate";
 
@@ -200,8 +204,10 @@ export default function ArtiverseBookPage() {
         <section className="bg-white px-3 py-6 md:px-8">
           <div className="mx-auto w-full max-w-5xl">
             <ImageFlipbook
-              pages={ARTIVERSE_PAGES.map((p) => p.src)}
-              captions={ARTIVERSE_PAGES.map((p) => p.caption)}
+              pages={ARTIVERSE_PAGES.flatMap<FlipbookPage>((p) => [
+                { kind: "image", src: p.src, alt: p.caption.title },
+                { kind: "text", caption: p.caption },
+              ])}
               altPrefix="artiverse book page"
             />
           </div>
