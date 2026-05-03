@@ -16,16 +16,32 @@ const HTMLFlipBook = dynamic(() => import("react-pageflip"), { ssr: false });
  * Reads the first image's natural aspect to size the book. Cover-style
  * chrome around the spread: rounded corners, soft inner shadow, cream
  * page background that matches the brand, centre gutter shadow.
+ *
+ * Optional captions sync with the current page — when supplied, a
+ * caption card under the book shows the chapter / project / description
+ * for the page the reader is on.
  */
+export interface FlipbookCaption {
+  /** Small uppercase eyebrow above the title (e.g. "paper chapter"). */
+  eyebrow?: string;
+  /** Big lowercase title (e.g. "accordions"). */
+  title: string;
+  /** One- or two-sentence description. */
+  description?: string;
+}
+
 interface ImageFlipbookProps {
   /** Page image URLs in reading order. Page 1 = first item. */
   pages: string[];
+  /** Optional captions, one per page (same length as `pages`). */
+  captions?: FlipbookCaption[];
   /** Alt-text prefix for screen readers, e.g. "artistotle book". */
   altPrefix?: string;
 }
 
 export function ImageFlipbook({
   pages,
+  captions,
   altPrefix = "page",
 }: ImageFlipbookProps) {
   const [aspect, setAspect] = useState(1.414); // h / w; A4-ish default
@@ -169,6 +185,25 @@ export function ImageFlipbook({
           next →
         </button>
       </div>
+
+      {/* Page caption — synced to current page when captions[] is supplied */}
+      {captions && captions[currentPage] && (
+        <div className="mx-auto mt-4 max-w-2xl rounded-2xl bg-brand-white p-4 shadow-card ring-1 ring-ink/5 md:p-5">
+          {captions[currentPage].eyebrow && (
+            <p className="text-[11px] font-bold lowercase tracking-tight text-brand-orange">
+              {captions[currentPage].eyebrow}
+            </p>
+          )}
+          <p className="mt-1 text-[16px] font-extrabold lowercase leading-tight text-ink md:text-[18px]">
+            {captions[currentPage].title}
+          </p>
+          {captions[currentPage].description && (
+            <p className="mt-2 text-[12.5px] leading-relaxed text-ink-muted md:text-[13px]">
+              {captions[currentPage].description}
+            </p>
+          )}
+        </div>
+      )}
     </div>
   );
 }

@@ -680,12 +680,18 @@ const planned: Array<{ unitId: string; day: number; name: string }> = [
 const sessionTable: CurriculumSessionEntry[] = Array.from({ length: 60 }, (_, i) => {
   const sessionNumber = i + 1;
   const slot = planned[i];
+  // Read the unit number directly from the artiverseUnits source — the
+  // earlier shortcut that stripped non-digits from the slot id ("av35-1")
+  // was producing "351" instead of 1.
+  const unit = slot
+    ? artiverseUnits.find((u) => u.id === slot.unitId)
+    : undefined;
   return {
     sessionNumber,
     artGym: gymForSession(sessionNumber),
     artGames: gameForSession(sessionNumber),
     artiverse: slot?.unitId,
-    artiverseUnit: slot ? Number(slot.unitId.replace(/[^0-9]/g, "")) : undefined,
+    artiverseUnit: unit?.unitNumber,
     artiverseDay: slot?.day,
     artiverseUnitName: slot?.name ?? "to be planned (S43–60 reserved)",
     topicLayer: 0,
