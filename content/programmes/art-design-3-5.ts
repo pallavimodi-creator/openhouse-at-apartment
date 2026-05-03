@@ -521,9 +521,11 @@ function gameForSession(n: number): string {
 }
 
 function gymForSession(n: number): string {
-  // Alternate book ↔ scribble. Book switches from book-1 to book-2 at S26.
+  // Alternate book day ↔ scribble book day. The art gym book switches from
+  // book-1 to book-2 once book-1 is finished — the rule of thumb is around
+  // session 30 (15 book days × 2 pages each).
   const isBookDay = n % 2 === 1;
-  if (isBookDay) return n <= 25 ? "ag-book-1" : "ag-book-2";
+  if (isBookDay) return n <= 30 ? "ag-book-1" : "ag-book-2";
   return "scribble-book";
 }
 
@@ -684,7 +686,7 @@ export const artDesign35: CurriculumProgramme = {
   tagline:
     "build the physical control, colour awareness, and creative confidence that makes a child someone who makes things — for the rest of their life.",
   description:
-    "60 sessions across five segments — art gym warm-up, art games, artiverse / artistotle making, experience book, and art care. children encounter every idea three ways: through a structured game, through the work of a famous illustrator, and through making something of their own.",
+    "60 sessions across five segments: art gym, art games, artiverse / artistotle making, experience book, and art care. each day children build fine motor skills, develop creative expression, and make artworks using varied mediums and techniques — exploring every idea through artists' work and hands-on creation.",
   totalSessions: 60,
   skillAreas: [
     {
@@ -778,7 +780,7 @@ export const artDesign35: CurriculumProgramme = {
       name: "Art Gym",
       durationRange: "15 min",
       objective:
-        "daily warm-up that builds fine motor control and creative confidence through short, focused mark-making. rotates between art gym book and scribble book on consecutive sessions. book 1 runs for s1-25, book 2 for s26-60. children choose their own material — erasable markers, play-doh, thread, sequins.",
+        "daily warm-up that builds fine motor control and creative confidence through short, focused mark-making. art gym book and scribble book rotate on alternate days — children do 1–2 pages each session. art gym book 1 runs for the first ~30 sessions; once it is finished the class moves to book 2. children choose their own material — erasable markers, play-doh, thread, sequins. no extension days at this age group.",
       type: "rotating",
       rotationPool: ["ag-book-1", "ag-book-2", "scribble-book"],
     },

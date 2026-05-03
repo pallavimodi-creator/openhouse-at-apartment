@@ -1018,10 +1018,10 @@ function ProgrammeOverviewContent() {
                         <div className="mt-3 rounded-lg bg-brand-white p-3 shadow-card">
                           <p className="text-[11px] font-semibold text-ink">book rotation</p>
                           <p className="mt-1 text-[11px] text-ink-muted">
-                            <span className="font-semibold text-ink">sessions 1–25:</span> book 1
+                            <span className="font-semibold text-ink">sessions ~1–30:</span> book 1 — 1–2 pages a day
                           </p>
                           <p className="mt-0.5 text-[11px] text-ink-muted">
-                            <span className="font-semibold text-ink">sessions 26+:</span> book 2
+                            <span className="font-semibold text-ink">once book 1 is done:</span> move to book 2
                           </p>
                           <p className="mt-2 text-[10px] italic text-ink-subtle">
                             child chooses material — erasable markers, play-doh, thread, sequins.
