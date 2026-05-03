@@ -28,11 +28,18 @@ import {
   PenTool,
   Moon,
   CirclePlus,
+  Crosshair,
+  PenLine,
+  Eye,
+  Heart,
+  Wand2,
+  type LucideIcon,
 } from "lucide-react";
 import { getCurriculumProgramme, getActivityImage, GYM_BOOK_IMAGES } from "@/lib/content";
 import { cn } from "@/lib/utils";
 import { TeacherGate } from "@/components/TeacherGate";
 import { ArtiverseChapters } from "@/components/ArtiverseChapters";
+import { ArtistotleChapters } from "@/components/ArtistotleChapters";
 
 // ─── Artiverse — how it works · sequence data ────────────────
 
@@ -454,6 +461,33 @@ function ProgrammeOverviewContent() {
 
   // Build skills list from this programme's own skill areas so the abilities
   // match the age group & category.
+  // Optional Lucide icons for skills + abilities. Currently used by the
+  // Art & Design 3-5 programme; other programmes fall back to the numeric /
+  // letter badge below.
+  const skillIcon: Record<string, LucideIcon> = {
+    // 3-5 art skill families
+    fm: Hand,
+    co: Palette,
+    ce: Sparkles,
+  };
+  const abilityIcon: Record<string, LucideIcon> = {
+    // Fine Motor abilities (4)
+    "fm-0": Crosshair, // Tool Precision
+    "fm-1": PenLine, // Tracing
+    "fm-2": Pencil, // Drawing Figures and Patterns
+    "fm-3": Sparkles, // Fine Motor Integration ★
+    // Colour abilities (4)
+    "co-0": Droplet, // Explores freely
+    "co-1": Eye, // Names and recognises
+    "co-2": Layers, // Mixes and notices
+    "co-3": Palette, // Colour Integration ★
+    // Creative Expression abilities (4)
+    "ce-0": Layers, // Explores Artistic Concepts
+    "ce-1": Heart, // Emotional Expression through Art
+    "ce-2": Wand2, // Integrating Artistic Choices
+    "ce-3": Sparkles, // Visual Arts Integration ★
+  };
+
   const skillStyle: Record<string, { color: string; accent: string }> = {
     // art skill families
     lt: { color: "bg-[#D4A88C]", accent: "border-[#D4A88C]" },
@@ -461,6 +495,10 @@ function ProgrammeOverviewContent() {
     cp: { color: "bg-[#E8B5B8]", accent: "border-[#E8B5B8]" },
     bc: { color: "bg-[#B8D4A8]", accent: "border-[#B8D4A8]" },
     ic: { color: "bg-[#C4D8F0]", accent: "border-[#C4D8F0]" },
+    // 3-5 art skill families
+    fm: { color: "bg-[#D4A88C]", accent: "border-[#D4A88C]" }, // sand — fine motor
+    co: { color: "bg-[#E8B5B8]", accent: "border-[#E8B5B8]" }, // pink — colour
+    ce: { color: "bg-[#C4D8F0]", accent: "border-[#C4D8F0]" }, // sky — creative expression
     // public speaking skill families
     cs: { color: "bg-[#D4A88C]", accent: "border-[#D4A88C]" },
     bl: { color: "bg-[#7EB5D6]", accent: "border-[#7EB5D6]" },
@@ -491,6 +529,15 @@ function ProgrammeOverviewContent() {
     playground: { color: "bg-category-language/40", textColor: "text-green-900", icon: Gamepad2, durationFlex: 22, meaning: "one group game played deeply, with a full debrief. children practise speaking through play." },
     showtime: { color: "bg-category-stem/40", textColor: "text-blue-900", icon: Star, durationFlex: 32, meaning: "children step into the spotlight. structured formats that build performance, argument, and conviction." },
     "log-book": { color: "bg-category-movement/40", textColor: "text-pink-900", icon: Notebook, durationFlex: 10, meaning: "last 10 minutes — children fill in \"what happened in class today\" with the teacher, who opens a short discussion: favourite part? what you enjoyed? what you didn't? what to do again? every child speaks. after children leave, the teacher fills the skill-assessment part privately. the daily notes compile into the monthly report card that goes home." },
+    "art-care": {
+      color: "bg-violet-200/60",
+      textColor: "text-violet-900",
+      icon: Sparkles,
+      durationFlex: 5,
+      meaning:
+        programme.segmentDefinitions.find((s) => s.id === "art-care")?.objective ??
+        "children sort all materials back to the correct shelf sections and clean the making space. the standard is care, not speed.",
+    },
     // Robotics segments — no rotation; every session is fixed.
     experiment: { color: "bg-[#F5D547]", textColor: "text-amber-900", icon: FlaskConical, durationFlex: 40, meaning: "groups of 2–4 children find the answer to one specific question. every child takes at least one measurement independently. teacher asks one question per group and never gives the answer. tool orientation is embedded here — each tool introduced once, confirmed once, never revisited." },
     build: { color: "bg-category-language/40", textColor: "text-green-900", icon: Wrench, durationFlex: 40, meaning: "each child builds their own mechanical model using a personal kit and a step card. the teacher never fixes anything and never tells anyone what to do next. four questions only. when something doesn't work, the child figures it out." },
@@ -832,7 +879,14 @@ function ProgrammeOverviewContent() {
                       skill.color
                     )}
                   >
-                    {skill.id}
+                    {(() => {
+                      const SkillIcon = skillIcon[skill.id];
+                      return SkillIcon ? (
+                        <SkillIcon className="h-5 w-5" strokeWidth={2} />
+                      ) : (
+                        skill.id
+                      );
+                    })()}
                   </span>
                   <div className="flex-1">
                     <p className="text-[14px] font-extrabold text-ink">{skill.name}</p>
@@ -857,6 +911,7 @@ function ProgrammeOverviewContent() {
                       const abilityName = isObj ? (ability as { name: string }).name : null;
                       const abilityDesc = isObj ? (ability as { description: string }).description : (ability as string);
                       const isNorthStar = isObj && (ability as { isNorthStar?: boolean }).isNorthStar;
+                      const AbilityIcon = abilityIcon[`${skill.id}-${i}`];
                       return (
                         <div key={i} className="flex items-start gap-3">
                           <span
@@ -865,7 +920,11 @@ function ProgrammeOverviewContent() {
                               skill.color
                             )}
                           >
-                            {i + 1}
+                            {AbilityIcon ? (
+                              <AbilityIcon className="h-3.5 w-3.5" strokeWidth={2.4} />
+                            ) : (
+                              i + 1
+                            )}
                           </span>
                           <div className="flex-1">
                             {abilityName && (
@@ -1362,6 +1421,19 @@ function ProgrammeOverviewContent() {
                         </p>
                       </div>
                       <ArtiverseChapters compact />
+                    </div>
+
+                    {/* Artistotle illustrator notes — Eric Carle · Lois Ehlert · Taro Gomi */}
+                    <div className="mt-5">
+                      <div className="mb-3">
+                        <p className="text-[11px] font-bold uppercase tracking-wide text-brand-orange">
+                          artistotle illustrators
+                        </p>
+                        <p className="mt-0.5 text-[12px] italic leading-relaxed text-ink-muted">
+                          three illustrators · six projects · why each one works.
+                        </p>
+                      </div>
+                      <ArtistotleChapters compact />
                     </div>
                   </div>
                 )}
