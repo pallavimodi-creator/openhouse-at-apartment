@@ -17,18 +17,30 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     id: "shape-stitch-3-5",
     segment: "art-games",
     title: "shape stitch",
-    setupLine:
-      "Sew through the stitching template using shoelaces. Running stitch, whip stitch, or chain stitch.",
+    setupLine: "Pick a template. Sew around it or across it.",
     howToPlay:
-      "Children sew through stitching templates using shoelaces. Running Stitch = dashed line. Whip Stitch = over the edge in a loop. Chain Stitch = each stitch loops through the previous one. Templates range from simple outlines to more complex forms.",
+      "Each child is an individual player. Set up bins of templates — geometric shapes, objects, and characters. Give each child a sewing base and a shoelace. The teacher gives a verbal prompt that names the stitch (whip stitch, running stitch, back stitch, chain stitch, double stitch, or a pattern). The child sews accordingly.",
     materials: [
-      "Sewing templates (numbers, alphabets, simple object outlines)",
-      "Shoelaces",
+      "Stitching bases (geometric shapes · objects · characters)",
+      "Shoelaces with a stiff tip",
+      "Stitch reference card (running · whip · back · chain · double · pattern)",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Running stitch on a simple template — educator demonstrates first." },
-      { level: "Medium", description: "Whip stitch — child works around the edge of the template." },
-      { level: "Hard", description: "Chain stitch — each loop threads through the previous one." },
+      {
+        level: "Easy — geometric shapes (sew around the border)",
+        description:
+          "Prompt: \"Let's use whip stitch around the shape.\" The child sews neatly around the border using a whip stitch (over the edge in a loop) or a running stitch (in–out, like a dashed line).",
+      },
+      {
+        level: "Medium — objects (sew across the base)",
+        description:
+          "Prompt: \"Let's use back stitch across the object.\" The child sews across the base using a back stitch or a chain stitch. Older children can use double stitch (the same hole stitched twice for strength) or build a small pattern using more than one stitch.",
+      },
+      {
+        level: "Hard — story + riddle hunt",
+        description:
+          "The teacher tells a story with lost characters (animals, objects, shapes) and reads riddle clues. Examples: \"I'm red and round, with seeds all around. I'm sweet and hiding on the softest ground\" → strawberry. \"I help you reach the sky, tall and thin am I\" → giraffe. The child finds the right base and stitches the character together using the stitch the teacher names.",
+      },
     ],
     debriefPrompts: [],
     type: "physical-game",
@@ -37,18 +49,31 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     id: "stitch-me",
     segment: "art-games",
     title: "stitch me",
-    setupLine: "Thread the beads in the right sequence — colour, number, or riddle.",
+    setupLine: "Pair up. Solve the prompt. Lace the bead.",
     howToPlay:
-      "Children thread beads onto a shoelace following a specific sequence. The sequence is given as a prompt card or spoken by the teacher. Three difficulty levels — pure colour sequence, colour + count combinations, and riddle prompts where the answer is the next bead.",
+      "Divide the children into pairs. Set up stations or scavenger bins around the room — one for beads, one for numbers, one for shapes. Give each pair a laminated template, a sewing base, and a shoelace. The teacher calls out one prompt at a time. The current player runs to the right station, finds the matching bead, comes back, and laces it onto the template. The lace is passed to the next child. The round ends when every bead is sewn into the template.",
     materials: [
-      "Coloured beads in a tray",
+      "Laminated templates (beads · numbers · shapes)",
+      "Sewing bases",
       "Shoelaces with a stiff tip",
-      "Sequence prompt cards",
+      "Bead, number, and shape stations scattered around the room",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Colour sequence — match the order on the prompt card." },
-      { level: "Medium", description: "Colour + count — e.g. \"3 red, 2 blue, 1 yellow.\"" },
-      { level: "Hard", description: "Riddle prompts — the teacher gives a clue and the child threads the bead that fits." },
+      {
+        level: "Easy — colour pattern beads",
+        description:
+          "Prompt: \"Sew a necklace with this ABAB pattern — red, yellow, red, yellow.\" The child finds beads of the two colours and laces them in the alternating sequence shown on the template.",
+      },
+      {
+        level: "Medium — beads + numbers",
+        description:
+          "Prompt: \"Colour + number pattern — blue 1, yellow 2, orange + blue 3, ___\". The child finds the beads and numbers shown on the template and laces them in order.",
+      },
+      {
+        level: "Hard — verbal riddles",
+        description:
+          "The teacher reads a riddle. The child runs, picks the matching bead or number, and laces it. Examples: \"I'm as red as a strawberry on a sunny day\" → red bead. \"I'm what comes after 2 and before 4\" → number 3. \"Mix red and yellow, I'll show. I shine like the sunset's glow\" → orange bead. \"Double 2, that's me\" → number 4.",
+      },
     ],
     debriefPrompts: [],
     type: "physical-game",
@@ -57,48 +82,43 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     id: "magna-tiles",
     segment: "art-games",
     title: "magna tiles",
-    setupLine: "Build with Magna-Tiles. Each card tells you what to make and how many tiles to use.",
+    setupLine: "Pick a card. Count your tiles. Build the shape.",
     howToPlay:
-      "A deck of laminated prompt cards sits next to the Magna-Tiles. Each card shows a target build (a fish, a tablecloth, a cube tower …) along with the colours and the number of tiles required. The child picks a card, counts out the right tiles, and builds. Five levels run from flat 2D copies to fully open-ended challenges.",
-    variations: [
-      {
-        name: "Level 1 — Match & Build (2D single layer)",
-        description:
-          "Card shows a flat shape (house, rocket, fish) made of Magna-Tiles, with the exact number and colours of tiles. Child counts the tiles and builds the shape flat on the floor.",
-      },
-      {
-        name: "Level 2 — Stack & Copy (2D double layer)",
-        description:
-          "Card shows a layered image — bottom and top. Child builds the bottom first, then adds the top. Tile count given.",
-      },
-      {
-        name: "Level 3 — Fill the Frame (border + tile count)",
-        description:
-          "Card shows only the outline of a shape and a tile count. Child has to fill the outline using exactly that many tiles.",
-      },
-      {
-        name: "Level 4 — Build It Tall (3D structures)",
-        description:
-          "Card shows a simple 3D build — a tower, bridge, cube house. Child builds vertically with the teacher's support to balance it.",
-      },
-      {
-        name: "Level 5 — Creative Builders (open-ended)",
-        description:
-          "Card sets a goal or a tile limit but no fixed picture. Child experiments freely, then describes the build to the group.",
-      },
-    ],
+      "Place the Magna-Tiles in the middle and the prompt deck for the day next to them. The child picks a card. The card shows what to build, the colours to use, and how many tiles to use. The child counts out the tiles and builds — flat on the floor for the early levels, upward for the 3D level. Open-ended cards set a goal or a tile limit but no picture; the child builds whatever they like and shows it to the group.",
     materials: [
       "Magna-Tiles (variety of shapes and colours)",
-      "Prompt flashcards — Level 1: 2D flat shapes + tile count",
-      "Prompt flashcards — Level 2: 2D double-layered prompts + tile count",
-      "Prompt flashcards — Level 3: outlined borders + tile count",
-      "Prompt flashcards — Level 4: 3D shaped prompts + tile count",
-      "Prompt flashcards — Level 5: open-ended challenges",
+      "Level 1 flashcards — 2D flat shapes + number of tiles",
+      "Level 2 flashcards — 2D double-layered prompts + number of tiles",
+      "Level 3 flashcards — 3D shaped prompts + number of tiles",
+      "Level 4 flashcards — outlined borders + number of tiles",
+      "Level 5 flashcards — open-ended prompts",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Levels 1 and 2 — flat copies and double-layer builds." },
-      { level: "Medium", description: "Levels 3 and 4 — fill the frame and build it tall." },
-      { level: "Hard", description: "Level 5 — open-ended creative builds." },
+      {
+        level: "Level 1 — Match & Build (2D single layer)",
+        description:
+          "Card shows a flat shape (house, rocket, fish) with the colours and tile count. Count the tiles. Build the shape flat on the floor.",
+      },
+      {
+        level: "Level 2 — Stack & Copy (2D double layer)",
+        description:
+          "Card shows a layered image — bottom and top. Build the bottom layer first, then add the top. Use the given number of tiles.",
+      },
+      {
+        level: "Level 3 — Fill the Frame (border + tile count)",
+        description:
+          "Card shows only the outline of a shape and a tile count. Place the card on the floor. Fill the outline using exactly that many tiles.",
+      },
+      {
+        level: "Level 4 — Build It Tall (3D structures)",
+        description:
+          "Card shows a simple 3D build — a tower, a bridge, a cube house. Build it standing up. The teacher supports balance if needed.",
+      },
+      {
+        level: "Level 5 — Creative Builders (open-ended)",
+        description:
+          "Card sets a goal or a tile limit but no picture. Build freely. Describe the build to the group.",
+      },
     ],
     debriefPrompts: [],
     type: "physical-game",
@@ -161,73 +181,41 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
   },
 
   // ── Colour ──
-  "match-me-3-5": {
-    id: "match-me-3-5",
-    segment: "art-games",
-    title: "match me",
-    setupLine: "Match the coloured beads or pictures to the right squares on the grid.",
-    howToPlay:
-      "Children match coloured beads or object cards to the correct grid squares. Three variations — simultaneous Colour Match, Pattern Memory (flip and remember), and timed Speed Match.",
-    variations: [
-      {
-        name: "Variation 1 — Colour match",
-        description: "Place beads onto the grid square that matches their colour.",
-      },
-      {
-        name: "Variation 2 — Pattern memory",
-        description: "Cards face-down — flip two; if they match, keep the pair.",
-      },
-      {
-        name: "Variation 3 — Speed match",
-        description: "On a timer — match as many beads as possible before the time runs out.",
-      },
-    ],
-    materials: [
-      "9-grid template card",
-      "Coloured beads",
-      "Picture cards (Pattern Memory variation)",
-      "Timer (Speed Match variation)",
-    ],
-    difficultyLevels: [
-      { level: "Easy", description: "Colour match — no time limit." },
-      { level: "Medium", description: "Pattern Memory — find matching pairs from face-down cards." },
-      { level: "Hard", description: "Speed Match — beat the timer." },
-    ],
-    debriefPrompts: [],
-    type: "physical-game",
-  },
   "mix-it-up": {
     id: "mix-it-up",
     segment: "art-games",
     title: "mix it up",
-    setupLine: "Sort the object cards by colour. Use the swatch cards as your guide.",
+    setupLine: "Match colours. Compare colours. Predict colours.",
     howToPlay:
-      "30 object cards are spread on the table. 6 colour swatch cards act as category markers. Children sort each object card under the colour it most closely matches. The third variation asks each child to draw an object in its real-world colours.",
+      "A colour learning card game. Players match, compare, and predict colours using simple cards, complex cards, and outline cards. The teacher picks one variation per round. Lay out the cards needed for that variation and play.",
+    materials: [
+      "24 colour cards (12 colours × 2 copies each)",
+      "48 simple object cards",
+      "3 operator cards (+, =, ?)",
+      "18 complex object cards",
+      "20 outline cards",
+    ],
     variations: [
       {
-        name: "Variation 1 — Sort",
-        description: "Sort all 30 object cards under the 6 colour swatches.",
+        name: "Variation 1 — Colour memory",
+        description:
+          "Shuffle all 24 colour cards and place them face-down. Players take turns flipping two cards. If the colours match, keep the pair. The player with the most pairs wins.",
       },
       {
-        name: "Variation 2 — Hunt",
+        name: "Variation 2 — Colour match",
         description:
-          "Teacher names a colour; children find every object card of that colour as fast as they can.",
+          "Lay all 12 colour cards in a row. Shuffle the simple object cards and deal an equal number to every child. Each child places their object cards above the matching colour card, or picks the colour cards that match each of their objects.",
       },
       {
-        name: "Variation 3 — Draw",
+        name: "Variation 3 — Predict the object",
         description:
-          "Child picks an object card and draws the same object in its real-world colours.",
+          "Place one outline object card face-up. Children look at it and pick the colour cards they think match. Turn over the matching coloured object card to confirm. There are no wrong answers — the teacher asks: \"Why did you choose that colour?\"",
       },
-    ],
-    materials: [
-      "30 object cards",
-      "6 colour swatch cards",
-      "Drawing paper + crayons (variation 3)",
-    ],
-    difficultyLevels: [
-      { level: "Easy", description: "Sort — match objects to swatches." },
-      { level: "Medium", description: "Hunt — race to find objects of a named colour." },
-      { level: "Hard", description: "Draw — reproduce a chosen object in its real-world colours." },
+      {
+        name: "Variation 4 — Predict the mix",
+        description:
+          "The teacher builds an equation with the cards — for example: red card + plus card + yellow card + equals card + question mark card. Children predict which colour card answers it. Confirm by pointing to orange objects from the simple object set.",
+      },
     ],
     debriefPrompts: [],
     type: "physical-game",
@@ -235,36 +223,26 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
   "colour-riddles": {
     id: "colour-riddles",
     segment: "art-games",
-    title: "colour riddles",
-    setupLine:
-      "Solve colour riddles. \"Red plus yellow plus blue — can you solve me too?\"",
+    title: "ryb riddles",
+    setupLine: "Teacher picks a riddle card. Children respond in their sketchbooks.",
     howToPlay:
-      "A deck of riddle cards sits face-down in the centre. The teacher (or a child) draws one card and reads the riddle aloud. Children look at the picture on the card and use their colour knowledge to solve the riddle — naming or pointing to the new colour, or filling in the missing colour. Cards include classic primary-secondary mixes (\"the caterpillar coloured circles — now it's a butterfly! the same colours are still there but everything changed\") and observation riddles (\"two snakes had a baby hidden in this egg — both are a different colour. what colour is the baby? draw it hatching!\").",
+      "A colour exploration card game. The teacher picks one riddle card for the day and reads the prompt aloud. The children respond to the prompt in their sketchbooks in their own way, using whichever art material the teacher has chosen for the session.",
+    materials: [
+      "15 riddle cards",
+      "Sketchbooks",
+      "Art materials of choice (water paints · oil pastels · yarn + glue · paper)",
+    ],
     variations: [
       {
-        name: "Variation 1 — Solve the riddle",
+        name: "Individual",
         description:
-          "Teacher reads the riddle; children answer aloud or by pointing at the right colour swatch.",
+          "Every child works independently on the same prompt for the whole class.",
       },
       {
-        name: "Variation 2 — Draw your answer",
+        name: "Pairs",
         description:
-          "Children draw or colour the missing piece on a sheet — the butterfly, the baby snake, the next bead in the chain.",
+          "The class is divided into pairs. Both children in a pair work on the same card together.",
       },
-      {
-        name: "Variation 3 — Make your own riddle",
-        description:
-          "Each child invents their own riddle on a blank card and asks the rest of the group to solve it.",
-      },
-    ],
-    materials: [
-      "Colour Riddles card deck",
-      "Drawing paper + crayons (variations 2 and 3)",
-    ],
-    difficultyLevels: [
-      { level: "Easy", description: "Solve the riddle aloud — primary and secondary colour mixes only." },
-      { level: "Medium", description: "Draw your answer on paper." },
-      { level: "Hard", description: "Make your own riddle and ask the group to solve it." },
     ],
     debriefPrompts: [],
     type: "physical-game",
@@ -275,33 +253,30 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     id: "i-spot-texture",
     segment: "art-games",
     title: "i spot texture",
-    setupLine:
-      "Match each scene card to the textures inside it. The garden has flower textures, the cafe has stripes and grids, the parking has zebra crossings.",
+    setupLine: "Choose a texture. Choose an object. Replicate the texture on the object.",
     howToPlay:
-      "Two card decks sit on the table — Texture cards (zigzag, wave, grid, herringbone, stripes, mesh, brick) and Scene cards (garden, cafe, mall, parking). Children pick a Scene card and find the texture cards that match the patterns hidden inside that scene. Variation: instead of cards, children walk around the room and spot real textures on the floor, walls, fabric, or windows.",
+      "A texture art game. Spread out the three object decks (18 cards in total) and the six texture tiles. The child or pair picks a texture and an object, and replicates the chosen texture on the object card using whichever art material the teacher has put out — crayons, paint, playdough, fingers, or sand.",
+    materials: [
+      "18 object cards (3 decks of 6)",
+      "6 texture tiles",
+      "Art materials (crayons · paint · playdough · fingers · sand)",
+    ],
     variations: [
       {
-        name: "Variation 1 — Match the scene",
-        description: "Place a Scene card down and find the Texture cards that match patterns inside it.",
+        name: "Variation 1 — Choice & single card",
+        description:
+          "Each child picks one texture and one object of their choice and replicates the texture on the object card.",
       },
       {
-        name: "Variation 2 — Spot in the room",
-        description: "Each child picks a Texture card and spots that pattern somewhere in the room.",
+        name: "Variation 2 — Assigned & multi-card",
+        description:
+          "The teacher (or a peer) assigns objects and textures. Each child works through several object cards using the assigned textures.",
       },
       {
-        name: "Variation 3 — Draw the texture",
-        description: "Child picks a Texture card and draws a small object using only that pattern.",
+        name: "Variation 3 — Set up shop",
+        description:
+          "Children split into groups. Each team is assigned its textures by the other team and chooses its own object deck. Both teams build a shop of textured objects.",
       },
-    ],
-    materials: [
-      "Texture pattern cards",
-      "Scene cards (garden · cafe · mall · parking)",
-      "Drawing paper + pencils (variation 3)",
-    ],
-    difficultyLevels: [
-      { level: "Easy", description: "Match — pair textures to scenes on the table." },
-      { level: "Medium", description: "Spot in the room — find each texture in the real space." },
-      { level: "Hard", description: "Draw — reproduce the texture inside an object of the child's choice." },
     ],
     debriefPrompts: [],
     type: "physical-game",
@@ -312,32 +287,26 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     id: "mini-artventure",
     segment: "art-games",
     title: "mini artventure",
-    setupLine:
-      "Spin the wheel. Land on a zone — Draw, Colour, Mould, or Build. Pick a prompt card and make it.",
+    setupLine: "Roll the dice. Move your token. Make what your zone asks for.",
     howToPlay:
-      "A spinner sits in the centre of the table with four colour-coded zones — Draw (yellow), Colour (teal), Mould (pink), Build (light blue). Each zone has its own deck of simple prompt cards (fruits, apple, circle, tower …). On their turn the child spins, lands on a zone, and picks the top card from that zone's deck. They have a short window to make the prompt using the right material. Then the next child spins.",
-    variations: [
-      {
-        name: "Individual play",
-        description: "Each child spins on their turn. Their zone, their card, their make.",
-      },
-      {
-        name: "Cooperative variation",
-        description:
-          "The whole group plays as a team. One child spins and picks the card; everyone does the same prompt together.",
-      },
-    ],
+      "Place the game board on a play mat. Sort the 60 challenge cards into the four zone decks — 15 Draw, 15 Colour, 15 Mould, 15 Build. Shuffle the 10 fortune cards into their own deck. Set up the four zone trays with their materials. Each child picks a token and starts at the Start space. On a turn, the child rolls the dice and moves forward. The space they land on tells them what to do — Draw (green), Colour (blue), Mould (purple), Build (yellow), or Fortune (a special square that triggers a fortune card like \"take an extra turn\" or \"help a friend finish their drawing\"). After all players have picked a challenge card, they go to the matching zone tray and start the 2-minute timer. On successful completion, the teacher hands out a star token. After all rounds are done, everyone counts their star tokens and the group celebrates together.",
     materials: [
-      "Mini Artventure spinner board (Draw / Colour / Mould / Build zones)",
-      "Prompt card decks — one per zone",
-      "Timer",
-      "Pencils, crayons, clay, blocks or pipe cleaners",
-      "Pre-printed colouring sheets",
+      "Game board with 4 colour-coded art zones (Draw · Colour · Mould · Build) and Fortune squares",
+      "Player tokens (chunky animal or shape tokens, easy to grip)",
+      "60 challenge cards — 15 Draw · 15 Colour · 15 Mould · 15 Build",
+      "10 Fortune cards (toddler-friendly surprises — extra turn, skip, help a friend)",
+      "6-sided die",
+      "Star reward tokens",
+      "Draw zone — A5 paper, pencils, erasers, sharpeners",
+      "Colour zone — wax crayons only (no pastels)",
+      "Mould zone — playdough or clay, rollers, shape cutters",
+      "Build zone — 2D wooden shapes (triangle, square, circle) and plastic connectors (flat builds only)",
+      "2-minute timer",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Simpler prompts, 3-minute timer." },
-      { level: "Medium", description: "All zones, 2-minute timer." },
-      { level: "Hard", description: "All zones, 90-second timer." },
+      { level: "Easy", description: "6 rounds · 2-minute timer · simpler prompts." },
+      { level: "Medium", description: "8 rounds · 2-minute timer · all four zones." },
+      { level: "Hard", description: "8 rounds · 90-second timer · all four zones." },
     ],
     debriefPrompts: [],
     type: "physical-game",
@@ -577,7 +546,6 @@ const artiverseUnits: ArtiverseUnit[] = [
 
 const ART_GAMES_CYCLE = [
   "stitch-me",
-  "match-me-3-5",
   "shape-stitch-3-5",
   "mix-it-up",
   "magna-tiles",
