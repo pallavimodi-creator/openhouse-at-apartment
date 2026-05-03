@@ -1266,7 +1266,7 @@ function ProgrammeOverviewContent() {
                     </span>
                     <span
                       className={cn(
-                        "rounded-chip px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide",
+                        "rounded-chip px-2 py-0.5 text-[10px] font-bold",
                         step.tone
                       )}
                     >
@@ -1375,7 +1375,7 @@ function ProgrammeOverviewContent() {
 
                     <div className="mt-3 grid gap-3 md:grid-cols-2">
                       <div className="rounded-xl bg-category-stem/15 p-4">
-                        <p className="text-[11px] font-bold uppercase tracking-wide text-blue-900">
+                        <p className="text-[11px] font-bold text-blue-900">
                           artiverse
                         </p>
                         <p className="mt-2 text-[12px] leading-relaxed text-ink-muted">
@@ -1390,7 +1390,7 @@ function ProgrammeOverviewContent() {
                         </Link>
                       </div>
                       <div className="rounded-xl bg-brand-orange/10 p-4">
-                        <p className="text-[11px] font-bold uppercase tracking-wide text-brand-orange">
+                        <p className="text-[11px] font-bold text-brand-orange">
                           artistotle
                         </p>
                         <p className="mt-2 text-[12px] leading-relaxed text-ink-muted">
@@ -1413,7 +1413,7 @@ function ProgrammeOverviewContent() {
                     {/* Artiverse chapter notes — Paper · Crayon · Paint */}
                     <div className="mt-5">
                       <div className="mb-3">
-                        <p className="text-[11px] font-bold uppercase tracking-wide text-brand-orange">
+                        <p className="text-[11px] font-bold text-brand-orange">
                           artiverse chapters
                         </p>
                         <p className="mt-0.5 text-[12px] italic leading-relaxed text-ink-muted">
@@ -1426,7 +1426,7 @@ function ProgrammeOverviewContent() {
                     {/* Artistotle illustrator notes — Eric Carle · Lois Ehlert · Taro Gomi */}
                     <div className="mt-5">
                       <div className="mb-3">
-                        <p className="text-[11px] font-bold uppercase tracking-wide text-brand-orange">
+                        <p className="text-[11px] font-bold text-brand-orange">
                           artistotle illustrators
                         </p>
                         <p className="mt-0.5 text-[12px] italic leading-relaxed text-ink-muted">
@@ -1489,7 +1489,7 @@ function ProgrammeOverviewContent() {
                       <Icon className="h-5 w-5" strokeWidth={1.8} />
                     </span>
                     <div className="flex-1">
-                      <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-ink-subtle">
+                      <p className="text-[9px] font-bold text-ink-subtle">
                         {el.tag}
                       </p>
                       <p className="mt-0.5 text-[14px] font-extrabold text-ink">
@@ -1510,7 +1510,7 @@ function ProgrammeOverviewContent() {
 
           {/* Topic examples */}
           <div className="mt-4 rounded-xl bg-brand-orange/5 p-4">
-            <p className="text-[11px] font-bold uppercase tracking-wider text-brand-orange">
+            <p className="text-[11px] font-bold text-brand-orange">
               topics — always the child's choice
             </p>
             <p className="mt-1 text-[12px] leading-relaxed text-ink-muted">
@@ -1548,7 +1548,7 @@ function ProgrammeOverviewContent() {
 
           {/* The sequence — age-group specific */}
           <div className="mt-4">
-            <p className="text-[11px] font-bold uppercase tracking-wider text-ink-subtle">
+            <p className="text-[11px] font-bold text-ink-subtle">
               the sequence · ages {programme.ageLabel.replace(/ages? /i, "")}
             </p>
             <div className="mt-2 space-y-2">
@@ -1593,7 +1593,7 @@ function ProgrammeOverviewContent() {
 
           {/* The four principles */}
           <div className="mt-6">
-            <p className="text-[11px] font-bold uppercase tracking-wider text-ink-subtle">
+            <p className="text-[11px] font-bold text-ink-subtle">
               the four principles behind both sequences
             </p>
             <div className="mt-2 grid gap-2 md:grid-cols-2">

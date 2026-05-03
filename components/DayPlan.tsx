@@ -571,7 +571,7 @@ export function DayPlan({
               </svg>
             </span>
             <div className="min-w-0 flex-1">
-              <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-brand-orange">
+              <p className="text-[10px] font-bold text-brand-orange">
                 engage · 5 min · start of build
               </p>
               <p className="mt-1 text-[12px] italic leading-relaxed text-ink">
@@ -588,7 +588,7 @@ export function DayPlan({
       {/* Concept question — asked in the closing debrief (robotics) */}
       {session.conceptQuestion && (
         <div className="mb-3 rounded-card bg-category-language/10 p-3.5 ring-1 ring-green-800/15">
-          <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-green-800">
+          <p className="text-[10px] font-bold text-green-800">
             concept question · closing debrief
           </p>
           <p className="mt-1 text-[12px] italic leading-relaxed text-ink">

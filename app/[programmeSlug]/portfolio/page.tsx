@@ -309,7 +309,7 @@ function CoverPage({
   return (
     <div className="flex min-h-[inherit] flex-col items-center justify-between gap-8 px-8 py-12 md:px-16 md:py-20">
       <div className="text-center">
-        <p className="flex items-center justify-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-brand-orange">
+        <p className="flex items-center justify-center gap-2 text-[11px] font-bold text-brand-orange">
           <Sparkles className="h-3.5 w-3.5" strokeWidth={2.4} />
           the portfolio
           <Sparkles className="h-3.5 w-3.5" strokeWidth={2.4} />
@@ -350,7 +350,7 @@ function CoverPage({
               <p className="mt-1 text-[22px] font-extrabold leading-none text-ink">
                 {s.value}
               </p>
-              <p className="mt-0.5 text-[9px] font-semibold uppercase tracking-wider text-ink-subtle">
+              <p className="mt-0.5 text-[9px] font-semibold text-ink-subtle">
                 {s.label}
               </p>
             </div>
@@ -393,7 +393,7 @@ function UnitPage({
           alt={unit.whatChildrenMake}
           className="max-h-[50vh] w-full object-contain md:max-h-[58vh]"
         />
-        <p className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[10px] font-semibold uppercase tracking-wider text-ink-subtle">
+        <p className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[10px] font-semibold text-ink-subtle">
           {index} · {total}
         </p>
       </div>
@@ -407,7 +407,7 @@ function UnitPage({
         />
 
         <div>
-          <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-brand-orange">
+          <p className="text-[10px] font-bold text-brand-orange">
             unit {unit.unitNumber}
           </p>
           <h2
@@ -437,7 +437,7 @@ function UnitPage({
 
         {unit.abilitiesCovered.length > 0 && (
           <div>
-            <h3 className="text-[10px] font-semibold uppercase tracking-wider text-ink-subtle">
+            <h3 className="text-[10px] font-semibold text-ink-subtle">
               what this work grew in me
             </h3>
             <ul className="mt-2 space-y-1.5">
@@ -458,7 +458,7 @@ function UnitPage({
         )}
 
         <div>
-          <h3 className="text-[10px] font-semibold uppercase tracking-wider text-ink-subtle">
+          <h3 className="text-[10px] font-semibold text-ink-subtle">
             reference images
           </h3>
           <p className="mt-2 rounded-md bg-ink/[0.03] px-2.5 py-1.5 text-[11.5px] italic leading-relaxed text-ink">

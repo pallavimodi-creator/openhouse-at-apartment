@@ -115,7 +115,7 @@ export function ArtiverseChapters({ compact = false }: { compact?: boolean }) {
         >
           <div className="flex items-center gap-2">
             <span
-              className={`rounded-chip px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide ${chapter.tone.pill}`}
+              className={`rounded-chip px-2.5 py-0.5 text-[10px] font-bold ${chapter.tone.pill}`}
             >
               chapter
             </span>
@@ -153,7 +153,7 @@ export function ArtiverseChapters({ compact = false }: { compact?: boolean }) {
 
       {/* Important footer */}
       <div className="rounded-xl bg-ink/[0.04] p-4 ring-1 ring-ink/10">
-        <p className="text-[11px] font-bold uppercase tracking-wide text-brand-orange">
+        <p className="text-[11px] font-bold text-brand-orange">
           important
         </p>
         <p className="mt-1 text-[12px] leading-relaxed text-ink-muted md:text-[13px]">

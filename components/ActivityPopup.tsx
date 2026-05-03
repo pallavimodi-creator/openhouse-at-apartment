@@ -373,7 +373,7 @@ export function ActivityPopup({
                 <div key={i} className="flex items-start gap-3">
                   <span
                     className={cn(
-                      "mt-px inline-flex h-6 w-[76px] shrink-0 items-center justify-center gap-1 rounded-full px-2.5 text-[10px] font-semibold uppercase tracking-wide ring-1 ring-inset",
+                      "mt-px inline-flex h-6 w-[76px] shrink-0 items-center justify-center gap-1 rounded-full px-2.5 text-[10px] font-bold lowercase ring-1 ring-inset",
                       tone.pill
                     )}
                   >
@@ -478,7 +478,7 @@ export function ActivityPopup({
                       return (
                         <li
                           key={j}
-                          className="mt-2 text-[11px] font-bold uppercase tracking-wider text-green-800 first:mt-0"
+                          className="mt-2 text-[11px] font-bold lowercase text-brand-orange first:mt-0"
                         >
                           {trimmed.replace(/:$/, "")}
                         </li>
