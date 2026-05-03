@@ -888,12 +888,6 @@ function ProgrammeOverviewContent() {
             );
           })}
         </ol>
-
-        <p className="mt-4 text-[11px] italic leading-relaxed text-ink-muted">
-          {isRobotics
-            ? "at the end of the build, teacher says \"two minutes to tidy your kit.\" children sort components back to the kit box before the experience book begins."
-            : "at the end of artiverse, teacher says \"two minutes to put materials away.\" children tidy before the experience book begins."}
-        </p>
       </section>
 
 
@@ -1104,6 +1098,23 @@ function ProgrammeOverviewContent() {
                     <p className="text-[12px] font-bold text-ink">how it runs</p>
                     <p className="mt-1 text-[11px] leading-relaxed text-ink-muted">
                       no rotation — every session is fixed. experiments and build-day steps are set in advance so children can join at any session and pick up exactly where the class is.
+                    </p>
+                    {seg.segment === "build" && (
+                      <p className="mt-2 text-[11px] italic leading-relaxed text-ink-muted">
+                        at the end of the build, teacher says &ldquo;two minutes to tidy your kit.&rdquo; children sort components back to the kit box before the experience book begins.
+                      </p>
+                    )}
+                  </div>
+                )}
+
+                {/* Art Care — the tidy moment between artiverse and the
+                    experience book. 3-5 has a dedicated segment for this;
+                    other art programmes fold the same note into artiverse. */}
+                {seg.segment === "art care" && isArt && (
+                  <div className="rounded-xl bg-brand-orange/5 p-4">
+                    <p className="text-[12px] font-bold text-ink">how it runs</p>
+                    <p className="mt-1 text-[11px] leading-relaxed text-ink-muted">
+                      at the end of artiverse, teacher says &ldquo;two minutes to put materials away.&rdquo; children tidy before the experience book begins. the standard is care, not speed — sort all materials back to the correct shelf sections and clean the making space.
                     </p>
                   </div>
                 )}
