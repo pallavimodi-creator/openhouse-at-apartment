@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { ImageFlipbook } from "@/components/ImageFlipbook";
+import { ArtiverseChapters } from "@/components/ArtiverseChapters";
 import { TeacherGate } from "@/components/TeacherGate";
 
 /**
@@ -65,6 +66,24 @@ export default function ArtiverseBookPage() {
               pages={ARTIVERSE_PAGES}
               altPrefix="artiverse book page"
             />
+          </div>
+        </section>
+
+        {/* Chapter notes — Paper · Crayon · Paint */}
+        <section className="bg-bg px-4 py-8 md:px-8 md:py-10">
+          <div className="mx-auto w-full max-w-5xl">
+            <div className="mb-4 text-center">
+              <p className="text-[11px] font-bold uppercase tracking-wide text-brand-orange">
+                chapter notes
+              </p>
+              <h2 className="mt-1 text-[20px] font-extrabold text-ink md:text-[24px]">
+                three media families. twelve projects.
+              </h2>
+              <p className="mt-1 text-[12px] italic leading-relaxed text-ink-muted">
+                why each chapter works, and what every project builds.
+              </p>
+            </div>
+            <ArtiverseChapters />
           </div>
         </section>
       </div>

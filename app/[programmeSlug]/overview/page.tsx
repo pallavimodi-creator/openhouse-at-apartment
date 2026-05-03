@@ -32,6 +32,7 @@ import {
 import { getCurriculumProgramme, getActivityImage, GYM_BOOK_IMAGES } from "@/lib/content";
 import { cn } from "@/lib/utils";
 import { TeacherGate } from "@/components/TeacherGate";
+import { ArtiverseChapters } from "@/components/ArtiverseChapters";
 
 // ─── Artiverse — how it works · sequence data ────────────────
 
@@ -1349,6 +1350,19 @@ function ProgrammeOverviewContent() {
                     <p className="mt-3 text-[10.5px] italic text-ink-subtle">
                       within each mode activities are linear in difficulty.
                     </p>
+
+                    {/* Artiverse chapter notes — Paper · Crayon · Paint */}
+                    <div className="mt-5">
+                      <div className="mb-3">
+                        <p className="text-[11px] font-bold uppercase tracking-wide text-brand-orange">
+                          artiverse chapters
+                        </p>
+                        <p className="mt-0.5 text-[12px] italic leading-relaxed text-ink-muted">
+                          three media families · twelve projects · why each chapter works.
+                        </p>
+                      </div>
+                      <ArtiverseChapters compact />
+                    </div>
                   </div>
                 )}
 
