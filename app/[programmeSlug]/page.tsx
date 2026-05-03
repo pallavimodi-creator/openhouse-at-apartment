@@ -166,7 +166,7 @@ export default function ProgrammeDetailPage() {
             onClick={handleToggleComplete}
             className={
               isCompleted
-                ? "flex w-full items-center justify-center gap-2 rounded-card border-2 border-category-language bg-category-language/15 py-3.5 text-[14px] font-bold text-green-900 transition hover:bg-category-language/20 active:scale-[0.99]"
+                ? "flex w-full items-center justify-center gap-2 rounded-card border-2 border-category-language bg-segment-green/20 py-3.5 text-[14px] font-bold text-green-900 transition hover:bg-segment-green/30 active:scale-[0.99]"
                 : "flex w-full items-center justify-center gap-2 rounded-card bg-brand-orange py-3.5 text-[14px] font-bold text-white shadow-card transition hover:opacity-95 active:scale-[0.99]"
             }
           >

@@ -234,7 +234,7 @@ function SegmentRow({
           </span>
           {/* Lanyard + debrief reminder — playground & showtime (PS only) */}
           {(segment.segmentId === "playground" || segment.segmentId === "showtime") && (
-            <span className="inline-flex items-center gap-1 rounded-chip bg-category-language/20 px-2 py-0.5 text-[10px] font-semibold text-green-900">
+            <span className="inline-flex items-center gap-1 rounded-chip bg-segment-green/30 px-2 py-0.5 text-[10px] font-semibold text-ink">
               <Ribbon className="h-3 w-3" strokeWidth={2.2} />
               use lanyard + debrief time
             </span>
