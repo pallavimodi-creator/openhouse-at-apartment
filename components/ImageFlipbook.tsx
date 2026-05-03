@@ -1,12 +1,12 @@
 "use client";
 
 import { forwardRef, useEffect, useRef, useState } from "react";
-import dynamic from "next/dynamic";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-// Load HTMLFlipBook only on the client — the package touches the DOM at
-// module load and crashes during SSR if imported eagerly.
-const HTMLFlipBook = dynamic(() => import("react-pageflip"), { ssr: false });
+// Load HTMLFlipBook lazily (client-only) via a state-based import rather
+// than next/dynamic — next/dynamic wraps the component in a way that
+// breaks ref forwarding to the underlying class instance, so methods
+// like flipPrev/flipNext become unreachable from the parent's ref.
 
 /**
  * Image flipbook — renders an ordered list of image URLs as a real
@@ -46,14 +46,26 @@ export function ImageFlipbook({
 }: ImageFlipbookProps) {
   const [aspect, setAspect] = useState(1.414); // h / w; A4-ish default
   const [currentPage, setCurrentPage] = useState(0);
-  const [mounted, setMounted] = useState(false);
+  const [HTMLFlipBook, setHTMLFlipBook] = useState<any>(null);
   const [containerWidth, setContainerWidth] = useState(0);
   const flipRef = useRef<any>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Mount + container width tracking.
+  // Lazy-import the flipbook on the client. This pattern keeps the ref
+  // forwarding intact (next/dynamic breaks it) while still avoiding SSR
+  // because the import only runs in useEffect.
   useEffect(() => {
-    setMounted(true);
+    let cancelled = false;
+    import("react-pageflip").then((mod) => {
+      if (!cancelled) setHTMLFlipBook(() => mod.default);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  // Container width tracking.
+  useEffect(() => {
     if (!containerRef.current) return;
     const ro = new ResizeObserver((entries) => {
       for (const entry of entries) {
@@ -63,6 +75,8 @@ export function ImageFlipbook({
     ro.observe(containerRef.current);
     return () => ro.disconnect();
   }, []);
+
+  const mounted = !!HTMLFlipBook;
 
   // First image's aspect ratio sets the book proportions.
   useEffect(() => {
@@ -138,7 +152,6 @@ export function ImageFlipbook({
         <div className="relative mx-auto" style={{ width: "fit-content" }}>
           {/* Book frame */}
           <div className="rounded-2xl bg-brand-cream p-3 ring-1 ring-ink/5 shadow-[0_8px_30px_rgba(44,43,40,0.12)] md:p-5">
-            {/* @ts-expect-error react-pageflip's prop types are loose */}
             <HTMLFlipBook
               ref={flipRef}
               width={pageWidth}
