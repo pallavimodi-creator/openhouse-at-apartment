@@ -2,6 +2,7 @@
 
 import { forwardRef, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 // Load HTMLFlipBook only on the client — the package touches the DOM at
 // module load and crashes during SSR if imported eagerly.
@@ -126,56 +127,90 @@ export function PdfFlipbook({ pdfUrl, preferSpread }: PdfFlipbookProps) {
   }
 
   // Sizing: pick sensible dimensions that fit the container and respect the
-  // PDF's aspect ratio.
-  const maxSingleWidth = Math.min(containerWidth || 560, 560);
+  // PDF's aspect ratio. Width math leaves room for the floating prev/next
+  // buttons that hang off the corners on desktop.
   const isSpread = preferSpread ?? containerWidth > 900;
   const pageWidth = isSpread
-    ? Math.min((containerWidth - 32) / 2, 500)
-    : maxSingleWidth;
+    ? Math.min((containerWidth - 80) / 2, 480)
+    : Math.min(containerWidth - 48, 540);
   const pageHeight = pageWidth * aspect;
+
+  const goPrev = () => flipRef.current?.pageFlip()?.flipPrev();
+  const goNext = () => flipRef.current?.pageFlip()?.flipNext();
+  const atStart = currentPage === 0;
+  const atEnd = currentPage >= totalPages - 1;
 
   return (
     <div ref={containerRef} className="w-full">
-      <div className="mx-auto flex w-full justify-center">
-        {/* HTMLFlipBook typings are loose; cast as any to avoid friction. */}
-        {/* @ts-expect-error — react-pageflip's types are loose */}
-        <HTMLFlipBook
-          ref={flipRef}
-          width={pageWidth}
-          height={pageHeight}
-          size="stretch"
-          minWidth={240}
-          maxWidth={1000}
-          minHeight={340}
-          maxHeight={1400}
-          showCover={true}
-          mobileScrollSupport={true}
-          usePortrait={!isSpread}
-          maxShadowOpacity={0.25}
-          className="shadow-card"
-          onFlip={(e: any) => setCurrentPage(e.data)}
+      <div className="relative mx-auto" style={{ width: "fit-content" }}>
+        {/* Book frame */}
+        <div className="rounded-2xl bg-brand-cream p-3 ring-1 ring-ink/5 shadow-[0_8px_30px_rgba(44,43,40,0.12)] md:p-5">
+          {/* HTMLFlipBook typings are loose; cast as any to avoid friction. */}
+          {/* @ts-expect-error — react-pageflip's types are loose */}
+          <HTMLFlipBook
+            ref={flipRef}
+            width={pageWidth}
+            height={pageHeight}
+            size="fixed"
+            minWidth={240}
+            maxWidth={520}
+            minHeight={340}
+            maxHeight={1400}
+            showCover={true}
+            mobileScrollSupport={true}
+            usePortrait={!isSpread}
+            maxShadowOpacity={0.32}
+            drawShadow={true}
+            flippingTime={600}
+            className="bg-brand-cream"
+            onFlip={(e: any) => setCurrentPage(e.data)}
+          >
+            {pages.map((src, i) => (
+              <FlipPage key={i} src={src} pageNumber={i + 1} />
+            ))}
+          </HTMLFlipBook>
+        </div>
+
+        {/* Floating prev / next buttons hanging off the book corners */}
+        <button
+          type="button"
+          aria-label="previous page"
+          onClick={goPrev}
+          disabled={atStart}
+          className="absolute left-0 top-1/2 -translate-x-3 -translate-y-1/2 hidden md:flex items-center justify-center rounded-full bg-brand-white p-2 shadow-card ring-1 ring-ink/10 transition disabled:opacity-30 hover:scale-105"
         >
-          {pages.map((src, i) => (
-            <FlipPage key={i} src={src} pageNumber={i + 1} />
-          ))}
-        </HTMLFlipBook>
+          <ChevronLeft className="h-5 w-5 text-ink" />
+        </button>
+        <button
+          type="button"
+          aria-label="next page"
+          onClick={goNext}
+          disabled={atEnd}
+          className="absolute right-0 top-1/2 translate-x-3 -translate-y-1/2 hidden md:flex items-center justify-center rounded-full bg-brand-white p-2 shadow-card ring-1 ring-ink/10 transition disabled:opacity-30 hover:scale-105"
+        >
+          <ChevronRight className="h-5 w-5 text-ink" />
+        </button>
       </div>
 
-      {/* Controls */}
+      {/* Page counter + mobile prev/next */}
       <div className="mt-4 flex items-center justify-center gap-3 text-[12px]">
         <button
-          onClick={() => flipRef.current?.pageFlip()?.flipPrev()}
-          className="rounded-full bg-ink/5 px-3 py-1.5 font-semibold text-ink-muted hover:bg-ink/10"
+          type="button"
+          onClick={goPrev}
+          disabled={atStart}
+          className="rounded-full bg-ink/5 px-3 py-1.5 font-semibold text-ink-muted transition hover:bg-ink/10 disabled:opacity-40 md:hidden"
           aria-label="previous page"
         >
           ← prev
         </button>
         <span className="font-semibold text-ink-muted">
-          page {Math.min(currentPage + 1, totalPages)} / {totalPages}
+          page {Math.min(currentPage + 1, totalPages)} of {totalPages}
         </span>
         <button
-          onClick={() => flipRef.current?.pageFlip()?.flipNext()}
-          className="rounded-full bg-ink/5 px-3 py-1.5 font-semibold text-ink-muted hover:bg-ink/10"
+          type="button"
+          onClick={goNext}
+          disabled={atEnd}
+          className="rounded-full bg-ink/5 px-3 py-1.5 font-semibold text-ink-muted transition hover:bg-ink/10 disabled:opacity-40 md:hidden"
           aria-label="next page"
         >
           next →
@@ -188,7 +223,7 @@ export function PdfFlipbook({ pdfUrl, preferSpread }: PdfFlipbookProps) {
 const FlipPage = forwardRef<HTMLDivElement, { src: string; pageNumber: number }>(
   function FlipPage({ src, pageNumber }, ref) {
     return (
-      <div ref={ref} className="bg-white">
+      <div ref={ref} className="bg-brand-cream">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={src}
