@@ -33,7 +33,7 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <div className="mx-auto flex min-h-dvh max-w-4xl flex-col bg-bg lg:max-w-7xl">
+        <div className="mx-auto flex min-h-dvh max-w-4xl flex-col bg-bg lg:max-w-none">
           <SiteHeader />
           <main className="flex-1 pb-40">{children}</main>
         </div>
