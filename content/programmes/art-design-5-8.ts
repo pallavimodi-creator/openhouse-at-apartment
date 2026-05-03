@@ -1102,7 +1102,7 @@ export const artDesign58: CurriculumProgramme = {
       name: "Experience Book",
       durationRange: "10 min",
       objective:
-        "children fill in \"what happened in class today\" with the teacher, who opens a short discussion: favourite part? what you enjoyed? what you didn't? what to do again? every child speaks. after children leave, the teacher fills in the skill-assessment part privately. these daily notes compile into the monthly report card that goes home.",
+        "Children fill in \"what happened in class today\" with the teacher, who opens a short discussion: favourite part? What you enjoyed? What you didn't? What to do again? Every child speaks. After children leave, the teacher fills in the skill-assessment part privately. These daily notes compile into the monthly report card that goes home.",
       type: "fixed",
     },
   ],

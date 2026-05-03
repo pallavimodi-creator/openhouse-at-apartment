@@ -826,7 +826,7 @@ export const artDesign35: CurriculumProgramme = {
       name: "Art Gym",
       durationRange: "15 min",
       objective:
-        "a daily warm-up that builds fine motor control and creative confidence through short, focused mark-making. children work through the art gym and scribble books on alternate days, choosing their own materials each time. the focus is on preparing the hands and mind for making, not on correctness.",
+        "A daily warm-up that builds fine motor control and creative confidence through short, focused mark-making. Children work through the art gym and scribble books on alternate days, choosing their own materials each time. The focus is on preparing the hands and mind for making, not on correctness.",
       type: "rotating",
       rotationPool: ["ag-book-1", "ag-book-2", "scribble-book"],
     },
@@ -835,7 +835,7 @@ export const artDesign35: CurriculumProgramme = {
       name: "Art Games",
       durationRange: "25 min",
       objective:
-        "one structured game that builds a specific art skill through play. all children engage at the same time, using clear rules that stay consistent across sessions. the focus is on practising a skill through repetition without direct teaching.",
+        "One structured game that builds a specific art skill through play. All children engage at the same time, using clear rules that stay consistent across sessions. The focus is on practising a skill through repetition without direct teaching.",
       type: "rotating",
       rotationPool: Object.keys(artGamesActivities),
     },
@@ -844,7 +844,7 @@ export const artDesign35: CurriculumProgramme = {
       name: "Artiverse / Artistotle",
       durationRange: "35 min",
       objective:
-        "the core making segment where children build all three skills through sustained work. artiverse focuses on free, choice-based making across materials and techniques, while artistotle introduces the work of illustrators and invites children to create in that spirit. the two modes rotate, giving both freedom and depth.",
+        "The core making segment where children build all three skills through sustained work. Artiverse focuses on free, choice-based making across materials and techniques, while Artistotle introduces the work of illustrators and invites children to create in that spirit. The two modes rotate, giving both freedom and depth.",
       type: "fixed",
     },
     {
@@ -852,7 +852,7 @@ export const artDesign35: CurriculumProgramme = {
       name: "Experience Book",
       durationRange: "10 min",
       objective:
-        "children fill in \"what happened in class today\" with the teacher, who opens a short discussion: favourite part? what you enjoyed? what you didn't? what to do again? every child speaks. after children leave, the teacher fills in the skill-assessment part privately. these daily notes compile into the monthly report card that goes home.",
+        "Children fill in \"what happened in class today\" with the teacher, who opens a short discussion: favourite part? What you enjoyed? What you didn't? What to do again? Every child speaks. After children leave, the teacher fills in the skill-assessment part privately. These daily notes compile into the monthly report card that goes home.",
       type: "fixed",
     },
     {
@@ -860,7 +860,7 @@ export const artDesign35: CurriculumProgramme = {
       name: "Art Care",
       durationRange: "5 min",
       objective:
-        "children take responsibility for materials and the shared space by putting everything back in place. the focus is on building care, independence, and respect for tools through consistent practice.",
+        "Children take responsibility for materials and the shared space by putting everything back in place. The focus is on building care, independence, and respect for tools through consistent practice.",
       type: "fixed",
     },
   ],

@@ -526,24 +526,24 @@ function ProgrammeOverviewContent() {
       durationFlex: 17.5,
       meaning:
         programme.segmentDefinitions.find((s) => s.id === "art-gym")?.objective ??
-        "a structured opening segment.",
+        "A structured opening segment.",
     },
-    "art-games": { icon: Gamepad2, durationFlex: 17.5, meaning: "one art game that builds a specific skill. all children play simultaneously." },
-    artiverse: { icon: Palette, durationFlex: 42.5, meaning: "a structured making programme combining medium, technique, and outcome over multiple sessions." },
-    "roll-call": { icon: Zap, durationFlex: 9, meaning: "a quick energetic start. group games that wake up voice, body, and attention — every child playing simultaneously within 2 minutes." },
-    playground: { icon: Gamepad2, durationFlex: 22, meaning: "one group game played deeply, with a full debrief. children practise speaking through play." },
-    showtime: { icon: Star, durationFlex: 32, meaning: "children step into the spotlight. structured formats that build performance, argument, and conviction." },
-    "log-book": { icon: Notebook, durationFlex: 10, meaning: "children fill in \"what happened in class today\" with the teacher, who opens a short discussion: favourite part? what you enjoyed? what you didn't? what to do again? every child speaks. after children leave, the teacher fills the skill-assessment part privately. the daily notes compile into the monthly report card that goes home." },
+    "art-games": { icon: Gamepad2, durationFlex: 17.5, meaning: "One art game that builds a specific skill. All children play simultaneously." },
+    artiverse: { icon: Palette, durationFlex: 42.5, meaning: "A structured making programme combining medium, technique, and outcome over multiple sessions." },
+    "roll-call": { icon: Zap, durationFlex: 9, meaning: "A quick energetic start. Group games that wake up voice, body, and attention — every child playing simultaneously within 2 minutes." },
+    playground: { icon: Gamepad2, durationFlex: 22, meaning: "One group game played deeply, with a full debrief. Children practise speaking through play." },
+    showtime: { icon: Star, durationFlex: 32, meaning: "Children step into the spotlight. Structured formats that build performance, argument, and conviction." },
+    "log-book": { icon: Notebook, durationFlex: 10, meaning: "Children fill in \"what happened in class today\" with the teacher, who opens a short discussion: favourite part? What you enjoyed? What you didn't? What to do again? Every child speaks. After children leave, the teacher fills the skill-assessment part privately. The daily notes compile into the monthly report card that goes home." },
     "art-care": {
       icon: Sparkles,
       durationFlex: 5,
       meaning:
         programme.segmentDefinitions.find((s) => s.id === "art-care")?.objective ??
-        "children take responsibility for materials and the shared space by putting everything back in place. the focus is on building care, independence, and respect for tools through consistent practice.",
+        "Children take responsibility for materials and the shared space by putting everything back in place. The focus is on building care, independence, and respect for tools through consistent practice.",
     },
-    experiment: { icon: FlaskConical, durationFlex: 40, meaning: "groups of 2–4 children find the answer to one specific question. every child takes at least one measurement independently. teacher asks one question per group and never gives the answer. tool orientation is embedded here — each tool introduced once, confirmed once, never revisited." },
-    build: { icon: Wrench, durationFlex: 40, meaning: "each child builds their own mechanical model using a personal kit and a step card. the teacher never fixes anything and never tells anyone what to do next. four questions only. when something doesn't work, the child figures it out." },
-    "experience-book": { icon: Notebook, durationFlex: 10, meaning: "five marks per child per session — O&U and LT from the experiment, B&M and PS from the build, concept ticked when the child can explain it. one specific note per child. compiles into a monthly robotics journey letter." },
+    experiment: { icon: FlaskConical, durationFlex: 40, meaning: "Groups of 2–4 children find the answer to one specific question. Every child takes at least one measurement independently. Teacher asks one question per group and never gives the answer. Tool orientation is embedded here — each tool introduced once, confirmed once, never revisited." },
+    build: { icon: Wrench, durationFlex: 40, meaning: "Each child builds their own mechanical model using a personal kit and a step card. The teacher never fixes anything and never tells anyone what to do next. Four questions only. When something doesn't work, the child figures it out." },
+    "experience-book": { icon: Notebook, durationFlex: 10, meaning: "Five marks per child per session — O&U and LT from the experiment, B&M and PS from the build, concept ticked when the child can explain it. One specific note per child. Compiles into a monthly robotics journey letter." },
   };
   const dailyFlow = programme.segmentDefinitions.map((s) => {
     const meta = segmentMeta[s.id] ?? segmentMeta["log-book"];
@@ -565,10 +565,13 @@ function ProgrammeOverviewContent() {
     name: s.name.toLowerCase(),
     color: skillStyle[s.id]?.color ?? "bg-ink/10",
     accent: skillStyle[s.id]?.accent ?? "border-ink/20",
+    // Brand voice: ability names are short labels (lowercase). The
+    // description is body copy and stays as-written (sentence case from
+    // the source content).
     abilities: s.abilities.map((a) =>
       typeof a === "string"
-        ? a.toLowerCase()
-        : { ...a, name: a.name.toLowerCase(), description: a.description.toLowerCase() }
+        ? a
+        : { ...a, name: a.name.toLowerCase(), description: a.description }
     ),
   }));
 
@@ -804,7 +807,7 @@ function ProgrammeOverviewContent() {
       <section className="mt-8 px-4 md:px-8">
         <SectionTitle num={sectionNum("daily-flow")} label="daily flow" />
         <p className="mt-2 text-[13px] font-medium leading-relaxed text-ink md:text-[14px]">
-          a 90-minute session — four segments, in this order.
+          A 90-minute session — four segments, in this order.
         </p>
 
         {/* Proportional timeline with segment symbols + duration */}
@@ -1087,21 +1090,21 @@ function ProgrammeOverviewContent() {
                 {/* Rotation rule note (rotating segments only) */}
                 {seg.type === "rotating" && (
                   <div className="rounded-xl bg-brand-orange/5 p-4">
-                    <p className="text-[12px] font-bold text-ink">how rotation works</p>
+                    <p className="text-[12px] font-bold text-ink">How rotation works</p>
                     <p className="mt-1 text-[11px] leading-relaxed text-ink-muted">
-                      rotates across {seg.games.length} games — each activity can only repeat after all others have been used. variations change how children play. levels adjust difficulty within the same game, without separating children.
+                      Rotates across {seg.games.length} games — each activity can only repeat after all others have been used. Variations change how children play. Levels adjust difficulty within the same game, without separating children.
                     </p>
                   </div>
                 )}
                 {seg.type === "fixed" && isRobotics && (seg.segment === "experiment" || seg.segment === "build") && (
                   <div className="rounded-xl bg-brand-orange/5 p-4">
-                    <p className="text-[12px] font-bold text-ink">how it runs</p>
+                    <p className="text-[12px] font-bold text-ink">How it runs</p>
                     <p className="mt-1 text-[11px] leading-relaxed text-ink-muted">
-                      no rotation — every session is fixed. experiments and build-day steps are set in advance so children can join at any session and pick up exactly where the class is.
+                      No rotation — every session is fixed. Experiments and build-day steps are set in advance so children can join at any session and pick up exactly where the class is.
                     </p>
                     {seg.segment === "build" && (
                       <p className="mt-2 text-[11px] italic leading-relaxed text-ink-muted">
-                        at the end of the build, teacher says &ldquo;two minutes to tidy your kit.&rdquo; children sort components back to the kit box before the experience book begins.
+                        At the end of the build, teacher says &ldquo;two minutes to tidy your kit.&rdquo; Children sort components back to the kit box before the experience book begins.
                       </p>
                     )}
                   </div>
@@ -1115,13 +1118,13 @@ function ProgrammeOverviewContent() {
                     transition moment. */}
                 {seg.segment === "art care" && isArt && (
                   <div className="rounded-xl bg-brand-orange/5 p-4">
-                    <p className="text-[12px] font-bold text-ink">how it runs</p>
+                    <p className="text-[12px] font-bold text-ink">How it runs</p>
                     <p className="mt-1 text-[11px] leading-relaxed text-ink-muted">
                       {programme.segmentDefinitions.find((s) => s.id === "art-care")?.objective ??
-                        "children take responsibility for materials and the shared space by putting everything back in place. the focus is on building care, independence, and respect for tools through consistent practice."}
+                        "Children take responsibility for materials and the shared space by putting everything back in place. The focus is on building care, independence, and respect for tools through consistent practice."}
                     </p>
                     <p className="mt-2 text-[11px] italic leading-relaxed text-ink-muted">
-                      at the end of artiverse, teacher says &ldquo;two minutes to put materials away.&rdquo; children tidy before the experience book begins.
+                      At the end of artiverse, teacher says &ldquo;two minutes to put materials away.&rdquo; Children tidy before the experience book begins.
                     </p>
                   </div>
                 )}

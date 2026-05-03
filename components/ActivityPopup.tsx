@@ -254,7 +254,7 @@ export function ActivityPopup({
       {/* Setup line */}
       <div className="rounded-card bg-brand-orange/5 p-4">
         <p className="text-[10px] font-semibold tracking-normal text-brand-orange">
-          setup line
+          Setup line
         </p>
         <p className="mt-1.5 text-[13px] italic leading-relaxed text-ink">
           &ldquo;{activity.setupLine}&rdquo;
@@ -264,7 +264,7 @@ export function ActivityPopup({
       {/* How to play — parsed into numbered steps for readability */}
       <div>
         <h3 className="text-[12px] font-semibold tracking-normal text-ink-muted">
-          how to play
+          How to play
         </h3>
         <ol className="mt-2 space-y-2">
           {parseHowToPlay(activity.howToPlay).map((step, i) => (
@@ -304,7 +304,7 @@ export function ActivityPopup({
       {activity.example && (
         <div className="rounded-card bg-ink/[0.03] p-4">
           <p className="text-[10px] font-semibold tracking-normal text-ink-subtle">
-            example
+            Example
           </p>
           <p className="mt-1.5 text-[12px] leading-relaxed text-ink-muted">
             {activity.example}
@@ -316,7 +316,7 @@ export function ActivityPopup({
       {activity.variations && activity.variations.length > 0 && (
         <div>
           <h3 className="text-[12px] font-semibold tracking-normal text-ink-muted">
-            variations
+            Variations
           </h3>
           <div className="mt-2 space-y-2">
             {activity.variations.map((v, i) => (
@@ -340,7 +340,7 @@ export function ActivityPopup({
       {activity.difficultyLevels && activity.difficultyLevels.length > 0 && (
         <div>
           <h3 className="text-[12px] font-semibold tracking-normal text-ink-muted">
-            difficulty levels
+            Difficulty levels
           </h3>
           <div className="mt-2 space-y-2">
             {activity.difficultyLevels.map((d, i) => {
@@ -407,7 +407,7 @@ export function ActivityPopup({
       {activity.prompts && activity.prompts.length > 0 && (
         <div>
           <h3 className="text-[12px] font-semibold tracking-normal text-ink-muted">
-            {activity.promptHeading ?? "prompt bank"}
+            {activity.promptHeading ?? "Prompt bank"}
           </h3>
           <ol className="mt-2 space-y-1.5">
             {activity.prompts.map((p, i) => (
@@ -439,7 +439,7 @@ export function ActivityPopup({
         return (
           <div>
             <h3 className="text-[12px] font-semibold tracking-normal text-ink-muted">
-              materials
+              Materials
             </h3>
             <ul className="mt-2 space-y-1">
               {materials.map((m, i) => (
@@ -460,7 +460,7 @@ export function ActivityPopup({
       {activity.debriefPrompts.length > 0 && (
         <div className="rounded-card bg-category-language/10 p-4">
           <h3 className="text-[10px] font-semibold tracking-normal text-green-800">
-            debrief
+            Debrief
           </h3>
           {activity.debriefPrompts.map((d, i) => (
             <div key={i} className="mt-2 space-y-1.5">

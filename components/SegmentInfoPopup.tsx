@@ -193,13 +193,13 @@ export function SegmentInfoPopup({ info }: { info: SegmentInfo }) {
           <div className="grid grid-cols-2 gap-2">
             <div className="rounded-card bg-ink/[0.03] p-3">
               <p className="text-[10px] font-semibold tracking-wider text-ink-subtle">
-                medium
+                Medium
               </p>
               <p className="mt-1 text-[13px] font-medium text-ink">{unit.medium}</p>
             </div>
             <div className="rounded-card bg-ink/[0.03] p-3">
               <p className="text-[10px] font-semibold tracking-wider text-ink-subtle">
-                days
+                Days
               </p>
               <p className="mt-1 text-[13px] font-medium text-ink">
                 {unit.days} {unit.days === 1 ? "session" : "sessions"}
@@ -208,7 +208,7 @@ export function SegmentInfoPopup({ info }: { info: SegmentInfo }) {
           </div>
           <div className="rounded-card bg-ink/[0.03] p-3">
             <p className="text-[10px] font-semibold tracking-wider text-ink-subtle">
-              technique
+              Technique
             </p>
             <p className="mt-1 text-[12px] leading-relaxed text-ink-muted">
               {unit.technique}
@@ -216,32 +216,32 @@ export function SegmentInfoPopup({ info }: { info: SegmentInfo }) {
           </div>
           <div className="rounded-card bg-brand-orange/5 p-3">
             <p className="text-[10px] font-semibold tracking-wider text-brand-orange">
-              reference topic
+              Reference topic
             </p>
             <p className="mt-1 text-[13px] font-medium text-ink">
               {unit.whatChildrenMake}
             </p>
             <p className="mt-1 text-[11px] italic leading-relaxed text-ink-subtle">
-              the picture is a reference only — children pick their own subject.
+              The picture is a reference only — children pick their own subject.
             </p>
           </div>
           {unit.days > 1 && (
             <div className="rounded-card bg-segment-yellow/40 p-3 ring-1 ring-ink/5">
               <p className="text-[10px] font-semibold tracking-wider text-ink">
-                two days · two different artworks
+                Two days · two different artworks
               </p>
               <p className="mt-1 text-[12px] leading-relaxed text-ink-muted">
-                the same medium and technique runs across both sessions, but each
+                The same medium and technique runs across both sessions, but each
                 child makes a new artwork on day 2 — not a continuation of day 1.
               </p>
             </div>
           )}
           <div>
             <p className="text-[10px] font-semibold tracking-wider text-ink-subtle">
-              reference images
+              Reference images
             </p>
             <p className="mt-2 rounded-lg bg-ink/[0.03] px-3 py-2 text-[12px] leading-relaxed text-ink-muted">
-              use cue card of choice to assist with drawing.
+              Use cue card of choice to assist with drawing.
             </p>
           </div>
         </div>
@@ -253,7 +253,7 @@ export function SegmentInfoPopup({ info }: { info: SegmentInfo }) {
           className="flex items-center justify-center gap-2 rounded-card bg-brand-orange py-3 text-[13px] font-bold text-white shadow-card transition hover:opacity-95 active:scale-[0.98]"
         >
           <BookOpen className="h-4 w-4" />
-          open experience book
+          Open experience book
         </Link>
       )}
 
