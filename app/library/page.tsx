@@ -319,13 +319,13 @@ function buildItemsFor(prog: CurriculumProgramme): LibraryItem[] {
       segment: "log-book",
       title: "experience book",
       description:
-        "last 10 minutes — children fill in \"what happened in class today\" with the teacher. after children leave, the teacher fills the skill-assessment part privately.",
+        "children fill in \"what happened in class today\" with the teacher. after children leave, the teacher fills the skill-assessment part privately.",
       info: {
         segmentId: "log-book",
         segmentName: "Experience Book",
         title: "experience book",
         description:
-          "in the last 10 minutes of every session, children fill in the \"what happened in class today\" part of the experience book together with the teacher. the teacher opens a short discussion — what was your favourite part today? what did you enjoy? what did you not enjoy so much? what game or activity would you like to do again? — encouraging every child to speak. after children leave, the teacher fills in the skill-assessment part of the book privately. these daily notes compile into the child's monthly report card that goes home every month.",
+          "children fill in the \"what happened in class today\" part of the experience book together with the teacher. the teacher opens a short discussion — what was your favourite part today? what did you enjoy? what did you not enjoy so much? what game or activity would you like to do again? — encouraging every child to speak. after children leave, the teacher fills in the skill-assessment part of the book privately. these daily notes compile into the child's monthly report card that goes home every month.",
         bookLinkSlug: bookMap[programmeSlug],
         heroImageUrl: BOOK_COVER_BY_PROGRAMME[programmeSlug],
       },

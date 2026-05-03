@@ -196,7 +196,7 @@ const dailyFlow = [
     time: "10 min",
     durationFlex: 10,
     meaning:
-      "last 10 minutes — children fill in \"what happened in class today\" with the teacher, who opens a short discussion: favourite part? what you enjoyed? what you didn't? what to do again? every child speaks. after children leave, the teacher fills in the skill-assessment part privately. these daily notes compile into the monthly report card that goes home.",
+      "children fill in \"what happened in class today\" with the teacher, who opens a short discussion: favourite part? what you enjoyed? what you didn't? what to do again? every child speaks. after children leave, the teacher fills in the skill-assessment part privately. these daily notes compile into the monthly report card that goes home.",
     color: "bg-segment-pink/30",
     textColor: "text-ink",
   },
@@ -533,7 +533,7 @@ function ProgrammeOverviewContent() {
     "roll-call": { icon: Zap, durationFlex: 9, meaning: "a quick energetic start. group games that wake up voice, body, and attention — every child playing simultaneously within 2 minutes." },
     playground: { icon: Gamepad2, durationFlex: 22, meaning: "one group game played deeply, with a full debrief. children practise speaking through play." },
     showtime: { icon: Star, durationFlex: 32, meaning: "children step into the spotlight. structured formats that build performance, argument, and conviction." },
-    "log-book": { icon: Notebook, durationFlex: 10, meaning: "last 10 minutes — children fill in \"what happened in class today\" with the teacher, who opens a short discussion: favourite part? what you enjoyed? what you didn't? what to do again? every child speaks. after children leave, the teacher fills the skill-assessment part privately. the daily notes compile into the monthly report card that goes home." },
+    "log-book": { icon: Notebook, durationFlex: 10, meaning: "children fill in \"what happened in class today\" with the teacher, who opens a short discussion: favourite part? what you enjoyed? what you didn't? what to do again? every child speaks. after children leave, the teacher fills the skill-assessment part privately. the daily notes compile into the monthly report card that goes home." },
     "art-care": {
       icon: Sparkles,
       durationFlex: 5,
