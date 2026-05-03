@@ -214,7 +214,7 @@ function buildItemsFor(prog: CurriculumProgramme): LibraryItem[] {
       prog.ageGroup === "8-12"
         ? GYM_BOOK_IMAGES[5]
         : prog.ageGroup === "3-5"
-          ? GYM_BOOK_IMAGES[3] // reusing book 3 thumbnail until 3-5 cover ships
+          ? "/gym-books/3-5-book.png"
           : GYM_BOOK_IMAGES[3];
     items.push({
       kind: "primer",
@@ -237,6 +237,33 @@ function buildItemsFor(prog: CurriculumProgramme): LibraryItem[] {
       programmeSlug,
       programmeLabel,
     });
+
+    // Scribble book — separate primer card for 3-5 only. The art gym
+    // segment alternates between the laminated art gym book and the
+    // scribble book, and they look different enough that each deserves
+    // its own card in the library so teachers can find either quickly.
+    if (is35) {
+      const scribbleThumb = "/gym-books/3-5-scribble.png";
+      items.push({
+        kind: "primer",
+        id: `${programmeSlug}/scribble-book`,
+        segment: "art-gym",
+        title: "scribble book",
+        description:
+          "a4 spiral-bound book with illustrated pages. each page shows a partially complete scene with a single prompt at the bottom. children draw their response in the open space. one page per session. no correct answer.",
+        info: {
+          segmentId: "art-gym",
+          segmentName: "Art Gym",
+          title: "scribble book",
+          description:
+            "the scribble book is the second resource in the 3-5 art gym rotation — it alternates with the laminated art gym book on consecutive sessions. it is an a4 spiral-bound book with illustrated pages and one prompt per page. each page shows a partially complete scene with a single prompt at the bottom. children draw their response in the open space using the material they have chosen for the day — erasable markers, play-doh, thread, or sequins. one page per session. there is no correct response. the teacher does not instruct what to draw — they circulate and name what they see.",
+          heroImageUrl: scribbleThumb,
+        },
+        thumbImageUrl: scribbleThumb,
+        programmeSlug,
+        programmeLabel,
+      });
+    }
   }
 
   // Artiverse + Artistotle books — only for the 3-5 art programme.

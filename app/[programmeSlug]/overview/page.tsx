@@ -1096,7 +1096,13 @@ function ProgrammeOverviewContent() {
                             rotates
                           </span>
                         </div>
-                        <p className="mt-1 text-[11px] text-ink-muted">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src="/gym-books/3-5-book.png"
+                          alt="art gym book — sample page"
+                          className="mt-3 h-40 w-full rounded-lg bg-brand-white object-contain ring-1 ring-ink/5"
+                        />
+                        <p className="mt-3 text-[11px] text-ink-muted">
                           one page per session. each page shows a pattern, a path, or a mark sequence to complete or extend.
                         </p>
                         <div className="mt-3 rounded-lg bg-brand-white p-3 shadow-card">
@@ -1121,7 +1127,13 @@ function ProgrammeOverviewContent() {
                             rotates
                           </span>
                         </div>
-                        <p className="mt-1 text-[11px] text-ink-muted">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src="/gym-books/3-5-scribble.png"
+                          alt="scribble book — sample page"
+                          className="mt-3 h-40 w-full rounded-lg bg-brand-white object-contain ring-1 ring-ink/5"
+                        />
+                        <p className="mt-3 text-[11px] text-ink-muted">
                           a4 spiral-bound book with illustrated pages. each page shows a partially complete scene with a single prompt at the bottom.
                         </p>
                         <div className="mt-3 rounded-lg bg-brand-white p-3 shadow-card">
