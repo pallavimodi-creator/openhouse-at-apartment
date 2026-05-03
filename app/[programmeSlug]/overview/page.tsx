@@ -877,25 +877,6 @@ function ProgrammeOverviewContent() {
                     <p className="text-[12px] leading-relaxed text-ink-muted">
                       {seg.meaning}
                     </p>
-                    {/* Art-gym reference: one book thumbnail per age group */}
-                    {seg.id === "art-gym" && (
-                      <div className="mt-2 flex items-center gap-2">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={
-                            programme.ageGroup === "8-12"
-                              ? GYM_BOOK_IMAGES[5]
-                              : GYM_BOOK_IMAGES[3]
-                          }
-                          alt="art gym book reference"
-                          className="h-16 w-16 rounded-md bg-ink/[0.03] object-contain ring-1 ring-ink/10"
-                        />
-                        <p className="text-[10.5px] italic leading-relaxed text-ink-subtle">
-                          reference — art gym book{" "}
-                          {programme.ageGroup === "8-12" ? "5 / 6" : "3 / 4"}.
-                        </p>
-                      </div>
-                    )}
                   </div>
                 )}
               </li>
