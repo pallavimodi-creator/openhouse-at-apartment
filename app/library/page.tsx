@@ -248,13 +248,13 @@ function buildItemsFor(prog: CurriculumProgramme): LibraryItem[] {
       segment: "artiverse",
       title: "the artiverse book",
       description:
-        "a digital flipbook of all 12 artiverse projects — colourful papers, crayons, and watercolour. used across the 24 artiverse sessions in the 3–5 programme.",
+        "a structured making programme across three material families: colourful papers, crayons, and watercolour. each project runs over two sessions; children choose what to make and take their work home.",
       info: {
         segmentId: "artiverse",
         segmentName: "Artiverse Book",
         title: "the artiverse book",
         description:
-          "twelve projects across three media families. each project runs over 2 sessions and goes home with the child. flip through to plan the next session, or read with the children before they begin.",
+          "a structured making programme across three material families: colourful papers, crayons, and watercolour. each project runs over two sessions, with children choosing what to make and taking their work home. the focus is on exploring materials deeply while building control, colour understanding, and creative expression.",
         heroImageUrl: artiverseCover,
         externalLink: { href: "/artiverse-book", label: "open the artiverse book" },
       },

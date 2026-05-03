@@ -615,6 +615,25 @@ function ProgrammeOverviewContent() {
       type: "fixed" as const,
       games: [{ name: "personal experience book", skills: ["reflection"], rotation: "fixed" as const }],
     },
+    // Art Care exists only on the 3-5 programme.
+    ...(programme.ageGroup === "3-5"
+      ? [
+          {
+            segment: "art care",
+            icon: Sparkles,
+            color: "bg-brand-orange/15",
+            time: "5 min",
+            type: "fixed" as const,
+            games: [
+              {
+                name: "tidy + reset the making space",
+                skills: ["responsibility"],
+                rotation: "fixed" as const,
+              },
+            ],
+          },
+        ]
+      : []),
   ];
 
   // Public-speaking games table — built dynamically per segment.
@@ -1390,75 +1409,66 @@ function ProgrammeOverviewContent() {
                   </div>
                 )}
 
-                {/* ═══ ARTIVERSE + ARTISTOTLE — 3-5 only ═══ */}
+                {/* ═══ ARTIVERSE + ARTISTOTLE — 3-5 only ═══
+                    Two modes that share this segment slot. Rendered as
+                    two stacked self-contained blocks (everything about
+                    artiverse first, then everything about artistotle)
+                    so a teacher can read each mode without jumping. */}
                 {seg.segment === "artiverse / artistotle" && isArt && programme.ageGroup === "3-5" && (
-                  <div className="space-y-3">
-                    <p className="mt-2 text-[12px] leading-relaxed text-ink-muted md:text-[13px]">
-                      this segment alternates between two modes — they never share a session.
-                    </p>
-
-                    <div className="mt-3 grid gap-3 md:grid-cols-2">
-                      <div className="rounded-xl bg-segment-blue/15 p-4">
-                        <p className="text-[11px] font-bold text-ink">
-                          artiverse
-                        </p>
-                        <p className="mt-2 text-[12px] leading-relaxed text-ink-muted">
-                          free making across <span className="font-semibold text-ink">colourful papers</span>, <span className="font-semibold text-ink">crayons</span>, and <span className="font-semibold text-ink">watercolour</span>. 12 projects, each over 2 sessions. children choose what to make and take the work home.
-                        </p>
+                  <div className="space-y-6">
+                    {/* ── ARTIVERSE block ── */}
+                    <div className="rounded-2xl bg-segment-blue/15 p-5 md:p-6">
+                      <div className="flex flex-wrap items-center justify-between gap-3">
+                        <div>
+                          <p className="text-[10px] font-bold text-ink-subtle">mode 1</p>
+                          <h3 className="mt-0.5 text-[18px] font-extrabold lowercase text-ink md:text-[20px]">
+                            artiverse
+                          </h3>
+                        </div>
                         <Link
                           href="/artiverse-book"
-                          className="mt-3 inline-flex items-center gap-2 rounded-full bg-brand-orange px-3.5 py-1.5 text-[11px] font-bold text-white shadow-sm hover:opacity-90"
+                          className="inline-flex items-center gap-2 rounded-full bg-brand-orange px-3.5 py-1.5 text-[11px] font-bold text-white shadow-sm hover:opacity-90"
                         >
                           <BookOpen className="h-3.5 w-3.5" />
                           open the artiverse book
                         </Link>
                       </div>
-                      <div className="rounded-xl bg-brand-orange/10 p-4">
-                        <p className="text-[11px] font-bold text-brand-orange">
-                          artistotle
-                        </p>
-                        <p className="mt-2 text-[12px] leading-relaxed text-ink-muted">
-                          illustrator-led projects. 6 illustrators, 3 sessions each. children meet the work, then make in the same spirit.
-                        </p>
+                      <p className="mt-3 text-[12px] leading-relaxed text-ink-muted md:text-[13px]">
+                        a structured making programme across three material families — <span className="font-semibold text-ink">colourful papers</span>, <span className="font-semibold text-ink">crayons</span>, and <span className="font-semibold text-ink">watercolour</span>. each project runs over two sessions, with children choosing what to make and taking their work home. the focus is on exploring materials deeply while building control, colour understanding, and creative expression.
+                      </p>
+                      <div className="mt-4">
+                        <ArtiverseChapters compact />
+                      </div>
+                    </div>
+
+                    {/* ── ARTISTOTLE block ── */}
+                    <div className="rounded-2xl bg-brand-orange/10 p-5 md:p-6">
+                      <div className="flex flex-wrap items-center justify-between gap-3">
+                        <div>
+                          <p className="text-[10px] font-bold text-ink-subtle">mode 2</p>
+                          <h3 className="mt-0.5 text-[18px] font-extrabold lowercase text-ink md:text-[20px]">
+                            artistotle
+                          </h3>
+                        </div>
                         <Link
                           href="/artistotle-book"
-                          className="mt-3 inline-flex items-center gap-2 rounded-full bg-brand-orange px-3.5 py-1.5 text-[11px] font-bold text-white shadow-sm hover:opacity-90"
+                          className="inline-flex items-center gap-2 rounded-full bg-brand-orange px-3.5 py-1.5 text-[11px] font-bold text-white shadow-sm hover:opacity-90"
                         >
                           <BookOpen className="h-3.5 w-3.5" />
                           open the artistotle book
                         </Link>
                       </div>
+                      <p className="mt-3 text-[12px] leading-relaxed text-ink-muted md:text-[13px]">
+                        illustrator-led projects. six illustrators, three sessions each. children meet the work of <span className="font-semibold text-ink">eric carle</span>, <span className="font-semibold text-ink">lois ehlert</span>, and <span className="font-semibold text-ink">taro gomi</span>, then make in the same spirit — not copies, but pieces in their style.
+                      </p>
+                      <div className="mt-4">
+                        <ArtistotleChapters compact />
+                      </div>
                     </div>
 
-                    <p className="mt-3 text-[10.5px] italic text-ink-subtle">
-                      within each mode activities are linear in difficulty.
+                    <p className="text-[10.5px] italic text-ink-subtle">
+                      the two modes alternate across the programme; within each mode activities are linear in difficulty.
                     </p>
-
-                    {/* Artiverse chapter notes — Paper · Crayon · Paint */}
-                    <div className="mt-5">
-                      <div className="mb-3">
-                        <p className="text-[11px] font-bold text-brand-orange">
-                          artiverse chapters
-                        </p>
-                        <p className="mt-0.5 text-[12px] italic leading-relaxed text-ink-muted">
-                          three media families · twelve projects · why each chapter works.
-                        </p>
-                      </div>
-                      <ArtiverseChapters compact />
-                    </div>
-
-                    {/* Artistotle illustrator notes — Eric Carle · Lois Ehlert · Taro Gomi */}
-                    <div className="mt-5">
-                      <div className="mb-3">
-                        <p className="text-[11px] font-bold text-brand-orange">
-                          artistotle illustrators
-                        </p>
-                        <p className="mt-0.5 text-[12px] italic leading-relaxed text-ink-muted">
-                          three illustrators · six projects · why each one works.
-                        </p>
-                      </div>
-                      <ArtistotleChapters compact />
-                    </div>
                   </div>
                 )}
 

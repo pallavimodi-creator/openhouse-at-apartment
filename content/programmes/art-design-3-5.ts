@@ -849,7 +849,7 @@ export const artDesign35: CurriculumProgramme = {
       name: "Art Gym",
       durationRange: "15 min",
       objective:
-        "daily warm-up that builds fine motor control and creative confidence through short, focused mark-making. art gym book and scribble book rotate on alternate days — children do 1–2 pages each session. art gym book 1 runs for the first ~30 sessions; once it is finished the class moves to book 2. children choose their own material — erasable markers, play-doh, thread, sequins. no extension days at this age group.",
+        "a daily warm-up that builds fine motor control and creative confidence through short, focused mark-making. children work through the art gym and scribble books on alternate days, choosing their own materials each time. the focus is on preparing the hands and mind for making, not on correctness.",
       type: "rotating",
       rotationPool: ["ag-book-1", "ag-book-2", "scribble-book"],
     },
@@ -858,7 +858,7 @@ export const artDesign35: CurriculumProgramme = {
       name: "Art Games",
       durationRange: "25 min",
       objective:
-        "one game per session. rules explained once; teacher sets up, steps back, observes. games rotate across the 8 games — 4 fine motor, 3 colour, 1 creative expression — so each skill is touched regularly.",
+        "one structured game that builds a specific art skill through play. all children engage at the same time, using clear rules that stay consistent across sessions. the focus is on practising a skill through repetition without direct teaching.",
       type: "rotating",
       rotationPool: Object.keys(artGamesActivities),
     },
@@ -867,7 +867,7 @@ export const artDesign35: CurriculumProgramme = {
       name: "Artiverse / Artistotle",
       durationRange: "35 min",
       objective:
-        "alternates between artiverse (free making across colourful papers, crayons, watercolour) and artistotle (illustrator-led projects). within each mode activities are linear in difficulty. each artiverse project runs 2 sessions; each artistotle illustrator runs 3 sessions.",
+        "the core making segment where children build all three skills through sustained work. artiverse focuses on free, choice-based making across materials and techniques, while artistotle introduces the work of illustrators and invites children to create in that spirit. the two modes rotate, giving both freedom and depth.",
       type: "fixed",
     },
     {
@@ -875,7 +875,7 @@ export const artDesign35: CurriculumProgramme = {
       name: "Experience Book",
       durationRange: "10 min",
       objective:
-        "teacher records the session and what the child learnt. child adds one drawing of their own. notes go home to parents.",
+        "the teacher records the session through a short reflection with the children, capturing their experience, voice, and learning for the monthly report.",
       type: "fixed",
     },
     {
@@ -883,7 +883,7 @@ export const artDesign35: CurriculumProgramme = {
       name: "Art Care",
       durationRange: "5 min",
       objective:
-        "children sort all materials back to the correct shelf sections and clean the making space. the standard is care, not speed. caring for tools is a skill built the same way art skills are built — through repetition.",
+        "children take responsibility for materials and the shared space by putting everything back in place. the focus is on building care, independence, and respect for tools through consistent practice.",
       type: "fixed",
     },
   ],
