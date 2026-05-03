@@ -539,7 +539,7 @@ function ProgrammeOverviewContent() {
       durationFlex: 5,
       meaning:
         programme.segmentDefinitions.find((s) => s.id === "art-care")?.objective ??
-        "children sort all materials back to the correct shelf sections and clean the making space. the standard is care, not speed.",
+        "children take responsibility for materials and the shared space by putting everything back in place. the focus is on building care, independence, and respect for tools through consistent practice.",
     },
     experiment: { icon: FlaskConical, durationFlex: 40, meaning: "groups of 2–4 children find the answer to one specific question. every child takes at least one measurement independently. teacher asks one question per group and never gives the answer. tool orientation is embedded here — each tool introduced once, confirmed once, never revisited." },
     build: { icon: Wrench, durationFlex: 40, meaning: "each child builds their own mechanical model using a personal kit and a step card. the teacher never fixes anything and never tells anyone what to do next. four questions only. when something doesn't work, the child figures it out." },
@@ -1107,14 +1107,21 @@ function ProgrammeOverviewContent() {
                   </div>
                 )}
 
-                {/* Art Care — the tidy moment between artiverse and the
-                    experience book. 3-5 has a dedicated segment for this;
-                    other art programmes fold the same note into artiverse. */}
+                {/* Art Care — primary description sourced from the
+                    programme's segment objective so the same canonical
+                    text shows in the daily-session popup, the daily flow
+                    accordion, and here. The artiverse-tidy line is a
+                    smaller italic addendum that names the practical
+                    transition moment. */}
                 {seg.segment === "art care" && isArt && (
                   <div className="rounded-xl bg-brand-orange/5 p-4">
                     <p className="text-[12px] font-bold text-ink">how it runs</p>
                     <p className="mt-1 text-[11px] leading-relaxed text-ink-muted">
-                      at the end of artiverse, teacher says &ldquo;two minutes to put materials away.&rdquo; children tidy before the experience book begins. the standard is care, not speed — sort all materials back to the correct shelf sections and clean the making space.
+                      {programme.segmentDefinitions.find((s) => s.id === "art-care")?.objective ??
+                        "children take responsibility for materials and the shared space by putting everything back in place. the focus is on building care, independence, and respect for tools through consistent practice."}
+                    </p>
+                    <p className="mt-2 text-[11px] italic leading-relaxed text-ink-muted">
+                      at the end of artiverse, teacher says &ldquo;two minutes to put materials away.&rdquo; children tidy before the experience book begins.
                     </p>
                   </div>
                 )}
