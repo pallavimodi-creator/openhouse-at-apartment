@@ -11,7 +11,7 @@ const config: Config = {
       colors: {
         // Openhouse brand
         brand: {
-          orange: "#F25E35",
+          orange: "#F2643D",
           cream: "#F9F2E8",
           charcoal: "#2C2B28",
           white: "#FFFFFF",
@@ -23,6 +23,17 @@ const config: Config = {
           movement: "#EDAAB0",
           art: "#F3C520",
           stem: "#5B8FB9",
+        },
+        // Segment palette — single source of truth for segment-coloured
+        // surfaces (overview, day plan, library, popups). Every component
+        // should read from here via segmentPalette.ts rather than hardcoding
+        // hex literals or off-brand Tailwind palette utilities.
+        segment: {
+          yellow: "#F3C520",
+          green: "#A3C996",
+          blue: "#7DBBE2",
+          pink: "#EDAAB0",
+          orange: "#F2643D",
         },
         // Skill accents for Art & Design L1 (derived, warm/earthy)
         skill: {
