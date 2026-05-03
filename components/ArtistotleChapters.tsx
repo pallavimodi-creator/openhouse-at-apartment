@@ -1,12 +1,21 @@
 /**
- * Artistotle chapter notes — used both inside the Artistotle book route and
- * the 3-5 overview segment. Three illustrators (Eric Carle · Lois Ehlert ·
- * Taro Gomi), each with a "why this artist works" cover line and short
- * descriptions of the two projects in their chapter.
+ * Artistotle chapter notes — infographic-style illustrator profiles.
+ *
+ * Each illustrator renders as:
+ *   - a solid coloured band with the illustrator name + a brand emoji + a
+ *     vertical divider with the "why <illustrator> works" cover line
+ *   - an optional "technique spotlight" callout strip below the band
+ *   - a numbered list of projects with circle numbers and a dotted
+ *     connector running between them
+ *
+ * Used inside /artistotle-book and the 3-5 overview Artistotle block.
  */
 interface ArtistotleChapter {
   illustrator: string;
-  tone: { bg: string; pill: string; text: string };
+  /** Single emoji used in the band. */
+  emoji: string;
+  /** Tailwind classes for the band. */
+  band: { bg: string; ink: string };
   coverLine: string;
   techniqueSpotlight?: string;
   projects: { name: string; desc: string }[];
@@ -14,132 +23,156 @@ interface ArtistotleChapter {
 
 const CHAPTERS: ArtistotleChapter[] = [
   {
-    illustrator: "Eric Carle",
-    tone: {
-      bg: "bg-segment-yellow/15",
-      pill: "bg-segment-yellow/30 text-ink",
-      text: "text-ink",
-    },
+    illustrator: "eric carle",
+    emoji: "🐛",
+    band: { bg: "bg-segment-yellow", ink: "text-ink" },
     coverLine:
-      "Big, bold, joyful. Eric Carle's collage characters are made from layers of hand-painted paper. Children meet the technique, then make their own collage pieces in the same spirit.",
+      "big, bold, joyful. eric carle's collage characters are made from layers of hand-painted paper. children meet the technique, then make their own collage pieces in the same spirit.",
     techniqueSpotlight:
-      "Texture papers · cut and torn shapes · layering big bright colour fields into a recognisable creature.",
+      "texture papers · cut and torn shapes · layering big bright colour fields into a recognisable creature.",
     projects: [
       {
-        name: "Project 1 — Hungry Caterpillar",
-        desc: "Make a textured-paper caterpillar over 3 sessions. Day 1 paint texture papers · Day 2 cut shapes · Day 3 build the caterpillar.",
+        name: "project 1 — hungry caterpillar",
+        desc: "make a textured-paper caterpillar over 3 sessions. day 1 paint texture papers · day 2 cut shapes · day 3 build the caterpillar.",
       },
       {
-        name: "Project 2 — Create Your Own World",
-        desc: "Use your texture papers to build a full scene — fish, jellyfish, planets, rockets, trees. Layered into a busy underwater or outer-space world.",
+        name: "project 2 — create your own world",
+        desc: "use your texture papers to build a full scene — fish, jellyfish, planets, rockets, trees. layered into a busy underwater or outer-space world.",
       },
     ],
   },
   {
-    illustrator: "Lois Ehlert",
-    tone: {
-      bg: "bg-brand-orange/10",
-      pill: "bg-brand-orange/20 text-brand-orange",
-      text: "text-brand-orange",
-    },
+    illustrator: "lois ehlert",
+    emoji: "🌸",
+    band: { bg: "bg-brand-orange", ink: "text-white" },
     coverLine:
-      "Geometry made warm. Lois Ehlert builds animals and plants from clean cut shapes — circles, triangles, semicircles. Children learn to see the shapes hiding inside everyday creatures.",
+      "geometry made warm. lois ehlert builds animals and plants from clean cut shapes — circles, triangles, semicircles. children learn to see the shapes hiding inside everyday creatures.",
     projects: [
       {
-        name: "Project 3 — Colourful Flower Garden",
-        desc: "Sponge-print bright flower circles and stack them into a tall garden over 3 sessions. Day 1 make the circles · Day 2 add details · Day 3 build the full garden.",
+        name: "project 3 — colourful flower garden",
+        desc: "sponge-print bright flower circles and stack them into a tall garden over 3 sessions. day 1 make the circles · day 2 add details · day 3 build the full garden.",
       },
       {
-        name: "Project 4 — Geometric Animals",
-        desc: "Cut coloured paper into circles, semicircles, triangles, and strips. Combine them into a crab, a chick, an owl — animals built entirely from geometry.",
+        name: "project 4 — geometric animals",
+        desc: "cut coloured paper into circles, semicircles, triangles, and strips. combine them into a crab, a chick, an owl — animals built entirely from geometry.",
       },
     ],
   },
   {
-    illustrator: "Taro Gomi",
-    tone: {
-      bg: "bg-segment-blue/15",
-      pill: "bg-segment-blue/25 text-ink",
-      text: "text-ink",
-    },
+    illustrator: "taro gomi",
+    emoji: "🗺️",
+    band: { bg: "bg-segment-blue", ink: "text-ink" },
     coverLine:
-      "Loose, playful, alive. Taro Gomi draws people and places with simple lines and big personality. Children learn to draw without worrying about perfection.",
+      "loose, playful, alive. taro gomi draws people and places with simple lines and big personality. children learn to draw without worrying about perfection.",
     projects: [
       {
-        name: "Project 5 — Create Your Own Characters",
-        desc: "Draw a row of people you know — family, friends, anyone. Day 1 outline the figures · Day 2 add more characters · Day 3 colour and finish.",
+        name: "project 5 — create your own characters",
+        desc: "draw a row of people you know — family, friends, anyone. day 1 outline the figures · day 2 add more characters · day 3 colour and finish.",
       },
       {
-        name: "Project 6 — My Map",
-        desc: "Draw places — home, school, park, shop — then connect them with roads and add details. Day 1 draw places · Day 2 add colour · Day 3 paint the roads connecting everything.",
+        name: "project 6 — my map",
+        desc: "draw places — home, school, park, shop — then connect them with roads and add details. day 1 draw places · day 2 add colour · day 3 paint the roads connecting everything.",
       },
     ],
   },
 ];
 
 export function ArtistotleChapters({ compact = false }: { compact?: boolean }) {
+  // `compact` kept for API compatibility — the infographic layout reads
+  // well at any width without alternative column variants.
+  void compact;
   return (
-    <div className="space-y-4">
-      {CHAPTERS.map((chapter) => (
-        <div
+    <div className="space-y-6">
+      {CHAPTERS.map((chapter, ci) => (
+        <article
           key={chapter.illustrator}
-          className={`overflow-hidden rounded-xl ${chapter.tone.bg} p-4 md:p-5`}
+          className="overflow-hidden rounded-2xl bg-brand-white shadow-card ring-1 ring-ink/5"
         >
-          <div className="flex items-center gap-2">
-            <span
-              className={`rounded-chip px-2.5 py-0.5 text-[10px] font-bold ${chapter.tone.pill}`}
-            >
-              illustrator
-            </span>
-            <p className={`text-[15px] font-extrabold ${chapter.tone.text}`}>
-              {chapter.illustrator}
-            </p>
-          </div>
-
-          <p className="mt-2 text-[12px] italic leading-relaxed text-ink-muted md:text-[13px]">
-            <span className="font-semibold not-italic text-ink">
-              why {chapter.illustrator.toLowerCase()} works ·{" "}
-            </span>
-            {chapter.coverLine}
-          </p>
-
-          {chapter.techniqueSpotlight && (
-            <p className="mt-2 rounded-lg bg-brand-white px-3 py-2 text-[11.5px] leading-relaxed text-ink-muted ring-1 ring-ink/5">
-              <span className="font-bold text-ink">
-                technique spotlight ·{" "}
+          {/* Illustrator band */}
+          <header
+            className={`grid gap-3 px-5 py-5 md:grid-cols-[auto_1fr] md:items-center md:gap-6 md:px-7 md:py-6 ${chapter.band.bg} ${chapter.band.ink}`}
+          >
+            <div className="flex items-center gap-3">
+              <span
+                className="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-brand-white/40 text-[26px] backdrop-blur-sm md:h-14 md:w-14 md:text-[30px]"
+                aria-hidden="true"
+              >
+                {chapter.emoji}
               </span>
-              {chapter.techniqueSpotlight}
-            </p>
+              <div>
+                <p className="text-[10px] font-bold opacity-70">
+                  illustrator {ci + 1}
+                </p>
+                <h3 className="text-[22px] font-extrabold lowercase leading-tight md:text-[26px]">
+                  {chapter.illustrator}
+                </h3>
+              </div>
+            </div>
+            <div className="md:border-l md:border-white/30 md:pl-6">
+              <p className="text-[12px] font-bold opacity-90 md:text-[12.5px]">
+                why {chapter.illustrator} works
+              </p>
+              <p className="mt-1 text-[12.5px] leading-relaxed opacity-90 md:text-[13px]">
+                {chapter.coverLine}
+              </p>
+            </div>
+          </header>
+
+          {/* Technique spotlight callout — only Eric Carle has one today */}
+          {chapter.techniqueSpotlight && (
+            <div className="border-b border-ink/5 bg-brand-cream/60 px-5 py-3 md:px-7">
+              <p className="text-[11px] font-bold lowercase text-brand-orange">
+                technique spotlight
+              </p>
+              <p className="mt-1 text-[12.5px] leading-relaxed text-ink md:text-[13px]">
+                {chapter.techniqueSpotlight}
+              </p>
+            </div>
           )}
 
-          <div
-            className={`mt-3 grid gap-2 ${
-              compact ? "md:grid-cols-2" : "md:grid-cols-2"
-            }`}
-          >
-            {chapter.projects.map((p) => (
-              <div
+          {/* Projects — numbered list with dotted connector */}
+          <ol className="relative px-5 py-5 md:px-7 md:py-6">
+            {chapter.projects.map((p, i) => (
+              <li
                 key={p.name}
-                className="rounded-lg bg-brand-white p-3 shadow-card ring-1 ring-ink/5"
+                className={`relative flex items-start gap-4 ${
+                  i < chapter.projects.length - 1 ? "pb-5" : ""
+                }`}
               >
-                <p className="text-[12.5px] font-bold text-ink">{p.name}</p>
-                <p className="mt-1 text-[11px] leading-relaxed text-ink-muted">
-                  {p.desc}
-                </p>
-              </div>
+                {i < chapter.projects.length - 1 && (
+                  <span
+                    aria-hidden="true"
+                    className="absolute left-[15px] top-9 bottom-0 w-0 border-l-2 border-dotted border-ink/15"
+                  />
+                )}
+                <span
+                  className={`relative z-10 flex h-8 w-8 flex-none items-center justify-center rounded-full text-[12px] font-extrabold ring-2 ring-brand-white ${chapter.band.bg} ${chapter.band.ink}`}
+                >
+                  {i + 1}
+                </span>
+                <div className="flex-1 pt-0.5">
+                  <p className="text-[13.5px] font-extrabold lowercase text-ink md:text-[14px]">
+                    {p.name}
+                  </p>
+                  <p className="mt-1 text-[12px] leading-relaxed text-ink-muted md:text-[12.5px]">
+                    {p.desc}
+                  </p>
+                </div>
+              </li>
             ))}
-          </div>
-        </div>
+          </ol>
+        </article>
       ))}
 
       {/* Important footer */}
-      <div className="rounded-xl bg-ink/[0.04] p-4 ring-1 ring-ink/10">
-        <p className="text-[11px] font-bold text-brand-orange">
+      <div className="rounded-2xl border-2 border-dashed border-brand-orange/40 bg-brand-orange/5 p-4 md:p-5">
+        <p className="text-[11px] font-bold lowercase text-brand-orange">
           important
         </p>
-        <p className="mt-1 text-[12px] leading-relaxed text-ink-muted md:text-[13px]">
+        <p className="mt-1 text-[12.5px] leading-relaxed text-ink md:text-[13px]">
           children make in the spirit of the illustrator, not copies of their
-          work. reference images set the tone — the child's piece is their own.
+          work. reference images set the tone — the child&apos;s piece is
+          their own.
         </p>
       </div>
     </div>

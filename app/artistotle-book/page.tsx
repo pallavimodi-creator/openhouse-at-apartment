@@ -156,16 +156,16 @@ export default function ArtistotleBookPage() {
         </div>
 
         {/* Title band */}
-        <section className="bg-segment-yellow px-5 py-6 md:px-8">
-          <div className="mx-auto max-w-4xl">
-            <p className="text-[12px] font-extrabold text-ink/50">oh.</p>
-            <h1 className="mt-1 text-[22px] font-extrabold leading-tight text-ink md:text-[30px]">
+        <section className="px-3 pt-5 md:px-8 md:pt-7">
+          <div className="mx-auto w-full max-w-3xl rounded-2xl bg-segment-yellow px-5 py-5 ring-1 ring-ink/5 md:px-7 md:py-6">
+            <p className="text-[11px] font-extrabold text-ink/50">oh.</p>
+            <h1 className="mt-1 text-[22px] font-extrabold leading-tight text-ink md:text-[28px]">
               the artistotle book
             </h1>
             <p className="mt-1 text-[12px] font-semibold text-ink/60">
               art &amp; design · ages 3–5
             </p>
-            <p className="mt-3 max-w-md text-[12px] italic leading-relaxed text-ink/70">
+            <p className="mt-3 text-[12px] italic leading-relaxed text-ink/75 md:text-[13px]">
               meet the illustrators. their characters, their palette, their
               style. then make something in their spirit.
             </p>

@@ -725,14 +725,14 @@ function ProgrammeOverviewContent() {
 
   return (
     <div className="flex flex-col pb-6">
-      {/* ─── Back link ─── */}
+      {/* ─── Back link — overview is the entry point, so back goes home ─── */}
       <div className="px-4 pt-4 md:px-8">
         <Link
-          href={`/${slug}`}
+          href="/"
           className="flex items-center gap-1 text-[12px] font-bold text-brand-orange hover:underline"
         >
           <ChevronLeft className="h-3.5 w-3.5" />
-          back to programme
+          back to all programmes
         </Link>
       </div>
 
