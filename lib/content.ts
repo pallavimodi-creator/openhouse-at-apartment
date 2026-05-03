@@ -241,8 +241,9 @@ export const ACTIVITY_IMAGES: Record<string, string> = {
   "magna-tiles": "/games/art-3-5/magna-tiles.png",
   "shape-art": "/games/art-3-5/shape-art.png",
   "imagine-that-3-5": "/games/art-3-5/imagine-that.png",
-  // Match Me 3-5 still on placeholder SVG until a real render ships
-  "match-me-3-5": "/games/art-3-5/match-me.svg",
+  // Match Me 3-5 reuses the 5-8 hero — the printed cards are the same
+  // physical set, only the rules differ between age groups.
+  "match-me-3-5": "/games/art/match-me.png",
   // Robotics — experiment cue cards (thumbnail = first page of the PDF)
   "l1-levers-e1": "/robotics-manuals/l1-levers.png",
   "l1-levers-e2": "/robotics-manuals/l1-levers.png",

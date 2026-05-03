@@ -425,13 +425,24 @@ export default function LibraryPage() {
       setSelectedActivity(it.item);
     } else if (it.kind === "artiverse") {
       const u = it.item;
+      // Artistotle projects share the artiverseUnits collection but are
+      // numbered as projects 1-6, not units 13-18. Detect by id prefix.
+      const isArtistotle = u.id.startsWith("atl");
+      const projectNumber = isArtistotle
+        ? u.unitNumber - 12 // unitNumber 13 → project 1, 14 → 2, …
+        : u.unitNumber;
+      const subText = isArtistotle
+        ? `project ${projectNumber} of 6 · ${u.whatChildrenMake.toLowerCase()}`
+        : `unit ${u.unitNumber} · reference: ${u.whatChildrenMake.toLowerCase()}`;
+      const description = isArtistotle
+        ? "an illustrator-led project. children meet the work, learn the technique, then make in the same spirit — not a copy of the original. each project runs over 3 sessions."
+        : "the main making session. children work on a3 paper using the medium of this unit. each unit runs over several sessions so technique can deepen. the reference topic below is inspiration only — the actual topic is the child's choice.";
       setSelectedInfo({
         segmentId: "artiverse",
-        segmentName: "Artiverse",
+        segmentName: isArtistotle ? "Artistotle" : "Artiverse",
         title: u.medium,
-        subText: `unit ${u.unitNumber} · reference: ${u.whatChildrenMake.toLowerCase()}`,
-        description:
-          "the main making session. children work on a3 paper using the medium of this unit. each unit runs over several sessions so technique can deepen. the reference topic below is inspiration only — the actual topic is the child's choice.",
+        subText,
+        description,
         artiverseUnit: {
           medium: u.medium,
           technique: u.technique,
