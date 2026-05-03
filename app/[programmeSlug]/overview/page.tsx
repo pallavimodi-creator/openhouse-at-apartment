@@ -11,7 +11,6 @@ import {
   Notebook,
   RotateCw,
   Lock,
-  ChevronDown,
   Zap,
   Star,
   BookOpen,
@@ -437,7 +436,7 @@ function ProgrammeOverviewContent() {
   const slug = params.programmeSlug as string;
   const programme = getCurriculumProgramme(slug);
   const [activeSegment, setActiveSegment] = useState<string | null>("art-gym");
-  const [activeSkill, setActiveSkill] = useState<string | null>(null);
+  // Skills are always-visible posters now — no toggle state needed.
 
   if (!programme) {
     notFound();
@@ -455,7 +454,8 @@ function ProgrammeOverviewContent() {
     "daily-flow": "01",
     "skills": "02",
     "segment-logic": "03",
-    "checkpoints": "04",
+    "books": "04",
+    "checkpoints": "05",
   };
   const sectionNum = (key: string) => SECTION_NUM[key] ?? "—";
 
@@ -719,19 +719,62 @@ function ProgrammeOverviewContent() {
         </Link>
       </div>
 
-      {/* ─── HEADER ─── */}
+      {/* ─── HERO BAND ─── */}
       <section className="mt-4 px-4 md:px-8">
-        <p className="text-[11px] font-bold text-ink-subtle">programme overview</p>
-        <h1 className="mt-1 text-[28px] font-extrabold leading-tight text-ink md:text-[36px]">
-          {programme.title}
-        </h1>
-        <p className="mt-1 text-[12px] font-medium text-ink-muted md:text-[13px]">
-          {programme.ageLabel} · 90 minutes per session
-        </p>
-        <div className="mt-4 rounded-card bg-brand-orange/5 p-4 md:p-5">
-          <p className="text-[13px] leading-relaxed text-ink md:text-[14px]">
-            {programme.description}
-          </p>
+        <div className="overflow-hidden rounded-2xl bg-brand-cream ring-1 ring-ink/5">
+          <div className="grid gap-5 p-5 md:grid-cols-[1fr_auto] md:items-center md:gap-8 md:p-7">
+            <div>
+              <p className="text-[11px] font-bold text-ink-subtle">programme overview</p>
+              <h1 className="mt-2 text-[28px] font-extrabold lowercase leading-[1.05] tracking-tight text-ink md:text-[40px]">
+                {programme.title}
+              </h1>
+              <p className="mt-2 text-[12px] font-semibold text-ink-muted md:text-[13px]">
+                {programme.ageLabel.toLowerCase()}
+              </p>
+              <div className="mt-4 border-l-[3px] border-brand-orange pl-4">
+                <p className="text-[13px] leading-relaxed text-ink md:text-[14px]">
+                  {programme.description}
+                </p>
+              </div>
+            </div>
+            {programme.heroImageUrl && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={programme.heroImageUrl}
+                alt={programme.title}
+                className="mx-auto h-32 w-auto rounded-xl bg-brand-white object-contain ring-1 ring-ink/10 md:h-40"
+                style={{ mixBlendMode: "multiply" }}
+              />
+            )}
+          </div>
+
+          {/* Stat strip */}
+          <div className="grid grid-cols-2 gap-px bg-ink/5 md:grid-cols-4">
+            {[
+              { label: "sessions", value: String(programme.totalSessions) },
+              { label: "age group", value: programme.ageLabel.replace(/^ages?\s+/i, "") },
+              {
+                label: "session length",
+                value: isRobotics ? "90 min" : isArt ? "90 min" : "90 min",
+              },
+              {
+                label: "class size",
+                value: programme.category === "art" ? "6–10" : programme.category === "stem" ? "6–10" : "6–10",
+              },
+            ].map((stat) => (
+              <div
+                key={stat.label}
+                className="flex flex-col items-center justify-center bg-brand-cream px-3 py-3 text-center"
+              >
+                <p className="text-[18px] font-extrabold leading-none text-ink md:text-[20px]">
+                  {stat.value}
+                </p>
+                <p className="mt-1 text-[10px] font-semibold text-ink-muted md:text-[11px]">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -857,111 +900,94 @@ function ProgrammeOverviewContent() {
           {skills.length} skills · {skills[0]?.abilities.length ?? 0} abilities each
         </SectionTitle>
 
-        <div className="mt-4 space-y-3">
-          {skills.map((skill) => {
-            const isOpen = activeSkill === skill.id;
-            return (
-              <div
-                key={skill.id}
-                className={cn(
-                  "overflow-hidden rounded-xl bg-brand-white shadow-card transition",
-                  isOpen && "ring-2 ring-offset-2",
-                  isOpen && skill.accent
-                )}
-              >
-                <button
-                  onClick={() => setActiveSkill(isOpen ? null : skill.id)}
-                  className="flex w-full items-center gap-3 p-4 text-left"
+        <div className="mt-4 grid gap-4 md:grid-cols-3">
+          {skills.map((skill) => (
+            <div
+              key={skill.id}
+              className="overflow-hidden rounded-xl bg-brand-white shadow-card ring-1 ring-ink/5"
+            >
+              <div className="flex items-center gap-3 p-4">
+                <span
+                  className={cn(
+                    "flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-[11px] font-extrabold text-white",
+                    skill.color
+                  )}
                 >
-                  <span
-                    className={cn(
-                      "flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-[11px] font-extrabold text-white",
-                      skill.color
-                    )}
-                  >
-                    {(() => {
-                      const SkillIcon = skillIcon[skill.id];
-                      return SkillIcon ? (
-                        <SkillIcon className="h-5 w-5" strokeWidth={2} />
-                      ) : (
-                        skill.id
-                      );
-                    })()}
-                  </span>
-                  <div className="flex-1">
-                    <p className="text-[14px] font-extrabold text-ink">{skill.name}</p>
-                    <p className="text-[10px] text-ink-muted">4 abilities</p>
-                  </div>
-                  <ChevronDown
-                    className={cn(
-                      "h-4 w-4 text-ink-subtle transition-transform",
-                      isOpen && "rotate-180"
-                    )}
-                  />
-                </button>
-
-                {isOpen && (
-                  <div className="space-y-3 border-t border-ink/5 bg-bg/30 p-4">
-                    {skill.abilities.map((ability, i) => {
-                      const locs = abilityLocations[`${skill.id}-${i}`] || [];
-                      // Ability may be either a plain string (legacy) or a
-                      // richer object with a name, description, and a
-                      // ★ north-star flag (robotics).
-                      const isObj = typeof ability === "object" && ability !== null;
-                      const abilityName = isObj ? (ability as { name: string }).name : null;
-                      const abilityDesc = isObj ? (ability as { description: string }).description : (ability as string);
-                      const isNorthStar = isObj && (ability as { isNorthStar?: boolean }).isNorthStar;
-                      const AbilityIcon = abilityIcon[`${skill.id}-${i}`];
-                      return (
-                        <div key={i} className="flex items-start gap-3">
-                          <span
-                            className={cn(
-                              "mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-lg text-[10px] font-extrabold text-white",
-                              skill.color
-                            )}
-                          >
-                            {AbilityIcon ? (
-                              <AbilityIcon className="h-3.5 w-3.5" strokeWidth={2.4} />
-                            ) : (
-                              i + 1
-                            )}
-                          </span>
-                          <div className="flex-1">
-                            {abilityName && (
-                              <p className="text-[12.5px] font-extrabold text-ink md:text-[13.5px]">
-                                {abilityName}
-                                {isNorthStar && (
-                                  <span
-                                    aria-label="north star ability"
-                                    className="ml-1.5 text-brand-orange"
-                                  >
-                                    ★
-                                  </span>
-                                )}
-                              </p>
-                            )}
-                            <p className={cn("text-[12px] leading-relaxed md:text-[13px]", abilityName ? "mt-0.5 text-ink-muted" : "text-ink")}>
-                              {abilityDesc}
-                            </p>
-                            <div className="mt-1.5 flex flex-wrap gap-1">
-                              {locs.map((loc) => (
-                                <span
-                                  key={loc}
-                                  className="rounded-chip bg-ink/5 px-2 py-0.5 text-[9px] font-medium text-ink-muted"
-                                >
-                                  {loc}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                )}
+                  {(() => {
+                    const SkillIcon = skillIcon[skill.id];
+                    return SkillIcon ? (
+                      <SkillIcon className="h-5 w-5" strokeWidth={2} />
+                    ) : (
+                      skill.id
+                    );
+                  })()}
+                </span>
+                <div className="flex-1">
+                  <p className="text-[14px] font-extrabold lowercase text-ink">{skill.name}</p>
+                  <p className="text-[10px] text-ink-muted">{skill.abilities.length} abilities</p>
+                </div>
               </div>
-            );
-          })}
+
+              <div className="space-y-3 border-t border-ink/5 bg-brand-cream/40 p-4">
+                {skill.abilities.map((ability, i) => {
+                  const locs = abilityLocations[`${skill.id}-${i}`] || [];
+                  // Ability may be either a plain string (legacy) or a
+                  // richer object with name + description + ★.
+                  const isObj = typeof ability === "object" && ability !== null;
+                  const abilityName = isObj ? (ability as { name: string }).name : null;
+                  const abilityDesc = isObj ? (ability as { description: string }).description : (ability as string);
+                  const isNorthStar = isObj && (ability as { isNorthStar?: boolean }).isNorthStar;
+                  const AbilityIcon = abilityIcon[`${skill.id}-${i}`];
+                  return (
+                    <div key={i} className="flex items-start gap-3">
+                      <span
+                        className={cn(
+                          "mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-lg text-[10px] font-extrabold text-white",
+                          skill.color
+                        )}
+                      >
+                        {AbilityIcon ? (
+                          <AbilityIcon className="h-3.5 w-3.5" strokeWidth={2.4} />
+                        ) : (
+                          i + 1
+                        )}
+                      </span>
+                      <div className="flex-1">
+                        {abilityName && (
+                          <p className="text-[12.5px] font-extrabold lowercase text-ink md:text-[13.5px]">
+                            {abilityName}
+                            {isNorthStar && (
+                              <span
+                                aria-label="north star ability"
+                                className="ml-1.5 text-brand-orange"
+                              >
+                                ★
+                              </span>
+                            )}
+                          </p>
+                        )}
+                        <p className={cn("text-[12px] leading-relaxed md:text-[13px]", abilityName ? "mt-0.5 text-ink-muted" : "text-ink")}>
+                          {abilityDesc}
+                        </p>
+                        {locs.length > 0 && (
+                          <div className="mt-1.5 flex flex-wrap gap-1">
+                            {locs.map((loc) => (
+                              <span
+                                key={loc}
+                                className="rounded-chip bg-ink/5 px-2 py-0.5 text-[9px] font-medium text-ink-muted"
+                              >
+                                {loc}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -1882,6 +1908,78 @@ function ProgrammeOverviewContent() {
           })}
         </div>
       </section>
+
+      {/* ─── BOOKS ROW ─── */}
+      {(() => {
+        const books: { href: string; cover: string; title: string; subtitle: string }[] = [];
+        if (programme.slug === "art-design-3-5") {
+          books.push({
+            href: "/artiverse-book",
+            cover: "/artiverse-book/01-accordion.png",
+            title: "the artiverse book",
+            subtitle: "twelve projects · paper, crayon, paint",
+          });
+          books.push({
+            href: "/artistotle-book",
+            cover: "/artistotle-book/01-cover.png",
+            title: "the artistotle book",
+            subtitle: "three illustrators · six projects",
+          });
+        }
+        // Experience book (programmes that have one wired)
+        const expBookSlug: Record<string, string> = {
+          "art-design-5-8": "art-5-8",
+          "art-design-8-12": "art-8-12",
+          "public-speaking-5-8": "speaking-5-8",
+          "public-speaking-8-12": "speaking-8-12",
+        };
+        const expSlug = expBookSlug[programme.slug];
+        const expCover: Record<string, string> = {
+          "art-5-8": "/book-covers/art-5-8.png",
+          "art-8-12": "/book-covers/art-8-12.png",
+          "speaking-5-8": "/book-covers/speaking-5-8.png",
+          "speaking-8-12": "/book-covers/speaking-8-12.png",
+        };
+        if (expSlug) {
+          books.push({
+            href: `/book/${expSlug}`,
+            cover: expCover[expSlug],
+            title: "experience book",
+            subtitle: "the child's daily reflection book",
+          });
+        }
+        if (books.length === 0) return null;
+        return (
+          <section className="mt-10 px-4 md:px-8">
+            <SectionTitle num={sectionNum("books")} label="books">
+              flip through every book in this programme
+            </SectionTitle>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {books.map((book) => (
+                <Link
+                  key={book.href}
+                  href={book.href}
+                  className="group flex flex-col items-center gap-3 rounded-2xl bg-brand-white p-5 shadow-card ring-1 ring-ink/5 transition hover:-translate-y-0.5"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={book.cover}
+                    alt={book.title}
+                    className="h-40 w-auto rounded-md bg-brand-cream object-contain shadow-[0_6px_18px_rgba(44,43,40,0.10)] transition group-hover:shadow-[0_10px_24px_rgba(44,43,40,0.16)]"
+                  />
+                  <div className="text-center">
+                    <p className="text-[14px] font-extrabold lowercase text-ink">{book.title}</p>
+                    <p className="mt-1 text-[11px] italic text-ink-muted">{book.subtitle}</p>
+                    <p className="mt-2 inline-flex items-center gap-1 text-[11px] font-bold text-brand-orange">
+                      open the book →
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        );
+      })()}
 
       {/* ─── CHECKPOINTS ─── */}
       <section className="mt-10 px-4 md:px-8">
