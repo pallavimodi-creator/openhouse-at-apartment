@@ -32,11 +32,16 @@ export default function HomePage() {
   }
 
   const isAdmin = teacher.programmeSlug === "*" || teacher.role === "admin";
+  // Show every programme on the homepage. ProgrammeCard renders a
+  // "coming soon" tag for any programme whose totalSessions === 0
+  // (e.g. language through storytelling 3-5 while content is still
+  // being authored), so previously hiding them by filter is no longer
+  // necessary — teachers see what's coming next.
   const programmes = isAdmin
-    ? listCurriculumProgrammes().filter((p) => p.totalSessions > 0)
+    ? listCurriculumProgrammes()
     : teacher.category
       ? listCurriculumProgrammes().filter(
-          (p) => p.totalSessions > 0 && p.category === teacher.category,
+          (p) => p.category === teacher.category,
         )
       : (() => {
           const p = getCurriculumProgramme(teacher.programmeSlug);
