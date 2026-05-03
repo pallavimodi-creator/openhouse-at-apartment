@@ -98,8 +98,30 @@ export function ImageFlipbook({
   const atStart = currentPage === 0;
   const atEnd = currentPage >= pages.length - 1;
 
+  const currentCaption = captions?.[currentPage];
+
   return (
     <div ref={containerRef} className="w-full">
+      {/* Chapter / page caption rendered ABOVE the book so the reader sees
+          the chapter context while looking at the spread. The same data
+          renders again below for mobile readers who scroll past the book. */}
+      {currentCaption && (
+        <div className="mx-auto mb-4 max-w-2xl rounded-2xl bg-brand-white p-4 shadow-card ring-1 ring-ink/5 md:p-5">
+          {currentCaption.eyebrow && (
+            <p className="text-[11px] font-bold lowercase tracking-tight text-brand-orange">
+              {currentCaption.eyebrow}
+            </p>
+          )}
+          <p className="mt-1 text-[16px] font-extrabold lowercase leading-tight text-ink md:text-[18px]">
+            {currentCaption.title}
+          </p>
+          {currentCaption.description && (
+            <p className="mt-2 text-[12.5px] leading-relaxed text-ink-muted md:text-[13px]">
+              {currentCaption.description}
+            </p>
+          )}
+        </div>
+      )}
       {/* Mounting placeholder so layout doesn't jump while the dynamic
           chunk loads. */}
       {!mounted ? (
@@ -126,7 +148,7 @@ export function ImageFlipbook({
               maxWidth={520}
               minHeight={340}
               maxHeight={1500}
-              showCover={true}
+              showCover={false}
               mobileScrollSupport={true}
               usePortrait={!isSpread}
               maxShadowOpacity={0.32}
@@ -186,24 +208,6 @@ export function ImageFlipbook({
         </button>
       </div>
 
-      {/* Page caption — synced to current page when captions[] is supplied */}
-      {captions && captions[currentPage] && (
-        <div className="mx-auto mt-4 max-w-2xl rounded-2xl bg-brand-white p-4 shadow-card ring-1 ring-ink/5 md:p-5">
-          {captions[currentPage].eyebrow && (
-            <p className="text-[11px] font-bold lowercase tracking-tight text-brand-orange">
-              {captions[currentPage].eyebrow}
-            </p>
-          )}
-          <p className="mt-1 text-[16px] font-extrabold lowercase leading-tight text-ink md:text-[18px]">
-            {captions[currentPage].title}
-          </p>
-          {captions[currentPage].description && (
-            <p className="mt-2 text-[12.5px] leading-relaxed text-ink-muted md:text-[13px]">
-              {captions[currentPage].description}
-            </p>
-          )}
-        </div>
-      )}
     </div>
   );
 }

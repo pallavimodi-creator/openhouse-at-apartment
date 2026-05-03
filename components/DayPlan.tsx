@@ -370,10 +370,8 @@ function SegmentRow({
               </div>
             </div>
           ) : (
-            <p className="text-[12px] text-ink-muted">
-              {segment.segmentId === "log-book" || segment.segmentId === "experience-book"
-                ? "last 10 minutes — children fill \"what happened in class today\" with the teacher. favourite part? what you enjoyed? what you didn't? what to do again? every child speaks. after children leave, teacher fills the skill-assessment privately."
-                : "every child writes or draws what happened today. book goes home."}
+            <p className="line-clamp-3 text-[12px] leading-relaxed text-ink-muted">
+              {segment.objective}
             </p>
           )}
           <p className="mt-1.5 text-[11px] font-medium text-brand-orange">

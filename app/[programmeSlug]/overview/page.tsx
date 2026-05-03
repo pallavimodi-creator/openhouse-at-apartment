@@ -436,7 +436,7 @@ function ProgrammeOverviewContent() {
   const params = useParams();
   const slug = params.programmeSlug as string;
   const programme = getCurriculumProgramme(slug);
-  const [activeSegment, setActiveSegment] = useState<string | null>("art-gym");
+  const [activeSegment, setActiveSegment] = useState<string | null>(null);
   // Skills are always-visible posters now — no toggle state needed.
 
   if (!programme) {

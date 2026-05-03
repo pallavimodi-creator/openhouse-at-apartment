@@ -41,9 +41,9 @@ const ARTIVERSE_PAGES: ArtiversePage[] = [
     src: "/artiverse-book/03-circles-day-2.png",
     caption: {
       eyebrow: "paper · project 2 · day 2",
-      title: "circles, continued",
+      title: "circles · day 2",
       description:
-        "extend the circles project — add more characters and details to the arrangement.",
+        "same materials as day 1 — papers and circle stamps. the child makes a brand new artwork of their choice. the image is a reference only.",
     },
   },
   {
@@ -113,9 +113,9 @@ const ARTIVERSE_PAGES: ArtiversePage[] = [
     src: "/artiverse-book/11-finger-painting-day-2.png",
     caption: {
       eyebrow: "paint · project 2 · day 2",
-      title: "finger painting, continued",
+      title: "finger painting · day 2",
       description:
-        "second-day spread — finish the greeting card or extend the pattern.",
+        "same paints and fingers as day 1 — child makes a brand new artwork of their choice. the image is a reference only.",
     },
   },
   {
@@ -131,9 +131,9 @@ const ARTIVERSE_PAGES: ArtiversePage[] = [
     src: "/artiverse-book/13-sponge-day-2.png",
     caption: {
       eyebrow: "paint · project 3 · day 2",
-      title: "sponge painting, continued",
+      title: "sponge painting · day 2",
       description:
-        "build up the textures across a second sitting — layering colour for depth.",
+        "same sponges and paint as day 1 — the child creates a new artwork of their choice. the image is a reference only.",
     },
   },
   {
@@ -158,9 +158,9 @@ const ARTIVERSE_PAGES: ArtiversePage[] = [
     src: "/artiverse-book/16-blow-splatter-day-2.png",
     caption: {
       eyebrow: "paint · project 5 · day 2",
-      title: "blow & splatter, continued",
+      title: "blow & splatter · day 2",
       description:
-        "second sitting on blow & splatter — refine the splatters into a finished piece.",
+        "same straws and paint as day 1 — the child creates a fresh artwork of their choice. the image is a reference only.",
     },
   },
 ];
@@ -189,8 +189,10 @@ export default function ArtiverseBookPage() {
             </p>
             <p className="mt-3 text-[12px] italic leading-relaxed text-ink/75 md:text-[13px]">
               colourful papers, crayons, watercolour. twelve projects across
-              the programme — each runs over two sessions, children pick
-              what to make and take the work home.
+              the programme — each runs over two sessions. on both days the
+              same medium and technique are set, but the child makes a fresh
+              artwork on day 2. the picture in the book is a reference only —
+              children pick their own subject and take the work home.
             </p>
           </div>
         </section>

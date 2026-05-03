@@ -222,9 +222,20 @@ export function SegmentInfoPopup({ info }: { info: SegmentInfo }) {
               {unit.whatChildrenMake}
             </p>
             <p className="mt-1 text-[11px] italic leading-relaxed text-ink-subtle">
-              inspiration only — the actual topic is the child&apos;s choice.
+              the picture is a reference only — children pick their own subject.
             </p>
           </div>
+          {unit.days > 1 && (
+            <div className="rounded-card bg-segment-yellow/40 p-3 ring-1 ring-ink/5">
+              <p className="text-[10px] font-semibold tracking-wider text-ink">
+                two days · two different artworks
+              </p>
+              <p className="mt-1 text-[12px] leading-relaxed text-ink-muted">
+                the same medium and technique runs across both sessions, but each
+                child makes a new artwork on day 2 — not a continuation of day 1.
+              </p>
+            </div>
+          )}
           <div>
             <p className="text-[10px] font-semibold tracking-wider text-ink-subtle">
               reference images
