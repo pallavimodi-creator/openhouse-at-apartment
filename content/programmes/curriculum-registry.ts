@@ -38,7 +38,27 @@ export const curriculumProgrammes: CurriculumProgramme[] = [
   publicSpeaking58,
   publicSpeaking812,
 
-  // ── Robotics ──
+  // ── Robotics / STEM ──
+  // Stub for 3–5 STEM. Content is still being authored — totalSessions = 0
+  // so ProgrammeCard renders the "coming soon" state on the homepage.
+  {
+    id: "robotics-3-5",
+    slug: "robotics-3-5",
+    title: "stem",
+    category: "stem",
+    ageGroup: "3-5",
+    ageLabel: "ages 3–5",
+    heroImageUrl: "/prog-stem-3-5.gif",
+    tagline: "an early-years stem programme that builds curiosity through hands-on play.",
+    description:
+      "children explore cause and effect, simple tools, and basic systems through guided play and discovery. early experiments invite observation, prediction, and questioning — building the foundations of how things work.",
+    totalSessions: 0,
+    skillAreas: [],
+    segmentDefinitions: [],
+    sessionTable: [],
+    activities: {},
+    checkpoints: [],
+  },
   robotics58,
   robotics812,
 ];
