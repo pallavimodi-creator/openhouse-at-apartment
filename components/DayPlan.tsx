@@ -79,6 +79,13 @@ interface ResolvedSegment {
   segmentName: string;
   durationRange: string;
   type: "rotating" | "fixed";
+  /**
+   * One-paragraph description from the programme's segment definition. Read
+   * by the day-plan popup so the copy stays in sync with the source of
+   * truth (content/programmes/<programme>.ts) without having to update the
+   * day-plan component every time a programme tweaks its objective.
+   */
+  objective: string;
   assignedActivity: CurriculumActivity | null;
   rotationPool: CurriculumActivity[];
   artiverseUnit?: number;
@@ -127,6 +134,7 @@ function resolveSegments(
         segmentName: segDef.name,
         durationRange: segDef.durationRange,
         type: "fixed" as const,
+        objective: segDef.objective,
         assignedActivity: null,
         rotationPool: [],
         artiverseUnit: session.artiverseUnit,
@@ -143,6 +151,7 @@ function resolveSegments(
         segmentName: segDef.name,
         durationRange: segDef.durationRange,
         type: "fixed" as const,
+        objective: segDef.objective,
         assignedActivity: null,
         rotationPool: [],
         artGymLabel: assignedId ? (ART_GYM_LABELS[assignedId] ?? assignedId) : undefined,
@@ -156,6 +165,7 @@ function resolveSegments(
       segmentName: segDef.name,
       durationRange: segDef.durationRange,
       type: segDef.type,
+      objective: segDef.objective,
       assignedActivity: assignedId ? (actMap[assignedId] ?? null) : null,
       rotationPool: (segDef.rotationPool ?? []).map((id) => actMap[id]).filter(Boolean),
       buildModel: isBuild ? session.buildModel : undefined,
@@ -247,13 +257,16 @@ function SegmentRow({
         <button
           onClick={() => {
             let info: SegmentInfo;
+            // Description always reads from the programme's segment.objective
+            // so updating the source-of-truth in content/programmes/*.ts
+            // propagates automatically to this popup.
+            const description = segment.objective;
             if (segment.segmentId === "art-gym") {
               info = {
                 segmentId: segment.segmentId,
                 segmentName: segment.segmentName,
                 title: segment.artGymLabel ?? "art gym warm-up",
-                description:
-                  "a short warm-up to wake up the hand and eye. children practise a specific technique — lines, shapes, or colour — that prepares them for the main making session.",
+                description,
                 heroImageUrl: gymBookUrl,
               };
             } else if (segment.segmentId === "artiverse") {
@@ -266,8 +279,7 @@ function SegmentRow({
                   segment.artiverseUnit !== undefined && segment.artiverseDay !== undefined
                     ? `unit ${segment.artiverseUnit} — day ${segment.artiverseDay}${unit?.whatChildrenMake ? ` · reference: ${unit.whatChildrenMake.toLowerCase()}` : ""}`
                     : undefined,
-                description:
-                  "the main making session. children work on a3 paper using the medium of this unit. each unit runs over several sessions so technique can deepen. the reference topic is inspiration only — the actual topic is the child's choice.",
+                description,
                 artiverseUnit: unit
                   ? {
                       medium: unit.medium,
@@ -285,8 +297,7 @@ function SegmentRow({
                 segmentId: segment.segmentId,
                 segmentName: segment.segmentName,
                 title: "experience book",
-                description:
-                  "in the last 10 minutes of every session, children fill in the \"what happened in class today\" part of the experience book together with the teacher. the teacher opens a short discussion — what was your favourite part today? what did you enjoy? what did you not enjoy so much? what game or activity would you like to do again? — encouraging every child to speak. after children leave, the teacher fills in the skill-assessment part of the book privately. these daily notes compile into the child's monthly report card — a specific, warm record of growth that goes home every month.",
+                description,
                 bookLinkSlug: bookSlug,
                 heroImageUrl: bookCoverUrl,
               };
@@ -295,8 +306,7 @@ function SegmentRow({
                 segmentId: segment.segmentId,
                 segmentName: segment.segmentName,
                 title: segment.segmentName,
-                description:
-                  "every child writes or draws what happened today. book goes home.",
+                description,
               };
             }
             onTapSegmentInfo(info);
