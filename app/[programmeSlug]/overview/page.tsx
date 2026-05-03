@@ -15,6 +15,7 @@ import {
   Star,
   BookOpen,
   ChevronRight,
+  ChevronDown,
   FlaskConical,
   Wrench,
   Droplet,
@@ -437,6 +438,10 @@ function ProgrammeOverviewContent() {
   const slug = params.programmeSlug as string;
   const programme = getCurriculumProgramme(slug);
   const [activeSegment, setActiveSegment] = useState<string | null>(null);
+  // Accordion state for the SEGMENTS section — each segment's full
+  // detail (game pool + dual-book / cycle / artiverse / build extras)
+  // collapses by default and opens on click.
+  const [openSegment, setOpenSegment] = useState<string | null>(null);
   // Skills are always-visible posters now — no toggle state needed.
 
   if (!programme) {
@@ -995,72 +1000,95 @@ function ProgrammeOverviewContent() {
           what happens inside each segment — everything in one place
         </SectionTitle>
 
-        <div className="mt-4 space-y-8">
+        <div className="mt-4 space-y-2">
           {gamesTable.map((seg) => {
             const Icon = seg.icon;
+            const isOpen = openSegment === seg.segment;
             return (
-              <div key={seg.segment} className="space-y-3">
-                {/* Pool card */}
-                <div className="overflow-hidden rounded-xl bg-brand-white shadow-card">
-                  <div className={cn("flex items-center gap-2 px-4 py-3", seg.color)}>
-                    <Icon className="h-4 w-4 text-ink" />
-                    <p className="text-[14px] font-extrabold text-ink">{seg.segment}</p>
-                    <span className="ml-auto flex items-center gap-1 text-[10px] font-bold text-ink-muted">
-                      {seg.type === "rotating" ? (
-                        <><RotateCw className="h-3 w-3" /> rotating · {seg.games.length} games</>
-                      ) : (
-                        <><Lock className="h-3 w-3" /> fixed</>
-                      )}
-                      <span className="mx-1">·</span>
-                      {seg.time}
-                    </span>
-                  </div>
-                  <div className="divide-y divide-ink/5">
-                    {seg.games.map((g) => {
-                      const slug = g.name.toLowerCase().replace(/\s+/g, "-");
-                      const img =
-                        getActivityImage(slug) ??
-                        getActivityImage(slug.replace(/s$/, ""));
-                      return (
-                        <div key={g.name} className="flex items-center gap-3 px-4 py-3">
-                          {img ? (
-                            // eslint-disable-next-line @next/next/no-img-element
-                            <img
-                              src={img}
-                              alt=""
-                              className="h-11 w-11 shrink-0 rounded-lg bg-ink/[0.03] object-contain"
-                            />
-                          ) : (
-                            <div
-                              className={cn(
-                                "flex h-11 w-11 shrink-0 items-center justify-center rounded-lg",
-                                seg.color
-                              )}
-                            >
-                              <Icon className="h-5 w-5 text-ink/70" />
-                            </div>
-                          )}
-                          <div className="flex-1">
-                            <p className="text-[13px] font-bold text-ink">{g.name}</p>
-                            <div className="mt-1 flex flex-wrap gap-1">
-                              {g.skills.map((s) => (
-                                <span
-                                  key={s}
-                                  className="rounded-chip bg-brand-orange/10 px-2 py-0.5 text-[10px] font-medium text-brand-orange"
+              <div key={seg.segment} className="overflow-hidden rounded-xl bg-brand-white shadow-card">
+                {/* Header — always visible. Click to expand the segment's
+                    full detail (game pool + any extras). */}
+                <button
+                  type="button"
+                  onClick={() => setOpenSegment(isOpen ? null : seg.segment)}
+                  className={cn(
+                    "flex w-full items-center gap-2 px-3 py-2.5 text-left transition",
+                    seg.color
+                  )}
+                  aria-expanded={isOpen}
+                >
+                  <Icon className="h-4 w-4 text-ink" />
+                  <p className="text-[13px] font-extrabold text-ink">{seg.segment}</p>
+                  <span className="ml-auto flex items-center gap-1 text-[10px] font-bold text-ink-muted">
+                    {seg.type === "rotating" ? (
+                      <><RotateCw className="h-3 w-3" /> {seg.games.length} games</>
+                    ) : (
+                      <><Lock className="h-3 w-3" /> fixed</>
+                    )}
+                    <span className="mx-1">·</span>
+                    {seg.time}
+                  </span>
+                  <ChevronDown
+                    className={cn(
+                      "h-4 w-4 text-ink/60 transition-transform",
+                      isOpen && "rotate-180"
+                    )}
+                  />
+                </button>
+
+                {/* Expanded body — pool list + extras */}
+                {isOpen && (
+                  <div className="space-y-3 border-t border-ink/5 p-3">
+                    {/* Pool list */}
+                    <div className="overflow-hidden rounded-lg bg-brand-cream/40">
+                      <div className="divide-y divide-ink/5">
+                        {seg.games.map((g) => {
+                          const slug = g.name.toLowerCase().replace(/\s+/g, "-");
+                          const img =
+                            getActivityImage(slug) ??
+                            getActivityImage(slug.replace(/s$/, ""));
+                          return (
+                            <div key={g.name} className="flex items-center gap-2.5 px-3 py-2">
+                              {img ? (
+                                // eslint-disable-next-line @next/next/no-img-element
+                                <img
+                                  src={img}
+                                  alt=""
+                                  className="h-9 w-9 shrink-0 rounded-md bg-ink/[0.03] object-contain"
+                                />
+                              ) : (
+                                <div
+                                  className={cn(
+                                    "flex h-9 w-9 shrink-0 items-center justify-center rounded-md",
+                                    seg.color
+                                  )}
                                 >
-                                  {s}
-                                </span>
-                              ))}
+                                  <Icon className="h-4 w-4 text-ink/70" />
+                                </div>
+                              )}
+                              <div className="flex-1">
+                                <p className="text-[12px] font-bold text-ink">{g.name}</p>
+                                {g.skills.length > 0 && (
+                                  <div className="mt-0.5 flex flex-wrap gap-1">
+                                    {g.skills.map((s) => (
+                                      <span
+                                        key={s}
+                                        className="rounded-chip bg-brand-orange/10 px-1.5 py-0.5 text-[9px] font-medium text-brand-orange"
+                                      >
+                                        {s}
+                                      </span>
+                                    ))}
+                                  </div>
+                                )}
+                              </div>
+                              <span className="shrink-0 rounded-chip bg-ink/5 px-1.5 py-0.5 text-[9px] font-bold text-ink-muted">
+                                {g.rotation}
+                              </span>
                             </div>
-                          </div>
-                          <span className="shrink-0 rounded-chip bg-ink/5 px-2 py-0.5 text-[9px] font-bold text-ink-muted">
-                            {g.rotation}
-                          </span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
+                          );
+                        })}
+                      </div>
+                    </div>
 
                 {/* Rotation rule note (rotating segments only) */}
                 {seg.type === "rotating" && (
@@ -1902,6 +1930,8 @@ function ProgrammeOverviewContent() {
               </div>
             ))}
           </div>
+                  </div>
+                )}
                   </div>
                 )}
               </div>
