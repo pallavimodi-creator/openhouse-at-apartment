@@ -188,15 +188,12 @@ export default function ProgrammeDetailPage() {
               above (yellow for art, green for language, blue for
               stem/robotics). */}
           {(() => {
-            // Language storytelling doesn't use the spiral-bound
-            // planner metaphor — it reads as a story flow rather
-            // than a punched workbook — so the band is suppressed
-            // for that category.
-            if (programme.category === "language") return null;
             const bandTone =
-              programme.category === "stem"
-                ? "bg-segment-blue/70"
-                : "bg-segment-yellow/70";
+              programme.category === "language"
+                ? "bg-segment-green/70"
+                : programme.category === "stem"
+                  ? "bg-segment-blue/70"
+                  : "bg-segment-yellow/70";
             return (
               <div className={`flex items-center justify-around px-3 py-2 ${bandTone}`}>
                 {Array.from({ length: 14 }).map((_, i) => (

@@ -606,7 +606,7 @@ export const languageStorytelling35: CurriculumProgramme = {
   tagline:
     "build listening, speaking, reading, and writing through stories, songs, and mark-making.",
   description:
-    "Across 8 books and 48 sessions, children build all five language skills — listening, speaking, reading, vocabulary, and pre-writing — through one structure: the story. Every segment of every session draws from the same book, so words come back again and again until children own them.",
+    "Children learn language through the world of stories. Through books, songs, games, and practice, they build vocabulary, speaking, reading, and early writing. Words are learnt in context and repeated until they are owned.",
   totalSessions: 48,
   skillAreas: [
     {
