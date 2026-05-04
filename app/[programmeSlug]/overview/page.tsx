@@ -1016,42 +1016,42 @@ function ProgrammeOverviewContent() {
                 {
                   emoji: "🖐️",
                   label: "art gym",
-                  skill: "fine motor",
+                  skill: "Fine motor",
                   body: "The laminated book trains hand control through short, focused mark-making.",
                   tone: "bg-segment-yellow/30",
                 },
                 {
                   emoji: "✏️",
                   label: "scribble book",
-                  skill: "creative expression",
+                  skill: "Creative expression",
                   body: "Open prompts invite the child to invent — there is no correct answer.",
                   tone: "bg-segment-yellow/30",
                 },
                 {
                   emoji: "🎮",
                   label: "art games",
-                  skill: "art skills through play",
+                  skill: "Art skills through play",
                   body: "One game per session — children practise a specific skill the way children practise: by playing.",
                   tone: "bg-segment-green/25",
                 },
                 {
                   emoji: "🌍",
                   label: "artiverse",
-                  skill: "material exploration",
+                  skill: "Material exploration",
                   body: "12 projects, 2 days each, 2 distinct artworks. Every project deepens command of one medium.",
                   tone: "bg-segment-blue/25",
                 },
                 {
                   emoji: "👴",
                   label: "artistotle",
-                  skill: "story narrative · cultural exposure",
+                  skill: "Story narrative · cultural exposure",
                   body: "6 illustrators, 3 days each, 1 finished piece. Children meet an artist's voice and make in their spirit.",
                   tone: "bg-brand-orange/15",
                 },
                 {
                   emoji: "📓",
                   label: "experience book",
-                  skill: "reflection",
+                  skill: "Reflection",
                   body: "The teacher records the day with the children — a daily mark of what was noticed and built.",
                   tone: "bg-segment-pink/30",
                 },
@@ -1061,7 +1061,7 @@ function ProgrammeOverviewContent() {
                     <span aria-hidden className="mr-1.5 text-[14px]">{row.emoji}</span>
                     {row.label}
                   </p>
-                  <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.05em] text-brand-orange">
+                  <p className="mt-1 text-[10px] font-semibold tracking-normal text-brand-orange">
                     {row.skill}
                   </p>
                   <p className="mt-1.5 text-[11.5px] leading-relaxed text-ink-muted">
