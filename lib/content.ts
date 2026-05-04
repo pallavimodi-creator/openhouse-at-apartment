@@ -236,6 +236,11 @@ export const ACTIVITY_IMAGES: Record<string, string> = {
   "stitch-me": "/games/art-3-5/stitch-me.png",
   "mix-it-up": "/games/art-3-5/mix-it-up.png",
   "colour-riddles": "/games/art-3-5/colour-riddles.png",
+  // The activity title was renamed to "ryb riddles" but the asset
+  // file lives under the original colour-riddles slug. The overview
+  // SEGMENTS accordion looks the image up by slug-from-title — alias
+  // the new slug to the same file.
+  "ryb-riddles": "/games/art-3-5/colour-riddles.png",
   "mini-artventure": "/games/art-3-5/mini-artventure.png",
   "i-spot-texture": "/games/art-3-5/i-spot-texture.png",
   "magna-tiles": "/games/art-3-5/magna-tiles.png",

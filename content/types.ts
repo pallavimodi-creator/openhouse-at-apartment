@@ -310,6 +310,15 @@ export interface CurriculumSessionEntry {
   artiverseUnit?: number;
   artiverseDay?: number;
   artiverseUnitName?: string;
+  // Language Through Storytelling segments
+  rollRhyme?: string; // song id — what plays in Roll & Rhyme today
+  bookOClock?: string; // book id (e.g. "book-1") — book read today
+  wordsmiths?: string; // wordsmiths resource id (rotates per book)
+  playWrites?: string; // material rotated for Play-Writes today
+  // Language-specific metadata — anchors Book'o'Clock to its 6-day arc
+  bookOrder?: number; // 1..8 — which book is being read
+  bookDay?: number; // 1..6 — day in the 6-day arc
+  bookTitle?: string; // resolved title for quick render
   // Robotics-specific metadata
   buildModel?: string; // "See-saw" | "Weighing Scale" | "Crane"
   buildDay?: number; // 1..6 for 5-8, 1..4 for 8-12

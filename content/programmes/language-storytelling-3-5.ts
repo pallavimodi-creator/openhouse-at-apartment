@@ -1,6 +1,7 @@
 import type {
   CurriculumProgramme,
   CurriculumActivity,
+  CurriculumSessionEntry,
   LanguageBook,
   ProgrammeSong,
 } from "@/content/types";
@@ -506,6 +507,103 @@ const songs: ProgrammeSong[] = [
   },
 ];
 
+/* ─── 48-session schedule ─────────────────────────────────────────
+ * 8 books × 6 days = 48 sessions. Each book is taught in two halves:
+ * days 1–3 introduce, then a two-book gap, then days 4–6 deepen.
+ * The schedule below is the canonical 6-3-2 spiral for an 8-book set.
+ */
+
+const BOOK_SCHEDULE: Array<{ bookOrder: number; bookDay: number }> = [
+  // Sessions 1–9: introduce books 1, 2, 3
+  { bookOrder: 1, bookDay: 1 }, { bookOrder: 1, bookDay: 2 }, { bookOrder: 1, bookDay: 3 },
+  { bookOrder: 2, bookDay: 1 }, { bookOrder: 2, bookDay: 2 }, { bookOrder: 2, bookDay: 3 },
+  { bookOrder: 3, bookDay: 1 }, { bookOrder: 3, bookDay: 2 }, { bookOrder: 3, bookDay: 3 },
+  // Sessions 10–12: book 1 returns (gap = 2 books)
+  { bookOrder: 1, bookDay: 4 }, { bookOrder: 1, bookDay: 5 }, { bookOrder: 1, bookDay: 6 },
+  // Sessions 13–15: introduce book 4
+  { bookOrder: 4, bookDay: 1 }, { bookOrder: 4, bookDay: 2 }, { bookOrder: 4, bookDay: 3 },
+  // Sessions 16–18: book 2 returns
+  { bookOrder: 2, bookDay: 4 }, { bookOrder: 2, bookDay: 5 }, { bookOrder: 2, bookDay: 6 },
+  // Sessions 19–21: introduce book 5
+  { bookOrder: 5, bookDay: 1 }, { bookOrder: 5, bookDay: 2 }, { bookOrder: 5, bookDay: 3 },
+  // Sessions 22–24: book 3 returns
+  { bookOrder: 3, bookDay: 4 }, { bookOrder: 3, bookDay: 5 }, { bookOrder: 3, bookDay: 6 },
+  // Sessions 25–27: introduce book 6
+  { bookOrder: 6, bookDay: 1 }, { bookOrder: 6, bookDay: 2 }, { bookOrder: 6, bookDay: 3 },
+  // Sessions 28–30: book 4 returns
+  { bookOrder: 4, bookDay: 4 }, { bookOrder: 4, bookDay: 5 }, { bookOrder: 4, bookDay: 6 },
+  // Sessions 31–33: introduce book 7
+  { bookOrder: 7, bookDay: 1 }, { bookOrder: 7, bookDay: 2 }, { bookOrder: 7, bookDay: 3 },
+  // Sessions 34–36: book 5 returns
+  { bookOrder: 5, bookDay: 4 }, { bookOrder: 5, bookDay: 5 }, { bookOrder: 5, bookDay: 6 },
+  // Sessions 37–39: introduce book 8
+  { bookOrder: 8, bookDay: 1 }, { bookOrder: 8, bookDay: 2 }, { bookOrder: 8, bookDay: 3 },
+  // Sessions 40–42: book 6 returns
+  { bookOrder: 6, bookDay: 4 }, { bookOrder: 6, bookDay: 5 }, { bookOrder: 6, bookDay: 6 },
+  // Sessions 43–45: book 7 returns
+  { bookOrder: 7, bookDay: 4 }, { bookOrder: 7, bookDay: 5 }, { bookOrder: 7, bookDay: 6 },
+  // Sessions 46–48: book 8 returns
+  { bookOrder: 8, bookDay: 4 }, { bookOrder: 8, bookDay: 5 }, { bookOrder: 8, bookDay: 6 },
+];
+
+// Songs in the order they get introduced across the 48 sessions.
+// Mulberry Bush (1) and Knick Knack (2) come in week 1, then If You're
+// Happy (3) when book 4 (The Color Monster) arrives, then Walking
+// Through the Jungle (4) mid-programme, then Hole in the Bottom of the
+// Sea (5) for the second half. The picker uses the *latest available*
+// song id and rotates among the introduced ones.
+const SONG_INTRO_AT_SESSION: Record<number, number> = {
+  1: 1, // Mulberry Bush from session 1
+  2: 1, // Knick Knack from session 1
+  3: 13, // If You're Happy when book 4 (The Color Monster) starts
+  4: 19, // Walking Through the Jungle when book 5 starts
+  5: 31, // Hole in the Bottom of the Sea second half (when book 7 starts)
+};
+
+const PLAY_WRITES_MATERIALS = [
+  "crayons",
+  "yarn",
+  "clay",
+  "sequins",
+  "stamp pad",
+];
+
+const PLAYGROUND_ROTATION = Object.keys(playgroundGames);
+
+function pickSong(sessionNumber: number): string {
+  const introduced: number[] = [];
+  for (const [songOrder, intro] of Object.entries(SONG_INTRO_AT_SESSION)) {
+    if (sessionNumber >= intro) introduced.push(Number(songOrder));
+  }
+  // Rotate among introduced songs by sessionNumber so the playlist
+  // cycles, but always favours the newest song right after it joins.
+  const ordered = introduced.sort((a, b) => a - b);
+  const id = ordered[(sessionNumber - 1) % ordered.length];
+  return `song-${id}`;
+}
+
+function buildLanguageSessionTable(): CurriculumSessionEntry[] {
+  return BOOK_SCHEDULE.map((slot, i) => {
+    const sessionNumber = i + 1;
+    const book = languageBooks.find((b) => b.order === slot.bookOrder);
+    return {
+      sessionNumber,
+      topicLayer: 1,
+      // Language segment assignments
+      rollRhyme: pickSong(sessionNumber),
+      bookOClock: `book-${slot.bookOrder}`,
+      wordsmiths: book?.vocabularyType ?? "story-calendar",
+      playWrites: PLAY_WRITES_MATERIALS[(sessionNumber - 1) % PLAY_WRITES_MATERIALS.length],
+      playground: PLAYGROUND_ROTATION[(sessionNumber - 1) % PLAYGROUND_ROTATION.length],
+      experienceBook: "experience-book",
+      // Book metadata for the day-plan renderer
+      bookOrder: slot.bookOrder,
+      bookDay: slot.bookDay,
+      bookTitle: book?.title,
+    };
+  });
+}
+
 /* ─── Programme ───────────────────────────────────────────────────── */
 
 export const languageStorytelling35: CurriculumProgramme = {
@@ -691,7 +789,7 @@ export const languageStorytelling35: CurriculumProgramme = {
       type: "fixed",
     },
   ],
-  sessionTable: [],
+  sessionTable: buildLanguageSessionTable(),
   activities: { ...playgroundGames, ...wordsmithsResources },
   checkpoints: [],
   languageBooks,

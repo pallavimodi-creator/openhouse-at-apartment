@@ -96,6 +96,12 @@ interface ResolvedSegment {
   buildModel?: string;
   buildDay?: number;
   buildDayLabel?: string;
+  // Language Through Storytelling — book + day of the 6-day arc
+  // for the Book'o'Clock segment, set on the resolved entry only when
+  // the session belongs to a language programme.
+  bookOrder?: number;
+  bookDay?: number;
+  bookTitle?: string;
 }
 
 // Maps segment IDs to session entry fields
@@ -110,6 +116,11 @@ const SEGMENT_FIELD_MAP: Record<string, keyof CurriculumSessionEntry> = {
   experiment: "experiment",
   build: "build",
   "experience-book": "experienceBook",
+  // Language Through Storytelling segments
+  "roll-rhyme": "rollRhyme",
+  "book-o-clock": "bookOClock",
+  wordsmiths: "wordsmiths",
+  "play-writes": "playWrites",
 };
 
 function resolveSegments(
@@ -141,6 +152,11 @@ function resolveSegments(
         artiverseDay: session.artiverseDay,
         artiverseUnitName: session.artiverseUnitName,
         artiverseUnitData: unitData,
+        // Language Book'o'Clock — pass book metadata so the renderer
+        // can show "Day N of 6 — [Book Title]" inside the card.
+        bookOrder: session.bookOrder,
+        bookDay: session.bookDay,
+        bookTitle: session.bookTitle,
       };
     }
 
@@ -366,6 +382,20 @@ function SegmentRow({
                   {segment.artiverseUnitData
                     ? `reference: ${segment.artiverseUnitData.whatChildrenMake.toLowerCase()}`
                     : segment.artiverseUnitName}
+                </p>
+              </div>
+            </div>
+          ) : segment.segmentId === "book-o-clock" && segment.bookTitle ? (
+            <div className="flex items-start gap-2.5">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-segment-blue/30 text-[16px] font-extrabold text-ink">
+                {segment.bookOrder}
+              </span>
+              <div className="flex-1">
+                <p className="text-[12px] font-medium text-ink">
+                  Day {segment.bookDay} of 6 · book {segment.bookOrder}
+                </p>
+                <p className="mt-0.5 text-[11px] text-ink-muted">
+                  {segment.bookTitle.toLowerCase()}
                 </p>
               </div>
             </div>
