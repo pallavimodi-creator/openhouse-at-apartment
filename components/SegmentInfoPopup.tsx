@@ -21,6 +21,14 @@ export interface ArtiverseUnitInfo {
   /** Optional reference images shown in a small thumbnail strip below the
    *  hero — e.g. day-2 spreads or alternates. */
   extraImages?: string[];
+  /**
+   * Distinguishes 3-5 art's two modes (the 3-5 programme hosts both
+   * artiverse AND artistotle units in the same `artiverse` segment
+   * slot, with `days` separating them). For other programmes every
+   * unit is just "artiverse" regardless of its day count, so the
+   * caller passes "artiverse" explicitly.
+   */
+  mode?: "artiverse" | "artistotle";
 }
 
 /**
@@ -109,13 +117,13 @@ export function SegmentInfoPopup({ info }: { info: SegmentInfo }) {
             <span className="absolute left-4 top-4 rounded-chip bg-black/40 px-2.5 py-0.5 text-[10px] font-semibold tracking-normal text-white backdrop-blur-sm">
               {info.segmentName}
             </span>
-            {unit && (unit.days === 2 || unit.days === 3) && (
+            {unit && (unit.mode === "artistotle" || unit.mode === "artiverse") && (
               <span
                 aria-hidden="true"
-                title={unit.days === 3 ? "Artistotle — 3 days, 1 project" : "Artiverse — 2 days, 2 distinct artworks"}
+                title={unit.mode === "artistotle" ? "Artistotle — 3 days, 1 project" : `Artiverse — ${unit.days} day${unit.days > 1 ? "s" : ""}`}
                 className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-segment-blue/85 text-[18px] shadow-md ring-2 ring-white/70"
               >
-                {unit.days === 3 ? "👴" : "🌍"}
+                {unit.mode === "artistotle" ? "👴" : "🌍"}
               </span>
             )}
           </div>
@@ -234,19 +242,7 @@ export function SegmentInfoPopup({ info }: { info: SegmentInfo }) {
               The picture is a reference only — children pick their own subject.
             </p>
           </div>
-          {unit.days === 2 && (
-            <div className="rounded-card bg-segment-yellow/40 p-3 ring-1 ring-ink/5">
-              <p className="text-[10px] font-semibold tracking-wider text-ink">
-                <span aria-hidden className="mr-1">🌍</span>
-                Artiverse · 2 continuous days · 2 distinct artworks
-              </p>
-              <p className="mt-1 text-[12px] leading-relaxed text-ink-muted">
-                The same medium and technique runs across both sessions, but each
-                child makes a new artwork on day 2 — not a continuation of day 1.
-              </p>
-            </div>
-          )}
-          {unit.days === 3 && (
+          {unit.mode === "artistotle" && (
             <div className="rounded-card bg-segment-blue/30 p-3 ring-1 ring-ink/5">
               <p className="text-[10px] font-semibold tracking-wider text-ink">
                 <span aria-hidden className="mr-1">👴</span>
@@ -259,13 +255,27 @@ export function SegmentInfoPopup({ info }: { info: SegmentInfo }) {
               </p>
             </div>
           )}
-          {unit.days > 3 && (
+          {unit.mode === "artiverse" && unit.days === 2 && (
             <div className="rounded-card bg-segment-yellow/40 p-3 ring-1 ring-ink/5">
               <p className="text-[10px] font-semibold tracking-wider text-ink">
-                {unit.days} continuous days
+                <span aria-hidden className="mr-1">🌍</span>
+                Artiverse · 2 continuous days · 2 distinct artworks
               </p>
               <p className="mt-1 text-[12px] leading-relaxed text-ink-muted">
-                The same medium and technique run across {unit.days} sessions.
+                The same medium and technique runs across both sessions, but each
+                child makes a new artwork on day 2 — not a continuation of day 1.
+              </p>
+            </div>
+          )}
+          {unit.mode === "artiverse" && unit.days > 2 && (
+            <div className="rounded-card bg-segment-yellow/40 p-3 ring-1 ring-ink/5">
+              <p className="text-[10px] font-semibold tracking-wider text-ink">
+                <span aria-hidden className="mr-1">🌍</span>
+                Artiverse · {unit.days} continuous days
+              </p>
+              <p className="mt-1 text-[12px] leading-relaxed text-ink-muted">
+                The same medium and technique run across {unit.days} sessions in
+                this unit.
               </p>
             </div>
           )}

@@ -199,6 +199,7 @@ function SegmentRow({
   bookSlug,
   bookCoverUrl,
   gymBookUrl,
+  programmeSlug,
 }: {
   segment: ResolvedSegment;
   onTapActivity: (activity: CurriculumActivity) => void;
@@ -207,6 +208,9 @@ function SegmentRow({
   bookSlug?: string;
   bookCoverUrl?: string;
   gymBookUrl?: string;
+  /** Used to disambiguate 3-5 art's artiverse / artistotle modes from
+   *  other programmes' artiverse-only units when building popup info. */
+  programmeSlug?: string;
 }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [viewingActivity, setViewingActivity] = useState<CurriculumActivity | null>(
@@ -305,6 +309,13 @@ function SegmentRow({
                       topicOptions: unit.topicOptions,
                       heroImageUrl: unit.heroImageUrl,
                       extraImages: unit.extraImages,
+                      // 3-5 art puts artiverse + artistotle in the same
+                      // segment slot, distinguished by days === 3. Other
+                      // programmes have artiverse only.
+                      mode:
+                        programmeSlug === "art-design-3-5" && unit.days === 3
+                          ? "artistotle"
+                          : "artiverse",
                     }
                   : undefined,
               };
@@ -685,6 +696,7 @@ export function DayPlan({
             bookSlug={bookSlug}
             bookCoverUrl={bookCoverUrl}
             gymBookUrl={gymBookUrl}
+            programmeSlug={programme.slug}
           />
         ))}
       </div>

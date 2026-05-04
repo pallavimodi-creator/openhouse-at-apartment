@@ -1018,46 +1018,58 @@ function ProgrammeOverviewContent() {
                   label: "art gym",
                   skill: "Fine motor",
                   body: "The laminated book trains hand control through short, focused mark-making.",
-                  tone: "bg-segment-yellow/30",
+                  ring: "ring-segment-yellow",
+                  accent: "text-ink",
                 },
                 {
                   emoji: "✏️",
                   label: "scribble book",
                   skill: "Creative expression",
                   body: "Open prompts invite the child to invent — there is no correct answer.",
-                  tone: "bg-segment-yellow/30",
+                  ring: "ring-segment-yellow",
+                  accent: "text-ink",
                 },
                 {
                   emoji: "🎮",
                   label: "art games",
                   skill: "Art skills through play",
                   body: "One game per session — children practise a specific skill the way children practise: by playing.",
-                  tone: "bg-segment-green/25",
+                  ring: "ring-segment-green",
+                  accent: "text-ink",
                 },
                 {
                   emoji: "🌍",
                   label: "artiverse",
                   skill: "Material exploration",
                   body: "12 projects, 2 days each, 2 distinct artworks. Every project deepens command of one medium.",
-                  tone: "bg-segment-blue/25",
+                  ring: "ring-segment-blue",
+                  accent: "text-ink",
                 },
                 {
                   emoji: "👴",
                   label: "artistotle",
                   skill: "Story narrative · cultural exposure",
                   body: "6 illustrators, 3 days each, 1 finished piece. Children meet an artist's voice and make in their spirit.",
-                  tone: "bg-brand-orange/15",
+                  ring: "ring-brand-orange",
+                  accent: "text-ink",
                 },
                 {
                   emoji: "📓",
                   label: "experience book",
                   skill: "Reflection",
                   body: "The teacher records the day with the children — a daily mark of what was noticed and built.",
-                  tone: "bg-segment-pink/30",
+                  ring: "ring-segment-pink",
+                  accent: "text-ink",
                 },
               ].map((row) => (
-                <div key={row.label} className={cn("rounded-xl p-3 ring-1 ring-ink/5", row.tone)}>
-                  <p className="text-[12px] font-extrabold lowercase text-ink">
+                <div
+                  key={row.label}
+                  className={cn(
+                    "rounded-xl bg-brand-white p-3 ring-2",
+                    row.ring,
+                  )}
+                >
+                  <p className={cn("text-[12px] font-extrabold lowercase", row.accent)}>
                     <span aria-hidden className="mr-1.5 text-[14px]">{row.emoji}</span>
                     {row.label}
                   </p>
@@ -1080,7 +1092,7 @@ function ProgrammeOverviewContent() {
             </p>
             <div className="mt-3 grid gap-3 md:grid-cols-2">
               {/* Artiverse panel */}
-              <div className="relative overflow-hidden rounded-2xl bg-segment-blue/15 p-4 ring-1 ring-ink/5">
+              <div className="relative overflow-hidden rounded-2xl bg-brand-white p-4 ring-2 ring-segment-blue">
                 <span aria-hidden className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-segment-blue/80 text-[18px] shadow-md ring-2 ring-white/70">
                   🌍
                 </span>
@@ -1105,7 +1117,7 @@ function ProgrammeOverviewContent() {
               </div>
 
               {/* Artistotle panel */}
-              <div className="relative overflow-hidden rounded-2xl bg-brand-orange/10 p-4 ring-1 ring-ink/5">
+              <div className="relative overflow-hidden rounded-2xl bg-brand-white p-4 ring-2 ring-brand-orange">
                 <span aria-hidden className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-brand-orange/85 text-[18px] shadow-md ring-2 ring-white/70">
                   👴
                 </span>
@@ -1798,7 +1810,7 @@ function ProgrammeOverviewContent() {
                 {seg.segment === "artiverse / artistotle" && isArt && programme.ageGroup === "3-5" && (
                   <div className="space-y-6">
                     {/* ── ARTIVERSE block ── */}
-                    <div className="relative rounded-2xl bg-segment-blue/15 p-5 md:p-6">
+                    <div className="relative rounded-2xl bg-brand-white p-5 ring-2 ring-segment-blue md:p-6">
                       <span
                         aria-hidden="true"
                         title="Artiverse — 2 days, 2 distinct artworks"
@@ -1833,7 +1845,7 @@ function ProgrammeOverviewContent() {
                     </div>
 
                     {/* ── ARTISTOTLE block ── */}
-                    <div className="relative rounded-2xl bg-brand-orange/10 p-5 md:p-6">
+                    <div className="relative rounded-2xl bg-brand-white p-5 ring-2 ring-brand-orange md:p-6">
                       <span
                         aria-hidden="true"
                         title="Artistotle — 3 days, 1 finished project"

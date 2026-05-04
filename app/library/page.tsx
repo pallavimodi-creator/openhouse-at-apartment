@@ -570,6 +570,7 @@ export default function LibraryPage() {
           days: u.days,
           topicOptions: u.topicOptions,
           heroImageUrl: u.heroImageUrl,
+          mode: isArtistotle ? "artistotle" : "artiverse",
         },
       });
     } else {
@@ -776,17 +777,30 @@ export default function LibraryPage() {
                                         className="h-16 w-16 rounded-lg bg-ink/[0.03] object-contain"
                                       />
                                       {(() => {
-                                        // Show 🌍 on artiverse units / artiverse-book primer.
-                                        // Show 👴 on artistotle (3-day) units / artistotle-book primer.
+                                        // Mode badges only mean two-different-things in
+                                        // 3-5 art (where the artiverse segment hosts BOTH
+                                        // artiverse and artistotle units, distinguished by
+                                        // days === 3). For 5-8 and 8-12 every unit is an
+                                        // artiverse unit — days varies but it's all one mode,
+                                        // so we either show 🌍 on every unit or none. Pick
+                                        // 🌍 to keep the "this is part of the artiverse" cue.
+                                        const slug = it.programmeSlug;
+                                        const is35Art = slug === "art-design-3-5";
                                         const isArtiverseBook = it.kind === "primer" && it.id.endsWith("/artiverse-book");
                                         const isArtistotleBook = it.kind === "primer" && it.id.endsWith("/artistotle-book");
-                                        const isArtistotleUnit = it.kind === "artiverse" && it.item.days === 3;
-                                        const isArtiverseUnit = it.kind === "artiverse" && it.item.days !== 3;
-                                        const emoji = isArtistotleBook || isArtistotleUnit
-                                          ? "👴"
-                                          : isArtiverseBook || isArtiverseUnit
-                                            ? "🌍"
-                                            : null;
+                                        const isArtArtiverse = slug?.startsWith("art-design");
+                                        let emoji: string | null = null;
+                                        if (isArtistotleBook) emoji = "👴";
+                                        else if (isArtiverseBook) emoji = "🌍";
+                                        else if (it.kind === "artiverse") {
+                                          if (is35Art) {
+                                            // 3-5 art: distinguish artiverse (1-2 days) from artistotle (3 days)
+                                            emoji = it.item.days === 3 ? "👴" : "🌍";
+                                          } else if (isArtArtiverse) {
+                                            // 5-8 / 8-12 art: every unit is artiverse regardless of days
+                                            emoji = "🌍";
+                                          }
+                                        }
                                         if (!emoji) return null;
                                         return (
                                           <span
