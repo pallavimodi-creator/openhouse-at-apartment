@@ -58,14 +58,15 @@ function BookCard({
         aria-expanded={isOpen}
         className="flex w-full items-stretch text-left transition active:scale-[0.99]"
       >
-        {/* Cover */}
-        <div className="flex h-[120px] w-[90px] shrink-0 items-center justify-center bg-segment-blue/20">
+        {/* Cover — full image visible (object-contain), padded so the
+            book "sits" inside a tinted frame instead of being cropped. */}
+        <div className="flex h-[150px] w-[110px] shrink-0 items-center justify-center bg-segment-blue/15 p-2">
           {book.heroImageUrl ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={book.heroImageUrl}
-              alt=""
-              className="h-full w-full object-cover"
+              alt={`${book.title} cover`}
+              className="max-h-full max-w-full object-contain shadow-md"
               onError={(e) => {
                 (e.currentTarget as HTMLImageElement).style.display = "none";
               }}
