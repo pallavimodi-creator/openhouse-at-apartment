@@ -72,7 +72,12 @@ export function ImageFlipbook({ pages, altPrefix = "page" }: ImageFlipbookProps)
     return () => ro.disconnect();
   }, []);
 
-  const mounted = !!HTMLFlipBook;
+  // Wait for BOTH the lazy HTMLFlipBook component AND a real container
+  // width before rendering the book. Without this, page-flip throws
+  // "Invalid width or height" on the very first paint because the
+  // ResizeObserver hasn't yet reported a containerWidth and pageWidth
+  // computes to 0.
+  const ready = !!HTMLFlipBook && containerWidth > 0;
 
   // First image's aspect ratio sets the book proportions. Look for the
   // first image page (text pages don't have a natural aspect).
@@ -119,7 +124,7 @@ export function ImageFlipbook({ pages, altPrefix = "page" }: ImageFlipbookProps)
     <div ref={containerRef} className="w-full">
       {/* Mounting placeholder so layout doesn't jump while the dynamic
           chunk loads. */}
-      {!mounted ? (
+      {!ready ? (
         <div
           className="mx-auto flex w-full items-center justify-center rounded-2xl bg-brand-cream"
           style={{ height: 360 }}
