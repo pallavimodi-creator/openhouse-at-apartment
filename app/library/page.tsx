@@ -313,19 +313,27 @@ function buildItemsFor(prog: CurriculumProgramme): LibraryItem[] {
   }
 
   if (prog.segmentDefinitions.some((s) => s.id === "log-book")) {
+    // 3-5 art: the teacher fills the experience book on behalf of the
+    // children (they can't yet write); for older art programmes the
+    // children fill it themselves with the teacher's help.
+    const is35Art = programmeSlug === "art-design-3-5";
+    const cardDesc = is35Art
+      ? "the teacher fills in \"what happened in class today\" while the children share. after children leave, the teacher completes the skill-assessment part privately."
+      : "children fill in \"what happened in class today\" with the teacher. after children leave, the teacher fills the skill-assessment part privately.";
+    const popupDesc = is35Art
+      ? "the teacher fills in the \"what happened in class today\" part of the experience book while the children share. the teacher opens a short discussion — favourite part? what you enjoyed? what you didn't? what to do again? — and every child speaks. after children leave, the teacher completes the skill-assessment part of the book privately. these daily notes compile into the child's monthly report card that goes home every month."
+      : "children fill in the \"what happened in class today\" part of the experience book together with the teacher. the teacher opens a short discussion — what was your favourite part today? what did you enjoy? what did you not enjoy so much? what game or activity would you like to do again? — encouraging every child to speak. after children leave, the teacher fills in the skill-assessment part of the book privately. these daily notes compile into the child's monthly report card that goes home every month.";
     items.push({
       kind: "primer",
       id: `${programmeSlug}/log-book-overview`,
       segment: "log-book",
       title: "experience book",
-      description:
-        "children fill in \"what happened in class today\" with the teacher. after children leave, the teacher fills the skill-assessment part privately.",
+      description: cardDesc,
       info: {
         segmentId: "log-book",
         segmentName: "Experience Book",
         title: "experience book",
-        description:
-          "children fill in the \"what happened in class today\" part of the experience book together with the teacher. the teacher opens a short discussion — what was your favourite part today? what did you enjoy? what did you not enjoy so much? what game or activity would you like to do again? — encouraging every child to speak. after children leave, the teacher fills in the skill-assessment part of the book privately. these daily notes compile into the child's monthly report card that goes home every month.",
+        description: popupDesc,
         bookLinkSlug: bookMap[programmeSlug],
         heroImageUrl: BOOK_COVER_BY_PROGRAMME[programmeSlug],
       },
@@ -498,12 +506,17 @@ export default function LibraryPage() {
       const sections: Section[] = Array.from(buckets.entries())
         .map(([segId, items]) => {
           // 3-5 art's "artiverse" segment is rendered as Artiverse / Artistotle.
+          // Add a fun blue emoji per "world" — globe for artiverse,
+          // older-man face for artistotle (the philosopher) — so the
+          // section bands separate visually when scrolling.
           const label =
             segId === "artiverse" && prog.slug === "art-design-3-5"
-              ? "artiverse · artistotle"
-              : segId === "experience-book" || segId === "log-book"
-                ? "experience book"
-                : segId.replace(/-/g, " ");
+              ? "🌍 artiverse · 👴 artistotle"
+              : segId === "artiverse"
+                ? "🌍 artiverse"
+                : segId === "experience-book" || segId === "log-book"
+                  ? "experience book"
+                  : segId.replace(/-/g, " ");
           return { segmentId: segId, label, items };
         })
         .sort((a, b) => rankFor(a.segmentId) - rankFor(b.segmentId));

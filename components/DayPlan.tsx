@@ -347,6 +347,17 @@ function SegmentRow({
               } else {
                 thumb = gymBookUrl;
               }
+              // 3-5 art programme rotates the laminated art gym book
+              // with the scribble book on consecutive sessions. Surface
+              // the rotation so teachers don't have to open the popup
+              // to figure out which book is paired with today's.
+              const isArtGymBook = label.startsWith("art gym book");
+              const isScribbleBook = label.startsWith("scribble book");
+              const rotationNote = isArtGymBook
+                ? "rotates with the scribble book"
+                : isScribbleBook
+                  ? "rotates with the art gym book"
+                  : null;
               return (
                 <div className="flex items-start gap-2.5">
                   {thumb && (
@@ -357,9 +368,16 @@ function SegmentRow({
                       className="h-12 w-12 shrink-0 rounded-md bg-ink/[0.03] object-contain"
                     />
                   )}
-                  <p className="flex-1 text-[12px] font-medium leading-snug text-ink">
-                    {segment.artGymLabel}
-                  </p>
+                  <div className="flex-1">
+                    <p className="text-[12px] font-medium leading-snug text-ink">
+                      {segment.artGymLabel}
+                    </p>
+                    {rotationNote && (
+                      <p className="mt-0.5 text-[11px] italic text-ink-subtle">
+                        {rotationNote}
+                      </p>
+                    )}
+                  </div>
                 </div>
               );
             })()

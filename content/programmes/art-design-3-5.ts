@@ -732,7 +732,7 @@ export const artDesign35: CurriculumProgramme = {
   tagline:
     "build fine motor control, colour awareness, and the ability to express visually.",
   description:
-    "Sessions across five segments: art gym, art games, Artiverse / Artistotle making, experience book, and art care. Each day, children build fine motor skills, develop creative expression, and make artworks using varied mediums and techniques, exploring every idea through artists' work and hands-on creation.",
+    "We teach art through interesting, diverse formats. Children learn through games, curated openhouse materials, and hands-on making. This approach helps them build real skills and express ideas visually through play.",
   totalSessions: 60,
   skillAreas: [
     {
@@ -852,7 +852,7 @@ export const artDesign35: CurriculumProgramme = {
       name: "Experience Book",
       durationRange: "10 min",
       objective:
-        "Children fill in \"what happened in class today\" with the teacher, who opens a short discussion: favourite part? What you enjoyed? What you didn't? What to do again? Every child speaks. After children leave, the teacher fills in the skill-assessment part privately. These daily notes compile into the monthly report card that goes home.",
+        "The teacher fills in \"what happened in class today\" while the children share. The teacher opens a short discussion — favourite part? What you enjoyed? What you didn't? What to do again? — and every child speaks. After children leave, the teacher completes the skill-assessment part privately. These daily notes compile into the monthly report card that goes home.",
       type: "fixed",
     },
     {

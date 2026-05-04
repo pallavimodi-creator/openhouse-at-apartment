@@ -577,7 +577,18 @@ function ProgrammeOverviewContent() {
     "roll-call": { icon: Zap, durationFlex: 9, meaning: "A quick energetic start. Group games that wake up voice, body, and attention — every child playing simultaneously within 2 minutes." },
     playground: { icon: Gamepad2, durationFlex: 22, meaning: "One group game played deeply, with a full debrief. Children practise speaking through play." },
     showtime: { icon: Star, durationFlex: 32, meaning: "Children step into the spotlight. Structured formats that build performance, argument, and conviction." },
-    "log-book": { icon: Notebook, durationFlex: 10, meaning: "Children fill in \"what happened in class today\" with the teacher, who opens a short discussion: favourite part? What you enjoyed? What you didn't? What to do again? Every child speaks. After children leave, the teacher fills the skill-assessment part privately. The daily notes compile into the monthly report card that goes home." },
+    "log-book": {
+      icon: Notebook,
+      durationFlex: 10,
+      // Pull from the programme's own segmentDefinitions so 3-5 art
+      // (where the teacher fills the book on behalf of the children)
+      // and 5-8 / 8-12 (where children fill it themselves) each
+      // surface their own canonical wording. Falls back to the
+      // 5-8/8-12 paragraph if a programme has no objective set.
+      meaning:
+        programme.segmentDefinitions.find((s) => s.id === "log-book")?.objective ??
+        "Children fill in \"what happened in class today\" with the teacher, who opens a short discussion: favourite part? What you enjoyed? What you didn't? What to do again? Every child speaks. After children leave, the teacher fills the skill-assessment part privately. The daily notes compile into the monthly report card that goes home.",
+    },
     "art-care": {
       icon: Sparkles,
       durationFlex: 5,
@@ -659,7 +670,10 @@ function ProgrammeOverviewContent() {
       icon: Dumbbell,
       color: "bg-segment-yellow",
       time: programme.ageGroup === "3-5" ? "15 min" : "15–20 min",
-      type: "fixed" as const,
+      // For 3-5, art gym rotates between the laminated art gym book
+      // and the scribble book — the SEGMENTS chip should reflect that.
+      // 5-8 / 8-12 still cycle book → ext → cue card → ext (also rotation).
+      type: "rotating" as const,
       games:
         programme.ageGroup === "3-5"
           ? [
@@ -946,7 +960,13 @@ function ProgrammeOverviewContent() {
           {/* Stat strip */}
           <div className="grid grid-cols-2 gap-px bg-ink/5 md:grid-cols-4">
             {[
-              { label: "sessions", value: String(programme.totalSessions) },
+              {
+                // 3-5 art is an ongoing programme — call out that the 60
+                // is what's authored so far rather than the curriculum's
+                // total length.
+                label: programme.slug === "art-design-3-5" ? "sessions uploaded" : "sessions",
+                value: String(programme.totalSessions),
+              },
               { label: "age group", value: programme.ageLabel.replace(/^ages?\s+/i, "") },
               {
                 label: "session length",
@@ -971,6 +991,11 @@ function ProgrammeOverviewContent() {
             ))}
           </div>
         </div>
+        {programme.slug === "art-design-3-5" && (
+          <p className="mx-auto mt-3 max-w-2xl text-center text-[11px] italic leading-relaxed text-ink-muted md:text-[12px]">
+            this is an ongoing programme — new sessions are added regularly.
+          </p>
+        )}
       </section>
 
       {/* ─── DAILY FLOW ─── */}
@@ -1315,6 +1340,9 @@ function ProgrammeOverviewContent() {
                             rotates
                           </span>
                         </div>
+                        <span className="mt-1 inline-block rounded-chip bg-brand-orange/10 px-2 py-0.5 text-[10px] font-semibold text-brand-orange">
+                          builds fine motor
+                        </span>
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src="/gym-books/3-5-book.png"
@@ -1346,6 +1374,9 @@ function ProgrammeOverviewContent() {
                             rotates
                           </span>
                         </div>
+                        <span className="mt-1 inline-block rounded-chip bg-brand-orange/10 px-2 py-0.5 text-[10px] font-semibold text-brand-orange">
+                          builds creative expression — visual arts
+                        </span>
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src="/gym-books/3-5-scribble.png"
@@ -1365,7 +1396,7 @@ function ProgrammeOverviewContent() {
                     </div>
 
                     <p className="mt-3 text-[11px] italic text-ink-subtle">
-                      sessions alternate book ↔ scribble. teacher does not teach or correct during art gym — they circulate and name what they see.
+                      They alternate because they build complementary skills — the laminated book trains the hand; the scribble book opens the imagination. Sessions alternate book ↔ scribble. Teacher does not teach or correct during art gym — they circulate and name what they see.
                     </p>
                   </div>
                 )}

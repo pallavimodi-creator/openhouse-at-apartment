@@ -128,6 +128,11 @@ export default function ProgrammeDetailPage() {
         ageLabel={programme.ageLabel}
         description={programme.description}
         category={programme.category}
+        badge={
+          programme.slug === "art-design-3-5"
+            ? `ongoing · ${programme.totalSessions} sessions ready`
+            : undefined
+        }
       />
 
       {/* Day selector */}
