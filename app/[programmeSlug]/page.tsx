@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { useParams, notFound, useRouter } from "next/navigation";
 import { CheckCircle2, Circle } from "lucide-react";
 import { getCurriculumProgramme } from "@/lib/content";
@@ -134,6 +135,31 @@ export default function ProgrammeDetailPage() {
             : undefined
         }
       />
+
+      {/* Journey strip — make the teacher flow explicit:
+          1. start with the overview · 2. you are here (plans) · 3. library for reference */}
+      <section className="mt-5 px-4">
+        <div className="mx-auto flex w-full max-w-5xl flex-wrap items-center gap-2 text-[11px] font-semibold text-ink-muted md:text-[12px]">
+          <Link
+            href={`/${programme.slug}/overview`}
+            className="rounded-chip bg-brand-white px-2.5 py-1 ring-1 ring-ink/10 transition hover:bg-ink/5"
+          >
+            <span className="mr-1 font-bold text-ink-subtle">1</span> overview
+          </Link>
+          <span className="text-ink-subtle">→</span>
+          <span className="rounded-chip bg-brand-orange px-2.5 py-1 font-bold text-white shadow-sm">
+            <span className="mr-1 opacity-80">2</span> today&apos;s plan
+          </span>
+          <span className="text-ink-subtle">→</span>
+          <Link
+            href="/library"
+            className="rounded-chip bg-brand-white px-2.5 py-1 ring-1 ring-ink/10 transition hover:bg-ink/5"
+          >
+            <span className="mr-1 font-bold text-ink-subtle">3</span> library
+            <span className="ml-1 italic font-normal text-ink-subtle">for reference</span>
+          </Link>
+        </div>
+      </section>
 
       {/* Day selector */}
       <section className="mt-6 px-4">

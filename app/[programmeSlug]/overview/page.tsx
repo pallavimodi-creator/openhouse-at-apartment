@@ -928,6 +928,31 @@ function ProgrammeOverviewContent() {
         </Link>
       </div>
 
+      {/* ─── Journey strip — overview is step 1 of 3 ─── */}
+      <section className="mt-3 px-4 md:px-8">
+        <div className="mx-auto flex w-full max-w-5xl flex-wrap items-center gap-2 text-[11px] font-semibold text-ink-muted md:text-[12px]">
+          <span className="rounded-chip bg-brand-orange px-2.5 py-1 font-bold text-white shadow-sm">
+            <span className="mr-1 opacity-80">1</span> overview
+            <span className="ml-1 italic font-normal text-white/85">start here</span>
+          </span>
+          <span className="text-ink-subtle">→</span>
+          <Link
+            href={`/${slug}`}
+            className="rounded-chip bg-brand-white px-2.5 py-1 ring-1 ring-ink/10 transition hover:bg-ink/5"
+          >
+            <span className="mr-1 font-bold text-ink-subtle">2</span> today&apos;s plan
+          </Link>
+          <span className="text-ink-subtle">→</span>
+          <Link
+            href="/library"
+            className="rounded-chip bg-brand-white px-2.5 py-1 ring-1 ring-ink/10 transition hover:bg-ink/5"
+          >
+            <span className="mr-1 font-bold text-ink-subtle">3</span> library
+            <span className="ml-1 italic font-normal text-ink-subtle">for reference</span>
+          </Link>
+        </div>
+      </section>
+
       {/* ─── HERO BAND ─── */}
       <section className="mt-4 px-4 md:px-8">
         <div className="overflow-hidden rounded-2xl bg-brand-cream ring-1 ring-ink/5">

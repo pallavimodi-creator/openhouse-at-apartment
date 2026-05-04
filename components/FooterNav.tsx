@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Home, BookOpen, LayoutGrid, LogOut, Notebook } from "lucide-react";
+import { Home, BookOpen, LayoutGrid, LogOut, Notebook, CalendarDays } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { listCurriculumProgrammes } from "@/lib/content";
 import { clearTeacher } from "@/lib/teacher-state";
@@ -34,10 +34,19 @@ export function FooterNav() {
   ];
 
   if (programmeMatch && programmeMatch.totalSessions > 0) {
+    // Surface the teacher journey in the order it should run:
+    //   1. overview — the why
+    //   2. plans    — the daily run sheet
+    //   3. library  — reference (already added below)
     items.push({
       href: `/${programmeMatch.slug}/overview`,
       label: "overview",
       icon: LayoutGrid,
+    });
+    items.push({
+      href: `/${programmeMatch.slug}`,
+      label: "plans",
+      icon: CalendarDays,
     });
     const bookSlug = PROGRAMME_TO_BOOK[programmeMatch.slug];
     if (bookSlug) {
@@ -67,10 +76,21 @@ export function FooterNav() {
     >
       <div className="mx-auto flex max-w-4xl items-center justify-around lg:max-w-7xl">
         {items.map((item) => {
+          // Active-state matching:
+          //   home — only when pathname is exactly "/"
+          //   plans (e.g. /art-design-3-5) — only when pathname is
+          //     exactly the programme slug (no sub-path) so we don't
+          //     also light up plans when overview / library is active
+          //   everything else — exact path or sub-path
+          const isPlans =
+            !!programmeMatch && item.href === `/${programmeMatch.slug}`;
           const active =
             item.href === "/"
               ? pathname === "/"
-              : pathname === item.href || pathname.startsWith(item.href + "/");
+              : isPlans
+                ? pathname === item.href
+                : pathname === item.href ||
+                  pathname.startsWith(item.href + "/");
           const Icon = item.icon;
           return (
             <Link

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo, useEffect, useRef } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
   Search,
@@ -578,12 +579,44 @@ export default function LibraryPage() {
     }
   };
 
+  // Pick a sensible programme slug for the in-page journey strip:
+  //   admin → no slug, the strip simplifies to home + library
+  //   teacher → their assigned programme slug
+  const journeySlug =
+    !isAdmin && teacherSlug && teacherSlug !== "*" ? teacherSlug : null;
+
   return (
     <div className="flex flex-col px-4 pt-4 pb-6">
       <h1 className="text-[22px] font-bold text-ink">library</h1>
       <p className="mt-1 text-[13px] text-ink-muted">
-        Every resource across programmes.
+        Every resource across programmes — for reference.
       </p>
+
+      {/* Journey strip — library is step 3 of 3 (reference). When the
+          teacher belongs to a single programme, link back to that
+          programme's overview + plans so the journey is reversible. */}
+      {journeySlug && (
+        <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] font-semibold text-ink-muted md:text-[12px]">
+          <Link
+            href={`/${journeySlug}/overview`}
+            className="rounded-chip bg-brand-white px-2.5 py-1 ring-1 ring-ink/10 transition hover:bg-ink/5"
+          >
+            <span className="mr-1 font-bold text-ink-subtle">1</span> overview
+          </Link>
+          <span className="text-ink-subtle">→</span>
+          <Link
+            href={`/${journeySlug}`}
+            className="rounded-chip bg-brand-white px-2.5 py-1 ring-1 ring-ink/10 transition hover:bg-ink/5"
+          >
+            <span className="mr-1 font-bold text-ink-subtle">2</span> today&apos;s plan
+          </Link>
+          <span className="text-ink-subtle">→</span>
+          <span className="rounded-chip bg-brand-orange px-2.5 py-1 font-bold text-white shadow-sm">
+            <span className="mr-1 opacity-80">3</span> library
+            <span className="ml-1 italic font-normal text-white/85">for reference</span>
+          </span>
+        </div>
+      )}
 
       {/* Admin-only programme picker */}
       {isAdmin && (
