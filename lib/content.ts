@@ -261,6 +261,7 @@ export const ACTIVITY_IMAGES: Record<string, string> = {
   "swat-it-snap-it": "/games/language/swat-it-snap-it.png",
   "story-construction": "/games/language/story-construction.png",
   "think-fast": "/games/language/think-fast.png",
+  "rhyming-house": "/games/language/rhyming-house.png",
   // Wordsmiths resources — 3 vocabulary tools rotated through the
   // Wordsmiths segment.
   "emotion-tiles": "/games/language/emotion-tiles.png",
