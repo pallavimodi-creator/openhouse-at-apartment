@@ -152,7 +152,55 @@ export interface CurriculumProgramme {
   activities: Record<string, CurriculumActivity>;
   checkpoints: CurriculumCheckpoint[];
   artiverseUnits?: ArtiverseUnit[];
+  /**
+   * Books used as the spine of a language programme. Each book runs
+   * across 6 days with a deliberate two-book gap between days 3 and 4.
+   */
+  languageBooks?: LanguageBook[];
+  /**
+   * Songs used as the warm-up playlist (e.g. Roll & Rhyme in the
+   * language programme). Each song embeds an existing YouTube video
+   * so teachers can play it directly inside the overview.
+   */
+  songs?: ProgrammeSong[];
   trialSession?: TrialSession;
+}
+
+export interface LanguageBook {
+  /** 1-indexed reading order. */
+  order: number;
+  title: string;
+  author: string;
+  /** Free text — e.g. "Ages 4+", "Ages 3–7, Lexile AD510L". */
+  ageRange: string;
+  /** One sentence that opens the card. */
+  summary: string;
+  /** Why this book sits in this position in the reading order. */
+  whyThisPosition: string;
+  /** Theme keywords — pair with vocabulary type / songs. */
+  themes: string[];
+  /** One of the four group activity types from the programme spec. */
+  groupActivityType:
+    | "story-re-enactment"
+    | "change-story-endings"
+    | "vocabulary-reproduction"
+    | "puppet-character";
+  /** Cover image — falls back to placeholder if missing. */
+  heroImageUrl?: string;
+}
+
+export interface ProgrammeSong {
+  /** 1-indexed playlist order. */
+  order: number;
+  title: string;
+  /** YouTube video id (the part after "v=" in the URL). */
+  youtubeId: string;
+  /** What the song builds — short phrase, sentence case. */
+  whatItBuilds: string;
+  /** Which book or programme moment this song pairs with. */
+  pairsWith: string;
+  /** Hint to the teacher about when to introduce this song. */
+  introHint: string;
 }
 
 export interface TrialSession {
@@ -270,7 +318,7 @@ export interface CurriculumSessionEntry {
 
 export interface CurriculumActivity {
   id: string;
-  segment: "roll-call" | "playground" | "showtime" | "sign-off" | "log-book" | "art-gym" | "art-games" | "artiverse" | "art-care" | "experiment" | "build" | "experience-book";
+  segment: "roll-call" | "playground" | "showtime" | "sign-off" | "log-book" | "art-gym" | "art-games" | "artiverse" | "art-care" | "experiment" | "build" | "experience-book" | "roll-rhyme" | "book-o-clock" | "wordsmiths" | "play-writes";
   title: string;
   cardName?: string;
   setupLine: string;

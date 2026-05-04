@@ -40,6 +40,8 @@ import { cn } from "@/lib/utils";
 import { TeacherGate } from "@/components/TeacherGate";
 import { ArtiverseChapters } from "@/components/ArtiverseChapters";
 import { ArtistotleChapters } from "@/components/ArtistotleChapters";
+import { LanguageBooksGrid } from "@/components/LanguageBooksGrid";
+import { SongsPlaylist } from "@/components/SongsPlaylist";
 import { segmentPalette } from "@/components/segmentPalette";
 
 // ─── Artiverse — how it works · sequence data ────────────────
@@ -462,6 +464,13 @@ function ProgrammeOverviewContent() {
     "segment-logic": "03",
     "books": "04",
     "checkpoints": "05",
+    // Language-specific section numbering — only used when the
+    // category === "language" branch renders these sections.
+    "how-it-works": "04",
+    "six-day-arc": "05",
+    "language-books": "06",
+    "songs": "07",
+    "why-it-works": "08",
   };
   const sectionNum = (key: string) => SECTION_NUM[key] ?? "—";
 
@@ -725,11 +734,105 @@ function ProgrammeOverviewContent() {
     },
   ];
 
+  // Language games table — five language-programme segments plus the
+  // experience book closing. Roll & Rhyme and Book'o'Clock have no
+  // rotation pool (Roll & Rhyme uses a fixed song playlist; Book'o'Clock
+  // follows the 6-day book arc). Wordsmiths and Playground rotate
+  // through the activities defined in the programme file.
+  const languageSegmentGames = [
+    {
+      segment: "roll & rhyme",
+      icon: Zap,
+      color: "bg-segment-yellow",
+      time: "10 min",
+      type: "fixed" as const,
+      games: [
+        {
+          name: "five-song playlist",
+          skills: ["listening", "speaking"],
+          rotation: "fixed" as const,
+        },
+      ],
+    },
+    {
+      segment: "book'o'clock",
+      icon: BookOpen,
+      color: "bg-segment-blue/30",
+      time: "25 min",
+      type: "fixed" as const,
+      games: [
+        {
+          name: "8 books · 6-day arc each",
+          skills: ["listening", "reading", "speaking"],
+          rotation: "fixed" as const,
+        },
+      ],
+    },
+    {
+      segment: "wordsmiths",
+      icon: Sparkles,
+      color: "bg-brand-orange/15",
+      time: "10 min",
+      type: "rotating" as const,
+      games: Object.values(programme.activities)
+        .filter((a) => a.segment === "wordsmiths")
+        .map((a) => ({
+          name: a.title.toLowerCase(),
+          skills: ["vocabulary", "speaking"],
+          rotation: "rotating" as const,
+        })),
+    },
+    {
+      segment: "play-writes",
+      icon: PenLine,
+      color: "bg-segment-green/30",
+      time: "10 min",
+      type: "fixed" as const,
+      games: [
+        {
+          name: "individual a4 play-writes book",
+          skills: ["pre-writing"],
+          rotation: "fixed" as const,
+        },
+      ],
+    },
+    {
+      segment: "playground",
+      icon: Gamepad2,
+      color: "bg-segment-green/30",
+      time: "15 min",
+      type: "rotating" as const,
+      games: Object.values(programme.activities)
+        .filter((a) => a.segment === "playground")
+        .map((a) => ({
+          name: a.title.toLowerCase(),
+          skills: [] as string[],
+          rotation: "rotating" as const,
+        })),
+    },
+    {
+      segment: "experience book",
+      icon: Notebook,
+      color: "bg-segment-pink/30",
+      time: "10 min",
+      type: "fixed" as const,
+      games: [
+        {
+          name: "personal experience book",
+          skills: ["reflection"],
+          rotation: "fixed" as const,
+        },
+      ],
+    },
+  ];
+
   const gamesTable = isRobotics
     ? roboticsSegmentGames
     : isArt
       ? segmentGamesDynamic
-      : psSegmentGames;
+      : isLanguage
+        ? languageSegmentGames
+        : psSegmentGames;
 
   return (
     <div className="flex flex-col pb-6">
@@ -1960,6 +2063,281 @@ function ProgrammeOverviewContent() {
           })}
         </div>
       </section>
+
+      {/* ═══════════════════════════════════════════════════════
+          LANGUAGE-ONLY SECTIONS — only render for the language
+          programme. Five core ideas, the 6-day book arc, the four
+          group activity types, the 8 books grid, and the songs
+          playlist. These plug in between the SEGMENTS accordion
+          and the BOOKS ROW so the page reads top-to-bottom in the
+          same order the user understands the programme.
+          ═══════════════════════════════════════════════════════ */}
+      {isLanguage && programme.languageBooks && programme.songs && (
+        <>
+          {/* ─── HOW THE PROGRAMME WORKS — five ideas ─── */}
+          <section className="mt-10 px-4 md:px-8">
+            <SectionTitle num={sectionNum("how-it-works")} label="how the programme works">
+              Five ideas. Once you understand them, every other choice falls into place.
+            </SectionTitle>
+
+            <div className="mt-4 grid gap-3 md:grid-cols-2">
+              {[
+                {
+                  n: 1,
+                  title: "One book is the home for everything",
+                  body:
+                    "For 6 days, every segment of every session draws from the same book. Children meet a word in the story, hear it again in a song, act it out, use it in a game, and draw it. By the end of the book, the words are not memorised — they are known.",
+                },
+                {
+                  n: 2,
+                  title: "Every book runs across 6 days, with a gap in the middle",
+                  body:
+                    "Days 1–3 introduce the book. Two other books come in between. Days 4–6 return to it. The gap is what turns memorising into understanding — the most important design decision in the programme.",
+                },
+                {
+                  n: 3,
+                  title: "Skills are spiral, not linear",
+                  body:
+                    "All five skills grow together, all the time. Each skill has three observable abilities. The third is the ★ integration point — what excellent practice looks like by the end of the year. Children show different skills at different moments. That is normal.",
+                },
+                {
+                  n: 4,
+                  title: "Children learn through play, not instruction",
+                  body:
+                    "No worksheets, no drills, no testing. Skills are built through five things children love: stories, songs, games, marks, and being part of a group. The teacher sets up the activity, steps back, and names what they see.",
+                },
+                {
+                  n: 5,
+                  title: "The teacher's most important tool is observation",
+                  body:
+                    "There is no formal assessment. Teachers observe what each child shows during normal session circulation and record it briefly in the experience book. Over 48 sessions, a clear picture builds — and goes home to parents.",
+                },
+              ].map((idea) => (
+                <div
+                  key={idea.n}
+                  className="rounded-2xl bg-brand-white p-4 shadow-card ring-1 ring-ink/5 md:p-5"
+                >
+                  <div className="flex items-center gap-2">
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-orange/15 text-[12px] font-extrabold text-brand-orange">
+                      {idea.n}
+                    </span>
+                    <p className="text-[13px] font-extrabold lowercase leading-tight text-ink md:text-[14px]">
+                      {idea.title.toLowerCase()}
+                    </p>
+                  </div>
+                  <p className="mt-2 text-[12px] leading-relaxed text-ink-muted md:text-[13px]">
+                    {idea.body}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* ─── BOOK READING — the 6-day arc ─── */}
+          <section className="mt-10 px-4 md:px-8">
+            <SectionTitle num={sectionNum("six-day-arc")} label="the 6-day book arc">
+              How each book is read across 6 days, with a deliberate gap in the middle.
+            </SectionTitle>
+
+            <div className="mt-4 overflow-hidden rounded-2xl bg-brand-white shadow-card ring-1 ring-ink/5">
+              <div className="grid gap-px bg-ink/5 md:grid-cols-3">
+                {[
+                  {
+                    day: 1,
+                    title: "Print knowledge — first read",
+                    body:
+                      "Read aloud all the way through. Point to words. Count words in the title. Build word awareness.",
+                  },
+                  {
+                    day: 2,
+                    title: "Narrative — during and after",
+                    body:
+                      "Identify setting and characters. Summarise events. Recall what happened.",
+                  },
+                  {
+                    day: 3,
+                    title: "Group activity (easy)",
+                    body:
+                      "Children act, perform, or build using the story.",
+                  },
+                ].map((d) => (
+                  <div key={d.day} className="bg-segment-blue/15 p-4">
+                    <span className="inline-flex h-6 items-center rounded-chip bg-brand-white px-2 text-[10px] font-extrabold text-ink ring-1 ring-ink/10">
+                      Day {d.day}
+                    </span>
+                    <p className="mt-2 text-[12.5px] font-extrabold leading-tight text-ink md:text-[13px]">
+                      {d.title.toLowerCase()}
+                    </p>
+                    <p className="mt-1 text-[11.5px] leading-relaxed text-ink-muted">
+                      {d.body}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <div className="flex items-center justify-center gap-2 bg-brand-orange/10 px-4 py-3 text-center">
+                <span className="text-[10px] font-bold uppercase tracking-[0.08em] text-brand-orange">
+                  Two-book interval
+                </span>
+                <span className="text-[11px] italic text-ink-muted">
+                  Children read other books before this one returns
+                </span>
+              </div>
+              <div className="grid gap-px bg-ink/5 md:grid-cols-3">
+                {[
+                  {
+                    day: 4,
+                    title: "Print knowledge — version 2",
+                    body:
+                      "Print directionality. Sight words. Environmental print.",
+                  },
+                  {
+                    day: 5,
+                    title: "Narrative — version 2",
+                    body:
+                      "Children produce stories with a beginning, middle, and end.",
+                  },
+                  {
+                    day: 6,
+                    title: "Group activity (hard)",
+                    body:
+                      "The same activity from day 3, deepened.",
+                  },
+                ].map((d) => (
+                  <div key={d.day} className="bg-segment-blue/15 p-4">
+                    <span className="inline-flex h-6 items-center rounded-chip bg-brand-white px-2 text-[10px] font-extrabold text-ink ring-1 ring-ink/10">
+                      Day {d.day}
+                    </span>
+                    <p className="mt-2 text-[12.5px] font-extrabold leading-tight text-ink md:text-[13px]">
+                      {d.title.toLowerCase()}
+                    </p>
+                    <p className="mt-1 text-[11.5px] leading-relaxed text-ink-muted">
+                      {d.body}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Four group activity types */}
+            <div className="mt-5">
+              <p className="text-[12px] font-bold text-ink">The four group activity types</p>
+              <p className="mt-1 text-[11px] italic leading-relaxed text-ink-muted">
+                Each book gets one group activity that runs in two variations across days 3 and 6.
+              </p>
+              <div className="mt-3 grid gap-2 md:grid-cols-2">
+                {[
+                  {
+                    title: "Story re-enactment",
+                    body: "Children act out parts of the story as a group.",
+                  },
+                  {
+                    title: "Change story endings",
+                    body: "Children invent and act out new endings.",
+                  },
+                  {
+                    title: "Vocabulary reproduction",
+                    body: "Small teams use target words in a skit or short conversation.",
+                  },
+                  {
+                    title: "Puppet character",
+                    body: "Each child takes on a character through a puppet, with a 60-second presentation.",
+                  },
+                ].map((a) => (
+                  <div
+                    key={a.title}
+                    className="rounded-xl bg-segment-yellow/15 p-3 ring-1 ring-ink/5"
+                  >
+                    <p className="text-[12px] font-extrabold lowercase text-ink">
+                      {a.title.toLowerCase()}
+                    </p>
+                    <p className="mt-1 text-[11.5px] leading-relaxed text-ink-muted">
+                      {a.body}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* ─── 8 BOOKS IN ORDER ─── */}
+          <section className="mt-10 px-4 md:px-8">
+            <SectionTitle num={sectionNum("language-books")} label="the 8 books">
+              In reading order. Tap a book to see why it sits in this position.
+            </SectionTitle>
+            <div className="mt-4">
+              <LanguageBooksGrid books={programme.languageBooks} />
+            </div>
+            <p className="mt-4 text-[11px] italic leading-relaxed text-ink-muted">
+              Books 1–2 build participation. Books 3–4 build describing and feeling language. Books 5–6 build
+              complex character understanding. Books 7–8 build personal storytelling and dense vocabulary.
+            </p>
+          </section>
+
+          {/* ─── ROLL & RHYME PLAYLIST ─── */}
+          <section className="mt-10 px-4 md:px-8">
+            <SectionTitle num={sectionNum("songs")} label="roll & rhyme playlist">
+              Five Barefoot Books songs. Each does four things at once — rhyme, vocabulary, joining-in, concepts.
+            </SectionTitle>
+            <div className="mt-4">
+              <SongsPlaylist songs={programme.songs} />
+            </div>
+            <div className="mt-5 space-y-2 rounded-xl bg-brand-cream p-4 ring-1 ring-ink/5">
+              <p className="text-[11px] font-bold uppercase tracking-[0.06em] text-brand-orange">
+                How to introduce them
+              </p>
+              <p className="text-[12px] leading-relaxed text-ink-muted md:text-[13px]">
+                Don't introduce all five at once. Begin with Mulberry Bush and Knick Knack Paddy Whack in the first
+                weeks — they're easy to join. Add If You're Happy and You Know It when The Color Monster arrives. Add
+                Walking Through the Jungle mid-programme. Save A Hole in the Bottom of the Sea for the second half — it's
+                the most demanding and rewards children who have built strong listening across the year.
+              </p>
+              <p className="text-[12px] leading-relaxed text-ink-muted md:text-[13px]">
+                <span className="font-semibold text-ink">A note on Knick Knack Paddy Whack:</span> the song has 10 verses.
+                Don't sing all 10 in the first month. Start with verses 1–3, add 4–6 by mid-programme, and finish with all
+                10 by the end of the year. The song scales with the child.
+              </p>
+            </div>
+          </section>
+
+          {/* ─── WHY WE BELIEVE THIS WORKS ─── */}
+          <section className="mt-10 px-4 md:px-8">
+            <SectionTitle num={sectionNum("why-it-works")} label="why we believe this works">
+              Three convictions run through the design.
+            </SectionTitle>
+            <div className="mt-4 space-y-3">
+              {[
+                {
+                  title: "Children learn language in chunks, not lists",
+                  body:
+                    "A child does not learn 50 words by being shown 50 flashcards. They learn 50 words by hearing them in stories, songs, and games — over and over, in different ways, until the words become theirs.",
+                },
+                {
+                  title: "Repetition with variation is the engine of growth",
+                  body:
+                    "The same word, the same story, the same song — but met in different forms, on different days, with different children doing different things. The 6-day book arc, the rotating Wordsmiths resources, and the fixed song playlist are all repetition with variation in different shapes.",
+                },
+                {
+                  title: "The teacher's role is to build the world, not to instruct in it",
+                  body:
+                    "Children do not need to be told to learn. They need a world that is rich, predictable, and joyful enough that learning happens inside it. The teacher's job is to set up that world every day, observe what each child does inside it, and make small adjustments to keep it rich.",
+                },
+              ].map((c) => (
+                <div
+                  key={c.title}
+                  className="rounded-2xl bg-brand-white p-4 shadow-card ring-1 ring-ink/5 md:p-5"
+                >
+                  <p className="text-[13px] font-extrabold lowercase text-ink md:text-[14px]">
+                    {c.title.toLowerCase()}
+                  </p>
+                  <p className="mt-2 text-[12.5px] leading-relaxed text-ink-muted md:text-[13px]">
+                    {c.body}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+        </>
+      )}
 
       {/* ─── BOOKS ROW ─── */}
       {(() => {
