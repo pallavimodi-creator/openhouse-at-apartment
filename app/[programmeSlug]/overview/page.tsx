@@ -2423,6 +2423,27 @@ function ProgrammeOverviewContent() {
             subtitle: "three illustrators · six projects",
           });
         }
+        // 5-8 / 8-12 art programmes — each has its own artiverse book
+        // generated from programme.artiverseUnits via the shared
+        // ArtiverseFlipbook component. Cover = the first unit's hero image.
+        if (programme.slug === "art-design-5-8") {
+          const firstUnit = programme.artiverseUnits?.[0];
+          books.push({
+            href: "/artiverse-book-5-8",
+            cover: firstUnit?.heroImageUrl ?? "/artiverse/art-5-8/unit-1.png",
+            title: "the artiverse book",
+            subtitle: `${programme.artiverseUnits?.length ?? 0} units · brush pen, pencil, tempera, watercolour`,
+          });
+        }
+        if (programme.slug === "art-design-8-12") {
+          const firstUnit = programme.artiverseUnits?.[0];
+          books.push({
+            href: "/artiverse-book-8-12",
+            cover: firstUnit?.heroImageUrl ?? "/artiverse/art-8-12/unit-1.png",
+            title: "the artiverse book",
+            subtitle: `${programme.artiverseUnits?.length ?? 0} units · medium-by-medium technique briefs`,
+          });
+        }
         // Experience book (programmes that have one wired)
         const expBookSlug: Record<string, string> = {
           "art-design-5-8": "art-5-8",
