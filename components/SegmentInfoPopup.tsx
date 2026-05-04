@@ -279,12 +279,60 @@ export function SegmentInfoPopup({ info }: { info: SegmentInfo }) {
               </p>
             </div>
           )}
-          <div>
+          {/* Day-by-day breakdown — surfaces what happens on each
+              session of the unit (especially useful for the 2-day
+              artiverse and 3-day artistotle units). */}
+          <div className="rounded-card bg-ink/[0.03] p-3">
             <p className="text-[10px] font-semibold tracking-wider text-ink-subtle">
-              Reference images
+              How the days run
             </p>
-            <p className="mt-2 rounded-lg bg-ink/[0.03] px-3 py-2 text-[12px] leading-relaxed text-ink-muted">
-              Use cue card of choice to assist with drawing.
+            <ul className="mt-1.5 space-y-1.5">
+              {unit.mode === "artistotle" ? (
+                <>
+                  <li className="flex items-start gap-2 text-[12px] leading-relaxed text-ink-muted">
+                    <span className="mt-0.5 inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-brand-orange/15 text-[9px] font-extrabold text-brand-orange">1</span>
+                    <span>Begin the piece — set up materials, introduce the technique, start the artwork.</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-[12px] leading-relaxed text-ink-muted">
+                    <span className="mt-0.5 inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-brand-orange/15 text-[9px] font-extrabold text-brand-orange">2</span>
+                    <span>Deepen it — keep adding to the same artwork, refine the technique.</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-[12px] leading-relaxed text-ink-muted">
+                    <span className="mt-0.5 inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-brand-orange/15 text-[9px] font-extrabold text-brand-orange">3</span>
+                    <span>Finish it — last details, name the piece, take it home.</span>
+                  </li>
+                </>
+              ) : unit.days === 2 ? (
+                <>
+                  <li className="flex items-start gap-2 text-[12px] leading-relaxed text-ink-muted">
+                    <span className="mt-0.5 inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-segment-blue/40 text-[9px] font-extrabold text-ink">1</span>
+                    <span>First artwork — make a complete piece using the medium and technique above.</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-[12px] leading-relaxed text-ink-muted">
+                    <span className="mt-0.5 inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-segment-blue/40 text-[9px] font-extrabold text-ink">2</span>
+                    <span>Second artwork — same medium and technique, brand new piece (not a continuation of day 1).</span>
+                  </li>
+                </>
+              ) : (
+                Array.from({ length: unit.days }).map((_, i) => (
+                  <li key={i} className="flex items-start gap-2 text-[12px] leading-relaxed text-ink-muted">
+                    <span className="mt-0.5 inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-segment-blue/40 text-[9px] font-extrabold text-ink">{i + 1}</span>
+                    <span>Continue with the same medium and technique.</span>
+                  </li>
+                ))
+              )}
+            </ul>
+          </div>
+
+          {/* Materials — same medium runs across all sessions of the
+              unit; surface it here so the teacher can prep one tray
+              for the whole unit. */}
+          <div className="rounded-card bg-ink/[0.03] p-3">
+            <p className="text-[10px] font-semibold tracking-wider text-ink-subtle">
+              Materials each day
+            </p>
+            <p className="mt-1 text-[12px] leading-relaxed text-ink-muted">
+              {unit.medium}{unit.medium.endsWith(".") ? "" : "."} The same materials are set out on every day of this unit.
             </p>
           </div>
         </div>

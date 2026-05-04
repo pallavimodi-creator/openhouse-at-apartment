@@ -177,17 +177,35 @@ export default function ProgrammeDetailPage() {
         />
       </section>
 
-      {/* Daily plan */}
+      {/* Daily plan — wrapped in a "planner page" frame: a small
+          spiral-binding strip across the top + a soft cream page so
+          the day plan reads like a daily planner rather than a list
+          of cards on the background canvas. */}
       <section className="mt-6 px-4 pb-4">
-        {selectedDay === 0 && programme.trialSession ? (
-          <TrialSessionCard trial={programme.trialSession} />
-        ) : currentSession ? (
-          <DayPlan programme={programme} session={currentSession} />
-        ) : (
-          <p className="py-8 text-center text-[13px] text-ink-subtle">
-            no plan available for this session.
-          </p>
-        )}
+        <div className="mx-auto w-full max-w-5xl overflow-hidden rounded-2xl bg-brand-cream shadow-card ring-1 ring-ink/5">
+          {/* Spiral binding band — fixed-count rings on a darker
+              cream strip, evoking a notebook's wire binding. */}
+          <div className="flex items-center justify-around bg-segment-yellow/70 px-3 py-2">
+            {Array.from({ length: 14 }).map((_, i) => (
+              <span
+                key={i}
+                aria-hidden
+                className="h-2.5 w-2.5 rounded-full bg-brand-white shadow-[inset_0_1px_2px_rgba(44,43,40,0.25)] ring-1 ring-ink/15"
+              />
+            ))}
+          </div>
+          <div className="px-4 pb-5 pt-4 md:px-6">
+            {selectedDay === 0 && programme.trialSession ? (
+              <TrialSessionCard trial={programme.trialSession} />
+            ) : currentSession ? (
+              <DayPlan programme={programme} session={currentSession} />
+            ) : (
+              <p className="py-8 text-center text-[13px] text-ink-subtle">
+                no plan available for this session.
+              </p>
+            )}
+          </div>
+        </div>
       </section>
 
       {/* Mark as done — teacher-only; admin is in view mode */}

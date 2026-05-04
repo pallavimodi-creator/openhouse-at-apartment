@@ -291,15 +291,25 @@ function SegmentRow({
               };
             } else if (segment.segmentId === "artiverse") {
               const unit = segment.artiverseUnitData;
+              // Use a UNIT-specific description (not the generic
+              // segment objective) so the popup says what THIS class
+              // is — the technique on the table today, the topic
+              // children pick from, and a one-line frame for "what
+              // we're making".
+              const isArtistotle =
+                programmeSlug === "art-design-3-5" && unit?.days === 3;
+              const unitDescription = unit
+                ? `Today's session uses ${unit.medium.toLowerCase()}. Technique: ${unit.technique.toLowerCase()}. Children make their own piece — reference topic: ${unit.whatChildrenMake.toLowerCase()}.`
+                : segment.objective;
               info = {
                 segmentId: segment.segmentId,
-                segmentName: segment.segmentName,
+                segmentName: isArtistotle ? "Artistotle" : "Artiverse",
                 title: unit?.medium ?? segment.artiverseUnitName ?? "artiverse",
                 subText:
-                  segment.artiverseUnit !== undefined && segment.artiverseDay !== undefined
-                    ? `unit ${segment.artiverseUnit} — day ${segment.artiverseDay}${unit?.whatChildrenMake ? ` · reference: ${unit.whatChildrenMake.toLowerCase()}` : ""}`
+                  segment.artiverseUnit !== undefined && segment.artiverseDay !== undefined && unit
+                    ? `${isArtistotle ? "project" : "unit"} ${segment.artiverseUnit} · day ${segment.artiverseDay} of ${unit.days}`
                     : undefined,
-                description,
+                description: unitDescription,
                 artiverseUnit: unit
                   ? {
                       medium: unit.medium,
@@ -369,6 +379,14 @@ function SegmentRow({
                 : isScribbleBook
                   ? "rotates with the art gym book"
                   : null;
+              // 3-5 art rule: every art-gym session does 1–2 pages
+              // from whichever book is today's. Surface this as a
+              // short cue under the rotation note so the teacher knows
+              // the volume at a glance.
+              const pagesNote =
+                programmeSlug === "art-design-3-5" && (isArtGymBook || isScribbleBook)
+                  ? "1–2 pages today"
+                  : null;
               return (
                 <div className="flex items-start gap-2.5">
                   {thumb && (
@@ -386,6 +404,11 @@ function SegmentRow({
                     {rotationNote && (
                       <p className="mt-0.5 text-[12px] italic leading-relaxed text-ink-subtle">
                         {rotationNote}
+                      </p>
+                    )}
+                    {pagesNote && (
+                      <p className="mt-0.5 text-[12px] font-semibold leading-relaxed text-brand-orange">
+                        {pagesNote}
                       </p>
                     )}
                   </div>
