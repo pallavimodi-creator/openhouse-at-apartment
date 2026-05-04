@@ -66,10 +66,7 @@ export default function HomePage() {
       {/* Welcome + programme */}
       <section className="px-4 pt-6 pb-8 md:px-8 md:pt-10 md:pb-12">
         <div>
-          <p className="text-[11px] font-bold text-brand-orange">
-            {headingLabel}
-          </p>
-          <h2 className="mt-1 text-[22px] font-extrabold leading-tight text-ink md:text-[28px]">
+          <h2 className="text-[22px] font-extrabold leading-tight text-ink md:text-[28px]">
             hello, {teacher.teacherName}.
           </h2>
         </div>

@@ -185,10 +185,7 @@ export interface LanguageBook {
    * The kind of vocabulary the book is built around — drives which
    * Wordsmiths resource pairs with the book.
    */
-  vocabularyType:
-    | "emotion-tiles"
-    | "word-workout-calendar"
-    | "story-calendar";
+  vocabularyType: "emotion-tiles" | "story-calendar";
   /** One of the four group activity types from the programme spec. */
   groupActivityType:
     | "story-re-enactment"

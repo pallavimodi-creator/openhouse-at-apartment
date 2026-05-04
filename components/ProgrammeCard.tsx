@@ -61,7 +61,13 @@ export function ProgrammeCard({
         <div className="relative z-10 flex gap-1.5">
           <CategoryChip
             category={programme.category}
-            label={programme.category === "stem" ? "robotics" : programme.category}
+            label={
+              programme.category === "stem"
+                ? programme.slug === "robotics-3-5"
+                  ? "stem"
+                  : "robotics"
+                : programme.category
+            }
           />
           <AgeChip label={programme.ageLabel} />
         </div>

@@ -14,7 +14,6 @@ const ACTIVITY_LABEL: Record<LanguageBook["groupActivityType"], string> = {
 
 const VOCAB_TYPE_LABEL: Record<LanguageBook["vocabularyType"], string> = {
   "emotion-tiles": "emotion tiles",
-  "word-workout-calendar": "word workout calendar",
   "story-calendar": "story calendar",
 };
 
