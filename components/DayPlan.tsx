@@ -262,13 +262,18 @@ function SegmentRow({
           <span className="text-[11px] text-ink-subtle">
             {segment.durationRange}
           </span>
-          {/* Lanyard + debrief reminder — playground & showtime (PS only) */}
-          {(segment.segmentId === "playground" || segment.segmentId === "showtime") && (
-            <span className="inline-flex items-center gap-1 rounded-chip bg-segment-green/30 px-2 py-0.5 text-[10px] font-semibold text-ink">
-              <Ribbon className="h-3 w-3" strokeWidth={2.2} />
-              use lanyard + debrief time
-            </span>
-          )}
+          {/* Lanyard + debrief reminder — public-speaking ONLY. The
+              lanyard system (one ability per segment, child wears
+              the focus chip) is a PS programme tool; other
+              programmes don't use it. */}
+          {programmeSlug?.startsWith("public-speaking") &&
+            (segment.segmentId === "playground" ||
+              segment.segmentId === "showtime") && (
+              <span className="inline-flex items-center gap-1 rounded-chip bg-segment-green/30 px-2 py-0.5 text-[10px] font-semibold text-ink">
+                <Ribbon className="h-3 w-3" strokeWidth={2.2} />
+                use lanyard + debrief time
+              </span>
+            )}
         </div>
       </div>
 
@@ -704,21 +709,85 @@ export function DayPlan({
         </div>
       )}
 
-      {/* Segment rows */}
+      {/* Segment rows — for the language programme, Book'o'Clock and
+          Wordsmiths are intentionally paired (they happen as one
+          continuous central block). When we encounter the first one,
+          we render BOTH inside a single bracketed frame so it's
+          visually obvious they go together. */}
       <div className="space-y-2">
-        {segments.map((seg) => (
-          <SegmentRow
-            key={seg.segmentId}
-            segment={seg}
-            onTapActivity={setModalActivity}
-            onTapSegmentInfo={setSegmentInfo}
-            isTrial={session.sessionNumber === 0}
-            bookSlug={bookSlug}
-            bookCoverUrl={bookCoverUrl}
-            gymBookUrl={gymBookUrl}
-            programmeSlug={programme.slug}
-          />
-        ))}
+        {(() => {
+          const rendered: React.ReactNode[] = [];
+          for (let i = 0; i < segments.length; i++) {
+            const seg = segments[i];
+            const next = segments[i + 1];
+            const pairCheck =
+              programme.category === "language" &&
+              ((seg.segmentId === "book-o-clock" && next?.segmentId === "wordsmiths") ||
+                (seg.segmentId === "wordsmiths" && next?.segmentId === "book-o-clock"));
+            if (pairCheck) {
+              rendered.push(
+                <div
+                  key={`${seg.segmentId}+pair`}
+                  className="overflow-hidden rounded-2xl bg-segment-blue/10 p-2.5 ring-2 ring-segment-blue/60"
+                >
+                  <div className="mb-2 flex items-center gap-2 px-1">
+                    <span className="text-[10px] font-bold tracking-normal text-segment-blue/90">
+                      central learning block
+                    </span>
+                    <span className="text-[10px] italic text-ink-subtle">
+                      these two run together
+                    </span>
+                  </div>
+                  <div className="space-y-2">
+                    <SegmentRow
+                      key={seg.segmentId}
+                      segment={seg}
+                      onTapActivity={setModalActivity}
+                      onTapSegmentInfo={setSegmentInfo}
+                      isTrial={session.sessionNumber === 0}
+                      bookSlug={bookSlug}
+                      bookCoverUrl={bookCoverUrl}
+                      gymBookUrl={gymBookUrl}
+                      programmeSlug={programme.slug}
+                    />
+                    <div className="flex items-center justify-center gap-2 px-2 text-[11px] font-bold tracking-normal text-segment-blue/85">
+                      <span aria-hidden className="h-px flex-1 bg-segment-blue/30" />
+                      <span>+</span>
+                      <span aria-hidden className="h-px flex-1 bg-segment-blue/30" />
+                    </div>
+                    <SegmentRow
+                      key={next!.segmentId}
+                      segment={next!}
+                      onTapActivity={setModalActivity}
+                      onTapSegmentInfo={setSegmentInfo}
+                      isTrial={session.sessionNumber === 0}
+                      bookSlug={bookSlug}
+                      bookCoverUrl={bookCoverUrl}
+                      gymBookUrl={gymBookUrl}
+                      programmeSlug={programme.slug}
+                    />
+                  </div>
+                </div>
+              );
+              i += 1; // we consumed the next segment
+              continue;
+            }
+            rendered.push(
+              <SegmentRow
+                key={seg.segmentId}
+                segment={seg}
+                onTapActivity={setModalActivity}
+                onTapSegmentInfo={setSegmentInfo}
+                isTrial={session.sessionNumber === 0}
+                bookSlug={bookSlug}
+                bookCoverUrl={bookCoverUrl}
+                gymBookUrl={gymBookUrl}
+                programmeSlug={programme.slug}
+              />
+            );
+          }
+          return rendered;
+        })()}
       </div>
 
       {/* Activity modal */}

@@ -188,12 +188,14 @@ export default function ProgrammeDetailPage() {
               above (yellow for art, green for language, blue for
               stem/robotics). */}
           {(() => {
+            // Language storytelling skips the spiral-binding band —
+            // the storytelling arc reads better without the workbook
+            // metaphor on top.
+            if (programme.category === "language") return null;
             const bandTone =
-              programme.category === "language"
-                ? "bg-segment-green/70"
-                : programme.category === "stem"
-                  ? "bg-segment-blue/70"
-                  : "bg-segment-yellow/70";
+              programme.category === "stem"
+                ? "bg-segment-blue/70"
+                : "bg-segment-yellow/70";
             return (
               <div className={`flex items-center justify-around px-3 py-2 ${bandTone}`}>
                 {Array.from({ length: 14 }).map((_, i) => (
