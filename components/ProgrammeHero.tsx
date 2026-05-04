@@ -32,7 +32,7 @@ export function ProgrammeHero({
   badge?: string;
 }) {
   return (
-    <section className="-mx-4 px-4">
+    <section>
       <div className={cn("rounded-b-[28px] px-4 pb-7 pt-5 md:px-8 md:pb-10 md:pt-7", heroBg[category])}>
         <div className="mx-auto w-full max-w-5xl rounded-2xl bg-brand-white p-6 shadow-card ring-1 ring-ink/5 md:p-8">
           <div className="flex flex-wrap items-center gap-2">
