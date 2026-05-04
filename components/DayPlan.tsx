@@ -393,14 +393,31 @@ function SegmentRow({
                 />
               )}
               <div className="flex-1">
-                <p className="text-[12px] font-medium text-ink">
-                  unit {segment.artiverseUnit} · {segment.artiverseUnitData?.medium.toLowerCase() ?? "artiverse"} — day {segment.artiverseDay}
-                </p>
-                <p className="mt-0.5 text-[11px] text-ink-muted">
-                  {segment.artiverseUnitData
-                    ? `reference: ${segment.artiverseUnitData.whatChildrenMake.toLowerCase()}`
-                    : segment.artiverseUnitName}
-                </p>
+                {(() => {
+                  // Distinguish artiverse (2 days · 2 distinct artworks)
+                  // from artistotle (3 days · 1 finished project) using
+                  // the unit's `days` field. Falls back to "artiverse"
+                  // when no unit data is loaded.
+                  const days = segment.artiverseUnitData?.days;
+                  const mode = days === 3 ? "artistotle" : "artiverse";
+                  const emoji = days === 3 ? "👴" : "🌍";
+                  const dayCue = days
+                    ? `day ${segment.artiverseDay} of ${days}`
+                    : `day ${segment.artiverseDay}`;
+                  return (
+                    <>
+                      <p className="text-[12px] font-medium text-ink">
+                        <span aria-hidden className="mr-1">{emoji}</span>
+                        {mode} · unit {segment.artiverseUnit} · {dayCue}
+                      </p>
+                      <p className="mt-0.5 text-[11px] text-ink-muted">
+                        {segment.artiverseUnitData
+                          ? `${segment.artiverseUnitData.medium.toLowerCase()} — reference: ${segment.artiverseUnitData.whatChildrenMake.toLowerCase()}`
+                          : segment.artiverseUnitName}
+                      </p>
+                    </>
+                  );
+                })()}
               </div>
             </div>
           ) : segment.segmentId === "book-o-clock" && segment.bookTitle ? (

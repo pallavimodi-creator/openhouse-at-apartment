@@ -109,6 +109,15 @@ export function SegmentInfoPopup({ info }: { info: SegmentInfo }) {
             <span className="absolute left-4 top-4 rounded-chip bg-black/40 px-2.5 py-0.5 text-[10px] font-semibold tracking-normal text-white backdrop-blur-sm">
               {info.segmentName}
             </span>
+            {unit && (unit.days === 2 || unit.days === 3) && (
+              <span
+                aria-hidden="true"
+                title={unit.days === 3 ? "Artistotle — 3 days, 1 project" : "Artiverse — 2 days, 2 distinct artworks"}
+                className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-segment-blue/85 text-[18px] shadow-md ring-2 ring-white/70"
+              >
+                {unit.days === 3 ? "👴" : "🌍"}
+              </span>
+            )}
           </div>
           {unit?.extraImages && unit.extraImages.length > 0 && (
             <div className="flex gap-2 overflow-x-auto pb-1">
@@ -225,14 +234,38 @@ export function SegmentInfoPopup({ info }: { info: SegmentInfo }) {
               The picture is a reference only — children pick their own subject.
             </p>
           </div>
-          {unit.days > 1 && (
+          {unit.days === 2 && (
             <div className="rounded-card bg-segment-yellow/40 p-3 ring-1 ring-ink/5">
               <p className="text-[10px] font-semibold tracking-wider text-ink">
-                Two days · two different artworks
+                <span aria-hidden className="mr-1">🌍</span>
+                Artiverse · 2 continuous days · 2 distinct artworks
               </p>
               <p className="mt-1 text-[12px] leading-relaxed text-ink-muted">
                 The same medium and technique runs across both sessions, but each
                 child makes a new artwork on day 2 — not a continuation of day 1.
+              </p>
+            </div>
+          )}
+          {unit.days === 3 && (
+            <div className="rounded-card bg-segment-blue/30 p-3 ring-1 ring-ink/5">
+              <p className="text-[10px] font-semibold tracking-wider text-ink">
+                <span aria-hidden className="mr-1">👴</span>
+                Artistotle · 3 continuous days · 1 finished project
+              </p>
+              <p className="mt-1 text-[12px] leading-relaxed text-ink-muted">
+                One artwork is built across three sessions, in the spirit of the
+                illustrator. Day 1 begins it, day 2 deepens it, day 3 finishes it
+                — a single piece the child takes home.
+              </p>
+            </div>
+          )}
+          {unit.days > 3 && (
+            <div className="rounded-card bg-segment-yellow/40 p-3 ring-1 ring-ink/5">
+              <p className="text-[10px] font-semibold tracking-wider text-ink">
+                {unit.days} continuous days
+              </p>
+              <p className="mt-1 text-[12px] leading-relaxed text-ink-muted">
+                The same medium and technique run across {unit.days} sessions.
               </p>
             </div>
           )}

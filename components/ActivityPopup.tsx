@@ -261,21 +261,18 @@ export function ActivityPopup({
         </p>
       </div>
 
-      {/* How to play — parsed into numbered steps for readability */}
+      {/* How to play — every sentence renders as its own bullet for
+          better scannability. Sub-bullets (split on " · " in the
+          source) nest under their lead. */}
       <div>
         <h3 className="text-[12px] font-semibold tracking-normal text-ink-muted">
           How to play
         </h3>
-        <ol className="mt-2 space-y-2">
+        <ul className="mt-2 space-y-2 rounded-card bg-ink/[0.03] px-4 py-3">
           {parseHowToPlay(activity.howToPlay).map((step, i) => (
-            <li
-              key={i}
-              className="flex items-start gap-3 rounded-card bg-ink/[0.03] px-3.5 py-2.5"
-            >
-              <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-orange text-[10px] font-bold text-white">
-                {i + 1}
-              </span>
-              <div className="flex-1 text-[13px] leading-relaxed text-ink">
+            <li key={i} className="flex items-start gap-2.5 text-[13px] leading-relaxed text-ink">
+              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-orange" />
+              <div className="flex-1">
                 {step.bullets ? (
                   <>
                     {step.lead && <p>{step.lead}</p>}
@@ -285,7 +282,7 @@ export function ActivityPopup({
                           key={j}
                           className="flex items-start gap-2 text-[12.5px] text-ink-muted"
                         >
-                          <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brand-orange" />
+                          <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brand-orange/60" />
                           <span className="flex-1">{b}</span>
                         </li>
                       ))}
@@ -297,7 +294,7 @@ export function ActivityPopup({
               </div>
             </li>
           ))}
-        </ol>
+        </ul>
       </div>
 
       {/* Example */}

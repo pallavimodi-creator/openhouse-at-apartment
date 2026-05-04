@@ -998,6 +998,144 @@ function ProgrammeOverviewContent() {
         )}
       </section>
 
+      {/* ─── WHY THIS PROGRAMME WORKS — 3-5 art only ─── */}
+      {programme.slug === "art-design-3-5" && (
+        <section className="mt-10 px-4 md:px-8">
+          <SectionTitle num="·" label="the approach">
+            How the segments build different skills — and why artiverse and artistotle alternate.
+          </SectionTitle>
+
+          {/* Segment → primary skill grid */}
+          <div className="mt-5">
+            <p className="text-[12px] font-bold text-ink">Each segment trains a different muscle</p>
+            <p className="mt-1 text-[11px] italic leading-relaxed text-ink-muted">
+              The 90 minutes are deliberately structured so that fine motor, creative expression, and reflection each get their own time and tool.
+            </p>
+            <div className="mt-3 grid gap-2 md:grid-cols-3">
+              {[
+                {
+                  emoji: "🖐️",
+                  label: "art gym",
+                  skill: "fine motor",
+                  body: "The laminated book trains hand control through short, focused mark-making.",
+                  tone: "bg-segment-yellow/30",
+                },
+                {
+                  emoji: "✏️",
+                  label: "scribble book",
+                  skill: "creative expression",
+                  body: "Open prompts invite the child to invent — there is no correct answer.",
+                  tone: "bg-segment-yellow/30",
+                },
+                {
+                  emoji: "🎮",
+                  label: "art games",
+                  skill: "art skills through play",
+                  body: "One game per session — children practise a specific skill the way children practise: by playing.",
+                  tone: "bg-segment-green/25",
+                },
+                {
+                  emoji: "🌍",
+                  label: "artiverse",
+                  skill: "material exploration",
+                  body: "12 projects, 2 days each, 2 distinct artworks. Every project deepens command of one medium.",
+                  tone: "bg-segment-blue/25",
+                },
+                {
+                  emoji: "👴",
+                  label: "artistotle",
+                  skill: "story narrative · cultural exposure",
+                  body: "6 illustrators, 3 days each, 1 finished piece. Children meet an artist's voice and make in their spirit.",
+                  tone: "bg-brand-orange/15",
+                },
+                {
+                  emoji: "📓",
+                  label: "experience book",
+                  skill: "reflection",
+                  body: "The teacher records the day with the children — a daily mark of what was noticed and built.",
+                  tone: "bg-segment-pink/30",
+                },
+              ].map((row) => (
+                <div key={row.label} className={cn("rounded-xl p-3 ring-1 ring-ink/5", row.tone)}>
+                  <p className="text-[12px] font-extrabold lowercase text-ink">
+                    <span aria-hidden className="mr-1.5 text-[14px]">{row.emoji}</span>
+                    {row.label}
+                  </p>
+                  <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.05em] text-brand-orange">
+                    {row.skill}
+                  </p>
+                  <p className="mt-1.5 text-[11.5px] leading-relaxed text-ink-muted">
+                    {row.body}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Artiverse vs Artistotle distinction */}
+          <div className="mt-7">
+            <p className="text-[12px] font-bold text-ink">Two making modes that complement each other</p>
+            <p className="mt-1 text-[11px] italic leading-relaxed text-ink-muted">
+              Artiverse opens the materials. Artistotle gives them a story. They alternate so children grow on both fronts.
+            </p>
+            <div className="mt-3 grid gap-3 md:grid-cols-2">
+              {/* Artiverse panel */}
+              <div className="relative overflow-hidden rounded-2xl bg-segment-blue/15 p-4 ring-1 ring-ink/5">
+                <span aria-hidden className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-segment-blue/80 text-[18px] shadow-md ring-2 ring-white/70">
+                  🌍
+                </span>
+                <p className="text-[10px] font-bold text-ink-subtle">mode 1</p>
+                <h3 className="mt-0.5 text-[16px] font-extrabold lowercase text-ink">artiverse</h3>
+                <p className="mt-1 text-[11px] font-semibold text-segment-blue/90">
+                  12 projects · 2 continuous days · 2 distinct artworks
+                </p>
+                <ul className="mt-3 space-y-1.5">
+                  {[
+                    "Same medium and technique across both days.",
+                    "Day 1 makes a complete artwork. Day 2 makes a brand new one — not a continuation.",
+                    "Reference image is a starting point only — the subject is the child's choice.",
+                    "Builds depth in a material before moving on.",
+                  ].map((line) => (
+                    <li key={line} className="flex items-start gap-2 text-[11.5px] leading-relaxed text-ink-muted">
+                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-segment-blue/80" />
+                      <span className="flex-1">{line}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Artistotle panel */}
+              <div className="relative overflow-hidden rounded-2xl bg-brand-orange/10 p-4 ring-1 ring-ink/5">
+                <span aria-hidden className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-brand-orange/85 text-[18px] shadow-md ring-2 ring-white/70">
+                  👴
+                </span>
+                <p className="text-[10px] font-bold text-ink-subtle">mode 2</p>
+                <h3 className="mt-0.5 text-[16px] font-extrabold lowercase text-ink">artistotle</h3>
+                <p className="mt-1 text-[11px] font-semibold text-brand-orange">
+                  6 illustrators · 3 continuous days · 1 finished project
+                </p>
+                <ul className="mt-3 space-y-1.5">
+                  {[
+                    "One artwork built across three sessions.",
+                    "Day 1 begins it. Day 2 deepens it. Day 3 finishes it.",
+                    "Children meet a real illustrator's voice — Carle, Ehlert, Gomi — and make in that spirit.",
+                    "Builds story narrative and cultural exposure alongside making.",
+                  ].map((line) => (
+                    <li key={line} className="flex items-start gap-2 text-[11.5px] leading-relaxed text-ink-muted">
+                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brand-orange/80" />
+                      <span className="flex-1">{line}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <p className="mt-3 text-[11px] italic leading-relaxed text-ink-muted">
+              The two modes alternate across the year. By the time a child finishes the programme they have explored materials deeply (artiverse) AND made finished pieces in the spirit of three real illustrators (artistotle).
+            </p>
+          </div>
+        </section>
+      )}
+
       {/* ─── DAILY FLOW ─── */}
       <section className="mt-8 px-4 md:px-8">
         <SectionTitle num={sectionNum("daily-flow")} label="daily flow" />
@@ -1660,13 +1798,23 @@ function ProgrammeOverviewContent() {
                 {seg.segment === "artiverse / artistotle" && isArt && programme.ageGroup === "3-5" && (
                   <div className="space-y-6">
                     {/* ── ARTIVERSE block ── */}
-                    <div className="rounded-2xl bg-segment-blue/15 p-5 md:p-6">
-                      <div className="flex flex-wrap items-center justify-between gap-3">
+                    <div className="relative rounded-2xl bg-segment-blue/15 p-5 md:p-6">
+                      <span
+                        aria-hidden="true"
+                        title="Artiverse — 2 days, 2 distinct artworks"
+                        className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-segment-blue/80 text-[20px] shadow-md ring-2 ring-white/70"
+                      >
+                        🌍
+                      </span>
+                      <div className="flex flex-wrap items-center justify-between gap-3 pr-12">
                         <div>
                           <p className="text-[10px] font-bold text-ink-subtle">mode 1</p>
                           <h3 className="mt-0.5 text-[18px] font-extrabold lowercase text-ink md:text-[20px]">
                             artiverse
                           </h3>
+                          <p className="mt-1 text-[11px] font-semibold text-segment-blue/90">
+                            12 projects · 2 continuous days each · 2 distinct artworks per project
+                          </p>
                         </div>
                         <Link
                           href="/artiverse-book"
@@ -1677,7 +1825,7 @@ function ProgrammeOverviewContent() {
                         </Link>
                       </div>
                       <p className="mt-3 text-[12px] leading-relaxed text-ink-muted md:text-[13px]">
-                        a structured making programme across three material families — <span className="font-semibold text-ink">colourful papers</span>, <span className="font-semibold text-ink">crayons</span>, and <span className="font-semibold text-ink">watercolour</span>. each project runs over two sessions, with children choosing what to make and taking their work home. the focus is on exploring materials deeply while building control, colour understanding, and creative expression.
+                        A structured making programme across three material families — <span className="font-semibold text-ink">colourful papers</span>, <span className="font-semibold text-ink">crayons</span>, and <span className="font-semibold text-ink">watercolour</span>. Each project runs across two continuous days. On both days the same medium and technique are set, but the child makes a distinct artwork each day. The picture in the book is a reference only — children pick their own subject and take both works home.
                       </p>
                       <div className="mt-4">
                         <ArtiverseChapters compact />
@@ -1685,13 +1833,23 @@ function ProgrammeOverviewContent() {
                     </div>
 
                     {/* ── ARTISTOTLE block ── */}
-                    <div className="rounded-2xl bg-brand-orange/10 p-5 md:p-6">
-                      <div className="flex flex-wrap items-center justify-between gap-3">
+                    <div className="relative rounded-2xl bg-brand-orange/10 p-5 md:p-6">
+                      <span
+                        aria-hidden="true"
+                        title="Artistotle — 3 days, 1 finished project"
+                        className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-brand-orange/85 text-[20px] shadow-md ring-2 ring-white/70"
+                      >
+                        👴
+                      </span>
+                      <div className="flex flex-wrap items-center justify-between gap-3 pr-12">
                         <div>
                           <p className="text-[10px] font-bold text-ink-subtle">mode 2</p>
                           <h3 className="mt-0.5 text-[18px] font-extrabold lowercase text-ink md:text-[20px]">
                             artistotle
                           </h3>
+                          <p className="mt-1 text-[11px] font-semibold text-brand-orange">
+                            6 illustrators · 3 continuous days each · 1 finished project per project
+                          </p>
                         </div>
                         <Link
                           href="/artistotle-book"
@@ -1702,7 +1860,7 @@ function ProgrammeOverviewContent() {
                         </Link>
                       </div>
                       <p className="mt-3 text-[12px] leading-relaxed text-ink-muted md:text-[13px]">
-                        illustrator-led projects. six illustrators, three sessions each. children meet the work of <span className="font-semibold text-ink">eric carle</span>, <span className="font-semibold text-ink">lois ehlert</span>, and <span className="font-semibold text-ink">taro gomi</span>, then make in the same spirit — not copies, but pieces in their style.
+                        Illustrator-led projects. Children meet the work of <span className="font-semibold text-ink">Eric Carle</span>, <span className="font-semibold text-ink">Lois Ehlert</span>, and <span className="font-semibold text-ink">Taro Gomi</span>, then make in the same spirit — not copies, but pieces in their style. Each project is built across three continuous days: day 1 begins it, day 2 deepens it, day 3 finishes it. One finished artwork comes home per project.
                       </p>
                       <div className="mt-4">
                         <ArtistotleChapters compact />
@@ -1710,7 +1868,7 @@ function ProgrammeOverviewContent() {
                     </div>
 
                     <p className="text-[10.5px] italic text-ink-subtle">
-                      the two modes alternate across the programme; within each mode activities are linear in difficulty.
+                      The two modes alternate across the programme; within each mode activities are linear in difficulty.
                     </p>
                   </div>
                 )}

@@ -222,8 +222,8 @@ function buildItemsFor(prog: CurriculumProgramme): LibraryItem[] {
       segment: "art-gym",
       title: is35 ? "art gym — daily warm-up" : "art gym — 4-session cycle",
       description: is35
-        ? "a daily 15-minute warm-up that rotates between two resources on alternate days — the laminated art gym book and the scribble book. children do 1–2 pages each session. art gym book 1 runs for the first ~30 sessions; once finished, the class moves to book 2. no cue cards, no extensions at this age."
-        : "a structured opening segment using books, cue cards, and their extensions. each session builds directly on the previous one. books are laminated — children mark them with resources of choice (thread, clay, sequins, erasable markers). every book day children do 1–3 pages, then replicate what they drew in their sketchbook freely with materials of choice.",
+        ? "Daily 15-minute warm-up. Builds fine motor control through 1–2 pages of focused mark-making."
+        : "A structured opening segment using books, cue cards, and their extensions. Each session builds directly on the previous one. Books are laminated — children mark them with resources of choice (thread, clay, sequins, erasable markers). Every book day children do 1–3 pages, then replicate what they drew in their sketchbook freely with materials of choice.",
       info: {
         segmentId: "art-gym",
         segmentName: "Art Gym",
@@ -250,7 +250,7 @@ function buildItemsFor(prog: CurriculumProgramme): LibraryItem[] {
         segment: "art-gym",
         title: "scribble book",
         description:
-          "a4 spiral-bound book with illustrated pages. each page shows a partially complete scene with a single prompt at the bottom. children draw their response in the open space. one page per session. no correct answer.",
+          "A4 spiral-bound illustrated prompt pages. Builds creative expression — one page per session, no correct answer.",
         info: {
           segmentId: "art-gym",
           segmentName: "Art Gym",
@@ -276,7 +276,7 @@ function buildItemsFor(prog: CurriculumProgramme): LibraryItem[] {
       segment: "artiverse",
       title: "the artiverse book",
       description:
-        "a structured making programme across three material families: colourful papers, crayons, and watercolour. each project runs over two sessions; children choose what to make and take their work home.",
+        "12 projects across paper, crayon, and paint. Each project runs across 2 continuous days — and on each day the child makes a distinct artwork using the same medium and technique.",
       info: {
         segmentId: "artiverse",
         segmentName: "Artiverse Book",
@@ -296,7 +296,7 @@ function buildItemsFor(prog: CurriculumProgramme): LibraryItem[] {
       segment: "artiverse",
       title: "the artistotle book",
       description:
-        "a digital flipbook of the printed artistotle book — eric carle, lois ehlert, taro gomi. used across the 18 artistotle sessions in the 3–5 programme.",
+        "6 illustrator projects (Eric Carle · Lois Ehlert · Taro Gomi). Each project runs across 3 continuous days — one finished artwork per project, built day by day in the illustrator's spirit.",
       info: {
         segmentId: "artiverse",
         segmentName: "Artistotle Book",
@@ -581,9 +581,7 @@ export default function LibraryPage() {
     <div className="flex flex-col px-4 pt-4 pb-6">
       <h1 className="text-[22px] font-bold text-ink">library</h1>
       <p className="mt-1 text-[13px] text-ink-muted">
-        {isAdmin
-          ? "every activity across every programme"
-          : "every activity in your programme"}
+        Every resource across programmes.
       </p>
 
       {/* Admin-only programme picker */}
@@ -765,14 +763,41 @@ export default function LibraryPage() {
                                 />
 
                                 <div className="flex flex-1 items-start gap-3 p-3">
-                                  {/* Thumbnail */}
+                                  {/* Thumbnail — wrapped in a relative
+                                      box so we can stamp the artiverse
+                                      🌍 / artistotle 👴 mode badge in
+                                      the top-right corner. */}
                                   {thumbImg ? (
-                                    // eslint-disable-next-line @next/next/no-img-element
-                                    <img
-                                      src={thumbImg}
-                                      alt=""
-                                      className="h-16 w-16 shrink-0 rounded-lg bg-ink/[0.03] object-contain"
-                                    />
+                                    <div className="relative h-16 w-16 shrink-0">
+                                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                                      <img
+                                        src={thumbImg}
+                                        alt=""
+                                        className="h-16 w-16 rounded-lg bg-ink/[0.03] object-contain"
+                                      />
+                                      {(() => {
+                                        // Show 🌍 on artiverse units / artiverse-book primer.
+                                        // Show 👴 on artistotle (3-day) units / artistotle-book primer.
+                                        const isArtiverseBook = it.kind === "primer" && it.id.endsWith("/artiverse-book");
+                                        const isArtistotleBook = it.kind === "primer" && it.id.endsWith("/artistotle-book");
+                                        const isArtistotleUnit = it.kind === "artiverse" && it.item.days === 3;
+                                        const isArtiverseUnit = it.kind === "artiverse" && it.item.days !== 3;
+                                        const emoji = isArtistotleBook || isArtistotleUnit
+                                          ? "👴"
+                                          : isArtiverseBook || isArtiverseUnit
+                                            ? "🌍"
+                                            : null;
+                                        if (!emoji) return null;
+                                        return (
+                                          <span
+                                            aria-hidden="true"
+                                            className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-segment-blue/80 text-[11px] shadow-sm ring-2 ring-brand-white"
+                                          >
+                                            {emoji}
+                                          </span>
+                                        );
+                                      })()}
+                                    </div>
                                   ) : (
                                     <div
                                       className="relative flex h-16 w-16 shrink-0 items-center justify-center rounded-lg"
