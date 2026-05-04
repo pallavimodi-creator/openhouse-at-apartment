@@ -254,6 +254,12 @@ export const ACTIVITY_IMAGES: Record<string, string> = {
   "language-wheel": "/games/language/language-wheel.png",
   "i-spy": "/games/language/i-spy.png",
   "swat-it-snap-it": "/games/language/swat-it-snap-it.png",
+  "story-construction": "/games/language/story-construction.png",
+  "think-fast": "/games/language/think-fast.png",
+  // Wordsmiths resources — 3 vocabulary tools rotated through the
+  // Wordsmiths segment.
+  "emotion-tiles": "/games/language/emotion-tiles.png",
+  "story-calendar": "/games/language/story-calendar.png",
   // Robotics — experiment cue cards (thumbnail = first page of the PDF)
   "l1-levers-e1": "/robotics-manuals/l1-levers.png",
   "l1-levers-e2": "/robotics-manuals/l1-levers.png",
