@@ -161,7 +161,7 @@ export default function ArtistotleBookPage() {
 
         {/* Title band */}
         <section className="px-3 pt-5 md:px-8 md:pt-7">
-          <div className="mx-auto w-full max-w-3xl rounded-2xl bg-segment-yellow px-5 py-5 ring-1 ring-ink/5 md:px-7 md:py-6">
+          <div className="mx-auto w-full max-w-5xl rounded-2xl bg-segment-yellow px-5 py-5 ring-1 ring-ink/5 md:px-7 md:py-6">
             <p className="text-[11px] font-extrabold text-ink/50">oh.</p>
             <h1 className="mt-1 text-[22px] font-extrabold leading-tight text-ink md:text-[28px]">
               the artistotle book
