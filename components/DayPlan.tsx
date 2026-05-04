@@ -635,9 +635,6 @@ export function DayPlan({
           session {session.sessionNumber} plan
         </h3>
         <div className="flex items-center gap-2">
-          <span className="text-[11px] text-ink-subtle">
-            topic layer {session.topicLayer}
-          </span>
           {session.isCheckpoint && (
             <span className="rounded-chip bg-brand-orange/15 px-2 py-0.5 text-[9px] font-semibold tracking-normal text-brand-orange">
               checkpoint
