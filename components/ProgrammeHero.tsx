@@ -29,10 +29,10 @@ export function ProgrammeHero({
 }) {
   return (
     <section className="-mx-4 px-4">
-      <div className={cn("rounded-b-[24px] px-4 pb-6 pt-4 md:px-8 md:pb-8 md:pt-6", heroBg[category])}>
-        <div className="rounded-card bg-brand-white p-5 shadow-card md:p-8">
+      <div className={cn("rounded-b-[28px] px-4 pb-7 pt-5 md:px-8 md:pb-10 md:pt-7", heroBg[category])}>
+        <div className="mx-auto w-full max-w-5xl rounded-2xl bg-brand-white p-6 shadow-card ring-1 ring-ink/5 md:p-8">
           <div className="flex flex-wrap items-center gap-2">
-            <p className="text-[11px] font-semibold text-ink-subtle md:text-[13px]">
+            <p className="text-[11px] font-semibold tracking-normal text-ink-subtle md:text-[12px]">
               {ageLabel}
             </p>
             {badge && (
@@ -41,10 +41,10 @@ export function ProgrammeHero({
               </span>
             )}
           </div>
-          <h1 className="mt-1 text-[24px] font-bold leading-tight text-ink md:text-[32px]">
+          <h1 className="mt-2 text-[26px] font-extrabold leading-[1.05] tracking-tight text-ink md:text-[36px]">
             {title}
           </h1>
-          <p className="mt-3 text-[13px] leading-relaxed text-ink-muted md:text-[15px] md:max-w-xl">
+          <p className="mt-3 text-[13px] leading-relaxed text-ink-muted md:mt-4 md:max-w-2xl md:text-[15px]">
             {description}
           </p>
         </div>

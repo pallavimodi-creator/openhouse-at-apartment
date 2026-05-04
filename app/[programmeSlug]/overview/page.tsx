@@ -2754,16 +2754,24 @@ function SectionTitle({
   label: string;
   children?: React.ReactNode;
 }) {
+  // Number chip is purely decorative — skip it when no number is
+  // assigned so unnumbered sections (e.g. "the approach") don't show
+  // a misaligned dot/bullet.
+  const hasNum = num && num !== "·" && num !== "—";
   return (
     <div>
       <div className="flex items-center gap-2">
-        <span className="rounded-chip bg-brand-orange/10 px-2 py-0.5 text-[10px] font-bold text-brand-orange">
-          {num}
+        {hasNum && (
+          <span className="rounded-chip bg-brand-orange/10 px-2 py-0.5 text-[10px] font-bold text-brand-orange">
+            {num}
+          </span>
+        )}
+        <span className="text-[11px] font-bold tracking-normal text-ink-subtle">
+          {label}
         </span>
-        <span className="text-[11px] font-bold text-ink-muted">{label}</span>
       </div>
       {children && (
-        <h2 className="mt-1 text-[18px] font-extrabold leading-tight text-ink md:text-[22px]">
+        <h2 className="mt-1.5 text-[20px] font-extrabold leading-tight text-ink md:text-[24px]">
           {children}
         </h2>
       )}
