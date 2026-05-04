@@ -164,8 +164,21 @@ const languageBooks: LanguageBook[] = [
     whyThisPosition:
       "The most repetitive and predictable book in the set. Refrains like \"we can't go over it, we can't go under it, we've got to go through it!\" invite children to join in from the very first page. Onomatopoeia (swishy swashy, splash splosh, squelch squerch) builds listening and the foundation of phonological awareness. The right book to begin with — children feel competent immediately.",
     themes: ["onomatopoeia", "repetition", "joining in"],
+    vocabulary: [
+      "swishy swashy",
+      "splash splosh",
+      "squelch squerch",
+      "stumble trip",
+      "tiptoe",
+      "hooo woooo",
+      "long",
+      "wavy",
+      "thick",
+      "deep",
+    ],
+    vocabularyType: "word-workout-calendar",
     groupActivityType: "story-re-enactment",
-    heroImageUrl: "/language-books/01-bear-hunt.png",
+    heroImageUrl: "/language-books/01-bear-hunt.jpg",
   },
   {
     order: 2,
@@ -177,8 +190,21 @@ const languageBooks: LanguageBook[] = [
     whyThisPosition:
       "Short sentences, strong visual storytelling, and simple spatial vocabulary (under, beside, over). The story has a clear arc — colours together, then apart, then back together — which makes the recalls and sequences ★ observation possible early in the programme.",
     themes: ["colours", "spatial vocabulary", "story arc"],
+    vocabulary: [
+      "under",
+      "beside",
+      "over",
+      "between",
+      "above",
+      "below",
+      "mix",
+      "blend",
+      "together",
+      "apart",
+    ],
+    vocabularyType: "story-calendar",
     groupActivityType: "change-story-endings",
-    heroImageUrl: "/language-books/02-mixed.png",
+    heroImageUrl: "/language-books/02-mixed.jpg",
   },
   {
     order: 3,
@@ -190,8 +216,21 @@ const languageBooks: LanguageBook[] = [
     whyThisPosition:
       "A single clear character arc — Gerald is sad, Gerald finds his rhythm, Gerald dances. The rhyming text supports phonological awareness. Introduces describing words like clumsy, slim, and splendid at a manageable density. Group re-enactment is ideal here — Gerald's dancing is physical and easy to act out.",
     themes: ["describing words", "rhyme", "character feelings"],
+    vocabulary: [
+      "clumsy",
+      "slim",
+      "splendid",
+      "graceful",
+      "shy",
+      "twirl",
+      "swayed",
+      "wobble",
+      "rhythm",
+      "wonderful",
+    ],
+    vocabularyType: "story-calendar",
     groupActivityType: "story-re-enactment",
-    heroImageUrl: "/language-books/03-giraffes-cant-dance.png",
+    heroImageUrl: "/language-books/03-giraffes-cant-dance.jpg",
   },
   {
     order: 4,
@@ -203,8 +242,21 @@ const languageBooks: LanguageBook[] = [
     whyThisPosition:
       "Emotion vocabulary as the central subject (happy, sad, angry, calm, fear, love). Each emotion gets its own page and colour, so the structure is tightly repetitive. Children now have enough listening confidence to handle a book about feelings, and the vocabulary north star can be reliably observed because the emotion words are clear and concrete.",
     themes: ["emotions", "colour-feeling pairs", "self-regulation"],
+    vocabulary: [
+      "happy",
+      "sad",
+      "angry",
+      "calm",
+      "afraid",
+      "loving",
+      "jumbled",
+      "tangled",
+      "sorted",
+      "feeling",
+    ],
+    vocabularyType: "emotion-tiles",
     groupActivityType: "vocabulary-reproduction",
-    heroImageUrl: "/language-books/04-color-monster.png",
+    heroImageUrl: "/language-books/04-color-monster.jpg",
   },
   {
     order: 5,
@@ -216,8 +268,21 @@ const languageBooks: LanguageBook[] = [
     whyThisPosition:
       "A more complex emotional journey — small mouse becomes brave mouse becomes small-but-mighty mouse. Best placed mid-programme: children now have enough confidence for the puppet character activity, which asks a child to speak as someone else for sixty seconds.",
     themes: ["bravery", "perspective", "rhyming verse"],
+    vocabulary: [
+      "tiny",
+      "timid",
+      "brave",
+      "mighty",
+      "fierce",
+      "afraid",
+      "roar",
+      "scuttle",
+      "tremble",
+      "fearless",
+    ],
+    vocabularyType: "emotion-tiles",
     groupActivityType: "puppet-character",
-    heroImageUrl: "/language-books/05-lion-inside.png",
+    heroImageUrl: "/language-books/05-lion-inside.jpg",
   },
   {
     order: 6,
@@ -229,8 +294,21 @@ const languageBooks: LanguageBook[] = [
     whyThisPosition:
       "School-behaviour vocabulary (interrupt, fidget, stir up, tease, tidy). Children are now ready to think about social and behavioural concepts. The book invites them to write their own school story — perfect for the day-5 narrative-production activity.",
     themes: ["social vocabulary", "school routines", "longer text"],
+    vocabulary: [
+      "interrupt",
+      "fidget",
+      "stir up",
+      "tease",
+      "tidy",
+      "share",
+      "listen",
+      "polite",
+      "patient",
+      "kind",
+    ],
+    vocabularyType: "word-workout-calendar",
     groupActivityType: "change-story-endings",
-    heroImageUrl: "/language-books/06-dinosaurs-school.png",
+    heroImageUrl: "/language-books/06-dinosaurs-school.jpg",
   },
   {
     order: 7,
@@ -242,8 +320,21 @@ const languageBooks: LanguageBook[] = [
     whyThisPosition:
       "The most linguistically demanding book in the set. Lexile 510 (adult-directed) is high for this age — children rely on the rhyming structure, the repetition, and the read-aloud adult to access vocabulary like tusks, claws, knobbly knees, poisonous wart, and purple prickles. Children need full vocabulary scaffolding by this point — which they now have, after thirty-six sessions of vocabulary work.",
     themes: ["rich vocabulary", "rhyming verse", "trickster tale"],
+    vocabulary: [
+      "tusks",
+      "claws",
+      "knobbly knees",
+      "poisonous wart",
+      "purple prickles",
+      "terrible tusks",
+      "scrambled",
+      "scurried",
+      "stalked",
+      "sly",
+    ],
+    vocabularyType: "story-calendar",
     groupActivityType: "puppet-character",
-    heroImageUrl: "/language-books/07-gruffalo.png",
+    heroImageUrl: "/language-books/07-gruffalo.jpg",
   },
   {
     order: 8,
@@ -255,8 +346,21 @@ const languageBooks: LanguageBook[] = [
     whyThisPosition:
       "Most demanding for personal storytelling. The \"try, try again\" arc is sophisticated — Max keeps trying different ways to communicate his ingredient. Comes last because the vocabulary reproduction activity and the day-5 personal-storytelling task both ask children to draw on their full speaking and vocabulary base.",
     themes: ["communication", "persistence", "narrative voice"],
+    vocabulary: [
+      "ingredients",
+      "list",
+      "icing",
+      "scribble",
+      "marshmallow",
+      "earthworm",
+      "bake",
+      "spill",
+      "scribble",
+      "again",
+    ],
+    vocabularyType: "word-workout-calendar",
     groupActivityType: "vocabulary-reproduction",
-    heroImageUrl: "/language-books/08-bunny-cakes.png",
+    heroImageUrl: "/language-books/08-bunny-cakes.jpg",
   },
 ];
 
@@ -450,7 +554,7 @@ export const languageStorytelling35: CurriculumProgramme = {
       name: "Roll & Rhyme",
       durationRange: "10 min",
       objective:
-        "A whole-class warm-up with movement and song. The same fixed playlist of five Barefoot Books songs returns throughout the year so children build full mastery — joining in, leading, and inventing variations.",
+        "A whole-class warm-up using a fixed playlist of five Barefoot Books songs. The same songs return throughout the year so children build full mastery — joining in, leading, and inventing variations.",
       type: "rotating",
       rotationPool: [],
     },
@@ -459,7 +563,7 @@ export const languageStorytelling35: CurriculumProgramme = {
       name: "Book'o'Clock",
       durationRange: "25 min",
       objective:
-        "The spine of the session. The day's book is read aloud following the 6-day arc. Day 1 is read without stopping — the story must be felt whole before it is examined. On days 3 and 6 children draw a response, the primary play-writes and vocabulary observation moments. On days 4–6 the educator reads more fluently and pauses longer — children already know the story and can carry more of the language.",
+        "The spine of the session. Day 1 is read without stopping — the story must be felt whole before it is examined. On days 3 and 6 children draw a response — these are the primary play-writes and vocabulary north star assessment moments. On days 4–6 the educator reads more fluently, pauses longer, and expects more — children already know the story and can carry more of the language. Book'o'Clock and Wordsmiths happen together as the central learning block.",
       type: "fixed",
     },
     {
@@ -467,7 +571,7 @@ export const languageStorytelling35: CurriculumProgramme = {
       name: "Wordsmiths",
       durationRange: "10 min",
       objective:
-        "One vocabulary resource per session, matched to the current book's vocabulary type. The see → act → say sequence is always the same: the educator shows the tile or card, all children act the word together, then one child at a time uses it in a sentence. Acting is whole-group — no child is singled out.",
+        "One vocabulary resource per session, matched to the current book's vocabulary type — emotion tiles for feeling words, word workout calendar for action words, story calendar for describing and spatial words. The see → act → say sequence is always the same: the educator shows the tile or card, all children act the word together, then one child at a time uses it in a sentence. Acting is always whole-group — no child is singled out.",
       type: "rotating",
       rotationPool: Object.keys(wordsmithsResources),
     },
@@ -476,7 +580,7 @@ export const languageStorytelling35: CurriculumProgramme = {
       name: "Play-Writes",
       durationRange: "10 min",
       objective:
-        "Independent A4 play-writes books. Every child works simultaneously and on their own. Materials rotate across sessions — crayons, yarn, clay, sequins, stamp pad. Pages are open enough that any child at any level finds meaningful work. The educator circulates and names what they see — no correcting.",
+        "Individual A4 play-writes books. Every child works simultaneously and independently. Materials rotate across sessions — crayons, yarn, clay or play-doh, sequins or stickers, stamp pad. Pages are open enough that any child at any level finds meaningful work. The educator circulates and names what they see — no correcting. The last page of each book section connects to the current book.",
       type: "fixed",
     },
     {
@@ -484,7 +588,7 @@ export const languageStorytelling35: CurriculumProgramme = {
       name: "Playground",
       durationRange: "15 min",
       objective:
-        "One skill-tagged language game per session, rotating so all five skills are covered across the week. Games are connected to the current book — children play with characters, words, and events they already know.",
+        "One game per session, rotating by skill tag so all five skills are covered across the week. Games are connected to the current book — children play with characters, words, and events they already know.",
       type: "rotating",
       rotationPool: Object.keys(playgroundGames),
     },

@@ -94,7 +94,7 @@ function SongCard({
       {/* Card body — sentence-case body copy per brand guide */}
       <div className="space-y-2 p-4">
         <div>
-          <p className="text-[10px] font-semibold uppercase tracking-[0.06em] text-brand-orange">
+          <p className="text-[10px] font-semibold tracking-normal text-brand-orange">
             What it builds
           </p>
           <p className="mt-0.5 text-[12.5px] leading-relaxed text-ink-muted md:text-[13px]">
@@ -103,7 +103,7 @@ function SongCard({
         </div>
         <div className="flex flex-col gap-2 md:flex-row md:items-start md:gap-4">
           <div className="flex-1">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.06em] text-ink-subtle">
+            <p className="text-[10px] font-semibold tracking-normal text-ink-subtle">
               Pairs with
             </p>
             <p className="mt-0.5 text-[12px] leading-relaxed text-ink-muted">
@@ -111,7 +111,7 @@ function SongCard({
             </p>
           </div>
           <div className="flex-1">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.06em] text-ink-subtle">
+            <p className="text-[10px] font-semibold tracking-normal text-ink-subtle">
               When to introduce
             </p>
             <p className="mt-0.5 text-[12px] leading-relaxed text-ink-muted">

@@ -179,6 +179,16 @@ export interface LanguageBook {
   whyThisPosition: string;
   /** Theme keywords — pair with vocabulary type / songs. */
   themes: string[];
+  /** Target vocabulary words pulled from the book — used in Wordsmiths. */
+  vocabulary: string[];
+  /**
+   * The kind of vocabulary the book is built around — drives which
+   * Wordsmiths resource pairs with the book.
+   */
+  vocabularyType:
+    | "emotion-tiles"
+    | "word-workout-calendar"
+    | "story-calendar";
   /** One of the four group activity types from the programme spec. */
   groupActivityType:
     | "story-re-enactment"

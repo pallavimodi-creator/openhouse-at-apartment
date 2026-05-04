@@ -12,6 +12,12 @@ const ACTIVITY_LABEL: Record<LanguageBook["groupActivityType"], string> = {
   "puppet-character": "puppet character",
 };
 
+const VOCAB_TYPE_LABEL: Record<LanguageBook["vocabularyType"], string> = {
+  "emotion-tiles": "emotion tiles",
+  "word-workout-calendar": "word workout calendar",
+  "story-calendar": "story calendar",
+};
+
 /**
  * 8-book grid for the language programme. Each card shows the cover,
  * order number, title, author, and an age/lexile chip. Tap a card to
@@ -110,21 +116,51 @@ function BookCard({
           <p className="text-[12.5px] leading-relaxed text-ink-muted md:text-[13px]">
             {book.summary}
           </p>
+
+          {/* Target vocabulary — the words children will encounter
+              across the 6-day arc. */}
           <div>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.06em] text-brand-orange">
+            <p className="text-[10px] font-semibold tracking-normal text-brand-orange">
+              Target vocabulary
+            </p>
+            <div className="mt-1.5 flex flex-wrap gap-1.5">
+              {book.vocabulary.map((word) => (
+                <span
+                  key={word}
+                  className="rounded-chip bg-brand-white px-2 py-0.5 text-[11px] font-semibold text-ink ring-1 ring-ink/10"
+                >
+                  {word}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <p className="text-[10px] font-semibold tracking-normal text-brand-orange">
               Why this position
             </p>
             <p className="mt-0.5 text-[12px] leading-relaxed text-ink-muted">
               {book.whyThisPosition}
             </p>
           </div>
-          <div className="flex items-center gap-2">
-            <span className="text-[10px] font-semibold uppercase tracking-[0.06em] text-ink-subtle">
-              Group activity
-            </span>
-            <span className="rounded-chip bg-brand-white px-2 py-0.5 text-[11px] font-bold text-ink ring-1 ring-ink/10">
-              {ACTIVITY_LABEL[book.groupActivityType]}
-            </span>
+
+          <div className="grid gap-2 md:grid-cols-2">
+            <div className="rounded-lg bg-brand-white p-3 ring-1 ring-ink/5">
+              <p className="text-[10px] font-semibold tracking-normal text-ink-subtle">
+                Wordsmiths resource
+              </p>
+              <p className="mt-1 text-[11.5px] font-bold text-ink">
+                {VOCAB_TYPE_LABEL[book.vocabularyType]}
+              </p>
+            </div>
+            <div className="rounded-lg bg-brand-white p-3 ring-1 ring-ink/5">
+              <p className="text-[10px] font-semibold tracking-normal text-ink-subtle">
+                Group activity
+              </p>
+              <p className="mt-1 text-[11.5px] font-bold text-ink">
+                {ACTIVITY_LABEL[book.groupActivityType]}
+              </p>
+            </div>
           </div>
         </div>
       )}

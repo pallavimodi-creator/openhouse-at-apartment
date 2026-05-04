@@ -33,6 +33,9 @@ import {
   Eye,
   Heart,
   Wand2,
+  Ear,
+  MessageCircle,
+  Music,
   type LucideIcon,
 } from "lucide-react";
 import { getCurriculumProgramme, getActivityImage, GYM_BOOK_IMAGES } from "@/lib/content";
@@ -484,6 +487,12 @@ function ProgrammeOverviewContent() {
     fm: Hand,
     co: Palette,
     ce: Sparkles,
+    // Language through Storytelling — 3-5 skill families
+    listening: Ear,
+    speaking: MessageCircle,
+    reading: BookOpen,
+    vocabulary: Sparkles,
+    "play-writes": PenLine,
   };
   const abilityIcon: Record<string, LucideIcon> = {
     // Fine Motor abilities (4)
@@ -501,6 +510,26 @@ function ProgrammeOverviewContent() {
     "ce-1": Heart, // Emotional Expression through Art
     "ce-2": Wand2, // Integrating Artistic Choices
     "ce-3": Sparkles, // Visual Arts Integration ★
+    // Language — Listening (3 abilities, 3rd is north star)
+    "listening-0": Ear,
+    "listening-1": Eye,
+    "listening-2": Sparkles,
+    // Language — Speaking
+    "speaking-0": MessageCircle,
+    "speaking-1": MessageCircle,
+    "speaking-2": Sparkles,
+    // Language — Reading
+    "reading-0": BookOpen,
+    "reading-1": Lightbulb,
+    "reading-2": Sparkles,
+    // Language — Vocabulary
+    "vocabulary-0": Eye,
+    "vocabulary-1": Hand,
+    "vocabulary-2": Sparkles,
+    // Language — Play-Writes
+    "play-writes-0": Brush,
+    "play-writes-1": PenLine,
+    "play-writes-2": Sparkles,
   };
 
   const skillStyle: Record<string, { color: string; accent: string }> = {
@@ -522,6 +551,12 @@ function ProgrammeOverviewContent() {
     bm: { color: "bg-segment-pink", accent: "border-segment-pink" },
     ps: { color: "bg-segment-blue", accent: "border-segment-blue" },
     ou: { color: "bg-segment-green", accent: "border-segment-green" },
+    // language — five skill families, each with its own segment-tone colour
+    listening: { color: "bg-segment-yellow", accent: "border-segment-yellow" },
+    speaking: { color: "bg-brand-orange", accent: "border-brand-orange" },
+    reading: { color: "bg-segment-blue", accent: "border-segment-blue" },
+    vocabulary: { color: "bg-segment-pink", accent: "border-segment-pink" },
+    "play-writes": { color: "bg-segment-green", accent: "border-segment-green" },
   };
 
   // Build daily flow dynamically from this programme's segment definitions.
@@ -553,6 +588,38 @@ function ProgrammeOverviewContent() {
     experiment: { icon: FlaskConical, durationFlex: 40, meaning: "Groups of 2–4 children find the answer to one specific question. Every child takes at least one measurement independently. Teacher asks one question per group and never gives the answer. Tool orientation is embedded here — each tool introduced once, confirmed once, never revisited." },
     build: { icon: Wrench, durationFlex: 40, meaning: "Each child builds their own mechanical model using a personal kit and a step card. The teacher never fixes anything and never tells anyone what to do next. Four questions only. When something doesn't work, the child figures it out." },
     "experience-book": { icon: Notebook, durationFlex: 10, meaning: "Five marks per child per session — O&U and LT from the experiment, B&M and PS from the build, concept ticked when the child can explain it. One specific note per child. Compiles into a monthly robotics journey letter." },
+
+    // Language through Storytelling — six segments. Meanings sourced
+    // from the programme's segmentDefinitions when present so the
+    // canonical copy stays in one place.
+    "roll-rhyme": {
+      icon: Music,
+      durationFlex: 10,
+      meaning:
+        programme.segmentDefinitions.find((s) => s.id === "roll-rhyme")?.objective ??
+        "A whole-class warm-up using a fixed playlist of five Barefoot Books songs.",
+    },
+    "book-o-clock": {
+      icon: BookOpen,
+      durationFlex: 25,
+      meaning:
+        programme.segmentDefinitions.find((s) => s.id === "book-o-clock")?.objective ??
+        "The spine of the session — a read-aloud following the 6-day arc.",
+    },
+    wordsmiths: {
+      icon: Sparkles,
+      durationFlex: 10,
+      meaning:
+        programme.segmentDefinitions.find((s) => s.id === "wordsmiths")?.objective ??
+        "One vocabulary resource matched to the current book — see → act → say.",
+    },
+    "play-writes": {
+      icon: PenLine,
+      durationFlex: 10,
+      meaning:
+        programme.segmentDefinitions.find((s) => s.id === "play-writes")?.objective ??
+        "Independent A4 play-writes books. Every child works simultaneously.",
+    },
   };
   const dailyFlow = programme.segmentDefinitions.map((s) => {
     const meta = segmentMeta[s.id] ?? segmentMeta["log-book"];
@@ -2175,7 +2242,7 @@ function ProgrammeOverviewContent() {
                 ))}
               </div>
               <div className="flex items-center justify-center gap-2 bg-brand-orange/10 px-4 py-3 text-center">
-                <span className="text-[10px] font-bold uppercase tracking-[0.08em] text-brand-orange">
+                <span className="text-[10px] font-bold tracking-normal text-brand-orange">
                   Two-book interval
                 </span>
                 <span className="text-[11px] italic text-ink-muted">
@@ -2282,7 +2349,7 @@ function ProgrammeOverviewContent() {
               <SongsPlaylist songs={programme.songs} />
             </div>
             <div className="mt-5 space-y-2 rounded-xl bg-brand-cream p-4 ring-1 ring-ink/5">
-              <p className="text-[11px] font-bold uppercase tracking-[0.06em] text-brand-orange">
+              <p className="text-[11px] font-bold tracking-normal text-brand-orange">
                 How to introduce them
               </p>
               <p className="text-[12px] leading-relaxed text-ink-muted md:text-[13px]">
