@@ -1008,7 +1008,7 @@ export const artDesign58: CurriculumProgramme = {
   ageGroup: "5-8",
   ageLabel: "ages 5\u20138",
   tagline:
-    "explore mediums and techniques in art and take your first step towards building artistic abilities.",
+    "explore materials and techniques while building core artistic skills.",
   description:
     "builds line control, shape-making, colour mixing, composition, and imagination — through hands-on making across seven mediums.",
   totalSessions: 50,

@@ -520,7 +520,7 @@ export const robotics58: CurriculumProgramme = {
   ageGroup: "5-8",
   ageLabel: "ages 5–8",
   tagline:
-    "build real machines. run real experiments. figure out why things work.",
+    "build simple machines and understand how things work.",
   description:
     "level 1 — mechanics. children build a see-saw, a weighing scale, and a crane while running experiments on levers and pulleys. they finish the year able to look at a machine and explain why it works.",
   totalSessions: 24,

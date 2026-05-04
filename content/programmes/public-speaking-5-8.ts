@@ -1109,7 +1109,7 @@ export const publicSpeaking58: CurriculumProgramme = {
   heroImageUrl: "/prog-speaking-5-8.gif",
   ageGroup: "5-8",
   ageLabel: "ages 5–8",
-  tagline: "find your voice through play and learn to express without fear.",
+  tagline: "express ideas clearly and speak with growing confidence.",
   description:
     "builds how children organise ideas, use body language, and use their voice — through games that make speaking feel like play.",
   totalSessions: 50,

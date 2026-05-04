@@ -623,7 +623,7 @@ export const robotics812: CurriculumProgramme = {
   ageGroup: "8-12",
   ageLabel: "ages 8–12",
   tagline:
-    "calculate it. predict it. build it. explain why it works — every time.",
+    "design, build, and explain systems with knowledge and precision.",
   description:
     "level 1 — mechanics. same three models as 5–8 but each build is six days and every experiment runs L1 and L2 on consecutive sessions — qualitative first, quantitative next. children finish the year able to calculate mechanical advantage, predict before testing, and explain causally after.",
   totalSessions: 18,

@@ -615,7 +615,7 @@ export const languageStorytelling35: CurriculumProgramme = {
   ageLabel: "ages 3–5",
   heroImageUrl: "/prog-language-3-5.gif",
   tagline:
-    "A pre-reading and pre-writing programme that builds language through play, story, song, and mark-making.",
+    "build listening, speaking, reading, and writing through stories, songs, and mark-making.",
   description:
     "Across 8 books and 48 sessions, children build all five language skills — listening, speaking, reading, vocabulary, and pre-writing — through one structure: the story. Every segment of every session draws from the same book, so words come back again and again until children own them.",
   totalSessions: 48,

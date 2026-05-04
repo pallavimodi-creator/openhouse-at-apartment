@@ -14,7 +14,7 @@ export function HeroBanner() {
             welcome to
           </p>
           <h1 className="mt-1 text-[26px] font-extrabold leading-[1.1] text-white drop-shadow-sm md:text-[34px] lg:text-[40px]">
-            openhouse at apartment — teacher hub
+            openhouse at apartment teacher hub
           </h1>
           <p className="mt-1.5 max-w-[560px] text-[12px] font-medium leading-relaxed text-white/90 md:text-[13px]">
             programme details, session plans, game library, experience books — all in one place.

@@ -1266,7 +1266,7 @@ export const publicSpeaking812: CurriculumProgramme = {
   heroImageUrl: "/prog-speaking-8-12.gif",
   ageGroup: "8-12",
   ageLabel: "ages 8\u201312",
-  tagline: "think clearly & speak with confidence and conviction in front of an audience.",
+  tagline: "think clearly and speak with confidence in front of others.",
   description:
     "builds argument, evidence, voice, and body language \u2014 through games and debates that turn speaking into a deliberate skill.",
   totalSessions: 50,

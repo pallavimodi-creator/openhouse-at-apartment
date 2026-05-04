@@ -862,7 +862,7 @@ export const artDesign812: CurriculumProgramme = {
   ageGroup: "8-12",
   ageLabel: "ages 8\u201312",
   tagline:
-    "build real & advanced artistic skill and acumen.",
+    "develop advanced skills in drawing, colour, composition, and imagination.",
   description:
     "builds observation, proportion, layering, palette, and intentional choice \u2014 across multiple mediums, with children able to explain the thinking behind their work.",
   totalSessions: 50,

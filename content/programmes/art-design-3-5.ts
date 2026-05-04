@@ -730,7 +730,7 @@ export const artDesign35: CurriculumProgramme = {
   ageGroup: "3-5",
   ageLabel: "ages 3–5",
   tagline:
-    "build the physical control, colour awareness, and creative confidence that makes a child someone who makes things — for the rest of their life.",
+    "build fine motor control, colour awareness, and the ability to express visually.",
   description:
     "Sessions across five segments: art gym, art games, Artiverse / Artistotle making, experience book, and art care. Each day, children build fine motor skills, develop creative expression, and make artworks using varied mediums and techniques, exploring every idea through artists' work and hands-on creation.",
   totalSessions: 60,

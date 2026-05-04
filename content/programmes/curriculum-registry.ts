@@ -33,7 +33,7 @@ export const curriculumProgrammes: CurriculumProgramme[] = [
     ageGroup: "3-5",
     ageLabel: "ages 3–5",
     heroImageUrl: "/prog-stem-3-5.gif",
-    tagline: "an early-years stem programme that builds curiosity through hands-on play.",
+    tagline: "build curiosity, early numeracy, and problem solving through hands-on exploration.",
     description:
       "children explore cause and effect, simple tools, and basic systems through guided play and discovery. early experiments invite observation, prediction, and questioning — building the foundations of how things work.",
     totalSessions: 0,
