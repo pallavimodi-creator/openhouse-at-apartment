@@ -379,7 +379,7 @@ const songs: ProgrammeSong[] = [
   {
     order: 2,
     title: "Knick Knack Paddy Whack (This Old Man)",
-    youtubeId: "BbTw_FSGywI",
+    youtubeId: "VEHKQCtrHHw",
     whatItBuilds:
       "Counting one to ten, rhyme as the structural game (one — thumb, two — shoe, three — knee), body-part vocabulary, and a cumulative refrain. It does four things at once.",
     pairsWith: "Number sense and general vocabulary",
