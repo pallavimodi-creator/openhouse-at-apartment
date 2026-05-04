@@ -183,17 +183,29 @@ export default function ProgrammeDetailPage() {
           of cards on the background canvas. */}
       <section className="mt-6 px-4 pb-4">
         <div className="mx-auto w-full max-w-5xl overflow-hidden rounded-2xl bg-brand-cream shadow-card ring-1 ring-ink/5">
-          {/* Spiral binding band — fixed-count rings on a darker
-              cream strip, evoking a notebook's wire binding. */}
-          <div className="flex items-center justify-around bg-segment-yellow/70 px-3 py-2">
-            {Array.from({ length: 14 }).map((_, i) => (
-              <span
-                key={i}
-                aria-hidden
-                className="h-2.5 w-2.5 rounded-full bg-brand-white shadow-[inset_0_1px_2px_rgba(44,43,40,0.25)] ring-1 ring-ink/15"
-              />
-            ))}
-          </div>
+          {/* Spiral binding band — colour driven by the programme's
+              category so the band visually matches the hero band
+              above (yellow for art, green for language, blue for
+              stem/robotics). */}
+          {(() => {
+            const bandTone =
+              programme.category === "language"
+                ? "bg-segment-green/70"
+                : programme.category === "stem"
+                  ? "bg-segment-blue/70"
+                  : "bg-segment-yellow/70";
+            return (
+              <div className={`flex items-center justify-around px-3 py-2 ${bandTone}`}>
+                {Array.from({ length: 14 }).map((_, i) => (
+                  <span
+                    key={i}
+                    aria-hidden
+                    className="h-2.5 w-2.5 rounded-full bg-brand-white shadow-[inset_0_1px_2px_rgba(44,43,40,0.25)] ring-1 ring-ink/15"
+                  />
+                ))}
+              </div>
+            );
+          })()}
           <div className="px-4 pb-5 pt-4 md:px-6">
             {selectedDay === 0 && programme.trialSession ? (
               <TrialSessionCard trial={programme.trialSession} />
