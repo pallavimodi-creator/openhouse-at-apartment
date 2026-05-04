@@ -180,10 +180,11 @@ export default function ArtistotleBookPage() {
         <section className="bg-white px-3 py-6 md:px-8">
           <div className="mx-auto w-full max-w-5xl">
             <ImageFlipbook
-              pages={ARTISTOTLE_PAGES.flatMap<FlipbookPage>((p) => [
-                { kind: "image", src: p.src, alt: p.caption.title },
-                { kind: "text", caption: p.caption },
-              ])}
+              pages={ARTISTOTLE_PAGES.map<FlipbookPage>((p) => ({
+                kind: "image",
+                src: p.src,
+                alt: p.caption.title,
+              }))}
               altPrefix="artistotle book page"
             />
           </div>
