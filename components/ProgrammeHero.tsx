@@ -1,12 +1,16 @@
 import { cn } from "@/lib/utils";
 import type { Category } from "@/content/types";
 
+// Hero background per category. Opacity tuned per category so the
+// vivid colours (yellow, green, blue) feel premium without washing
+// out. Matches the brightness of the spiral-binding band on the
+// plans page so the page reads as one continuous planner.
 const heroBg: Record<Category, string> = {
-  art: "bg-category-art/30",
-  language: "bg-category-language/30",
-  music: "bg-category-music/30",
-  movement: "bg-category-movement/30",
-  stem: "bg-category-stem/30",
+  art: "bg-category-art/60",
+  language: "bg-category-language/40",
+  music: "bg-category-music/40",
+  movement: "bg-category-movement/40",
+  stem: "bg-category-stem/40",
 };
 
 export function ProgrammeHero({
