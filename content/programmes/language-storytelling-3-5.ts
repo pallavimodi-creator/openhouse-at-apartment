@@ -9,8 +9,8 @@ import type {
  * across sessions so all five skills are covered each week. ─────── */
 
 const playgroundGames: Record<string, CurriculumActivity> = {
-  "whats-that-sound": {
-    id: "whats-that-sound",
+  "whats-that-sound-lang": {
+    id: "whats-that-sound-lang",
     segment: "playground",
     title: "what's that sound",
     setupLine: "Listen to a sound. Guess what made it.",
@@ -86,8 +86,8 @@ const playgroundGames: Record<string, CurriculumActivity> = {
     debriefPrompts: [],
     type: "physical-game",
   },
-  "guess-me": {
-    id: "guess-me",
+  "guess-me-lang": {
+    id: "guess-me-lang",
     segment: "playground",
     title: "guess me",
     setupLine: "Hear three clues. Guess the character or object.",
@@ -105,6 +105,32 @@ const playgroundGames: Record<string, CurriculumActivity> = {
     howToPlay:
       "A classic round. The teacher (or a child) says \"I spy with my little eye, something that is red\". Children look around the room and call out red things until someone names the right one. Then they take the next turn.",
     materials: ["No materials — relies on the room"],
+    debriefPrompts: [],
+    type: "physical-game",
+  },
+  "swat-it-snap-it": {
+    id: "swat-it-snap-it",
+    segment: "playground",
+    title: "swat it snap it",
+    setupLine: "Hear the word. Swat the matching card. Snap a pair.",
+    howToPlay:
+      "Spread the word cards face-up on the floor — letters, sentence-maker words, sight words, rhyming words, blend and digraph words, and punctuation cards. The teacher calls out a word or category from the current book. Children race to swat the matching card with a flyswatter (or hand). Once a card is swatted, the child reads it aloud. In the snap variation, two children compete to be first to snap a matching pair (e.g. two rhyming words, or a letter and a word that starts with it).",
+    materials: [
+      "Word card decks — letters · sentence-maker words · sight words · rhyming words · blend and digraph words · punctuation marks",
+      "Two soft flyswatters or paddles",
+    ],
+    variations: [
+      {
+        name: "Swat",
+        description:
+          "Cards spread face-up. Teacher calls a word or category. Children race to swat the matching card and read it aloud.",
+      },
+      {
+        name: "Snap",
+        description:
+          "Two children draw cards from the deck one at a time. When two matching cards land (rhyming pair, letter + matching-sound word, etc.), the first child to snap their hand on top keeps both.",
+      },
+    ],
     debriefPrompts: [],
     type: "physical-game",
   },

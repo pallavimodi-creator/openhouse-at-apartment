@@ -241,6 +241,16 @@ export const ACTIVITY_IMAGES: Record<string, string> = {
   "magna-tiles": "/games/art-3-5/magna-tiles.png",
   "shape-art": "/games/art-3-5/shape-art.png",
   "imagine-that-3-5": "/games/art-3-5/imagine-that.png",
+  // Language through Storytelling — 3-5 playground games. The two
+  // names that overlap with public-speaking IDs are suffixed `-lang`
+  // so each programme gets its own render.
+  "whats-that-sound-lang": "/games/language/whats-that-sound.png",
+  "guess-me-lang": "/games/language/guess-me.png",
+  "syllable-sprint": "/games/language/syllable-sprint.png",
+  "story-cube": "/games/language/story-cube.png",
+  "language-wheel": "/games/language/language-wheel.png",
+  "i-spy": "/games/language/i-spy.png",
+  "swat-it-snap-it": "/games/language/swat-it-snap-it.png",
   // Robotics — experiment cue cards (thumbnail = first page of the PDF)
   "l1-levers-e1": "/robotics-manuals/l1-levers.png",
   "l1-levers-e2": "/robotics-manuals/l1-levers.png",
