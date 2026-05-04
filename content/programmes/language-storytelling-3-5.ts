@@ -268,7 +268,7 @@ const languageBooks: LanguageBook[] = [
     ],
     vocabularyType: "word-workout-calendar",
     groupActivityType: "story-re-enactment",
-    heroImageUrl: "/language-books/01-bear-hunt.jpg",
+    heroImageUrl: "/language-books/01-bear-hunt.png",
   },
   {
     order: 2,
@@ -294,7 +294,7 @@ const languageBooks: LanguageBook[] = [
     ],
     vocabularyType: "story-calendar",
     groupActivityType: "change-story-endings",
-    heroImageUrl: "/language-books/02-mixed.jpg",
+    heroImageUrl: "/language-books/02-mixed.png",
   },
   {
     order: 3,
@@ -320,7 +320,7 @@ const languageBooks: LanguageBook[] = [
     ],
     vocabularyType: "story-calendar",
     groupActivityType: "story-re-enactment",
-    heroImageUrl: "/language-books/03-giraffes-cant-dance.jpg",
+    heroImageUrl: "/language-books/03-giraffes-cant-dance.png",
   },
   {
     order: 4,
@@ -346,7 +346,7 @@ const languageBooks: LanguageBook[] = [
     ],
     vocabularyType: "emotion-tiles",
     groupActivityType: "vocabulary-reproduction",
-    heroImageUrl: "/language-books/04-color-monster.jpg",
+    heroImageUrl: "/language-books/04-color-monster.png",
   },
   {
     order: 5,
@@ -372,7 +372,7 @@ const languageBooks: LanguageBook[] = [
     ],
     vocabularyType: "emotion-tiles",
     groupActivityType: "puppet-character",
-    heroImageUrl: "/language-books/05-lion-inside.jpg",
+    heroImageUrl: "/language-books/05-lion-inside.png",
   },
   {
     order: 6,
@@ -398,7 +398,7 @@ const languageBooks: LanguageBook[] = [
     ],
     vocabularyType: "word-workout-calendar",
     groupActivityType: "change-story-endings",
-    heroImageUrl: "/language-books/06-dinosaurs-school.jpg",
+    heroImageUrl: "/language-books/06-dinosaurs-school.png",
   },
   {
     order: 7,
@@ -424,7 +424,7 @@ const languageBooks: LanguageBook[] = [
     ],
     vocabularyType: "story-calendar",
     groupActivityType: "puppet-character",
-    heroImageUrl: "/language-books/07-gruffalo.jpg",
+    heroImageUrl: "/language-books/07-gruffalo.png",
   },
   {
     order: 8,
@@ -450,7 +450,7 @@ const languageBooks: LanguageBook[] = [
     ],
     vocabularyType: "word-workout-calendar",
     groupActivityType: "vocabulary-reproduction",
-    heroImageUrl: "/language-books/08-bunny-cakes.jpg",
+    heroImageUrl: "/language-books/08-bunny-cakes.png",
   },
 ];
 
