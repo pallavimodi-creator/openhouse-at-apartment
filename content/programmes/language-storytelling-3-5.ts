@@ -108,6 +108,70 @@ const playgroundGames: Record<string, CurriculumActivity> = {
     debriefPrompts: [],
     type: "physical-game",
   },
+  "every-body-says-lang": {
+    id: "every-body-says-lang",
+    segment: "playground",
+    title: "every body says",
+    cardName: "Body",
+    setupLine:
+      "I'm going to show a card. Your team has to become that object — using only your bodies. No speaking.",
+    howToPlay:
+      "Children divide into teams of 3–4. One child flips an object image card — visible to all teams. All teams immediately form that object using their bodies. No speaking. Teams work together silently. The teacher decides which team's version is most convincing. That team flips the next card.",
+    variations: [
+      {
+        name: "Formation guide",
+        description:
+          "The back of each card shows an illustration of how to form the object as a pair or a group. Teams try to match the illustrated formation.",
+      },
+      {
+        name: "Find your pair",
+        description:
+          "Cards come in matching pairs (table + chair, bowl + spoon, pen + paper). Each child draws one card without showing others. On the signal, everyone walks around forming their object using their body. When they find their matching pair, they link up. First pair to lock in wins.",
+      },
+    ],
+    difficultyLevels: [
+      { level: "Easy", description: "Solo / partner action on the card." },
+      { level: "Medium", description: "Additional group or pair tasks — extra prompts layered on top of the base formation (e.g. \"chimney appears,\" \"two arches meet,\" \"flying in formation\")." },
+      { level: "Hard", description: "Find your pair." },
+    ],
+    materials: ["Every Body Says object image cards (30 cards · 15 pairs)"],
+    promptHeading: "prompts — 15 pair blocks · card A + card B",
+    prompts: [
+      "Pair 1 · chair (solo: glide · partner: one leg breaks) + table (solo: wobble · partner: set the table)",
+      "Pair 2 · spoon (solo: stir · partner: scoop) + bowl (solo: spin · partner: fill up)",
+      "Pair 3 · bed (solo: bounce · partner: tuck in) + pillow (solo: squish · partner: two pillows)",
+      "Pair 4 · tree (solo: grow · partner: a bird lands) + flower (solo: wilt · partner: a bee arrives)",
+      "Pair 5 · car (solo: accelerate · partner: traffic jam) + bus (solo: brake · partner: passengers board)",
+      "Pair 6 · bridge (solo: sway · partner: someone crosses) + arch (solo: crumble · partner: two arches meet)",
+      "Pair 7 · lamp (solo: flicker · partner: switch on) + book (solo: flip · partner: someone reads)",
+      "Pair 8 · house (solo: shrink · partner: chimney appears) + door (solo: creak · partner: knock knock)",
+      "Pair 9 · airplane (solo: soar · partner: flying in formation) + rocket (solo: launch · partner: countdown)",
+      "Pair 10 · bicycle (solo: pedal · partner: flat tyre) + wheel (solo: spin · partner: two wheels)",
+      "Pair 11 · guitar (solo: strum · partner: duet) + drum (solo: rumble · partner: drumstick snaps)",
+      "Pair 12 · umbrella (solo: inside out · partner: share) + rain (solo: pour · partner: puddle forms)",
+      "Pair 13 · ladder (solo: wobble · partner: someone climbs) + stairs (solo: crumble · partner: third step)",
+      "Pair 14 · toothbrush (solo: brush · partner: giant tooth) + tooth (solo: wobbly · partner: toothbrush arrives)",
+      "Pair 15 · camera (solo: zoom · partner: pose) + mirror (solo: crack · partner: three-way mirror)",
+    ],
+    debriefPrompts: [
+      {
+        questions: [
+          "How easy or difficult was it to form these images?",
+          "Was it easy or difficult to work as a team? Could they have formed these images alone?",
+          "Which image would they like to try making again?",
+          "What did they do when they were stuck?",
+          "Were there any specific challenges they faced? How did they overcome it?",
+          "Is there anything they could have done differently or better?",
+          "Was there ever a time when they could have collaborated better?",
+          "Was there any shape created by another team that they liked?",
+          "Did they ever have moments where they felt excited, apprehensive, or frustrated?",
+          "Recognise individual achievements and uniqueness through tokens.",
+          "Discuss how working together can lead to better results — highlight particularly effective teamwork moments during the game.",
+        ],
+      },
+    ],
+    type: "physical-game",
+  },
   "swat-it-snap-it": {
     id: "swat-it-snap-it",
     segment: "playground",

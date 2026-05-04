@@ -246,6 +246,9 @@ export const ACTIVITY_IMAGES: Record<string, string> = {
   // so each programme gets its own render.
   "whats-that-sound-lang": "/games/language/whats-that-sound.png",
   "guess-me-lang": "/games/language/guess-me.png",
+  // Reuses the public-speaking "every body says" render — same game,
+  // same hero image, just rotated through the language playground pool.
+  "every-body-says-lang": "/games/ps/every-body-says.png",
   "syllable-sprint": "/games/language/syllable-sprint.png",
   "story-cube": "/games/language/story-cube.png",
   "language-wheel": "/games/language/language-wheel.png",
