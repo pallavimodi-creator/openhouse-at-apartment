@@ -384,7 +384,7 @@ function SegmentRow({
                       {segment.artGymLabel}
                     </p>
                     {rotationNote && (
-                      <p className="mt-0.5 text-[11px] italic text-ink-subtle">
+                      <p className="mt-0.5 text-[12px] italic leading-relaxed text-ink-subtle">
                         {rotationNote}
                       </p>
                     )}
@@ -421,7 +421,7 @@ function SegmentRow({
                         <span aria-hidden className="mr-1">{emoji}</span>
                         {mode} · unit {segment.artiverseUnit} · {dayCue}
                       </p>
-                      <p className="mt-0.5 text-[11px] text-ink-muted">
+                      <p className="mt-0.5 text-[12px] leading-relaxed text-ink-muted">
                         {segment.artiverseUnitData
                           ? `${segment.artiverseUnitData.medium.toLowerCase()} — reference: ${segment.artiverseUnitData.whatChildrenMake.toLowerCase()}`
                           : segment.artiverseUnitName}
@@ -440,13 +440,13 @@ function SegmentRow({
                 <p className="text-[12px] font-medium text-ink">
                   Day {segment.bookDay} of 6 · book {segment.bookOrder}
                 </p>
-                <p className="mt-0.5 text-[11px] text-ink-muted">
+                <p className="mt-0.5 text-[12px] leading-relaxed text-ink-muted">
                   {segment.bookTitle.toLowerCase()}
                 </p>
               </div>
             </div>
           ) : (
-            <p className="line-clamp-3 text-[12px] leading-relaxed text-ink-muted">
+            <p className="text-[12px] leading-relaxed text-ink-muted">
               {segment.objective}
             </p>
           )}
@@ -554,7 +554,7 @@ function SegmentRow({
               ) : null;
             })()}
             <div className="flex-1 min-w-0">
-              <p className="line-clamp-2 text-[12px] italic leading-relaxed text-ink-muted">
+              <p className="text-[12px] italic leading-relaxed text-ink-muted">
                 &ldquo;{currentActivity.setupLine}&rdquo;
               </p>
               <p className="mt-1.5 text-[11px] font-medium text-brand-orange">
