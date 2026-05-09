@@ -6,8 +6,11 @@ import { TeacherGate } from "@/components/TeacherGate";
 import { getCurriculumProgramme } from "@/lib/content";
 
 /**
- * Artiverse book — 5–8 art programme. Renders all 25 artiverse units
- * as image + text spreads using the shared ArtiverseFlipbook component.
+ * Artiverse book — 5–8 art programme. Renders all artiverse units as
+ * image + text spreads using the shared ArtiverseFlipbook component.
+ * Brush-pen and colour-pencil-only units have been retired per
+ * curriculum decision; the surviving units are renumbered 1…N for
+ * display in the flipbook.
  */
 export default function ArtiverseBook58Page() {
   const programme = getCurriculumProgramme("art-design-5-8");
@@ -36,7 +39,7 @@ export default function ArtiverseBook58Page() {
               art &amp; design · ages 5–8
             </p>
             <p className="mt-3 text-[12px] italic leading-relaxed text-ink/75 md:text-[13px]">
-              Brush pens, colour pencils, tempera, watercolour and more. {units.length} units across the
+              Tempera/watercolour, oil pastel, acrylic and mixed media. {units.length} units across the
               year — each pairs a medium with a focused technique and a subject the child makes their
               own. The picture in the book is a reference only; children pick their own subject.
             </p>
@@ -46,11 +49,14 @@ export default function ArtiverseBook58Page() {
         {/* Flipbook */}
         <section className="bg-white px-3 py-6 md:px-8">
           <div className="mx-auto w-full max-w-5xl">
-            <ArtiverseFlipbook units={units} altPrefix="artiverse 5-8 book page" />
+            <ArtiverseFlipbook
+              units={units}
+              altPrefix="artiverse 5-8 book page"
+            />
           </div>
           <p className="mx-auto mt-4 max-w-md text-center text-[10px] italic text-ink-subtle">
             Tap the edges or use the prev / next buttons. Each spread shows the unit
-            reference image on the left and the technique brief on the right.
+            technique brief on the left and the reference image on the right.
           </p>
         </section>
       </div>

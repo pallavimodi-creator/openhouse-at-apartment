@@ -754,8 +754,10 @@ function ExperienceBookContent() {
         </div>
       </section>
 
-      {/* Teacher Manual — only interactive UI left on the page */}
-      {manual && <TeacherManualSection manual={manual} />}
+      {/* Teacher Manual — temporarily hidden per design feedback. The
+          manuals.ts content is preserved; re-enable by uncommenting the
+          line below when the manual is ready to surface again. */}
+      {/* {manual && <TeacherManualSection manual={manual} />} */}
     </div>
   );
 }

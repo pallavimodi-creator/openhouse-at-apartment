@@ -102,6 +102,12 @@ interface ResolvedSegment {
   bookOrder?: number;
   bookDay?: number;
   bookTitle?: string;
+  /**
+   * STEM 3-5: when an activity has already run earlier in the year,
+   * mark this occurrence as a re-visit so the day plan can show
+   * "(re-visit)" alongside the title. Same activity, deeper layer.
+   */
+  isRevisit?: boolean;
 }
 
 // Maps segment IDs to session entry fields
@@ -121,7 +127,35 @@ const SEGMENT_FIELD_MAP: Record<string, keyof CurriculumSessionEntry> = {
   "book-o-clock": "bookOClock",
   wordsmiths: "wordsmiths",
   "play-writes": "playWrites",
+  // STEM 3-5 segments
+  "imagine-playground": "imaginePlayground",
+  "wonder-world": "wonderWorld",
+  "logic-lab": "logicLab",
+  "numbers-gym": "numbersGym",
 };
+
+// Segments where activities run in fixed order with deliberate
+// repetition — same activity, deeper layer. Used to compute the
+// "(re-visit)" flag so the day plan can mark second / third meetings.
+const REVISIT_SEGMENTS = new Set(["imagine-playground", "wonder-world"]);
+
+/**
+ * Returns true if `assignedId` has already appeared in any session
+ * before the current `sessionNumber` on the same `fieldKey` of the
+ * programme's session table. Used to mark re-visits in the day plan.
+ */
+function hasAppearedEarlier(
+  programme: CurriculumProgramme,
+  fieldKey: keyof CurriculumSessionEntry,
+  assignedId: string,
+  currentSessionNumber: number,
+): boolean {
+  for (const entry of programme.sessionTable) {
+    if (entry.sessionNumber >= currentSessionNumber) break;
+    if (entry[fieldKey] === assignedId) return true;
+  }
+  return false;
+}
 
 function resolveSegments(
   programme: CurriculumProgramme,
@@ -131,6 +165,10 @@ function resolveSegments(
     const actMap = programme.activities;
     const fieldKey = SEGMENT_FIELD_MAP[segDef.id];
     const assignedId = fieldKey ? (session[fieldKey] as string | undefined) : undefined;
+    const isRevisit =
+      REVISIT_SEGMENTS.has(segDef.id) && fieldKey && assignedId
+        ? hasAppearedEarlier(programme, fieldKey, assignedId, session.sessionNumber)
+        : false;
 
     // For fixed segments (log-book, art-care) or segments without a rotation pool
     if (segDef.type === "fixed") {
@@ -184,6 +222,7 @@ function resolveSegments(
       objective: segDef.objective,
       assignedActivity: assignedId ? (actMap[assignedId] ?? null) : null,
       rotationPool: (segDef.rotationPool ?? []).map((id) => actMap[id]).filter(Boolean),
+      isRevisit,
       buildModel: isBuild ? session.buildModel : undefined,
       buildDay: isBuild ? session.buildDay : undefined,
       buildDayLabel: isBuild ? session.buildDayLabel : undefined,
@@ -499,6 +538,11 @@ function SegmentRow({
                     {currentActivity.cardName
                       ? `${currentActivity.cardName}: ${currentActivity.title}`
                       : currentActivity.title}
+                    {segment.isRevisit && (
+                      <span className="ml-1.5 text-[10.5px] font-semibold text-brand-orange">
+                        (re-visit)
+                      </span>
+                    )}
                   </span>
                 </span>
                 {/* Pool-size chip — rotates through N games before any can repeat */}

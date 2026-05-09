@@ -214,7 +214,7 @@ const rollCallActivities: Record<string, CurriculumActivity> = {
   },
   "whats-that-sound": {
     id: "whats-that-sound",
-    segment: "roll-call",
+    segment: "playground",
     title: "what's that sound",
     cardName: "Ears",
     setupLine:
@@ -1312,7 +1312,7 @@ export const publicSpeaking812: CurriculumProgramme = {
       durationRange: "8–10 min",
       objective: "activate voice or body. every child playing simultaneously within 2 minutes. debrief closes — max 2 min.",
       type: "rotating",
-      rotationPool: ["brain", "body", "voice", "eyes", "ears", "whats-that-sound"],
+      rotationPool: ["brain", "body", "voice", "eyes", "ears"],
     },
     {
       id: "playground",
@@ -1321,7 +1321,7 @@ export const publicSpeaking812: CurriculumProgramme = {
       objective: "build speaking, argument, and attentiveness through one group game. debrief closes.",
       type: "rotating",
       rotationPool: [
-        "script-flip", "tale-trail", "shuffle", "spaggle",
+        "script-flip", "tale-trail", "shuffle", "spaggle", "whats-that-sound",
         "pitch-perfect", "speech-a-palooza", "watch-your-step",
         "train-of-thoughts", "guess-me", "psychiatrist",
         "improv-survival",

@@ -299,6 +299,12 @@ export interface CurriculumSessionEntry {
   experiment?: string;
   build?: string;
   experienceBook?: string;
+  // STEM 3-5 segments
+  imaginePlayground?: string; // Build project id (e.g. "ip-train-time") or maker filler id, on Session A
+  wonderWorld?: string; // workbook activity id (e.g. "ww-bread-1-punch-and-squish") or food game, on Session B
+  logicLab?: string; // logic game id (e.g. "ll-magna-tiles", "ll-dot-grid") — every session
+  numbersGym?: string; // level + page marker (e.g. "ng-l1-pg-3") — every session, self-paced
+  sessionType?: "A" | "B"; // alternates across the 60-session sequence
   // Shared
   topicLayer: number;
   isCheckpoint?: boolean;
@@ -334,7 +340,7 @@ export interface CurriculumSessionEntry {
 
 export interface CurriculumActivity {
   id: string;
-  segment: "roll-call" | "playground" | "showtime" | "sign-off" | "log-book" | "art-gym" | "art-games" | "artiverse" | "art-care" | "experiment" | "build" | "experience-book" | "roll-rhyme" | "book-o-clock" | "wordsmiths" | "play-writes";
+  segment: "roll-call" | "playground" | "showtime" | "sign-off" | "log-book" | "art-gym" | "art-games" | "artiverse" | "art-care" | "experiment" | "build" | "experience-book" | "roll-rhyme" | "book-o-clock" | "wordsmiths" | "play-writes" | "imagine-playground" | "wonder-world" | "logic-lab" | "numbers-gym";
   title: string;
   cardName?: string;
   setupLine: string;

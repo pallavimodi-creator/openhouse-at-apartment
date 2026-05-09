@@ -13,61 +13,6 @@ const PLACEHOLDER = "/artiverse/placeholder.svg";
 
 const artiverseUnits: ArtiverseUnit[] = [
   {
-    id: "unit-1",
-    unitNumber: 1,
-    medium: "Brush pen",
-    technique: "Line exploration — making many different types of lines freely, discovering what the tool can do",
-    whatChildrenMake: "Trees or cats",
-    days: 1,
-    abilitiesCovered: [
-      "Identifies the marks different tools make and experiments freely",
-      "Experiments freely with colours, materials, and marks",
-    ],
-    topicOptions: [
-      "A tree I see every day",
-      "A cat in a position I have watched",
-      "A creature made entirely of lines I invented",
-    ],
-    heroImageUrl: "/artiverse/art-5-8/unit-1.png",
-  },
-  {
-    id: "unit-2",
-    unitNumber: 2,
-    medium: "Colour pencil",
-    technique: "Shape + composition — combining shapes to fill the whole page with a subject",
-    whatChildrenMake: "Flowers",
-    days: 2,
-    abilitiesCovered: [
-      "Traces and draws basic 2D shapes using any medium",
-      "Combines shapes to draw recognisable objects",
-      "Fills the whole page rather than drawing only in the centre",
-    ],
-    topicOptions: [
-      "A flower I know",
-      "A flower I have seen up close",
-      "A flower I made up that has never existed",
-    ],
-    heroImageUrl: "/artiverse/art-5-8/unit-2.png",
-  },
-  {
-    id: "unit-3",
-    unitNumber: 3,
-    medium: "Brush pen",
-    technique: "Line flow — continuous flowing marks, using the brush pen to make deliberately varied line types",
-    whatChildrenMake: "Waves",
-    days: 2,
-    abilitiesCovered: [
-      "Makes different line types with intention — straight, wavy, zigzag, curved",
-      "Combines line types to create texture",
-    ],
-    topicOptions: [
-      "A sea or river I know",
-      "The sea on a calm day and a stormy day",
-      "A wave in a world where water moves differently",
-    ],
-    heroImageUrl: "/artiverse/art-5-8/unit-3.png",
-  },
-  {
     id: "unit-4",
     unitNumber: 4,
     medium: "Tempera",
@@ -84,25 +29,6 @@ const artiverseUnits: ArtiverseUnit[] = [
       "A fingerprint world I invented",
     ],
     heroImageUrl: "/artiverse/art-5-8/unit-4.png",
-  },
-  {
-    id: "unit-5",
-    unitNumber: 5,
-    medium: "Brush pen",
-    technique: "Observation + structure — looking carefully at a subject and building its form with shapes and lines",
-    whatChildrenMake: "Self portrait",
-    days: 2,
-    abilitiesCovered: [
-      "Combines shapes to draw recognisable objects",
-      "Draws objects and scenes using observed line and texture",
-      "Generates new and unusual ideas",
-    ],
-    topicOptions: [
-      "My face right now",
-      "My face doing one specific expression",
-      "A portrait of who I want to be",
-    ],
-    heroImageUrl: "/artiverse/art-5-8/unit-5.png",
   },
   {
     id: "unit-6",
@@ -128,7 +54,7 @@ const artiverseUnits: ArtiverseUnit[] = [
     medium: "Watercolour",
     technique: "Brush control — making deliberate clean marks with a loaded brush, varying line direction",
     whatChildrenMake: "Lines with watercolour",
-    days: 2,
+    days: 1,
     abilitiesCovered: [
       "Makes different line types with intention — straight, wavy, zigzag, curved",
       "Paints with reasonable control and makes early attempts at mixing",
@@ -176,41 +102,6 @@ const artiverseUnits: ArtiverseUnit[] = [
       "An animal with a surface I invented",
     ],
     heroImageUrl: "/artiverse/art-5-8/unit-9.png",
-  },
-  {
-    id: "unit-10",
-    unitNumber: 10,
-    medium: "Colour pencil",
-    technique: "Scene drawing — placing objects near and far in a full picture, using size to show distance",
-    whatChildrenMake: "Sea world",
-    days: 2,
-    abilitiesCovered: [
-      "Understands foreground (close, bigger) and background (far, smaller)",
-      "Understands how colour and shape placement create visual balance",
-    ],
-    topicOptions: [
-      "An underwater scene with creatures I know",
-      "An underwater scene from a depth I imagine",
-      "An underwater world that does not follow any rules",
-    ],
-    heroImageUrl: "/artiverse/art-5-8/unit-10.png",
-  },
-  {
-    id: "unit-11",
-    unitNumber: 11,
-    medium: "Brush pen",
-    technique: "Form + illusion — drawing flat shapes so they appear three-dimensional on the page",
-    whatChildrenMake: "3D drawing",
-    days: 1,
-    abilitiesCovered: [
-      "Identifies and begins to draw simple 3D forms",
-    ],
-    topicOptions: [
-      "A box or cube I can see",
-      "A stack of objects on the art table",
-      "A 3D shape I made up",
-    ],
-    heroImageUrl: "/artiverse/art-5-8/unit-11.png",
   },
   {
     id: "unit-12",
@@ -345,7 +236,7 @@ const artiverseUnits: ArtiverseUnit[] = [
     medium: "Acrylic paint",
     technique: "Colour blocking — filling areas of the page with flat, bold, deliberate colour",
     whatChildrenMake: "Rainbow art",
-    days: 3,
+    days: 2,
     abilitiesCovered: [
       "Identifies warm and cool colour families and uses them expressively",
       "Understands how colour and shape placement create visual balance",
@@ -380,7 +271,7 @@ const artiverseUnits: ArtiverseUnit[] = [
     medium: "Acrylic paint",
     technique: "Collage + paint — combining cut paper shapes with painted detail to build a layered composition",
     whatChildrenMake: "Lemons and oranges",
-    days: 4,
+    days: 3,
     abilitiesCovered: [
       "Draws overlapping objects to show depth · places a horizon line",
       "Mixes primary colours to produce secondary colours reliably",
@@ -429,31 +320,12 @@ const artiverseUnits: ArtiverseUnit[] = [
     heroImageUrl: "/artiverse/art-5-8/unit-23.png",
   },
   {
-    id: "unit-24",
-    unitNumber: 24,
-    medium: "Brush pen + single accent colour",
-    technique: "Black and white with single colour accent — bold marks in black brush pen on white paper, then one deliberate accent colour added as a highlight or focal point",
-    whatChildrenMake: "Black and white accent art",
-    days: 2,
-    abilitiesCovered: [
-      "Makes different line types with intention — straight, wavy, zigzag, curved",
-      "Draws objects and scenes using observed line and texture",
-      "Paints with reasonable control and makes early attempts at mixing",
-    ],
-    topicOptions: [
-      "A jungle or forest in black and white with one coloured creature",
-      "A busy city in black and white with one coloured window or light",
-      "An imagined creature in black and white with one glowing colour",
-    ],
-    heroImageUrl: "/artiverse/art-5-8/unit-24.png",
-  },
-  {
     id: "unit-25",
     unitNumber: 25,
     medium: "Acrylic paint on black paper",
     technique: "Painting with light — working on a dark ground, building from dark to light using white and light colours to create a glowing effect",
     whatChildrenMake: "Firefly in a jar · Dragonfly",
-    days: 3,
+    days: 2,
     abilitiesCovered: [
       "Creates tints by adding white and shades by adding black",
       "Paints with reasonable control and makes early attempts at mixing",
@@ -724,24 +596,70 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     debriefPrompts: [],
     type: "physical-game",
   },
+  // Art Gym entries — folded into the Art Games + Gym slot at this age.
+  // Each runs as one of the 1–2 games per session (see segment objective).
+  // No separate art-gym segment, no extension-day follow-on, no scribble book.
+  "art-gym-book": {
+    id: "art-gym-book",
+    segment: "art-games",
+    title: "art gym book",
+    setupLine:
+      "each child works in their own laminated art gym book at their own pace. 1–3 pages per session, then a free replication on a sketch sheet.",
+    howToPlay:
+      "Children open the laminated art gym book to their next page and complete 1–3 pages with thread, clay, sequins, or erasable markers. Pages progress in order — page 1 to last — challenge increases page by page. Once the page is done, the child copies the same line / shape / pattern freely on a sketch sheet using a material of choice (crayon, colour pencil, brush pen, yarn + glue). No extension-day follow-on — the page and the sketch happen in the same slot.",
+    materials: [
+      "Laminated Art Gym Book (book 3 for 5-8, book 4 alternates)",
+      "Erasable markers, thread, clay, sequins",
+      "A4 sketch sheet",
+      "Crayons, colour pencils, brush pens, yarn + glue (child's pick)",
+    ],
+    difficultyLevels: [
+      { level: "Easy", description: "1 page from the book — child traces and replicates with the simplest material." },
+      { level: "Medium", description: "2 pages — child picks from two materials and combines them on the sketch sheet." },
+      { level: "Hard", description: "3 pages — child invents an extension on the sketch sheet (an object built from the practised line type)." },
+    ],
+    debriefPrompts: [],
+    type: "physical-game",
+  },
+  "art-gym-cue-card": {
+    id: "art-gym-cue-card",
+    segment: "art-games",
+    title: "art gym cue card",
+    setupLine:
+      "teacher picks one cue card from the pool. children follow the step-by-step illustrated prompt to draw on a fresh sketch sheet.",
+    howToPlay:
+      "Cue cards are illustrated step-by-step prompts the teacher selects (rotates across types — animals, birds, buildings, food, nature, vehicles). Children read or follow the steps and complete a drawing on a sketch sheet. The teacher walks around prompting each child to add one more detail their cue card didn't show. No extension-day follow-on — the cue card and any extension happen in the same slot.",
+    materials: [
+      "Cue card deck (laminated, age-appropriate)",
+      "A4 sketch sheets",
+      "Crayons, colour pencils, brush pens",
+    ],
+    difficultyLevels: [
+      { level: "Easy", description: "child copies the cue card step by step." },
+      { level: "Medium", description: "child completes the cue card then adds a background of their choice." },
+      { level: "Hard", description: "child completes the cue card then invents one new step beyond it." },
+    ],
+    debriefPrompts: [],
+    type: "physical-game",
+  },
 };
 
 // ─── Session Table ──────────────────────────────────────────
 
 const sessionTable: CurriculumSessionEntry[] = [
-  { sessionNumber: 0,  artGym: "book-3",        artGames: "match-me",       artiverse: "unit-1",  artiverseUnit: 0,  artiverseDay: 0, artiverseUnitName: "trial session — art gym + extension combined, match me, poster paints flat colour simple animals", topicLayer: 0 },
-  { sessionNumber: 1,  artGym: "book-3",        artGames: "match-me",       artiverse: "unit-1",  artiverseUnit: 1,  artiverseDay: 1, artiverseUnitName: "poster paints — flat colour — simple animals", topicLayer: 0 },
-  { sessionNumber: 2,  artGym: "ext-book",       artGames: "colour-flip",    artiverse: "unit-1",  artiverseUnit: 1,  artiverseDay: 2, artiverseUnitName: "poster paints — flat colour — simple animals", topicLayer: 0 },
-  { sessionNumber: 3,  artGym: "cue-card-b1",    artGames: "shape-stitch",   artiverse: "unit-2",  artiverseUnit: 2,  artiverseDay: 1, artiverseUnitName: "poster paints — colour mixing — warm or cool world", topicLayer: 0 },
-  { sessionNumber: 4,  artGym: "ext-cue-card",   artGames: "shape-fusion",   artiverse: "unit-2",  artiverseUnit: 2,  artiverseDay: 2, artiverseUnitName: "poster paints — colour mixing — warm or cool world", topicLayer: 0 },
-  { sessionNumber: 5,  artGym: "book-3",        artGames: "cue-cards-game", artiverse: "unit-2",  artiverseUnit: 2,  artiverseDay: 3, artiverseUnitName: "poster paints — colour mixing — warm or cool world", topicLayer: 0 },
-  { sessionNumber: 6,  artGym: "ext-book",       artGames: "i-spy-i-make",   artiverse: "unit-3",  artiverseUnit: 3,  artiverseDay: 1, artiverseUnitName: "torn paper collage — tearing — big and small", topicLayer: 0 },
-  { sessionNumber: 7,  artGym: "cue-card-b1",    artGames: "artventure",     artiverse: "unit-3",  artiverseUnit: 3,  artiverseDay: 2, artiverseUnitName: "torn paper collage — tearing — big and small", topicLayer: 0 },
-  { sessionNumber: 8,  artGym: "ext-cue-card",   artGames: "imagine-that",   artiverse: "unit-3",  artiverseUnit: 3,  artiverseDay: 3, artiverseUnitName: "torn paper collage — tearing — big and small", topicLayer: 0, isCheckpoint: true },
+  { sessionNumber: 0,  artGym: "book-3",        artGames: "match-me",       artiverse: "unit-4",  artiverseUnit: 0,  artiverseDay: 0, artiverseUnitName: "trial session — art gym + extension combined, match me, poster paints flat colour simple animals", topicLayer: 0 },
+  { sessionNumber: 1,  artGym: "book-3",        artGames: "match-me",       artiverse: "unit-4",  artiverseUnit: 4,  artiverseDay: 1, artiverseUnitName: "poster paints — flat colour — simple animals", topicLayer: 0 },
+  { sessionNumber: 2,  artGym: "ext-book",       artGames: "colour-flip",    artiverse: "unit-4",  artiverseUnit: 4,  artiverseDay: 2, artiverseUnitName: "poster paints — flat colour — simple animals", topicLayer: 0 },
+  { sessionNumber: 3,  artGym: "cue-card-b1",    artGames: "shape-stitch",   artiverse: "unit-4",  artiverseUnit: 4,  artiverseDay: 1, artiverseUnitName: "poster paints — colour mixing — warm or cool world", topicLayer: 0 },
+  { sessionNumber: 4,  artGym: "ext-cue-card",   artGames: "shape-fusion",   artiverse: "unit-4",  artiverseUnit: 4,  artiverseDay: 2, artiverseUnitName: "poster paints — colour mixing — warm or cool world", topicLayer: 0 },
+  { sessionNumber: 5,  artGym: "book-3",        artGames: "cue-cards-game", artiverse: "unit-4",  artiverseUnit: 4,  artiverseDay: 3, artiverseUnitName: "poster paints — colour mixing — warm or cool world", topicLayer: 0 },
+  { sessionNumber: 6,  artGym: "ext-book",       artGames: "i-spy-i-make",   artiverse: "unit-4",  artiverseUnit: 4,  artiverseDay: 1, artiverseUnitName: "torn paper collage — tearing — big and small", topicLayer: 0 },
+  { sessionNumber: 7,  artGym: "cue-card-b1",    artGames: "artventure",     artiverse: "unit-4",  artiverseUnit: 4,  artiverseDay: 2, artiverseUnitName: "torn paper collage — tearing — big and small", topicLayer: 0 },
+  { sessionNumber: 8,  artGym: "ext-cue-card",   artGames: "imagine-that",   artiverse: "unit-4",  artiverseUnit: 4,  artiverseDay: 3, artiverseUnitName: "torn paper collage — tearing — big and small", topicLayer: 0, isCheckpoint: true },
   { sessionNumber: 9,  artGym: "book-3",        artGames: "doodle-dash",    artiverse: "unit-4",  artiverseUnit: 4,  artiverseDay: 1, artiverseUnitName: "wax crayons — pressing hard and soft", topicLayer: 0 },
   { sessionNumber: 10, artGym: "ext-book",       artGames: "match-me",       artiverse: "unit-4",  artiverseUnit: 4,  artiverseDay: 2, artiverseUnitName: "wax crayons — pressing hard and soft", topicLayer: 0 },
-  { sessionNumber: 11, artGym: "cue-card-b1",    artGames: "colour-flip",    artiverse: "unit-5",  artiverseUnit: 5,  artiverseDay: 1, artiverseUnitName: "soft pastels — smudging — big open spaces", topicLayer: 0 },
-  { sessionNumber: 12, artGym: "ext-cue-card",   artGames: "shape-stitch",   artiverse: "unit-5",  artiverseUnit: 5,  artiverseDay: 2, artiverseUnitName: "soft pastels — smudging — big open spaces", topicLayer: 0 },
+  { sessionNumber: 11, artGym: "cue-card-b1",    artGames: "colour-flip",    artiverse: "unit-4",  artiverseUnit: 4,  artiverseDay: 1, artiverseUnitName: "soft pastels — smudging — big open spaces", topicLayer: 0 },
+  { sessionNumber: 12, artGym: "ext-cue-card",   artGames: "shape-stitch",   artiverse: "unit-4",  artiverseUnit: 4,  artiverseDay: 2, artiverseUnitName: "soft pastels — smudging — big open spaces", topicLayer: 0 },
   { sessionNumber: 13, artGym: "book-3",        artGames: "shape-fusion",   artiverse: "unit-6",  artiverseUnit: 6,  artiverseDay: 1, artiverseUnitName: "brush pens — thick and thin — busy place", topicLayer: 0 },
   { sessionNumber: 14, artGym: "ext-book",       artGames: "cue-cards-game", artiverse: "unit-6",  artiverseUnit: 6,  artiverseDay: 2, artiverseUnitName: "brush pens — thick and thin — busy place", topicLayer: 0 },
   { sessionNumber: 15, artGym: "cue-card-b1",    artGames: "i-spy-i-make",   artiverse: "unit-7",  artiverseUnit: 7,  artiverseDay: 1, artiverseUnitName: "oil pastels — layering — close-up", topicLayer: 0 },
@@ -753,12 +671,12 @@ const sessionTable: CurriculumSessionEntry[] = [
   { sessionNumber: 21, artGym: "book-3",        artGames: "shape-stitch",   artiverse: "unit-9",  artiverseUnit: 9,  artiverseDay: 1, artiverseUnitName: "watercolours — wet-on-wet", topicLayer: 0 },
   { sessionNumber: 22, artGym: "ext-book",       artGames: "shape-fusion",   artiverse: "unit-9",  artiverseUnit: 9,  artiverseDay: 2, artiverseUnitName: "watercolours — wet-on-wet", topicLayer: 0 },
   { sessionNumber: 23, artGym: "cue-card-b1",    artGames: "cue-cards-game", artiverse: "unit-9",  artiverseUnit: 9,  artiverseDay: 3, artiverseUnitName: "watercolours — wet-on-wet", topicLayer: 0 },
-  { sessionNumber: 24, artGym: "ext-cue-card",   artGames: "i-spy-i-make",   artiverse: "unit-10", artiverseUnit: 10, artiverseDay: 1, artiverseUnitName: "brush pens — pattern — covered in pattern", topicLayer: 0, isCheckpoint: true },
-  { sessionNumber: 25, artGym: "book-3",        artGames: "artventure",     artiverse: "unit-10", artiverseUnit: 10, artiverseDay: 2, artiverseUnitName: "brush pens — pattern — covered in pattern", topicLayer: 0 },
-  { sessionNumber: 26, artGym: "ext-book",       artGames: "imagine-that",   artiverse: "unit-10", artiverseUnit: 10, artiverseDay: 3, artiverseUnitName: "brush pens — pattern — covered in pattern", topicLayer: 0 },
-  { sessionNumber: 27, artGym: "cue-card-b2",    artGames: "doodle-dash",    artiverse: "unit-11", artiverseUnit: 11, artiverseDay: 1, artiverseUnitName: "colour pencils — hatching", topicLayer: 0 },
-  { sessionNumber: 28, artGym: "ext-cue-card",   artGames: "match-me",       artiverse: "unit-11", artiverseUnit: 11, artiverseDay: 2, artiverseUnitName: "colour pencils — hatching", topicLayer: 0 },
-  { sessionNumber: 29, artGym: "book-4",        artGames: "colour-flip",    artiverse: "unit-11", artiverseUnit: 11, artiverseDay: 3, artiverseUnitName: "colour pencils — hatching", topicLayer: 0 },
+  { sessionNumber: 24, artGym: "ext-cue-card",   artGames: "i-spy-i-make",   artiverse: "unit-9", artiverseUnit: 9, artiverseDay: 1, artiverseUnitName: "brush pens — pattern — covered in pattern", topicLayer: 0, isCheckpoint: true },
+  { sessionNumber: 25, artGym: "book-3",        artGames: "artventure",     artiverse: "unit-9", artiverseUnit: 9, artiverseDay: 2, artiverseUnitName: "brush pens — pattern — covered in pattern", topicLayer: 0 },
+  { sessionNumber: 26, artGym: "ext-book",       artGames: "imagine-that",   artiverse: "unit-9", artiverseUnit: 9, artiverseDay: 3, artiverseUnitName: "brush pens — pattern — covered in pattern", topicLayer: 0 },
+  { sessionNumber: 27, artGym: "cue-card-b2",    artGames: "doodle-dash",    artiverse: "unit-12", artiverseUnit: 12, artiverseDay: 1, artiverseUnitName: "colour pencils — hatching", topicLayer: 0 },
+  { sessionNumber: 28, artGym: "ext-cue-card",   artGames: "match-me",       artiverse: "unit-12", artiverseUnit: 12, artiverseDay: 2, artiverseUnitName: "colour pencils — hatching", topicLayer: 0 },
+  { sessionNumber: 29, artGym: "book-4",        artGames: "colour-flip",    artiverse: "unit-12", artiverseUnit: 12, artiverseDay: 3, artiverseUnitName: "colour pencils — hatching", topicLayer: 0 },
   { sessionNumber: 30, artGym: "ext-book",       artGames: "shape-stitch",   artiverse: "unit-12", artiverseUnit: 12, artiverseDay: 1, artiverseUnitName: "wax crayon + watercolour — resist — night-time", topicLayer: 0 },
   { sessionNumber: 31, artGym: "cue-card-b2",    artGames: "shape-fusion",   artiverse: "unit-12", artiverseUnit: 12, artiverseDay: 2, artiverseUnitName: "wax crayon + watercolour — resist — night-time", topicLayer: 0 },
   { sessionNumber: 32, artGym: "ext-cue-card",   artGames: "cue-cards-game", artiverse: "unit-12", artiverseUnit: 12, artiverseDay: 3, artiverseUnitName: "wax crayon + watercolour — resist — night-time", topicLayer: 0, isCheckpoint: true },
@@ -1070,31 +988,36 @@ export const artDesign58: CurriculumProgramme = {
     },
   ],
   segmentDefinitions: [
-    {
-      id: "art-gym",
-      name: "Art Gym",
-      durationRange: "15–20 min",
-      objective:
-        "4-session cycle: book → extension(book) → cue card → extension(cue card). each extension day follows directly from the preceding book or cue card day. art gym books are laminated — children mark them with resources of choice: thread, clay, sequins, or erasable markers. every book day children do 1–3 pages, then replicate what they drew in their sketchbook freely with materials of choice (crayons, colour pencils, brush pens, yarn + glue, etc.). on extension days children apply the same lines onto simple daily objects or shapes — progression goes shape → simple object → imaginary object → scene.",
-      type: "rotating",
-      rotationPool: ["book", "extension-book", "cue-card", "extension-cue-card"],
-    },
+    // Two-segment daily flow: Art Games + Gym (combined) → Artiverse
+    // (the making block, longest slot) → Experience Book.
+    // Total session = 25 + 55 + 10 = 90 min.
+    // The laminated art-gym book pages and cue-card prompts are folded
+    // into this combined segment as part of the rotation pool — they are
+    // played as games, not as a separate segment. No scribble book and
+    // no "extension" follow-on day at this age.
     {
       id: "art-games",
-      name: "Art Games",
-      durationRange: "15–20 min",
-      objective: "build one art skill through a game. debrief closes.",
+      name: "Art Games + Gym",
+      durationRange: "25 min · 1–2 games per day",
+      objective:
+        "Build art skills through games. The teacher picks 1–2 games per session from the combined pool — art games and the laminated art-gym book pages and cue-card prompts. They are all played as games (no separate art-gym segment, no extension-day follow-on, no scribble book). Each game has its own debrief; the segment closes once 1 or 2 games are done.",
       type: "rotating",
+      // Pool: 9 art games plus 2 art-gym entries (book + cue card). The
+      // art-gym entries are real activities — see artGymActivities below
+      // — so the daily plan shows them when the session table assigns
+      // one. They are played as games here, not as a separate segment.
       rotationPool: [
         "match-me", "colour-flip", "shape-stitch", "shape-fusion",
         "cue-cards-game", "i-spy-i-make", "artventure", "imagine-that", "doodle-dash",
+        "art-gym-book", "art-gym-cue-card",
       ],
     },
     {
       id: "artiverse",
       name: "Artiverse",
-      durationRange: "40–45 min",
-      objective: "children make on a3 paper. teacher reads brief and steps back. artwork goes home.",
+      durationRange: "55 min",
+      objective:
+        "Children make on A3 paper. Teacher reads brief and steps back. Artwork goes home. Time runs 55 min so the artwork is the centre of the session. Early-year units are 1 day per artwork; later, more complex units run 2–3 days per artwork (the days field on each unit reflects the actual length).",
       type: "fixed",
     },
     {

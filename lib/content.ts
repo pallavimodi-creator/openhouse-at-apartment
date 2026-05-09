@@ -246,6 +246,41 @@ export const ACTIVITY_IMAGES: Record<string, string> = {
   "magna-tiles": "/games/art-3-5/magna-tiles.png",
   "shape-art": "/games/art-3-5/shape-art.png",
   "imagine-that-3-5": "/games/art-3-5/imagine-that.png",
+  // STEM 3-5 — Logic Lab game renders
+  "ll-logical-road-builder": "/games/stem-3-5/games-trio.png",
+  "ll-stitch-me": "/games/stem-3-5/stitch-me.png",
+  "ll-candy-sort": "/games/stem-3-5/games-trio.png",
+  "ll-magna-tiles": "/games/stem-3-5/games-trio.png",
+  "ll-dot-grid": "/games/stem-3-5/dot-grid.png",
+  // STEM 3-5 — Imagine Playground (LEGO Education brick activities).
+  // No per-activity photos yet; reuse the IP book cover as a fallback
+  // thumbnail so the library shows a branded image instead of an icon
+  // and never flags these (physical) activities as digital.
+  "ip-train-time": "/imagine-playground-book/cover.png",
+  "ip-first-trip": "/imagine-playground-book/cover.png",
+  "ip-load-the-train": "/imagine-playground-book/cover.png",
+  "ip-longest-track": "/imagine-playground-book/cover.png",
+  "ip-train-sound": "/imagine-playground-book/cover.png",
+  "ip-o-shaped-track": "/imagine-playground-book/cover.png",
+  "ip-y-shaped-track": "/imagine-playground-book/cover.png",
+  "ip-trouble-on-the-road": "/imagine-playground-book/cover.png",
+  "ip-ramps": "/imagine-playground-book/cover.png",
+  "ip-chain-reaction": "/imagine-playground-book/cover.png",
+  "ip-probability": "/imagine-playground-book/cover.png",
+  // STEM 3-5 — WonderWorld activity renders. Library thumbnails surface
+  // the same illustrations the teacher reference book uses.
+  "ww-bread-1-punch-and-squish": "/wonderworld-book/projects/bread-1-punch-and-squish.png",
+  "ww-bread-2-make-a-bread": "/wonderworld-book/projects/bread-2-make-a-bread.png",
+  "ww-bread-4-what-comes-next": "/wonderworld-book/projects/bread-4-what-comes-next.png",
+  "ww-cheese-1-make-a-pretend-cheese": "/wonderworld-book/projects/cheese-1-make-a-pretend-cheese.png",
+  "ww-cheese-2-does-it-come-from-milk": "/wonderworld-book/projects/cheese-2-does-it-come-from-milk.png",
+  "ww-cheese-4-cut-your-cheese": "/wonderworld-book/projects/cheese-4-cut-your-cheese.png",
+  "ww-salad-1-cut-your-tomato": "/wonderworld-book/projects/salad-1-cut-your-tomato.png",
+  "ww-salad-2-rainbow-tiffin": "/wonderworld-book/projects/salad-2-rainbow-tiffin.png",
+  "ww-salad-3-above-or-below": "/wonderworld-book/projects/salad-3-above-or-below.png",
+  "ww-salad-5-salad-quiz": "/wonderworld-book/projects/salad-5-salad-quiz.png",
+  "ww-game-food-guess": "/wonderworld-book/games/food-games.png",
+  "ww-game-food-connect": "/wonderworld-book/games/food-games.png",
   // Language through Storytelling — 3-5 playground games. The two
   // names that overlap with public-speaking IDs are suffixed `-lang`
   // so each programme gets its own render.
@@ -262,6 +297,8 @@ export const ACTIVITY_IMAGES: Record<string, string> = {
   "story-construction": "/games/language/story-construction.png",
   "think-fast": "/games/language/think-fast.png",
   "rhyming-house": "/games/language/rhyming-house.png",
+  "rhyme-house": "/games/language/rhyming-house.png",
+  "rhyming-ornaments": "/games/language/rhyming-ornaments.png",
   // Wordsmiths resources — 3 vocabulary tools rotated through the
   // Wordsmiths segment.
   "emotion-tiles": "/games/language/emotion-tiles.png",
@@ -287,6 +324,12 @@ export const ACTIVITY_IMAGES: Record<string, string> = {
   "build-see-saw": "/robotics-manuals/see-saw.png",
   "build-weighing-scale": "/robotics-manuals/weighing-scale.png",
   "build-crane": "/robotics-manuals/crane.png",
+  // Art gym book + cue card thumbnails — both 5-8 and 8-12 art programmes
+  // fold these into Art Games + Gym. We point at the 5-8 book by default;
+  // the 8-12 programme uses book 5/6 visually but the same activity slot
+  // in the rotation pool, so a single thumbnail per id is fine.
+  "art-gym-book": "/gym-books/book-3.png",
+  "art-gym-cue-card": "/games/art/cue-cards-game.png",
 };
 
 // Art gym book images, keyed by book number.

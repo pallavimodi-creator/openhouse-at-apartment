@@ -31,7 +31,7 @@ export function ProgrammeCard({
 
   return (
     <div className={cn(
-      "flex flex-col overflow-hidden rounded-card bg-brand-white shadow-card",
+      "group/programme flex flex-col overflow-hidden rounded-card bg-brand-white shadow-card ring-1 ring-ink/[0.04] transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lift hover:ring-ink/[0.08]",
       desktop ? "w-full" : "w-[240px] shrink-0 snap-start"
     )}>
       {/* Top color bar — removed per brand feedback */}
@@ -83,7 +83,7 @@ export function ProgrammeCard({
         </p>
         {hasContent ? (
           <Link
-            href={`/${programme.slug}`}
+            href={`/${programme.slug}/overview`}
             className="mt-3 block rounded-card border border-ink/10 bg-brand-white py-2 text-center text-[12px] font-semibold text-ink transition hover:bg-ink/5 active:scale-[0.98]"
           >
             dive in

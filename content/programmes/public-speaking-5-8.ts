@@ -214,7 +214,7 @@ const rollCallActivities: Record<string, CurriculumActivity> = {
   },
   "whats-that-sound": {
     id: "whats-that-sound",
-    segment: "roll-call",
+    segment: "playground",
     title: "what's that sound",
     cardName: "Ears",
     setupLine:
@@ -1154,7 +1154,7 @@ export const publicSpeaking58: CurriculumProgramme = {
       durationRange: "8–10 min",
       objective: "activate voice or body. every child playing simultaneously within 2 minutes. debrief closes — max 2 min.",
       type: "rotating",
-      rotationPool: ["brain", "body", "voice", "eyes", "ears", "whats-that-sound"],
+      rotationPool: ["brain", "body", "voice", "eyes", "ears"],
     },
     {
       id: "playground",
@@ -1163,7 +1163,7 @@ export const publicSpeaking58: CurriculumProgramme = {
       objective: "build speaking and attentiveness through one group game. debrief closes.",
       type: "rotating",
       rotationPool: [
-        "script-flip", "tale-trail", "shuffle", "body-talk",
+        "script-flip", "tale-trail", "shuffle", "body-talk", "whats-that-sound",
         "watch-your-step", "train-of-thoughts", "guess-me",
         "psychiatrist", "reverse-gear",
       ],
@@ -1240,19 +1240,19 @@ export const publicSpeaking58: CurriculumProgramme = {
         heroImageUrl: "/games/ps/tale-trail.png",
       },
       {
-        name: "Showtime — Mad Ad",
+        name: "Showtime — Improv Survival",
         time: "22 min",
         objective:
-          "children perform in front of the group. each pitch is voted on and fielded one challenge question. an option to stand beside the teacher is offered naturally — not singled out or labelled.",
+          "children perform short improvised scenes in front of the group. each round one child handles a curveball; the audience reacts immediately. an option to stand beside the teacher is offered naturally — not singled out or labelled.",
         setupLine:
-          "you get a topic. you have 1 minute to think. then you stand up and sell something connected to that topic — like you're in an advertisement. make it sound like the most amazing thing in the world.",
+          "you get a situation. you have 30 seconds to think. then you act it out — react in the moment, no script. if you get stuck, the audience throws you a fresh twist and you keep going.",
         howToPlay:
-          "ad structure (teacher shows a reference card): hook — start with a question or a surprise · product name · one amazing reason to buy it · the big ask — \"so what are you waiting for? get yours today!\" · after each ad: class votes — who's buying, who's not. one person asks a challenge question. performer answers in character. · \"one thing — if anyone wants, you can do your ad standing right next to me. same ad, same vote, same applause. just side by side.\" offered naturally, not singled out. · teacher draws and reads the first topic card aloud. run 3–4 ads depending on group size. voting after each — hands up for buying, hands up for not buying. one challenge question per ad from the audience.",
+          "scene structure: setup card sets the scene (where you are, who you are, what's happening) · performer steps into the situation and plays it out · twist card thrown halfway — performer must absorb the twist and keep the scene alive · scene ends on a clean line. · after each scene: audience claps for the moment they liked best. one peer asks a 'what would you do next?' question — performer answers in character. · \"one thing — if anyone wants, you can do your scene standing right next to me. same scene, same applause. just side by side.\" offered naturally, not singled out. · teacher draws and reads the first setup card aloud. run 3–4 scenes depending on group size. one twist per scene, one audience question per scene.",
         example:
-          "prompts: a pillow that never goes flat · shoes that make you run faster · a lunch box that keeps food warm forever · a pencil that never breaks · glasses that help you find lost things · a bag that carries itself.",
+          "setup prompts: you're a chef and the soup is on fire · you're an astronaut and a button just flashed red · you're a librarian and the books are flying off the shelves · you're a vet and the parrot won't stop talking. twist prompts: someone walks in · the lights go out · you sneeze for 30 seconds · everything starts moving in slow motion.",
         materials: [
-          "Mad Ad topic cards",
-          "Ad structure reference card",
+          "Improv Survival setup cards",
+          "Improv Survival twist cards",
         ],
       },
       {

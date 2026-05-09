@@ -122,12 +122,24 @@ export default function ProgrammeDetailPage() {
     }
   };
 
+  // Plans-page summary — a one-paragraph consolidation of the overview
+  // content. Per programme. Falls back to the data-file description for
+  // programmes without a dedicated summary.
+  const planSummary: Record<string, string> = {
+    "art-design-3-5":
+      "Building fine motor control and creative expression through a class that runs like an atelier. Each 90-minute session moves through art gym, art games, artiverse / artistotle making, experience book, and art care.",
+    "language-storytelling-3-5":
+      "An emergent-literacy programme that builds listening, speaking, reading, and early writing through stories, songs, games, and playful practice. Each session moves through roll & rhyme, book'o'clock + wordsmiths, play-writes, and playground games.",
+  };
+  const heroDescription =
+    planSummary[programme.slug] ?? programme.description;
+
   return (
     <div className="flex flex-col">
       <ProgrammeHero
         title={programme.title}
         ageLabel={programme.ageLabel}
-        description={programme.description}
+        description={heroDescription}
         category={programme.category}
         badge={
           programme.slug === "art-design-3-5"
@@ -135,31 +147,6 @@ export default function ProgrammeDetailPage() {
             : undefined
         }
       />
-
-      {/* Journey strip — make the teacher flow explicit:
-          1. start with the overview · 2. you are here (plans) · 3. library for reference */}
-      <section className="mt-5 px-4">
-        <div className="mx-auto flex w-full max-w-5xl flex-wrap items-center gap-2 text-[11px] font-semibold text-ink-muted md:text-[12px]">
-          <Link
-            href={`/${programme.slug}/overview`}
-            className="rounded-chip bg-brand-white px-2.5 py-1 ring-1 ring-ink/10 transition hover:bg-ink/5"
-          >
-            <span className="mr-1 font-bold text-ink-subtle">1</span> overview
-          </Link>
-          <span className="text-ink-subtle">→</span>
-          <span className="rounded-chip bg-brand-orange px-2.5 py-1 font-bold text-white shadow-sm">
-            <span className="mr-1 opacity-80">2</span> today&apos;s plan
-          </span>
-          <span className="text-ink-subtle">→</span>
-          <Link
-            href="/library"
-            className="rounded-chip bg-brand-white px-2.5 py-1 ring-1 ring-ink/10 transition hover:bg-ink/5"
-          >
-            <span className="mr-1 font-bold text-ink-subtle">3</span> library
-            <span className="ml-1 italic font-normal text-ink-subtle">for reference</span>
-          </Link>
-        </div>
-      </section>
 
       {/* Day selector */}
       <section className="mt-6 px-4">

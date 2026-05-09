@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { FooterNav } from "@/components/FooterNav";
-import { ReportCardReminder } from "@/components/ReportCardReminder";
 
 export const metadata: Metadata = {
   title: "openhouse at apartment",
@@ -38,7 +37,6 @@ export default function RootLayout({
           <main className="flex-1 pb-40">{children}</main>
         </div>
         <FooterNav />
-        <ReportCardReminder />
       </body>
     </html>
   );

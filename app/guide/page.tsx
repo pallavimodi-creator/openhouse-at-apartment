@@ -47,7 +47,7 @@ function GuideContent() {
               <span className="text-[20px]">📓</span>
               <div>
                 <h3 className="text-[14px] font-bold text-ink">experience books</h3>
-                <p className="mt-0.5 text-[12px] text-ink-muted">browse all experience books and teacher manuals for art & design and public speaking.</p>
+                <p className="mt-0.5 text-[12px] text-ink-muted">browse all experience books for art & design and public speaking.</p>
               </div>
               <span className="ml-auto text-[12px] font-bold text-brand-orange">view →</span>
             </a>

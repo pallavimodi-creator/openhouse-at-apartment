@@ -23,12 +23,26 @@ export const ROBOTICS_TRIAL_SESSION_5_8: TrialSession = {
       name: "When children walk in",
       time: "2 min",
       objective:
-        "no sitting yet. teacher brings the group into a standing circle to start the warm-up.",
+        "no sitting yet. teacher brings the group into a standing circle to start the energiser.",
       setupLine: "don't sit. come here. stand in a circle.",
     },
     {
+      name: "Energiser — Magna-Tiles (Build It Tall)",
+      time: "5 min",
+      objective:
+        "fast, hands-on opener. children pick a 3D prompt card and copy the structure standing up — gets bodies engaged with building before the body warm-up.",
+      setupLine:
+        "look at this card. it shows a shape that stands up. can you build it with these tiles?",
+      howToPlay:
+        "teacher fans 2–3 Level 1 magna-tiles cards (3D shaped prompts: tower, bridge, cube house). each child picks a card. teacher says: \"can you make this shape that stands up? let's build it standing!\" children build vertically — teacher supports balance only if a tower keeps falling. encourage \"strong and steady.\" 5 minutes max — short and energising, not a deep build.",
+      materials: [
+        "Magna-Tiles (variety of shapes and colours)",
+        "Magna-Tiles Level 1 prompt cards (3D shaped prompts + number of tiles) — 1 per child",
+      ],
+    },
+    {
       name: "Warm-up game (no material)",
-      time: "15 min",
+      time: "10 min",
       objective:
         "engagement through body play — children act out machines with their bodies, then suggest their own, then switch to describing without showing.",
       setupLine:
@@ -95,8 +109,22 @@ export const ROBOTICS_TRIAL_SESSION_8_12: TrialSession = {
       setupLine: "come here. stand in a circle.",
     },
     {
+      name: "Energiser — Magna-Tiles (Build It Tall)",
+      time: "5 min",
+      objective:
+        "fast, hands-on opener. children pick a 3D prompt card and copy the structure standing up — gets thinking and hands engaged with structure before the verbal warm-up.",
+      setupLine:
+        "look at this card. it shows a shape that stands up. can you build it with these tiles?",
+      howToPlay:
+        "teacher fans 2–3 Level 1 magna-tiles cards (3D shaped prompts: tower, bridge, cube house). each child picks a card. teacher says: \"can you make this shape that stands up? let's build it standing!\" children build vertically — teacher supports balance only if a tower keeps falling. encourage \"strong and steady.\" 5 minutes max — short and energising, not a deep build.",
+      materials: [
+        "Magna-Tiles (variety of shapes and colours)",
+        "Magna-Tiles Level 1 prompt cards (3D shaped prompts + number of tiles) — 1 per child",
+      ],
+    },
+    {
       name: "Warm-up game (no material)",
-      time: "15 min",
+      time: "10 min",
       objective:
         "engagement through thinking — children explain or act machines, name where they've seen them, then identify what is helping.",
       setupLine:
