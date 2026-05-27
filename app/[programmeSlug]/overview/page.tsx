@@ -1404,7 +1404,7 @@ function ProgrammeOverviewContent() {
                     },
                     {
                       label: "then comes artiverse",
-                      body: "The making block — the longest segment. Early-year units are 1 day per artwork; later, more complex units run 2–3 days.",
+                      body: "The making block — the longest segment. Each unit runs 2 days per artwork — Day 1 sets up the piece, Day 2 completes and refines it.",
                     },
                     {
                       label: "we close with the experience book",
