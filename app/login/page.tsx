@@ -12,13 +12,16 @@ export default function LoginPage() {
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
 
-  // If already signed in, go straight through
+  // If already signed in, go straight through. The teacher still needs to
+  // have picked a building this session — if they haven't, route to
+  // /building first; the building picker then forwards to home / programme.
   useEffect(() => {
     const existing = getTeacher();
     if (existing) {
-      // Admins and category-scoped teachers land on the home grid so they can
-      // pick an age group. Single-programme teachers jump straight into their
-      // programme.
+      if (!existing.building) {
+        router.replace("/building");
+        return;
+      }
       const toHome = existing.programmeSlug === "*" || !!existing.category;
       router.replace(toHome ? "/" : `/${existing.programmeSlug}`);
     }
@@ -41,8 +44,9 @@ export default function LoginPage() {
       role: cred.role,
       category: cred.category,
     });
-    const toHome = cred.role === "admin" || !!cred.category;
-    router.push(toHome ? "/" : `/${cred.programmeSlug}`);
+    // Always send to the building picker after a fresh sign-in. The picker
+    // forwards to home / programme once a building is chosen.
+    router.push("/building");
   };
 
   return (
