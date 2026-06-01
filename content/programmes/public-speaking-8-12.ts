@@ -893,6 +893,133 @@ const showtimeActivities: Record<string, CurriculumActivity> = {
     debriefPrompts: [],
     type: "physical-game",
   },
+  "superhero-sales": {
+    id: "superhero-sales",
+    segment: "showtime",
+    title: "superhero sales pitch",
+    setupLine:
+      "You have a superpower. Sell it to the group. Tell us what it is, why it is the best, and answer two challenge questions.",
+    howToPlay:
+      "The child is given a superpower prompt from the app by the teacher. 30 seconds to prepare. Child pitches their superpower to the class — what it is, why it is the best, how it would be used. The group votes — useful or useless. Child responds to two challenge questions from the group.",
+    materials: ["App for superpower prompts"],
+    difficultyLevels: [
+      { level: "Easy", description: "1 minute prep, teacher provides the opening frame." },
+      { level: "Medium", description: "30 seconds prep, child structures independently." },
+      { level: "Hard", description: "No prep, child must handle at least three challenge questions from the group." },
+    ],
+    promptHeading: "prompts — superpowers to pitch",
+    prompts: [
+      "A superhero who can pause time for a few seconds.",
+      "A superhero who can understand any language.",
+      "A superhero who can fix traffic in a city.",
+      "A superhero who can reduce noise anywhere.",
+      "A superhero who can organise messy places instantly.",
+      "A superhero who can remember everything.",
+      "A superhero who can find the fastest route anywhere.",
+      "A superhero who can stop pollution in a city.",
+      "A superhero who can help people work together.",
+      "A superhero who can make learning easier.",
+      "A superhero who can solve small problems quickly.",
+      "A superhero who can give everyone exactly the right amount of sleep they need.",
+    ],
+    debriefPrompts: [],
+    type: "facilitated",
+  },
+  "whacky-news": {
+    id: "whacky-news",
+    segment: "showtime",
+    title: "whacky news reporter",
+    setupLine:
+      "You are a news reporter. You have just heard something extraordinary. Tell the class what happened — beginning, middle, and end. After you finish, everyone asks you one question.",
+    howToPlay:
+      "Teacher reads out a prompt from the app. The child prepares for a set time. Child delivers their report standing in front of the class — a clear opening (who they are and what happened), a middle (details), and a closing (what happens next). After the report, each child asks the reporter one question. The reporter answers each in one sentence. New child takes the next prompt.",
+    materials: ["App for prompt cards (digital)"],
+    difficultyLevels: [
+      { level: "Easy", description: "Teacher helps with points to speak." },
+      { level: "Medium", description: "Limited preparation time." },
+      { level: "Hard", description: "No preparation time." },
+    ],
+    promptHeading: "prompts — whacky news headlines",
+    prompts: [
+      "Toys come alive at night.",
+      "Giant balloon flies away.",
+      "Dinosaur found in park.",
+      "Chocolate river starts flowing.",
+      "Kids declare no homework.",
+      "Dog becomes school principal.",
+      "Ice cream falls from sky.",
+      "Cat wins running race.",
+      "Monkey steals lunch box.",
+      "Robot joins classroom today.",
+      "Teacher turns superhero during class time.",
+      "Rain turns into sticky jelly drops.",
+      "Kids build huge fort inside classroom.",
+      "Talking parrot gives morning announcements.",
+    ],
+    debriefPrompts: [
+      {
+        questions: [
+          "Conclude with a discussion on how each part of the news report helps communicate the story effectively.",
+          "Praise creative thinking, clear structure, and the ability to stay on-topic.",
+        ],
+      },
+    ],
+    type: "physical-game",
+  },
+  "mad-ad": {
+    id: "mad-ad",
+    segment: "showtime",
+    title: "mad ad",
+    setupLine:
+      "You are selling something. Make it sound like the most amazing thing in the world. Hook → product name → one reason → the big ask.",
+    howToPlay:
+      "One child receives today's topic from the app. They invent a product connected to that topic. The child prepares for a set time and speaks — delivering a pitch in front of the class. The class decides: buying or not buying the product, after asking questions about the product. Performer answers in character. Ad structure: Hook — start with a question or surprise · Product name · One amazing reason to buy it · The big ask: \"So what are you waiting for? Get yours today!\"",
+    materials: [
+      "Topic prompts — https://wordwall.net/resource/77103607",
+    ],
+    difficultyLevels: [
+      { level: "Easy", description: "Teacher helps with the opening sentence and structure." },
+      { level: "Medium", description: "Standard gameplay — limited preparation time, child structures independently." },
+      { level: "Hard", description: "No preparation time given — child must include at least two deliberate changes of volume or energy." },
+    ],
+    debriefPrompts: [
+      {
+        questions: [
+          "Ask the players what they learnt while presenting the product.",
+          "Conclude with a discussion on how the activity helped with communication and effective speech delivery.",
+          "Praise creative thinking, clear structure, and the ability to stay on-topic.",
+        ],
+      },
+    ],
+    type: "facilitated",
+  },
+  "story-spine": {
+    id: "story-spine",
+    segment: "showtime",
+    title: "story spine",
+    setupLine:
+      "Create and perform a short story together using five simple prompts — a character, a setting, a problem, an action, and an ending.",
+    howToPlay:
+      "Children form groups of 3–4. Each group receives the prompt sheet with five anchor categories: Character (who is this story about? — robot, rabbit, child, pirate, monster), Setting (where is the story happening? — forest, space, school, home, ocean), Problem (oh no — what goes wrong? — gets lost, something breaks, chased, can't find something), Action (what do they try? — hide, build, run, fix, ask for help), and Ending (what happens in the end? — escapes, finds it, fixes it, wins, becomes safe). Each group picks one word from each category, builds a short story using all five, and performs it to the rest of the class. Writing is optional — speaking and acting is key. Teacher chooses exactly one challenge for the round (see challenges below).",
+    materials: [
+      "Story Spine prompt sheet — 5 anchor categories (character · setting · problem · action · ending) with example words under each",
+    ],
+    difficultyLevels: [
+      { level: "Easy · Add an Emotion", description: "Children must show a feeling in the story — happy, scared, angry, or excited." },
+      { level: "Medium · Add an Opponent", description: "Add someone or something that creates difficulty — a villain, animal, obstacle, or other person." },
+      { level: "Hard · Add a Plot Twist", description: "Something unexpected happens — it fails again, someone changes, or a new problem appears." },
+    ],
+    promptHeading: "prompt sheet — 5 anchor categories · pick one word from each",
+    prompts: [
+      "Character — who is this story about? · robot · rabbit · child · pirate · monster",
+      "Setting — where is the story happening? · forest · space · school · home · ocean",
+      "Problem — oh no, what goes wrong? · gets lost · something breaks · chased · can't find something",
+      "Action — what do they try? · hide · build · run · fix · ask for help",
+      "Ending — what happens in the end? · escapes · finds it · fixes it · wins · becomes safe",
+    ],
+    debriefPrompts: [],
+    type: "facilitated",
+  },
 };
 
 const signOffActivities: Record<string, CurriculumActivity> = {
@@ -1015,38 +1142,8 @@ const signOffActivities: Record<string, CurriculumActivity> = {
     debriefPrompts: [],
     type: "facilitated",
   },
-  "superhero-sales": {
-    id: "superhero-sales",
-    segment: "showtime",
-    title: "superhero sales pitch",
-    setupLine:
-      "You have a superpower. Sell it to the group. Tell us what it is, why it is the best, and answer two challenge questions.",
-    howToPlay:
-      "The child is given a superpower prompt from the app by the teacher. 30 seconds to prepare. Child pitches their superpower to the class — what it is, why it is the best, how it would be used. The group votes — useful or useless. Child responds to two challenge questions from the group.",
-    materials: ["App for superpower prompts"],
-    difficultyLevels: [
-      { level: "Easy", description: "1 minute prep, teacher provides the opening frame." },
-      { level: "Medium", description: "30 seconds prep, child structures independently." },
-      { level: "Hard", description: "No prep, child must handle at least three challenge questions from the group." },
-    ],
-    promptHeading: "prompts — superpowers to pitch",
-    prompts: [
-      "A superhero who can pause time for a few seconds.",
-      "A superhero who can understand any language.",
-      "A superhero who can fix traffic in a city.",
-      "A superhero who can reduce noise anywhere.",
-      "A superhero who can organise messy places instantly.",
-      "A superhero who can remember everything.",
-      "A superhero who can find the fastest route anywhere.",
-      "A superhero who can stop pollution in a city.",
-      "A superhero who can help people work together.",
-      "A superhero who can make learning easier.",
-      "A superhero who can solve small problems quickly.",
-      "A superhero who can give everyone exactly the right amount of sleep they need.",
-    ],
-    debriefPrompts: [],
-    type: "facilitated",
-  },
+
+
 };
 
 // ─── Session Table ──────────────────────────────────────────
@@ -1334,7 +1431,7 @@ export const publicSpeaking812: CurriculumProgramme = {
       objective: "children perform in front of peers. audience responds immediately. teacher tracks who speaks. debrief closes.",
       type: "rotating",
       rotationPool: [
-        "debate-duel", "experience-share", "magic-box",
+        "debate-duel", "experience-share", "magic-box", "whacky-news", "mad-ad", "story-spine", "superhero-sales",
       ],
     },
     {
