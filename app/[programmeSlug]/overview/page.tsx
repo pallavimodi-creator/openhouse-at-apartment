@@ -1086,13 +1086,19 @@ function ProgrammeOverviewContent() {
     },
   ];
 
+  // public-speaking-5-8 / public-speaking-8-12 share category="language"
+  // with language-storytelling-3-5 but have their OWN segments (roll call,
+  // playground, showtime, log book — not roll & rhyme, book'o'clock,
+  // wordsmiths, play-writes). Route by slug, not category, so they don't
+  // pick up the 3-5 storytelling segments table.
+  const isStorytelling35 = programme.slug === "language-storytelling-3-5";
   const gamesTable = isStem35
     ? stem35SegmentGames
     : isRobotics
       ? roboticsSegmentGames
       : isArt
         ? segmentGamesDynamic
-        : isLanguage
+        : isStorytelling35
           ? languageSegmentGames
           : psSegmentGames;
 
@@ -1606,6 +1612,54 @@ function ProgrammeOverviewContent() {
                       </p>
                     </div>
                   </li>
+                </ol>
+              </div>
+            );
+          }
+
+          // Public speaking 5-8 and 8-12 — 4-step rationale that walks
+          // teachers through the warm-up → group game → performance →
+          // reflection arc that makes the session work.
+          if (programme.slug === "public-speaking-5-8" || programme.slug === "public-speaking-8-12") {
+            const steps = [
+              {
+                label: "we begin with roll call",
+                body: "A quick energetic start. Group games that wake up voice, body, and attention — every child playing simultaneously within 2 minutes. No one waits their turn.",
+              },
+              {
+                label: "next is playground",
+                body: "One group game played deeply, with a full debrief. Children practise speaking through play before being asked to perform.",
+              },
+              {
+                label: "then comes showtime",
+                body: "Children step into the spotlight. Structured formats that build performance, argument, and conviction. The teacher tracks who speaks so no one is invisible.",
+              },
+              {
+                label: "we end with the experience book",
+                body: "Children fill in what they did and how it felt. The teacher closes with a short debrief — what worked, what to try next time.",
+              },
+            ];
+            return (
+              <div className="mt-4 rounded-2xl bg-brand-white p-4 shadow-card ring-1 ring-ink/5">
+                <p className="text-[11px] font-bold tracking-normal text-brand-orange">
+                  why this order
+                </p>
+                <ol className="mt-2 space-y-2.5">
+                  {steps.map((s, i) => (
+                    <li key={s.label} className="flex items-start gap-3">
+                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-orange/15 text-[11px] font-extrabold text-brand-orange">
+                        {i + 1}
+                      </span>
+                      <div className="flex-1">
+                        <p className="text-[12.5px] font-extrabold lowercase text-ink md:text-[13px]">
+                          {s.label}
+                        </p>
+                        <p className="mt-0.5 text-[12px] leading-relaxed text-ink-muted">
+                          {s.body}
+                        </p>
+                      </div>
+                    </li>
+                  ))}
                 </ol>
               </div>
             );
