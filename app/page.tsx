@@ -67,6 +67,14 @@ export default function HomePage() {
       router.replace("/login");
       return;
     }
+    // Non-admin teachers need to have picked a building this session
+    // before they can land on home. Admins skip this — they're reviewing,
+    // not running a class.
+    const admin = t.role === "admin" || t.programmeSlug === "*";
+    if (!admin && !t.building) {
+      router.replace("/building");
+      return;
+    }
     setTeacher(t);
     setLoaded(true);
   }, [router]);

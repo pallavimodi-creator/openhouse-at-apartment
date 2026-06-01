@@ -6,7 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { Home, BookOpen, LayoutGrid, LogOut, Notebook, CalendarDays, Building2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { listCurriculumProgrammes } from "@/lib/content";
-import { clearTeacher, getBuilding, clearBuilding } from "@/lib/teacher-state";
+import { clearTeacher, getBuilding, clearBuilding, getTeacher } from "@/lib/teacher-state";
 
 const PROGRAMME_TO_BOOK: Record<string, string> = {
   "art-design-5-8": "art-5-8",
@@ -19,11 +19,15 @@ export function FooterNav() {
   const pathname = usePathname();
   const router = useRouter();
   const [building, setBuildingState] = useState<string | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
 
-  // Read the current building from session storage on mount + whenever the
-  // route changes (so picking a new building on /building updates the chip).
+  // Read the current building + admin flag from session storage on mount
+  // + whenever the route changes (so picking a new building on /building
+  // updates the chip, and admin sessions never get a building chip).
   useEffect(() => {
     setBuildingState(getBuilding());
+    const t = getTeacher();
+    setIsAdmin(!!t && (t.role === "admin" || t.programmeSlug === "*"));
   }, [pathname]);
 
   // Hide the footer on the login + building-picker pages
@@ -87,8 +91,9 @@ export function FooterNav() {
         paddingBottom: "max(env(safe-area-inset-bottom), 12px)",
       }}
     >
-      {/* Current building chip — tap to switch without signing out. */}
-      {building && (
+      {/* Current building chip — tap to switch without signing out.
+          Hidden for admins (they review the platform, don't run classes). */}
+      {building && !isAdmin && (
         <button
           type="button"
           onClick={handleSwitchBuilding}

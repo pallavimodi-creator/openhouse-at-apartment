@@ -12,17 +12,19 @@ export default function LoginPage() {
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
 
-  // If already signed in, go straight through. The teacher still needs to
-  // have picked a building this session — if they haven't, route to
-  // /building first; the building picker then forwards to home / programme.
+  // If already signed in, go straight through. Teachers need to have
+  // picked a building this session — if they haven't, route to /building
+  // first. Admins skip the building picker entirely (they're reviewing
+  // the platform, not running a class).
   useEffect(() => {
     const existing = getTeacher();
     if (existing) {
-      if (!existing.building) {
+      const admin = existing.role === "admin" || existing.programmeSlug === "*";
+      if (!admin && !existing.building) {
         router.replace("/building");
         return;
       }
-      const toHome = existing.programmeSlug === "*" || !!existing.category;
+      const toHome = admin || !!existing.category;
       router.replace(toHome ? "/" : `/${existing.programmeSlug}`);
     }
   }, [router]);
@@ -44,8 +46,12 @@ export default function LoginPage() {
       role: cred.role,
       category: cred.category,
     });
-    // Always send to the building picker after a fresh sign-in. The picker
-    // forwards to home / programme once a building is chosen.
+    // Admins go straight home — they're reviewing, not teaching, so no
+    // building needed. Teachers go to the building picker first.
+    if (cred.role === "admin") {
+      router.push("/");
+      return;
+    }
     router.push("/building");
   };
 

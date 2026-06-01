@@ -31,16 +31,18 @@ export function TeacherGate({
       setState("redirect");
       return;
     }
+    const isAdmin = teacher.programmeSlug === "*" || teacher.role === "admin";
     // Building picker is itself a protected page (you must be signed in
     // to use it), but it's exempt from the building-required check
     // since that's literally where the teacher picks one.
-    if (!teacher.building && pathname !== "/building") {
+    // Admins don't run classes — they review the platform — so they
+    // never need to pick a building.
+    if (!isAdmin && !teacher.building && pathname !== "/building") {
       router.replace("/building");
       setState("redirect");
       return;
     }
     // Admin (programmeSlug = "*") can access anything
-    const isAdmin = teacher.programmeSlug === "*" || teacher.role === "admin";
     if (!isAdmin && requiredSlug && teacher.programmeSlug !== requiredSlug) {
       // Wrong programme — send the teacher to their own
       router.replace(`/${teacher.programmeSlug}`);

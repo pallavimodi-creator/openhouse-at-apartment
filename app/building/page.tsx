@@ -33,6 +33,12 @@ export default function BuildingPickerPage() {
       router.replace("/login");
       return;
     }
+    // Admins don't run classes — they review the platform — so the
+    // building picker doesn't apply to them. Bounce them home.
+    if (t.role === "admin" || t.programmeSlug === "*") {
+      router.replace("/");
+      return;
+    }
     setTeacherName(t.teacherName);
     setUsername(t.username ?? null);
     setKnownBuildings(t.username ? getKnownBuildings(t.username) : []);
