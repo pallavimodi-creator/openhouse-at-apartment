@@ -27,6 +27,41 @@
   .safe-bottom {
     padding-bottom: calc(env(safe-area-inset-bottom) + 0.5rem);
   }
+
+  /* Visible-scrollbar — used inside book modal pages so teachers see
+     immediately that there's content to scroll. The scrollbar is
+     orange-tinted to match the brand and subtle enough not to fight
+     the page art. */
+  .scroll-visible {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(242, 100, 61, 0.45) transparent;
+  }
+  .scroll-visible::-webkit-scrollbar { width: 8px; }
+  .scroll-visible::-webkit-scrollbar-track { background: transparent; }
+  .scroll-visible::-webkit-scrollbar-thumb {
+    background-color: rgba(242, 100, 61, 0.45);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  .scroll-visible::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(242, 100, 61, 0.7);
+  }
+
+  /* Bottom-fade — drawn on the parent of a scrollable area so the
+     reader sees content fading at the bottom edge as a hint that more
+     is below. Pair with `position: relative` on the parent and the
+     `.scroll-visible` class on the inner scroll container. */
+  .scroll-fade-mask::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 32px;
+    pointer-events: none;
+    background: linear-gradient(to bottom, rgba(249, 242, 232, 0), rgba(249, 242, 232, 0.95));
+  }
 }
 
 /* Modal slide-up animation */
@@ -45,4 +80,46 @@
 }
 .snap-center-scroll > * {
   scroll-snap-align: center;
+}
+
+/* Gentle motion utilities — subtle, ambient animations that draw the
+   eye without being distracting. Inspired by hand-drawn / playful UI
+   systems (mark-making, doodles, slow breaths). */
+@keyframes gentle-wobble {
+  0%, 100% { transform: rotate(0deg); }
+  25%      { transform: rotate(-6deg); }
+  75%      { transform: rotate(6deg); }
+}
+.animate-wobble {
+  animation: gentle-wobble 1.6s ease-in-out infinite;
+  transform-origin: 50% 70%;
+}
+.hover-wobble:hover {
+  animation: gentle-wobble 0.6s ease-in-out;
+  transform-origin: 50% 70%;
+}
+
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+.animate-float-soft {
+  animation: float-soft 3s ease-in-out infinite;
+}
+
+@keyframes draw-in {
+  from { stroke-dashoffset: var(--draw-len, 200); }
+  to   { stroke-dashoffset: 0; }
+}
+.animate-draw-in {
+  stroke-dasharray: var(--draw-len, 200);
+  animation: draw-in 1.2s ease-out forwards;
+}
+
+@keyframes squiggle-shift {
+  0%, 100% { transform: translateX(0); }
+  50%      { transform: translateX(2px); }
+}
+.animate-squiggle {
+  animation: squiggle-shift 4s ease-in-out infinite;
 }

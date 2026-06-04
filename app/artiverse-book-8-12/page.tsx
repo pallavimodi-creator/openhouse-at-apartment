@@ -6,8 +6,11 @@ import { TeacherGate } from "@/components/TeacherGate";
 import { getCurriculumProgramme } from "@/lib/content";
 
 /**
- * Artiverse book — 8–12 art programme. Renders all artiverse units
- * as image + text spreads using the shared ArtiverseFlipbook component.
+ * Artiverse book — 8–12 art programme. Renders all artiverse units as
+ * image + text spreads using the shared ArtiverseFlipbook component.
+ * Colour-pencil-only and pencil-on-black-paper units have been retired
+ * per curriculum decision; the surviving units are renumbered 1…N
+ * for display in the flipbook.
  */
 export default function ArtiverseBook812Page() {
   const programme = getCurriculumProgramme("art-design-8-12");
@@ -36,9 +39,10 @@ export default function ArtiverseBook812Page() {
               art &amp; design · ages 8–12
             </p>
             <p className="mt-3 text-[12px] italic leading-relaxed text-ink/75 md:text-[13px]">
-              {units.length} units across the year. Each pairs a medium with a focused technique and a
-              subject the child makes their own. The picture in the book is a reference only; children
-              pick their own subject.
+              Watercolour, acrylic, oil pastels, chalk pastels and mixed media. {units.length} units
+              across the year. Each pairs a medium with a focused technique and a subject the child
+              makes their own. The picture in the book is a reference only; children pick their own
+              subject.
             </p>
           </div>
         </section>
@@ -46,11 +50,14 @@ export default function ArtiverseBook812Page() {
         {/* Flipbook */}
         <section className="bg-white px-3 py-6 md:px-8">
           <div className="mx-auto w-full max-w-5xl">
-            <ArtiverseFlipbook units={units} altPrefix="artiverse 8-12 book page" />
+            <ArtiverseFlipbook
+              units={units}
+              altPrefix="artiverse 8-12 book page"
+            />
           </div>
           <p className="mx-auto mt-4 max-w-md text-center text-[10px] italic text-ink-subtle">
             Tap the edges or use the prev / next buttons. Each spread shows the unit
-            reference image on the left and the technique brief on the right.
+            technique brief on the left and the reference image on the right.
           </p>
         </section>
       </div>

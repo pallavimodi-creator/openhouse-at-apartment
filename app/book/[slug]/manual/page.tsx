@@ -148,13 +148,18 @@ export default function TeacherManualPage() {
   );
 }
 
+// Teacher manuals temporarily hidden per design feedback — they were
+// causing confusion alongside the experience-book content. Flip this
+// to `false` to re-enable the standalone /book/<slug>/manual route.
+const MANUALS_HIDDEN = true;
+
 function TeacherManualContent() {
   const params = useParams();
   const slug = params.slug as string;
   const book = getBookConfig(slug);
   const manual = getManualConfig(slug);
 
-  if (!book || !manual) {
+  if (MANUALS_HIDDEN || !book || !manual) {
     notFound();
     return null;
   }

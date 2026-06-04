@@ -1,5 +1,6 @@
 "use client";
 
+import type React from "react";
 import {
   ImageFlipbook,
   type FlipbookCaption,
@@ -17,28 +18,40 @@ import type { ArtiverseUnit } from "@/content/types";
  *   eyebrow → "unit N · medium"
  *   title   → what children make (the topic of the unit)
  *   body    → technique + topic options
+ *
+ * Pass an optional `cover` element (a JSX node) to prepend a custom
+ * first page — used by the 5-8 / 8-12 books to render a branded cover.
  */
 export function ArtiverseFlipbook({
   units,
   altPrefix = "artiverse book page",
+  cover,
 }: {
   units: ArtiverseUnit[];
   altPrefix?: string;
+  cover?: React.ReactNode;
 }) {
-  const pages: FlipbookPage[] = units.flatMap((unit) => {
+  const pages: FlipbookPage[] = [];
+  if (cover) {
+    pages.push({ kind: "node", node: cover });
+  }
+  // Renumber units sequentially in the flipbook display so the labels
+  // read 1, 2, 3, … even when source unitNumbers are non-contiguous
+  // (e.g. after removing brush-pen / colour-pencil units).
+  units.forEach((unit, i) => {
     const caption: FlipbookCaption = {
-      eyebrow: `unit ${unit.unitNumber} · ${unit.medium.toLowerCase()}`,
+      eyebrow: `unit ${i + 1} · ${unit.medium.toLowerCase()}`,
       title: unit.whatChildrenMake.toLowerCase(),
       description: buildBody(unit),
     };
-    return [
-      {
-        kind: "image",
-        src: unit.heroImageUrl,
-        alt: unit.whatChildrenMake,
-      },
-      { kind: "text", caption },
-    ] satisfies FlipbookPage[];
+    // Text first, then image — teachers read the brief and then see the
+    // reference picture (less confusing than image-then-explanation).
+    pages.push({ kind: "text", caption });
+    pages.push({
+      kind: "image",
+      src: unit.heroImageUrl,
+      alt: unit.whatChildrenMake,
+    });
   });
 
   return <ImageFlipbook pages={pages} altPrefix={altPrefix} />;

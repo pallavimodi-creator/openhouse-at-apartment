@@ -30,7 +30,8 @@ export interface FlipbookCaption {
 
 export type FlipbookPage =
   | { kind: "image"; src: string; alt?: string }
-  | { kind: "text"; caption: FlipbookCaption };
+  | { kind: "text"; caption: FlipbookCaption }
+  | { kind: "node"; node: React.ReactNode };
 
 interface ImageFlipbookProps {
   /** Pages in reading order. Page 1 = first item. */
@@ -79,8 +80,12 @@ export function ImageFlipbook({ pages, altPrefix = "page" }: ImageFlipbookProps)
   // computes to 0.
   const ready = !!HTMLFlipBook && containerWidth > 0;
 
-  // First image's aspect ratio sets the book proportions. Look for the
-  // first image page (text pages don't have a natural aspect).
+  // Aspect ratio sets the book page's height-to-width. We start from the
+  // first image's natural aspect, but clamp to a portrait-leaning minimum
+  // so landscape source images (e.g. 1536×1024 = 0.67) don't force the
+  // page so short that text-only pages overflow into the prev/next bar.
+  // Anything wider than ~1:1 gets letterboxed inside the page via
+  // object-contain on the image, which reads cleanly.
   useEffect(() => {
     const firstImage = pages.find((p) => p.kind === "image") as
       | Extract<FlipbookPage, { kind: "image" }>
@@ -89,7 +94,11 @@ export function ImageFlipbook({ pages, altPrefix = "page" }: ImageFlipbookProps)
     const img = new Image();
     img.onload = () => {
       if (img.naturalWidth > 0) {
-        setAspect(img.naturalHeight / img.naturalWidth);
+        const natural = img.naturalHeight / img.naturalWidth;
+        // Floor at 1.25 (portrait-ish) so text pages have room. Cap at
+        // 1.55 to keep the book from being absurdly tall on phones.
+        const clamped = Math.min(1.55, Math.max(1.25, natural));
+        setAspect(clamped);
       }
     };
     img.src = firstImage.src;
@@ -156,20 +165,26 @@ export function ImageFlipbook({ pages, altPrefix = "page" }: ImageFlipbookProps)
               className="bg-brand-cream"
               onFlip={(e: any) => setCurrentPage(e.data)}
             >
-              {pages.map((page, i) =>
-                page.kind === "image" ? (
-                  <FlipImagePage
-                    key={`img-${i}-${page.src}`}
-                    src={page.src}
-                    alt={page.alt ?? `${altPrefix} ${i + 1}`}
-                  />
-                ) : (
-                  <FlipTextPage
-                    key={`txt-${i}-${page.caption.title}`}
-                    caption={page.caption}
-                  />
-                )
-              )}
+              {pages.map((page, i) => {
+                if (page.kind === "image") {
+                  return (
+                    <FlipImagePage
+                      key={`img-${i}-${page.src}`}
+                      src={page.src}
+                      alt={page.alt ?? `${altPrefix} ${i + 1}`}
+                    />
+                  );
+                }
+                if (page.kind === "text") {
+                  return (
+                    <FlipTextPage
+                      key={`txt-${i}-${page.caption.title}`}
+                      caption={page.caption}
+                    />
+                  );
+                }
+                return <FlipNodePage key={`node-${i}`}>{page.node}</FlipNodePage>;
+              })}
             </HTMLFlipBook>
           </div>
 
@@ -241,24 +256,39 @@ const FlipImagePage = forwardRef<HTMLDivElement, { src: string; alt: string }>(
   }
 );
 
+const FlipNodePage = forwardRef<HTMLDivElement, { children: React.ReactNode }>(
+  function FlipNodePage({ children }, ref) {
+    return (
+      <div
+        ref={ref}
+        className="flex h-full w-full flex-col bg-brand-cream"
+      >
+        {children}
+      </div>
+    );
+  }
+);
+
 const FlipTextPage = forwardRef<HTMLDivElement, { caption: FlipbookCaption }>(
   function FlipTextPage({ caption }, ref) {
     return (
       <div
         ref={ref}
-        className="flex h-full w-full flex-col justify-center bg-brand-cream p-6 md:p-10"
+        // overflow-hidden + tighter padding so longer descriptions stay
+        // inside the page bounds and never spill into the prev/next bar.
+        className="flex h-full w-full flex-col justify-center overflow-hidden bg-brand-cream p-4 md:p-7"
       >
         <div className="mx-auto w-full max-w-md">
           {caption.eyebrow && (
-            <p className="text-[11px] font-bold lowercase tracking-tight text-brand-orange md:text-[12px]">
+            <p className="text-[10px] font-bold lowercase tracking-tight text-brand-orange md:text-[12px]">
               {caption.eyebrow}
             </p>
           )}
-          <h3 className="mt-2 text-[22px] font-extrabold lowercase leading-tight text-ink md:text-[28px]">
+          <h3 className="mt-1.5 text-[16px] font-extrabold lowercase leading-tight text-ink md:text-[24px]">
             {caption.title}
           </h3>
           {caption.description && (
-            <p className="mt-4 text-[13px] leading-relaxed text-ink-muted md:text-[15px]">
+            <p className="mt-2.5 text-[11.5px] leading-relaxed text-ink-muted md:text-[14px]">
               {caption.description}
             </p>
           )}

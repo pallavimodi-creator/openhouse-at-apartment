@@ -99,6 +99,7 @@ const SEGMENT_THUMB_BG: Record<string, string> = {
   "art-gym": "linear-gradient(135deg, #FFD69A 0%, #E89A4E 100%)",
   "art-games": "linear-gradient(135deg, #F3C520 0%, #F25E35 100%)",
   artiverse: "linear-gradient(135deg, #F8B074 0%, #C44017 100%)",
+  artistotle: "linear-gradient(135deg, #B8C9E8 0%, #5B6E94 100%)",
   experiment: "linear-gradient(135deg, #FFD69A 0%, #E89A4E 100%)",
   build: "linear-gradient(135deg, #A3C996 0%, #6DA35A 100%)",
   "experience-book": "linear-gradient(135deg, #FFE1B8 0%, #F8B074 100%)",
@@ -121,6 +122,8 @@ function SegmentThumbIcon({ segment }: { segment: string }) {
       return <Shapes className={common} strokeWidth={1.8} />;
     case "artiverse":
       return <Palette className={common} strokeWidth={1.8} />;
+    case "artistotle":
+      return <Palette className={common} strokeWidth={1.8} />;
     case "experiment":
       return <FlaskConical className={common} strokeWidth={1.8} />;
     case "build":
@@ -140,6 +143,7 @@ const ALL_FILTERS: { id: string; label: string }[] = [
   { id: "art-gym", label: "art gym" },
   { id: "art-games", label: "art games" },
   { id: "artiverse", label: "artiverse" },
+  { id: "artistotle", label: "artistotle" },
   { id: "experiment", label: "experiment" },
   { id: "build", label: "build" },
   { id: "experience-book", label: "experience book" },
@@ -188,6 +192,9 @@ function buildItemsFor(prog: CurriculumProgramme): LibraryItem[] {
   const items: LibraryItem[] = [];
 
   Object.values(prog.activities).forEach((a) => {
+    // Experience book entries are teacher-tool reflections, not
+    // searchable resources — exclude them from the library.
+    if (a.segment === "experience-book" || a.segment === "log-book") return;
     items.push({
       kind: "activity",
       id: `${programmeSlug}/${a.id}`,
@@ -199,10 +206,14 @@ function buildItemsFor(prog: CurriculumProgramme): LibraryItem[] {
   });
 
   prog.artiverseUnits?.forEach((u) => {
+    // Artistotle units share the artiverseUnits collection but are
+    // tagged with an `atl-` id prefix. Surface them under their own
+    // segment so the library filter chips can split the two worlds.
+    const isArtistotle = u.id.startsWith("atl");
     items.push({
       kind: "artiverse",
       id: `${programmeSlug}/${u.id}`,
-      segment: "artiverse",
+      segment: isArtistotle ? "artistotle" : "artiverse",
       item: u,
       programmeSlug,
       programmeLabel,
@@ -221,16 +232,16 @@ function buildItemsFor(prog: CurriculumProgramme): LibraryItem[] {
       kind: "primer",
       id: `${programmeSlug}/art-gym-overview`,
       segment: "art-gym",
-      title: is35 ? "art gym — daily warm-up" : "art gym — 4-session cycle",
+      title: is35 ? "artgym book" : "art gym — 4-session cycle",
       description: is35
-        ? "Daily 15-minute warm-up. Builds fine motor control through 1–2 pages of focused mark-making."
+        ? "Fine motor books with materials of choice — erasable markers, clay, yarn. Reusable laminated pages. Offer children a choice in what to use."
         : "A structured opening segment using books, cue cards, and their extensions. Each session builds directly on the previous one. Books are laminated — children mark them with resources of choice (thread, clay, sequins, erasable markers). Every book day children do 1–3 pages, then replicate what they drew in their sketchbook freely with materials of choice.",
       info: {
         segmentId: "art-gym",
         segmentName: "Art Gym",
-        title: is35 ? "art gym — daily warm-up" : "art gym — 4-session cycle",
+        title: is35 ? "artgym book" : "art gym — 4-session cycle",
         description: is35
-          ? "art gym is a daily 15-minute warm-up that builds fine motor control and creative expression through short, focused mark-making. art gym book and scribble book rotate on alternate days. children do 1–2 pages each session. art gym book 1 runs for the first ~30 sessions — once it is finished, the class moves to book 2. the scribble book is an a4 spiral-bound book with illustrated pages and one prompt per page. children choose their material from the table before starting — erasable markers, play-doh, thread, or sequins. no cue cards or extensions at this age. the teacher does not teach or correct during art gym — they circulate and name what they see."
+          ? "A quick warm-up for fine motor skills and imagination. ArtGym books are fine motor books that can be used with materials of choice — erasable markers, clay, yarn. They are reusable laminated books, so anything that wipes off works (no paint, nothing that stains). Offer children a choice in what they use. ArtGym book and Scribble book rotate on alternate days — do one, then the next day, the other. There are 2 ArtGym books — start every child on level 1, then move to level 2. Use the prescribed resources only. Children do 1–2 pages of ArtGym a day. Use the books in linear order — first page to last — the challenge increases page by page."
           : "a self-paced warm-up. the cycle runs: book → extension (book) → cue card → extension (cue card). each extension day belongs to the day before it — the book session and its extension are one unit, and the cue card session and its extension are one unit. an extension day is never independent. art gym books are laminated — children mark them with resources of choice: thread, clay, sequins, or erasable markers. every book day children do 1–3 pages and then replicate what they drew in their sketchbook freely with materials of choice (crayons, colour pencils, brush pens, yarn + glue, etc.). on extension days children apply the same lines onto simple daily objects or shapes — progression goes shape → simple object → imaginary object → scene.",
         heroImageUrl: gymThumb,
       },
@@ -251,13 +262,13 @@ function buildItemsFor(prog: CurriculumProgramme): LibraryItem[] {
         segment: "art-gym",
         title: "scribble book",
         description:
-          "A4 spiral-bound illustrated prompt pages. Builds creative expression — one page per session, no correct answer.",
+          "A book of imagination — every page is a unique open-ended story. Children scribble freely from their imagination.",
         info: {
           segmentId: "art-gym",
           segmentName: "Art Gym",
           title: "scribble book",
           description:
-            "the scribble book is the second resource in the 3-5 art gym rotation — it alternates with the laminated art gym book on consecutive sessions. it is an a4 spiral-bound book with illustrated pages and one prompt per page. each page shows a partially complete scene with a single prompt at the bottom. children draw their response in the open space using the material they have chosen for the day — erasable markers, play-doh, thread, or sequins. one page per session. there is no correct response. the teacher does not instruct what to draw — they circulate and name what they see.",
+            "A book of imagination — every page is a unique open-ended story. The teacher prompts the children about what the scene sets and does not give the solution. Children scribble freely from their imagination. This is not a laminated book — fill only with dry mediums: crayons, yarn, glue. No paint or clay. ArtGym book and Scribble book rotate on alternate days — only 1 artwork a day in the Scribble book. Use the book in linear order — first page to last — the challenge increases page by page.",
           heroImageUrl: scribbleThumb,
         },
         thumbImageUrl: scribbleThumb,
@@ -267,82 +278,9 @@ function buildItemsFor(prog: CurriculumProgramme): LibraryItem[] {
     }
   }
 
-  // Artiverse + Artistotle books — only for the 3-5 art programme.
-  if (prog.slug === "art-design-3-5") {
-    const artistotleCover = "/artistotle-book/01-cover.png";
-    const artiverseCover = "/artiverse-book/01-accordion.png";
-    items.push({
-      kind: "primer",
-      id: `${programmeSlug}/artiverse-book`,
-      segment: "artiverse",
-      title: "the artiverse book",
-      description:
-        "12 projects across paper, crayon, and paint. Each project runs across 2 continuous days — and on each day the child makes a distinct artwork using the same medium and technique.",
-      info: {
-        segmentId: "artiverse",
-        segmentName: "Artiverse Book",
-        title: "the artiverse book",
-        description:
-          "a structured making programme across three material families: colourful papers, crayons, and watercolour. each project runs over two sessions, with children choosing what to make and taking their work home. the focus is on exploring materials deeply while building control, colour understanding, and creative expression.",
-        heroImageUrl: artiverseCover,
-        externalLink: { href: "/artiverse-book", label: "open the artiverse book" },
-      },
-      thumbImageUrl: artiverseCover,
-      programmeSlug,
-      programmeLabel,
-    });
-    items.push({
-      kind: "primer",
-      id: `${programmeSlug}/artistotle-book`,
-      segment: "artiverse",
-      title: "the artistotle book",
-      description:
-        "6 illustrator projects (Eric Carle · Lois Ehlert · Taro Gomi). Each project runs across 3 continuous days — one finished artwork per project, built day by day in the illustrator's spirit.",
-      info: {
-        segmentId: "artiverse",
-        segmentName: "Artistotle Book",
-        title: "the artistotle book",
-        description:
-          "meet the illustrators, then make in their spirit. each illustrator gets an opening page, a technique spotlight where relevant, and 2 projects. the book runs across artistotle days; flip through to plan or to read with the children.",
-        heroImageUrl: artistotleCover,
-        externalLink: { href: "/artistotle-book", label: "open the artistotle book" },
-      },
-      thumbImageUrl: artistotleCover,
-      programmeSlug,
-      programmeLabel,
-    });
-  }
-
-  if (prog.segmentDefinitions.some((s) => s.id === "log-book")) {
-    // 3-5 art: the teacher fills the experience book on behalf of the
-    // children (they can't yet write); for older art programmes the
-    // children fill it themselves with the teacher's help.
-    const is35Art = programmeSlug === "art-design-3-5";
-    const cardDesc = is35Art
-      ? "the teacher fills in \"what happened in class today\" while the children share. after children leave, the teacher completes the skill-assessment part privately."
-      : "children fill in \"what happened in class today\" with the teacher. after children leave, the teacher fills the skill-assessment part privately.";
-    const popupDesc = is35Art
-      ? "the teacher fills in the \"what happened in class today\" part of the experience book while the children share. the teacher opens a short discussion — favourite part? what you enjoyed? what you didn't? what to do again? — and every child speaks. after children leave, the teacher completes the skill-assessment part of the book privately. these daily notes compile into the child's monthly report card that goes home every month."
-      : "children fill in the \"what happened in class today\" part of the experience book together with the teacher. the teacher opens a short discussion — what was your favourite part today? what did you enjoy? what did you not enjoy so much? what game or activity would you like to do again? — encouraging every child to speak. after children leave, the teacher fills in the skill-assessment part of the book privately. these daily notes compile into the child's monthly report card that goes home every month.";
-    items.push({
-      kind: "primer",
-      id: `${programmeSlug}/log-book-overview`,
-      segment: "log-book",
-      title: "experience book",
-      description: cardDesc,
-      info: {
-        segmentId: "log-book",
-        segmentName: "Experience Book",
-        title: "experience book",
-        description: popupDesc,
-        bookLinkSlug: bookMap[programmeSlug],
-        heroImageUrl: BOOK_COVER_BY_PROGRAMME[programmeSlug],
-      },
-      thumbImageUrl: BOOK_COVER_BY_PROGRAMME[programmeSlug],
-      programmeSlug,
-      programmeLabel,
-    });
-  }
+  // Artiverse, Artistotle, and Experience Book primers are intentionally
+  // not surfaced in the library — they live as teacher reference books in
+  // the programme overview's books row, not as searchable resources.
 
   return items;
 }
@@ -488,6 +426,10 @@ export default function LibraryPage() {
         segmentRank[s.id] = i;
         if (s.id === "log-book") segmentRank["experience-book"] = i;
         if (s.id === "experience-book") segmentRank["log-book"] = i;
+        // Artistotle isn't a separate segment in the data model — it
+        // lives inside the "artiverse" segment but gets its own filter
+        // chip and section. Rank it just after artiverse.
+        if (s.id === "artiverse") segmentRank["artistotle"] = i + 0.5;
       });
       const rankFor = (segId: string) =>
         segmentRank[segId] ?? Number.POSITIVE_INFINITY;
@@ -511,10 +453,10 @@ export default function LibraryPage() {
           // older-man face for artistotle (the philosopher) — so the
           // section bands separate visually when scrolling.
           const label =
-            segId === "artiverse" && prog.slug === "art-design-3-5"
-              ? "🌍 artiverse · 👴 artistotle"
-              : segId === "artiverse"
-                ? "🌍 artiverse"
+            segId === "artiverse"
+              ? "🌍 artiverse"
+              : segId === "artistotle"
+                ? "👴 artistotle"
                 : segId === "experience-book" || segId === "log-book"
                   ? "experience book"
                   : segId.replace(/-/g, " ");
@@ -585,11 +527,25 @@ export default function LibraryPage() {
   const journeySlug =
     !isAdmin && teacherSlug && teacherSlug !== "*" ? teacherSlug : null;
 
+  const programmeForBack =
+    !isAdmin && teacherSlug && teacherSlug !== "*"
+      ? getCurriculumProgramme(teacherSlug)
+      : null;
+
   return (
     <div className="flex flex-col px-4 pt-4 pb-6">
+      {programmeForBack && (
+        <Link
+          href={`/${programmeForBack.slug}/overview`}
+          className="mb-3 inline-flex w-fit items-center gap-1.5 rounded-chip bg-brand-white px-2.5 py-1 text-[11px] font-semibold text-ink-muted ring-1 ring-ink/10 transition hover:bg-ink/5"
+        >
+          <ChevronLeft className="h-3.5 w-3.5" />
+          back to {programmeForBack.title.toLowerCase()}
+        </Link>
+      )}
       <h1 className="text-[22px] font-bold text-ink">library</h1>
       <p className="mt-1 text-[13px] text-ink-muted">
-        Every resource across programmes — for reference.
+        every resource across programmes — for reference.
       </p>
 
       {/* Journey strip — library is step 3 of 3 (reference). When the
@@ -621,10 +577,7 @@ export default function LibraryPage() {
       {/* Admin-only programme picker */}
       {isAdmin && (
         <div className="mt-4">
-          <p className="text-[10px] font-semibold tracking-wider text-ink-subtle">
-            programme
-          </p>
-          <div className="relative mt-2 flex items-center gap-1.5">
+          <div className="relative flex items-center gap-1.5">
             <button
               type="button"
               aria-label="scroll programmes left"
@@ -868,7 +821,7 @@ export default function LibraryPage() {
                                         }
                                         return <SegmentThumbIcon segment={it.segment} />;
                                       })()}
-                                      {it.kind === "activity" && (
+                                      {it.kind === "activity" && it.item.type === "digital-game" && (
                                         <span
                                           className="absolute bottom-0.5 right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-white/90 shadow-sm"
                                           title="no physical material — digital / facilitated game"
@@ -881,7 +834,7 @@ export default function LibraryPage() {
 
                                   <div className="flex-1">
                                     <div className="flex flex-wrap items-center gap-1.5">
-                                      {it.kind === "activity" && !thumbImg && (
+                                      {it.kind === "activity" && it.item.type === "digital-game" && (
                                         <span className="inline-flex items-center gap-1 rounded-chip bg-ink/5 px-2 py-0.5 text-[9px] font-semibold text-ink-muted">
                                           <Smartphone className="h-2.5 w-2.5" strokeWidth={2.2} />
                                           digital only

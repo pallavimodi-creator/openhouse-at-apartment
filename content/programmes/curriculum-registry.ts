@@ -7,6 +7,7 @@ import { artDesign812 } from "./art-design-8-12";
 import { robotics58 } from "./robotics-5-8";
 import { robotics812 } from "./robotics-8-12";
 import { languageStorytelling35 } from "./language-storytelling-3-5";
+import { stem35 } from "./stem-3-5";
 
 // Registry of all 8 programmes for the homepage cards.
 // Ordered: all art first (youngest → oldest), then language/speaking (youngest → oldest), then robotics (youngest → oldest).
@@ -23,26 +24,7 @@ export const curriculumProgrammes: CurriculumProgramme[] = [
   publicSpeaking812,
 
   // ── Robotics / STEM ──
-  // Stub for 3–5 STEM. Content is still being authored — totalSessions = 0
-  // so ProgrammeCard renders the "coming soon" state on the homepage.
-  {
-    id: "robotics-3-5",
-    slug: "robotics-3-5",
-    title: "stem",
-    category: "stem",
-    ageGroup: "3-5",
-    ageLabel: "ages 3–5",
-    heroImageUrl: "/prog-stem-3-5.gif",
-    tagline: "build curiosity, early numeracy, and problem solving through hands-on exploration.",
-    description:
-      "children explore cause and effect, simple tools, and basic systems through guided play and discovery. early experiments invite observation, prediction, and questioning — building the foundations of how things work.",
-    totalSessions: 0,
-    skillAreas: [],
-    segmentDefinitions: [],
-    sessionTable: [],
-    activities: {},
-    checkpoints: [],
-  },
+  stem35,
   robotics58,
   robotics812,
 ];

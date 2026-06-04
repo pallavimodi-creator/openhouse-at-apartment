@@ -12,14 +12,19 @@ export default function LoginPage() {
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
 
-  // If already signed in, go straight through
+  // If already signed in, go straight through. Teachers need to have
+  // picked a building this session — if they haven't, route to /building
+  // first. Admins skip the building picker entirely (they're reviewing
+  // the platform, not running a class).
   useEffect(() => {
     const existing = getTeacher();
     if (existing) {
-      // Admins and category-scoped teachers land on the home grid so they can
-      // pick an age group. Single-programme teachers jump straight into their
-      // programme.
-      const toHome = existing.programmeSlug === "*" || !!existing.category;
+      const admin = existing.role === "admin" || existing.programmeSlug === "*";
+      if (!admin && !existing.building) {
+        router.replace("/building");
+        return;
+      }
+      const toHome = admin || !!existing.category;
       router.replace(toHome ? "/" : `/${existing.programmeSlug}`);
     }
   }, [router]);
@@ -41,8 +46,13 @@ export default function LoginPage() {
       role: cred.role,
       category: cred.category,
     });
-    const toHome = cred.role === "admin" || !!cred.category;
-    router.push(toHome ? "/" : `/${cred.programmeSlug}`);
+    // Admins go straight home — they're reviewing, not teaching, so no
+    // building needed. Teachers go to the building picker first.
+    if (cred.role === "admin") {
+      router.push("/");
+      return;
+    }
+    router.push("/building");
   };
 
   return (

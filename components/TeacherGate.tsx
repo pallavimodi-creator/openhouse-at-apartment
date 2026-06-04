@@ -1,13 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { getTeacher, type TeacherState } from "@/lib/teacher-state";
 
 /**
  * Wrap protected pages with this component. It redirects to /login if the
- * teacher is not signed in, and to their own programme if they try to access
- * a different programme.
+ * teacher is not signed in, to /building if they're signed in but haven't
+ * picked a building this session, and to their own programme if they try
+ * to access a different programme.
  *
  * If `requiredSlug` is passed, the teacher must be logged into that exact
  * programme. Otherwise any logged-in teacher is allowed.
@@ -20,6 +21,7 @@ export function TeacherGate({
   requiredSlug?: string;
 }) {
   const router = useRouter();
+  const pathname = usePathname();
   const [state, setState] = useState<"loading" | "ok" | "redirect">("loading");
 
   useEffect(() => {
@@ -29,8 +31,18 @@ export function TeacherGate({
       setState("redirect");
       return;
     }
-    // Admin (programmeSlug = "*") can access anything
     const isAdmin = teacher.programmeSlug === "*" || teacher.role === "admin";
+    // Building picker is itself a protected page (you must be signed in
+    // to use it), but it's exempt from the building-required check
+    // since that's literally where the teacher picks one.
+    // Admins don't run classes — they review the platform — so they
+    // never need to pick a building.
+    if (!isAdmin && !teacher.building && pathname !== "/building") {
+      router.replace("/building");
+      setState("redirect");
+      return;
+    }
+    // Admin (programmeSlug = "*") can access anything
     if (!isAdmin && requiredSlug && teacher.programmeSlug !== requiredSlug) {
       // Wrong programme — send the teacher to their own
       router.replace(`/${teacher.programmeSlug}`);
@@ -38,7 +50,7 @@ export function TeacherGate({
       return;
     }
     setState("ok");
-  }, [router, requiredSlug]);
+  }, [router, pathname, requiredSlug]);
 
   if (state !== "ok") {
     return (

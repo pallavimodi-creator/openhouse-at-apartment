@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { BookOpen, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { LanguageBook } from "@/content/types";
+import { LanguageBookPlanModal } from "@/components/LanguageBookPlanModal";
+import { getBookPlan } from "@/content/programmes/language-book-plans";
 
 const ACTIVITY_LABEL: Record<LanguageBook["groupActivityType"], string> = {
   "story-re-enactment": "story re-enactment",
@@ -24,101 +26,116 @@ const VOCAB_TYPE_LABEL: Record<LanguageBook["vocabularyType"], string> = {
  */
 export function LanguageBooksGrid({ books }: { books: LanguageBook[] }) {
   const [openOrder, setOpenOrder] = useState<number | null>(null);
+  const [planBook, setPlanBook] = useState<LanguageBook | null>(null);
+  const planBookPlan = planBook ? getBookPlan(planBook.order) ?? null : null;
   return (
-    <div className="grid gap-3 md:grid-cols-2">
-      {books.map((book) => (
-        <BookCard
-          key={book.order}
-          book={book}
-          isOpen={openOrder === book.order}
-          onToggle={() =>
-            setOpenOrder(openOrder === book.order ? null : book.order)
-          }
-        />
-      ))}
-    </div>
+    <>
+      <div className="overflow-hidden rounded-2xl bg-brand-white shadow-card ring-1 ring-ink/5">
+        <ul className="divide-y divide-ink/5">
+          {books.map((book) => (
+            <li key={book.order}>
+              <BookRow
+                book={book}
+                isOpen={openOrder === book.order}
+                onToggle={() =>
+                  setOpenOrder(openOrder === book.order ? null : book.order)
+                }
+                onOpenPlan={() => setPlanBook(book)}
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+      <LanguageBookPlanModal
+        isOpen={planBook !== null}
+        onClose={() => setPlanBook(null)}
+        book={planBook}
+        plan={planBookPlan}
+      />
+    </>
   );
 }
 
-function BookCard({
+function BookRow({
   book,
   isOpen,
   onToggle,
+  onOpenPlan,
 }: {
   book: LanguageBook;
   isOpen: boolean;
   onToggle: () => void;
+  onOpenPlan: () => void;
 }) {
   return (
-    <div className="overflow-hidden rounded-2xl bg-brand-white shadow-card ring-1 ring-ink/5">
+    <div>
       <button
         type="button"
         onClick={onToggle}
         aria-expanded={isOpen}
-        className="flex w-full items-stretch text-left transition active:scale-[0.99]"
+        className={cn(
+          "flex w-full items-center gap-3 px-3 py-2.5 text-left transition",
+          isOpen ? "bg-segment-yellow/15" : "hover:bg-ink/[0.03]"
+        )}
       >
-        {/* Cover — full image visible (object-contain), padded so the
-            book "sits" inside a tinted frame instead of being cropped. */}
-        <div className="flex h-[150px] w-[110px] shrink-0 items-center justify-center bg-segment-blue/15 p-2">
+        {/* Compact cover thumb */}
+        <div className="flex h-[52px] w-[40px] shrink-0 items-center justify-center rounded bg-segment-blue/15 p-1">
           {book.heroImageUrl ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={book.heroImageUrl}
-              alt={`${book.title} cover`}
-              className="max-h-full max-w-full object-contain shadow-md"
+              alt=""
+              className="max-h-full max-w-full object-contain"
               onError={(e) => {
                 (e.currentTarget as HTMLImageElement).style.display = "none";
               }}
             />
-          ) : (
-            <span className="text-[10px] font-bold text-ink/40">cover</span>
-          )}
+          ) : null}
         </div>
 
-        {/* Right column */}
-        <div className="flex flex-1 flex-col gap-1.5 p-3">
-          <div className="flex items-start gap-2">
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-orange/15 text-[11px] font-extrabold text-brand-orange">
-              {book.order}
-            </span>
-            <p className="flex-1 text-[13.5px] font-extrabold leading-tight text-ink">
-              {book.title.toLowerCase()}
-            </p>
-            <ChevronDown
-              className={cn(
-                "h-4 w-4 shrink-0 text-ink/50 transition-transform",
-                isOpen && "rotate-180"
-              )}
-            />
-          </div>
-          <p className="text-[11px] font-semibold text-ink-muted">
+        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-orange/15 text-[10px] font-extrabold text-brand-orange">
+          {book.order}
+        </span>
+
+        <div className="min-w-0 flex-1">
+          <p className="truncate text-[13px] font-extrabold leading-tight text-ink">
+            {book.title.toLowerCase()}
+          </p>
+          <p className="mt-0.5 truncate text-[11px] font-medium text-ink-muted">
             {book.author}
           </p>
+        </div>
+
+        <ChevronDown
+          className={cn(
+            "h-4 w-4 shrink-0 text-ink/50 transition-transform",
+            isOpen && "rotate-180"
+          )}
+        />
+      </button>
+
+      {isOpen && (
+        <div className="space-y-3 bg-segment-yellow/15 px-4 pb-4 pt-1">
           <p className="text-[10px] leading-snug text-ink-subtle">
             {book.ageRange}
           </p>
-          <div className="mt-auto flex flex-wrap gap-1">
+          <p className="text-[12.5px] leading-relaxed text-ink-muted md:text-[13px]">
+            {book.summary}
+          </p>
+
+          {/* Themes — chips, only shown when expanded to keep collapsed
+              row tight. */}
+          <div className="flex flex-wrap gap-1">
             {book.themes.map((t) => (
               <span
                 key={t}
-                className="rounded-chip bg-ink/5 px-2 py-0.5 text-[9px] font-medium text-ink-muted"
+                className="rounded-chip bg-ink/5 px-2 py-0.5 text-[10px] font-medium text-ink-muted"
               >
                 {t}
               </span>
             ))}
           </div>
-        </div>
-      </button>
 
-      {/* Expandable detail */}
-      {isOpen && (
-        <div className="space-y-3 border-t border-ink/5 bg-segment-yellow/15 p-4">
-          <p className="text-[12.5px] leading-relaxed text-ink-muted md:text-[13px]">
-            {book.summary}
-          </p>
-
-          {/* Target vocabulary — the words children will encounter
-              across the 6-day arc. */}
           <div>
             <p className="text-[10px] font-semibold tracking-normal text-brand-orange">
               Target vocabulary
@@ -162,6 +179,17 @@ function BookCard({
               </p>
             </div>
           </div>
+
+          {/* View full lesson plan — opens the Day 1/2/3 + Version 2.0
+              popup with all teacher steps. */}
+          <button
+            type="button"
+            onClick={onOpenPlan}
+            className="mt-2 flex w-full items-center justify-center gap-2 rounded-card bg-brand-orange py-2.5 text-[12px] font-bold text-white shadow-card transition hover:opacity-95 active:scale-[0.99]"
+          >
+            <BookOpen className="h-3.5 w-3.5" />
+            view full lesson plan
+          </button>
         </div>
       )}
     </div>

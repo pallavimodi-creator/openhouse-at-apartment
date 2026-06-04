@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { Home, BookOpen, LayoutGrid, LogOut, Notebook, CalendarDays } from "lucide-react";
+import { Home, BookOpen, LayoutGrid, LogOut, Notebook, CalendarDays, Building2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { listCurriculumProgrammes } from "@/lib/content";
-import { clearTeacher } from "@/lib/teacher-state";
+import { clearTeacher, getBuilding, clearBuilding, getTeacher } from "@/lib/teacher-state";
 
 const PROGRAMME_TO_BOOK: Record<string, string> = {
   "art-design-5-8": "art-5-8",
@@ -17,9 +18,20 @@ const PROGRAMME_TO_BOOK: Record<string, string> = {
 export function FooterNav() {
   const pathname = usePathname();
   const router = useRouter();
+  const [building, setBuildingState] = useState<string | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
 
-  // Hide the footer on the login page only
-  if (pathname === "/login") {
+  // Read the current building + admin flag from session storage on mount
+  // + whenever the route changes (so picking a new building on /building
+  // updates the chip, and admin sessions never get a building chip).
+  useEffect(() => {
+    setBuildingState(getBuilding());
+    const t = getTeacher();
+    setIsAdmin(!!t && (t.role === "admin" || t.programmeSlug === "*"));
+  }, [pathname]);
+
+  // Hide the footer on the login + building-picker pages
+  if (pathname === "/login" || pathname === "/building") {
     return null;
   }
 
@@ -65,6 +77,11 @@ export function FooterNav() {
     router.push("/login");
   };
 
+  const handleSwitchBuilding = () => {
+    clearBuilding();
+    router.push("/building");
+  };
+
   return (
     <nav
       className="fixed bottom-0 left-0 right-0 z-50 bg-brand-white"
@@ -74,6 +91,21 @@ export function FooterNav() {
         paddingBottom: "max(env(safe-area-inset-bottom), 12px)",
       }}
     >
+      {/* Current building chip — tap to switch without signing out.
+          Hidden for admins (they review the platform, don't run classes). */}
+      {building && !isAdmin && (
+        <button
+          type="button"
+          onClick={handleSwitchBuilding}
+          className="mx-auto flex w-full max-w-4xl items-center justify-center gap-1.5 border-b border-ink/5 px-3 py-1 text-[10px] font-bold text-ink-muted transition hover:bg-brand-orange/8 lg:max-w-7xl"
+          title="tap to switch building"
+        >
+          <Building2 className="h-3 w-3 text-brand-orange" strokeWidth={2.4} />
+          <span>building:</span>
+          <span className="text-ink">{building.toLowerCase()}</span>
+          <span className="ml-1 text-brand-orange">· switch</span>
+        </button>
+      )}
       <div className="mx-auto flex max-w-4xl items-center justify-around lg:max-w-7xl">
         {items.map((item) => {
           // Active-state matching:

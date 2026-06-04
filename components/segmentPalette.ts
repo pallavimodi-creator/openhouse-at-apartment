@@ -97,18 +97,21 @@ const SEGMENT_TO_TONE: Record<string, SegmentTone> = {
   "roll-call": "yellow",
   experiment: "yellow",
   "roll-rhyme": "yellow", // language — whole-class song warm-up
+  "imagine-playground": "yellow", // stem — opening exploration, Session A
 
   // Green — making / playing / hands-on
   "art-games": "green",
   playground: "green",
   build: "green",
   "play-writes": "green", // language — independent pre-writing
+  "logic-lab": "green", // stem — focused logical games
 
   // Blue — main body of the session, deep work
   artiverse: "blue",
   artistotle: "blue",
   showtime: "blue",
   "book-o-clock": "blue", // language — central read-aloud block
+  "wonder-world": "blue", // stem — themed workbook exploration, Session B
 
   // Pink — closing / log book / reflection
   "log-book": "pink",
@@ -118,6 +121,7 @@ const SEGMENT_TO_TONE: Record<string, SegmentTone> = {
   "art-care": "orange",
   "sign-off": "orange",
   wordsmiths: "orange", // language — vocabulary see → act → say
+  "numbers-gym": "orange", // stem — number sense workout, every session
 };
 
 const FALLBACK: SegmentPalette = { ...TONE.pink, tone: "pink" };
