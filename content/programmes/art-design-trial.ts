@@ -7,10 +7,11 @@ import type { TrialSession, TrialSessionSegment } from "@/content/types";
  *  - 5–8:  paint your own donut.
  *  - 8–12: paint a donut + your favourite animal who wants to eat it.
  *
- * The Magna Tiles + Shape Fusion warm-up games and the closing segment are
- * identical across ages. The intro, setup, game-context, and Artiverse making
- * segment differ. Books and art games already differ at the session-calendar
- * level (5–8: book-3 / match-me · 8–12: book-5 / i-spot).
+ * The trial game differs by age: 5–8 plays Magna Tiles, 8–12 plays Shape
+ * Fusion (both keep the brief Magna Tiles arrival warm-up). The closing
+ * segment is identical across ages; the intro, setup, game-context, and
+ * Artiverse making segment differ. Books and art games also differ at the
+ * session-calendar level (5–8: book-3 / match-me · 8–12: book-5 / i-spot).
  */
 
 // ─── Shared segments (identical for both ages) ──────────────────
@@ -63,7 +64,7 @@ const CLOSE_SEGMENT: TrialSessionSegment = {
 
 export const ART_TRIAL_SESSION_5_8: TrialSession = {
   intro:
-    "the trial session is 60 minutes for ages 5–8. a first-time child experiences the full flow — magna tiles warm-up, a shape fusion game, an artiverse painting of their very own donut that goes home the same day, and a short close naming the segments of every regular session.",
+    "the trial session is 60 minutes for ages 5–8. a first-time child experiences the full flow — a magna tiles game building flat and in 3D, an artiverse painting of their very own donut that goes home the same day, and a short close naming the segments of every regular session.",
   segments: [
     {
       name: "Before children arrive — setup",
@@ -78,10 +79,9 @@ export const ART_TRIAL_SESSION_5_8: TrialSession = {
       objective:
         "a short framing the teacher reads to the group once they've picked up their tiles — sets expectation for what today's games are and how much choice children have.",
       howToPlay:
-        "\"did you know we're going to play lots of different art games today? we'll use magna tiles to build shapes, play the shape fusion game, and create our own worlds. and then — the best part — we're each going to paint our very own donut, and you take it home today. you choose the colours, the sprinkles, the icing. every game is different — sometimes you build, sometimes you paint, and sometimes you do both!\"",
+        "\"did you know we're going to play art games today? we'll use magna tiles to build shapes — flat on the table and standing up in 3D — and create our own worlds. and then — the best part — we're each going to paint our very own donut, and you take it home today. you choose the colours, the sprinkles, the icing. every game is different — sometimes you build, sometimes you paint, and sometimes you do both!\"",
     },
     MAGNA_TILES_SEGMENT,
-    SHAPE_FUSION_SEGMENT,
     {
       name: "Artiverse",
       time: "25 min",
@@ -113,7 +113,7 @@ export const ART_TRIAL_SESSION_8_12: TrialSession = {
       name: "Before children arrive — setup",
       time: "before",
       objective:
-        "magna tiles spread in the centre of the table in a big colourful pile. paints, brushes, and a3 paper visible at the side. a donut reference card and the donut guide face-up, and animal cue cards face-down in a stack. the room looks ready for something.",
+        "magna tiles spread in the centre of the table in a big colourful pile for the warm-up. two sets of transparent shape fusion pieces and shape cards ready at the side. paints, brushes, and a3 paper visible. a donut reference card and the donut guide face-up, and animal cue cards face-down in a stack. the room looks ready for something.",
     },
     WALK_IN_SEGMENT,
     {
@@ -122,9 +122,8 @@ export const ART_TRIAL_SESSION_8_12: TrialSession = {
       objective:
         "a short framing the teacher reads to the group once they've picked up their tiles — sets expectation for what today's games are and how much choice children have.",
       howToPlay:
-        "\"did you know we're going to play lots of different art games today? we'll use magna tiles to build shapes, play the shape fusion game, and create our own worlds. and then — the best part — we each paint a donut, and the favourite animal who wants to eat it, together on the same page. you take it home today. every game is different — sometimes you build, sometimes you paint, and sometimes you do both!\"",
+        "\"did you know we're going to play art games today? we'll warm up with magna tiles, then play the shape fusion game — building something in silence for everyone else to guess. and then — the best part — we each paint a donut, and the favourite animal who wants to eat it, together on the same page. you take it home today. every game is different — sometimes you build, sometimes you paint, and sometimes you do both!\"",
     },
-    MAGNA_TILES_SEGMENT,
     SHAPE_FUSION_SEGMENT,
     {
       name: "Artiverse",
