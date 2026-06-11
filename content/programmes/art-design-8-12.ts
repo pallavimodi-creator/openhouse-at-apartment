@@ -5,7 +5,7 @@ import type {
   CurriculumCheckpoint,
   ArtiverseUnit,
 } from "@/content/types";
-import { ART_TRIAL_SESSION } from "./art-design-trial";
+import { ART_TRIAL_SESSION_8_12 } from "./art-design-trial";
 
 // ─── Artiverse units (14 units · 2 days per unit) ───
 
@@ -552,7 +552,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
 // ─── Session Table ──────────────────────────────────────────
 
 const sessionTable: CurriculumSessionEntry[] = [
-  { sessionNumber: 0,  artGym: "book-5",        artGames: "i-spot",         artiverse: "unit-1",  artiverseUnit: 0,  artiverseDay: 0, artiverseUnitName: "trial session — art gym + extension combined, i spot tool/medium, oil pastels bold shapes tomato composition", topicLayer: 0 },
+  { sessionNumber: 0,  artGym: "book-5",        artGames: "i-spot",         artiverse: "unit-1",  artiverseUnit: 0,  artiverseDay: 0, artiverseUnitName: "trial session — art gym + extension combined, i spot tool/medium, oil pastels bold shapes donut with your favourite animal who wants to eat it", topicLayer: 0 },
   { sessionNumber: 1,  artGym: "book-5",        artGames: "i-spot",         artiverse: "unit-1",  artiverseUnit: 1,  artiverseDay: 1, artiverseUnitName: "oil pastels — tomato composition", topicLayer: 0 },
   { sessionNumber: 2,  artGym: "ext-book",      artGames: "imagine-that",   artiverse: "unit-1",  artiverseUnit: 1,  artiverseDay: 2, artiverseUnitName: "oil pastels — tomato composition", topicLayer: 0 },
   { sessionNumber: 3,  artGym: "cue-card-b2",   artGames: "cue-cards-game", artiverse: "unit-4",  artiverseUnit: 2,  artiverseDay: 1, artiverseUnitName: "watercolour — flowers", topicLayer: 0 },
@@ -936,5 +936,5 @@ export const artDesign812: CurriculumProgramme = {
   },
   checkpoints,
   artiverseUnits,
-  trialSession: ART_TRIAL_SESSION,
+  trialSession: ART_TRIAL_SESSION_8_12,
 };
