@@ -75,25 +75,6 @@ const experimentActivities: Record<string, CurriculumActivity> = {
     type: "physical-game",
     pdfUrl: "/robotics-manuals/l1-levers.pdf",
   },
-  "l2-levers-e2": {
-    id: "l2-levers-e2",
-    segment: "experiment",
-    title: "l2 levers e2 — is the increase proportional?",
-    cardName: "L2 Levers e2",
-    setupLine:
-      "heavier weights. is load-to-effort a straight-line relationship?",
-    howToPlay:
-      "Same arm as L1 e2. Add 1kg, 2kg, 3kg, 4kg loads (use 2kg weights available). Take readings. Plot or tabulate load vs effort. Is the relationship proportional — does effort double when load doubles? Calculate the ratio row-by-row.",
-    materials: ["Experiment Card: L2 Levers e2", "PVC pipe · fulcrum · spring scale 3kg · 2kg weights (×2) · calculator"],
-    difficultyLevels: [
-      { level: "Easy", description: "Record readings. Teacher calculates ratios." },
-      { level: "Medium", description: "Child measures and calculates each ratio." },
-      { level: "Hard", description: "Child predicts the full table from the first reading using proportional reasoning." },
-    ],
-    debriefPrompts: [],
-    type: "physical-game",
-    pdfUrl: "/robotics-manuals/l2-levers.pdf",
-  },
   "l1-levers-e3": {
     id: "l1-levers-e3",
     segment: "experiment",
@@ -113,25 +94,6 @@ const experimentActivities: Record<string, CurriculumActivity> = {
     type: "physical-game",
     pdfUrl: "/robotics-manuals/l1-levers.pdf",
   },
-  "l2-levers-e3": {
-    id: "l2-levers-e3",
-    segment: "experiment",
-    title: "l2 levers e3 — calculate the balance point",
-    cardName: "L2 Levers e3",
-    setupLine:
-      "unequal weights. can you calculate where the fulcrum must sit?",
-    howToPlay:
-      "Hang 1kg on left at fixed distance. Hang 2kg on right — where must the fulcrum sit for the lever to balance? Calculate before testing using weight × distance on each side. Test. Record prediction and measured position.",
-    materials: ["Experiment Card: L2 Levers e3", "PVC pipe 40cm · fulcrum · 1kg + 2kg weights · measuring tape · calculator"],
-    difficultyLevels: [
-      { level: "Easy", description: "Teacher shows the calculation. Child places fulcrum and checks." },
-      { level: "Medium", description: "Child does the calculation and tests." },
-      { level: "Hard", description: "Child solves for three different weight pairs and records predicted vs actual for each." },
-    ],
-    debriefPrompts: [],
-    type: "physical-game",
-    pdfUrl: "/robotics-manuals/l2-levers.pdf",
-  },
   "l1-levers-e4": {
     id: "l1-levers-e4",
     segment: "experiment",
@@ -150,25 +112,6 @@ const experimentActivities: Record<string, CurriculumActivity> = {
     debriefPrompts: [],
     type: "physical-game",
     pdfUrl: "/robotics-manuals/l1-levers.pdf",
-  },
-  "l2-levers-e4": {
-    id: "l2-levers-e4",
-    segment: "experiment",
-    title: "l2 levers e4 — calculate an unknown weight",
-    cardName: "L2 Levers e4",
-    setupLine:
-      "use the lever to measure a weight you do not know.",
-    howToPlay:
-      "Hang a known weight (1kg) at a fixed distance on one side. Hang the unknown object on the other side. Move the fulcrum until the lever balances. Measure the two distances. Calculate the unknown weight using the ratio of arm lengths: unknown = known × (known-arm ÷ unknown-arm). Verify on a real scale. Record the error.",
-    materials: ["Experiment Card: L2 Levers e4", "PVC pipe 40cm · fulcrum · 1kg weight · measuring tape · 2–3 unknown objects · calculator · real scale for verification"],
-    difficultyLevels: [
-      { level: "Easy", description: "Child balances and measures distances. Teacher helps with the calculation." },
-      { level: "Medium", description: "Child does the calculation independently and checks against a real scale." },
-      { level: "Hard", description: "Child predicts the unknown weight before balancing using a rough estimate, then refines using the measurement." },
-    ],
-    debriefPrompts: [],
-    type: "physical-game",
-    pdfUrl: "/robotics-manuals/l2-levers.pdf",
   },
   "l2-levers-e5": {
     id: "l2-levers-e5",
@@ -996,51 +939,45 @@ const sessionTable: CurriculumSessionEntry[] = [
   s(0, "l1-pulleys-e1", "Crane", "build-crane", 1,
     "Today we're going to build a real crane model. You'll use parts to make something that actually works. It may not work the first time — that's expected. You'll figure out what to change and improve it. By the end, you'll understand how cranes work in real life.",
     "Where do you see cranes in real life — and which part of your crane is doing the main job?"),
-  // ─── See-saw · 4 days · 2 experiments × 2 days each (L1 → L2 pair)
-  // Experiment 1: l1-levers-e1 (qualitative) → l2-levers-e1 (quantitative)
-  // Experiment 2: l1-levers-e2 (qualitative) → l2-levers-e2 (quantitative)
-  s(1, "l1-levers-e1", "See-saw", "build-see-saw", 1,
-    "A see-saw is one of the oldest machines in the world. But it is also one of the most precisely engineered things on a playground. What makes a see-saw actually balance — not tip — when two people of different weights sit on it?",
-    "What does a lever do that makes lifting easier — in one sentence?"),
-  s(2, "l2-levers-e1", "See-saw", "build-see-saw", 2,
-    "Yesterday we noticed how a lever feels at different positions. Today let's measure it. Can you predict the exact effort reading before you take it — and then test?",
-    "After two days with this experiment — what is the precise relationship between effort and arm length? Can you calculate it?"),
+  // ─── See-saw · 4 days · L2 Levers e1 (d1) · L1 Levers e1 (d2) · L1 Levers e2 (d3–4)
+  s(1, "l2-levers-e1", "See-saw", "build-see-saw", 1,
+    "A see-saw is one of the oldest machines in the world, but also one of the most precisely engineered things on a playground. Lift a load directly, then with a lever — predict which needs less effort, then measure.",
+    "What does a lever do that makes lifting easier — and by roughly how much?"),
+  s(2, "l1-levers-e1", "See-saw", "build-see-saw", 2,
+    "Yesterday a lever made lifting easier. Today — if we make the lever arm longer, can you predict the effort reading before you take it, then test?",
+    "What is the relationship between lever length and the effort needed to lift?"),
   s(3, "l1-levers-e2", "See-saw", "build-see-saw", 3,
-    "Architects designing a cantilever bridge use the same principle as a see-saw. How do you think they calculate where to put the counterweight?",
+    "Architects designing a cantilever bridge use the same principle as a see-saw. If the load gets heavier, predict how the effort changes — is it proportional?",
     "Is the load-to-effort increase proportional? What does the calculation show?"),
-  s(4, "l2-levers-e2", "See-saw", "build-see-saw", 4,
-    "Yesterday we noticed how the load changes the effort. Today, calculate the exact ratio. Then make one change to your see-saw, predict the measurable improvement, test, and disassemble from memory.",
-    "After two days with this experiment — can you calculate the exact balance point for two different weights?"),
-  // ─── Weighing Scale · 4 days · 2 experiments × 2 days each ──
-  // Experiment 1: l1-levers-e3 → l2-levers-e3
-  // Experiment 2: l1-levers-e4 → l2-levers-e4
+  s(4, "l1-levers-e2", "See-saw", "build-see-saw", 4,
+    "Yesterday we measured how the load changes the effort. Today, finish and test. Then make one change to your see-saw, predict the measurable improvement, test, and disassemble from memory.",
+    "After two days with this experiment — by how much does a heavier load increase the effort?"),
+  // ─── Weighing Scale · 4 days · L1 Levers e3 (d5) · L1 Levers e4 (d6) · L2 Levers e5 (d7–8)
   s(5, "l1-levers-e3", "Weighing Scale", "build-weighing-scale", 1,
-    "Before digital scales existed, jewellers weighed gold using a balance lever accurate to a fraction of a gram. What aspect of the design had to be perfect for that accuracy?",
+    "Before digital scales existed, jewellers weighed gold using a balance lever accurate to a fraction of a gram. When two sides hold the same weight, what does the beam do — and why?",
     "How can any equal-weight object tell you when a lever is balanced?"),
-  s(6, "l2-levers-e3", "Weighing Scale", "build-weighing-scale", 2,
-    "Yesterday we noticed how a balance scale tells us when two weights are equal. Today, calculate. Can you find an unknown weight using the ratio of arm lengths?",
-    "After two days with this experiment — can you calculate an unknown weight using the ratio of arm lengths?"),
-  s(7, "l1-levers-e4", "Weighing Scale", "build-weighing-scale", 3,
-    "A wheelbarrow carries a heavy load near the wheel — close to the fulcrum. Why is it designed that way? What would happen if the load were at the back?",
-    "How does moving the fulcrum change the required effort — qualitatively?"),
-  s(8, "l2-levers-e4", "Weighing Scale", "build-weighing-scale", 4,
-    "Yesterday we noticed how the fulcrum position changes effort. Today, calculate exactly where to place it for a target effort. Then make one change to your scale, test, and disassemble.",
-    "After two days with this experiment — by how much exactly does a fulcrum near the load reduce the required effort?"),
-  // ─── Crane · 4 days · 2 experiments × 2 days each ────────────
-  // Experiment 1: l1-pulleys-e1 → l2-pulleys-e1
-  // Experiment 2: l1-pulleys-e2 → l2-pulleys-e2
-  s(9, "l1-pulleys-e1", "Crane", "build-crane", 1,
-    "The Sky Crane — the system NASA used to lower the Curiosity rover onto Mars — used a pulley and cable system. Why would engineers design something that complex instead of just dropping the rover with a parachute?",
+  s(6, "l1-levers-e4", "Weighing Scale", "build-weighing-scale", 2,
+    "Yesterday two equal weights balanced. Does it matter what the two objects are — a stone and a coin — as long as they weigh the same? Predict, then test.",
+    "Do any two equal weights balance, no matter what they are?"),
+  s(7, "l2-levers-e5", "Weighing Scale", "build-weighing-scale", 3,
+    "A real scale weighs unequal things by sliding the balance point. If one side is heavier, predict where the fulcrum must move to balance both, then test.",
+    "If one side is heavier, which way must the fulcrum move — and can you predict how far?"),
+  s(8, "l2-levers-e5", "Weighing Scale", "build-weighing-scale", 4,
+    "Yesterday you balanced unequal weights by moving the fulcrum. Today, finish and test. Then make one change to your scale, predict its effect, test, and disassemble from memory.",
+    "After two days with this experiment — can you predict the fulcrum position that balances two unequal weights?"),
+  // ─── Crane · 4 days · L1 Pulleys e2 (d9) · L1 Pulleys e1 (d10) · L1 Pulleys e3 (d11–12)
+  s(9, "l1-pulleys-e2", "Crane", "build-crane", 1,
+    "When you raise a flag on a flagpole, you pull the rope down and the flag goes up — the wrong direction. What does a fixed pulley actually change: the direction of pull, or the effort?",
+    "What does a fixed pulley change — direction, effort, or both?"),
+  s(10, "l1-pulleys-e1", "Crane", "build-crane", 2,
+    "The Sky Crane that lowered NASA's Curiosity rover onto Mars used a pulley and cable system. If the load gets heavier through a single pulley, predict how the effort changes — is it proportional?",
     "What happens to effort when the load gets heavier through a single pulley — is it proportional?"),
-  s(10, "l2-pulleys-e1", "Crane", "build-crane", 2,
-    "Yesterday we noticed how a single pulley changes pulling. Today, calculate the exact effort for each load. Is the relationship proportional, and what is the constant?",
-    "After two days with this experiment — what is the precise effort-to-load ratio for a fixed pulley?"),
-  s(11, "l1-pulleys-e2", "Crane", "build-crane", 3,
-    "When you raise a flag on a flagpole — you pull the rope down and the flag goes up. You are pulling the wrong direction. How does that work? What does the pulley actually change?",
-    "What does a fixed pulley change — direction or mechanical advantage?"),
-  s(12, "l2-pulleys-e2", "Crane", "build-crane", 4,
-    "Yesterday we noticed direction changes with a fixed pulley. Today, calculate: does it change the effort needed, or only the direction? Then make one change to your crane, test, and disassemble.",
-    "After two days with this experiment — what is the mechanical advantage of a fixed pulley, and how does rope distance relate to effort?"),
+  s(11, "l1-pulleys-e3", "Crane", "build-crane", 3,
+    "Engineers can mount a crane's pulley at different heights. Predict: does raising the pulley higher change how hard you have to pull to lift the same load?",
+    "Does the height of a fixed pulley change the effort to lift?"),
+  s(12, "l1-pulleys-e3", "Crane", "build-crane", 4,
+    "Yesterday you tested pulley height. Today, finish and test your crane. Then make one change, predict its measurable effect, test, and disassemble from memory.",
+    "After two days with this experiment — does pulley height affect the effort at all? Explain why."),
   // ─── Fishing Rod · 4 days · Levers & Pulleys · L2 Levers e6 (d1–2) · L1 Pulleys e4 (d3–4)
   s(13, "l2-levers-e6", "Fishing Rod", "build-fishing-rod", 1,
     "A fishing rod bends right over with a big fish. With the fulcrum close to the load, which lever length do you predict lifts 2kg with the least effort — and why?",
