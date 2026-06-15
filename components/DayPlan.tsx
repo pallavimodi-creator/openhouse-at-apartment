@@ -784,7 +784,7 @@ export function DayPlan({
                   </div>
                   <div className="space-y-2">
                     <SegmentRow
-                      key={seg.segmentId}
+                      key={`${session.sessionNumber}-${seg.segmentId}`}
                       segment={seg}
                       onTapActivity={setModalActivity}
                       onTapSegmentInfo={setSegmentInfo}
@@ -800,7 +800,7 @@ export function DayPlan({
                       <span aria-hidden className="h-px flex-1 bg-segment-blue/30" />
                     </div>
                     <SegmentRow
-                      key={next!.segmentId}
+                      key={`${session.sessionNumber}-${next!.segmentId}`}
                       segment={next!}
                       onTapActivity={setModalActivity}
                       onTapSegmentInfo={setSegmentInfo}
@@ -818,7 +818,7 @@ export function DayPlan({
             }
             rendered.push(
               <SegmentRow
-                key={seg.segmentId}
+                key={`${session.sessionNumber}-${seg.segmentId}`}
                 segment={seg}
                 onTapActivity={setModalActivity}
                 onTapSegmentInfo={setSegmentInfo}

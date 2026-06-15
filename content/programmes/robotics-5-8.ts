@@ -196,6 +196,56 @@ const experimentActivities: Record<string, CurriculumActivity> = {
     pdfUrl: "/robotics-manuals/l1-pulley.pdf",
   },
 
+  // ─── Extra levers (See-saw, Weighing Scale) ──────────────
+  "l2-levers-e1": {
+    id: "l2-levers-e1",
+    segment: "experiment",
+    title: "l2 levers e1 — a lever makes lifting easier",
+    cardName: "L2 Levers e1",
+    setupLine:
+      "lift 1kg, 1.5kg, 2kg two ways — straight up by hand, then using a lever. which way needs less effort?",
+    howToPlay:
+      "Children lift 1kg, 1.5kg, and 2kg two ways: Setup A — straight up with a spring scale; Setup B — with a medium lever, fulcrum at the centre. They read the effort for each setup and weight. Each child records both. The lever (Setup B) needs less effort than lifting directly — the core reason a see-saw beam helps.",
+    materials: [
+      "Experiment Card: L2 Levers e1",
+      "Medium PVC pipe lever + T-connector fulcrum",
+      "Spring scale 2kg · 1kg, 1.5kg, 2kg weights · cup with hook",
+      "Measuring tape, erasable marker",
+    ],
+    difficultyLevels: [
+      { level: "Easy", description: "Teacher sets each setup; child lifts and reads the effort." },
+      { level: "Medium", description: "Child runs both setups for each weight and records the effort." },
+      { level: "Hard", description: "Child predicts how much the lever will save before testing and explains why." },
+    ],
+    debriefPrompts: [],
+    type: "physical-game",
+    pdfUrl: "/robotics-manuals/l2-levers-e1.pdf",
+  },
+  "l2-levers-e5": {
+    id: "l2-levers-e5",
+    segment: "experiment",
+    title: "l2 levers e5 — balancing unequal weights",
+    cardName: "L2 Levers e5",
+    setupLine:
+      "0.5kg on one end, 1.5kg on the other. move the fulcrum until both sides balance — where does it sit?",
+    howToPlay:
+      "With 0.5kg on one end of the lever and 1.5kg on the other, children try different fulcrum positions until the beam balances level. Each child records where the fulcrum had to sit. The fulcrum moves closer to the heavier weight — how a weighing scale can balance unequal loads.",
+    materials: [
+      "Experiment Card: L2 Levers e5",
+      "Medium PVC pipe lever + movable fulcrum",
+      "0.5kg and 1.5kg weights",
+      "Measuring tape, erasable marker",
+    ],
+    difficultyLevels: [
+      { level: "Easy", description: "Teacher moves the fulcrum; child says when it balances." },
+      { level: "Medium", description: "Child moves the fulcrum to find the balance point and records its position." },
+      { level: "Hard", description: "Child predicts which way the fulcrum must move before testing and explains why." },
+    ],
+    debriefPrompts: [],
+    type: "physical-game",
+    pdfUrl: "/robotics-manuals/l2-levers-e5.pdf",
+  },
+
   // ─── Gears (Copter, Bulldozer) ────────────────────────────
   "l1-gears-e1": {
     id: "l1-gears-e1",
@@ -943,57 +993,51 @@ const sessionTable: CurriculumSessionEntry[] = [
   s(0, "l1-pulleys-e1", "Crane", "build-crane", 1,
     "Did you know we're going to play building games today? We'll try things with our body first, and then build a real crane. You'll use real parts to make something that moves. You can try again if it doesn't work. By the end, you'll have made your own crane.",
     "What part of your crane did the most important job today?"),
-  // ─── See-saw · 5 days · 2 experiments × 2 days each + 1 improve day
-  // Experiment 1 (l1-levers-e1) runs day 1–2; Experiment 2 (l1-levers-e2)
-  // runs day 3–4; day 5 is the improve & disassemble recap.
-  s(1, "l1-levers-e1", "See-saw", "build-see-saw", 1,
+  // ─── See-saw · 5 days · L2 Levers e1 (day 1) · L1 Levers e1 (days 2–3) · L1 Levers e2 (days 4–5)
+  s(1, "l2-levers-e1", "See-saw", "build-see-saw", 1,
     "Has anyone played on a see-saw? When you sit on one end and your friend sits on the other — what makes it go up and what makes it go down?",
     "What does a lever do that makes lifting easier — in one sentence?"),
   s(2, "l1-levers-e1", "See-saw", "build-see-saw", 2,
-    "Yesterday we noticed how a see-saw moves. Today, what do you think happens when both children weigh the same — does it stay still or wobble?",
-    "After two days with this experiment — what is the one rule you would tell a friend about how a see-saw moves?"),
-  s(3, "l1-levers-e2", "See-saw", "build-see-saw", 3,
+    "Yesterday we saw a lever makes lifting easier. Today — if we make the lever longer, do you think it gets even easier, or harder?",
+    "Does a longer lever make lifting easier or harder?"),
+  s(3, "l1-levers-e1", "See-saw", "build-see-saw", 3,
     "If you are lighter than your friend on a see-saw — what could you do to make your side go down? Where would you sit?",
-    "When we moved further from the middle — did the effort go up or down? Why?"),
+    "After two days with this experiment — what is the rule between lever length and effort?"),
   s(4, "l1-levers-e2", "See-saw", "build-see-saw", 4,
-    "Your see-saw is nearly complete. Before we test it — what do you predict will happen if we move the fulcrum closer to one side?",
-    "After two days with this experiment — when does a lever balance perfectly? What has to be true on both sides?"),
-  s(5, "l1-levers-e3", "See-saw", "build-see-saw", 5,
+    "Your see-saw is nearly complete. Before we test it — if you put a heavier weight on one end, do you think it needs more effort or less to lift?",
+    "When the load gets heavier, what happens to the effort needed to lift it?"),
+  s(5, "l1-levers-e2", "See-saw", "build-see-saw", 5,
     "Your see-saw works. What one change would you make to improve it — and how will you know whether your change actually helped? Then we will take it apart together.",
     "What is the one most important thing you found out about levers across these five days?"),
-  // ─── Weighing Scale · 5 days · 2 experiments × 2 days + improve
-  // Experiment 1 (l1-levers-e5) days 1–2; Experiment 2 (l1-levers-e6)
-  // days 3–4; day 5 improve & disassemble.
-  s(6, "l1-levers-e5", "Weighing Scale", "build-weighing-scale", 1,
+  // ─── Weighing Scale · 5 days · L1 Levers e3 (days 6–7) · L1 Levers e4 (day 8) · L2 Levers e5 (days 9–10)
+  s(6, "l1-levers-e3", "Weighing Scale", "build-weighing-scale", 1,
     "When a shopkeeper at a market weighs vegetables using a balance scale — how does she know when the weight is exactly right? What is she looking for?",
-    "Which part of the Weighing Scale does the most important job?"),
-  s(7, "l1-levers-e5", "Weighing Scale", "build-weighing-scale", 2,
+    "When the two sides hold the same weight — what does the beam do?"),
+  s(7, "l1-levers-e3", "Weighing Scale", "build-weighing-scale", 2,
     "Yesterday you watched the scale balance. Today — if I put a mango on one side and an apple on the other, what has to be true for the pans to be level?",
     "After two days with this experiment — how does a balance scale tell you two things weigh the same?"),
-  s(8, "l1-levers-e6", "Weighing Scale", "build-weighing-scale", 3,
-    "A bottle opener has its fulcrum right next to the bottle cap. Why is it designed that way? What does that do for the person using it?",
-    "Why does a fulcrum close to the load make lifting easier?"),
-  s(9, "l1-levers-e6", "Weighing Scale", "build-weighing-scale", 4,
-    "Your Weighing Scale is complete. Can it actually weigh something real? What is the heaviest thing in this room you could weigh with it?",
-    "After two days with this experiment — how do you find the weight of something unknown using your scale?"),
-  s(10, "l1-levers-e3", "Weighing Scale", "build-weighing-scale", 5,
+  s(8, "l1-levers-e4", "Weighing Scale", "build-weighing-scale", 3,
+    "We balanced two equal weights yesterday. Does it matter what the two things are — a stone and a toy — as long as they weigh the same?",
+    "Do any two equal weights balance, no matter what they are?"),
+  s(9, "l2-levers-e5", "Weighing Scale", "build-weighing-scale", 4,
+    "Your Weighing Scale is nearly complete. If one side is heavier than the other, where do you think the middle point has to move so it still balances?",
+    "If one side is heavier, which way must the fulcrum move to balance both sides?"),
+  s(10, "l2-levers-e5", "Weighing Scale", "build-weighing-scale", 5,
     "What would make your Weighing Scale more accurate? Pick one change, predict what it will do, then we will test and take it apart.",
-    "What is the one most important thing you found out about levers using the weighing scale?"),
-  // ─── Crane · 5 days · 2 experiments × 2 days + improve
-  // Experiment 1 (l1-pulleys-e1) days 1–2; Experiment 2 (l1-pulleys-e2)
-  // days 3–4; day 5 improve & disassemble.
-  s(11, "l1-pulleys-e1", "Crane", "build-crane", 1,
-    "Think about a construction crane — the tall ones you see at building sites. It lifts huge heavy things. But there is only one operator. How does one person lift something heavier than a car?",
-    "What happens to effort when the load gets heavier on a pulley?"),
-  s(12, "l1-pulleys-e1", "Crane", "build-crane", 2,
-    "Yesterday we noticed pulling on a rope makes it easier to lift. Today — if you make the load heavier, do you have to pull harder or does the pulley keep it the same?",
-    "After two days with this experiment — what is the rule for effort and load on a single pulley?"),
-  s(13, "l1-pulleys-e2", "Crane", "build-crane", 3,
+    "What is the one most important thing you found out about balancing with a lever?"),
+  // ─── Crane · 5 days · L1 Pulleys e2 (day 11) · L1 Pulleys e1 (days 12–13) · L1 Pulleys e3 (days 14–15)
+  s(11, "l1-pulleys-e2", "Crane", "build-crane", 1,
     "When you raise a flag on a flagpole — you pull the rope down and the flag goes up. You are pulling the wrong direction. How does that work?",
-    "What does a pulley actually do to the direction of pull?"),
-  s(14, "l1-pulleys-e2", "Crane", "build-crane", 4,
-    "Your crane is taking shape. Before we test it — what direction do you have to pull the rope to lift the load up? Does that feel natural or strange?",
-    "After two days with this experiment — explain in your own words how a pulley changes the direction you pull.",),
+    "What does a pulley do to the direction you pull?"),
+  s(12, "l1-pulleys-e1", "Crane", "build-crane", 2,
+    "Think about a construction crane at a building site. It lifts huge heavy things with one operator. If the load gets heavier, do you think pulling gets harder?",
+    "What happens to the effort when the load gets heavier on a pulley?"),
+  s(13, "l1-pulleys-e1", "Crane", "build-crane", 3,
+    "Yesterday we measured the effort to lift with a pulley. Today — do you predict a heavier load always needs more effort, or does the pulley keep it the same?",
+    "After two days with this experiment — what is the rule for effort and load on a single pulley?"),
+  s(14, "l1-pulleys-e3", "Crane", "build-crane", 4,
+    "Your crane is taking shape. Before we test it — if we raise the pulley higher up, do you think it gets easier or harder to lift the same load?",
+    "Does raising the pulley higher change the effort to lift?"),
   s(15, "l1-pulleys-e3", "Crane", "build-crane", 5,
     "Your crane lifts something today. What one change would you make to help it lift more — or lift more smoothly? Test it, then we will take it apart together.",
     "What is the one most important thing you found out about pulleys across these five days?"),

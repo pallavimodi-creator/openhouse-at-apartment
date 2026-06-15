@@ -871,6 +871,18 @@ function ProgrammeOverviewContent() {
   // Lists every experiment card and every model build so teachers see the full
   // content pool at a glance, even though the sessionTable already hard-wires
   // which one runs in which session.
+  // Canonical robotics experiment list — shown identically in both age bands
+  // (5–8 and 8–12) so the overview is consistent. Order is intentional.
+  const ROBOTICS_EXPERIMENT_ORDER = [
+    "l1-levers-e1", "l1-levers-e2", "l1-levers-e3", "l1-levers-e4",
+    "l2-levers-e1", "l2-levers-e5", "l2-levers-e6",
+    "l1-pulleys-e1", "l1-pulleys-e2", "l1-pulleys-e3", "l1-pulleys-e4", "l1-pulleys-e5",
+    "l2-pulleys-e1", "l2-pulleys-e4", "l2-pulleys-e5",
+    "l1-gears-e1", "l1-gears-e2", "l1-gears-e3", "l1-gears-e4",
+    "l2-gears-e1",
+    "l1-wheel-axle-e2", "l1-wheel-axle-e3",
+    "l2-wheel-axle-e2", "l2-wheel-axle-e3", "l2-wheel-axle-e4", "l2-wheel-axle-e5",
+  ];
   const roboticsSegmentGames = [
     {
       segment: "experiment",
@@ -878,8 +890,9 @@ function ProgrammeOverviewContent() {
       color: "bg-segment-yellow",
       time: "40 min",
       type: "fixed" as const,
-      games: Object.values(programme.activities)
-        .filter((a) => a.segment === "experiment")
+      games: ROBOTICS_EXPERIMENT_ORDER
+        .map((id) => programme.activities[id])
+        .filter(Boolean)
         .map((a) => ({
           name: a.title.toLowerCase(),
           skills: a.cardName ? [a.cardName.toLowerCase()] : [],
