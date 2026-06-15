@@ -7,8 +7,10 @@ Every game, segment, and unit across the live programmes — extracted from the 
 - [art and design · ages 3–5](#art-and-design-ages35)
 - [art and design · ages 5–8](#art-and-design-ages58)
 - [art and design · ages 8–12](#art-and-design-ages812)
+- [language through storytelling · ages 3–5](#language-through-storytelling-ages35)
 - [public speaking · ages 5–8](#public-speaking-ages58)
 - [public speaking · ages 8–12](#public-speaking-ages812)
+- [stem · ages 3–5](#stem-ages35)
 - [robotics · ages 5–8](#robotics-ages58)
 - [robotics · ages 8–12](#robotics-ages812)
 
@@ -16,13 +18,13 @@ Every game, segment, and unit across the live programmes — extracted from the 
 
 ## art and design · ages 3–5
 
-_build the physical control, colour awareness, and creative confidence that makes a child someone who makes things — for the rest of their life._
+_build fine motor control, colour awareness, and the ability to express visually._
 
 - **Slug:** `art-design-3-5`
 - **Category:** art
 - **Total sessions:** 60
 
-60 sessions across five segments — art gym warm-up, art games, artiverse and artistotle making, experience book, and art care. children encounter every idea three ways: through a structured game, through the work of a famous illustrator, and through making something of their own.
+Art & design at Openhouse is built to help children develop two essential skills at this age — fine motor control and creative expression — through curated artworks, the right mediums and techniques, and play-based exploration that feels personal and meaningful.
 
 ---
 
@@ -32,463 +34,613 @@ _build the physical control, colour awareness, and creative confidence that make
 
 _Art Games · physical game_
 
-> Sew through the stitching template using shoelaces. Running stitch, whip stitch, or chain stitch.
+> Building the skill to stitch things up.
 
 **How to play**
 
-1. Children sew through stitching templates using shoelaces.
-2. Running Stitch = dashed line.
-3. Whip Stitch = over the edge in a loop.
-4. Chain Stitch = each stitch loops through the previous one.
-5. Templates range from simple outlines to more complex forms.
-
-**Difficulty**
-
-- **Easy:** Running stitch on a simple template — educator demonstrates first.
-- **Medium:** Whip stitch — child works around the edge of the template.
-- **Hard:** Chain stitch — each loop threads through the previous one.
-
-**Materials**
-
-- Sewing templates (numbers, alphabets, simple object outlines)
-- Shoelaces
-
-
-### stitch me
-
-_Art Games · physical game_
-
-> Thread the beads in the right sequence — colour, number, or riddle.
-
-**How to play**
-
-1. Children thread beads onto a shoelace following a specific sequence.
-2. The sequence is given as a prompt card or spoken by the teacher.
-3. Three difficulty levels — pure colour sequence, colour + count combinations, and riddle prompts where the answer is the next bead.
-
-**Difficulty**
-
-- **Easy:** Colour sequence — match the order on the prompt card.
-- **Medium:** Colour + count — e.g. "3 red, 2 blue, 1 yellow."
-- **Hard:** Riddle prompts — the teacher gives a clue and the child threads the bead that fits.
-
-**Materials**
-
-- Coloured beads in a tray
-- Shoelaces with a stiff tip
-- Sequence prompt cards
-
-
-### magna tiles
-
-_Art Games · physical game_
-
-> Build using Magna-Tiles — match the prompt card, or build something of your own.
-
-**How to play**
-
-1. Children build structures using Magna-Tiles, guided by prompt cards across five levels of difficulty — from flat 2D matching to free 3D building.
-
-**Difficulty**
-
-- **Easy:** Flat 2D — copy the shape on the card using single tiles laid flat.
-- **Medium:** 2D into 3D — fold flat shapes up into simple 3D forms (cube, pyramid).
-- **Hard:** Free 3D — build a structure of the child's choice without a card.
-
-**Materials**
-
-- Magna-Tiles set
-- Prompt cards (5 levels)
-
-
-### shape mats — tile placement
-
-_Art Games · physical game_
-
-> Place the shape tiles onto the mat outlines, or build your own arrangement.
-
-**How to play**
-
-1. Large illustrated shape mats are placed on the table.
-2. Children either place matching shape tiles onto the printed mat outlines, or arrange tiles freely to build their own composition.
-
-**Difficulty**
-
-- **Easy:** Place tiles onto the matching outlines printed on the mat.
-- **Medium:** Place tiles on the mat using only the shape clue (no outline).
-- **Hard:** Free arrangement — child builds their own composition on the mat.
-
-**Materials**
-
-- Large illustrated shape mats
-- Shape tiles in matching shapes and colours
-
-
-### match me
-
-_Art Games · physical game_
-
-> Match the coloured beads or pictures to the right squares on the grid.
-
-**How to play**
-
-1. Children match coloured beads or object cards to the correct grid squares.
-2. Three variations — simultaneous Colour Match, Pattern Memory (flip and remember), and timed Speed Match.
+1. This game helps children learn to pass thread through holes to create a variety of stitching patterns and attachments.
+2. Each child picks a template of their choice.
+3. The teacher models a stitch and helps the child pass thread the same way.
+4. Move to the next stitch when the child has learnt the former — there is no compulsion to learn all kinds; typically children learn all in a year's time.
 
 **Variations**
 
-- **Variation 1 — Colour match** — Place beads onto the grid square that matches their colour.
-- **Variation 2 — Pattern memory** — Cards face-down — flip two; if they match, keep the pair.
-- **Variation 3 — Speed match** — On a timer — match as many beads as possible before the time runs out.
-
-**Difficulty**
-
-- **Easy:** Colour match — no time limit.
-- **Medium:** Pattern Memory — find matching pairs from face-down cards.
-- **Hard:** Speed Match — beat the timer.
+- **Speed challenges** — Set a timer; children race to complete a stretch of stitching cleanly.
+- **Scavenger bins** — Children pick templates from scavenger bins instead of being handed one — building choice and independence.
+- **Multi-shape patterns** — Children attach multiple shapes together and design their own patterns.
 
 **Materials**
 
-- 9-grid template card
-- Coloured beads
-- Picture cards (Pattern Memory variation)
-- Timer (Speed Match variation)
+- Stitching bases (geometric shapes · objects · characters)
+- Shoelaces with a stiff tip
+- Stitch reference card (running · whip · back · chain · double · pattern)
+
+**Example**
+
+> Children learn more and more complex stitches over time, become more independent, and can stitch faster.
+
+
+### shape art
+
+_Art Games · physical game_
+
+> Make objects using geometric shapes — a whole world of geometric-shape objects.
+
+**How to play**
+
+1. The purpose of this game is to attach shapes together to create an object.
+2. Children enjoy this because they can create a recognisable object using simple shapes and the result looks fun.
+3. Start with cue cards that show exactly how to put together the shape tiles to make objects (begin with objects that use fewer tiles), then move to objects with more tiles while still using the cue card as reference, then show the cue card briefly and remove it so children build from memory, until eventually children build recognisable objects from shapes on their own.
+
+**Variations**
+
+- **Speed challenge** — Race the timer to assemble the object.
+- **Guessing game** — One child builds; the rest guess what the object is from the shapes alone.
+- **Tracing challenge** — Children trace around the assembled shapes onto paper to record what they made.
+- **Barter tiles challenge** — Children trade tiles with each other to get the shapes they need.
+- **Team challenges** — Teams build together — relay-style or one person draws and the team builds.
+- **Make a scene** — Combine multiple objects to build a whole scene from geometric shapes.
+
+**Materials**
+
+- Foam (or paper) shape pieces in mixed colours and forms
+- Cue card decks — Easy, Medium, Hard
+- Central tray for the shape pile
+- Timer (2 minutes per round)
+- Flat building surface (table or floor mat)
+
+**Example**
+
+> Children learn to create objects using geometric shapes on their own, quickly.
+
+
+### imagine that
+
+_Art Games · physical game_
+
+> Imagine how to draw, then draw — drawing involves thinking.
+
+**How to play**
+
+1. The purpose of this game is to help children think about and imagine the form of the drawing and then draw it consciously.
+2. Each child picks a card from the deck and describes it; the rest of the group draws what they hear.
+
+**Variations**
+
+- **Secret reveal** — All children reveal each other's drawings; the describer (or the group) votes for the most apt.
+- **Team play — dumb charades** — Children split into groups and each group guesses what the other group has made; teams score points.
+- **Time challenge** — Set a short timer for the round to add pace and focus.
+
+**Materials**
+
+- Physical card decks — Animals and Objects
+- Drawing paper
+- Colour pencils or markers
+
+**Example**
+
+> Children learn how a certain object looks and start drawing from memory.
 
 
 ### mix it up
 
 _Art Games · physical game_
 
-> Sort the object cards by colour. Use the swatch cards as your guide.
+> Mix and match colours.
 
 **How to play**
 
-1. 30 object cards are spread on the table. 6 colour swatch cards act as category markers.
-2. Children sort each object card under the colour it most closely matches.
-3. The third variation asks each child to draw an object in its real-world colours.
+1. This game helps children learn and enjoy colour matching and colour mixing, and understand what colour different objects are.
+2. The teacher picks one variation per round and lays out the cards needed for that variation.
 
 **Variations**
 
-- **Variation 1 — Sort** — Sort all 30 object cards under the 6 colour swatches.
-- **Variation 2 — Hunt** — Teacher names a colour; children find every object card of that colour as fast as they can.
-- **Variation 3 — Draw** — Child picks an object card and draws the same object in its real-world colours.
-
-**Difficulty**
-
-- **Easy:** Sort — match objects to swatches.
-- **Medium:** Hunt — race to find objects of a named colour.
-- **Hard:** Draw — reproduce a chosen object in its real-world colours.
+- **Make an artwork** — Children use the object cue cards as references and the stencils as scaffolds to create their own artwork.
+- **Bizarre colours** — Each child picks a colour for another child, who must colour their stencil object in that colour and add a second colour to mix.
+- **Colour challenge** — The teacher allots a colour card to each child; the child has to pick a stencil suitable for that colour.
+- **Colour pattern with memory** — The teacher arranges colour cards in an order — first a few, then more — turns them over each time, and children recall and rearrange from memory.
+- **Colour chinese whisper** — Each child sits in a circle holding a colour card; each names an object of that colour and the line continues — repeating from the previous without forgetting.
+- **Timed matching challenge** — Match objects to their colours before the timer runs out.
 
 **Materials**
 
-- 30 object cards
-- 6 colour swatch cards
-- Drawing paper + crayons (variation 3)
+- Colour cards — 12, 2 of each (24 total)
+- Colour frames — 12
+- Simple object cards & complex object cards
+- Plastic stencils for colouring
+
+**Example**
+
+> Children's colour mixing improves and the range of objects they can name colours for grows.
 
 
-### the game of red, yellow and blue
+### colour friends
 
 _Art Games · physical game_
 
-> Build colour mixtures with the tiles. Discover what new colour comes out.
+> Choose colour friends and tools to colour.
 
 **How to play**
 
-1. Shape tiles in primary and secondary colours sit in the centre.
-2. Children build tile equations — for example, 2 red + 1 yellow — to discover or predict the secondary colour produced.
-3. Three variations across difficulty levels.
+1. Children make a conscious choice about colours and learn to have fun with colours and diverse tools.
+2. Everyone gets the same worksheet, but each child gets to pick their own colour and tool.
+3. The dominant colour on the worksheet has to be the colour they chose, but they can use other colours alongside.
 
 **Variations**
 
-- **Variation 1 — Build the mix** — Teacher names a target colour (e.g. "orange") and children build an equation that produces it.
-- **Variation 2 — Story mix** — Teacher reads a colour story; children pick the tile combination that matches each beat of the story.
-- **Variation 3 — Predict and build** — Child picks any two primary tiles, predicts the secondary colour aloud, then builds and checks.
-
-**Difficulty**
-
-- **Easy:** Build the mix — known target.
-- **Medium:** Story mix — listen and respond.
-- **Hard:** Predict and build — child commits to a prediction first.
+- **Multiple colours and tools** — Children pick more than one colour and more than one tool to use on the same worksheet.
+- **Children choose for each other** — Children pick the colours, tools, and challenges for each other instead of for themselves.
 
 **Materials**
 
-- Primary colour tiles (red, yellow, blue)
-- Secondary colour tiles (orange, green, purple)
+- Colour Friend cards
+- Tool cards
+- Colour Wild cards
+- Colour Friend worksheets
+
+**Example**
+
+> Children get confident in using different colours, tools, and colour techniques.
 
 
-### miniartventure
+### i spot texture
 
 _Art Games · physical game_
 
-> Roll, move your token, land on a zone, and complete the art challenge from that zone's card.
+> Learn how to create textures in this fun shopping-for-textures game.
 
 **How to play**
 
-1. A board game in which children roll, move, land on a zone (Draw, Colour, Mould, or Build), and complete a 2-minute art challenge from that zone's card deck.
+1. Children learn how to create diverse textures with different materials.
+2. Each child gets a limited number of tokens.
+3. The teacher decides the price of both objects and textures, written on the cards in erasable marker.
+4. Children buy objects and textures of their choice within their token budget, then create the chosen texture on the object — directly on the card using clay or erasable marker.
 
 **Variations**
 
-- **Individual play** — Each child plays with their own token. Their roll, their challenge.
-- **Cooperative variation** — The whole group plays as a team. One child rolls and draws the card; everyone does the same challenge together.
-
-**Difficulty**
-
-- **Easy:** Simpler cards, 3-minute timer.
-- **Medium:** All zones, 2-minute timer.
-- **Hard:** All zones, 90-second timer.
+- **Recreate on paper with more mediums** — Instead of working directly on the card, children recreate the textured object on paper using more art materials.
+- **Free-style shop and sell** — Split children into teams. Each team picks a shop deck and creates products to sell — buying textures from the bank.
+- **Timed challenges** — Set a timer for the buy-and-create round to add pace.
 
 **Materials**
 
-- Game board (Draw / Colour / Mould / Build zones)
-- Player tokens
-- Dice
-- Timer
-- Challenge card decks per zone
-- Pencils, crayons, clay, blocks or pipe cleaners
+- Texture cards
+- Object decks and cards
+- Tokens
+- Erasable marker (to write prices and to draw textures)
+- Clay (to create textures by hand)
+
+**Example**
+
+> Children comfortably create different textures using different tools.
+
+
+### mini artventure
+
+_Art Games · physical game_
+
+> A board game where you roll the dice, do art tasks, and move ahead — an art-task adventure for the minis.
+
+**How to play**
+
+1. Children learn drawing, colouring, moulding, and building in a board-game task format — the more tasks they complete, the more tokens they collect, and the faster they win.
+2. Place the game board on a play mat, shuffle and sort challenge cards by zone colour, shuffle Fortune cards into their own mini-deck, and set up material trays for each zone.
+3. Each child picks a token and starts at the Start space.
+4. Decide on the number of rounds (6–8 is a good range) and keep a 2-minute timer ready.
+5. On their turn, each player rolls the dice and moves forward.
+6. The space they land on tells them what to do — green (Draw zone, draw the prompt), blue (Colour zone, colour with wax crayons), purple (Mould zone, shape with playdough), yellow (Build zone, recreate a shape with 2D wooden blocks and connectors), or Fortune (pick a Fortune card — "take an extra turn," "help a friend finish their drawing," etc.).
+7. After all players have picked a challenge card, they head to the matching zone tray and start the 2-minute timer.
+8. On successful completion, the teacher hands out a reward token.
+9. After all rounds, players count their tokens — everyone is a winner, the group celebrates participation and effort.
+
+**Variations**
+
+- **Nominate a friend** — When a child lands on a challenge, instead of doing it themselves they nominate which child has to do the challenge — and that child completes it.
+
+**Materials**
+
+- Game board with 4 colour-coded zones (Draw · Colour · Mould · Build) and Fortune squares
+- Player tokens (chunky animal or shape tokens, easy to grip)
+- Challenge cards — Draw · Colour · Mould · Build (15 each, 60 total)
+- Fortune cards — toddler-friendly surprises (extra turn · skip · help a friend)
+- 6-sided die
+- Reward tokens
+- Draw zone — A5 paper, pencils, erasers, sharpeners
+- Colour zone — wax crayons only (no pastels)
+- Mould zone — playdough or clay, rollers, shape cutters
+- Build zone — 2D wooden shapes (triangle, square, circle) and plastic connectors
+- 2-minute timer
+
+**Example**
+
+> Children get faster, more creative, and more confident with the tasks over time.
 
 
 ---
 
-### Artiverse units (18)
+### Artiverse units (29)
 
-#### Unit 1 — Colourful Papers — Accordions
+#### Unit 1 — Paper — Accordion folding
 
-- **Technique:** Folding · making a back-and-forth zig-zag fold; using fold lines to create movement
+- **Technique:** Fold paper strips back and forth to make and transform forms — building coordination, control, and spatial awareness.
 
-- **What children make:** Accordion fans · fold-out greeting cards · accordion creatures
-
-- **Days:** 2
-
-- **Topic options:**
-  - A folding fan
-  - A fold-out card for a friend
-  - A creature whose body opens and closes
-
-#### Unit 2 — Colourful Papers — Circles
-
-- **Technique:** Cutting and arranging circles · combining circles of different sizes to build a subject
-
-- **What children make:** Faces · animals · simple scenes
+- **What children make:** Two accordion artworks: an animal body with an added face, then a creature of choice.
 
 - **Days:** 2
 
 - **Topic options:**
-  - A face I know
-  - An animal made of circles
-  - Bubbles in a story
+  - A giraffe with an accordion body
+  - A fish with patterned strip fins
+  - An accordion creature of my own
 
-#### Unit 3 — Colourful Papers — Mosaics
+#### Unit 2 — Paper — Circles folding
 
-- **Technique:** Tearing and arranging small pieces · filling a shape with torn paper
+- **Technique:** Fold pre-cut circles into halves or flaps; stick some flat, leave some open; arrange to form objects.
 
-- **What children make:** Mosaic animals · landscapes · letters of own name
-
-- **Days:** 2
-
-- **Topic options:**
-  - My favourite animal in mosaic
-  - The first letter of my name
-  - A garden of torn pieces
-
-#### Unit 4 — Colourful Papers — Loops and Chains
-
-- **Technique:** Cutting strips and looping into chains · linking colours into patterns
-
-- **What children make:** Paper chains · loop garlands · chain animals
-
-- **Days:** 2
-
-- **Topic options:**
-  - A chain for a celebration
-  - A long snake of loops
-  - A pattern of two colours
-
-#### Unit 5 — Crayons — Doodling
-
-- **Technique:** Free mark-making with wax crayons · scribbling, scratching, swirling
-
-- **What children make:** Doodle pages · marks that turn into things
-
-- **Days:** 2
-
-- **Topic options:**
-  - My doodle of nothing in particular
-  - A scribble that becomes a creature
-  - Lines that go everywhere
-
-#### Unit 6 — Crayons — Colouring
-
-- **Technique:** Colouring inside lines · controlling pressure and direction · staying with one colour or many
-
-- **What children make:** Coloured worksheets · child's own outline drawings
-
-- **Days:** 2
-
-- **Topic options:**
-  - A colouring page from the book
-  - A drawing I make and then colour
-  - A picture in only my favourite colour
-
-#### Unit 7 — Crayons — Colour Mixing
-
-- **Technique:** Layering crayons to make new colours · pressing hard or soft for tone
-
-- **What children make:** Mixed-colour swatches · scenes that need new colours
-
-- **Days:** 2
-
-- **Topic options:**
-  - A sunset I have seen
-  - A made-up colour I name myself
-  - A leaf in autumn
-
-#### Unit 8 — Watercolour — Hand Painting (greeting cards)
-
-- **Technique:** Hand-print as composition · layering hand-prints into figures
-
-- **What children make:** Greeting cards with hand-print as the central image
-
-- **Days:** 2
-
-- **Topic options:**
-  - A card for someone I love
-  - Hand-prints that turn into a creature
-  - A thank-you card
-
-#### Unit 9 — Watercolour — Finger Painting (greeting cards)
-
-- **Technique:** Finger-print as mark · combining finger-prints into pattern or figures
-
-- **What children make:** Greeting cards with finger-print pattern or figures
-
-- **Days:** 2
-
-- **Topic options:**
-  - A field of flowers
-  - A celebration card
-  - Bugs and butterflies in a garden
-
-#### Unit 10 — Watercolour — Sponge Painting
-
-- **Technique:** Sponge as mark-maker · soft edges, layered colour, big coverage
-
-- **What children make:** Skies · landscapes · cloud scenes
-
-- **Days:** 2
-
-- **Topic options:**
-  - A sky I see in the morning
-  - A storm cloud
-  - Mountains far away
-
-#### Unit 11 — Watercolour — Q-tip Painting
-
-- **Technique:** Q-tip as a small precise brush · dotted patterns and small details
-
-- **What children make:** Dot paintings · pointillist scenes · small creatures
-
-- **Days:** 2
-
-- **Topic options:**
-  - A tree of dots
-  - A starry night
-  - A polka-dot fish
-
-#### Unit 12 — Watercolour — Blow and Splatter
-
-- **Technique:** Blowing paint with straws · flicking paint for splatter · controlled chaos
-
-- **What children make:** Splatter trees · firework scenes · abstract bursts
-
-- **Days:** 2
-
-- **Topic options:**
-  - A firework in the sky
-  - A windy day with leaves
-  - A splatter that becomes a creature
-
-#### Unit 13 — Artistotle — Illustrator 1
-
-- **Technique:** Look at the illustrator's characters and palette · make in their spirit
-
-- **What children make:** A piece in the style of the chosen illustrator
+- **What children make:** Three circle-fold artworks across three sessions.
 
 - **Days:** 3
 
 - **Topic options:**
-  - A character from the illustrator's world
-  - A scene I would add to their world
-  - A version of myself in their world
+  - A fishbowl with circle fish
+  - Ladybugs on a leaf
+  - A bird made of stacked circles
 
-#### Unit 14 — Artistotle — Illustrator 2
+#### Unit 3 — Paper — Mosaics
 
-- **Technique:** Look at the illustrator's characters and palette · make in their spirit
+- **Technique:** Tear paper into more pieces and fill outline shapes — building precision, planning, and colour selection.
 
-- **What children make:** A piece in the style of the chosen illustrator
+- **What children make:** Two mosaic artworks filling outline sheets with pre-torn pieces.
+
+- **Days:** 2
+
+- **Topic options:**
+  - A patchwork elephant
+  - A rainbow snail with a mosaic shell
+  - An animal of my choice in mosaic
+
+#### Unit 4 — Paper — Loops & chains
+
+- **Technique:** Make loops from paper strips, join them into chains, attach faces — building finger control, sequencing, and repetition.
+
+- **What children make:** One paper-chain artwork: a chain creature with an added face.
+
+- **Days:** 1
+
+- **Topic options:**
+  - A bunny / sheep / chick with a chain body
+  - A rainbow chain caterpillar
+  - A celebration chain in two colours
+
+#### Unit 5 — Paper — Simple origami
+
+- **Technique:** Teach one fold at a time, assist where needed, stick the finished piece, decorate the background.
+
+- **What children make:** Two simple origami artworks across two sessions.
+
+- **Days:** 2
+
+- **Topic options:**
+  - An origami animal of my choice
+  - A simple origami flower
+  - A scene with my origami creature
+
+#### Unit 6 — Crayons — Solid colours in shapes
+
+- **Technique:** Draw simple shapes; children fill them with solid colour.
+
+- **What children make:** Two solid-colour-shape artworks.
+
+- **Days:** 2
+
+- **Topic options:**
+  - A grid of solid-coloured shapes
+  - Filled circles in a row
+  - Solid-colour squares of my choice
+
+#### Unit 7 — Crayons — Solid colours in scenery
+
+- **Technique:** Draw simple scenery; children colour large areas in solid colours.
+
+- **What children make:** Two simple scenery artworks coloured in solid blocks.
+
+- **Days:** 2
+
+- **Topic options:**
+  - A simple field with a tree
+  - A house with a sky
+  - A road with hills
+
+#### Unit 8 — Crayons — Intricate colouring
+
+- **Technique:** Draw simple detailed objects; children colour them carefully within the lines.
+
+- **What children make:** Two intricate-detail artworks coloured carefully.
+
+- **Days:** 2
+
+- **Topic options:**
+  - A detailed object of my choice
+  - A patterned animal
+  - A small character with detail
+
+#### Unit 9 — Crayons — Doodling
+
+- **Technique:** Make lines, dots, and patterns with crayons; use the page for texture.
+
+- **What children make:** Two doodle artworks with lines, dots, and patterns.
+
+- **Days:** 2
+
+- **Topic options:**
+  - A scribble sheep
+  - A wagon full of doodle creatures
+  - A cloud of swirly lines
+
+#### Unit 10 — Crayons — Colour mixing in shapes
+
+- **Technique:** Use 2 colours in one shape; overlap and observe the new colour.
+
+- **What children make:** Two artworks layering 2 colours inside simple shapes.
+
+- **Days:** 2
+
+- **Topic options:**
+  - A circle of overlapping rainbows
+  - Two-colour stars
+  - Squares with mixed centres
+
+#### Unit 11 — Crayons — Colour mixing in objects
+
+- **Technique:** Colour objects using blended colours so the new colour appears within the form.
+
+- **What children make:** Three artworks of objects coloured with blended crayons.
 
 - **Days:** 3
 
 - **Topic options:**
-  - A character from the illustrator's world
-  - A scene I would add to their world
-  - A version of myself in their world
+  - Mixed-colour planets
+  - Two hugging hearts
+  - A fruit with blended colour
 
-#### Unit 15 — Artistotle — Illustrator 3
+#### Unit 12 — Crayons — Colour mixing in scenery
 
-- **Technique:** Look at the illustrator's characters and palette · make in their spirit
+- **Technique:** Create colourful backgrounds using mixed crayon strokes.
 
-- **What children make:** A piece in the style of the chosen illustrator
+- **What children make:** Two scenery artworks with mixed-colour backgrounds.
+
+- **Days:** 2
+
+- **Topic options:**
+  - A sunset with blended colours
+  - A garden background
+  - A sea with mixed greens and blues
+
+#### Unit 13 — Paint — Hand painting
+
+- **Technique:** Children dip hands in paint, press on paper, observe prints, build images from prints.
+
+- **What children make:** Three hand-print artworks turned into images.
 
 - **Days:** 3
 
 - **Topic options:**
-  - A character from the illustrator's world
-  - A scene I would add to their world
-  - A version of myself in their world
+  - A flowerpot with handprint flowers
+  - A handprint hot-air balloon
+  - A handprint jellyfish
 
-#### Unit 16 — Artistotle — Illustrator 4
+#### Unit 14 — Paint — Finger painting
 
-- **Technique:** Look at the illustrator's characters and palette · make in their spirit
+- **Technique:** Use fingers to make swirls, dots, and spreads. Allow free mixing on the page.
 
-- **What children make:** A piece in the style of the chosen illustrator
-
-- **Days:** 3
-
-- **Topic options:**
-  - A character from the illustrator's world
-  - A scene I would add to their world
-  - A version of myself in their world
-
-#### Unit 17 — Artistotle — Illustrator 5
-
-- **Technique:** Look at the illustrator's characters and palette · make in their spirit
-
-- **What children make:** A piece in the style of the chosen illustrator
+- **What children make:** Three finger-painted artworks.
 
 - **Days:** 3
 
 - **Topic options:**
-  - A character from the illustrator's world
-  - A scene I would add to their world
-  - A version of myself in their world
+  - Berries scattered on a leaf
+  - A swarm of bees in dots
+  - Confetti creatures
 
-#### Unit 18 — Artistotle — Illustrator 6
+#### Unit 15 — Paint — Sponge painting
 
-- **Technique:** Look at the illustrator's characters and palette · make in their spirit
+- **Technique:** Dip sponge lightly, dab repeatedly, create patterns or objects.
 
-- **What children make:** A piece in the style of the chosen illustrator
+- **What children make:** Three sponge-painted artworks.
 
 - **Days:** 3
 
 - **Topic options:**
-  - A character from the illustrator's world
-  - A scene I would add to their world
-  - A version of myself in their world
+  - Sponge chicks in grass
+  - A bunch of grapes
+  - A flower bouquet in sponge texture
+
+#### Unit 16 — Paint — Q-tip painting
+
+- **Technique:** Dip tip in paint, make dots and patterns, build images using dots.
+
+- **What children make:** Three q-tip-painted artworks.
+
+- **Days:** 3
+
+- **Topic options:**
+  - A daisy on a dotted sky
+  - A pom-pom flower
+  - A polka-dot fish or tree
+
+#### Unit 17 — Eric Carle — Stripes collage
+
+- **Technique:** Children arrange paper strips, overlap freely, stick after arranging.
+
+- **What children make:** A stripes collage built from layered paper strips.
+
+- **Days:** 1
+
+- **Topic options:**
+  - A rainbow stripes scene
+  - A striped landscape
+  - A striped creature of my own
+
+#### Unit 18 — Eric Carle — Caterpillar collage (round shape)
+
+- **Technique:** Arrange circles in a line, stick, add details — single medium, round shape.
+
+- **What children make:** A textured-paper caterpillar over two sessions.
+
+- **Days:** 2
+
+- **Topic options:**
+  - The caterpillar from the book
+  - A round-shape creature of my own
+  - A line of circle creatures
+
+#### Unit 19 — Eric Carle — Fruit & vegetable collage (irregular shape)
+
+- **Technique:** Tear paper, arrange into shapes, stick freely — single medium, irregular shape.
+
+- **What children make:** A torn-paper fruit or vegetable collage.
+
+- **Days:** 1
+
+- **Topic options:**
+  - A torn-paper fruit
+  - A torn-paper vegetable
+  - A bowl of mixed fruit / veg
+
+#### Unit 20 — Eric Carle — Jellyfish collage (multi-medium, multi-shape)
+
+- **Technique:** Use a circle for the head, add strips for tentacles, layer materials — multi-medium and multi-shape.
+
+- **What children make:** A layered jellyfish collage built across two sessions.
+
+- **Days:** 2
+
+- **Topic options:**
+  - A jellyfish from the book
+  - An underwater scene with jellyfish
+  - A jellyfish creature of my own
+
+#### Unit 21 — Lois Ehlert — Sponge dabbling flowers
+
+- **Technique:** Dab sponge, repeat for petals — building a flower from sponge marks.
+
+- **What children make:** A sponge-dabbed flower artwork.
+
+- **Days:** 1
+
+- **Topic options:**
+  - A sponge daisy
+  - A sponge sunflower
+  - A sponge flower bouquet
+
+#### Unit 22 — Lois Ehlert — Brush flowers
+
+- **Technique:** Use brush strokes to create simple flowers.
+
+- **What children make:** A flower artwork made with paintbrush strokes.
+
+- **Days:** 1
+
+- **Topic options:**
+  - A simple painted flower
+  - A row of brush flowers
+  - A flower with leaves and stem
+
+#### Unit 23 — Lois Ehlert — Swirling flowers
+
+- **Technique:** Move the brush in circles to create loose, swirling flower shapes.
+
+- **What children make:** A swirling-flower artwork built across two sessions.
+
+- **Days:** 2
+
+- **Topic options:**
+  - A loose swirling flower
+  - A field of swirly flowers
+  - A swirling sky with flowers
+
+#### Unit 24 — Lois Ehlert — Two-layer flower garden
+
+- **Technique:** Paint a background first, then add flowers on top — building depth in two layers.
+
+- **What children make:** A two-layer flower garden over two sessions.
+
+- **Days:** 2
+
+- **Topic options:**
+  - A garden of mixed flowers
+  - A sunset with flowers in front
+  - A flower field with sky behind
+
+#### Unit 25 — Taro Gomi — Simple colouring
+
+- **Technique:** Colour the animal outline; add fun details and backgrounds.
+
+- **What children make:** Two simple-colouring worksheets — bear and tiger — coloured with playful details and a background.
+
+- **Days:** 2
+
+- **Topic options:**
+  - A bear with a hat and a forest
+  - A tiger in tall grass
+  - An animal of my choice with surroundings
+
+#### Unit 26 — Taro Gomi — Line making 1
+
+- **Technique:** Fill the umbrella worksheet with line patterns — dots, dashes, zigzags, waves.
+
+- **What children make:** An umbrella worksheet filled with line-pattern textures.
+
+- **Days:** 2
+
+- **Topic options:**
+  - An umbrella filled with line patterns
+  - Patterned umbrellas in the rain
+  - Umbrella worksheets with my own patterns
+
+#### Unit 27 — Taro Gomi — Add filling inside burger through lines
+
+- **Technique:** Each layer of the burger gets a different line pattern.
+
+- **What children make:** A burger worksheet with each layer filled by a different line pattern.
+
+- **Days:** 2
+
+- **Topic options:**
+  - A burger with bun, lettuce, cheese, patty
+  - A burger with my own layers
+  - A double burger with extra patterns
+
+#### Unit 28 — Taro Gomi — Draw & colour 1
+
+- **Technique:** Colour the character; add a background world around them.
+
+- **What children make:** A character with a background scene — day 1.
+
+- **Days:** 1
+
+- **Topic options:**
+  - A character with bubbles
+  - A character with a sky
+  - A character with surroundings of my choice
+
+#### Unit 29 — Taro Gomi — Draw & colour 2
+
+- **Technique:** Colour the character; build a fuller world with extra elements.
+
+- **What children make:** A character with a fuller scene — day 2.
+
+- **Days:** 2
+
+- **Topic options:**
+  - An astronaut in space
+  - A character on a journey
+  - A scene I imagine
 
 
 ## art and design · ages 5–8
 
-_explore mediums and techniques in art and take your first step towards building artistic abilities._
+_explore materials and techniques while building core artistic skills._
 
 - **Slug:** `art-design-5-8`
 - **Category:** art
@@ -765,89 +917,90 @@ _Art Games · physical game_
 - Timer
 
 
+### art gym book
+
+_Art Games · physical game_
+
+> each child works in their own laminated art gym book at their own pace. 1–3 pages per session, then a free replication on a sketch sheet.
+
+**How to play**
+
+1. Children open the laminated art gym book to their next page and complete 1–3 pages with thread, clay, sequins, or erasable markers.
+2. Pages progress in order — page 1 to last — challenge increases page by page.
+3. Once the page is done, the child copies the same line / shape / pattern freely on a sketch sheet using a material of choice (crayon, colour pencil, brush pen, yarn + glue).
+4. No extension-day follow-on — the page and the sketch happen in the same slot.
+
+**Difficulty**
+
+- **Easy:** 1 page from the book — child traces and replicates with the simplest material.
+- **Medium:** 2 pages — child picks from two materials and combines them on the sketch sheet.
+- **Hard:** 3 pages — child invents an extension on the sketch sheet (an object built from the practised line type).
+
+**Materials**
+
+- Laminated Art Gym Book (book 3 for 5-8, book 4 alternates)
+- Erasable markers, thread, clay, sequins
+- A4 sketch sheet
+- Crayons, colour pencils, brush pens, yarn + glue (child's pick)
+
+
+### art gym cue card
+
+_Art Games · physical game_
+
+> teacher picks one cue card from the pool. children follow the step-by-step illustrated prompt to draw on a fresh sketch sheet.
+
+**How to play**
+
+1. Cue cards are illustrated step-by-step prompts the teacher selects (rotates across types — animals, birds, buildings, food, nature, vehicles).
+2. Children read or follow the steps and complete a drawing on a sketch sheet.
+3. The teacher walks around prompting each child to add one more detail their cue card didn't show.
+4. No extension-day follow-on — the cue card and any extension happen in the same slot.
+
+**Difficulty**
+
+- **Easy:** child copies the cue card step by step.
+- **Medium:** child completes the cue card then adds a background of their choice.
+- **Hard:** child completes the cue card then invents one new step beyond it.
+
+**Materials**
+
+- Cue card deck (laminated, age-appropriate)
+- A4 sketch sheets
+- Crayons, colour pencils, brush pens
+
+
 ---
 
-### Artiverse units (25)
+### Artiverse units (18)
 
-#### Unit 1 — Brush pen
-
-- **Technique:** Line exploration — making many different types of lines freely, discovering what the tool can do
-
-- **What children make:** Trees or cats
-
-- **Days:** 1
-
-- **Topic options:**
-  - A tree I see every day
-  - A cat in a position I have watched
-  - A creature made entirely of lines I invented
-
-#### Unit 2 — Colour pencil
-
-- **Technique:** Shape + composition — combining shapes to fill the whole page with a subject
-
-- **What children make:** Flowers
-
-- **Days:** 2
-
-- **Topic options:**
-  - A flower I know
-  - A flower I have seen up close
-  - A flower I made up that has never existed
-
-#### Unit 3 — Brush pen
-
-- **Technique:** Line flow — continuous flowing marks, using the brush pen to make deliberately varied line types
-
-- **What children make:** Waves
-
-- **Days:** 2
-
-- **Topic options:**
-  - A sea or river I know
-  - The sea on a calm day and a stormy day
-  - A wave in a world where water moves differently
-
-#### Unit 4 — Tempera
+#### Unit 1 — Tempera
 
 - **Technique:** Fingerprinting — pressing thumb and fingers into paint and onto paper, exploring what each finger makes
 
 - **What children make:** Thumbprint art
 
-- **Days:** 1
+- **Days:** 2
 
 - **Topic options:**
   - Fingerprint animals
   - Fingerprint flowers and plants
   - A fingerprint world I invented
 
-#### Unit 5 — Brush pen
-
-- **Technique:** Observation + structure — looking carefully at a subject and building its form with shapes and lines
-
-- **What children make:** Self portrait
-
-- **Days:** 2
-
-- **Topic options:**
-  - My face right now
-  - My face doing one specific expression
-  - A portrait of who I want to be
-
-#### Unit 6 — Oil pastel
+#### Unit 2 — Oil pastel
 
 - **Technique:** Bold fill — pressing firmly to fill shapes with strong, rich colour
 
 - **What children make:** Food
 
-- **Days:** 1
+- **Days:** 2
 
 - **Topic options:**
   - A fruit I love
   - A meal I had recently
   - A food I invented that does not exist
 
-#### Unit 7 — Watercolour
+#### Unit 3 — Watercolour
 
 - **Technique:** Brush control — making deliberate clean marks with a loaded brush, varying line direction
 
@@ -860,7 +1013,7 @@ _Art Games · physical game_
   - A building drawn with watercolour lines
   - A creature made entirely of coloured lines
 
-#### Unit 8 — Tempera
+#### Unit 4 — Tempera
 
 - **Technique:** Printing — pressing a natural object into paint and stamping it repeatedly on paper
 
@@ -873,46 +1026,20 @@ _Art Games · physical game_
   - A garden scene using leaf prints
   - An invented creature made from leaf prints
 
-#### Unit 9 — Oil pastel
+#### Unit 5 — Oil pastel
 
 - **Technique:** Shape + texture — building up a shape using marks that describe its surface and texture
 
 - **What children make:** Animals
 
-- **Days:** 1
+- **Days:** 2
 
 - **Topic options:**
   - An animal with fur or feathers
   - An animal with scales or a shell
   - An animal with a surface I invented
 
-#### Unit 10 — Colour pencil
-
-- **Technique:** Scene drawing — placing objects near and far in a full picture, using size to show distance
-
-- **What children make:** Sea world
-
-- **Days:** 2
-
-- **Topic options:**
-  - An underwater scene with creatures I know
-  - An underwater scene from a depth I imagine
-  - An underwater world that does not follow any rules
-
-#### Unit 11 — Brush pen
-
-- **Technique:** Form + illusion — drawing flat shapes so they appear three-dimensional on the page
-
-- **What children make:** 3D drawing
-
-- **Days:** 1
-
-- **Topic options:**
-  - A box or cube I can see
-  - A stack of objects on the art table
-  - A 3D shape I made up
-
-#### Unit 12 — Watercolour
+#### Unit 6 — Watercolour
 
 - **Technique:** Colour theory — mixing and placing warm and cool colour families deliberately
 
@@ -925,20 +1052,20 @@ _Art Games · physical game_
   - Something made only from cool colours
   - A world split in half — warm on one side, cool on the other
 
-#### Unit 13 — Watercolour + collage
+#### Unit 7 — Watercolour + collage
 
 - **Technique:** Painted paper — painting large sheets, then tearing and layering to build an image (Eric Carle style)
 
 - **What children make:** Eric Carle collage
 
-- **Days:** 3
+- **Days:** 2
 
 - **Topic options:**
   - An animal in its natural habitat
   - A creature I see outside
   - A creature from my imagination with a painted paper coat
 
-#### Unit 14 — Mixed media
+#### Unit 8 — Mixed media
 
 - **Technique:** Shape play — building images by cutting and tearing shapes and assembling them on the page
 
@@ -951,20 +1078,20 @@ _Art Games · physical game_
   - A monster made from sharp shapes
   - A monster using every shape I know
 
-#### Unit 15 — Mixed media
+#### Unit 9 — Mixed media
 
 - **Technique:** Composition + imagination — arranging shapes and colour to build a world (Paul Klee style)
 
 - **What children make:** Paul Klee imaginary world
 
-- **Days:** 3
+- **Days:** 2
 
 - **Topic options:**
   - A town built from geometric shapes
   - A landscape made of pattern and colour
   - A world where everything is made of shapes
 
-#### Unit 16 — Mixed media
+#### Unit 10 — Mixed media
 
 - **Technique:** Collage — layering cut and torn shapes to build a still life with depth
 
@@ -977,20 +1104,20 @@ _Art Games · physical game_
   - A still life I set up on the table
   - A fruit that does not exist
 
-#### Unit 17 — Mixed media
+#### Unit 11 — Mixed media
 
 - **Technique:** Story composition — building a scene with deliberate size contrast between close and far elements
 
 - **What children make:** Big fruit and ants
 
-- **Days:** 3
+- **Days:** 2
 
 - **Topic options:**
   - A big fruit with tiny ants exploring it
   - An enormous food with small creatures around it
   - A giant invented food with tiny invented creatures
 
-#### Unit 18 — Acrylic paint
+#### Unit 12 — Acrylic paint
 
 - **Technique:** Colour blending — mixing colours directly on the paper as they are applied, wet into wet
 
@@ -1003,20 +1130,20 @@ _Art Games · physical game_
   - A pattern of circles blending into each other
   - An abstract composition using blended colour shapes
 
-#### Unit 19 — Acrylic paint
+#### Unit 13 — Acrylic paint
 
 - **Technique:** Colour blocking — filling areas of the page with flat, bold, deliberate colour
 
 - **What children make:** Rainbow art
 
-- **Days:** 3
+- **Days:** 2
 
 - **Topic options:**
   - A rainbow over a landscape
   - A scene using all the colours of the rainbow
   - A world with unexpected rainbow colours — green sky, orange sea
 
-#### Unit 20 — Acrylic paint
+#### Unit 14 — Acrylic paint
 
 - **Technique:** Shape simplification — reducing a subject to its most essential shapes
 
@@ -1029,20 +1156,20 @@ _Art Games · physical game_
   - A group of animals simplified
   - An invented animal built from simple shapes
 
-#### Unit 21 — Acrylic paint
+#### Unit 15 — Acrylic paint
 
 - **Technique:** Collage + paint — combining cut paper shapes with painted detail to build a layered composition
 
 - **What children make:** Lemons and oranges
 
-- **Days:** 4
+- **Days:** 2
 
 - **Topic options:**
   - Lemons and oranges on a table
   - Citrus fruit I set up and look at
   - An invented citrus fruit with unusual colours
 
-#### Unit 22 — Acrylic paint
+#### Unit 16 — Acrylic paint
 
 - **Technique:** Composition — arranging a group of objects deliberately across the full page
 
@@ -1055,39 +1182,26 @@ _Art Games · physical game_
   - Flower pots I can see or arrange
   - A collection of invented plants in pots
 
-#### Unit 23 — Mixed media
+#### Unit 17 — Mixed media
 
 - **Technique:** Construction + imagination — building a complex subject from multiple materials with deliberate choices
 
 - **What children make:** Robots
 
-- **Days:** 3
+- **Days:** 2
 
 - **Topic options:**
   - A robot that does one specific job
   - A robot designed to help me
   - A robot from a world I invented
 
-#### Unit 24 — Brush pen + single accent colour
-
-- **Technique:** Black and white with single colour accent — bold marks in black brush pen on white paper, then one deliberate accent colour added as a highlight or focal point
-
-- **What children make:** Black and white accent art
-
-- **Days:** 2
-
-- **Topic options:**
-  - A jungle or forest in black and white with one coloured creature
-  - A busy city in black and white with one coloured window or light
-  - An imagined creature in black and white with one glowing colour
-
-#### Unit 25 — Acrylic paint on black paper
+#### Unit 18 — Acrylic paint on black paper
 
 - **Technique:** Painting with light — working on a dark ground, building from dark to light using white and light colours to create a glowing effect
 
 - **What children make:** Firefly in a jar · Dragonfly
 
-- **Days:** 3
+- **Days:** 2
 
 - **Topic options:**
   - A firefly glowing inside a glass jar
@@ -1097,7 +1211,7 @@ _Art Games · physical game_
 
 ## art and design · ages 8–12
 
-_build real & advanced artistic skill and acumen._
+_develop advanced skills in drawing, colour, composition, and imagination._
 
 - **Slug:** `art-design-8-12`
 - **Category:** art
@@ -1343,9 +1457,62 @@ _Art Games · physical game_
 - Difficult Mixing Cards (28)
 
 
+### art gym book
+
+_Art Games · physical game_
+
+> each child works in their own laminated art gym book at their own pace. 1–3 pages per session, then a free replication on a sketch sheet.
+
+**How to play**
+
+1. Children open the laminated art gym book (level 5 → level 6) to their next page and complete 1–3 pages with thread, clay, sequins, or erasable markers.
+2. Pages progress in order — page 1 to last — challenge increases page by page.
+3. Once the page is done, the child copies the same line / shape / pattern freely on a sketch sheet using a material of choice (brush pen, colour pencil, charcoal, ink).
+4. No extension-day follow-on — the page and the sketch happen in the same slot.
+
+**Difficulty**
+
+- **Easy:** 1 page from the book — child traces and replicates with the simplest material.
+- **Medium:** 2 pages — child combines two materials on the sketch sheet.
+- **Hard:** 3 pages — child invents an extension on the sketch sheet (apply the line type to a real-world object).
+
+**Materials**
+
+- Laminated Art Gym Book (book 5 → book 6)
+- Erasable markers, thread, clay, sequins
+- A3 sketch sheet
+- Brush pens, colour pencils, charcoal, ink (child's pick)
+
+
+### art gym cue card
+
+_Art Games · physical game_
+
+> teacher picks one cue card from the pool. children follow the step-by-step illustrated prompt to draw on a fresh sketch sheet.
+
+**How to play**
+
+1. Cue cards are illustrated step-by-step prompts the teacher selects (rotates across types — animals, birds, buildings, food, nature, vehicles, plus 8-12-only landscape and portrait backgrounds).
+2. Children read or follow the steps and complete a drawing on a sketch sheet.
+3. The teacher prompts each child to add one more detail their cue card didn't show.
+4. No extension-day follow-on — the cue card and any extension happen in the same slot.
+
+**Difficulty**
+
+- **Easy:** child copies the cue card step by step.
+- **Medium:** child completes the cue card then adds a background or context of their choice.
+- **Hard:** child completes the cue card then invents one new step beyond it (a view from a different angle, a hidden detail).
+
+**Materials**
+
+- Cue card deck (laminated, age-appropriate, B1 + B2 + landscape and portrait backgrounds)
+- A3 sketch sheets
+- Brush pens, colour pencils, charcoal
+
+
 ---
 
-### Artiverse units (18)
+### Artiverse units (14)
 
 #### Unit 1 — Oil pastels
 
@@ -1360,33 +1527,7 @@ _Art Games · physical game_
   - Any fruit or vegetable I can see right now
   - An invented edible thing with bold saturated colour
 
-#### Unit 2 — Colour pencils
-
-- **Technique:** Expressive lines, simple proportions — using gestural confident lines to capture figures without overthinking proportion
-
-- **What children make:** Doodle Human Figures
-
-- **Days:** 2
-
-- **Topic options:**
-  - A person doing something I saw today
-  - A figure caught mid-movement
-  - A figure doing something physically impossible
-
-#### Unit 3 — Colour pencils
-
-- **Technique:** Observation + layering — looking closely and building up colour through careful repeated passes
-
-- **What children make:** Citrus Slices
-
-- **Days:** 3
-
-- **Topic options:**
-  - A citrus fruit sliced in half that I set up
-  - Any cut fruit I can observe closely
-  - A cross-section of an invented fruit
-
-#### Unit 4 — Watercolour
+#### Unit 2 — Watercolour
 
 - **Technique:** Light washes, colour placement — working with clean transparent washes and deliberate colour relationships
 
@@ -1399,20 +1540,20 @@ _Art Games · physical game_
   - A bouquet or arrangement of flowers
   - An invented flower with unusual colour relationships
 
-#### Unit 5 — Watercolour
+#### Unit 3 — Watercolour
 
 - **Technique:** Wash + stencil + collage layering — combining three separate techniques in one piece to build surface and depth
 
 - **What children make:** Orange Study
 
-- **Days:** 3
+- **Days:** 2
 
 - **Topic options:**
   - A single orange I set up and observe
   - A cluster of oranges or citrus in a still life
   - An invented citrus form studied as carefully as a real thing
 
-#### Unit 6 — Acrylic paint
+#### Unit 4 — Acrylic paint
 
 - **Technique:** Finger painting, movement — using hands to create gestural moving marks that feel alive
 
@@ -1425,7 +1566,7 @@ _Art Games · physical game_
   - The feeling of wind or motion expressed in abstract form
   - An emotion expressed as movement and colour
 
-#### Unit 7 — Acrylic paint
+#### Unit 5 — Acrylic paint
 
 - **Technique:** Flat fill, colour blocking — laying clean, deliberate areas of colour with clear edges between them
 
@@ -1438,20 +1579,20 @@ _Art Games · physical game_
   - Any circular food with pattern and colour
   - An invented food designed purely for colour and shape
 
-#### Unit 8 — Watercolour
+#### Unit 6 — Watercolour
 
 - **Technique:** Paint + collage composition — combining flat painted shapes to build a scene (Paul Klee study)
 
 - **What children make:** Paul Klee City
 
-- **Days:** 3
+- **Days:** 2
 
 - **Topic options:**
   - A city built from geometric shapes and colour
   - A neighbourhood simplified to flat shapes
   - An invented city where everything is coloured rectangles
 
-#### Unit 9 — Watercolour
+#### Unit 7 — Watercolour
 
 - **Technique:** Monochrome tonal work — exploring a subject across a full value range in one colour family (Warhol study)
 
@@ -1464,117 +1605,91 @@ _Art Games · physical game_
   - Any animal studied in a single colour family
   - An invented creature explored from lightest to darkest in one colour
 
-#### Unit 10 — Acrylic paint
+#### Unit 8 — Acrylic paint
 
 - **Technique:** Layering, tonal build-up — building a painting in layers from dark to light, each layer adding volume and detail
 
 - **What children make:** Pomegranate Study
 
-- **Days:** 4
+- **Days:** 2
 
 - **Topic options:**
   - A pomegranate or complex fruit I set up
   - Any natural object I can look at closely
   - An invented natural object studied as carefully as a real thing
 
-#### Unit 11 — Oil pastels
+#### Unit 9 — Oil pastels
 
 - **Technique:** Layering, tonal build up — creating scenes
 
 - **What children make:** Scenery
 
-- **Days:** 3
+- **Days:** 2
 
 - **Topic options:**
   - A landscape scene I can see or remember
   - A layered scene with distinct foreground and background
   - An invented landscape with dramatic lighting
 
-#### Unit 12 — Colour pencils
-
-- **Technique:** Observation, texture shading — looking at a complex surface and translating it into layered marks
-
-- **What children make:** Bird Study
-
-- **Days:** 3
-
-- **Topic options:**
-  - A bird I can observe — from life or a clear reference
-  - A bird from a natural history illustration
-  - A bird I invented, drawn with the same careful observation as a real one
-
-#### Unit 13 — Black paper + white pencil
-
-- **Technique:** Contrast, fine texture — working light on dark to reveal intricate natural form (Haeckel inspired)
-
-- **What children make:** Coral
-
-- **Days:** 2
-
-- **Topic options:**
-  - A coral or sea creature studied in light on dark
-  - Any natural structure with intricate branching or repeating detail
-  - An invented underwater or alien organism
-
-#### Unit 14 — Oil pastels
+#### Unit 10 — Oil pastels
 
 - **Technique:** Expressive blending — using bold directional marks to create movement and mood (Starry Night inspired)
 
 - **What children make:** Starry Night
 
-- **Days:** 3
+- **Days:** 2
 
 - **Topic options:**
   - A night sky I have looked at or remember
   - A view through a window at night
   - A night scene from a world with different stars
 
-#### Unit 15 — Oil pastels
+#### Unit 11 — Oil pastels
 
 - **Technique:** Light, shadow, 3D form — understanding how one light source creates volume through graduated tone
 
 - **What children make:** 3D Cube Study
 
-- **Days:** 3
+- **Days:** 2
 
 - **Topic options:**
   - A box or cube I set up with one light source
   - A group of geometric objects with clear light and shadow
   - An invented geometric form with imagined lighting
 
-#### Unit 16 — Mixed media
+#### Unit 12 — Mixed media
 
 - **Technique:** Pattern + composition + personalisation — building a portrait using bold graphic pattern (Romero Britto inspired)
 
 - **What children make:** Self Portrait
 
-- **Days:** 4
+- **Days:** 2
 
 - **Topic options:**
   - A self-portrait using pattern and bold colour
   - A portrait of someone I know in this style
   - A portrait of an invented person in this style
 
-#### Unit 17 — Mixed media
+#### Unit 13 — Mixed media
 
 - **Technique:** Spatial composition — combining materials to build a scene with clear depth and scale across the page
 
 - **What children make:** Reach the Sky
 
-- **Days:** 3
+- **Days:** 2
 
 - **Topic options:**
   - A city with something reaching upward
   - A landscape with a tall natural or built structure
   - An invented world where everything strives to reach something
 
-#### Unit 18 — Chalk pastels
+#### Unit 14 — Chalk pastels
 
 - **Technique:** Layering, blending, atmosphere — building luminous colour through pressure and blending across large areas
 
 - **What children make:** Aurora Landscape
 
-- **Days:** 4
+- **Days:** 2
 
 - **Topic options:**
   - An aurora or atmospheric sky I have seen or imagined
@@ -1582,9 +1697,403 @@ _Art Games · physical game_
   - An invented sky on a planet with different atmospheric colours
 
 
+## language through storytelling · ages 3–5
+
+_build listening, speaking, reading, and writing through stories, songs, and mark-making._
+
+- **Slug:** `language-storytelling-3-5`
+- **Category:** language
+- **Total sessions:** 48
+
+At Openhouse, language is learnt through the world of stories — a holistic emergent-literacy programme that builds listening, speaking, reading, and early writing through books, songs, games, and playful practice.
+
+---
+
+### Playground segment
+
+### what's that sound
+
+_Playground · physical game_
+
+> Make a sound and let your friends guess.
+
+**How to play**
+
+1. Children learn to listen, recognise sounds, and speak clearly.
+2. Setup: children sit in a circle, sound cards in a pile.
+3. Turn order: one child plays at a time.
+4. On their turn, the child picks a card, looks at it (others should not see), and makes the sound — for example, dog → woof woof.
+5. Other children guess.
+6. If the guess is correct, the child keeps the card.
+7. If not, the next child plays.
+
+**Variations**
+
+- **Sound + act** — Child makes the sound and acts the thing out.
+- **Teacher leads** — Teacher makes the sound and children guess.
+- **One category** — Use only one category at a time — animals, vehicles, instruments.
+
+**Difficulty**
+
+- **Easier:** Children repeat the sound after the teacher.
+- **Medium:** Children guess the sound.
+- **Harder:** Child names the source and uses it in a sentence.
+- **Hardest:** Child creates a short story around the sound.
+
+**Materials**
+
+- Sound cards
+
+
+### rhyme house
+
+_Playground · physical game_
+
+> Open windows and find rhyming pairs.
+
+**How to play**
+
+1. Children learn to identify rhyming sounds.
+2. Setup: place all window cards face down on the house mat; children sit around.
+3. Turn order: one child at a time.
+4. On their turn, the child picks any 2 windows, opens them, and says both words.
+5. If the words rhyme, they keep both windows and get another turn.
+6. If not, the windows close and the next child plays.
+7. The game ends when all rhyming pairs are found.
+
+**Variations**
+
+- **Whole class** — The whole class says the two words together.
+- **Teacher prompt** — Teacher helps after 5 seconds if the child is stuck.
+
+**Difficulty**
+
+- **Easier:** Teacher says both words.
+- **Medium:** Child repeats after the teacher.
+- **Harder:** Child reads and identifies independently.
+
+**Materials**
+
+- House mat
+- Window cards
+
+
+### rhyming ornaments
+
+_Playground · physical game_
+
+> Say a rhyming word and collect.
+
+**How to play**
+
+1. Children produce rhyming words.
+2. Setup: place ornaments on the tree.
+3. Turn order: one child at a time.
+4. On their turn, the child picks one ornament, says the word on it, and says a rhyming word back.
+5. If correct, they keep the ornament.
+6. If not, the ornament goes back on the tree.
+7. The game ends when the ornaments finish.
+
+**Variations**
+
+- **Group help** — Other children help after the first attempt.
+- **Two rhymes** — Child has to say two rhyming words instead of one.
+
+**Difficulty**
+
+- **Easier:** Teacher gives the rhyme.
+- **Medium:** Child gives one rhyme.
+- **Harder:** Child gives two rhymes.
+- **Hardest:** Child uses the rhyme in a sentence.
+
+**Materials**
+
+- Ornament cards
+
+
+### syllable sprint
+
+_Playground · physical game_
+
+> Clap the word and move forward.
+
+**How to play**
+
+1. Children learn syllables.
+2. Setup: each child gets a meeple on the board.
+3. Turn order: one child at a time.
+4. On their turn, the child gets a word, says it, claps each syllable, and moves their meeple forward by that many spaces.
+5. Special cards trigger extra moves: water bowl → go back 2; ledge → skip a turn; see & say → pick a nearby object and clap that.
+6. The first child to finish wins.
+
+**Variations**
+
+- **Teacher word bank** — Teacher gives all the words.
+- **Child choice** — Children pick their own words to clap.
+
+**Difficulty**
+
+- **Easier:** Teacher claps and the child copies.
+- **Medium:** Child repeats and claps.
+- **Harder:** Child claps independently.
+
+**Materials**
+
+- Board
+- Meeples
+- Special cards
+
+
+### story cube
+
+_Playground · physical game_
+
+> Roll and build a story.
+
+**How to play**
+
+1. Children learn storytelling.
+2. Story Maker version: one child at a time rolls the cubes, looks at the pictures that land face-up, and speaks.
+3. Level 1 — name + 1 sentence.
+4. Level 2 — connect 2-3 ideas.
+5. Level 3 — full story with beginning, middle, and end.
+6. Chain version: each child adds 1 sentence so a story builds together.
+7. The game ends after the story is told.
+
+**Variations**
+
+- **Story Maker** — Each child rolls and tells their own story.
+- **Chain** — Children build one shared story, one sentence at a time.
+
+**Difficulty**
+
+- **Easier:** Name the picture only.
+- **Medium:** One sentence.
+- **Harder:** Full story.
+
+**Materials**
+
+- 6 cubes
+
+
+### language wheel
+
+_Playground · physical game_
+
+> Roll, move, and answer the task.
+
+**How to play**
+
+1. Mixed language practice.
+2. Turn order: one child at a time.
+3. On their turn, the child rolls the dice, moves their piece on the wheel, picks the task card for that spot, and answers.
+4. If the answer is correct, the child gets a token.
+
+**Variations**
+
+- **Team** — Children play in teams; the team confers before answering.
+- **Timed** — Set a timer for each turn to keep pace.
+- **Goal-based** — First child to N tokens wins.
+
+**Difficulty**
+
+- **Easier:** Short answer.
+- **Medium:** Sentence.
+- **Harder:** Explanation.
+
+**Materials**
+
+- Wheel
+- Dice
+- Task cards
+
+
+### think fast
+
+_Playground · physical game_
+
+> Listen and answer fast.
+
+**How to play**
+
+1. Quick thinking and speaking.
+2. Turn order: teacher gives the prompt.
+3. The child answers as fast as they can.
+4. Correct answers earn a point.
+
+**Variations**
+
+- **Fastest answer** — First child to answer correctly gets the point.
+- **Turn by turn** — Each child gets a fresh prompt in order.
+- **Team** — Children play as teams; team scores points together.
+
+**Difficulty**
+
+- **Easier:** Answer in 1 word.
+- **Medium:** Answer in 2 words.
+- **Harder:** Answer in a sentence.
+- **Hardest:** Answer with a short explanation.
+
+**Materials**
+
+- Prompt cards
+
+
+### guess me
+
+_Playground · physical game_
+
+> Hear three clues. Guess the character or object.
+
+**How to play**
+
+1. The teacher gives three clues about a character or object from the current book — "I am tall, I am yellow, I cannot dance".
+2. Children guess.
+3. The child who guesses correctly gives the next set of three clues.
+
+**Materials**
+
+- A bank of clue sets per book
+
+
+### i spy
+
+_Playground · physical game_
+
+> Look, find, and say.
+
+**How to play**
+
+1. Observation and vocabulary.
+2. Setup: place the I Spy board in the centre.
+3. Turn order: teacher leads.
+4. On a turn, the teacher shows a card, children find the matching object on the board, and one child points to it, says its name, then uses it in a sentence.
+
+**Variations**
+
+- **Timed** — Set a short timer for each find.
+- **Turn-based** — Each child takes a turn to find one object.
+- **Team** — Two teams race to find first.
+
+**Difficulty**
+
+- **Easier:** Card shows the picture.
+- **Medium:** Card shows the word.
+- **Harder:** Card gives a riddle.
+
+**Materials**
+
+- I Spy board
+- 3 decks of cards
+
+
+### every body says
+
+_Playground · physical game_
+
+> Use your body to make things.
+
+**How to play**
+
+1. Movement and expression.
+2. Setup: place body cards in a pile so all children can see.
+3. Turn order: one child flips a card.
+4. All children use their bodies — alone, in pairs, or as a group — to form the thing on the card.
+5. The teacher names what they see.
+6. The next child flips the next card.
+
+**Variations**
+
+- **Solo** — Each child forms the object on their own.
+- **Pair** — Two children form the object together.
+- **Group** — The whole group forms one shared object.
+
+**Difficulty**
+
+- **Easier:** Object — form just the thing on the card.
+- **Medium:** Object + action — show the object doing something.
+- **Harder:** Object + interaction — two or more objects acting together.
+
+**Materials**
+
+- Body cards
+
+
+### swat it snap it
+
+_Playground · physical game_
+
+> Find it fast and hit it.
+
+**How to play**
+
+1. Reading and recognition.
+2. Setup: spread the cards face-up around the buckets.
+3. Turn order: the teacher calls a target — a letter, a word, or a sentence.
+4. Children race to swat the matching card with their swatter, then snap it into the correct bucket and read it aloud.
+5. The next round begins on the teacher's call.
+
+**Variations**
+
+- **Solo** — Each child plays at their own pace as the teacher calls targets.
+- **Race** — Two children swat at the same time — first to the correct card keeps it.
+- **Team** — Children play in teams; team scores points together.
+
+**Difficulty**
+
+- **Easier:** Letter — swat the matching letter card.
+- **Medium:** Word — swat the matching word card.
+- **Harder:** Sentence — swat the card that completes the sentence.
+
+**Materials**
+
+- Cards
+- Buckets
+- Swatters
+
+
+---
+
+### wordsmiths segment
+
+### emotion tiles
+
+_wordsmiths · physical game_
+
+> Show the tile. Act the feeling. Use it in a sentence.
+
+**How to play**
+
+1. The teacher holds up an emotion tile (happy, sad, angry, calm, afraid, loving).
+2. All children act the feeling together with their faces and bodies.
+3. Then one child at a time uses the word in a sentence about the current book — "the monster felt happy when he sorted his colours".
+
+**Materials**
+
+- Emotion tile deck — one tile per feeling word
+
+
+### story calendar
+
+_wordsmiths · physical game_
+
+> Show the card. Act the word. Use it in a sentence.
+
+**How to play**
+
+1. The teacher shows a card with a describing or spatial word (clumsy, splendid, under, beside, behind).
+2. All children act it out together.
+3. Then one child at a time uses the word in a sentence about the current book — "the giraffe was clumsy on the dance floor".
+
+**Materials**
+
+- Story calendar — one describing or spatial word per card
+
+
+
 ## public speaking · ages 5–8
 
-_find your voice through play and learn to express without fear._
+_express ideas clearly and speak with growing confidence._
 
 - **Slug:** `public-speaking-5-8`
 - **Category:** language
@@ -1773,9 +2282,13 @@ _Roll Call · facilitated · card: Ears_
 23. Tap your head twice and say "beep beep."
 
 
+---
+
+### Playground segment
+
 ### what's that sound
 
-_Roll Call · facilitated · card: Ears_
+_Playground · facilitated · card: Ears_
 
 > Pick a card. Don't show anyone. Make the sound of the ticked object — the rest of us guess.
 
@@ -1796,10 +2309,6 @@ _Roll Call · facilitated · card: Ears_
 
 - What's That Sound card deck (objects with a ticked sound on each)
 
-
----
-
-### Playground segment
 
 ### script flip
 
@@ -2339,7 +2848,7 @@ _Showtime · facilitated_
 
 ## public speaking · ages 8–12
 
-_think clearly & speak with confidence and conviction in front of an audience._
+_think clearly and speak with confidence in front of others._
 
 - **Slug:** `public-speaking-8-12`
 - **Category:** language
@@ -2530,9 +3039,13 @@ _Roll Call · facilitated · card: Ears_
 23. Tap your head twice and say "beep beep."
 
 
+---
+
+### Playground segment
+
 ### what's that sound
 
-_Roll Call · facilitated · card: Ears_
+_Playground · facilitated · card: Ears_
 
 > Pick a card. Don't show anyone. Make the sound of the ticked object — the rest of us guess.
 
@@ -2554,10 +3067,6 @@ _Roll Call · facilitated · card: Ears_
 
 - What's That Sound card deck (objects with a ticked sound on each)
 
-
----
-
-### Playground segment
 
 ### script flip
 
@@ -3129,16 +3638,876 @@ _Showtime · physical game_
 - 30 small objects — 10 animals, 10 vehicles, 10 everyday objects
 
 
+### superhero sales pitch
+
+_Showtime · facilitated_
+
+> You have a superpower. Sell it to the group. Tell us what it is, why it is the best, and answer two challenge questions.
+
+**How to play**
+
+1. The child is given a superpower prompt from the app by the teacher. 30 seconds to prepare.
+2. Child pitches their superpower to the class — what it is, why it is the best, how it would be used.
+3. The group votes — useful or useless.
+4. Child responds to two challenge questions from the group.
+
+**Difficulty**
+
+- **Easy:** 1 minute prep, teacher provides the opening frame.
+- **Medium:** 30 seconds prep, child structures independently.
+- **Hard:** No prep, child must handle at least three challenge questions from the group.
+
+**Materials**
+
+- App for superpower prompts
+
+**prompts — superpowers to pitch**
+
+1. A superhero who can pause time for a few seconds.
+2. A superhero who can understand any language.
+3. A superhero who can fix traffic in a city.
+4. A superhero who can reduce noise anywhere.
+5. A superhero who can organise messy places instantly.
+6. A superhero who can remember everything.
+7. A superhero who can find the fastest route anywhere.
+8. A superhero who can stop pollution in a city.
+9. A superhero who can help people work together.
+10. A superhero who can make learning easier.
+11. A superhero who can solve small problems quickly.
+12. A superhero who can give everyone exactly the right amount of sleep they need.
+
+
+### whacky news reporter
+
+_Showtime · physical game_
+
+> You are a news reporter. You have just heard something extraordinary. Tell the class what happened — beginning, middle, and end. After you finish, everyone asks you one question.
+
+**How to play**
+
+1. Teacher reads out a prompt from the app.
+2. The child prepares for a set time.
+3. Child delivers their report standing in front of the class — a clear opening (who they are and what happened), a middle (details), and a closing (what happens next).
+4. After the report, each child asks the reporter one question.
+5. The reporter answers each in one sentence.
+6. New child takes the next prompt.
+
+**Difficulty**
+
+- **Easy:** Teacher helps with points to speak.
+- **Medium:** Limited preparation time.
+- **Hard:** No preparation time.
+
+**Materials**
+
+- App for prompt cards (digital)
+
+**prompts — whacky news headlines**
+
+1. Toys come alive at night.
+2. Giant balloon flies away.
+3. Dinosaur found in park.
+4. Chocolate river starts flowing.
+5. Kids declare no homework.
+6. Dog becomes school principal.
+7. Ice cream falls from sky.
+8. Cat wins running race.
+9. Monkey steals lunch box.
+10. Robot joins classroom today.
+11. Teacher turns superhero during class time.
+12. Rain turns into sticky jelly drops.
+13. Kids build huge fort inside classroom.
+14. Talking parrot gives morning announcements.
+
+
+### mad ad
+
+_Showtime · facilitated_
+
+> You are selling something. Make it sound like the most amazing thing in the world. Hook → product name → one reason → the big ask.
+
+**How to play**
+
+1. One child receives today's topic from the app.
+2. They invent a product connected to that topic.
+3. The child prepares for a set time and speaks — delivering a pitch in front of the class.
+4. The class decides: buying or not buying the product, after asking questions about the product.
+5. Performer answers in character.
+6. Ad structure: Hook — start with a question or surprise
+7. Product name
+8. One amazing reason to buy it
+9. The big ask: "So what are you waiting for?
+10. Get yours today!"
+
+**Difficulty**
+
+- **Easy:** Teacher helps with the opening sentence and structure.
+- **Medium:** Standard gameplay — limited preparation time, child structures independently.
+- **Hard:** No preparation time given — child must include at least two deliberate changes of volume or energy.
+
+**Materials**
+
+- Topic prompts — https://wordwall.net/resource/77103607
+
+
+### story spine
+
+_Showtime · facilitated_
+
+> Create and perform a short story together using five simple prompts — a character, a setting, a problem, an action, and an ending.
+
+**How to play**
+
+1. Children form groups of 3–4.
+2. Each group receives the prompt sheet with five anchor categories: Character (who is this story about? — robot, rabbit, child, pirate, monster), Setting (where is the story happening? — forest, space, school, home, ocean), Problem (oh no — what goes wrong? — gets lost, something breaks, chased, can't find something), Action (what do they try? — hide, build, run, fix, ask for help), and Ending (what happens in the end? — escapes, finds it, fixes it, wins, becomes safe).
+3. Each group picks one word from each category, builds a short story using all five, and performs it to the rest of the class.
+4. Writing is optional — speaking and acting is key.
+5. Teacher chooses exactly one challenge for the round (see challenges below).
+
+**Difficulty**
+
+- **Easy · Add an Emotion:** Children must show a feeling in the story — happy, scared, angry, or excited.
+- **Medium · Add an Opponent:** Add someone or something that creates difficulty — a villain, animal, obstacle, or other person.
+- **Hard · Add a Plot Twist:** Something unexpected happens — it fails again, someone changes, or a new problem appears.
+
+**Materials**
+
+- Story Spine prompt sheet — 5 anchor categories (character · setting · problem · action · ending) with example words under each
+
+**prompt sheet — 5 anchor categories · pick one word from each**
+
+1. Character — who is this story about? · robot · rabbit · child · pirate · monster
+2. Setting — where is the story happening? · forest · space · school · home · ocean
+3. Problem — oh no, what goes wrong? · gets lost · something breaks · chased · can't find something
+4. Action — what do they try? · hide · build · run · fix · ask for help
+5. Ending — what happens in the end? · escapes · finds it · fixes it · wins · becomes safe
+
+
+
+## stem · ages 3–5
+
+_build curiosity, problem solving, logic, and number sense — through hands-on play._
+
+- **Slug:** `robotics-3-5`
+- **Category:** stem
+- **Total sessions:** 60
+
+Children between 3 and 5 are natural scientists. They observe, question, test, and try again without being taught to. This programme takes that instinct seriously. Every session gives children something to build, something to investigate, something to figure out logically, and a number concept to hold in their hands. Four skills — Curiosity, Problem Solving, Logic, and Number Sense — grow across every session.
+
+---
+
+### imagine-playground segment
+
+### train time
+
+_imagine-playground · physical game_
+
+> Build a track and number the train cars.
+
+**How to play**
+
+1. Children join track pieces, attach train cars, count pieces as they connect, and stick numbers on each car in order.
+2. Low-stakes entry to the block system; counting while building makes Number Sense visible from Day 1.
+
+**Materials**
+
+- Track pieces
+- Train cars
+- Number sticky notes
+
+
+### first trip
+
+_imagine-playground · physical game_
+
+> Build a station, build a destination, take the train across.
+
+**How to play**
+
+1. Children build a double-ended track and discover that a coloured action brick (red) changes the train's behaviour — first exposure to cause-and-effect bricks.
+
+**Materials**
+
+- Track pieces
+- Train
+- Red action bricks
+- Red stop brick
+- Green action bricks
+
+
+### load the train
+
+_imagine-playground · physical game_
+
+> Pick a number card, load that many bricks.
+
+**How to play**
+
+1. Direct number-to-quantity mapping.
+2. Children see 5 on a card, count 5 bricks, and load them.
+3. Number Sense made physical.
+
+**Materials**
+
+- Train cars
+- Number bricks or notes
+- Small loadable objects
+
+
+### longest track
+
+_imagine-playground · physical game_
+
+> Build the longest track and measure it.
+
+**How to play**
+
+1. Standard and non-standard measurement.
+2. Children build a track from a wall outwards, measure with a tape, and compare.
+3. Then they build towers and measure height.
+
+**Materials**
+
+- Track pieces
+- Tape measure
+- Number bricks for non-standard measuring
+
+
+### train sound
+
+_imagine-playground · physical game_
+
+> Plan a journey using yellow, blue, and white bricks.
+
+**How to play**
+
+1. Yellow, blue, and white action bricks change the train's behaviour.
+2. Children plan a journey before the train moves — first experience of forward planning and sequencing.
+3. White bricks light up inside a tunnel.
+
+**Materials**
+
+- Track pieces
+- Train
+- Action bricks (yellow, blue, white)
+- Tunnel cutout
+
+
+### o-shaped track
+
+_imagine-playground · physical game_
+
+> Build a looping track.
+
+**How to play**
+
+1. Introduces looping — the same journey repeated.
+2. Children compare the O-track with a double-ended track.
+3. Foundation of computational thinking.
+
+**Materials**
+
+- Curved track pieces
+- Straight track pieces
+- Train
+- Action bricks
+
+
+### y-shaped track
+
+_imagine-playground · physical game_
+
+> Coloured tickets decide the path.
+
+**How to play**
+
+1. First if-then thinking.
+2. If red ticket, then go to red stop.
+3. Children build a Y-track with a switch and use coloured bricks as tickets.
+4. Foundation of conditional logic.
+
+**Materials**
+
+- Y-shaped track
+- Track switch
+- Coloured bricks (tickets and stops)
+
+
+### trouble on the road
+
+_imagine-playground · physical game_
+
+> Read the traffic signs and solve the route problem.
+
+**How to play**
+
+1. Children apply route planning to solve traffic problems.
+2. The teacher places action bricks randomly along the track — children identify the problem and choose the right traffic sign to fix it.
+
+**Materials**
+
+- Y-shaped track
+- Building cards
+- Action bricks
+- Traffic sign set
+
+
+### ramps
+
+_imagine-playground · physical game_
+
+> Build a ramp with magna tiles. Predict and measure how far cars roll.
+
+**How to play**
+
+1. Children build ramps using magna tiles and other materials, then roll cars down.
+2. Before each roll they predict where the car will stop, then mark the actual stopping point on a number track and record results on a graph.
+3. Introduces motion, gravity, prediction.
+
+**Materials**
+
+- Magna Tiles
+- Cars or rolling objects
+- Track template pages
+- Number bricks
+- Result graphs
+
+
+### chain reaction
+
+_imagine-playground · physical game_
+
+> One event triggers the next.
+
+**How to play**
+
+1. Cause-and-effect at its richest.
+2. Children build trigger sequences in pairs, then combine all the pairs' work into one long chain reaction.
+3. They explain first cause, first event, and last event.
+
+**Materials**
+
+- Building pieces
+- Objects that move, fall, push, or trigger
+
+
+### probability
+
+_imagine-playground · physical game_
+
+> Predict, spin, record. Build a prize from what you collect.
+
+**How to play**
+
+1. A spinner with coloured sections.
+2. Children predict, spin, and record outcomes across many rounds.
+3. They notice that more spaces of one colour means a better chance — but never a guarantee.
+4. Foundation of statistical thinking.
+
+**Materials**
+
+- Wheel model
+- Coloured bricks (red, yellow, blue, turquoise)
+- Result graphs
+
+
+---
+
+### wonder-world segment
+
+### punch and squish
+
+_wonder-world · physical game_
+
+> Knead playdough — count the presses, feel the change.
+
+**How to play**
+
+1. Children press and knead beige playdough, counting from 1 to 10 each round.
+2. They notice how dough changes — flat, soft, warm, smooth.
+3. Material transformation, hand strength, counting, observation.
+
+**Materials**
+
+- Beige/yellow playdough
+- Tiffin mat or A4 sheet
+
+
+### make a bread from somewhere in the world
+
+_wonder-world · physical game_
+
+> Each child shapes one kind of bread.
+
+**How to play**
+
+1. Bread comes in many shapes.
+2. Each child chooses one — round chapati, long loaf, tiny bun, or square slice — and makes it from playdough.
+3. Children compare biggest, smallest, round, long.
+
+**Materials**
+
+- Beige/yellow playdough
+- 4-section tiffin mat
+
+
+### bread riddles
+
+_wonder-world · physical game_
+
+> Listen to the clue — guess the bread.
+
+**How to play**
+
+1. Teacher gives clues ('I am round and flat.
+2. I puff on the pan').
+3. Children point to the matching picture or playdough bread.
+4. Then children invent their own clues.
+
+**Materials**
+
+- Picture cards (chapati, loaf, bun, toast)
+
+
+### what comes next?
+
+_wonder-world · physical game_
+
+> Put the bread journey in order.
+
+**How to play**
+
+1. 5 cards — seed, wheat, flour, dough, bread.
+2. Children arrange them in order, then act out the sequence with their bodies (tiny seed → tall wheat → grinding → kneading → eating).
+
+**Materials**
+
+- 5 picture cards (seed, wheat, flour, dough, bread)
+
+
+### sieve the wheat & stone
+
+_wonder-world · physical game_
+
+> Sort the food from the not-food.
+
+**How to play**
+
+1. Children pick out grains and stones/beads from a mixed tray, placing them in 'food' and 'not food' bowls.
+2. Then they try a sieve and compare.
+
+**Materials**
+
+- Rice/wheat/lentils
+- Pebbles or large beads
+- Tray
+- 2 bowls
+- Sieve (optional)
+
+
+### make a pretend cheese
+
+_wonder-world · physical game_
+
+> Sort foods into 'yes with cheese' / 'not with cheese'.
+
+**How to play**
+
+1. Children make a pretend cheese piece from yellow playdough, then sort foods into two piles — what tastes good with cheese, what doesn't.
+2. They explain their choice each time.
+
+**Materials**
+
+- Yellow playdough
+- Plastic foods or picture cards
+- 2 sorting mats
+
+
+### does it come from milk?
+
+_wonder-world · physical game_
+
+> Clap if it comes from milk.
+
+**How to play**
+
+1. Teacher reads a food name.
+2. If it comes from milk (butter, paneer, cheese, yoghurt), children clap.
+3. If not, hands stay still.
+4. Builds categorisation and listening control.
+
+**Materials**
+
+- Teacher-read food list (optional picture cards)
+
+
+### spread your butter
+
+_wonder-world · physical game_
+
+> Spread the butter all over the toast.
+
+**How to play**
+
+1. Children get a brown craft-paper 'toast' and a small playdough 'butter'.
+2. They spread it from the centre to every corner using one finger, then thumb, then a child-safe spreader.
+3. They compare which tool worked best.
+
+**Materials**
+
+- Brown craft paper squares
+- Small yellow playdough pieces
+- Child-safe spreaders (optional)
+
+
+### cut your cheese into pieces
+
+_wonder-world · physical game_
+
+> Cut a whole into halves, quarters, cubes.
+
+**How to play**
+
+1. Starting with one playdough cheese block, children cut into 2, then 4, then tiny cubes.
+2. They count after each cut and compare: 'are 4 pieces bigger or smaller than 2?' Early fractions and size comparison.
+
+**Materials**
+
+- Yellow playdough
+- Clay tools or blunt plastic knives
+
+
+### the cheese sandwich game
+
+_wonder-world · physical game_
+
+> Build the sandwich one ingredient at a time.
+
+**How to play**
+
+1. Memory and sequencing game.
+2. First child names one ingredient.
+3. Next child adds another.
+4. Each child must repeat the full sandwich so far.
+5. Teacher uses picture cards if support is needed.
+
+**Materials**
+
+- Picture cards (bread, cheese, vegetables, sandwich ingredients)
+
+
+### cut your tomato
+
+_wonder-world · physical game_
+
+> Cut the tomato many ways and compare.
+
+**How to play**
+
+1. Children roll a red playdough tomato and cut it into halves, quarters, slices, then tiny cubes.
+2. They compare which has the most pieces, which has the smallest pieces, and discuss why smaller pieces cook faster.
+
+**Materials**
+
+- Red playdough
+- Clay tools or blunt plastic knives
+
+
+### the rainbow tiffin
+
+_wonder-world · physical game_
+
+> Fill the tiffin with one food per colour.
+
+**How to play**
+
+1. Children pick one red food, one green, one orange, one yellow — and place each in its tiffin section.
+2. They name the food and the colour, count the colours, and notice what's missing.
+
+**Materials**
+
+- Plastic foods or coloured picture cards
+- Tiffin tray or 4-section mat
+
+
+### above or below the soil?
+
+_wonder-world · physical game_
+
+> Sort foods by where they grow.
+
+**How to play**
+
+1. A brown paper sheet marks the soil line.
+2. Children take cards one at a time and place each above or below the line.
+3. Each placement is explained — 'tomato grows above because…'.
+4. Plant awareness and reasoning.
+
+**Materials**
+
+- Picture cards (foods that grow above and below)
+- Brown paper sheet
+
+
+### follow the salad recipe
+
+_wonder-world · physical game_
+
+> First, next, last — follow the steps.
+
+**How to play**
+
+1. Teacher gives a salad recipe one step at a time — base, vegetables, topping, mix.
+2. Children follow in order, then a second round where they choose their own order and compare results.
+3. Sequencing and decision-making.
+
+**Materials**
+
+- Bowl or plate
+- Pretend or real salad ingredients
+- Spoon/tongs
+
+
+### the salad quiz
+
+_wonder-world · physical game_
+
+> Be a food detective — find the answer.
+
+**How to play**
+
+1. Four rounds — colour ('find something red'), texture ('which is crunchy?'), growing place ('which grows below?'), and odd one out ('which doesn't belong?').
+2. Children explain their reasoning each time.
+
+**Materials**
+
+- Picture cards or toy foods
+- Basket or tray
+
+
+### food guess
+
+_wonder-world · physical game_
+
+> Ask up to 10 yes/no questions to guess the food.
+
+**How to play**
+
+1. Picture-only Guider Tiles deck.
+2. One child holds a hidden food card; the others ask up to 10 yes/no questions to guess what it is.
+3. Builds questioning and visual deduction.
+4. Runs twice — mid-year and end-of-year.
+
+**Materials**
+
+- Food Guess card deck (Guider Tiles · picture only)
+
+
+### food connect
+
+_wonder-world · physical game_
+
+> Join tiles by colour, texture, food group, or shape.
+
+**How to play**
+
+1. 40 food tiles + dice.
+2. Children join tiles based on a shared attribute.
+3. Used at the easiest difficulty level only at this age.
+4. Runs twice — once after Chapter 2 and once after Chapter 4.
+
+**Materials**
+
+- 40 food tiles
+- Dice
+
+
+---
+
+### logic-lab segment
+
+### candy sort
+
+_logic-lab · physical game_
+
+> Roll the dice, spot the matching candy, win it for your team.
+
+**How to play**
+
+1. Two teams race.
+2. The facilitator rolls two dice (colour, shape, or pattern).
+3. Teams scan the Candy Field — first hand to touch the candy whose traits match both dice claims it.
+4. No match visible?
+5. Both dice are rerolled.
+6. After several rounds, gather teams with their trays for an end-game math quiz: counting, more/less, add/take-away, comparing sets, simple equality — each correct answer = 1 bonus point.
+
+**Variations**
+
+- **Setup** — Scatter all 66 candies picture-side up on the Candy Field. Divide children into two teams (3–4 players per team). Place a tray beside each team for their winnings.
+- **How a round works** — Facilitator says 'Ready… roll!' and rolls the two chosen dice. Teams scan the field. First hand to touch the correct candy claims it and pops it in their tray. No match visible? Say 'Pass!' — both dice are rerolled.
+- **Single-trait round** — Use the 36 single-trait candies. Roll one die at a time (colour OR shape OR pattern) — children find a candy matching that single trait.
+- **Double-trait round** — Use the 30 double-trait candies. Roll two dice at once — children find a candy whose two trait values both match.
+
+**Difficulty**
+
+- **End-game · Counting:** Team Sunshine, count your red candies. How many do you have?
+- **End-game · More / Less:** Who has more striped candies, Team Sunshine or Team Rainbow?
+- **End-game · Add & Take Away:** Team Rainbow, if you eat two star candies, how many star candies are left?
+- **End-game · Compare Sets:** Put your circle candies in a line. Does the line look shorter or longer than Team Sunshine's?
+- **End-game · Simple Equality:** Can each team give me three candies? Do you both still have some left?
+
+**Materials**
+
+- 4 dice — Colour Die A (6 colours) · Colour Die B (same 6 colours) · Shape Die (6 shapes) · Pattern Die (6 patterns)
+- 36 single-trait candies — each shows one colour + one shape + one pattern (e.g. red-triangle-stripes)
+- 30 double-trait candies (2 sets of 15) — each shows two colours + two shapes + two patterns (e.g. blue-yellow / square-circle / dots-zigzags)
+- Two sorting plates — team trays for collected candies
+- Play Mat — the 'Candy Field' where all 66 candies sit picture-side up
+- Timer or sand-glass (optional) — 30 sec per round keeps it zippy
+
+
+### stitch me
+
+_logic-lab · physical game_
+
+> Pair up. Solve the prompt. Lace the bead.
+
+**How to play**
+
+1. Divide the children into pairs.
+2. Set up stations or scavenger bins around the room — one for beads, one for numbers, one for shapes.
+3. Give each pair a laminated template, a sewing base, and a shoelace.
+4. The teacher calls out one prompt at a time.
+5. The current player runs to the right station, finds the matching bead, comes back, and laces it onto the template.
+6. The lace is passed to the next child.
+7. The round ends when every bead is sewn into the template.
+
+**Difficulty**
+
+- **Easy — colour pattern beads:** Prompt: "Sew a necklace with this ABAB pattern — red, yellow, red, yellow." The child finds beads of the two colours and laces them in the alternating sequence shown on the template.
+- **Medium — beads + numbers:** Prompt: "Colour + number pattern — blue 1, yellow 2, orange + blue 3, ___". The child finds the beads and numbers shown on the template and laces them in order.
+- **Hard — verbal riddles:** The teacher reads a riddle. The child runs, picks the matching bead or number, and laces it. Examples: "I'm as red as a strawberry on a sunny day" → red bead. "I'm what comes after 2 and before 4" → number 3. "Mix red and yellow, I'll show. I shine like the sunset's glow" → orange bead. "Double 2, that's me" → number 4.
+
+**Materials**
+
+- Laminated templates (beads · numbers · shapes)
+- Sewing bases
+- Shoelaces with a stiff tip
+- Bead, number, and shape stations scattered around the room
+
+
+### dot grid
+
+_logic-lab · physical game_
+
+> Pick a card, place disks, check by laying the card on top.
+
+**How to play**
+
+1. Two children per board.
+2. One picks a card.
+3. They read the card type and follow the rule for that puzzle type.
+4. They take turns placing disks.
+5. When done, they check their work by placing the card on top of the board — the cut-out windows let them see if disks line up underneath.
+
+**Variations**
+
+- **Setup** — Place each play board flat on a table. Open the four colour pouches and spread disks beside the boards. Sort cards by game mode into two stacks (blue-backed for see-and-match, green-backed for see-and-predict).
+- **Game 1 · See and Match (16 cards)** — Children build what they see — direct visual replication, pattern recognition, symmetry, and mirror-image puzzles.
+- **Game 2 · See and Predict (16 cards)** — Children think and answer — counting, subitising, comparison, and identifying rules to predict what comes next.
+
+**Difficulty**
+
+- **Easy · Copy (4 cards · See and Match):** Direct visual replication — children build exactly what they see on the card.
+- **Easy · Continue (4 cards · See and Match):** Pattern recognition + completion — children continue an existing pattern.
+- **Medium · Symmetry (4 cards · See and Match):** Recognising symmetrical structure — children build the matching half.
+- **Hard · Mirror (4 cards · See and Match):** Spatial reflection (left → right) — children build the mirror image.
+- **Easy + Hard · Count (8 cards · See and Predict · 4 easy + 4 hard):** Counting, subitising, comparison — children answer 'how many?' from the dot pattern.
+- **Medium + Hard · Pattern Predict (8 cards · See and Predict · 4 medium + 4 hard):** Identifying rules, predicting next — children look at a sequence and place disks to show what comes next.
+
+**Materials**
+
+- 5 play boards (one per pair of children)
+- 240 disks — 60 each in red, yellow, blue, green
+- 32 pattern cards — 16 see-and-match (blue-backed) + 16 see-and-predict (green-backed)
+- How-to-play booklet (8 pages, A5)
+- Answer key (1 sheet, A4 — for teacher only)
+- Storage box (A3 footprint with compartments)
+
+
+### logical road builder
+
+_logic-lab · physical game_
+
+> Build straight, then curvy paths — graduate to the puzzle book.
+
+**How to play**
+
+1. Refer to the instruction book for understanding how the game is used.
+2. Start by introducing children to making straight and curvy paths using only half of the board.
+3. Give children puzzles using half the board.
+4. Once they are comfortable, let them graduate to puzzles from the starter level of the book.
+
+**Variations**
+
+- **Modes** — There are 3 gameplay modes as given in the book. Start with the single-player mode. Only once players have completed all levels of this mode, move to the next mode and so on.
+
+**Difficulty**
+
+- **Half-board warm-up:** Children build straight, then curvy paths using only half of the board. Once comfortable with both, graduate to the book.
+- **Starter:** First level of the puzzle book. Single-player mode. Complete all Starter puzzles before moving on.
+- **Junior:** Second level of the puzzle book — more complex constraints. Stay in single-player mode until all Junior puzzles are done.
+- **Expert:** Third level. Once all Expert single-player puzzles are complete, move to the next mode in the book.
+
+**Materials**
+
+- Logical Road Builder game board
+- Road tiles
+- Instruction book + puzzle book (Starter / Junior / Expert levels)
+
+
+### magna tiles
+
+_logic-lab · physical game_
+
+> Match a flashcard, build the shape — five levels of difficulty.
+
+**How to play**
+
+1. Children build using Magna-Tiles.
+2. The teacher shows a prompt flashcard (laminated for reuse).
+3. Each card specifies the level — children match colours, count tiles, copy structure, fill borders, or invent freely.
+4. Five levels run in sequence: 3D Build → 2D Match → 2D Stack → Border Fill → Open-ended.
+
+**Difficulty**
+
+- **Level 1 — Build It Tall! (3D Structures):** Show the 3D prompt (tower, bridge, cube house). Say 'Can you make this shape that stands up? Let's build it standing!'. Let them build vertically with your support to balance. Encourage 'strong and steady'. Builds: fine motor, stability, early engineering, 3D thinking.
+- **Level 2 — Match & Build (2D Single Layer):** Show the flashcard (a flat shape — house, rocket, fish — made with Magna-Tiles, with number of tiles + colours visible). Ask: 'Can you match and make this shape using Magna-Tiles?' Count the tiles. Complete the shape flat on the floor. Builds: colour & shape matching, tile counting, visual copying.
+- **Level 3 — Stack & Copy (2D Double Layer):** Show the layered flashcard (two distinct layers). Say: 'This one has two parts! Let's build the bottom first and then add the top.' Guide them to build the two layers one at a time, using the given number of tiles. Builds: sequencing, understanding structure, spatial layering.
+- **Level 4 — Fill the Frame (Border with Tile Count):** Place the border prompt card on the floor or table. Say: 'Here's your space. You get exactly ___ tiles. Can you fill this up?' Let them explore how to fill the shape using the right number of tiles. Offer help only if they run out or go over the tile count. Builds: problem-solving, estimation, planning, number sense.
+- **Level 5 — Creative Builders (Open-Ended Challenges):** Show a playful challenge — a goal but no fixed picture, just a tile limit or design challenge. Read the challenge aloud or show the prompt card. Give the set number of tiles (or let them pick). Encourage them to experiment freely, then describe their build. Builds: creativity, engineering thinking, experimentation, storytelling, resilience.
+
+**Materials**
+
+- Magna-Tiles (variety of shapes and colours)
+- Prompt flashcards (laminated):
+- · Level 1 — 3D shaped prompts + number of tiles
+- · Level 2 — 2D flat shapes + number of tiles
+- · Level 3 — 2D double-layered prompts + number of tiles
+- · Level 4 — Outlined borders + number of tiles
+- · Level 5 — Open-ended prompts
+
+
 
 ## robotics · ages 5–8
 
-_build real machines. run real experiments. figure out why things work._
+_build simple machines and understand how things work._
 
 - **Slug:** `robotics-5-8`
 - **Category:** stem
-- **Total sessions:** 24
+- **Total sessions:** 50
 
-level 1 — mechanics. children build a see-saw, a weighing scale, and a crane while running experiments on levers and pulleys. they finish the year able to look at a machine and explain why it works.
+level 1 — mechanics. across ten models — see-saw, weighing scale, crane, fishing rod, copter, rickshaw, wind turbine, drawbridge, tow truck, and bulldozer — children run experiments on levers, pulleys, gears, and wheels & axles, then build a machine that uses what they just discovered. they finish the year able to look at a machine and explain why it works.
 
 ---
 
@@ -3386,6 +4755,455 @@ _Experiment · physical game · card: L1 Pulleys e4_
 **PDF reference:** `/robotics-manuals/l1-pulley.pdf`
 
 
+### l1 gears e1 — which way do gears turn
+
+_Experiment · physical game · card: L1 Gears e1_
+
+> connect gear a and gear b two ways — side by side, then with a chain. which way does each one turn?
+
+**How to play**
+
+1. Children connect Gear A and Gear B in two setups: (1) meshed side-by-side, and (2) linked with a chain.
+2. Turn Gear A and watch Gear B each time.
+3. Record the direction of Gear B for each setup.
+4. First use: children discover the pattern.
+5. Second use: children predict the direction before turning.
+6. Side-by-side gears turn opposite ways; a chain makes them turn the same way.
+
+**Difficulty**
+
+- **Easy:** Teacher sets up both arrangements; child turns Gear A and says which way Gear B goes.
+- **Medium:** Child builds both setups and records the direction of Gear B for each.
+- **Hard:** Child predicts the direction for each setup before turning and explains why the chain changes it.
+
+**Materials**
+
+- Experiment Card: L1 Gears e1
+- Gear A and Gear B — 1 of each per group
+- Gear chain — 1 per group
+- Baseplate with mounting points, erasable marker
+
+**PDF reference:** `/robotics-manuals/l1-gears-e1.pdf`
+
+
+### l1 gears e2 — small gear drives big gear
+
+_Experiment · physical game · card: L1 Gears e2_
+
+> a small gear and a big gear, joined by a chain. turn the small one 3, 5, 8 times — how many times does the big one turn?
+
+**How to play**
+
+1. Two gears — one small, one big — connected with a chain.
+2. Turn the small gear 3 times, then 5, then 8, and count the turns on the big gear each time.
+3. Each child records both numbers.
+4. The big gear turns fewer times than the small gear — the first feel of a gear ratio.
+
+**Difficulty**
+
+- **Easy:** Teacher turns the small gear a set number of times; child counts the big gear's turns.
+- **Medium:** Child turns the small gear 3, 5, 8 times and records the big gear's turns each time.
+- **Hard:** Child predicts the big gear's turns before counting and explains why it turns fewer times.
+
+**Materials**
+
+- Experiment Card: L1 Gears e2
+- Small gear + big gear — 1 pair per group
+- Gear chain — 1 per group
+- Baseplate, erasable marker
+
+**PDF reference:** `/robotics-manuals/l1-gears-e2.pdf`
+
+
+### l1 gears e3 — big gear drives small gear
+
+_Experiment · physical game · card: L1 Gears e3_
+
+> same two gears, the other way round. turn the big one 3, 5, 8 times — how many times does the small one turn?
+
+**How to play**
+
+1. The same small and big gears joined by a chain, but now drive the big gear.
+2. Turn it 3 times, then 5, then 8, and count the turns on the small gear each time.
+3. Each child records both numbers.
+4. The small gear turns more times than the big gear — the reverse of e2.
+
+**Difficulty**
+
+- **Easy:** Teacher turns the big gear a set number of times; child counts the small gear's turns.
+- **Medium:** Child turns the big gear 3, 5, 8 times and records the small gear's turns each time.
+- **Hard:** Child predicts the small gear's turns first and explains why it now turns more — comparing back to e2.
+
+**Materials**
+
+- Experiment Card: L1 Gears e3
+- Small gear + big gear — 1 pair per group
+- Gear chain — 1 per group
+- Baseplate, erasable marker
+
+**PDF reference:** `/robotics-manuals/l1-gears-e3.pdf`
+
+
+### l1 gears e4 — equal gears turn equally
+
+_Experiment · physical game · card: L1 Gears e4_
+
+> two gears exactly the same size, joined by a chain. turn one 4, 6, 9 times — how many times does the other turn?
+
+**How to play**
+
+1. Two equal-sized gears connected with a chain.
+2. Turn Gear A 4 times, then 6, then 9, and count the turns on Gear B each time.
+3. Each child records both numbers.
+4. When the gears are the same size, B turns the same number of times as A — a one-to-one ratio that contrasts with the small/big pairs in e2 and e3.
+
+**Difficulty**
+
+- **Easy:** Teacher turns Gear A a set number of times; child counts Gear B's turns.
+- **Medium:** Child turns Gear A 4, 6, 9 times and records Gear B's turns each time.
+- **Hard:** Child predicts Gear B's turns first and explains why equal gears turn one-to-one.
+
+**Materials**
+
+- Experiment Card: L1 Gears e4
+- Two equal-sized gears — 1 pair per group
+- Gear chain — 1 per group
+- Baseplate, erasable marker
+
+**PDF reference:** `/robotics-manuals/l1-gears-e4.pdf`
+
+
+### l2 gears e1 — bigger gear ratio
+
+_Experiment · physical game · card: L2 Gears e1_
+
+> a small gear and a big gear, chained together. turn the small one 6, 9, 12 times — how many times does the big one turn?
+
+**How to play**
+
+1. Two gears — one small, one big — connected with a chain.
+2. Turn the small gear 6 times, then 9, then 12, and count the turns on the big gear each time.
+3. Each child records both numbers and works out the relationship — the big gear turns a predictable fraction of the small gear's turns.
+4. Extends e2 to larger numbers so children can spot the ratio.
+
+**Difficulty**
+
+- **Easy:** Teacher turns the small gear; child counts and records the big gear's turns.
+- **Medium:** Child turns the small gear 6, 9, 12 times and records the big gear's turns each time.
+- **Hard:** Child predicts the big gear's turns from the ratio before counting and explains the pattern.
+
+**Materials**
+
+- Experiment Card: L2 Gears e1
+- Small gear + big gear — 1 pair per group
+- Gear chain — 1 per group
+- Baseplate, erasable marker
+
+**PDF reference:** `/robotics-manuals/l2-gears-e1.pdf`
+
+
+### l1 wheel & axle e2 — heavier load, shorter distance
+
+_Experiment · physical game · card: L1 Wheel&Axle e2_
+
+> build a 4-wheel cart. load it with 0.5kg, then 1kg, then 1.5kg. one push from a to b — how far does it roll each time?
+
+**How to play**
+
+1. Children build a cart with 4 wheels and 2 axles, then give it one steady push from point A and measure how far it travels carrying 0.5kg, 1kg, and 1.5kg in turn.
+2. Each child records the distance for each load.
+3. The heavier the load, the shorter the distance from the same push.
+
+**Difficulty**
+
+- **Easy:** Teacher pushes the cart; child marks where it stops and reads the distance.
+- **Medium:** Child gives a steady push and measures the distance for each load.
+- **Hard:** Child predicts which load goes furthest before pushing and explains the result.
+
+**Materials**
+
+- Experiment Card: L1 Wheel&Axle e2
+- 4 wheels + 2 axles + cart base — 1 set per group
+- 0.5kg, 1kg, 1.5kg weights
+- Measuring tape, erasable marker
+
+**PDF reference:** `/robotics-manuals/l1-wheel-axle-e2.pdf`
+
+
+### l1 wheel & axle e3 — where the load sits
+
+_Experiment · physical game · card: L1 Wheel&Axle e3_
+
+> put 1.5kg in the centre, then the back, then the front of the cart. does where it sits change how it rolls?
+
+**How to play**
+
+1. Children place the same 1.5kg weight in three positions on the cart — centre, back, front — and push it the same way each time, watching the balance and measuring the distance.
+2. Each child records the distance for each setup.
+3. Where the load sits changes how steadily and how far the cart travels.
+
+**Difficulty**
+
+- **Easy:** Teacher sets the load position; child pushes and marks the distance.
+- **Medium:** Child sets all three positions and measures the distance for each.
+- **Hard:** Child predicts which position rolls furthest/straightest and explains why.
+
+**Materials**
+
+- Experiment Card: L1 Wheel&Axle e3
+- Cart (4 wheels, 2 axles) — 1 per group
+- 1.5kg weight
+- Measuring tape, erasable marker
+
+**PDF reference:** `/robotics-manuals/l1-wheel-axle-e3.pdf`
+
+
+### l2 wheel & axle e2 — heavier loads, measured roll
+
+_Experiment · physical game · card: L2 Wheel&Axle e2_
+
+> build a cart and carry 2kg, 2.5kg, 3kg one at a time. a gentle push from a to b — measure how far it rolls.
+
+**How to play**
+
+1. Children build a cart and give it the same gentle push from A while carrying 2kg, then 2.5kg, then 3kg.
+2. Each child measures and records the distance for each load.
+3. Extends the L1 idea to heavier weights so children can quantify how added load shortens the roll.
+
+**Difficulty**
+
+- **Easy:** Teacher pushes; child reads and records the distance for each load.
+- **Medium:** Child gives an even push and measures the distance for all three loads.
+- **Hard:** Child predicts the distances in order before testing and explains the pattern with numbers.
+
+**Materials**
+
+- Experiment Card: L2 Wheel&Axle e2
+- Cart (4 wheels, 2 axles) — 1 per group
+- 2kg, 2.5kg, 3kg weights
+- Measuring tape, erasable marker
+
+**PDF reference:** `/robotics-manuals/l2-wheel-axle-e2.pdf`
+
+
+### l2 wheel & axle e3 — steering with the front axle
+
+_Experiment · physical game · card: L2 Wheel&Axle e3_
+
+> point the front axle left, then centre, then right. push the cart each time — which way does it go?
+
+**How to play**
+
+1. Children build a cart whose front axle can be angled, then set it to the left, centre, and right and push it each time, recording the direction the cart travels.
+2. Each child notes the direction for each setup.
+3. The front axle angle steers the cart — the first feel of how a steering axle works.
+
+**Difficulty**
+
+- **Easy:** Teacher sets the axle angle; child pushes and says which way it went.
+- **Medium:** Child sets all three angles and records the direction for each.
+- **Hard:** Child predicts the direction for each angle before pushing and explains how the axle steers.
+
+**Materials**
+
+- Experiment Card: L2 Wheel&Axle e3
+- Cart with a steerable front axle — 1 per group
+- Open floor space, erasable marker
+
+**PDF reference:** `/robotics-manuals/l2-wheel-axle-e3.pdf`
+
+
+### l2 wheel & axle e4 — load centred vs at the back
+
+_Experiment · physical game · card: L2 Wheel&Axle e4_
+
+> two carts, 1.5kg on each — one centred, one at the back. push both. which rolls further?
+
+**How to play**
+
+1. Children build two carts and add 1.5kg to each — one with the load centred, one with it at the back — then push both the same way and measure the distance for each.
+2. Each child records both distances.
+3. Where the load sits changes how far the cart rolls from the same push.
+
+**Difficulty**
+
+- **Easy:** Teacher pushes both carts; child marks and compares the two distances.
+- **Medium:** Child pushes both carts evenly and records each distance.
+- **Hard:** Child predicts which cart rolls further before testing and explains why.
+
+**Materials**
+
+- Experiment Card: L2 Wheel&Axle e4
+- Two carts (4 wheels, 2 axles each) — 1 pair per group
+- 1.5kg weight × 2
+- Measuring tape, erasable marker
+
+**PDF reference:** `/robotics-manuals/l2-wheel-axle-e4.pdf`
+
+
+### l2 wheel & axle e5 — axles close vs far apart
+
+_Experiment · physical game · card: L2 Wheel&Axle e5_
+
+> two carts — one with axles close together, one with axles far apart. push both. which rolls further?
+
+**How to play**
+
+1. Children build two carts that differ only in axle spacing — one with axles close together (2 pipes), one far apart (3 pipes) — then push both the same way and measure the distance for each.
+2. Each child records both distances.
+3. Axle spacing changes how steadily and how far the cart travels.
+
+**Difficulty**
+
+- **Easy:** Teacher pushes both carts; child compares the two distances.
+- **Medium:** Child pushes both carts evenly and records each distance.
+- **Hard:** Child predicts which spacing rolls further before testing and explains the result.
+
+**Materials**
+
+- Experiment Card: L2 Wheel&Axle e5
+- Two carts with different axle spacing — 1 pair per group
+- Measuring tape, erasable marker
+
+**PDF reference:** `/robotics-manuals/l2-wheel-axle-e5.pdf`
+
+
+### l1 pulleys e5 — lifting with a double pulley
+
+_Experiment · physical game · card: L1 Pulleys e5_
+
+> lift 0.5kg, 1kg, 1.5kg using a double pulley. how much effort does each one need?
+
+**How to play**
+
+1. Children use a double pulley to lift 0.5kg, 1kg, and 1.5kg in turn, reading the spring scale each time.
+2. Each child records the effort for each weight.
+3. With a double pulley the effort is noticeably less than lifting by hand — a first look at how more pulleys share the load.
+
+**Difficulty**
+
+- **Easy:** Teacher sets up the double pulley; child lifts each weight and reads the scale.
+- **Medium:** Child rigs the double pulley and records the effort for each weight.
+- **Hard:** Child predicts how the effort compares to a single pulley and explains why.
+
+**Materials**
+
+- Experiment Card: L1 Pulleys e5
+- Double pulley + mount · rope · spring scale
+- 0.5kg, 1kg, 1.5kg weights · cup with hook
+
+**PDF reference:** `/robotics-manuals/l1-pulley-e5.pdf`
+
+
+### l2 pulleys e1 — double pulley, measured effort
+
+_Experiment · physical game · card: L2 Pulleys e1_
+
+> lift 0.5kg, 1kg, 1.5kg with a double pulley and measure the effort needed for each.
+
+**How to play**
+
+1. Children lift 0.5kg, 1kg, and 1.5kg with a double pulley, reading and recording the spring-scale effort for each.
+2. Each child takes at least one reading.
+3. Builds on the L1 double-pulley idea with careful measurement so children can compare effort across weights.
+
+**Difficulty**
+
+- **Easy:** Teacher rigs the pulley; child lifts and reads the effort for each weight.
+- **Medium:** Child sets up the double pulley and records the effort for all three weights.
+- **Hard:** Child predicts the effort order before lifting and explains the pattern with the readings.
+
+**Materials**
+
+- Experiment Card: L2 Pulleys e1
+- Double pulley + mount · rope · spring scale
+- 0.5kg, 1kg, 1.5kg weights · cup with hook
+
+**PDF reference:** `/robotics-manuals/l2-pulley-e1.pdf`
+
+
+### l2 pulleys e4 — does pulley height change effort
+
+_Experiment · physical game · card: L2 Pulleys e4_
+
+> lift 3kg with a fixed pulley three times, each time at a different pulley height. does the effort change?
+
+**How to play**
+
+1. Children use a fixed pulley to lift a 3kg load three times, varying the height of the pulley each try, and read the spring scale each time.
+2. Each child records the effort for each height.
+3. The effort stays the same regardless of pulley height — a fixed pulley changes direction, not effort.
+
+**Difficulty**
+
+- **Easy:** Teacher sets each height; child lifts and reads the effort.
+- **Medium:** Child sets all three heights and records the effort for each.
+- **Hard:** Child predicts whether height will change the effort before testing and explains the result.
+
+**Materials**
+
+- Experiment Card: L2 Pulleys e4
+- Fixed pulley + adjustable-height mount · rope · spring scale
+- 3kg load · cup with hook
+
+**PDF reference:** `/robotics-manuals/l2-pulley-e4.pdf`
+
+
+### l2 pulleys e5 — pulling from different sides
+
+_Experiment · physical game · card: L2 Pulleys e5_
+
+> lift 3kg with a pulley, pulling the rope from three different sides. find the effort for each.
+
+**How to play**
+
+1. Children lift a 3kg load with a pulley, pulling the rope from three different directions, and read the spring scale each time.
+2. Each child records the effort for each pull.
+3. The effort reading is the same from every side — the pulley redirects the pull without changing how hard it is.
+
+**Difficulty**
+
+- **Easy:** Teacher sets each pull direction; child lifts and reads the effort.
+- **Medium:** Child pulls from all three sides and records the effort for each.
+- **Hard:** Child predicts whether direction changes the effort before testing and explains why comfort differs from effort.
+
+**Materials**
+
+- Experiment Card: L2 Pulleys e5
+- Pulley + mount · rope · spring scale
+- 3kg load · cup with hook
+
+**PDF reference:** `/robotics-manuals/l2-pulley-e5.pdf`
+
+
+### l2 levers e6 — best lever size near the load
+
+_Experiment · physical game · card: L2 Levers e6_
+
+> with the fulcrum close to the load, try short, medium, long levers. which size lifts 2kg with the least effort?
+
+**How to play**
+
+1. With the fulcrum placed close to the load, children lift 2kg using a short (1 pipe), medium (2 pipe), and long (3 pipe) lever, reading the spring scale each time.
+2. Each child records the effort for each size.
+3. The long lever with the fulcrum near the load needs the least effort — combining lever length and fulcrum position.
+
+**Difficulty**
+
+- **Easy:** Teacher sets each lever; child lifts and reads the effort.
+- **Medium:** Child tries all three lever sizes and records the effort for each.
+- **Hard:** Child predicts the best lever size before testing and explains how length and fulcrum position combine.
+
+**Materials**
+
+- Experiment Card: L2 Levers e6
+- PVC pipe levers — short, medium, long
+- T-connector fulcrum · spring scale · 2kg load
+- Measuring tape, erasable marker
+
+**PDF reference:** `/robotics-manuals/l2-levers-e6.pdf`
+
+
 ---
 
 ### Build segment
@@ -3394,18 +5212,16 @@ _Experiment · physical game · card: L1 Pulleys e4_
 
 _Build · physical game_
 
-> each child builds their own see-saw from a personal kit and a step card. eight sessions — day by day.
+> each child builds their own see-saw from a personal kit and a step card. five sessions — day by day.
 
 **How to play**
 
 1. The see-saw is a simple lever model — a beam balancing on a central fulcrum.
 2. Introduces lever concepts in the most physical way a child can feel.
 3. Day 1 Explore: read the manual cover to cover, lay out every component in manual order, begin first build stage.
-4. Days 2–5 Make: open manual where you left off, build, teacher uses four questions only.
-5. Day 6 Complete and Test: finish, run the test (balance two known weights — does the beam stay level?), record the best result.
-6. Day 7 Improve: each child makes one deliberate change, states expected outcome, tests, records before and after.
-7. Day 8 Disassemble: sorted back using the tray map.
-8. Teacher names each component as it goes in.
+4. Days 2–3 Make: open manual where you left off, build, teacher uses four questions only.
+5. Day 4 Complete and Test: finish, run the test (balance two known weights — does the beam stay level?), record the best result.
+6. Day 5 Improve and Disassemble: each child makes one deliberate change, states expected outcome, tests, records before and after — then sorts every component back using the tray map.
 
 **Difficulty**
 
@@ -3427,7 +5243,7 @@ _Build · physical game_
 
 _Build · physical game_
 
-> same cycle, new model — a two-pan lever. eight sessions from kit to calibrated scale.
+> same cycle, new model — a two-pan lever. five sessions from kit to calibrated scale.
 
 **How to play**
 
@@ -3435,10 +5251,9 @@ _Build · physical game_
 2. The scale must balance — not just assemble.
 3. Children calibrate rather than just build.
 4. Day 1 Explore
-5. Days 2–5 Make
-6. Day 6 Complete and Test (place equal weights in both pans — does it balance? place unequal — which way does it tip?)
-7. Day 7 Improve (child makes one change, measures before and after)
-8. Day 8 Disassemble using the tray map.
+5. Days 2–3 Make
+6. Day 4 Complete and Test (place equal weights in both pans — does it balance? place unequal — which way does it tip?)
+7. Day 5 Improve and Disassemble (child makes one change, measures before and after, then sorts the kit back using the tray map).
 
 **Difficulty**
 
@@ -3459,17 +5274,16 @@ _Build · physical game_
 
 _Build · physical game_
 
-> the pulley model — a crane that lifts a load with rope and pulley. eight sessions.
+> the pulley model — a crane that lifts a load with rope and pulley. five sessions.
 
 **How to play**
 
 1. The crane uses a pulley system to lift loads.
 2. Pulley experiments explain directly how the lifting system works.
 3. Day 1 Explore
-4. Days 2–5 Make
-5. Day 6 Complete and Test (lift a known load — did it work? how heavy can it lift before it tips?)
-6. Day 7 Improve (one deliberate change — try a different rope angle, reposition the pulley)
-7. Day 8 Disassemble using the tray map.
+4. Days 2–3 Make
+5. Day 4 Complete and Test (lift a known load — did it work? how heavy can it lift before it tips?)
+6. Day 5 Improve and Disassemble (one deliberate change — try a different rope angle, reposition the pulley — then sort the kit back using the tray map).
 
 **Difficulty**
 
@@ -3485,6 +5299,216 @@ _Build · physical game_
 - Pulleys, rope, couplers (included in kit)
 
 **PDF reference:** `/robotics-manuals/crane.pdf`
+
+
+### copter build
+
+_Build · physical game_
+
+> the gear model — a copter whose blades spin through a gear train. five sessions from kit to spinning rotor.
+
+**How to play**
+
+1. The copter turns a hand crank into spinning blades through meshed gears — the gear experiments explain directly why the rotor spins faster or slower than the handle.
+2. Day 1 Explore: read the manual cover to cover, lay out every component in manual order, begin the build.
+3. Days 2–3 Make: open the manual where you left off, build, teacher uses four questions only.
+4. Day 4 Complete and Test: finish, turn the crank — do the blades spin? how many blade turns for one handle turn?
+5. Day 5 Improve and Disassemble: each child makes one deliberate change (swap a gear, change the handle), states the expected effect, tests, records before and after — then sorts the kit back using the tray map.
+
+**Difficulty**
+
+- **Easy:** Teacher reads steps. Child fits each component with teacher check.
+- **Medium:** Child reads and builds independently, asks only when genuinely stuck.
+- **Hard:** Child plans the next stage, names what each gear is for, builds and checks own work.
+
+**Materials**
+
+- Personal Copter kit additions per child — distributed at Day 1
+- Model Manual — Copter.pdf (1 per child)
+- Tray map — Copter (1 per child)
+- Gears, chain, crank handle (included in kit)
+
+**PDF reference:** `/robotics-manuals/copter.pdf`
+
+
+### fishing rod build
+
+_Build · physical game_
+
+> the lever-and-pulley model — a rod that bends like a lever and reels in line through a pulley. five sessions.
+
+**How to play**
+
+1. The fishing rod combines a lever (the rod arm) with a pulley (the reel) — the lever and pulley experiments both explain what the build is doing.
+2. Day 1 Explore: read the manual cover to cover, lay out every component in manual order, begin the build.
+3. Days 2–3 Make: continue, teacher uses four questions only.
+4. Day 4 Complete and Test: finish, reel a small load up — does the rod lift it? how does the reel make it easier?
+5. Day 5 Improve and Disassemble: each child makes one deliberate change, states the expected effect, tests, records before and after — then sorts the kit back using the tray map.
+
+**Difficulty**
+
+- **Easy:** Teacher reads steps. Child fits each component with teacher check.
+- **Medium:** Child reads and builds independently, asks only when genuinely stuck.
+- **Hard:** Child plans the next stage, names what the rod and reel each do, builds and checks own work.
+
+**Materials**
+
+- Personal Fishing Rod kit additions per child — distributed at Day 1
+- Model Manual — Fishing Rod.pdf (1 per child)
+- Tray map — Fishing Rod (1 per child)
+- Rod arm, reel, pulley, line (included in kit)
+
+**PDF reference:** `/robotics-manuals/fishing-rod.pdf`
+
+
+### rickshaw build
+
+_Build · physical game_
+
+> the wheel-and-axle model — a rickshaw that rolls on wheels and axles. five sessions from kit to rolling cart.
+
+**How to play**
+
+1. The rickshaw rolls on wheels fixed to axles — the wheel-and-axle experiments explain directly how load and axle placement change the way it rolls.
+2. Day 1 Explore: read the manual cover to cover, lay out every component in manual order, begin the build.
+3. Days 2–3 Make: continue, teacher uses four questions only.
+4. Day 4 Complete and Test: finish, load it and give it a push — how far and how straight does it go?
+5. Day 5 Improve and Disassemble: each child makes one deliberate change, states the expected effect, tests, records before and after — then sorts the kit back using the tray map.
+
+**Difficulty**
+
+- **Easy:** Teacher reads steps. Child fits each component with teacher check.
+- **Medium:** Child reads and builds independently, asks only when genuinely stuck.
+- **Hard:** Child plans the next stage, names what each axle does, builds and checks own work.
+
+**Materials**
+
+- Personal Rickshaw kit additions per child — distributed at Day 1
+- Model Manual — Rickshaw.pdf (1 per child)
+- Tray map — Rickshaw (1 per child)
+- Wheels, axles, cart frame (included in kit)
+
+**PDF reference:** `/robotics-manuals/rickshaw.pdf`
+
+
+### wind turbine build
+
+_Build · physical game_
+
+> the pulley model — a wind turbine whose blades drive a pulley to lift a small load. five sessions.
+
+**How to play**
+
+1. The wind turbine turns its spinning blades into lifting power through a pulley — the pulley experiments explain how the lifting system works.
+2. Day 1 Explore: read the manual cover to cover, lay out every component in manual order, begin the build.
+3. Days 2–3 Make: continue, teacher uses four questions only.
+4. Day 4 Complete and Test: finish, spin the blades — does the pulley wind up and lift the load?
+5. Day 5 Improve and Disassemble: each child makes one deliberate change, states the expected effect, tests, records before and after — then sorts the kit back using the tray map.
+
+**Difficulty**
+
+- **Easy:** Teacher reads steps. Child fits each component with teacher check.
+- **Medium:** Child reads and builds independently, asks only when genuinely stuck.
+- **Hard:** Child plans the next stage, names what the pulley does, builds and checks own work.
+
+**Materials**
+
+- Personal Wind Turbine kit additions per child — distributed at Day 1
+- Model Manual — Wind Turbine.pdf (1 per child)
+- Tray map — Wind Turbine (1 per child)
+- Blades, pulley, rope, mast (included in kit)
+
+**PDF reference:** `/robotics-manuals/wind-turbine.pdf`
+
+
+### drawbridge build
+
+_Build · physical game_
+
+> the wheel, axle and pulley model — a drawbridge that raises and lowers on a pulley. five sessions.
+
+**How to play**
+
+1. The drawbridge raises and lowers using axles and a pulley — the wheel-and-axle and pulley experiments both explain what the build is doing.
+2. Day 1 Explore: read the manual cover to cover, lay out every component in manual order, begin the build.
+3. Days 2–3 Make: continue, teacher uses four questions only.
+4. Day 4 Complete and Test: finish, raise and lower the bridge — does it hold and move smoothly?
+5. Day 5 Improve and Disassemble: each child makes one deliberate change, states the expected effect, tests, records before and after — then sorts the kit back using the tray map.
+
+**Difficulty**
+
+- **Easy:** Teacher reads steps. Child fits each component with teacher check.
+- **Medium:** Child reads and builds independently, asks only when genuinely stuck.
+- **Hard:** Child plans the next stage, names what the axle and pulley each do, builds and checks own work.
+
+**Materials**
+
+- Personal Drawbridge kit additions per child — distributed at Day 1
+- Model Manual — Drawbridge.pdf (1 per child)
+- Tray map — Drawbridge (1 per child)
+- Axles, pulley, rope, bridge deck (included in kit)
+
+**PDF reference:** `/robotics-manuals/drawbridge.pdf`
+
+
+### tow truck build
+
+_Build · physical game_
+
+> the wheel, axle and pulley model — a tow truck that rolls on axles and winches a load on a pulley. five sessions.
+
+**How to play**
+
+1. The tow truck rolls on wheels and axles and winches a load with a pulley — the wheel-and-axle and pulley experiments both explain what the build is doing.
+2. Day 1 Explore: read the manual cover to cover, lay out every component in manual order, begin the build.
+3. Days 2–3 Make: continue, teacher uses four questions only.
+4. Day 4 Complete and Test: finish, drive it and winch a load — does it roll straight and pull the load up?
+5. Day 5 Improve and Disassemble: each child makes one deliberate change, states the expected effect, tests, records before and after — then sorts the kit back using the tray map.
+
+**Difficulty**
+
+- **Easy:** Teacher reads steps. Child fits each component with teacher check.
+- **Medium:** Child reads and builds independently, asks only when genuinely stuck.
+- **Hard:** Child plans the next stage, names what the axles and winch pulley each do, builds and checks own work.
+
+**Materials**
+
+- Personal Tow Truck kit additions per child — distributed at Day 1
+- Model Manual — Tow Truck.pdf (1 per child)
+- Tray map — Tow Truck (1 per child)
+- Wheels, axles, pulley, winch rope (included in kit)
+
+**PDF reference:** `/robotics-manuals/tow-truck.pdf`
+
+
+### bulldozer build
+
+_Build · physical game_
+
+> the gear model — a bulldozer whose blade and tracks are driven through gears. five sessions.
+
+**How to play**
+
+1. The bulldozer drives its blade and tracks through a gear train — the gear experiments explain directly how the gearing changes speed and turning.
+2. Day 1 Explore: read the manual cover to cover, lay out every component in manual order, begin the build.
+3. Days 2–3 Make: continue, teacher uses four questions only.
+4. Day 4 Complete and Test: finish, run it — do the gears drive the blade and tracks?
+5. Day 5 Improve and Disassemble: each child makes one deliberate change, states the expected effect, tests, records before and after — then sorts the kit back using the tray map.
+
+**Difficulty**
+
+- **Easy:** Teacher reads steps. Child fits each component with teacher check.
+- **Medium:** Child reads and builds independently, asks only when genuinely stuck.
+- **Hard:** Child plans the next stage, names what each gear does, builds and checks own work.
+
+**Materials**
+
+- Personal Bulldozer kit additions per child — distributed at Day 1
+- Model Manual — Bulldozer.pdf (1 per child)
+- Tray map — Bulldozer (1 per child)
+- Gears, chain, blade, tracks (included in kit)
+
+**PDF reference:** `/robotics-manuals/bulldozer.pdf`
 
 
 ---
@@ -3515,13 +5539,13 @@ _Experience Book · facilitated_
 
 ## robotics · ages 8–12
 
-_calculate it. predict it. build it. explain why it works — every time._
+_design, build, and explain systems with knowledge and precision._
 
 - **Slug:** `robotics-8-12`
 - **Category:** stem
-- **Total sessions:** 18
+- **Total sessions:** 40
 
-level 1 — mechanics. same three models as 5–8 but each build is six days and every experiment runs L1 and L2 on consecutive sessions — qualitative first, quantitative next. children finish the year able to calculate mechanical advantage, predict before testing, and explain causally after.
+level 1 — mechanics. across ten models — see-saw, weighing scale, crane, fishing rod, copter, rickshaw, wind turbine, drawbridge, tow truck, and bulldozer — children run experiments on levers, pulleys, gears, and wheels & axles, then build a machine that uses what they discovered. each build is four days (vs five for 5–8): explore + make · make · complete and test · improve and disassemble. children finish the year able to calculate mechanical advantage, predict before testing, and explain causally after.
 
 ---
 
@@ -3973,6 +5997,370 @@ _Experiment · physical game · card: L2 Pulleys e5_
 **PDF reference:** `/robotics-manuals/l2-pulley.pdf`
 
 
+### l1 gears e1 — which way do gears turn
+
+_Experiment · physical game · card: L1 Gears e1_
+
+> connect gear a and gear b two ways — side by side, then with a chain. which way does each one turn?
+
+**How to play**
+
+1. Children connect Gear A and Gear B in two setups: (1) meshed side-by-side, and (2) linked with a chain.
+2. Turn Gear A and watch Gear B each time.
+3. Record the direction of Gear B for each setup.
+4. Meshed gears turn opposite ways; a chain makes them turn the same way. 8–12 children predict the direction before turning and explain why the chain reverses the relationship.
+
+**Difficulty**
+
+- **Easy:** Child builds both setups and records the direction of Gear B for each.
+- **Medium:** Child predicts each direction before turning and checks.
+- **Hard:** Child explains why meshed gears reverse but a chain keeps direction — generalising to any gear pair.
+
+**Materials**
+
+- Experiment Card: L1 Gears e1
+- Gear A and Gear B — 1 of each per group
+- Gear chain — 1 per group
+- Baseplate with mounting points, erasable marker
+
+**PDF reference:** `/robotics-manuals/l1-gears-e1.pdf`
+
+
+### l1 gears e2 — small gear drives big gear
+
+_Experiment · physical game · card: L1 Gears e2_
+
+> a small gear and a big gear, joined by a chain. turn the small one 3, 5, 8 times — how many times does the big one turn?
+
+**How to play**
+
+1. Two gears — one small, one big — connected with a chain.
+2. Turn the small gear 3, 5, 8 times and count the turns on the big gear each time.
+3. Each child records both numbers and looks for the ratio.
+4. The big gear turns fewer times than the small gear — the first measured gear ratio.
+
+**Difficulty**
+
+- **Easy:** Child turns the small gear and records the big gear's turns each time.
+- **Medium:** Child predicts the big gear's turns before counting and checks.
+- **Hard:** Child works out the ratio between the gears and predicts the next reading from it.
+
+**Materials**
+
+- Experiment Card: L1 Gears e2
+- Small gear + big gear — 1 pair per group
+- Gear chain — 1 per group
+- Baseplate, erasable marker
+
+**PDF reference:** `/robotics-manuals/l1-gears-e2.pdf`
+
+
+### l1 gears e3 — big gear drives small gear
+
+_Experiment · physical game · card: L1 Gears e3_
+
+> same two gears, the other way round. turn the big one 3, 5, 8 times — how many times does the small one turn?
+
+**How to play**
+
+1. The same small and big gears joined by a chain, but now drive the big gear.
+2. Turn it 3, 5, 8 times and count the turns on the small gear each time.
+3. Each child records both numbers.
+4. The small gear turns more times than the big gear — the inverse of e2, confirming the ratio works both ways.
+
+**Difficulty**
+
+- **Easy:** Child turns the big gear and records the small gear's turns each time.
+- **Medium:** Child predicts the small gear's turns and checks.
+- **Hard:** Child explains why the ratio inverts and links it back to e2 with the numbers.
+
+**Materials**
+
+- Experiment Card: L1 Gears e3
+- Small gear + big gear — 1 pair per group
+- Gear chain — 1 per group
+- Baseplate, erasable marker
+
+**PDF reference:** `/robotics-manuals/l1-gears-e3.pdf`
+
+
+### l1 gears e4 — equal gears turn equally
+
+_Experiment · physical game · card: L1 Gears e4_
+
+> two gears exactly the same size, joined by a chain. turn one 4, 6, 9 times — how many times does the other turn?
+
+**How to play**
+
+1. Two equal-sized gears connected with a chain.
+2. Turn Gear A 4, 6, 9 times and count the turns on Gear B each time.
+3. Each child records both numbers.
+4. Equal gears turn one-to-one — a ratio of 1 that contrasts with the small/big pairs in e2 and e3.
+
+**Difficulty**
+
+- **Easy:** Child turns Gear A and records Gear B's turns each time.
+- **Medium:** Child predicts Gear B's turns before counting and checks.
+- **Hard:** Child explains why equal gears give a one-to-one ratio, comparing to the unequal pairs.
+
+**Materials**
+
+- Experiment Card: L1 Gears e4
+- Two equal-sized gears — 1 pair per group
+- Gear chain — 1 per group
+- Baseplate, erasable marker
+
+**PDF reference:** `/robotics-manuals/l1-gears-e4.pdf`
+
+
+### l2 gears e1 — bigger gear ratio
+
+_Experiment · physical game · card: L2 Gears e1_
+
+> a small gear and a big gear, chained together. turn the small one 6, 9, 12 times — how many times does the big one turn?
+
+**How to play**
+
+1. Two gears — one small, one big — connected with a chain.
+2. Turn the small gear 6, 9, 12 times and count the turns on the big gear each time.
+3. Each child records both numbers and calculates the ratio.
+4. Extends e2 to larger numbers so children can confirm the gear ratio precisely.
+
+**Difficulty**
+
+- **Easy:** Child turns the small gear and records the big gear's turns each time.
+- **Medium:** Child calculates the ratio from each pair of readings.
+- **Hard:** Child predicts the big gear's turns from the ratio before counting and records the error.
+
+**Materials**
+
+- Experiment Card: L2 Gears e1
+- Small gear + big gear — 1 pair per group
+- Gear chain — 1 per group
+- Baseplate, erasable marker
+
+**PDF reference:** `/robotics-manuals/l2-gears-e1.pdf`
+
+
+### l1 wheel & axle e2 — heavier load, shorter distance
+
+_Experiment · physical game · card: L1 Wheel&Axle e2_
+
+> build a 4-wheel cart. load it with 0.5kg, then 1kg, then 1.5kg. one push from a to b — how far does it roll each time?
+
+**How to play**
+
+1. Children build a cart with 4 wheels and 2 axles, then give it one steady push from A and measure how far it travels carrying 0.5kg, 1kg, and 1.5kg in turn.
+2. Each child records the distance for each load.
+3. The heavier the load, the shorter the distance from the same push.
+
+**Difficulty**
+
+- **Easy:** Child gives a steady push and reads the distance for each load.
+- **Medium:** Child measures the distance for each load and orders them.
+- **Hard:** Child predicts the relationship between load and distance before testing and explains it with the data.
+
+**Materials**
+
+- Experiment Card: L1 Wheel&Axle e2
+- 4 wheels + 2 axles + cart base — 1 set per group
+- 0.5kg, 1kg, 1.5kg weights
+- Measuring tape, erasable marker
+
+**PDF reference:** `/robotics-manuals/l1-wheel-axle-e2.pdf`
+
+
+### l1 wheel & axle e3 — where the load sits
+
+_Experiment · physical game · card: L1 Wheel&Axle e3_
+
+> put 1.5kg in the centre, then the back, then the front of the cart. does where it sits change how it rolls?
+
+**How to play**
+
+1. Children place the same 1.5kg weight in three positions on the cart — centre, back, front — and push it the same way each time, watching the balance and measuring the distance.
+2. Each child records the distance for each setup.
+3. Where the load sits changes how steadily and how far the cart travels.
+
+**Difficulty**
+
+- **Easy:** Child pushes for each position and reads the distance.
+- **Medium:** Child measures the distance for all three positions and compares.
+- **Hard:** Child predicts which position rolls furthest/straightest and explains why.
+
+**Materials**
+
+- Experiment Card: L1 Wheel&Axle e3
+- Cart (4 wheels, 2 axles) — 1 per group
+- 1.5kg weight
+- Measuring tape, erasable marker
+
+**PDF reference:** `/robotics-manuals/l1-wheel-axle-e3.pdf`
+
+
+### l2 wheel & axle e2 — heavier loads, measured roll
+
+_Experiment · physical game · card: L2 Wheel&Axle e2_
+
+> build a cart and carry 2kg, 2.5kg, 3kg one at a time. a gentle push from a to b — measure how far it rolls.
+
+**How to play**
+
+1. Children build a cart and give it the same gentle push from A while carrying 2kg, 2.5kg, and 3kg.
+2. Each child measures and records the distance for each load.
+3. Extends the L1 idea to heavier weights so children can quantify how added load shortens the roll.
+
+**Difficulty**
+
+- **Easy:** Child pushes and records the distance for each load.
+- **Medium:** Child measures all three and describes the trend.
+- **Hard:** Child predicts the distances in order before testing and explains the pattern with numbers.
+
+**Materials**
+
+- Experiment Card: L2 Wheel&Axle e2
+- Cart (4 wheels, 2 axles) — 1 per group
+- 2kg, 2.5kg, 3kg weights
+- Measuring tape, erasable marker
+
+**PDF reference:** `/robotics-manuals/l2-wheel-axle-e2.pdf`
+
+
+### l2 wheel & axle e3 — steering with the front axle
+
+_Experiment · physical game · card: L2 Wheel&Axle e3_
+
+> point the front axle left, then centre, then right. push the cart each time — which way does it go?
+
+**How to play**
+
+1. Children build a cart whose front axle can be angled, then set it to the left, centre, and right and push it each time, recording the direction the cart travels.
+2. Each child notes the direction for each setup.
+3. The front axle angle steers the cart — the basis of how a steering axle works.
+
+**Difficulty**
+
+- **Easy:** Child sets each angle and says which way the cart went.
+- **Medium:** Child records the direction for all three angles.
+- **Hard:** Child predicts the direction for each angle before pushing and explains how the axle steers.
+
+**Materials**
+
+- Experiment Card: L2 Wheel&Axle e3
+- Cart with a steerable front axle — 1 per group
+- Open floor space, erasable marker
+
+**PDF reference:** `/robotics-manuals/l2-wheel-axle-e3.pdf`
+
+
+### l2 wheel & axle e4 — load centred vs at the back
+
+_Experiment · physical game · card: L2 Wheel&Axle e4_
+
+> two carts, 1.5kg on each — one centred, one at the back. push both. which rolls further?
+
+**How to play**
+
+1. Children build two carts and add 1.5kg to each — one with the load centred, one with it at the back — then push both the same way and measure the distance for each.
+2. Each child records both distances.
+3. Where the load sits changes how far the cart rolls from the same push.
+
+**Difficulty**
+
+- **Easy:** Child pushes both carts and compares the two distances.
+- **Medium:** Child measures and records each distance.
+- **Hard:** Child predicts which cart rolls further before testing and explains why.
+
+**Materials**
+
+- Experiment Card: L2 Wheel&Axle e4
+- Two carts (4 wheels, 2 axles each) — 1 pair per group
+- 1.5kg weight × 2
+- Measuring tape, erasable marker
+
+**PDF reference:** `/robotics-manuals/l2-wheel-axle-e4.pdf`
+
+
+### l2 wheel & axle e5 — axles close vs far apart
+
+_Experiment · physical game · card: L2 Wheel&Axle e5_
+
+> two carts — one with axles close together, one with axles far apart. push both. which rolls further?
+
+**How to play**
+
+1. Children build two carts that differ only in axle spacing — one with axles close together (2 pipes), one far apart (3 pipes) — then push both the same way and measure the distance for each.
+2. Each child records both distances.
+3. Axle spacing changes how steadily and how far the cart travels.
+
+**Difficulty**
+
+- **Easy:** Child pushes both carts and compares the two distances.
+- **Medium:** Child measures and records each distance.
+- **Hard:** Child predicts which spacing rolls further before testing and explains the result.
+
+**Materials**
+
+- Experiment Card: L2 Wheel&Axle e5
+- Two carts with different axle spacing — 1 pair per group
+- Measuring tape, erasable marker
+
+**PDF reference:** `/robotics-manuals/l2-wheel-axle-e5.pdf`
+
+
+### l1 pulleys e5 — lifting with a double pulley
+
+_Experiment · physical game · card: L1 Pulleys e5_
+
+> lift 0.5kg, 1kg, 1.5kg using a double pulley. how much effort does each one need?
+
+**How to play**
+
+1. Children use a double pulley to lift 0.5kg, 1kg, and 1.5kg in turn, reading the spring scale each time.
+2. Each child records the effort for each weight.
+3. With a double pulley the effort is noticeably less than lifting by hand — a measured look at how more pulleys share the load.
+
+**Difficulty**
+
+- **Easy:** Child lifts each weight and reads the effort.
+- **Medium:** Child records the effort for each weight and compares to lifting by hand.
+- **Hard:** Child predicts how the effort compares to a single pulley and explains why.
+
+**Materials**
+
+- Experiment Card: L1 Pulleys e5
+- Double pulley + mount · rope · spring scale
+- 0.5kg, 1kg, 1.5kg weights · cup with hook
+
+**PDF reference:** `/robotics-manuals/l1-pulley-e5.pdf`
+
+
+### l2 pulleys e1 — double pulley, measured effort
+
+_Experiment · physical game · card: L2 Pulleys e1_
+
+> lift 0.5kg, 1kg, 1.5kg with a double pulley and measure the effort needed for each.
+
+**How to play**
+
+1. Children lift 0.5kg, 1kg, and 1.5kg with a double pulley, reading and recording the spring-scale effort for each.
+2. Each child takes at least one reading and works out how the effort compares to the weight — the mechanical advantage of the double pulley.
+
+**Difficulty**
+
+- **Easy:** Child lifts and reads the effort for each weight.
+- **Medium:** Child records the effort and compares it to the weight.
+- **Hard:** Child calculates the mechanical advantage and predicts the effort for a new weight.
+
+**Materials**
+
+- Experiment Card: L2 Pulleys e1
+- Double pulley + mount · rope · spring scale
+- 0.5kg, 1kg, 1.5kg weights · cup with hook
+
+**PDF reference:** `/robotics-manuals/l2-pulley-e1.pdf`
+
+
 ---
 
 ### Build segment
@@ -3981,18 +6369,17 @@ _Experiment · physical game · card: L2 Pulleys e5_
 
 _Build · physical game_
 
-> each child builds their own see-saw from a personal kit. six sessions — day by day.
+> each child builds their own see-saw from a personal kit. four sessions — day by day.
 
 **How to play**
 
 1. The see-saw is a simple lever — a beam on a central fulcrum.
 2. Intuitive entry into lever concepts.
-3. Day 1 Explore: read the full Model Manual, identify and name every component, lay them out in manual order, begin first build stage.
-4. Days 2–3 Make: open manual to where you left off, build, teacher uses only four questions.
-5. Day 4 Complete and Test: finish, run the full test sequence, record best result with actual measurement.
-6. Day 5 Improve: state what you expect to change before touching anything, make one deliberate change, test, record before-and-after.
-7. Day 6 Disassemble: sort back from memory — no tray map.
-8. Teacher names each component as it goes back.
+3. Day 1 Explore + Make: read the full Model Manual, identify and name every component, lay them out in manual order, begin the build.
+4. Day 2 Make: continue the build, teacher uses only four questions.
+5. Day 3 Complete and Test: finish, run the full test sequence, record best result with actual measurement.
+6. Day 4 Improve and Disassemble: state what you expect to change before touching anything, make one deliberate change, test, record before-and-after — then sort the kit back from memory (no tray map).
+7. Teacher names each component as it goes back.
 
 **Difficulty**
 
@@ -4019,11 +6406,10 @@ _Build · physical game_
 
 1. Complex two-pan lever.
 2. Every lever experiment directly explains what the build is doing.
-3. Same 6-day cycle: Day 1 Explore
-4. Days 2–3 Make
-5. Day 4 Complete and Test
-6. Day 5 Improve
-7. Day 6 Disassemble (from memory).
+3. Same 4-day cycle: Day 1 Explore + Make
+4. Day 2 Make
+5. Day 3 Complete and Test
+6. Day 4 Improve and Disassemble (from memory).
 
 **Difficulty**
 
@@ -4048,11 +6434,10 @@ _Build · physical game_
 **How to play**
 
 1. Crane uses a pulley system.
-2. Same 6-day cycle: Day 1 Explore
-3. Days 2–3 Make
-4. Day 4 Complete and Test
-5. Day 5 Improve
-6. Day 6 Disassemble (from memory).
+2. Same 4-day cycle: Day 1 Explore + Make
+3. Day 2 Make
+4. Day 3 Complete and Test
+5. Day 4 Improve and Disassemble (from memory).
 
 **Difficulty**
 
@@ -4067,6 +6452,209 @@ _Build · physical game_
 - Pulleys, rope, couplers (in kit)
 
 **PDF reference:** `/robotics-manuals/crane.pdf`
+
+
+### fishing rod build
+
+_Build · physical game_
+
+> the lever-and-pulley model — a rod that bends like a lever and reels in line through a pulley. four sessions.
+
+**How to play**
+
+1. The fishing rod combines a lever (the rod arm) with a pulley (the reel) — the lever and pulley experiments both explain what the build is doing.
+2. Day 1 Explore + Make: read the full Model Manual, identify and name every component, lay them out in manual order, begin the build.
+3. Day 2 Make: continue, teacher uses only four questions.
+4. Day 3 Complete and Test: finish, reel a load up, record the result with actual measurement.
+5. Day 4 Improve and Disassemble: state the expected change before touching anything, make one deliberate change, test, record before-and-after — then sort the kit back from memory.
+
+**Difficulty**
+
+- **Easy:** Child reads and builds independently with occasional teacher check.
+- **Medium:** Child reads ahead, plans the next stage, and checks own work.
+- **Hard:** Child proposes the Improve-day change before Day 4, states the expected effect, tests, measures.
+
+**Materials**
+
+- Personal Fishing Rod kit additions per child (distributed at Day 1)
+- Model Manual — Fishing Rod.pdf (1 per child)
+- Rod arm, reel, pulley, line (included in kit)
+
+**PDF reference:** `/robotics-manuals/fishing-rod.pdf`
+
+
+### copter build
+
+_Build · physical game_
+
+> the gear model — a copter whose blades spin through a gear train. four sessions from kit to spinning rotor.
+
+**How to play**
+
+1. The copter turns a hand crank into spinning blades through meshed gears — the gear experiments explain why the rotor spins faster or slower than the handle.
+2. Day 1 Explore + Make
+3. Day 2 Make
+4. Day 3 Complete and Test (how many blade turns per handle turn? record the ratio)
+5. Day 4 Improve and Disassemble (one deliberate change to the gearing, state the expected effect, test, record before-and-after — then sort the kit back from memory).
+
+**Difficulty**
+
+- **Easy:** Child reads and builds independently with occasional teacher check.
+- **Medium:** Child reads ahead, names each gear's job, and checks own work.
+- **Hard:** Child proposes a gearing change before Day 4, predicts the effect on rotor speed, tests, measures.
+
+**Materials**
+
+- Personal Copter kit additions per child (distributed at Day 1)
+- Model Manual — Copter.pdf (1 per child)
+- Gears, chain, crank handle (included in kit)
+
+**PDF reference:** `/robotics-manuals/copter.pdf`
+
+
+### rickshaw build
+
+_Build · physical game_
+
+> the wheel-and-axle model — a rickshaw that rolls on wheels and axles. four sessions from kit to rolling cart.
+
+**How to play**
+
+1. The rickshaw rolls on wheels fixed to axles — the wheel-and-axle experiments explain how load and axle placement change the way it rolls.
+2. Day 1 Explore + Make
+3. Day 2 Make
+4. Day 3 Complete and Test (load it, push it, measure distance and straightness)
+5. Day 4 Improve and Disassemble (one deliberate change, state the expected effect, test, record before-and-after — then sort the kit back from memory).
+
+**Difficulty**
+
+- **Easy:** Child reads and builds independently with occasional teacher check.
+- **Medium:** Child reads ahead, names what each axle does, and checks own work.
+- **Hard:** Child proposes a change before Day 4, predicts the effect on the roll, tests, measures.
+
+**Materials**
+
+- Personal Rickshaw kit additions per child (distributed at Day 1)
+- Model Manual — Rickshaw.pdf (1 per child)
+- Wheels, axles, cart frame (included in kit)
+
+**PDF reference:** `/robotics-manuals/rickshaw.pdf`
+
+
+### wind turbine build
+
+_Build · physical game_
+
+> the pulley model — a wind turbine whose blades drive a pulley to lift a small load. four sessions.
+
+**How to play**
+
+1. The wind turbine turns spinning blades into lifting power through a pulley — the pulley experiments explain how the lifting system works.
+2. Day 1 Explore + Make
+3. Day 2 Make
+4. Day 3 Complete and Test (spin the blades, does the pulley wind up and lift the load? record it)
+5. Day 4 Improve and Disassemble (one deliberate change, state the expected effect, test, record before-and-after — then sort the kit back from memory).
+
+**Difficulty**
+
+- **Easy:** Child reads and builds independently with occasional teacher check.
+- **Medium:** Child reads ahead, names what the pulley does, and checks own work.
+- **Hard:** Child proposes a change before Day 4, predicts the effect on lifting, tests, measures.
+
+**Materials**
+
+- Personal Wind Turbine kit additions per child (distributed at Day 1)
+- Model Manual — Wind Turbine.pdf (1 per child)
+- Blades, pulley, rope, mast (included in kit)
+
+**PDF reference:** `/robotics-manuals/wind-turbine.pdf`
+
+
+### drawbridge build
+
+_Build · physical game_
+
+> the wheel, axle and pulley model — a drawbridge that raises and lowers on a pulley. four sessions.
+
+**How to play**
+
+1. The drawbridge raises and lowers using axles and a pulley — the wheel-and-axle and pulley experiments both explain what the build is doing.
+2. Day 1 Explore + Make
+3. Day 2 Make
+4. Day 3 Complete and Test (raise and lower the bridge, does it hold and move smoothly? record it)
+5. Day 4 Improve and Disassemble (one deliberate change, state the expected effect, test, record before-and-after — then sort the kit back from memory).
+
+**Difficulty**
+
+- **Easy:** Child reads and builds independently with occasional teacher check.
+- **Medium:** Child reads ahead, names what the axle and pulley do, and checks own work.
+- **Hard:** Child proposes a change before Day 4, predicts the effect, tests, measures.
+
+**Materials**
+
+- Personal Drawbridge kit additions per child (distributed at Day 1)
+- Model Manual — Drawbridge.pdf (1 per child)
+- Axles, pulley, rope, bridge deck (included in kit)
+
+**PDF reference:** `/robotics-manuals/drawbridge.pdf`
+
+
+### tow truck build
+
+_Build · physical game_
+
+> the wheel, axle and pulley model — a tow truck that rolls on axles and winches a load on a pulley. four sessions.
+
+**How to play**
+
+1. The tow truck rolls on wheels and axles and winches a load with a pulley — the wheel-and-axle and pulley experiments both explain what the build is doing.
+2. Day 1 Explore + Make
+3. Day 2 Make
+4. Day 3 Complete and Test (drive it and winch a load, does it roll straight and pull the load up? record it)
+5. Day 4 Improve and Disassemble (one deliberate change, state the expected effect, test, record before-and-after — then sort the kit back from memory).
+
+**Difficulty**
+
+- **Easy:** Child reads and builds independently with occasional teacher check.
+- **Medium:** Child reads ahead, names what the axles and winch pulley do, and checks own work.
+- **Hard:** Child proposes a change before Day 4, predicts the effect, tests, measures.
+
+**Materials**
+
+- Personal Tow Truck kit additions per child (distributed at Day 1)
+- Model Manual — Tow Truck.pdf (1 per child)
+- Wheels, axles, pulley, winch rope (included in kit)
+
+**PDF reference:** `/robotics-manuals/tow-truck.pdf`
+
+
+### bulldozer build
+
+_Build · physical game_
+
+> the gear model — a bulldozer whose blade and tracks are driven through gears. four sessions.
+
+**How to play**
+
+1. The bulldozer drives its blade and tracks through a gear train — the gear experiments explain how the gearing trades speed for force.
+2. Day 1 Explore + Make
+3. Day 2 Make
+4. Day 3 Complete and Test (run it, do the gears drive the blade and tracks? record it)
+5. Day 4 Improve and Disassemble (one deliberate change to the gearing, state the expected effect, test, record before-and-after — then sort the kit back from memory).
+
+**Difficulty**
+
+- **Easy:** Child reads and builds independently with occasional teacher check.
+- **Medium:** Child reads ahead, names each gear's job, and checks own work.
+- **Hard:** Child proposes a gearing change before Day 4, predicts the effect on speed and force, tests, measures.
+
+**Materials**
+
+- Personal Bulldozer kit additions per child (distributed at Day 1)
+- Model Manual — Bulldozer.pdf (1 per child)
+- Gears, chain, blade, tracks (included in kit)
+
+**PDF reference:** `/robotics-manuals/bulldozer.pdf`
 
 
 ---
