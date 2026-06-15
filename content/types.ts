@@ -164,6 +164,22 @@ export interface CurriculumProgramme {
    */
   songs?: ProgrammeSong[];
   trialSession?: TrialSession;
+  /**
+   * Documents which experiments pair with each model build and why — the
+   * "experiment + build" logic where the experiment tests a part the model
+   * actually uses. Rendered as a dedicated overview section. The experiment
+   * list per model is derived from the sessionTable; `why` is the rationale.
+   */
+  modelPairings?: ModelPairing[];
+}
+
+export interface ModelPairing {
+  /** Matches CurriculumSessionEntry.buildModel. */
+  model: string;
+  /** Machine type(s) the model uses, e.g. "Levers", "Gears", "Levers & Pulleys". */
+  topic: string;
+  /** Why these experiments pair with this model. */
+  why: string;
 }
 
 export interface LanguageBook {
