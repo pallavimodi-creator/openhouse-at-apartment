@@ -5,6 +5,7 @@ import type {
   CurriculumCheckpoint,
   CurriculumSkillArea,
   CurriculumSegmentDef,
+  ModelPairing,
 } from "@/content/types";
 import { ROBOTICS_TRIAL_SESSION_8_12 } from "./robotics-trial";
 
@@ -321,6 +322,320 @@ const experimentActivities: Record<string, CurriculumActivity> = {
     type: "physical-game",
     pdfUrl: "/robotics-manuals/l2-pulley.pdf",
   },
+
+  // ─── Gears (Copter, Bulldozer) ────────────────────────────
+  "l1-gears-e1": {
+    id: "l1-gears-e1",
+    segment: "experiment",
+    title: "l1 gears e1 — which way do gears turn",
+    cardName: "L1 Gears e1",
+    setupLine:
+      "connect gear a and gear b two ways — side by side, then with a chain. which way does each one turn?",
+    howToPlay:
+      "Children connect Gear A and Gear B in two setups: (1) meshed side-by-side, and (2) linked with a chain. Turn Gear A and watch Gear B each time. Record the direction of Gear B for each setup. Meshed gears turn opposite ways; a chain makes them turn the same way. 8–12 children predict the direction before turning and explain why the chain reverses the relationship.",
+    materials: [
+      "Experiment Card: L1 Gears e1",
+      "Gear A and Gear B — 1 of each per group",
+      "Gear chain — 1 per group",
+      "Baseplate with mounting points, erasable marker",
+    ],
+    difficultyLevels: [
+      { level: "Easy", description: "Child builds both setups and records the direction of Gear B for each." },
+      { level: "Medium", description: "Child predicts each direction before turning and checks." },
+      { level: "Hard", description: "Child explains why meshed gears reverse but a chain keeps direction — generalising to any gear pair." },
+    ],
+    debriefPrompts: [],
+    type: "physical-game",
+    pdfUrl: "/robotics-manuals/l1-gears-e1.pdf",
+  },
+  "l1-gears-e2": {
+    id: "l1-gears-e2",
+    segment: "experiment",
+    title: "l1 gears e2 — small gear drives big gear",
+    cardName: "L1 Gears e2",
+    setupLine:
+      "a small gear and a big gear, joined by a chain. turn the small one 3, 5, 8 times — how many times does the big one turn?",
+    howToPlay:
+      "Two gears — one small, one big — connected with a chain. Turn the small gear 3, 5, 8 times and count the turns on the big gear each time. Each child records both numbers and looks for the ratio. The big gear turns fewer times than the small gear — the first measured gear ratio.",
+    materials: [
+      "Experiment Card: L1 Gears e2",
+      "Small gear + big gear — 1 pair per group",
+      "Gear chain — 1 per group",
+      "Baseplate, erasable marker",
+    ],
+    difficultyLevels: [
+      { level: "Easy", description: "Child turns the small gear and records the big gear's turns each time." },
+      { level: "Medium", description: "Child predicts the big gear's turns before counting and checks." },
+      { level: "Hard", description: "Child works out the ratio between the gears and predicts the next reading from it." },
+    ],
+    debriefPrompts: [],
+    type: "physical-game",
+    pdfUrl: "/robotics-manuals/l1-gears-e2.pdf",
+  },
+  "l1-gears-e3": {
+    id: "l1-gears-e3",
+    segment: "experiment",
+    title: "l1 gears e3 — big gear drives small gear",
+    cardName: "L1 Gears e3",
+    setupLine:
+      "same two gears, the other way round. turn the big one 3, 5, 8 times — how many times does the small one turn?",
+    howToPlay:
+      "The same small and big gears joined by a chain, but now drive the big gear. Turn it 3, 5, 8 times and count the turns on the small gear each time. Each child records both numbers. The small gear turns more times than the big gear — the inverse of e2, confirming the ratio works both ways.",
+    materials: [
+      "Experiment Card: L1 Gears e3",
+      "Small gear + big gear — 1 pair per group",
+      "Gear chain — 1 per group",
+      "Baseplate, erasable marker",
+    ],
+    difficultyLevels: [
+      { level: "Easy", description: "Child turns the big gear and records the small gear's turns each time." },
+      { level: "Medium", description: "Child predicts the small gear's turns and checks." },
+      { level: "Hard", description: "Child explains why the ratio inverts and links it back to e2 with the numbers." },
+    ],
+    debriefPrompts: [],
+    type: "physical-game",
+    pdfUrl: "/robotics-manuals/l1-gears-e3.pdf",
+  },
+  "l1-gears-e4": {
+    id: "l1-gears-e4",
+    segment: "experiment",
+    title: "l1 gears e4 — equal gears turn equally",
+    cardName: "L1 Gears e4",
+    setupLine:
+      "two gears exactly the same size, joined by a chain. turn one 4, 6, 9 times — how many times does the other turn?",
+    howToPlay:
+      "Two equal-sized gears connected with a chain. Turn Gear A 4, 6, 9 times and count the turns on Gear B each time. Each child records both numbers. Equal gears turn one-to-one — a ratio of 1 that contrasts with the small/big pairs in e2 and e3.",
+    materials: [
+      "Experiment Card: L1 Gears e4",
+      "Two equal-sized gears — 1 pair per group",
+      "Gear chain — 1 per group",
+      "Baseplate, erasable marker",
+    ],
+    difficultyLevels: [
+      { level: "Easy", description: "Child turns Gear A and records Gear B's turns each time." },
+      { level: "Medium", description: "Child predicts Gear B's turns before counting and checks." },
+      { level: "Hard", description: "Child explains why equal gears give a one-to-one ratio, comparing to the unequal pairs." },
+    ],
+    debriefPrompts: [],
+    type: "physical-game",
+    pdfUrl: "/robotics-manuals/l1-gears-e4.pdf",
+  },
+  "l2-gears-e1": {
+    id: "l2-gears-e1",
+    segment: "experiment",
+    title: "l2 gears e1 — bigger gear ratio",
+    cardName: "L2 Gears e1",
+    setupLine:
+      "a small gear and a big gear, chained together. turn the small one 6, 9, 12 times — how many times does the big one turn?",
+    howToPlay:
+      "Two gears — one small, one big — connected with a chain. Turn the small gear 6, 9, 12 times and count the turns on the big gear each time. Each child records both numbers and calculates the ratio. Extends e2 to larger numbers so children can confirm the gear ratio precisely.",
+    materials: [
+      "Experiment Card: L2 Gears e1",
+      "Small gear + big gear — 1 pair per group",
+      "Gear chain — 1 per group",
+      "Baseplate, erasable marker",
+    ],
+    difficultyLevels: [
+      { level: "Easy", description: "Child turns the small gear and records the big gear's turns each time." },
+      { level: "Medium", description: "Child calculates the ratio from each pair of readings." },
+      { level: "Hard", description: "Child predicts the big gear's turns from the ratio before counting and records the error." },
+    ],
+    debriefPrompts: [],
+    type: "physical-game",
+    pdfUrl: "/robotics-manuals/l2-gears-e1.pdf",
+  },
+
+  // ─── Wheel & Axle (Rickshaw, Drawbridge, Tow Truck) ───────
+  "l1-wheel-axle-e2": {
+    id: "l1-wheel-axle-e2",
+    segment: "experiment",
+    title: "l1 wheel & axle e2 — heavier load, shorter distance",
+    cardName: "L1 Wheel&Axle e2",
+    setupLine:
+      "build a 4-wheel cart. load it with 0.5kg, then 1kg, then 1.5kg. one push from a to b — how far does it roll each time?",
+    howToPlay:
+      "Children build a cart with 4 wheels and 2 axles, then give it one steady push from A and measure how far it travels carrying 0.5kg, 1kg, and 1.5kg in turn. Each child records the distance for each load. The heavier the load, the shorter the distance from the same push.",
+    materials: [
+      "Experiment Card: L1 Wheel&Axle e2",
+      "4 wheels + 2 axles + cart base — 1 set per group",
+      "0.5kg, 1kg, 1.5kg weights",
+      "Measuring tape, erasable marker",
+    ],
+    difficultyLevels: [
+      { level: "Easy", description: "Child gives a steady push and reads the distance for each load." },
+      { level: "Medium", description: "Child measures the distance for each load and orders them." },
+      { level: "Hard", description: "Child predicts the relationship between load and distance before testing and explains it with the data." },
+    ],
+    debriefPrompts: [],
+    type: "physical-game",
+    pdfUrl: "/robotics-manuals/l1-wheel-axle-e2.pdf",
+  },
+  "l1-wheel-axle-e3": {
+    id: "l1-wheel-axle-e3",
+    segment: "experiment",
+    title: "l1 wheel & axle e3 — where the load sits",
+    cardName: "L1 Wheel&Axle e3",
+    setupLine:
+      "put 1.5kg in the centre, then the back, then the front of the cart. does where it sits change how it rolls?",
+    howToPlay:
+      "Children place the same 1.5kg weight in three positions on the cart — centre, back, front — and push it the same way each time, watching the balance and measuring the distance. Each child records the distance for each setup. Where the load sits changes how steadily and how far the cart travels.",
+    materials: [
+      "Experiment Card: L1 Wheel&Axle e3",
+      "Cart (4 wheels, 2 axles) — 1 per group",
+      "1.5kg weight",
+      "Measuring tape, erasable marker",
+    ],
+    difficultyLevels: [
+      { level: "Easy", description: "Child pushes for each position and reads the distance." },
+      { level: "Medium", description: "Child measures the distance for all three positions and compares." },
+      { level: "Hard", description: "Child predicts which position rolls furthest/straightest and explains why." },
+    ],
+    debriefPrompts: [],
+    type: "physical-game",
+    pdfUrl: "/robotics-manuals/l1-wheel-axle-e3.pdf",
+  },
+  "l2-wheel-axle-e2": {
+    id: "l2-wheel-axle-e2",
+    segment: "experiment",
+    title: "l2 wheel & axle e2 — heavier loads, measured roll",
+    cardName: "L2 Wheel&Axle e2",
+    setupLine:
+      "build a cart and carry 2kg, 2.5kg, 3kg one at a time. a gentle push from a to b — measure how far it rolls.",
+    howToPlay:
+      "Children build a cart and give it the same gentle push from A while carrying 2kg, 2.5kg, and 3kg. Each child measures and records the distance for each load. Extends the L1 idea to heavier weights so children can quantify how added load shortens the roll.",
+    materials: [
+      "Experiment Card: L2 Wheel&Axle e2",
+      "Cart (4 wheels, 2 axles) — 1 per group",
+      "2kg, 2.5kg, 3kg weights",
+      "Measuring tape, erasable marker",
+    ],
+    difficultyLevels: [
+      { level: "Easy", description: "Child pushes and records the distance for each load." },
+      { level: "Medium", description: "Child measures all three and describes the trend." },
+      { level: "Hard", description: "Child predicts the distances in order before testing and explains the pattern with numbers." },
+    ],
+    debriefPrompts: [],
+    type: "physical-game",
+    pdfUrl: "/robotics-manuals/l2-wheel-axle-e2.pdf",
+  },
+  "l2-wheel-axle-e3": {
+    id: "l2-wheel-axle-e3",
+    segment: "experiment",
+    title: "l2 wheel & axle e3 — steering with the front axle",
+    cardName: "L2 Wheel&Axle e3",
+    setupLine:
+      "point the front axle left, then centre, then right. push the cart each time — which way does it go?",
+    howToPlay:
+      "Children build a cart whose front axle can be angled, then set it to the left, centre, and right and push it each time, recording the direction the cart travels. Each child notes the direction for each setup. The front axle angle steers the cart — the basis of how a steering axle works.",
+    materials: [
+      "Experiment Card: L2 Wheel&Axle e3",
+      "Cart with a steerable front axle — 1 per group",
+      "Open floor space, erasable marker",
+    ],
+    difficultyLevels: [
+      { level: "Easy", description: "Child sets each angle and says which way the cart went." },
+      { level: "Medium", description: "Child records the direction for all three angles." },
+      { level: "Hard", description: "Child predicts the direction for each angle before pushing and explains how the axle steers." },
+    ],
+    debriefPrompts: [],
+    type: "physical-game",
+    pdfUrl: "/robotics-manuals/l2-wheel-axle-e3.pdf",
+  },
+  "l2-wheel-axle-e4": {
+    id: "l2-wheel-axle-e4",
+    segment: "experiment",
+    title: "l2 wheel & axle e4 — load centred vs at the back",
+    cardName: "L2 Wheel&Axle e4",
+    setupLine:
+      "two carts, 1.5kg on each — one centred, one at the back. push both. which rolls further?",
+    howToPlay:
+      "Children build two carts and add 1.5kg to each — one with the load centred, one with it at the back — then push both the same way and measure the distance for each. Each child records both distances. Where the load sits changes how far the cart rolls from the same push.",
+    materials: [
+      "Experiment Card: L2 Wheel&Axle e4",
+      "Two carts (4 wheels, 2 axles each) — 1 pair per group",
+      "1.5kg weight × 2",
+      "Measuring tape, erasable marker",
+    ],
+    difficultyLevels: [
+      { level: "Easy", description: "Child pushes both carts and compares the two distances." },
+      { level: "Medium", description: "Child measures and records each distance." },
+      { level: "Hard", description: "Child predicts which cart rolls further before testing and explains why." },
+    ],
+    debriefPrompts: [],
+    type: "physical-game",
+    pdfUrl: "/robotics-manuals/l2-wheel-axle-e4.pdf",
+  },
+  "l2-wheel-axle-e5": {
+    id: "l2-wheel-axle-e5",
+    segment: "experiment",
+    title: "l2 wheel & axle e5 — axles close vs far apart",
+    cardName: "L2 Wheel&Axle e5",
+    setupLine:
+      "two carts — one with axles close together, one with axles far apart. push both. which rolls further?",
+    howToPlay:
+      "Children build two carts that differ only in axle spacing — one with axles close together (2 pipes), one far apart (3 pipes) — then push both the same way and measure the distance for each. Each child records both distances. Axle spacing changes how steadily and how far the cart travels.",
+    materials: [
+      "Experiment Card: L2 Wheel&Axle e5",
+      "Two carts with different axle spacing — 1 pair per group",
+      "Measuring tape, erasable marker",
+    ],
+    difficultyLevels: [
+      { level: "Easy", description: "Child pushes both carts and compares the two distances." },
+      { level: "Medium", description: "Child measures and records each distance." },
+      { level: "Hard", description: "Child predicts which spacing rolls further before testing and explains the result." },
+    ],
+    debriefPrompts: [],
+    type: "physical-game",
+    pdfUrl: "/robotics-manuals/l2-wheel-axle-e5.pdf",
+  },
+
+  // ─── Extra pulley experiments (Wind Turbine, Tow Truck) ───
+  "l1-pulleys-e5": {
+    id: "l1-pulleys-e5",
+    segment: "experiment",
+    title: "l1 pulleys e5 — lifting with a double pulley",
+    cardName: "L1 Pulleys e5",
+    setupLine:
+      "lift 0.5kg, 1kg, 1.5kg using a double pulley. how much effort does each one need?",
+    howToPlay:
+      "Children use a double pulley to lift 0.5kg, 1kg, and 1.5kg in turn, reading the spring scale each time. Each child records the effort for each weight. With a double pulley the effort is noticeably less than lifting by hand — a measured look at how more pulleys share the load.",
+    materials: [
+      "Experiment Card: L1 Pulleys e5",
+      "Double pulley + mount · rope · spring scale",
+      "0.5kg, 1kg, 1.5kg weights · cup with hook",
+    ],
+    difficultyLevels: [
+      { level: "Easy", description: "Child lifts each weight and reads the effort." },
+      { level: "Medium", description: "Child records the effort for each weight and compares to lifting by hand." },
+      { level: "Hard", description: "Child predicts how the effort compares to a single pulley and explains why." },
+    ],
+    debriefPrompts: [],
+    type: "physical-game",
+    pdfUrl: "/robotics-manuals/l1-pulley-e5.pdf",
+  },
+  "l2-pulleys-e1": {
+    id: "l2-pulleys-e1",
+    segment: "experiment",
+    title: "l2 pulleys e1 — double pulley, measured effort",
+    cardName: "L2 Pulleys e1",
+    setupLine:
+      "lift 0.5kg, 1kg, 1.5kg with a double pulley and measure the effort needed for each.",
+    howToPlay:
+      "Children lift 0.5kg, 1kg, and 1.5kg with a double pulley, reading and recording the spring-scale effort for each. Each child takes at least one reading and works out how the effort compares to the weight — the mechanical advantage of the double pulley.",
+    materials: [
+      "Experiment Card: L2 Pulleys e1",
+      "Double pulley + mount · rope · spring scale",
+      "0.5kg, 1kg, 1.5kg weights · cup with hook",
+    ],
+    difficultyLevels: [
+      { level: "Easy", description: "Child lifts and reads the effort for each weight." },
+      { level: "Medium", description: "Child records the effort and compares it to the weight." },
+      { level: "Hard", description: "Child calculates the mechanical advantage and predicts the effort for a new weight." },
+    ],
+    debriefPrompts: [],
+    type: "physical-game",
+    pdfUrl: "/robotics-manuals/l2-pulley-e1.pdf",
+  },
 };
 
 // ─── Build activities — 4 days per model ────────────────────
@@ -390,6 +705,160 @@ const buildActivities: Record<string, CurriculumActivity> = {
     debriefPrompts: [],
     type: "physical-game",
     pdfUrl: "/robotics-manuals/crane.pdf",
+  },
+  "build-fishing-rod": {
+    id: "build-fishing-rod",
+    segment: "build",
+    title: "fishing rod build",
+    setupLine:
+      "the lever-and-pulley model — a rod that bends like a lever and reels in line through a pulley. four sessions.",
+    howToPlay:
+      "The fishing rod combines a lever (the rod arm) with a pulley (the reel) — the lever and pulley experiments both explain what the build is doing. Day 1 Explore + Make: read the full Model Manual, identify and name every component, lay them out in manual order, begin the build. Day 2 Make: continue, teacher uses only four questions. Day 3 Complete and Test: finish, reel a load up, record the result with actual measurement. Day 4 Improve and Disassemble: state the expected change before touching anything, make one deliberate change, test, record before-and-after — then sort the kit back from memory.",
+    materials: [
+      "Personal Fishing Rod kit additions per child (distributed at Day 1)",
+      "Model Manual — Fishing Rod.pdf (1 per child)",
+      "Rod arm, reel, pulley, line (included in kit)",
+    ],
+    difficultyLevels: [
+      { level: "Easy", description: "Child reads and builds independently with occasional teacher check." },
+      { level: "Medium", description: "Child reads ahead, plans the next stage, and checks own work." },
+      { level: "Hard", description: "Child proposes the Improve-day change before Day 4, states the expected effect, tests, measures." },
+    ],
+    debriefPrompts: [],
+    type: "physical-game",
+    pdfUrl: "/robotics-manuals/fishing-rod.pdf",
+  },
+  "build-copter": {
+    id: "build-copter",
+    segment: "build",
+    title: "copter build",
+    setupLine:
+      "the gear model — a copter whose blades spin through a gear train. four sessions from kit to spinning rotor.",
+    howToPlay:
+      "The copter turns a hand crank into spinning blades through meshed gears — the gear experiments explain why the rotor spins faster or slower than the handle. Day 1 Explore + Make · Day 2 Make · Day 3 Complete and Test (how many blade turns per handle turn? record the ratio) · Day 4 Improve and Disassemble (one deliberate change to the gearing, state the expected effect, test, record before-and-after — then sort the kit back from memory).",
+    materials: [
+      "Personal Copter kit additions per child (distributed at Day 1)",
+      "Model Manual — Copter.pdf (1 per child)",
+      "Gears, chain, crank handle (included in kit)",
+    ],
+    difficultyLevels: [
+      { level: "Easy", description: "Child reads and builds independently with occasional teacher check." },
+      { level: "Medium", description: "Child reads ahead, names each gear's job, and checks own work." },
+      { level: "Hard", description: "Child proposes a gearing change before Day 4, predicts the effect on rotor speed, tests, measures." },
+    ],
+    debriefPrompts: [],
+    type: "physical-game",
+    pdfUrl: "/robotics-manuals/copter.pdf",
+  },
+  "build-rickshaw": {
+    id: "build-rickshaw",
+    segment: "build",
+    title: "rickshaw build",
+    setupLine:
+      "the wheel-and-axle model — a rickshaw that rolls on wheels and axles. four sessions from kit to rolling cart.",
+    howToPlay:
+      "The rickshaw rolls on wheels fixed to axles — the wheel-and-axle experiments explain how load and axle placement change the way it rolls. Day 1 Explore + Make · Day 2 Make · Day 3 Complete and Test (load it, push it, measure distance and straightness) · Day 4 Improve and Disassemble (one deliberate change, state the expected effect, test, record before-and-after — then sort the kit back from memory).",
+    materials: [
+      "Personal Rickshaw kit additions per child (distributed at Day 1)",
+      "Model Manual — Rickshaw.pdf (1 per child)",
+      "Wheels, axles, cart frame (included in kit)",
+    ],
+    difficultyLevels: [
+      { level: "Easy", description: "Child reads and builds independently with occasional teacher check." },
+      { level: "Medium", description: "Child reads ahead, names what each axle does, and checks own work." },
+      { level: "Hard", description: "Child proposes a change before Day 4, predicts the effect on the roll, tests, measures." },
+    ],
+    debriefPrompts: [],
+    type: "physical-game",
+    pdfUrl: "/robotics-manuals/rickshaw.pdf",
+  },
+  "build-wind-turbine": {
+    id: "build-wind-turbine",
+    segment: "build",
+    title: "wind turbine build",
+    setupLine:
+      "the pulley model — a wind turbine whose blades drive a pulley to lift a small load. four sessions.",
+    howToPlay:
+      "The wind turbine turns spinning blades into lifting power through a pulley — the pulley experiments explain how the lifting system works. Day 1 Explore + Make · Day 2 Make · Day 3 Complete and Test (spin the blades, does the pulley wind up and lift the load? record it) · Day 4 Improve and Disassemble (one deliberate change, state the expected effect, test, record before-and-after — then sort the kit back from memory).",
+    materials: [
+      "Personal Wind Turbine kit additions per child (distributed at Day 1)",
+      "Model Manual — Wind Turbine.pdf (1 per child)",
+      "Blades, pulley, rope, mast (included in kit)",
+    ],
+    difficultyLevels: [
+      { level: "Easy", description: "Child reads and builds independently with occasional teacher check." },
+      { level: "Medium", description: "Child reads ahead, names what the pulley does, and checks own work." },
+      { level: "Hard", description: "Child proposes a change before Day 4, predicts the effect on lifting, tests, measures." },
+    ],
+    debriefPrompts: [],
+    type: "physical-game",
+    pdfUrl: "/robotics-manuals/wind-turbine.pdf",
+  },
+  "build-drawbridge": {
+    id: "build-drawbridge",
+    segment: "build",
+    title: "drawbridge build",
+    setupLine:
+      "the wheel, axle and pulley model — a drawbridge that raises and lowers on a pulley. four sessions.",
+    howToPlay:
+      "The drawbridge raises and lowers using axles and a pulley — the wheel-and-axle and pulley experiments both explain what the build is doing. Day 1 Explore + Make · Day 2 Make · Day 3 Complete and Test (raise and lower the bridge, does it hold and move smoothly? record it) · Day 4 Improve and Disassemble (one deliberate change, state the expected effect, test, record before-and-after — then sort the kit back from memory).",
+    materials: [
+      "Personal Drawbridge kit additions per child (distributed at Day 1)",
+      "Model Manual — Drawbridge.pdf (1 per child)",
+      "Axles, pulley, rope, bridge deck (included in kit)",
+    ],
+    difficultyLevels: [
+      { level: "Easy", description: "Child reads and builds independently with occasional teacher check." },
+      { level: "Medium", description: "Child reads ahead, names what the axle and pulley do, and checks own work." },
+      { level: "Hard", description: "Child proposes a change before Day 4, predicts the effect, tests, measures." },
+    ],
+    debriefPrompts: [],
+    type: "physical-game",
+    pdfUrl: "/robotics-manuals/drawbridge.pdf",
+  },
+  "build-tow-truck": {
+    id: "build-tow-truck",
+    segment: "build",
+    title: "tow truck build",
+    setupLine:
+      "the wheel, axle and pulley model — a tow truck that rolls on axles and winches a load on a pulley. four sessions.",
+    howToPlay:
+      "The tow truck rolls on wheels and axles and winches a load with a pulley — the wheel-and-axle and pulley experiments both explain what the build is doing. Day 1 Explore + Make · Day 2 Make · Day 3 Complete and Test (drive it and winch a load, does it roll straight and pull the load up? record it) · Day 4 Improve and Disassemble (one deliberate change, state the expected effect, test, record before-and-after — then sort the kit back from memory).",
+    materials: [
+      "Personal Tow Truck kit additions per child (distributed at Day 1)",
+      "Model Manual — Tow Truck.pdf (1 per child)",
+      "Wheels, axles, pulley, winch rope (included in kit)",
+    ],
+    difficultyLevels: [
+      { level: "Easy", description: "Child reads and builds independently with occasional teacher check." },
+      { level: "Medium", description: "Child reads ahead, names what the axles and winch pulley do, and checks own work." },
+      { level: "Hard", description: "Child proposes a change before Day 4, predicts the effect, tests, measures." },
+    ],
+    debriefPrompts: [],
+    type: "physical-game",
+    pdfUrl: "/robotics-manuals/tow-truck.pdf",
+  },
+  "build-bulldozer": {
+    id: "build-bulldozer",
+    segment: "build",
+    title: "bulldozer build",
+    setupLine:
+      "the gear model — a bulldozer whose blade and tracks are driven through gears. four sessions.",
+    howToPlay:
+      "The bulldozer drives its blade and tracks through a gear train — the gear experiments explain how the gearing trades speed for force. Day 1 Explore + Make · Day 2 Make · Day 3 Complete and Test (run it, do the gears drive the blade and tracks? record it) · Day 4 Improve and Disassemble (one deliberate change to the gearing, state the expected effect, test, record before-and-after — then sort the kit back from memory).",
+    materials: [
+      "Personal Bulldozer kit additions per child (distributed at Day 1)",
+      "Model Manual — Bulldozer.pdf (1 per child)",
+      "Gears, chain, blade, tracks (included in kit)",
+    ],
+    difficultyLevels: [
+      { level: "Easy", description: "Child reads and builds independently with occasional teacher check." },
+      { level: "Medium", description: "Child reads ahead, names each gear's job, and checks own work." },
+      { level: "Hard", description: "Child proposes a gearing change before Day 4, predicts the effect on speed and force, tests, measures." },
+    ],
+    debriefPrompts: [],
+    type: "physical-game",
+    pdfUrl: "/robotics-manuals/bulldozer.pdf",
   },
 };
 
@@ -572,11 +1041,102 @@ const sessionTable: CurriculumSessionEntry[] = [
   s(12, "l2-pulleys-e2", "Crane", "build-crane", 4,
     "Yesterday we noticed direction changes with a fixed pulley. Today, calculate: does it change the effort needed, or only the direction? Then make one change to your crane, test, and disassemble.",
     "After two days with this experiment — what is the mechanical advantage of a fixed pulley, and how does rope distance relate to effort?"),
+  // ─── Fishing Rod · 4 days · Levers & Pulleys · L2 Levers e6 (d1–2) · L1 Pulleys e4 (d3–4)
+  s(13, "l2-levers-e6", "Fishing Rod", "build-fishing-rod", 1,
+    "A fishing rod bends right over with a big fish. With the fulcrum close to the load, which lever length do you predict lifts 2kg with the least effort — and why?",
+    "With the fulcrum close to the load, how do lever length and fulcrum position combine to reduce effort?"),
+  s(14, "l2-levers-e6", "Fishing Rod", "build-fishing-rod", 2,
+    "If we doubled the fish's weight, would your chosen lever still be best, or would you change it? Predict, then check with the readings.",
+    "After two days — state the rule linking lever length, fulcrum position, and effort."),
+  s(15, "l1-pulleys-e4", "Fishing Rod", "build-fishing-rod", 3,
+    "A reel lets you wind line in from any angle. Predict: does pulling from a different direction change the effort, or only the comfort?",
+    "Does the direction of pull on a pulley change the effort, or only how it feels?"),
+  s(16, "l1-pulleys-e4", "Fishing Rod", "build-fishing-rod", 4,
+    "Your rod and reel are built. Make one change to the reel, predict its effect on winding, test it, record before and after — then disassemble from memory.",
+    "How do the lever (rod) and the pulley (reel) each contribute to landing the catch?"),
+  // ─── Copter · 4 days · Gears · L1 Gears e1 (d1) · e2 (d2) · e3 (d3–4)
+  s(17, "l1-gears-e1", "Copter", "build-copter", 1,
+    "A helicopter's blades spin fast from a slow engine. Predict: when two gears mesh side by side, do they turn the same way or opposite — and what changes with a chain?",
+    "Why do meshed gears reverse direction while a chain keeps it the same?"),
+  s(18, "l1-gears-e2", "Copter", "build-copter", 2,
+    "A small gear drives a big gear. Predict the ratio: if you turn the small one 8 times, how many times does the big one turn?",
+    "What is the ratio between a small driving gear and a big driven gear?"),
+  s(19, "l1-gears-e3", "Copter", "build-copter", 3,
+    "Your copter is taking shape. Predict: one full turn of the handle — how many blade turns? Then test and record the ratio.",
+    "How does the gear ratio decide how many times the rotor spins per handle turn?"),
+  s(20, "l1-gears-e3", "Copter", "build-copter", 4,
+    "Make one change to the gearing, predict its effect on rotor speed, test, record before and after — then disassemble from memory.",
+    "What is the one most important thing you found about how gears change speed?"),
+  // ─── Rickshaw · 4 days · Wheels & Axles · L1 W&A e2 (d1) · e3 (d2) · L2 W&A e2 (d3–4)
+  s(21, "l1-wheel-axle-e2", "Rickshaw", "build-rickshaw", 1,
+    "A rickshaw with more passengers is harder to pull and stops sooner. Predict the relationship between load and rolling distance, then measure it.",
+    "What is the relationship between the load on a cart and the distance it rolls from one push?"),
+  s(22, "l1-wheel-axle-e3", "Rickshaw", "build-rickshaw", 2,
+    "Predict: does moving the load to the front, back, or centre change the distance and how straight it rolls? Then test all three.",
+    "How does load position change the roll of a wheel-and-axle cart?"),
+  s(23, "l2-wheel-axle-e2", "Rickshaw", "build-rickshaw", 3,
+    "Your rickshaw is nearly built. With heavier loads (2–3kg), predict the order of rolling distances, then complete and test.",
+    "How does adding heavier load shorten the distance — and can you quantify it?"),
+  s(24, "l2-wheel-axle-e2", "Rickshaw", "build-rickshaw", 4,
+    "Make one change to help it carry a heavier load further, predict the effect, test, record before and after — then disassemble from memory.",
+    "What is the one most important thing you found about wheels, axles, and load?"),
+  // ─── Wind Turbine · 4 days · Pulleys · L2 Pul e1 (d1) · e4 (d2) · L1 Pul e5 (d3–4)
+  s(25, "l2-pulleys-e1", "Wind Turbine", "build-wind-turbine", 1,
+    "Spinning blades can lift a load through a pulley. With a double pulley, predict how the effort compares to the weight, then measure it.",
+    "What mechanical advantage does a double pulley give when lifting?"),
+  s(26, "l2-pulleys-e4", "Wind Turbine", "build-wind-turbine", 2,
+    "Predict: if we raise the pulley higher, does the effort to lift change, or only the rope length? Then test at three heights.",
+    "Does the height of a fixed pulley change the effort to lift?"),
+  s(27, "l1-pulleys-e5", "Wind Turbine", "build-wind-turbine", 3,
+    "Your turbine is nearly built. Predict how much easier the double pulley makes lifting versus by hand, then complete and test.",
+    "How does adding more pulley reduce the effort to lift?"),
+  s(28, "l1-pulleys-e5", "Wind Turbine", "build-wind-turbine", 4,
+    "Make one change to the pulley system, predict its effect on lifting, test, record before and after — then disassemble from memory.",
+    "What is the one most important thing you found about pulleys and lifting?"),
+  // ─── Drawbridge · 4 days · Wheels, Axles & Pulleys · L2 W&A e2 (d1) · e3 (d2) · L2 Pul e4 (d3) · e5 (d4)
+  s(29, "l2-wheel-axle-e2", "Drawbridge", "build-drawbridge", 1,
+    "A drawbridge must hold its weight and still lift. Predict how a heavier deck changes how it moves, then measure with the cart.",
+    "How does load change the way a wheel-and-axle mechanism moves?"),
+  s(30, "l2-wheel-axle-e3", "Drawbridge", "build-drawbridge", 2,
+    "A drawbridge swings on an axle. Predict: which axle angle makes it rise straight? Then test left, centre, right.",
+    "How does the axle angle control the direction of movement?"),
+  s(31, "l2-pulleys-e4", "Drawbridge", "build-drawbridge", 3,
+    "Your drawbridge is nearly built. Predict whether a higher pulley makes it easier or harder to raise, then complete and test.",
+    "Does pulley height change the effort to raise the bridge?"),
+  s(32, "l2-pulleys-e5", "Drawbridge", "build-drawbridge", 4,
+    "Make one change to the axle or pulley, predict its effect, test, record before and after — then disassemble from memory.",
+    "How do axles and pulleys combine to raise and lower the bridge?"),
+  // ─── Tow Truck · 4 days · Wheels, Axles & Pulleys · L2 Pul e5 (d1) · L2 W&A e4 (d2) · e5 (d3–4)
+  s(33, "l2-pulleys-e5", "Tow Truck", "build-tow-truck", 1,
+    "A tow truck's winch can hook from different sides. Predict whether the side you pull from changes the effort, then test three sides.",
+    "When you pull a pulley rope from different sides, what changes — effort, or only comfort?"),
+  s(34, "l2-wheel-axle-e4", "Tow Truck", "build-tow-truck", 2,
+    "A car sits on the truck's back. Predict: load centred or at the back — which rolls further? Then test both.",
+    "How does load position change the distance a cart rolls?"),
+  s(35, "l2-wheel-axle-e5", "Tow Truck", "build-tow-truck", 3,
+    "Your tow truck is nearly built. Predict whether wider-spaced axles roll further or shorter, then complete and test.",
+    "How does axle spacing change the way a cart rolls?"),
+  s(36, "l2-wheel-axle-e5", "Tow Truck", "build-tow-truck", 4,
+    "Make one change to help it roll or winch better, predict the effect, test, record before and after — then disassemble from memory.",
+    "How do wheels, axles, and pulleys work together in the tow truck?"),
+  // ─── Bulldozer · 4 days · Gears · L1 Gears e3 (d1) · e4 (d2) · L2 Gears e1 (d3–4)
+  s(37, "l1-gears-e3", "Bulldozer", "build-bulldozer", 1,
+    "A bulldozer is slow but immensely strong. Predict: when a big gear drives a small gear, does the small gear turn more or fewer times — and why does that trade speed for force?",
+    "When a big gear drives a small gear, how do speed and force trade off?"),
+  s(38, "l1-gears-e4", "Bulldozer", "build-bulldozer", 2,
+    "Predict: two equal gears joined by a chain — turn one 9 times, how many does the other turn? Then test.",
+    "When two gears are equal, what is their ratio of turns?"),
+  s(39, "l2-gears-e1", "Bulldozer", "build-bulldozer", 3,
+    "Your bulldozer is nearly built. Predict the big gear's turns when the small one turns 12 times, then complete and test.",
+    "How can you predict a gear's turns from the gear ratio?"),
+  s(40, "l2-gears-e1", "Bulldozer", "build-bulldozer", 4,
+    "Make one change to the gearing for more speed or more force, predict the effect, test, record before and after — then disassemble from memory.",
+    "What is the one most important thing you found about how gearing trades speed for force?"),
 ];
 
 // Checkpoint at the end of each 4-day model build (sessions 4, 8, 12)
 sessionTable.forEach((entry) => {
-  if ([4, 8, 12].includes(entry.sessionNumber)) entry.isCheckpoint = true;
+  if ([4, 8, 12, 16, 20, 24, 28, 32, 36, 40].includes(entry.sessionNumber)) entry.isCheckpoint = true;
 });
 
 // ─── Checkpoints ────────────────────────────────────────────
@@ -606,6 +1166,87 @@ const checkpoints: CurriculumCheckpoint[] = [
       { skillArea: "O&U", beginning: "predicts and explains results", developing: "explains causally using the data", secure: "explains causally and connects the explanation to the underlying mechanism (Explain ★)" },
     ],
   },
+  {
+    afterSession: 16,
+    descriptors: [
+      { skillArea: "B&M", beginning: "builds the rod and reel with the manual", developing: "builds independently and adjusts", secure: "designs a deliberate change to the rod or reel, predicts the effect, tests, and verifies (Improve ★)" },
+      { skillArea: "PS", beginning: "tries new approaches when the reel sticks", developing: "reaches a measurable goal", secure: "persists across attempts to a measurable goal (Persist ★)" },
+      { skillArea: "O&U", beginning: "records lever and pulley readings", developing: "predicts before reading", secure: "explains how the lever and pulley combine — linked to the mechanism (Explain ★)" },
+    ],
+  },
+  {
+    afterSession: 20,
+    descriptors: [
+      { skillArea: "B&M", beginning: "builds the gear train with the manual", developing: "builds independently and adjusts", secure: "designs a gearing change, predicts the rotor effect, tests, and verifies (Improve ★)" },
+      { skillArea: "PS", beginning: "tries new approaches when gears slip", developing: "reaches a measurable goal", secure: "persists across attempts to a measurable goal (Persist ★)" },
+      { skillArea: "O&U", beginning: "counts and records gear turns", developing: "predicts turns from the ratio", secure: "explains why gear size changes the turns — linked to the ratio (Explain ★)" },
+    ],
+  },
+  {
+    afterSession: 24,
+    descriptors: [
+      { skillArea: "B&M", beginning: "builds the cart with the manual", developing: "builds independently and adjusts", secure: "designs a change to load or axles, predicts the effect, tests, and verifies (Improve ★)" },
+      { skillArea: "PS", beginning: "tries new approaches when it veers", developing: "reaches a measurable goal", secure: "persists across attempts to a measurable goal (Persist ★)" },
+      { skillArea: "O&U", beginning: "measures rolling distance", developing: "predicts which setup rolls furthest", secure: "explains why load and axle placement change the roll — linked to the data (Explain ★)" },
+    ],
+  },
+  {
+    afterSession: 28,
+    descriptors: [
+      { skillArea: "B&M", beginning: "builds the pulley system with the manual", developing: "builds independently and adjusts", secure: "designs a pulley change, predicts the lifting effect, tests, and verifies (Improve ★)" },
+      { skillArea: "PS", beginning: "tries new approaches when the rope slips", developing: "reaches a measurable goal", secure: "persists across attempts to a measurable goal (Persist ★)" },
+      { skillArea: "O&U", beginning: "measures lifting effort", developing: "predicts the mechanical advantage", secure: "explains why more pulley reduces effort — linked to the data (Explain ★)" },
+    ],
+  },
+  {
+    afterSession: 32,
+    descriptors: [
+      { skillArea: "B&M", beginning: "builds the drawbridge mechanism with the manual", developing: "builds independently and adjusts", secure: "designs an axle or pulley change, predicts the effect, tests, and verifies (Improve ★)" },
+      { skillArea: "PS", beginning: "tries new approaches when it jams", developing: "reaches a measurable goal", secure: "persists across attempts to a measurable goal (Persist ★)" },
+      { skillArea: "O&U", beginning: "measures direction and effort", developing: "predicts the axle and pulley behaviour", secure: "explains how axles and pulleys combine — linked to the data (Explain ★)" },
+    ],
+  },
+  {
+    afterSession: 36,
+    descriptors: [
+      { skillArea: "B&M", beginning: "builds wheels, axles and winch with the manual", developing: "builds independently and adjusts", secure: "designs a change to the build, predicts the effect, tests, and verifies (Improve ★)" },
+      { skillArea: "PS", beginning: "tries new approaches when it stalls", developing: "reaches a measurable goal", secure: "persists across attempts to a measurable goal (Persist ★)" },
+      { skillArea: "O&U", beginning: "measures distance and effort", developing: "predicts the best load position and pull", secure: "explains how wheels, axles and pulleys combine — linked to the data (Explain ★)" },
+    ],
+  },
+  {
+    afterSession: 40,
+    descriptors: [
+      { skillArea: "B&M", beginning: "builds the gear-driven bulldozer with the manual", developing: "builds independently and adjusts", secure: "designs a gearing change for speed or force, predicts, tests, and verifies (Improve ★)" },
+      { skillArea: "PS", beginning: "tries new approaches when a gear slips", developing: "reaches a measurable goal", secure: "persists across attempts to a measurable goal (Persist ★)" },
+      { skillArea: "O&U", beginning: "counts gear turns and records them", developing: "predicts turns from the ratio", secure: "explains why the gearing trades speed for force — linked to the data (Explain ★)" },
+    ],
+  },
+];
+
+// ─── Model ↔ experiment pairings (why they go together) ─────
+
+const modelPairings: ModelPairing[] = [
+  { model: "See-saw", topic: "Levers",
+    why: "A see-saw is a lever balancing on a central fulcrum. Its experiments explore how lever length and load change the effort to lift — exactly what the see-saw beam does." },
+  { model: "Weighing Scale", topic: "Levers",
+    why: "A weighing scale is a two-pan lever that must balance, not just assemble. Its experiments are the balance experiments — equal weights level the beam — which is precisely how the scale works." },
+  { model: "Crane", topic: "Pulleys",
+    why: "A crane lifts a load with a rope over a pulley. Its experiments measure pulley effort and how a pulley changes the direction of pull — the lifting system the crane is built from." },
+  { model: "Fishing Rod", topic: "Levers & Pulleys",
+    why: "A fishing rod is a lever (the rod arm) joined to a pulley (the reel). It pairs a lever experiment with a pulley experiment because the build uses both parts together." },
+  { model: "Copter", topic: "Gears",
+    why: "A copter turns a hand crank into spinning blades through a gear train. Its gear experiments — turn direction and gear ratio — explain why the rotor spins faster or slower than the handle." },
+  { model: "Rickshaw", topic: "Wheels & Axles",
+    why: "A rickshaw rolls on wheels fixed to axles. Its experiments test how load and load-position change the distance it rolls — the wheel-and-axle behaviour the rickshaw is built on." },
+  { model: "Wind Turbine", topic: "Pulleys",
+    why: "A wind turbine turns spinning blades into lifting power through a pulley. Its experiments measure double-pulley effort and pulley height — the lifting system the turbine drives." },
+  { model: "Drawbridge", topic: "Wheels, Axles & Pulleys",
+    why: "A drawbridge swings on an axle and is raised by a pulley. It pairs a steering/axle experiment with a pulley experiment because the build uses both to move the deck." },
+  { model: "Tow Truck", topic: "Wheels, Axles & Pulleys",
+    why: "A tow truck rolls on wheels and axles and winches a load with a pulley. Its experiments combine rolling (wheel-and-axle) with winching (pulley) — the two jobs the truck does." },
+  { model: "Bulldozer", topic: "Gears",
+    why: "A bulldozer drives its blade and tracks through a gear train. Its gear experiments — ratio and equal gears — explain how the gearing trades speed for the force it needs to push." },
 ];
 
 // ─── Programme ──────────────────────────────────────────────
@@ -621,8 +1262,8 @@ export const robotics812: CurriculumProgramme = {
   tagline:
     "design, build, and explain systems with knowledge and precision.",
   description:
-    "level 1 — mechanics. same three models as 5–8 but each build is four days (vs five for 5–8). every experiment runs over 2 consecutive sessions — qualitative L1 on day 1, quantitative L2 on day 2. each model has 2 experiments × 2 days = 4 days. children finish the year able to calculate mechanical advantage, predict before testing, and explain causally after.",
-  totalSessions: 12,
+    "level 1 — mechanics. across ten models — see-saw, weighing scale, crane, fishing rod, copter, rickshaw, wind turbine, drawbridge, tow truck, and bulldozer — children run experiments on levers, pulleys, gears, and wheels & axles, then build a machine that uses what they discovered. each build is four days (vs five for 5–8): explore + make · make · complete and test · improve and disassemble. children finish the year able to calculate mechanical advantage, predict before testing, and explain causally after.",
+  totalSessions: 40,
   skillAreas,
   segmentDefinitions,
   sessionTable,
@@ -632,5 +1273,6 @@ export const robotics812: CurriculumProgramme = {
     "rob-experience-book": experienceBookActivity,
   },
   checkpoints,
+  modelPairings,
   trialSession: ROBOTICS_TRIAL_SESSION_8_12,
 };

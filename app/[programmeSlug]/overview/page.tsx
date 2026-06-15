@@ -2716,45 +2716,64 @@ function ProgrammeOverviewContent() {
                   <div className="space-y-3">
 
           <div className="mt-4 space-y-3">
-            {[
-              {
-                n: 1,
-                name: "See-saw",
-                runs: "lever experiments",
-                blurb:
-                  "a simple lever — beam balancing on a central fulcrum. introduces lever ideas in the most physical way a child can feel.",
-              },
-              {
-                n: 2,
-                name: "Weighing Scale",
-                runs: "lever experiments continue",
-                blurb:
-                  "a more complex lever. two pan arms that must balance when equal weights are placed. every lever experiment directly explains something being built.",
-              },
-              {
-                n: 3,
-                name: "Crane",
-                runs: "pulley experiments",
-                blurb:
-                  "a pulley-based model. the crane lifts a load using rope and pulley. pulley experiments explain the lifting system directly.",
-              },
-            ].map((m) => (
-              <div key={m.n} className="rounded-xl bg-brand-white p-3.5 shadow-card ring-1 ring-ink/5">
-                <div className="flex items-center gap-2.5">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-orange text-[12px] font-extrabold text-white">
-                    {m.n}
-                  </span>
-                  <p className="text-[14px] font-extrabold text-ink">{m.name.toLowerCase()}</p>
-                  <span className="ml-auto rounded-chip bg-brand-orange/10 px-2 py-0.5 text-[9px] font-semibold text-brand-orange">
-                    {m.runs}
-                  </span>
-                </div>
-                <p className="mt-2 text-[12px] leading-relaxed text-ink-muted">{m.blurb}</p>
-                <p className="mt-2 text-[11px] font-semibold text-ink">
-                  {programme.ageGroup === "8-12" ? "4 build sessions" : "5 build sessions"}
-                </p>
-              </div>
-            ))}
+            {(() => {
+              // Derive the model list (and each model's experiments) from the
+              // sessionTable so every model shows — not just the first three.
+              // Overlay the modelPairings "why they pair" rationale per model.
+              const builds = programme.sessionTable.filter(
+                (s) => s.sessionNumber >= 1 && s.buildModel
+              );
+              const order: string[] = [];
+              const seen = new Set<string>();
+              builds.forEach((s) => {
+                const m = s.buildModel as string;
+                if (!seen.has(m)) {
+                  seen.add(m);
+                  order.push(m);
+                }
+              });
+              const pairingByModel = Object.fromEntries(
+                (programme.modelPairings ?? []).map((p) => [p.model, p])
+              );
+              return order.map((model, i) => {
+                const rows = builds.filter((s) => s.buildModel === model);
+                const expNames = Array.from(
+                  new Set(rows.map((s) => s.experiment).filter(Boolean) as string[])
+                ).map((id) => programme.activities[id]?.cardName || id);
+                const pairing = pairingByModel[model];
+                return (
+                  <div key={model} className="rounded-xl bg-brand-white p-3.5 shadow-card ring-1 ring-ink/5">
+                    <div className="flex items-center gap-2.5">
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-orange text-[12px] font-extrabold text-white">
+                        {i + 1}
+                      </span>
+                      <p className="text-[14px] font-extrabold text-ink">{model.toLowerCase()}</p>
+                      {pairing && (
+                        <span className="ml-auto rounded-chip bg-brand-orange/10 px-2 py-0.5 text-[9px] font-semibold text-brand-orange">
+                          {pairing.topic.toLowerCase()}
+                        </span>
+                      )}
+                    </div>
+                    {pairing && (
+                      <p className="mt-2 text-[12px] leading-relaxed text-ink-muted">{pairing.why}</p>
+                    )}
+                    {expNames.length > 0 && (
+                      <div className="mt-2 flex flex-wrap gap-1">
+                        {expNames.map((n) => (
+                          <span
+                            key={n}
+                            className="rounded-chip bg-segment-yellow/20 px-2 py-0.5 text-[9px] font-semibold text-ink-muted"
+                          >
+                            {n.toLowerCase()}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                    <p className="mt-2 text-[11px] font-semibold text-ink">{rows.length} build sessions</p>
+                  </div>
+                );
+              });
+            })()}
           </div>
 
           <div className="mt-4 rounded-xl bg-brand-orange/5 p-4">
