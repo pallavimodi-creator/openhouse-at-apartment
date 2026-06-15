@@ -4755,6 +4755,63 @@ _Experiment · physical game · card: L1 Pulleys e4_
 **PDF reference:** `/robotics-manuals/l1-pulley.pdf`
 
 
+### l2 levers e1 — a lever makes lifting easier
+
+_Experiment · physical game · card: L2 Levers e1_
+
+> lift 1kg, 1.5kg, 2kg two ways — straight up by hand, then using a lever. which way needs less effort?
+
+**How to play**
+
+1. Children lift 1kg, 1.5kg, and 2kg two ways: Setup A — straight up with a spring scale; Setup B — with a medium lever, fulcrum at the centre.
+2. They read the effort for each setup and weight.
+3. Each child records both.
+4. The lever (Setup B) needs less effort than lifting directly — the core reason a see-saw beam helps.
+
+**Difficulty**
+
+- **Easy:** Teacher sets each setup; child lifts and reads the effort.
+- **Medium:** Child runs both setups for each weight and records the effort.
+- **Hard:** Child predicts how much the lever will save before testing and explains why.
+
+**Materials**
+
+- Experiment Card: L2 Levers e1
+- Medium PVC pipe lever + T-connector fulcrum
+- Spring scale 2kg · 1kg, 1.5kg, 2kg weights · cup with hook
+- Measuring tape, erasable marker
+
+**PDF reference:** `/robotics-manuals/l2-levers-e1.pdf`
+
+
+### l2 levers e5 — balancing unequal weights
+
+_Experiment · physical game · card: L2 Levers e5_
+
+> 0.5kg on one end, 1.5kg on the other. move the fulcrum until both sides balance — where does it sit?
+
+**How to play**
+
+1. With 0.5kg on one end of the lever and 1.5kg on the other, children try different fulcrum positions until the beam balances level.
+2. Each child records where the fulcrum had to sit.
+3. The fulcrum moves closer to the heavier weight — how a weighing scale can balance unequal loads.
+
+**Difficulty**
+
+- **Easy:** Teacher moves the fulcrum; child says when it balances.
+- **Medium:** Child moves the fulcrum to find the balance point and records its position.
+- **Hard:** Child predicts which way the fulcrum must move before testing and explains why.
+
+**Materials**
+
+- Experiment Card: L2 Levers e5
+- Medium PVC pipe lever + movable fulcrum
+- 0.5kg and 1.5kg weights
+- Measuring tape, erasable marker
+
+**PDF reference:** `/robotics-manuals/l2-levers-e5.pdf`
+
+
 ### l1 gears e1 — which way do gears turn
 
 _Experiment · physical game · card: L1 Gears e1_
@@ -5635,35 +5692,6 @@ _Experiment · physical game · card: L1 Levers e2_
 **PDF reference:** `/robotics-manuals/l1-levers.pdf`
 
 
-### l2 levers e2 — is the increase proportional?
-
-_Experiment · physical game · card: L2 Levers e2_
-
-> heavier weights. is load-to-effort a straight-line relationship?
-
-**How to play**
-
-1. Same arm as L1 e2.
-2. Add 1kg, 2kg, 3kg, 4kg loads (use 2kg weights available).
-3. Take readings.
-4. Plot or tabulate load vs effort.
-5. Is the relationship proportional — does effort double when load doubles?
-6. Calculate the ratio row-by-row.
-
-**Difficulty**
-
-- **Easy:** Record readings. Teacher calculates ratios.
-- **Medium:** Child measures and calculates each ratio.
-- **Hard:** Child predicts the full table from the first reading using proportional reasoning.
-
-**Materials**
-
-- Experiment Card: L2 Levers e2
-- PVC pipe · fulcrum · spring scale 3kg · 2kg weights (×2) · calculator
-
-**PDF reference:** `/robotics-manuals/l2-levers.pdf`
-
-
 ### l1 levers e3 — equal weights balance
 
 _Experiment · physical game · card: L1 Levers e3_
@@ -5687,34 +5715,6 @@ _Experiment · physical game · card: L1 Levers e3_
 - PVC pipe 30cm · fulcrum · two 0.5kg + two 1kg weights · two cups
 
 **PDF reference:** `/robotics-manuals/l1-levers.pdf`
-
-
-### l2 levers e3 — calculate the balance point
-
-_Experiment · physical game · card: L2 Levers e3_
-
-> unequal weights. can you calculate where the fulcrum must sit?
-
-**How to play**
-
-1. Hang 1kg on left at fixed distance.
-2. Hang 2kg on right — where must the fulcrum sit for the lever to balance?
-3. Calculate before testing using weight × distance on each side.
-4. Test.
-5. Record prediction and measured position.
-
-**Difficulty**
-
-- **Easy:** Teacher shows the calculation. Child places fulcrum and checks.
-- **Medium:** Child does the calculation and tests.
-- **Hard:** Child solves for three different weight pairs and records predicted vs actual for each.
-
-**Materials**
-
-- Experiment Card: L2 Levers e3
-- PVC pipe 40cm · fulcrum · 1kg + 2kg weights · measuring tape · calculator
-
-**PDF reference:** `/robotics-manuals/l2-levers.pdf`
 
 
 ### l1 levers e4 — any equal weight balances
@@ -5742,36 +5742,6 @@ _Experiment · physical game · card: L1 Levers e4_
 - PVC pipe 30cm · fulcrum · cups · 0.5kg weight · 3–4 everyday objects of roughly equal weight
 
 **PDF reference:** `/robotics-manuals/l1-levers.pdf`
-
-
-### l2 levers e4 — calculate an unknown weight
-
-_Experiment · physical game · card: L2 Levers e4_
-
-> use the lever to measure a weight you do not know.
-
-**How to play**
-
-1. Hang a known weight (1kg) at a fixed distance on one side.
-2. Hang the unknown object on the other side.
-3. Move the fulcrum until the lever balances.
-4. Measure the two distances.
-5. Calculate the unknown weight using the ratio of arm lengths: unknown = known × (known-arm ÷ unknown-arm).
-6. Verify on a real scale.
-7. Record the error.
-
-**Difficulty**
-
-- **Easy:** Child balances and measures distances. Teacher helps with the calculation.
-- **Medium:** Child does the calculation independently and checks against a real scale.
-- **Hard:** Child predicts the unknown weight before balancing using a rough estimate, then refines using the measurement.
-
-**Materials**
-
-- Experiment Card: L2 Levers e4
-- PVC pipe 40cm · fulcrum · 1kg weight · measuring tape · 2–3 unknown objects · calculator · real scale for verification
-
-**PDF reference:** `/robotics-manuals/l2-levers.pdf`
 
 
 ### l2 levers e5 — unequal weights, move the fulcrum
