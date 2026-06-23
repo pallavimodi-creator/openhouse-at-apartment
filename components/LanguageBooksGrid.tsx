@@ -14,9 +14,11 @@ const ACTIVITY_LABEL: Record<LanguageBook["groupActivityType"], string> = {
   "puppet-character": "puppet character",
 };
 
+// Wordsmiths is now a single fixed game ("vocabulary cards") for every book,
+// so both legacy vocabulary types display the same label.
 const VOCAB_TYPE_LABEL: Record<LanguageBook["vocabularyType"], string> = {
-  "emotion-tiles": "emotion tiles",
-  "story-calendar": "story calendar",
+  "emotion-tiles": "vocabulary cards",
+  "story-calendar": "vocabulary cards",
 };
 
 /**

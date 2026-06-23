@@ -204,32 +204,41 @@ const playgroundGames: Record<string, CurriculumActivity> = {
     debriefPrompts: [],
     type: "physical-game",
   },
-};
-
-/* ─── Wordsmiths resources — three vocabulary tools that pair with
- * different books. The "see → act → say" sequence is the same across
- * all three. ─────────────────────────────────────────────────────── */
-
-const wordsmithsResources: Record<string, CurriculumActivity> = {
-  "emotion-tiles": {
-    id: "emotion-tiles",
-    segment: "wordsmiths",
-    title: "emotion tiles",
-    setupLine: "Show the tile. Act the feeling. Use it in a sentence.",
+  "story-construction": {
+    id: "story-construction",
+    segment: "playground",
+    title: "story construction",
+    setupLine: "Arrange the story cards and narrate the story.",
     howToPlay:
-      "The educator holds up an emotion tile (happy, sad, angry, calm, afraid, loving). All children act the feeling together with their faces and bodies. Then one child at a time uses the word in a sentence about the current book — \"the monster felt happy when he sorted his colours\".",
-    materials: ["Emotion tile deck — one tile per feeling word"],
+      "Shuffle the story cards and place them face up. Children work together to arrange the cards in the correct order and narrate the story.",
+    materials: ["8 story cards deck"],
+    variations: [
+      { name: "Story Trail", description: "Children/educators follow the story card by card, describing what is happening in each picture and linking it to the next one to narrate the story." },
+      { name: "Story Squad", description: "Divide children into three teams: Story Makers — arrange the cards in the correct order · Story Stars — act out the story · Story Questioners — ask questions about the story and characters to the other two teams." },
+      { name: "Story Twist", description: "Children, as groups or individuals, rearrange the cards in a different order to create a brand-new story. They then narrate or act out their new version. (Can be combined with Story Squad.)" },
+    ],
+    difficultyLevels: [
+      { level: "Easy", description: "Story Trail variation." },
+      { level: "Medium", description: "Original gameplay." },
+      { level: "Hard", description: "Story Squad; Story Twist variation." },
+    ],
     debriefPrompts: [],
     type: "physical-game",
   },
-  "story-calendar": {
-    id: "story-calendar",
+};
+
+/* ─── Wordsmiths resource — a single fixed vocabulary game. The
+ * "see → act → say" sequence drives every session. ──────────────── */
+
+const wordsmithsResources: Record<string, CurriculumActivity> = {
+  "vocabulary-cards": {
+    id: "vocabulary-cards",
     segment: "wordsmiths",
-    title: "story calendar",
+    title: "vocabulary cards",
     setupLine: "Show the card. Act the word. Use it in a sentence.",
     howToPlay:
-      "The educator shows a card with a describing or spatial word (clumsy, splendid, under, beside, behind). All children act it out together. Then one child at a time uses the word in a sentence about the current book — \"the giraffe was clumsy on the dance floor\".",
-    materials: ["Story calendar — one describing or spatial word per card"],
+      "The educator shows a vocabulary card for a target word from the current book — a feeling, describing, action, or spatial word. All children act the word together with their faces and bodies. Then one child at a time uses the word in a sentence about the current book. The same see → act → say sequence runs every session. (Digital deck — to be added soon.)",
+    materials: ["Vocabulary cards — a digital deck (coming soon)"],
     debriefPrompts: [],
     type: "physical-game",
   },
@@ -586,7 +595,7 @@ function buildLanguageSessionTable(): CurriculumSessionEntry[] {
       // Language segment assignments
       rollRhyme: pickSong(sessionNumber),
       bookOClock: `book-${slot.bookOrder}`,
-      wordsmiths: book?.vocabularyType ?? "story-calendar",
+      wordsmiths: "vocabulary-cards",
       playWrites: PLAY_WRITES_MATERIALS[(sessionNumber - 1) % PLAY_WRITES_MATERIALS.length],
       playground: PLAYGROUND_ROTATION[(sessionNumber - 1) % PLAYGROUND_ROTATION.length],
       experienceBook: "experience-book",
@@ -753,9 +762,8 @@ export const languageStorytelling35: CurriculumProgramme = {
       name: "Wordsmiths",
       durationRange: "10 min",
       objective:
-        "One vocabulary resource per session, matched to the current book's vocabulary type — emotion tiles for feeling words, story calendar for describing, action, and spatial words. The see → act → say sequence is always the same: the educator shows the tile or card, all children act the word together, then one child at a time uses it in a sentence. Acting is always whole-group — no child is singled out.",
-      type: "rotating",
-      rotationPool: Object.keys(wordsmithsResources),
+        "A single fixed vocabulary game — Vocabulary cards — runs every session (it does not rotate). The see → act → say sequence is always the same: the educator shows the card for a target word from the current book, all children act the word together, then one child at a time uses it in a sentence. Acting is always whole-group — no child is singled out. The cards are a digital deck, to be added soon.",
+      type: "fixed",
     },
     {
       id: "play-writes",
