@@ -17,32 +17,18 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     id: "shape-stitch-3-5",
     segment: "art-games",
     title: "shape stitch",
-    setupLine: "Building the skill to stitch things up.",
+    setupLine:
+      "sew through templates using shoelaces. running stitch, backstitch, or a pattern combining stitches of your choice.",
     howToPlay:
-      "This game helps children learn to pass thread through holes to create a variety of stitching patterns and attachments. Each child picks a template of their choice. The teacher models a stitch and helps the child pass thread the same way. Move to the next stitch when the child has learnt the former — there is no compulsion to learn all kinds; typically children learn all in a year's time.",
-    example:
-      "Children learn more and more complex stitches over time, become more independent, and can stitch faster.",
+      "Children sew through templates using shoelaces. Running Stitch = dashed line. Backstitch = continuous joined line. Whip stitch = over the edges in a loop. Pattern Stitching = combines stitch types in a design of the child's choosing.",
     materials: [
-      "Stitching bases (geometric shapes · objects · characters)",
-      "Shoelaces with a stiff tip",
-      "Stitch reference card (running · whip · back · chain · double · pattern)",
+      "Sewing templates (numbers, alphabets, and object outlines)",
+      "Shoelaces",
     ],
-    variations: [
-      {
-        name: "Speed challenges",
-        description:
-          "Set a timer; children race to complete a stretch of stitching cleanly.",
-      },
-      {
-        name: "Scavenger bins",
-        description:
-          "Children pick templates from scavenger bins instead of being handed one — building choice and independence.",
-      },
-      {
-        name: "Multi-shape patterns",
-        description:
-          "Children attach multiple shapes together and design their own patterns.",
-      },
+    difficultyLevels: [
+      { level: "Easy", description: "Running Stitch and Whip stitch." },
+      { level: "Medium", description: "Backstitch." },
+      { level: "Hard", description: "Pattern stitching." },
     ],
     debriefPrompts: [],
     type: "physical-game",
@@ -143,9 +129,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     title: "mix it up",
     setupLine: "Mix and match colours.",
     howToPlay:
-      "This game helps children learn and enjoy colour matching and colour mixing, and understand what colour different objects are. The teacher picks one variation per round and lays out the cards needed for that variation.",
-    example:
-      "Children's colour mixing improves and the range of objects they can name colours for grows.",
+      "This game builds colour matching, mixing, and naming. It is played through the five variations below — the educator picks one per round and lays out the cards needed for it. Children can play as individuals, pairs, or groups.",
     materials: [
       "Colour cards — 12, 2 of each (24 total)",
       "Colour frames — 12",
@@ -154,35 +138,35 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     ],
     variations: [
       {
-        name: "Make an artwork",
+        name: "Colour flip",
         description:
-          "Children use the object cue cards as references and the stencils as scaffolds to create their own artwork.",
+          "educator places pairs of colour cards facing down. Children take turns to flip any 2 cards. If they match, they keep it and name the colour. If they do not match, they place them back. The game ends when all the cards have been flipped and played.",
       },
       {
-        name: "Bizarre colours",
+        name: "Match the colour",
         description:
-          "Each child picks a colour for another child, who must colour their stencil object in that colour and add a second colour to mix.",
+          "educator picks and places an object card. The child picks the colour card/cards matching the object and places them near it. educator places the next object card and the next child continues. The same can be repeated with educator placing colour card/cards and children picking up the object cards matching it and placing them near. The game ends after a set number of rounds.",
       },
       {
-        name: "Colour challenge",
+        name: "Colour set",
         description:
-          "The teacher allots a colour card to each child; the child has to pick a stencil suitable for that colour.",
+          "educator gives each child a set number of object cards. Each child then takes turns picking up the matching colours from the pile. The game ends once each child has had a turn.",
       },
       {
-        name: "Colour pattern with memory",
+        name: "Mix and match",
         description:
-          "The teacher arranges colour cards in an order — first a few, then more — turns them over each time, and children recall and rearrange from memory.",
+          "educator gives each child a secondary colour card (orange, purple, green) and asks them to mix 2 colours to obtain the colour on their card. Children choose the 2 colours and try it out; the educator can suggest two colours to try and match with the card. The game ends once the children have mixed the colours to create the target colour. Extension: the educator adds a colour paint and asks children to add white or black and check if the colour is lighter or darker than the colour card.",
       },
       {
-        name: "Colour chinese whisper",
+        name: "Colour detective",
         description:
-          "Each child sits in a circle holding a colour card; each names an object of that colour and the line continues — repeating from the previous without forgetting.",
+          "educator makes a colour-formula question using a connector and colour cards (for example, red card + blue card = ?). The child places the resultant colour card in place of the question mark, and can also place an object of the resultant colour. The game ends after a set number of rounds.",
       },
-      {
-        name: "Timed matching challenge",
-        description:
-          "Match objects to their colours before the timer runs out.",
-      },
+    ],
+    difficultyLevels: [
+      { level: "Easy", description: "Match the colour and Colour set variations — easy object cards." },
+      { level: "Medium", description: "Colour flip; use of medium object cards." },
+      { level: "Difficult", description: "Mix and match variation; use of complex object cards; Colour detective." },
     ],
     debriefPrompts: [],
     type: "physical-game",
@@ -193,7 +177,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     title: "colour friends",
     setupLine: "Choose colour friends and tools to colour.",
     howToPlay:
-      "Children make a conscious choice about colours and learn to have fun with colours and diverse tools. Everyone gets the same worksheet, but each child gets to pick their own colour and tool. The dominant colour on the worksheet has to be the colour they chose, but they can use other colours alongside.",
+      "Each child picks one colour card and one tool card. They are then given an artwork along with the selected material and tool. Once the educator has set up all the material, the children can start their artwork. The game ends once the children complete the artwork using the chosen tool and colour. Once the children are familiar with the colours, the educator can introduce wild cards. Note: 1. The educator can place the colour wheel on the table for the children to observe. 2. This gameplay doesn't depend on the worksheets — the educator can also swap in cards from other games (e.g. I Shop Texture, DIY sheets) to trace or directly work on.",
     example:
       "Children get confident in using different colours, tools, and colour techniques.",
     materials: [
@@ -201,6 +185,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "Tool cards",
       "Colour Wild cards",
       "Colour Friend worksheets",
+      "General art supplies (A4 paper, pencil, paint, crayons, cotton, etc.)",
     ],
     variations: [
       {
@@ -222,10 +207,10 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
   "i-spot-texture": {
     id: "i-spot-texture",
     segment: "art-games",
-    title: "i spot texture",
+    title: "i shop texture",
     setupLine: "Learn how to create textures in this fun shopping-for-textures game.",
     howToPlay:
-      "Children learn how to create diverse textures with different materials. Each child gets a limited number of tokens. The teacher decides the price of both objects and textures, written on the cards in erasable marker. Children buy objects and textures of their choice within their token budget, then create the chosen texture on the object — directly on the card using clay or erasable marker.",
+      "Children learn how to create diverse textures with different materials. Each child gets a limited number of tokens. The educator decides the price of both objects and textures, written on the cards in erasable marker. Children buy objects and textures of their choice within their token budget, then create the chosen texture on the object — directly on the card using clay or erasable marker. The game ends once all the children finish the task/artwork or after a set time.",
     example:
       "Children comfortably create different textures using different tools.",
     materials: [
@@ -242,9 +227,9 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
           "Instead of working directly on the card, children recreate the textured object on paper using more art materials.",
       },
       {
-        name: "Free-style shop and sell",
+        name: "Recreate",
         description:
-          "Split children into teams. Each team picks a shop deck and creates products to sell — buying textures from the bank.",
+          "Children buy a card, then recreate it on an A4 sheet and add details to the image (background, colour).",
       },
       {
         name: "Timed challenges",
@@ -263,7 +248,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     title: "mini artventure",
     setupLine: "A board game where you roll the dice, do art tasks, and move ahead — an art-task adventure for the minis.",
     howToPlay:
-      "Children learn drawing, colouring, moulding, and building in a board-game task format — the more tasks they complete, the more tokens they collect, and the faster they win. Place the game board on a play mat, shuffle and sort challenge cards by zone colour, shuffle Fortune cards into their own mini-deck, and set up material trays for each zone. Each child picks a token and starts at the Start space. Decide on the number of rounds (6–8 is a good range) and keep a 2-minute timer ready. On their turn, each player rolls the dice and moves forward. The space they land on tells them what to do — green (Draw zone, draw the prompt), blue (Colour zone, colour with wax crayons), purple (Mould zone, shape with playdough), yellow (Build zone, recreate a shape with 2D wooden blocks and connectors), or Fortune (pick a Fortune card — \"take an extra turn,\" \"help a friend finish their drawing,\" etc.). After all players have picked a challenge card, they head to the matching zone tray and start the 2-minute timer. On successful completion, the teacher hands out a reward token. After all rounds, players count their tokens — everyone is a winner, the group celebrates participation and effort.",
+      "Children learn drawing, colouring, moulding, and building in a board-game task format — the more tasks they complete, the more tokens they collect. Place the game board on a play mat, shuffle and sort challenge cards by zone colour, shuffle Fortune cards into their own mini-deck, and set up material trays for each zone. Each child picks a meeple and starts at the Start space. Decide on the number of rounds (6–8 is a good range) and keep a 2-minute timer ready. On their turn, each player rolls the dice and moves forward. The space they land on tells them what to do — Green Zone — Draw, Blue Zone — Colour, Purple Zone — Mould, Yellow Zone — Build. After all players have picked a challenge card, they head to the matching zone tray and start the 2-minute timer. On successful completion, the educator hands out a reward token. After all rounds, players count their tokens — everyone is a winner, the group celebrates participation and effort. The game ends when the set number of rounds is over.",
     example:
       "Children get faster, more creative, and more confident with the tasks over time.",
     materials: [
@@ -281,9 +266,9 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     ],
     variations: [
       {
-        name: "Nominate a friend",
+        name: "Team task",
         description:
-          "When a child lands on a challenge, instead of doing it themselves they nominate which child has to do the challenge — and that child completes it.",
+          "One player from each team rolls the dice and moves the meeple, and the group completes the designated task.",
       },
     ],
     debriefPrompts: [],
