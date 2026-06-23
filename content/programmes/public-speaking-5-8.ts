@@ -16,9 +16,9 @@ const rollCallActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "I'll say one sentence ending in a bold starter word. The next child begins their sentence with that word. Chain continues around the circle.",
     howToPlay:
-      "Sit in a circle. Teacher reads one opening sentence — the last word is a bold starter word the next child must open with. The chain continues around the circle. If a child cannot continue within 5 seconds, they say \"pass\" and the next child continues.",
+      "Sit in a circle. Educator reads one opening sentence — the last word is a bold starter word the next child must open with. The chain continues around the circle. If a child cannot continue within 5 seconds, they say \"pass\" and the next child continues.",
     example:
-      "Teacher — \"I saw a puppy near my building gate.\" Child 1 — \"Gate was closed when I tried to open it.\" Child 2 — \"It took me a minute to figure out why.\" No requirements — the child can make a sentence that does not necessarily continue the story.",
+      "Educator — \"I saw a puppy near my building gate.\" Child 1 — \"Gate was closed when I tried to open it.\" Child 2 — \"It took me a minute to figure out why.\" No requirements — the child can make a sentence that does not necessarily continue the story.",
     materials: ["Opening-sentence prompt deck"],
     promptHeading: "prompts — last word is the starter for the next child",
     prompts: [
@@ -32,7 +32,7 @@ const rollCallActivities: Record<string, CurriculumActivity> = {
       "My father came home very late  →  starter: late",
       "We were excited because it was a holiday  →  starter: holiday",
       "I laughed because my friend was funny  →  starter: funny",
-      "We sat quietly because the teacher was angry  →  starter: angry",
+      "We sat quietly because the educator was angry  →  starter: angry",
       "I woke up early on a Sunday  →  starter: Sunday",
     ],
     debriefPrompts: [],
@@ -46,7 +46,7 @@ const rollCallActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "I'm going to show a card. Your team has to become that object — using only your bodies. No speaking.",
     howToPlay:
-      "Children divide into teams of 3–4. One child flips an object image card — visible to all teams. All teams immediately form that object using their bodies. No speaking. Teams work together silently. The teacher decides which team's version is most convincing. That team flips the next card.",
+      "Children divide into teams of 3–4. One child flips an object image card — visible to all teams. All teams immediately form that object using their bodies. No speaking. Teams work together silently. The educator decides which team's version is most convincing. That team flips the next card.",
     variations: [
       {
         name: "Formation guide",
@@ -122,7 +122,7 @@ const rollCallActivities: Record<string, CurriculumActivity> = {
       {
         name: "Volume Toss Circle",
         description:
-          "The circle gradually moves up or down the volume scale — each catcher speaks one notch louder or one notch quieter than the last. After every 3 children, the teacher resets the cycle and the circle starts again from the beginning of the scale.",
+          "The circle gradually moves up or down the volume scale — each catcher speaks one notch louder or one notch quieter than the last. After every 3 children, the educator resets the cycle and the circle starts again from the beginning of the scale.",
       },
     ],
     materials: ["Soft ball"],
@@ -253,7 +253,7 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "Every child gets a script card. They fill in the blanks and then narrate their script.",
     howToPlay:
-      "Each child receives a laminated Script Flip card and an erasable marker. They fill in the story template blanks. When all blanks are filled, each child narrates their completed script. For children who cannot yet write, the teacher scribes — child says the word aloud, teacher writes it in, then child narrates.",
+      "Each child receives a laminated Script Flip card and an erasable marker. They fill in the story template blanks. When all blanks are filled, each child narrates their completed script. For children who cannot yet write, the educator scribes — child says the word aloud, educator writes it in, then child narrates.",
     variations: [
       {
         name: "Write & perform — individual or as a team",
@@ -303,12 +303,12 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "Shuffle Story Cards and place face-up in 4 piles (character, object, event, emotion). Pick one card from any pile. Children place it on the story mat and each child continues the story line through the cards they pick and place.",
     howToPlay:
-      "Teacher places the Story Mat and the deck of story cards in 4 piles. First child places their card and begins the story. The next child picks a card from any pile, places it on the Story Mat, and continues the story line from where the previous child left off. The tale builds card by card around the circle. The child placing the last card ends the story, or the teacher ends it.",
+      "Educator places the Story Mat and the deck of story cards in 4 piles. First child places their card and begins the story. The next child picks a card from any pile, places it on the Story Mat, and continues the story line from where the previous child left off. The tale builds card by card around the circle. The child placing the last card ends the story, or the educator ends it.",
     variations: [
       {
         name: "Variation — Mixed cards",
         description:
-          "Teacher places all category cards in a single pile faced down. The player draws cards turn by turn, randomly.",
+          "Educator places all category cards in a single pile faced down. The player draws cards turn by turn, randomly.",
       },
     ],
     materials: [
@@ -317,7 +317,7 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     ],
     difficultyLevels: [
       { level: "Easy", description: "Educator provides an opening sentence." },
-      { level: "Medium", description: "Variation 1 — children or teacher can choose a theme card for a child." },
+      { level: "Medium", description: "Variation 1 — children or educator can choose a theme card for a child." },
       { level: "Hard", description: "Variation 2 — child draws a random card from the deck." },
     ],
     debriefPrompts: [
@@ -420,7 +420,7 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "Speak on your topic for a set time to move a set number of steps. Hesitate or stop, and the timer stops — you move by however many steps the time board gives you.",
     howToPlay:
-      "Pieces start at the bottom of the gameboard. The time board at the side maps speaking time to steps — e.g. 15 seconds = 1 step, 30s = 2, 45s = 3, 60s = 4, and so on. Players can see the board so they can plan how long they want to keep speaking. Teacher reads out a prompt from the digital deck in the app. Player starts speaking on that prompt. The timer runs. Hesitation, repetition, or going off-topic stops the timer — the piece moves by the number of steps the time board allows for that clock reading. Landing on a Slippery Step moves the piece back. Landing on a Risk Step: player attempts a Risk Card challenge — completing it earns a Reward Card. First individual / team to the top of the board wins.",
+      "Pieces start at the bottom of the gameboard. The time board at the side maps speaking time to steps — e.g. 15 seconds = 1 step, 30s = 2, 45s = 3, 60s = 4, and so on. Players can see the board so they can plan how long they want to keep speaking. Educator reads out a prompt from the digital deck in the app. Player starts speaking on that prompt. The timer runs. Hesitation, repetition, or going off-topic stops the timer — the piece moves by the number of steps the time board allows for that clock reading. Landing on a Slippery Step moves the piece back. Landing on a Risk Step: player attempts a Risk Card challenge — completing it earns a Reward Card. First individual / team to the top of the board wins.",
     variations: [
       {
         name: "Individual play",
@@ -595,9 +595,9 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     segment: "playground",
     title: "reverse gear",
     setupLine:
-      "Teacher gives a sentence prompt. A child starts speaking. Another player can call \"reverse gear\" on any word — the speaker then has to say the opposite of what was originally said.",
+      "Educator gives a sentence prompt. A child starts speaking. Another player can call \"reverse gear\" on any word — the speaker then has to say the opposite of what was originally said.",
     howToPlay:
-      "Teacher gives a sentence prompt to speak. A child starts speaking. Another player can choose to call \"reverse gear\" on a specific word in between. The child then has to say the opposite of what was originally said, or change the original word to a different word, continuing from that point. For example, a player says \"I love eating mangoes.\" Another child calls \"reverse gear on I.\" The player repeats the sentence — \"You love eating mangoes.\"",
+      "Educator gives a sentence prompt to speak. A child starts speaking. Another player can choose to call \"reverse gear\" on a specific word in between. The child then has to say the opposite of what was originally said, or change the original word to a different word, continuing from that point. For example, a player says \"I love eating mangoes.\" Another child calls \"reverse gear on I.\" The player repeats the sentence — \"You love eating mangoes.\"",
     materials: ["Reverse Gear prompt deck (app)"],
     difficultyLevels: [
       {
@@ -644,10 +644,10 @@ const showtimeActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "You are a news reporter. You have just heard something extraordinary. Tell the class what happened — beginning, middle, and end. After you finish, everyone asks you one question.",
     howToPlay:
-      "Teacher reads out a prompt from the app. The child prepares for a set time. Child delivers their report standing in front of the class — a clear opening (who they are and what happened), a middle (details), and a closing (what happens next). After the report, each child asks the reporter one question. The reporter answers each in one sentence. New child takes the next prompt.",
+      "Educator reads out a prompt from the app. The child prepares for a set time. Child delivers their report standing in front of the class — a clear opening (who they are and what happened), a middle (details), and a closing (what happens next). After the report, each child asks the reporter one question. The reporter answers each in one sentence. New child takes the next prompt.",
     materials: ["App for prompt cards (digital)"],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher helps with points to speak." },
+      { level: "Easy", description: "Educator helps with points to speak." },
       { level: "Medium", description: "Limited preparation time." },
       { level: "Hard", description: "No preparation time." },
     ],
@@ -663,7 +663,7 @@ const showtimeActivities: Record<string, CurriculumActivity> = {
       "Cat wins running race.",
       "Monkey steals lunch box.",
       "Robot joins classroom today.",
-      "Teacher turns superhero during class time.",
+      "Educator turns superhero during class time.",
       "Rain turns into sticky jelly drops.",
       "Kids build huge fort inside classroom.",
       "Talking parrot gives morning announcements.",
@@ -690,7 +690,7 @@ const showtimeActivities: Record<string, CurriculumActivity> = {
       "Topic prompts — https://wordwall.net/resource/77103607",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher helps with the opening sentence and structure." },
+      { level: "Easy", description: "Educator helps with the opening sentence and structure." },
       { level: "Medium", description: "Standard gameplay — limited preparation time, child structures independently." },
       { level: "Hard", description: "No preparation time given — child must include at least two deliberate changes of volume or energy." },
     ],
@@ -712,10 +712,10 @@ const showtimeActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "Share one experience connected to today's theme — tell us where you were, what happened, and how it ended. After each person shares, two people ask one real question.",
     howToPlay:
-      "Teacher gives today's theme from the prompt bank. Each child takes 30 seconds to think. Children share in turn — beginning (when and where), main event (what happened), conclusion (how it ended or what it meant). After each child shares, two peers each ask one genuine question connected to what was actually said.",
+      "Educator gives today's theme from the prompt bank. Each child takes 30 seconds to think. Children share in turn — beginning (when and where), main event (what happened), conclusion (how it ended or what it meant). After each child shares, two peers each ask one genuine question connected to what was actually said.",
     materials: ["App for theme prompts"],
     difficultyLevels: [
-      { level: "Easy", description: "Familiar themes, teacher models with their own experience first." },
+      { level: "Easy", description: "Familiar themes, educator models with their own experience first." },
       { level: "Medium", description: "Standard themes, no model." },
       { level: "Hard", description: "Abstract or challenging themes, no preparation time." },
     ],
@@ -750,7 +750,7 @@ const showtimeActivities: Record<string, CurriculumActivity> = {
       "30 small objects — 10 animals, 10 vehicles, 10 everyday objects",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher provides a sentence frame: \"One day, [object] was...\"" },
+      { level: "Easy", description: "Educator provides a sentence frame: \"One day, [object] was...\"" },
       { level: "Medium", description: "No frame, child begins independently." },
       { level: "Hard", description: "Child draws two objects — both must appear at named points in the story." },
     ],
@@ -764,7 +764,7 @@ const showtimeActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "Create and perform a short story together using five simple prompts — a character, a setting, a problem, an action, and an ending.",
     howToPlay:
-      "Children form groups of 3–4. Each group receives the prompt sheet with five anchor categories: Character (who is this story about? — robot, rabbit, child, pirate, monster), Setting (where is the story happening? — forest, space, school, home, ocean), Problem (oh no — what goes wrong? — gets lost, something breaks, chased, can't find something), Action (what do they try? — hide, build, run, fix, ask for help), and Ending (what happens in the end? — escapes, finds it, fixes it, wins, becomes safe). Each group picks one word from each category, builds a short story using all five, and performs it to the rest of the class. Writing is optional — speaking and acting is key. Teacher chooses exactly one challenge for the round (see challenges below).",
+      "Children form groups of 3–4. Each group receives the prompt sheet with five anchor categories: Character (who is this story about? — robot, rabbit, child, pirate, monster), Setting (where is the story happening? — forest, space, school, home, ocean), Problem (oh no — what goes wrong? — gets lost, something breaks, chased, can't find something), Action (what do they try? — hide, build, run, fix, ask for help), and Ending (what happens in the end? — escapes, finds it, fixes it, wins, becomes safe). Each group picks one word from each category, builds a short story using all five, and performs it to the rest of the class. Writing is optional — speaking and acting is key. Educator chooses exactly one challenge for the round (see challenges below).",
     materials: [
       "Story Spine prompt sheet — 5 anchor categories (character · setting · problem · action · ending) with example words under each",
     ],
@@ -791,10 +791,10 @@ const showtimeActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "You have a superpower. Sell it to the group. Tell us what it is, why it is the best, and answer one challenge question.",
     howToPlay:
-      "The child is given a superpower prompt from the app by the teacher. 30 seconds to prepare. Child pitches their superpower to the class. The group votes — useful or useless. Child responds to one challenge question from the group.",
+      "The child is given a superpower prompt from the app by the educator. 30 seconds to prepare. Child pitches their superpower to the class. The group votes — useful or useless. Child responds to one challenge question from the group.",
     materials: ["App for superpower prompts"],
     difficultyLevels: [
-      { level: "Easy", description: "1 minute prep, teacher provides the opening: \"My superpower is...\"" },
+      { level: "Easy", description: "1 minute prep, educator provides the opening: \"My superpower is...\"" },
       { level: "Medium", description: "30 seconds prep, child structures independently." },
       { level: "Hard", description: "No prep, child must handle at least two challenge questions from the group." },
     ],
@@ -1172,7 +1172,7 @@ export const publicSpeaking58: CurriculumProgramme = {
       id: "showtime",
       name: "Showtime",
       durationRange: "30–35 min",
-      objective: "children perform in front of peers. audience responds immediately. teacher tracks who speaks. debrief closes.",
+      objective: "children perform in front of peers. audience responds immediately. educator tracks who speaks. debrief closes.",
       type: "rotating",
       rotationPool: [
         "whacky-news", "mad-ad", "experience-share",
@@ -1183,7 +1183,7 @@ export const publicSpeaking58: CurriculumProgramme = {
       id: "log-book",
       name: "Experience Book",
       durationRange: "8–10 min",
-      objective: "child fills in log book with teacher's help. book goes home.",
+      objective: "child fills in log book with educator's help. book goes home.",
       type: "fixed",
     },
   ],
@@ -1198,17 +1198,17 @@ export const publicSpeaking58: CurriculumProgramme = {
         name: "When children arrive",
         time: "2 min",
         objective:
-          "children sit wherever they like — around a table, on the floor, however the space works. teacher sits in the group, not in front.",
+          "children sit wherever they like — around a table, on the floor, however the space works. educator sits in the group, not in front.",
         setupLine:
           "quick question. answer fast — first thing that comes to your head. what is the most disgusting food you can imagine?",
         howToPlay:
-          "fast round — every child answers. teacher celebrates the most outrageous answer with genuine enthusiasm. \"did you notice what just happened? every single one of you spoke. just now. without being asked twice. because the question was fun enough that your voice came out before your brain said no.\" \"that's what every game in this class does — makes the question so interesting that speaking becomes the easy part.\" \"today — three games. real games. let's go.\"",
+          "fast round — every child answers. educator celebrates the most outrageous answer with genuine enthusiasm. \"did you notice what just happened? every single one of you spoke. just now. without being asked twice. because the question was fun enough that your voice came out before your brain said no.\" \"that's what every game in this class does — makes the question so interesting that speaking becomes the easy part.\" \"today — three games. real games. let's go.\"",
       },
       {
         name: "Game context — say this early",
         time: "1 min",
         objective:
-          "a short framing the teacher reads to the group once they've settled — sets expectation for what today's games are and how much choice children have.",
+          "a short framing the educator reads to the group once they've settled — sets expectation for what today's games are and how much choice children have.",
         howToPlay:
           "\"did you know we're going to play lots of different speaking games today? we'll use fun prompts to tell stories, act like characters, and share our ideas. we'll play games where you speak on your own, with a partner, and even in teams. for older children, we'll also try a fun debate duel game. every game is different — sometimes you perform, sometimes you answer, and sometimes you lead!\"",
       },
@@ -1216,11 +1216,11 @@ export const publicSpeaking58: CurriculumProgramme = {
         name: "Roll Call — Sentence Chain",
         time: "12 min",
         objective:
-          "first game of the session. teacher demonstrates once with the child beside them, then the chain moves around the circle.",
+          "first game of the session. educator demonstrates once with the child beside them, then the chain moves around the circle.",
         setupLine:
           "i say a sentence. it ends on one word. that word is your first word. you build a new sentence from it. we go around the circle. if you get stuck — say pass and the next person goes.",
         howToPlay:
-          "teacher demonstrates the mechanic fully with the child beside them first — so everyone sees it once before playing. teacher starts: \"today i ate a mango.\" chain moves around the circle. two full rounds — second round a little faster.",
+          "educator demonstrates the mechanic fully with the child beside them first — so everyone sees it once before playing. educator starts: \"today i ate a mango.\" chain moves around the circle. two full rounds — second round a little faster.",
         example:
           "prompts to restart if the chain runs dry: \"i saw a puppy near my building gate.\" · \"we went to the park in the evening.\" · \"my friend was feeling very happy.\" · \"i ran home because it started to rain.\" · \"we stopped playing because it got dark.\"",
       },
@@ -1228,11 +1228,11 @@ export const publicSpeaking58: CurriculumProgramme = {
         name: "Playground — Tale Trail",
         time: "18 min",
         objective:
-          "build a story together, card by card. one turn each before anyone takes a second. teacher keeps energy warm.",
+          "build a story together, card by card. one turn each before anyone takes a second. educator keeps energy warm.",
         setupLine:
           "we are going to build a story together. everyone pick one card from any pile — don't show anyone. i start with one sentence and place my card on the mat. then the next person adds one sentence — wherever the story goes — and places their card. we go around once before anyone takes a second turn.",
         howToPlay:
-          "teacher places story cards face-up in four piles in the centre: object · character · emotion · event. story mat laid out. teacher gives an opening sentence — \"one morning, a small elephant woke up to find something very strange outside her door.\" each child adds one sentence and places their card. if a child is stuck: \"what does your card make happen next?\" after one full round, teacher prompts the ending: \"who wants to bring the story home? one sentence — finish it.\" one child ends it. group gives a quick round of applause. · if time allows — teacher rearranges three cards in a different sequence: \"same story — but now these three things happen in a different order. what changes?\" brief group discussion — one minute only.",
+          "educator places story cards face-up in four piles in the centre: object · character · emotion · event. story mat laid out. educator gives an opening sentence — \"one morning, a small elephant woke up to find something very strange outside her door.\" each child adds one sentence and places their card. if a child is stuck: \"what does your card make happen next?\" after one full round, educator prompts the ending: \"who wants to bring the story home? one sentence — finish it.\" one child ends it. group gives a quick round of applause. · if time allows — educator rearranges three cards in a different sequence: \"same story — but now these three things happen in a different order. what changes?\" brief group discussion — one minute only.",
         materials: [
           "Story Mat",
           "Story Cards — Object, Character, Emotion, Event",
@@ -1243,11 +1243,11 @@ export const publicSpeaking58: CurriculumProgramme = {
         name: "Showtime — Improv Survival",
         time: "22 min",
         objective:
-          "children perform short improvised scenes in front of the group. each round one child handles a curveball; the audience reacts immediately. an option to stand beside the teacher is offered naturally — not singled out or labelled.",
+          "children perform short improvised scenes in front of the group. each round one child handles a curveball; the audience reacts immediately. an option to stand beside the educator is offered naturally — not singled out or labelled.",
         setupLine:
           "you get a situation. you have 30 seconds to think. then you act it out — react in the moment, no script. if you get stuck, the audience throws you a fresh twist and you keep going.",
         howToPlay:
-          "scene structure: setup card sets the scene (where you are, who you are, what's happening) · performer steps into the situation and plays it out · twist card thrown halfway — performer must absorb the twist and keep the scene alive · scene ends on a clean line. · after each scene: audience claps for the moment they liked best. one peer asks a 'what would you do next?' question — performer answers in character. · \"one thing — if anyone wants, you can do your scene standing right next to me. same scene, same applause. just side by side.\" offered naturally, not singled out. · teacher draws and reads the first setup card aloud. run 3–4 scenes depending on group size. one twist per scene, one audience question per scene.",
+          "scene structure: setup card sets the scene (where you are, who you are, what's happening) · performer steps into the situation and plays it out · twist card thrown halfway — performer must absorb the twist and keep the scene alive · scene ends on a clean line. · after each scene: audience claps for the moment they liked best. one peer asks a 'what would you do next?' question — performer answers in character. · \"one thing — if anyone wants, you can do your scene standing right next to me. same scene, same applause. just side by side.\" offered naturally, not singled out. · educator draws and reads the first setup card aloud. run 3–4 scenes depending on group size. one twist per scene, one audience question per scene.",
         example:
           "setup prompts: you're a chef and the soup is on fire · you're an astronaut and a button just flashed red · you're a librarian and the books are flying off the shelves · you're a vet and the parrot won't stop talking. twist prompts: someone walks in · the lights go out · you sneeze for 30 seconds · everything starts moving in slow motion.",
         materials: [

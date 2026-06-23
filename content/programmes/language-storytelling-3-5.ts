@@ -20,11 +20,11 @@ const playgroundGames: Record<string, CurriculumActivity> = {
     materials: ["Sound cards"],
     variations: [
       { name: "Sound + act", description: "Child makes the sound and acts the thing out." },
-      { name: "Teacher leads", description: "Teacher makes the sound and children guess." },
+      { name: "Educator leads", description: "Educator makes the sound and children guess." },
       { name: "One category", description: "Use only one category at a time — animals, vehicles, instruments." },
     ],
     difficultyLevels: [
-      { level: "Easier", description: "Children repeat the sound after the teacher." },
+      { level: "Easier", description: "Children repeat the sound after the educator." },
       { level: "Medium", description: "Children guess the sound." },
       { level: "Harder", description: "Child names the source and uses it in a sentence." },
       { level: "Hardest", description: "Child creates a short story around the sound." },
@@ -42,11 +42,11 @@ const playgroundGames: Record<string, CurriculumActivity> = {
     materials: ["House mat", "Window cards"],
     variations: [
       { name: "Whole class", description: "The whole class says the two words together." },
-      { name: "Teacher prompt", description: "Teacher helps after 5 seconds if the child is stuck." },
+      { name: "Educator prompt", description: "Educator helps after 5 seconds if the child is stuck." },
     ],
     difficultyLevels: [
-      { level: "Easier", description: "Teacher says both words." },
-      { level: "Medium", description: "Child repeats after the teacher." },
+      { level: "Easier", description: "Educator says both words." },
+      { level: "Medium", description: "Child repeats after the educator." },
       { level: "Harder", description: "Child reads and identifies independently." },
     ],
     debriefPrompts: [],
@@ -65,7 +65,7 @@ const playgroundGames: Record<string, CurriculumActivity> = {
       { name: "Two rhymes", description: "Child has to say two rhyming words instead of one." },
     ],
     difficultyLevels: [
-      { level: "Easier", description: "Teacher gives the rhyme." },
+      { level: "Easier", description: "Educator gives the rhyme." },
       { level: "Medium", description: "Child gives one rhyme." },
       { level: "Harder", description: "Child gives two rhymes." },
       { level: "Hardest", description: "Child uses the rhyme in a sentence." },
@@ -82,11 +82,11 @@ const playgroundGames: Record<string, CurriculumActivity> = {
       "Children learn syllables. Setup: each child gets a meeple on the board. Turn order: one child at a time. On their turn, the child gets a word, says it, claps each syllable, and moves their meeple forward by that many spaces. Special cards trigger extra moves: water bowl → go back 2; ledge → skip a turn; see & say → pick a nearby object and clap that. The first child to finish wins.",
     materials: ["Board", "Meeples", "Special cards"],
     variations: [
-      { name: "Teacher word bank", description: "Teacher gives all the words." },
+      { name: "Educator word bank", description: "Educator gives all the words." },
       { name: "Child choice", description: "Children pick their own words to clap." },
     ],
     difficultyLevels: [
-      { level: "Easier", description: "Teacher claps and the child copies." },
+      { level: "Easier", description: "Educator claps and the child copies." },
       { level: "Medium", description: "Child repeats and claps." },
       { level: "Harder", description: "Child claps independently." },
     ],
@@ -140,7 +140,7 @@ const playgroundGames: Record<string, CurriculumActivity> = {
     title: "think fast",
     setupLine: "Listen and answer fast.",
     howToPlay:
-      "Quick thinking and speaking. Turn order: teacher gives the prompt. The child answers as fast as they can. Correct answers earn a point.",
+      "Quick thinking and speaking. Turn order: educator gives the prompt. The child answers as fast as they can. Correct answers earn a point.",
     materials: ["Prompt cards"],
     variations: [
       { name: "Fastest answer", description: "First child to answer correctly gets the point." },
@@ -162,7 +162,7 @@ const playgroundGames: Record<string, CurriculumActivity> = {
     title: "guess me",
     setupLine: "Hear three clues. Guess the character or object.",
     howToPlay:
-      "The teacher gives three clues about a character or object from the current book — \"I am tall, I am yellow, I cannot dance\". Children guess. The child who guesses correctly gives the next set of three clues.",
+      "The educator gives three clues about a character or object from the current book — \"I am tall, I am yellow, I cannot dance\". Children guess. The child who guesses correctly gives the next set of three clues.",
     materials: ["A bank of clue sets per book"],
     debriefPrompts: [],
     type: "physical-game",
@@ -173,7 +173,7 @@ const playgroundGames: Record<string, CurriculumActivity> = {
     title: "i spy",
     setupLine: "Look, find, and say.",
     howToPlay:
-      "Observation and vocabulary. Setup: place the I Spy board in the centre. Turn order: teacher leads. On a turn, the teacher shows a card, children find the matching object on the board, and one child points to it, says its name, then uses it in a sentence.",
+      "Observation and vocabulary. Setup: place the I Spy board in the centre. Turn order: educator leads. On a turn, the educator shows a card, children find the matching object on the board, and one child points to it, says its name, then uses it in a sentence.",
     materials: ["I Spy board", "3 decks of cards"],
     variations: [
       { name: "Timed", description: "Set a short timer for each find." },
@@ -194,7 +194,7 @@ const playgroundGames: Record<string, CurriculumActivity> = {
     title: "every body says",
     setupLine: "Use your body to make things.",
     howToPlay:
-      "Movement and expression. Setup: place body cards in a pile so all children can see. Turn order: one child flips a card. All children use their bodies — alone, in pairs, or as a group — to form the thing on the card. The teacher names what they see. The next child flips the next card.",
+      "Movement and expression. Setup: place body cards in a pile so all children can see. Turn order: one child flips a card. All children use their bodies — alone, in pairs, or as a group — to form the thing on the card. The educator names what they see. The next child flips the next card.",
     materials: ["Body cards"],
     variations: [
       { name: "Solo", description: "Each child forms the object on their own." },
@@ -215,10 +215,10 @@ const playgroundGames: Record<string, CurriculumActivity> = {
     title: "swat it snap it",
     setupLine: "Find it fast and hit it.",
     howToPlay:
-      "Reading and recognition. Setup: spread the cards face-up around the buckets. Turn order: the teacher calls a target — a letter, a word, or a sentence. Children race to swat the matching card with their swatter, then snap it into the correct bucket and read it aloud. The next round begins on the teacher's call.",
+      "Reading and recognition. Setup: spread the cards face-up around the buckets. Turn order: the educator calls a target — a letter, a word, or a sentence. Children race to swat the matching card with their swatter, then snap it into the correct bucket and read it aloud. The next round begins on the educator's call.",
     materials: ["Cards", "Buckets", "Swatters"],
     variations: [
-      { name: "Solo", description: "Each child plays at their own pace as the teacher calls targets." },
+      { name: "Solo", description: "Each child plays at their own pace as the educator calls targets." },
       { name: "Race", description: "Two children swat at the same time — first to the correct card keeps it." },
       { name: "Team", description: "Children play in teams; team scores points together." },
     ],
@@ -243,7 +243,7 @@ const wordsmithsResources: Record<string, CurriculumActivity> = {
     title: "emotion tiles",
     setupLine: "Show the tile. Act the feeling. Use it in a sentence.",
     howToPlay:
-      "The teacher holds up an emotion tile (happy, sad, angry, calm, afraid, loving). All children act the feeling together with their faces and bodies. Then one child at a time uses the word in a sentence about the current book — \"the monster felt happy when he sorted his colours\".",
+      "The educator holds up an emotion tile (happy, sad, angry, calm, afraid, loving). All children act the feeling together with their faces and bodies. Then one child at a time uses the word in a sentence about the current book — \"the monster felt happy when he sorted his colours\".",
     materials: ["Emotion tile deck — one tile per feeling word"],
     debriefPrompts: [],
     type: "physical-game",
@@ -254,7 +254,7 @@ const wordsmithsResources: Record<string, CurriculumActivity> = {
     title: "story calendar",
     setupLine: "Show the card. Act the word. Use it in a sentence.",
     howToPlay:
-      "The teacher shows a card with a describing or spatial word (clumsy, splendid, under, beside, behind). All children act it out together. Then one child at a time uses the word in a sentence about the current book — \"the giraffe was clumsy on the dance floor\".",
+      "The educator shows a card with a describing or spatial word (clumsy, splendid, under, beside, behind). All children act it out together. Then one child at a time uses the word in a sentence about the current book — \"the giraffe was clumsy on the dance floor\".",
     materials: ["Story calendar — one describing or spatial word per card"],
     debriefPrompts: [],
     type: "physical-game",
@@ -805,7 +805,7 @@ export const languageStorytelling35: CurriculumProgramme = {
       name: "Experience Book",
       durationRange: "10 min",
       objective:
-        "Each child has a personal experience book. The teacher records what happened in the session and what the child built. The child adds one drawing of their own. The book goes home regularly so parents can see the child's growth.",
+        "Each child has a personal experience book. The educator records what happened in the session and what the child built. The child adds one drawing of their own. The book goes home regularly so parents can see the child's growth.",
       type: "fixed",
     },
   ],

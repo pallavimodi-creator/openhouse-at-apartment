@@ -62,7 +62,7 @@ const art58: BookConfig = {
   pdfUrl: "/books/art-5-8.pdf",
   nameFields: [
     { label: "name", placeholder: "your name" },
-    { label: "teacher", placeholder: "your teacher's name" },
+    { label: "educator", placeholder: "your educator's name" },
     { label: "year", placeholder: "2025–2026" },
   ],
   preferences: [
@@ -91,7 +91,7 @@ const art58: BookConfig = {
     {
       icon: "📖",
       name: "experience book",
-      desc: "write and draw what you did today. your teacher helps you fill this in.",
+      desc: "write and draw what you did today. your educator helps you fill this in.",
     },
   ],
   skills: [
@@ -265,7 +265,7 @@ const art812: BookConfig = {
   pdfUrl: "/books/art-8-12.pdf",
   nameFields: [
     { label: "name", placeholder: "your name" },
-    { label: "teacher", placeholder: "your teacher's name" },
+    { label: "educator", placeholder: "your educator's name" },
     { label: "year", placeholder: "2025–2026" },
   ],
   preferences: [
@@ -470,7 +470,7 @@ const speaking58: BookConfig = {
   coverColor: "bg-category-language/40",
   nameFields: [
     { label: "name", placeholder: "your name" },
-    { label: "teacher", placeholder: "your teacher's name" },
+    { label: "educator", placeholder: "your educator's name" },
     { label: "year", placeholder: "2025–2026" },
   ],
   preferences: [
@@ -494,12 +494,12 @@ const speaking58: BookConfig = {
     {
       icon: "🎤",
       name: "showtime",
-      desc: "you speak in front of the group. the audience responds. your teacher watches and helps.",
+      desc: "you speak in front of the group. the audience responds. your educator watches and helps.",
     },
     {
       icon: "📖",
       name: "experience book",
-      desc: "fill in what you did today — your teacher helps.",
+      desc: "fill in what you did today — your educator helps.",
     },
   ],
   skills: [
@@ -550,7 +550,7 @@ const speaking58: BookConfig = {
     levels: ["starting out", "getting there", "going strong"],
   },
   lanyardExplanation:
-    "every session, each child wears a lanyard for each segment. the lanyard names one ability — the one to focus on right now. the teacher watches specifically for that ability. the child knows what they are working on. every session, the teacher notes: doing great today, or focus more. over 8 sessions, this builds a clear picture of every child as a speaker.",
+    "every session, each child wears a lanyard for each segment. the lanyard names one ability — the one to focus on right now. the educator watches specifically for that ability. the child knows what they are working on. every session, the educator notes: doing great today, or focus more. over 8 sessions, this builds a clear picture of every child as a speaker.",
   journeyLabel: "speaking journey",
   journeys: [
     {
@@ -650,7 +650,7 @@ const speaking812: BookConfig = {
   pdfUrl: "/books/speaking-8-12.pdf",
   nameFields: [
     { label: "name", placeholder: "your name" },
-    { label: "teacher", placeholder: "your teacher's name" },
+    { label: "educator", placeholder: "your educator's name" },
     { label: "year", placeholder: "2025–2026" },
   ],
   preferences: [
@@ -733,7 +733,7 @@ const speaking812: BookConfig = {
     levels: ["starting out", "getting there", "going strong"],
   },
   lanyardExplanation:
-    "every session, each child wears a lanyard for each segment. the lanyard names one ability — the one to focus on right now. the teacher watches specifically for that ability. the child knows what they are working on. every session, the teacher notes: doing great today, or focus more. over 8 sessions, this builds a clear picture of every child as a speaker.",
+    "every session, each child wears a lanyard for each segment. the lanyard names one ability — the one to focus on right now. the educator watches specifically for that ability. the child knows what they are working on. every session, the educator notes: doing great today, or focus more. over 8 sessions, this builds a clear picture of every child as a speaker.",
   journeyLabel: "speaking journey",
   journeys: [
     {
@@ -831,7 +831,7 @@ const robotics58: BookConfig = {
   coverColor: "bg-[#EDE6D3]",
   nameFields: [
     { label: "name", placeholder: "your name" },
-    { label: "teacher", placeholder: "your teacher's name" },
+    { label: "educator", placeholder: "your educator's name" },
     { label: "year", placeholder: "2025–2026" },
   ],
   preferences: [
@@ -850,7 +850,7 @@ const robotics58: BookConfig = {
     {
       icon: "🔧",
       name: "build",
-      desc: "each of us builds our own model using a kit and a step card. the teacher never fixes it — only asks questions. when something does not work, we figure it out.",
+      desc: "each of us builds our own model using a kit and a step card. the educator never fixes it — only asks questions. when something does not work, we figure it out.",
     },
     {
       icon: "📓",
@@ -1002,7 +1002,7 @@ const robotics812: BookConfig = {
   coverColor: "bg-[#EDE6D3]",
   nameFields: [
     { label: "name", placeholder: "your name" },
-    { label: "teacher", placeholder: "your teacher's name" },
+    { label: "educator", placeholder: "your educator's name" },
     { label: "year", placeholder: "2025–2026" },
   ],
   preferences: [
@@ -1021,7 +1021,7 @@ const robotics812: BookConfig = {
     {
       icon: "🔧",
       name: "build",
-      desc: "each of us builds our own model using a personal kit and a step card. the teacher never fixes anything and never tells us what to do next.",
+      desc: "each of us builds our own model using a personal kit and a step card. the educator never fixes anything and never tells us what to do next.",
     },
     {
       icon: "📓",

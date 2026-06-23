@@ -97,7 +97,7 @@ const logicLabGames: Record<string, CurriculumActivity> = {
     title: "stitch me",
     setupLine: "Pair up. Solve the prompt. Lace the bead.",
     howToPlay:
-      "Divide the children into pairs. Set up stations or scavenger bins around the room — one for beads, one for numbers, one for shapes. Give each pair a laminated template, a sewing base, and a shoelace. The teacher calls out one prompt at a time. The current player runs to the right station, finds the matching bead, comes back, and laces it onto the template. The lace is passed to the next child. The round ends when every bead is sewn into the template.",
+      "Divide the children into pairs. Set up stations or scavenger bins around the room — one for beads, one for numbers, one for shapes. Give each pair a laminated template, a sewing base, and a shoelace. The educator calls out one prompt at a time. The current player runs to the right station, finds the matching bead, comes back, and laces it onto the template. The lace is passed to the next child. The round ends when every bead is sewn into the template.",
     materials: [
       "Laminated templates (beads · numbers · shapes)",
       "Sewing bases",
@@ -118,7 +118,7 @@ const logicLabGames: Record<string, CurriculumActivity> = {
       {
         level: "Hard — verbal riddles",
         description:
-          "The teacher reads a riddle. The child runs, picks the matching bead or number, and laces it. Examples: \"I'm as red as a strawberry on a sunny day\" → red bead. \"I'm what comes after 2 and before 4\" → number 3. \"Mix red and yellow, I'll show. I shine like the sunset's glow\" → orange bead. \"Double 2, that's me\" → number 4.",
+          "The educator reads a riddle. The child runs, picks the matching bead or number, and laces it. Examples: \"I'm as red as a strawberry on a sunny day\" → red bead. \"I'm what comes after 2 and before 4\" → number 3. \"Mix red and yellow, I'll show. I shine like the sunset's glow\" → orange bead. \"Double 2, that's me\" → number 4.",
       },
     ],
     debriefPrompts: [],
@@ -137,7 +137,7 @@ const logicLabGames: Record<string, CurriculumActivity> = {
       "240 disks — 60 each in red, yellow, blue, green",
       "32 pattern cards — 16 see-and-match (blue-backed) + 16 see-and-predict (green-backed)",
       "How-to-play booklet (8 pages, A5)",
-      "Answer key (1 sheet, A4 — for teacher only)",
+      "Answer key (1 sheet, A4 — for educator only)",
       "Storage box (A3 footprint with compartments)",
     ],
     variations: [
@@ -244,7 +244,7 @@ const logicLabGames: Record<string, CurriculumActivity> = {
     title: "magna tiles",
     setupLine: "Match a flashcard, build the shape — five levels of difficulty.",
     howToPlay:
-      "Children build using Magna-Tiles. The teacher shows a prompt flashcard (laminated for reuse). Each card specifies the level — children match colours, count tiles, copy structure, fill borders, or invent freely. Five levels run in sequence: 3D Build → 2D Match → 2D Stack → Border Fill → Open-ended.",
+      "Children build using Magna-Tiles. The educator shows a prompt flashcard (laminated for reuse). Each card specifies the level — children match colours, count tiles, copy structure, fill borders, or invent freely. Five levels run in sequence: 3D Build → 2D Match → 2D Stack → Border Fill → Open-ended.",
     materials: [
       "Magna-Tiles (variety of shapes and colours)",
       "Prompt flashcards (laminated):",
@@ -290,7 +290,7 @@ const logicLabGames: Record<string, CurriculumActivity> = {
  * Each project listed here is a CurriculumActivity so it can be
  * surfaced via the library / segment popups. Lesson-plan detail
  * lives in components/ImaginePlaygroundBookModal.tsx (used as the
- * teacher reference book on the overview page). ───────────────── */
+ * educator reference book on the overview page). ───────────────── */
 
 const imaginePlaygroundProjects: Record<string, CurriculumActivity> = {
   "ip-train-time": {
@@ -376,7 +376,7 @@ const imaginePlaygroundProjects: Record<string, CurriculumActivity> = {
     title: "trouble on the road",
     setupLine: "Read the traffic signs and solve the route problem.",
     howToPlay:
-      "Children apply route planning to solve traffic problems. The teacher places action bricks randomly along the track — children identify the problem and choose the right traffic sign to fix it.",
+      "Children apply route planning to solve traffic problems. The educator places action bricks randomly along the track — children identify the problem and choose the right traffic sign to fix it.",
     materials: ["Y-shaped track", "Building cards", "Action bricks", "Traffic sign set"],
     debriefPrompts: [],
     type: "physical-game",
@@ -452,7 +452,7 @@ const wonderWorldActivities: Record<string, CurriculumActivity> = {
     title: "bread riddles",
     setupLine: "Listen to the clue — guess the bread.",
     howToPlay:
-      "Teacher gives clues ('I am round and flat. I puff on the pan'). Children point to the matching picture or playdough bread. Then children invent their own clues.",
+      "Educator gives clues ('I am round and flat. I puff on the pan'). Children point to the matching picture or playdough bread. Then children invent their own clues.",
     materials: ["Picture cards (chapati, loaf, bun, toast)"],
     debriefPrompts: [],
     type: "physical-game",
@@ -498,8 +498,8 @@ const wonderWorldActivities: Record<string, CurriculumActivity> = {
     title: "does it come from milk?",
     setupLine: "Clap if it comes from milk.",
     howToPlay:
-      "Teacher reads a food name. If it comes from milk (butter, paneer, cheese, yoghurt), children clap. If not, hands stay still. Builds categorisation and listening control.",
-    materials: ["Teacher-read food list (optional picture cards)"],
+      "Educator reads a food name. If it comes from milk (butter, paneer, cheese, yoghurt), children clap. If not, hands stay still. Builds categorisation and listening control.",
+    materials: ["Educator-read food list (optional picture cards)"],
     debriefPrompts: [],
     type: "physical-game",
   },
@@ -531,7 +531,7 @@ const wonderWorldActivities: Record<string, CurriculumActivity> = {
     title: "the cheese sandwich game",
     setupLine: "Build the sandwich one ingredient at a time.",
     howToPlay:
-      "Memory and sequencing game. First child names one ingredient. Next child adds another. Each child must repeat the full sandwich so far. Teacher uses picture cards if support is needed.",
+      "Memory and sequencing game. First child names one ingredient. Next child adds another. Each child must repeat the full sandwich so far. Educator uses picture cards if support is needed.",
     materials: ["Picture cards (bread, cheese, vegetables, sandwich ingredients)"],
     debriefPrompts: [],
     type: "physical-game",
@@ -577,7 +577,7 @@ const wonderWorldActivities: Record<string, CurriculumActivity> = {
     title: "follow the salad recipe",
     setupLine: "First, next, last — follow the steps.",
     howToPlay:
-      "Teacher gives a salad recipe one step at a time — base, vegetables, topping, mix. Children follow in order, then a second round where they choose their own order and compare results. Sequencing and decision-making.",
+      "Educator gives a salad recipe one step at a time — base, vegetables, topping, mix. Children follow in order, then a second round where they choose their own order and compare results. Sequencing and decision-making.",
     materials: ["Bowl or plate", "Pretend or real salad ingredients", "Spoon/tongs"],
     debriefPrompts: [],
     type: "physical-game",
@@ -784,7 +784,7 @@ export const stem35: CurriculumProgramme = {
       name: "Imagine Playground",
       durationRange: "35 min",
       objective:
-        "Imagination through building. Children meet stem concepts — math, physics, sequencing, conditionals, probability — through stories and hands-on building. Materials are blocks of different kinds: Math Train, Coding Express, STEAM Park, ramp materials, magna tiles, general blocks. The teacher sets a challenge, lays out materials, and steps back. 11 core projects run in a fixed order, each met 2–3 times across the year — deeper every time. Why it alternates with WonderWorld: both build curiosity, problem solving, and creation, but Imagine Playground works in the language of blocks and structures, while WonderWorld works in the language of everyday things. Children need both. Runs on Session A only.",
+        "Imagination through building. Children meet stem concepts — math, physics, sequencing, conditionals, probability — through stories and hands-on building. Materials are blocks of different kinds: Math Train, Coding Express, STEAM Park, ramp materials, magna tiles, general blocks. The educator sets a challenge, lays out materials, and steps back. 11 core projects run in a fixed order, each met 2–3 times across the year — deeper every time. Why it alternates with WonderWorld: both build curiosity, problem solving, and creation, but Imagine Playground works in the language of blocks and structures, while WonderWorld works in the language of everyday things. Children need both. Runs on Session A only.",
       type: "rotating",
       rotationPool: Object.keys(imaginePlaygroundProjects),
     },
@@ -802,7 +802,7 @@ export const stem35: CurriculumProgramme = {
       name: "Logic Lab",
       durationRange: "20 min",
       objective:
-        "One game per session — rules explained once at first play, by the third session children know the rules and the teacher only observes. 6 games rotate (Candy Sort, Stitch Me, Dot Grid, Logical Road Builder, Where Does It Go?, Magna Tiles). Each game has 4 difficulty layers built in so the same game runs deeper across the year.",
+        "One game per session — rules explained once at first play, by the third session children know the rules and the educator only observes. 6 games rotate (Candy Sort, Stitch Me, Dot Grid, Logical Road Builder, Where Does It Go?, Magna Tiles). Each game has 4 difficulty layers built in so the same game runs deeper across the year.",
       type: "rotating",
       rotationPool: Object.keys(logicLabGames),
     },
@@ -819,7 +819,7 @@ export const stem35: CurriculumProgramme = {
       name: "Experience Book",
       durationRange: "10 min",
       objective:
-        "Each child has a personal Experience Book. The teacher writes one specific sentence about what the child did that day — a project they built, a question they asked, a number they counted, a 'because' they explained. The child adds a drawing or stamp. The book goes home regularly so parents can see growth. This is also where Number Sense level transitions are recorded.",
+        "Each child has a personal Experience Book. The educator writes one specific sentence about what the child did that day — a project they built, a question they asked, a number they counted, a 'because' they explained. The child adds a drawing or stamp. The book goes home regularly so parents can see growth. This is also where Number Sense level transitions are recorded.",
       type: "fixed",
     },
   ],
