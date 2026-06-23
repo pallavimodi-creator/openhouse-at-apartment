@@ -17,7 +17,7 @@ export interface BookDayPlan {
   learningObjective?: string;
   /** Comma-separated vocabulary list, e.g. "munching, prance, awful, crooked". */
   vocabulary?: string;
-  /** Numbered teacher steps for the day. */
+  /** Numbered educator steps for the day. */
   steps: string[];
 }
 
@@ -92,7 +92,7 @@ export const LANGUAGE_BOOK_PLANS: BookPlan[] = [
           "To recognise the left-to-right and top-to-bottom directionality of print.",
         steps: [
           "Show the children the cover. Ask one child to come up and show you the title. \"We have seen this book before. Does anyone remember its name?\"",
-          "Read the title and point to each word as you say it. Remind children they have heard this story before. Ask them to tell what the story is about. Extend each child's response by adding more detail. Example: child — \"They go find a bear.\" Teacher — \"Yes, a family goes on a hunt to look for a bear. They travel through grass, river, mud, and a cave.\"",
+          "Read the title and point to each word as you say it. Remind children they have heard this story before. Ask them to tell what the story is about. Extend each child's response by adding more detail. Example: child — \"They go find a bear.\" Educator — \"Yes, a family goes on a hunt to look for a bear. They travel through grass, river, mud, and a cave.\"",
           "With your finger, track the text on each page while reading. Follow the repeated lines and point to each word as you say it.",
           "Every few pages, comment on print directionality: \"I am pointing to the words as I read. I start here (point left) and go all the way across the page. I read from this side to this side. Then I move from this line (top) to the next line (bottom). That's how we read the words.\"",
         ],
@@ -428,7 +428,7 @@ export const LANGUAGE_BOOK_PLANS: BookPlan[] = [
           "Read the story and stop periodically to discuss events that happen during the school day. \"First, the dinosaurs must get to school. Some take a car, others take the bus. While they are at school, dinosaurs do a lot of things.\"",
           "After reading, ask the children to think of all the things the dinosaurs did. Repeat and expand their answers: \"They went to recess. The dinosaurs played with their friends and growled at the bullies during recess.\"",
           "Tell the children they are going to make up their own story about a day at school. \"Let's pretend you were a dinosaur going to school. What would your day be like?\"",
-          "Provide your own narrative: \"If I were a dinosaur going to school, first I would fly there. Then I would listen to my teacher. Next, I would play with my friends at recess. Finally, I would help to clean the classroom before flying home.\"",
+          "Provide your own narrative: \"If I were a dinosaur going to school, first I would fly there. Then I would listen to my educator. Next, I would play with my friends at recess. Finally, I would help to clean the classroom before flying home.\"",
           "Ask three children to share their own story. Repeat their ideas, adding details to model a story with a clear beginning, middle, and end.",
         ],
       },

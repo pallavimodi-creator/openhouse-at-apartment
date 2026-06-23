@@ -23,7 +23,7 @@ export const ROBOTICS_TRIAL_SESSION_5_8: TrialSession = {
       name: "When children walk in",
       time: "2 min",
       objective:
-        "no sitting yet. teacher brings the group into a standing circle to start the energiser.",
+        "no sitting yet. educator brings the group into a standing circle to start the energiser.",
       setupLine: "don't sit. come here. stand in a circle.",
     },
     {
@@ -34,7 +34,7 @@ export const ROBOTICS_TRIAL_SESSION_5_8: TrialSession = {
       setupLine:
         "look at this card. it shows a shape that stands up. can you build it with these tiles?",
       howToPlay:
-        "teacher fans 2–3 Level 1 magna-tiles cards (3D shaped prompts: tower, bridge, cube house). each child picks a card. teacher says: \"can you make this shape that stands up? let's build it standing!\" children build vertically — teacher supports balance only if a tower keeps falling. encourage \"strong and steady.\" 5 minutes max — short and energising, not a deep build.",
+        "educator fans 2–3 Level 1 magna-tiles cards (3D shaped prompts: tower, bridge, cube house). each child picks a card. educator says: \"can you make this shape that stands up? let's build it standing!\" children build vertically — educator supports balance only if a tower keeps falling. encourage \"strong and steady.\" 5 minutes max — short and energising, not a deep build.",
       materials: [
         "Magna-Tiles (variety of shapes and colours)",
         "Magna-Tiles Level 1 prompt cards (3D shaped prompts + number of tiles) — 1 per child",
@@ -48,7 +48,7 @@ export const ROBOTICS_TRIAL_SESSION_5_8: TrialSession = {
       setupLine:
         "we're going to play a quick game. i say something — you show me how it moves using your body.",
       howToPlay:
-        "round 1 — teacher calls: \"crane lifting,\" \"elevator going up,\" \"door opening,\" \"pulley pulling.\" children act each one out. · round 2 — \"now your turn — say something that moves.\" children suggest, group acts. · round 3 — light variation: \"now don't show. just tell me. i'll guess.\" · keep it playful, fast, no over-explanation.",
+        "round 1 — educator calls: \"crane lifting,\" \"elevator going up,\" \"door opening,\" \"pulley pulling.\" children act each one out. · round 2 — \"now your turn — say something that moves.\" children suggest, group acts. · round 3 — light variation: \"now don't show. just tell me. i'll guess.\" · keep it playful, fast, no over-explanation.",
     },
     {
       name: "Game context — say this early",
@@ -62,10 +62,10 @@ export const ROBOTICS_TRIAL_SESSION_5_8: TrialSession = {
       name: "Main build — Crane model",
       time: "35 min",
       objective:
-        "each child builds their own crane. teacher helps only when needed, does not fix things, does not over-explain. if something doesn't work the child tries again.",
+        "each child builds their own crane. educator helps only when needed, does not fix things, does not over-explain. if something doesn't work the child tries again.",
       setupLine: "now we build. today, you're making your own crane.",
       howToPlay:
-        "each child builds their own model. teacher helps only when needed, never fixes things, never over-explains. if something doesn't work → child tries again.",
+        "each child builds their own model. educator helps only when needed, never fixes things, never over-explains. if something doesn't work → child tries again.",
       materials: [
         "Model Manual — L1_Crane.pdf (1 per child)",
         "Personal Crane kit — full component set per child",
@@ -105,7 +105,7 @@ export const ROBOTICS_TRIAL_SESSION_8_12: TrialSession = {
       name: "When children walk in",
       time: "2 min",
       objective:
-        "no sitting yet. teacher brings the group into a standing circle.",
+        "no sitting yet. educator brings the group into a standing circle.",
       setupLine: "come here. stand in a circle.",
     },
     {
@@ -116,7 +116,7 @@ export const ROBOTICS_TRIAL_SESSION_8_12: TrialSession = {
       setupLine:
         "look at this card. it shows a shape that stands up. can you build it with these tiles?",
       howToPlay:
-        "teacher fans 2–3 Level 1 magna-tiles cards (3D shaped prompts: tower, bridge, cube house). each child picks a card. teacher says: \"can you make this shape that stands up? let's build it standing!\" children build vertically — teacher supports balance only if a tower keeps falling. encourage \"strong and steady.\" 5 minutes max — short and energising, not a deep build.",
+        "educator fans 2–3 Level 1 magna-tiles cards (3D shaped prompts: tower, bridge, cube house). each child picks a card. educator says: \"can you make this shape that stands up? let's build it standing!\" children build vertically — educator supports balance only if a tower keeps falling. encourage \"strong and steady.\" 5 minutes max — short and energising, not a deep build.",
       materials: [
         "Magna-Tiles (variety of shapes and colours)",
         "Magna-Tiles Level 1 prompt cards (3D shaped prompts + number of tiles) — 1 per child",
@@ -130,7 +130,7 @@ export const ROBOTICS_TRIAL_SESSION_8_12: TrialSession = {
       setupLine:
         "i'll say a machine. you tell me how it works — or show it.",
       howToPlay:
-        "round 1 — teacher prompts: \"crane,\" \"pulley,\" \"elevator,\" \"well bucket.\" children explain or act. · round 2 — \"where have you seen this in real life?\" short answers. · round 3 — \"what makes it easier — what is helping?\" push thinking slightly.",
+        "round 1 — educator prompts: \"crane,\" \"pulley,\" \"elevator,\" \"well bucket.\" children explain or act. · round 2 — \"where have you seen this in real life?\" short answers. · round 3 — \"what makes it easier — what is helping?\" push thinking slightly.",
     },
     {
       name: "Game context — say this early",
@@ -144,10 +144,10 @@ export const ROBOTICS_TRIAL_SESSION_8_12: TrialSession = {
       name: "Main build — Crane model",
       time: "30 min",
       objective:
-        "each child builds independently. teacher asks questions, does not fix, does not give step-by-step instructions. the facilitation style aligns directly with the programme approach.",
+        "each child builds independently. educator asks questions, does not fix, does not give step-by-step instructions. the facilitation style aligns directly with the programme approach.",
       setupLine: "now we build. each of you will make your own crane.",
       howToPlay:
-        "each child builds independently. teacher never fixes, never gives step-by-step instructions. teacher uses prompts only: \"what is not working?\" · \"what will you try?\" · \"which part is causing the issue?\" this aligns directly with the programme's facilitation approach.",
+        "each child builds independently. educator never fixes, never gives step-by-step instructions. educator uses prompts only: \"what is not working?\" · \"what will you try?\" · \"which part is causing the issue?\" this aligns directly with the programme's facilitation approach.",
       materials: [
         "Model Manual — L1_Crane.pdf (1 per child)",
         "Personal Crane kit — full component set per child",

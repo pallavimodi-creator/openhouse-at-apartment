@@ -360,7 +360,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       {
         name: "Variation 2 — Pattern Bingo",
         description:
-          "Teacher calls out a colour + pattern combination (e.g. \"yellow straight lines\"). Children mark if present. First to finish a row or grid wins.",
+          "Educator calls out a colour + pattern combination (e.g. \"yellow straight lines\"). Children mark if present. First to finish a row or grid wins.",
       },
     ],
     materials: [
@@ -372,8 +372,8 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     ],
     difficultyLevels: [
       { level: "Easy", description: "match colours only — with beads or picture cards." },
-      { level: "Medium", description: "Pattern Bingo — teacher calls out a colour + pattern combination and children mark if present." },
-      { level: "Hard", description: "children play Bingo without teacher's cues — each child takes a turn to call out a colour + pattern." },
+      { level: "Medium", description: "Pattern Bingo — educator calls out a colour + pattern combination and children mark if present." },
+      { level: "Hard", description: "children play Bingo without educator's cues — each child takes a turn to call out a colour + pattern." },
     ],
     debriefPrompts: [],
     type: "physical-game",
@@ -400,7 +400,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       {
         name: "Variation 3 — Missing mixing card",
         description:
-          "The teacher gives a Medium or Difficult Mixing Card with either 1 or 2 colours missing. Children find the matching pair by flipping 2 cards.",
+          "The educator gives a Medium or Difficult Mixing Card with either 1 or 2 colours missing. Children find the matching pair by flipping 2 cards.",
       },
     ],
     materials: [
@@ -497,7 +497,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "scene card in the centre. i name an object — you find and draw it.",
     howToPlay:
-      "Teacher shows a scene card or places multiple line/texture cards in a row. Educator names a texture, line/shape, or texture. Child finds it, then draws.",
+      "Educator shows a scene card or places multiple line/texture cards in a row. Educator names a texture, line/shape, or texture. Child finds it, then draws.",
     materials: [
       "Scene cards (A5)",
       "Line / shape / texture cards",
@@ -579,9 +579,9 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     segment: "art-games",
     title: "doodle dash",
     setupLine:
-      "teacher reads a prompt. everyone draws. unique drawings score a point, duplicates score zero.",
+      "educator reads a prompt. everyone draws. unique drawings score a point, duplicates score zero.",
     howToPlay:
-      "The teacher reads out the prompt to draw. All children draw simultaneously for a set time, then reveal. Example prompt — \"something that starts with the letter C.\" If two or more children draw the same thing, they each score 0; a unique drawing scores a point. Bonus points for the funniest or most artistic drawing, voted by the group. Variation — children draw individually or as a team taking turns.",
+      "The educator reads out the prompt to draw. All children draw simultaneously for a set time, then reveal. Example prompt — \"something that starts with the letter C.\" If two or more children draw the same thing, they each score 0; a unique drawing scores a point. Bonus points for the funniest or most artistic drawing, voted by the group. Variation — children draw individually or as a team taking turns.",
     materials: [
       "Drawing prompts — https://wordwall.net/resource/86438051/sketch-it-up-deck-2",
       "Drawing paper or whiteboards",
@@ -626,9 +626,9 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     segment: "art-games",
     title: "art gym cue card",
     setupLine:
-      "teacher picks one cue card from the pool. children follow the step-by-step illustrated prompt to draw on a fresh sketch sheet.",
+      "educator picks one cue card from the pool. children follow the step-by-step illustrated prompt to draw on a fresh sketch sheet.",
     howToPlay:
-      "Cue cards are illustrated step-by-step prompts the teacher selects (rotates across types — animals, birds, buildings, food, nature, vehicles). Children read or follow the steps and complete a drawing on a sketch sheet. The teacher walks around prompting each child to add one more detail their cue card didn't show. No extension-day follow-on — the cue card and any extension happen in the same slot.",
+      "Cue cards are illustrated step-by-step prompts the educator selects (rotates across types — animals, birds, buildings, food, nature, vehicles). Children read or follow the steps and complete a drawing on a sketch sheet. The educator walks around prompting each child to add one more detail their cue card didn't show. No extension-day follow-on — the cue card and any extension happen in the same slot.",
     materials: [
       "Cue card deck (laminated, age-appropriate)",
       "A4 sketch sheets",
@@ -1000,7 +1000,7 @@ export const artDesign58: CurriculumProgramme = {
       name: "Art Games + Gym",
       durationRange: "25 min · 1–2 games per day",
       objective:
-        "Build art skills through games. The teacher picks 1–2 games per session from the combined pool — art games and the laminated art-gym book pages and cue-card prompts. They are all played as games (no separate art-gym segment, no extension-day follow-on, no scribble book). Each game has its own debrief; the segment closes once 1 or 2 games are done.",
+        "Build art skills through games. The educator picks 1–2 games per session from the combined pool — art games and the laminated art-gym book pages and cue-card prompts. They are all played as games (no separate art-gym segment, no extension-day follow-on, no scribble book). Each game has its own debrief; the segment closes once 1 or 2 games are done.",
       type: "rotating",
       // Pool: 9 art games plus 2 art-gym entries (book + cue card). The
       // art-gym entries are real activities — see artGymActivities below
@@ -1017,7 +1017,7 @@ export const artDesign58: CurriculumProgramme = {
       name: "Artiverse",
       durationRange: "55 min",
       objective:
-        "Children make on A3 paper. Teacher reads brief and steps back. Artwork goes home. Time runs 55 min so the artwork is the centre of the session. Each unit runs 2 days per artwork — Day 1 sets up the piece, Day 2 completes and refines it. After all 18 units finish, leftover calendar sessions become free-making days where children revisit any earlier technique.",
+        "Children make on A3 paper. Educator reads brief and steps back. Artwork goes home. Time runs 55 min so the artwork is the centre of the session. Each unit runs 2 days per artwork — Day 1 sets up the piece, Day 2 completes and refines it. After all 18 units finish, leftover calendar sessions become free-making days where children revisit any earlier technique.",
       type: "fixed",
     },
     {
@@ -1025,7 +1025,7 @@ export const artDesign58: CurriculumProgramme = {
       name: "Experience Book",
       durationRange: "10 min",
       objective:
-        "Children fill in \"what happened in class today\" with the teacher, who opens a short discussion: favourite part? What you enjoyed? What you didn't? What to do again? Every child speaks. After children leave, the teacher fills in the skill-assessment part privately. These daily notes compile into the monthly report card that goes home.",
+        "Children fill in \"what happened in class today\" with the educator, who opens a short discussion: favourite part? What you enjoyed? What you didn't? What to do again? Every child speaks. After children leave, the educator fills in the skill-assessment part privately. These daily notes compile into the monthly report card that goes home.",
       type: "fixed",
     },
   ],

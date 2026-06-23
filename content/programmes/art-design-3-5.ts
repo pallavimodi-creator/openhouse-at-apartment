@@ -8,7 +8,7 @@ import type {
 
 /* ─── Art Games (3-5) ────────────────────────────────────────
  * 8 games — 4 Fine Motor, 3 Colour, 1 Creative Expression.
- * Rules are explained once; teacher sets up, steps back, observes.
+ * Rules are explained once; educator sets up, steps back, observes.
  */
 
 const artGamesActivities: Record<string, CurriculumActivity> = {
@@ -938,7 +938,7 @@ export const artDesign35: CurriculumProgramme = {
       name: "Experience Book",
       durationRange: "10 min",
       objective:
-        "Coming soon — a record of the child's learning and an opportunity for the teacher to debrief and plan how to help the child. Also used for communication to parents.",
+        "Coming soon — a record of the child's learning and an opportunity for the educator to debrief and plan how to help the child. Also used for communication to parents.",
       type: "fixed",
     },
     {

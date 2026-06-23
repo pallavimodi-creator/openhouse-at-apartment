@@ -30,7 +30,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "Measuring tape, erasable marker",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher reads the card. Child hangs load, pulls the spring scale and reads the number. Teacher writes." },
+      { level: "Easy", description: "Educator reads the card. Child hangs load, pulls the spring scale and reads the number. Educator writes." },
       { level: "Medium", description: "Child reads the card step by step, does the setup, and writes their own reading in the result table." },
       { level: "Hard", description: "Child predicts before each reading — \"this one will be smaller/bigger because…\" — and checks whether the prediction was right." },
     ],
@@ -53,7 +53,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "0.5kg and 1kg weights · plastic cup",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher reads the card. Child hangs the load. Child reads one number aloud." },
+      { level: "Easy", description: "Educator reads the card. Child hangs the load. Child reads one number aloud." },
       { level: "Medium", description: "Child sets up and records every reading in the table." },
       { level: "Hard", description: "Child predicts the reading within 100g before measuring. Checks how close the prediction was." },
     ],
@@ -76,7 +76,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "Two 0.5kg weights + two 1kg weights (both needed simultaneously)",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher demonstrates. Child hangs the second weight and watches." },
+      { level: "Easy", description: "Educator demonstrates. Child hangs the second weight and watches." },
       { level: "Medium", description: "Child sets up and checks if the lever is level using the table edge as a reference." },
       { level: "Hard", description: "Child predicts balance before hanging each weight and explains why balance happens." },
     ],
@@ -96,10 +96,10 @@ const experimentActivities: Record<string, CurriculumActivity> = {
     materials: [
       "Experiment Card: L1 Levers e4",
       "PVC pipe 30cm · T-connector · plastic cups",
-      "0.5kg weight + 3–4 everyday objects of roughly equal weight (teacher-supplied)",
+      "0.5kg weight + 3–4 everyday objects of roughly equal weight (educator-supplied)",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher hangs the comparison objects. Child names which balanced." },
+      { level: "Easy", description: "Educator hangs the comparison objects. Child names which balanced." },
       { level: "Medium", description: "Child tests each object and writes the result in the table." },
       { level: "Hard", description: "Child predicts for each object before testing and explains why shape does not matter." },
     ],
@@ -121,7 +121,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "Pulley + tabletop clamp mount · 1m rope · spring scale 2kg · 0.5kg and 1kg weights · plastic cup with hook",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher lifts. Child reads the number." },
+      { level: "Easy", description: "Educator lifts. Child reads the number." },
       { level: "Medium", description: "Child lifts slowly and steadily, takes two readings, writes the average." },
       { level: "Hard", description: "Child predicts the reading before every lift and explains why it will be bigger or smaller." },
     ],
@@ -143,7 +143,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "Pulley mount · rope · spring scale · 1kg weight · cup",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Child pulls in the direction shown by the teacher." },
+      { level: "Easy", description: "Child pulls in the direction shown by the educator." },
       { level: "Medium", description: "Child sets up the pulley and names the direction of pull each time." },
       { level: "Hard", description: "Child predicts and explains why the direction changes." },
     ],
@@ -165,7 +165,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "Pulley mount · rope · spring scale · 1kg weight · stack of books or riser to raise pulley height",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher raises the pulley. Child reads the new number aloud." },
+      { level: "Easy", description: "Educator raises the pulley. Child reads the new number aloud." },
       { level: "Medium", description: "Child raises the pulley position and re-measures." },
       { level: "Hard", description: "Child predicts whether the reading will change before lifting and explains why." },
     ],
@@ -187,7 +187,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "Pulley mount · rope · spring scale · 1kg weight · cup",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Child pulls in the two directions shown by the teacher." },
+      { level: "Easy", description: "Child pulls in the two directions shown by the educator." },
       { level: "Medium", description: "Child tries three directions and records all three readings." },
       { level: "Hard", description: "Child predicts whether the readings will match before each pull and explains why comfort is different from effort." },
     ],
@@ -213,7 +213,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "Measuring tape, erasable marker",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher sets each setup; child lifts and reads the effort." },
+      { level: "Easy", description: "Educator sets each setup; child lifts and reads the effort." },
       { level: "Medium", description: "Child runs both setups for each weight and records the effort." },
       { level: "Hard", description: "Child predicts how much the lever will save before testing and explains why." },
     ],
@@ -237,7 +237,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "Measuring tape, erasable marker",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher moves the fulcrum; child says when it balances." },
+      { level: "Easy", description: "Educator moves the fulcrum; child says when it balances." },
       { level: "Medium", description: "Child moves the fulcrum to find the balance point and records its position." },
       { level: "Hard", description: "Child predicts which way the fulcrum must move before testing and explains why." },
     ],
@@ -263,7 +263,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "Baseplate with mounting points, erasable marker",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher sets up both arrangements; child turns Gear A and says which way Gear B goes." },
+      { level: "Easy", description: "Educator sets up both arrangements; child turns Gear A and says which way Gear B goes." },
       { level: "Medium", description: "Child builds both setups and records the direction of Gear B for each." },
       { level: "Hard", description: "Child predicts the direction for each setup before turning and explains why the chain changes it." },
     ],
@@ -287,7 +287,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "Baseplate, erasable marker",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher turns the small gear a set number of times; child counts the big gear's turns." },
+      { level: "Easy", description: "Educator turns the small gear a set number of times; child counts the big gear's turns." },
       { level: "Medium", description: "Child turns the small gear 3, 5, 8 times and records the big gear's turns each time." },
       { level: "Hard", description: "Child predicts the big gear's turns before counting and explains why it turns fewer times." },
     ],
@@ -311,7 +311,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "Baseplate, erasable marker",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher turns the big gear a set number of times; child counts the small gear's turns." },
+      { level: "Easy", description: "Educator turns the big gear a set number of times; child counts the small gear's turns." },
       { level: "Medium", description: "Child turns the big gear 3, 5, 8 times and records the small gear's turns each time." },
       { level: "Hard", description: "Child predicts the small gear's turns first and explains why it now turns more — comparing back to e2." },
     ],
@@ -335,7 +335,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "Baseplate, erasable marker",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher turns Gear A a set number of times; child counts Gear B's turns." },
+      { level: "Easy", description: "Educator turns Gear A a set number of times; child counts Gear B's turns." },
       { level: "Medium", description: "Child turns Gear A 4, 6, 9 times and records Gear B's turns each time." },
       { level: "Hard", description: "Child predicts Gear B's turns first and explains why equal gears turn one-to-one." },
     ],
@@ -359,7 +359,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "Baseplate, erasable marker",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher turns the small gear; child counts and records the big gear's turns." },
+      { level: "Easy", description: "Educator turns the small gear; child counts and records the big gear's turns." },
       { level: "Medium", description: "Child turns the small gear 6, 9, 12 times and records the big gear's turns each time." },
       { level: "Hard", description: "Child predicts the big gear's turns from the ratio before counting and explains the pattern." },
     ],
@@ -385,7 +385,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "Measuring tape, erasable marker",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher pushes the cart; child marks where it stops and reads the distance." },
+      { level: "Easy", description: "Educator pushes the cart; child marks where it stops and reads the distance." },
       { level: "Medium", description: "Child gives a steady push and measures the distance for each load." },
       { level: "Hard", description: "Child predicts which load goes furthest before pushing and explains the result." },
     ],
@@ -409,7 +409,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "Measuring tape, erasable marker",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher sets the load position; child pushes and marks the distance." },
+      { level: "Easy", description: "Educator sets the load position; child pushes and marks the distance." },
       { level: "Medium", description: "Child sets all three positions and measures the distance for each." },
       { level: "Hard", description: "Child predicts which position rolls furthest/straightest and explains why." },
     ],
@@ -433,7 +433,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "Measuring tape, erasable marker",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher pushes; child reads and records the distance for each load." },
+      { level: "Easy", description: "Educator pushes; child reads and records the distance for each load." },
       { level: "Medium", description: "Child gives an even push and measures the distance for all three loads." },
       { level: "Hard", description: "Child predicts the distances in order before testing and explains the pattern with numbers." },
     ],
@@ -456,7 +456,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "Open floor space, erasable marker",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher sets the axle angle; child pushes and says which way it went." },
+      { level: "Easy", description: "Educator sets the axle angle; child pushes and says which way it went." },
       { level: "Medium", description: "Child sets all three angles and records the direction for each." },
       { level: "Hard", description: "Child predicts the direction for each angle before pushing and explains how the axle steers." },
     ],
@@ -480,7 +480,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "Measuring tape, erasable marker",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher pushes both carts; child marks and compares the two distances." },
+      { level: "Easy", description: "Educator pushes both carts; child marks and compares the two distances." },
       { level: "Medium", description: "Child pushes both carts evenly and records each distance." },
       { level: "Hard", description: "Child predicts which cart rolls further before testing and explains why." },
     ],
@@ -503,7 +503,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "Measuring tape, erasable marker",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher pushes both carts; child compares the two distances." },
+      { level: "Easy", description: "Educator pushes both carts; child compares the two distances." },
       { level: "Medium", description: "Child pushes both carts evenly and records each distance." },
       { level: "Hard", description: "Child predicts which spacing rolls further before testing and explains the result." },
     ],
@@ -528,7 +528,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "0.5kg, 1kg, 1.5kg weights · cup with hook",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher sets up the double pulley; child lifts each weight and reads the scale." },
+      { level: "Easy", description: "Educator sets up the double pulley; child lifts each weight and reads the scale." },
       { level: "Medium", description: "Child rigs the double pulley and records the effort for each weight." },
       { level: "Hard", description: "Child predicts how the effort compares to a single pulley and explains why." },
     ],
@@ -551,7 +551,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "0.5kg, 1kg, 1.5kg weights · cup with hook",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher rigs the pulley; child lifts and reads the effort for each weight." },
+      { level: "Easy", description: "Educator rigs the pulley; child lifts and reads the effort for each weight." },
       { level: "Medium", description: "Child sets up the double pulley and records the effort for all three weights." },
       { level: "Hard", description: "Child predicts the effort order before lifting and explains the pattern with the readings." },
     ],
@@ -574,7 +574,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "3kg load · cup with hook",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher sets each height; child lifts and reads the effort." },
+      { level: "Easy", description: "Educator sets each height; child lifts and reads the effort." },
       { level: "Medium", description: "Child sets all three heights and records the effort for each." },
       { level: "Hard", description: "Child predicts whether height will change the effort before testing and explains the result." },
     ],
@@ -597,7 +597,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "3kg load · cup with hook",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher sets each pull direction; child lifts and reads the effort." },
+      { level: "Easy", description: "Educator sets each pull direction; child lifts and reads the effort." },
       { level: "Medium", description: "Child pulls from all three sides and records the effort for each." },
       { level: "Hard", description: "Child predicts whether direction changes the effort before testing and explains why comfort differs from effort." },
     ],
@@ -621,7 +621,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "Measuring tape, erasable marker",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher sets each lever; child lifts and reads the effort." },
+      { level: "Easy", description: "Educator sets each lever; child lifts and reads the effort." },
       { level: "Medium", description: "Child tries all three lever sizes and records the effort for each." },
       { level: "Hard", description: "Child predicts the best lever size before testing and explains how length and fulcrum position combine." },
     ],
@@ -641,7 +641,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "each child builds their own see-saw from a personal kit and a step card. five sessions — day by day.",
     howToPlay:
-      "The see-saw is a simple lever model — a beam balancing on a central fulcrum. Introduces lever concepts in the most physical way a child can feel. Day 1 Explore: read the manual cover to cover, lay out every component in manual order, begin first build stage. Days 2–3 Make: open manual where you left off, build, teacher uses four questions only. Day 4 Complete and Test: finish, run the test (balance two known weights — does the beam stay level?), record the best result. Day 5 Improve and Disassemble: each child makes one deliberate change, states expected outcome, tests, records before and after — then sorts every component back using the tray map.",
+      "The see-saw is a simple lever model — a beam balancing on a central fulcrum. Introduces lever concepts in the most physical way a child can feel. Day 1 Explore: read the manual cover to cover, lay out every component in manual order, begin first build stage. Days 2–3 Make: open manual where you left off, build, educator uses four questions only. Day 4 Complete and Test: finish, run the test (balance two known weights — does the beam stay level?), record the best result. Day 5 Improve and Disassemble: each child makes one deliberate change, states expected outcome, tests, records before and after — then sorts every component back using the tray map.",
     materials: [
       "Personal See-saw kit per child — all components in a labelled box",
       "Model Manual — See Saw.pdf (1 per child, laminated)",
@@ -649,8 +649,8 @@ const buildActivities: Record<string, CurriculumActivity> = {
       "Child-sized spanner, spare bolts and nuts",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher reads each manual step aloud. Child fits each component and the teacher checks." },
-      { level: "Medium", description: "Child reads independently and does each step without verbal confirmation — teacher watches." },
+      { level: "Easy", description: "Educator reads each manual step aloud. Child fits each component and the educator checks." },
+      { level: "Medium", description: "Child reads independently and does each step without verbal confirmation — educator watches." },
       { level: "Hard", description: "Child works ahead of the manual — reads two steps, plans, then builds. Checks own work before moving on." },
     ],
     debriefPrompts: [],
@@ -671,7 +671,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
       "Tray map — Weighing Scale (1 per child)",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher reads steps. Child fits each component with teacher check." },
+      { level: "Easy", description: "Educator reads steps. Child fits each component with educator check." },
       { level: "Medium", description: "Child reads and builds independently." },
       { level: "Hard", description: "Child anticipates the next step before reading and checks own work as they go." },
     ],
@@ -694,7 +694,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
       "Pulleys, rope, couplers (included in kit)",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher reads steps. Child fits components with check." },
+      { level: "Easy", description: "Educator reads steps. Child fits components with check." },
       { level: "Medium", description: "Child reads and builds independently, asks only when genuinely stuck." },
       { level: "Hard", description: "Child plans the next stage, names what the part is for, builds and checks." },
     ],
@@ -709,7 +709,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "the gear model — a copter whose blades spin through a gear train. five sessions from kit to spinning rotor.",
     howToPlay:
-      "The copter turns a hand crank into spinning blades through meshed gears — the gear experiments explain directly why the rotor spins faster or slower than the handle. Day 1 Explore: read the manual cover to cover, lay out every component in manual order, begin the build. Days 2–3 Make: open the manual where you left off, build, teacher uses four questions only. Day 4 Complete and Test: finish, turn the crank — do the blades spin? how many blade turns for one handle turn? Day 5 Improve and Disassemble: each child makes one deliberate change (swap a gear, change the handle), states the expected effect, tests, records before and after — then sorts the kit back using the tray map.",
+      "The copter turns a hand crank into spinning blades through meshed gears — the gear experiments explain directly why the rotor spins faster or slower than the handle. Day 1 Explore: read the manual cover to cover, lay out every component in manual order, begin the build. Days 2–3 Make: open the manual where you left off, build, educator uses four questions only. Day 4 Complete and Test: finish, turn the crank — do the blades spin? how many blade turns for one handle turn? Day 5 Improve and Disassemble: each child makes one deliberate change (swap a gear, change the handle), states the expected effect, tests, records before and after — then sorts the kit back using the tray map.",
     materials: [
       "Personal Copter kit additions per child — distributed at Day 1",
       "Model Manual — Copter.pdf (1 per child)",
@@ -717,7 +717,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
       "Gears, chain, crank handle (included in kit)",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher reads steps. Child fits each component with teacher check." },
+      { level: "Easy", description: "Educator reads steps. Child fits each component with educator check." },
       { level: "Medium", description: "Child reads and builds independently, asks only when genuinely stuck." },
       { level: "Hard", description: "Child plans the next stage, names what each gear is for, builds and checks own work." },
     ],
@@ -732,7 +732,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "the lever-and-pulley model — a rod that bends like a lever and reels in line through a pulley. five sessions.",
     howToPlay:
-      "The fishing rod combines a lever (the rod arm) with a pulley (the reel) — the lever and pulley experiments both explain what the build is doing. Day 1 Explore: read the manual cover to cover, lay out every component in manual order, begin the build. Days 2–3 Make: continue, teacher uses four questions only. Day 4 Complete and Test: finish, reel a small load up — does the rod lift it? how does the reel make it easier? Day 5 Improve and Disassemble: each child makes one deliberate change, states the expected effect, tests, records before and after — then sorts the kit back using the tray map.",
+      "The fishing rod combines a lever (the rod arm) with a pulley (the reel) — the lever and pulley experiments both explain what the build is doing. Day 1 Explore: read the manual cover to cover, lay out every component in manual order, begin the build. Days 2–3 Make: continue, educator uses four questions only. Day 4 Complete and Test: finish, reel a small load up — does the rod lift it? how does the reel make it easier? Day 5 Improve and Disassemble: each child makes one deliberate change, states the expected effect, tests, records before and after — then sorts the kit back using the tray map.",
     materials: [
       "Personal Fishing Rod kit additions per child — distributed at Day 1",
       "Model Manual — Fishing Rod.pdf (1 per child)",
@@ -740,7 +740,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
       "Rod arm, reel, pulley, line (included in kit)",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher reads steps. Child fits each component with teacher check." },
+      { level: "Easy", description: "Educator reads steps. Child fits each component with educator check." },
       { level: "Medium", description: "Child reads and builds independently, asks only when genuinely stuck." },
       { level: "Hard", description: "Child plans the next stage, names what the rod and reel each do, builds and checks own work." },
     ],
@@ -755,7 +755,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "the wheel-and-axle model — a rickshaw that rolls on wheels and axles. five sessions from kit to rolling cart.",
     howToPlay:
-      "The rickshaw rolls on wheels fixed to axles — the wheel-and-axle experiments explain directly how load and axle placement change the way it rolls. Day 1 Explore: read the manual cover to cover, lay out every component in manual order, begin the build. Days 2–3 Make: continue, teacher uses four questions only. Day 4 Complete and Test: finish, load it and give it a push — how far and how straight does it go? Day 5 Improve and Disassemble: each child makes one deliberate change, states the expected effect, tests, records before and after — then sorts the kit back using the tray map.",
+      "The rickshaw rolls on wheels fixed to axles — the wheel-and-axle experiments explain directly how load and axle placement change the way it rolls. Day 1 Explore: read the manual cover to cover, lay out every component in manual order, begin the build. Days 2–3 Make: continue, educator uses four questions only. Day 4 Complete and Test: finish, load it and give it a push — how far and how straight does it go? Day 5 Improve and Disassemble: each child makes one deliberate change, states the expected effect, tests, records before and after — then sorts the kit back using the tray map.",
     materials: [
       "Personal Rickshaw kit additions per child — distributed at Day 1",
       "Model Manual — Rickshaw.pdf (1 per child)",
@@ -763,7 +763,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
       "Wheels, axles, cart frame (included in kit)",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher reads steps. Child fits each component with teacher check." },
+      { level: "Easy", description: "Educator reads steps. Child fits each component with educator check." },
       { level: "Medium", description: "Child reads and builds independently, asks only when genuinely stuck." },
       { level: "Hard", description: "Child plans the next stage, names what each axle does, builds and checks own work." },
     ],
@@ -778,7 +778,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "the pulley model — a wind turbine whose blades drive a pulley to lift a small load. five sessions.",
     howToPlay:
-      "The wind turbine turns its spinning blades into lifting power through a pulley — the pulley experiments explain how the lifting system works. Day 1 Explore: read the manual cover to cover, lay out every component in manual order, begin the build. Days 2–3 Make: continue, teacher uses four questions only. Day 4 Complete and Test: finish, spin the blades — does the pulley wind up and lift the load? Day 5 Improve and Disassemble: each child makes one deliberate change, states the expected effect, tests, records before and after — then sorts the kit back using the tray map.",
+      "The wind turbine turns its spinning blades into lifting power through a pulley — the pulley experiments explain how the lifting system works. Day 1 Explore: read the manual cover to cover, lay out every component in manual order, begin the build. Days 2–3 Make: continue, educator uses four questions only. Day 4 Complete and Test: finish, spin the blades — does the pulley wind up and lift the load? Day 5 Improve and Disassemble: each child makes one deliberate change, states the expected effect, tests, records before and after — then sorts the kit back using the tray map.",
     materials: [
       "Personal Wind Turbine kit additions per child — distributed at Day 1",
       "Model Manual — Wind Turbine.pdf (1 per child)",
@@ -786,7 +786,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
       "Blades, pulley, rope, mast (included in kit)",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher reads steps. Child fits each component with teacher check." },
+      { level: "Easy", description: "Educator reads steps. Child fits each component with educator check." },
       { level: "Medium", description: "Child reads and builds independently, asks only when genuinely stuck." },
       { level: "Hard", description: "Child plans the next stage, names what the pulley does, builds and checks own work." },
     ],
@@ -801,7 +801,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "the wheel, axle and pulley model — a drawbridge that raises and lowers on a pulley. five sessions.",
     howToPlay:
-      "The drawbridge raises and lowers using axles and a pulley — the wheel-and-axle and pulley experiments both explain what the build is doing. Day 1 Explore: read the manual cover to cover, lay out every component in manual order, begin the build. Days 2–3 Make: continue, teacher uses four questions only. Day 4 Complete and Test: finish, raise and lower the bridge — does it hold and move smoothly? Day 5 Improve and Disassemble: each child makes one deliberate change, states the expected effect, tests, records before and after — then sorts the kit back using the tray map.",
+      "The drawbridge raises and lowers using axles and a pulley — the wheel-and-axle and pulley experiments both explain what the build is doing. Day 1 Explore: read the manual cover to cover, lay out every component in manual order, begin the build. Days 2–3 Make: continue, educator uses four questions only. Day 4 Complete and Test: finish, raise and lower the bridge — does it hold and move smoothly? Day 5 Improve and Disassemble: each child makes one deliberate change, states the expected effect, tests, records before and after — then sorts the kit back using the tray map.",
     materials: [
       "Personal Drawbridge kit additions per child — distributed at Day 1",
       "Model Manual — Drawbridge.pdf (1 per child)",
@@ -809,7 +809,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
       "Axles, pulley, rope, bridge deck (included in kit)",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher reads steps. Child fits each component with teacher check." },
+      { level: "Easy", description: "Educator reads steps. Child fits each component with educator check." },
       { level: "Medium", description: "Child reads and builds independently, asks only when genuinely stuck." },
       { level: "Hard", description: "Child plans the next stage, names what the axle and pulley each do, builds and checks own work." },
     ],
@@ -824,7 +824,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "the wheel, axle and pulley model — a tow truck that rolls on axles and winches a load on a pulley. five sessions.",
     howToPlay:
-      "The tow truck rolls on wheels and axles and winches a load with a pulley — the wheel-and-axle and pulley experiments both explain what the build is doing. Day 1 Explore: read the manual cover to cover, lay out every component in manual order, begin the build. Days 2–3 Make: continue, teacher uses four questions only. Day 4 Complete and Test: finish, drive it and winch a load — does it roll straight and pull the load up? Day 5 Improve and Disassemble: each child makes one deliberate change, states the expected effect, tests, records before and after — then sorts the kit back using the tray map.",
+      "The tow truck rolls on wheels and axles and winches a load with a pulley — the wheel-and-axle and pulley experiments both explain what the build is doing. Day 1 Explore: read the manual cover to cover, lay out every component in manual order, begin the build. Days 2–3 Make: continue, educator uses four questions only. Day 4 Complete and Test: finish, drive it and winch a load — does it roll straight and pull the load up? Day 5 Improve and Disassemble: each child makes one deliberate change, states the expected effect, tests, records before and after — then sorts the kit back using the tray map.",
     materials: [
       "Personal Tow Truck kit additions per child — distributed at Day 1",
       "Model Manual — Tow Truck.pdf (1 per child)",
@@ -832,7 +832,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
       "Wheels, axles, pulley, winch rope (included in kit)",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher reads steps. Child fits each component with teacher check." },
+      { level: "Easy", description: "Educator reads steps. Child fits each component with educator check." },
       { level: "Medium", description: "Child reads and builds independently, asks only when genuinely stuck." },
       { level: "Hard", description: "Child plans the next stage, names what the axles and winch pulley each do, builds and checks own work." },
     ],
@@ -847,7 +847,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
     setupLine:
       "the gear model — a bulldozer whose blade and tracks are driven through gears. five sessions.",
     howToPlay:
-      "The bulldozer drives its blade and tracks through a gear train — the gear experiments explain directly how the gearing changes speed and turning. Day 1 Explore: read the manual cover to cover, lay out every component in manual order, begin the build. Days 2–3 Make: continue, teacher uses four questions only. Day 4 Complete and Test: finish, run it — do the gears drive the blade and tracks? Day 5 Improve and Disassemble: each child makes one deliberate change, states the expected effect, tests, records before and after — then sorts the kit back using the tray map.",
+      "The bulldozer drives its blade and tracks through a gear train — the gear experiments explain directly how the gearing changes speed and turning. Day 1 Explore: read the manual cover to cover, lay out every component in manual order, begin the build. Days 2–3 Make: continue, educator uses four questions only. Day 4 Complete and Test: finish, run it — do the gears drive the blade and tracks? Day 5 Improve and Disassemble: each child makes one deliberate change, states the expected effect, tests, records before and after — then sorts the kit back using the tray map.",
     materials: [
       "Personal Bulldozer kit additions per child — distributed at Day 1",
       "Model Manual — Bulldozer.pdf (1 per child)",
@@ -855,7 +855,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
       "Gears, chain, blade, tracks (included in kit)",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Teacher reads steps. Child fits each component with teacher check." },
+      { level: "Easy", description: "Educator reads steps. Child fits each component with educator check." },
       { level: "Medium", description: "Child reads and builds independently, asks only when genuinely stuck." },
       { level: "Hard", description: "Child plans the next stage, names what each gear does, builds and checks own work." },
     ],
@@ -874,7 +874,7 @@ const experienceBookActivity: CurriculumActivity = {
   setupLine:
     "ten minutes at the end of every session. circle the ability seen clearly today for each skill. one specific note. goes home every day.",
   howToPlay:
-    "The teacher fills in four things per child: the experiment name, the build day, three ability rows (one per skill — B&M, PS, O&U — circling the ability seen clearly today), and one specific note (\"worth remembering\"). The book also carries the Ability Reference, and six monthly Robotics Journey letters that go home at sessions 8, 16, 24, 32, 40, and 48. Always conduct a 3-move debrief: name what you saw (linked to an ability name) · name the next step (next ability up) · ask one concept question to the group.",
+    "The educator fills in four things per child: the experiment name, the build day, three ability rows (one per skill — B&M, PS, O&U — circling the ability seen clearly today), and one specific note (\"worth remembering\"). The book also carries the Ability Reference, and six monthly Robotics Journey letters that go home at sessions 8, 16, 24, 32, 40, and 48. Always conduct a 3-move debrief: name what you saw (linked to an ability name) · name the next step (next ability up) · ask one concept question to the group.",
   materials: [
     "My Robotics Experience Book (ages 5–8) — per child, hardbound",
     "Ability Reference card (inside cover)",
@@ -930,7 +930,7 @@ const segmentDefinitions: CurriculumSegmentDef[] = [
     name: "experiment",
     durationRange: "40 min",
     objective:
-      "children work in groups of 2–4 to find the answer to one specific question. every child takes at least one measurement independently. teacher asks one question per group — never gives the answer. tool orientation is embedded for any new child in the first 3–4 experiment segments.",
+      "children work in groups of 2–4 to find the answer to one specific question. every child takes at least one measurement independently. educator asks one question per group — never gives the answer. tool orientation is embedded for any new child in the first 3–4 experiment segments.",
     type: "rotating",
     rotationPool: [],
   },
@@ -939,7 +939,7 @@ const segmentDefinitions: CurriculumSegmentDef[] = [
     name: "build",
     durationRange: "40 min",
     objective:
-      "5-minute engage question opens the segment — one question, 3–4 answers, connect to today's build. then each child builds their own model from a personal kit and a step card. the teacher never fixes and never tells. four questions only.",
+      "5-minute engage question opens the segment — one question, 3–4 answers, connect to today's build. then each child builds their own model from a personal kit and a step card. the educator never fixes and never tells. four questions only.",
     type: "rotating",
     rotationPool: [],
   },
@@ -1166,7 +1166,7 @@ const checkpoints: CurriculumCheckpoint[] = [
   {
     afterSession: 5,
     descriptors: [
-      { skillArea: "B&M", beginning: "still needs teacher help to connect parts correctly (Fit)", developing: "follows the step card one step at a time (Follow)", secure: "adjusts a failing connection within the design without being told (Adjust)" },
+      { skillArea: "B&M", beginning: "still needs educator help to connect parts correctly (Fit)", developing: "follows the step card one step at a time (Follow)", secure: "adjusts a failing connection within the design without being told (Adjust)" },
       { skillArea: "PS", beginning: "waits to be told what is wrong", developing: "notices when something is not working — without being told (Notice)", secure: "tries a different approach instead of repeating what already failed (Try)" },
       { skillArea: "O&U", beginning: "watches but does not notice specifics", developing: "looks closely and identifies what is happening (Observe)", secure: "takes accurate readings and records them correctly (Measure)" },
     ],

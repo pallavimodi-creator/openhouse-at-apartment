@@ -1,4 +1,4 @@
-// ─── Teacher Manual Content ────────────────────────────────
+// ─── Educator Manual Content ────────────────────────────────
 // Full facilitation manuals for art and speaking experience books.
 
 export interface ManualSubsection {
@@ -24,7 +24,7 @@ export interface ManualConfig {
 
 const art58Manual: ManualConfig = {
   slug: "art-5-8",
-  title: "teacher manual",
+  title: "educator manual",
   subtitle: "art & design · ages 5-8 · facilitation guide",
   intro:
     "this manual is your companion for facilitating the art & design experience book for ages 5-8. it explains every section of the book, how to observe children as they work, and how to write meaningful feedback that parents can understand and act on. read it once before your first session, and refer back to specific sections as you need them.",
@@ -34,7 +34,7 @@ const art58Manual: ManualConfig = {
     {
       title: "what this book is",
       content:
-        "the experience book is a year-long record of one child's growth in art & design. it is not a portfolio of finished work. it is a log of what happened in every session — what they practised, what they made, and what you observed.\n\nyour job as a teacher is to observe, not evaluate. you are not grading the child. you are watching closely and recording what you see — which skills are emerging, which are strengthening, and which need more time. the book turns your observations into a story that parents can follow at home.\n\nevery entry you write should describe something you actually saw the child do. if you did not see it, do not write it.",
+        "the experience book is a year-long record of one child's growth in art & design. it is not a portfolio of finished work. it is a log of what happened in every session — what they practised, what they made, and what you observed.\n\nyour job as a educator is to observe, not evaluate. you are not grading the child. you are watching closely and recording what you see — which skills are emerging, which are strengthening, and which need more time. the book turns your observations into a story that parents can follow at home.\n\nevery entry you write should describe something you actually saw the child do. if you did not see it, do not write it.",
       subsections: [],
     },
 
@@ -201,9 +201,9 @@ const art58Manual: ManualConfig = {
       ],
     },
 
-    // 8. for new teachers
+    // 8. for new educators
     {
-      title: "for new teachers",
+      title: "for new educators",
       content:
         "if this is your first time facilitating, here is what matters most.",
       subsections: [
@@ -230,7 +230,7 @@ const art58Manual: ManualConfig = {
         {
           title: "ask for help",
           content:
-            "if you are unsure where a child sits on the tracker, ask another teacher to observe the same child for one session. two sets of eyes are better than one, especially in the first month.",
+            "if you are unsure where a child sits on the tracker, ask another educator to observe the same child for one session. two sets of eyes are better than one, especially in the first month.",
         },
       ],
     },
@@ -241,7 +241,7 @@ const art58Manual: ManualConfig = {
 
 const art812Manual: ManualConfig = {
   slug: "art-8-12",
-  title: "teacher manual",
+  title: "educator manual",
   subtitle: "art & design · ages 8-12 · facilitation guide",
   intro:
     "this manual is your companion for facilitating the art & design experience book for ages 8-12. children in this age group are more self-aware and more capable of intentional work. the observation standards are higher — you are looking for deliberate choices, not just emerging skills. read this manual once before your first session, and refer back as needed.",
@@ -251,7 +251,7 @@ const art812Manual: ManualConfig = {
     {
       title: "what this book is",
       content:
-        "the experience book is a year-long record of one child's growth in art & design. it is not a portfolio. it is a log of what happened — what they practised, what they made, and what you observed.\n\nyour job as a teacher is to observe, not evaluate. you are watching for intentional choices: does the child choose a medium because it serves their idea? do they plan before they make? can they explain what they did and why?\n\nat this age, the line between 'getting there' and 'going strong' often depends on whether the child can articulate their choices — not just make them. this is the articulation rule, and it applies especially to imagination & collaboration.\n\nevery entry you write should describe something you actually saw or heard the child do. if you did not see it, do not write it.",
+        "the experience book is a year-long record of one child's growth in art & design. it is not a portfolio. it is a log of what happened — what they practised, what they made, and what you observed.\n\nyour job as a educator is to observe, not evaluate. you are watching for intentional choices: does the child choose a medium because it serves their idea? do they plan before they make? can they explain what they did and why?\n\nat this age, the line between 'getting there' and 'going strong' often depends on whether the child can articulate their choices — not just make them. this is the articulation rule, and it applies especially to imagination & collaboration.\n\nevery entry you write should describe something you actually saw or heard the child do. if you did not see it, do not write it.",
       subsections: [],
     },
 
@@ -428,9 +428,9 @@ const art812Manual: ManualConfig = {
       ],
     },
 
-    // 8. for new teachers
+    // 8. for new educators
     {
-      title: "for new teachers",
+      title: "for new educators",
       content:
         "if this is your first time facilitating, here is what matters most.",
       subsections: [
@@ -462,7 +462,7 @@ const art812Manual: ManualConfig = {
         {
           title: "ask for help",
           content:
-            "if you are unsure where a child sits on the tracker, ask another teacher to observe the same child for one session. two sets of eyes are better than one.",
+            "if you are unsure where a child sits on the tracker, ask another educator to observe the same child for one session. two sets of eyes are better than one.",
         },
       ],
     },
@@ -473,7 +473,7 @@ const art812Manual: ManualConfig = {
 
 const speaking58Manual: ManualConfig = {
   slug: "speaking-5-8",
-  title: "teacher manual",
+  title: "educator manual",
   subtitle: "public speaking · ages 5-8 · facilitation guide",
   intro:
     "this manual is your companion for facilitating the speaking experience book for ages 5-8. it explains the lanyard system, how to observe children during games and performances, and how to write feedback that parents can understand. read it once before your first session, and refer back as needed.",
@@ -630,7 +630,7 @@ const speaking58Manual: ManualConfig = {
         {
           title: "Eye Contact",
           content:
-            "going strong: looks at the people they are speaking to. shifts gaze across the group, not just one person.\n\nactively building: looks down, at the ceiling, or only at the teacher. beginning to glance at the audience but not yet holding eye contact.",
+            "going strong: looks at the people they are speaking to. shifts gaze across the group, not just one person.\n\nactively building: looks down, at the ceiling, or only at the educator. beginning to glance at the audience but not yet holding eye contact.",
         },
         {
           title: "Posture and Presence",
@@ -684,9 +684,9 @@ const speaking58Manual: ManualConfig = {
       ],
     },
 
-    // 9. for new teachers
+    // 9. for new educators
     {
-      title: "for new teachers",
+      title: "for new educators",
       content:
         "if this is your first time facilitating, here is what matters most.",
       subsections: [
@@ -713,7 +713,7 @@ const speaking58Manual: ManualConfig = {
         {
           title: "ask for help",
           content:
-            "if you are unsure about an ability, ask another teacher to watch the same child for one session. two sets of eyes are always better.",
+            "if you are unsure about an ability, ask another educator to watch the same child for one session. two sets of eyes are always better.",
         },
       ],
     },
@@ -724,7 +724,7 @@ const speaking58Manual: ManualConfig = {
 
 const speaking812Manual: ManualConfig = {
   slug: "speaking-8-12",
-  title: "teacher manual",
+  title: "educator manual",
   subtitle: "public speaking · ages 8-12 · facilitation guide",
   intro:
     "this manual is your companion for facilitating the speaking experience book for ages 8-12. children in this age group are building argument, persuasion, and vocal control. the observation standards are higher — you are looking for deliberate rhetorical choices, not just willingness to speak. read this manual once before your first session.",
@@ -881,7 +881,7 @@ const speaking812Manual: ManualConfig = {
         {
           title: "Eye Contact across Group",
           content:
-            "going strong: makes eye contact across the whole group. scans the room, connects with different people, and does not fixate on one spot.\n\nactively building: looks at one person (often the teacher) or looks down. beginning to lift eyes but not yet scanning the group.",
+            "going strong: makes eye contact across the whole group. scans the room, connects with different people, and does not fixate on one spot.\n\nactively building: looks at one person (often the educator) or looks down. beginning to lift eyes but not yet scanning the group.",
         },
         {
           title: "Opening Presence",
@@ -940,9 +940,9 @@ const speaking812Manual: ManualConfig = {
       ],
     },
 
-    // 9. for new teachers
+    // 9. for new educators
     {
-      title: "for new teachers",
+      title: "for new educators",
       content:
         "if this is your first time facilitating, here is what matters most.",
       subsections: [
@@ -974,7 +974,7 @@ const speaking812Manual: ManualConfig = {
         {
           title: "ask for help",
           content:
-            "if you are unsure about an ability, ask another teacher to observe. two sets of eyes are always better.",
+            "if you are unsure about an ability, ask another educator to observe. two sets of eyes are always better.",
         },
       ],
     },
@@ -985,7 +985,7 @@ const speaking812Manual: ManualConfig = {
 
 const robotics58Manual: ManualConfig = {
   slug: "robotics-5-8",
-  title: "teacher manual",
+  title: "educator manual",
   subtitle: "robotics · ages 5-8 · facilitation guide",
   intro:
     "three skills. three marking rows. four pieces of information per session. under 2 minutes to fill in. the ability name you circle and the note you write are what make the robotics journey specific to this child.",
@@ -1006,7 +1006,7 @@ const robotics58Manual: ManualConfig = {
       subsections: [
         { title: "fits and functions", content: "does each part connect correctly and function — not just look assembled?" },
         { title: "follows the card", content: "does the child complete each step before moving to the next?" },
-        { title: "adjusts and fixes", content: "when something fails, does the child identify and fix the specific part without waiting for the teacher?" },
+        { title: "adjusts and fixes", content: "when something fails, does the child identify and fix the specific part without waiting for the educator?" },
         { title: "improves deliberately ★", content: "at the improve day — does the child make a deliberate change and check whether it worked?" },
       ],
     },
@@ -1038,10 +1038,10 @@ const robotics58Manual: ManualConfig = {
     {
       title: "the three-move debrief — every session, under 3 minutes",
       content:
-        "move 1 — name what you saw. teacher names one specific observed behaviour linked to an ability name. not \"good job\" — a specific moment.\n\nmove 2 — name the next step. the next ability up from what was observed. described as an invitation.\n\nmove 3 — one concept question to the group. one direct question about today's concept. one child answers. teacher confirms in one sentence.",
+        "move 1 — name what you saw. educator names one specific observed behaviour linked to an ability name. not \"good job\" — a specific moment.\n\nmove 2 — name the next step. the next ability up from what was observed. described as an invitation.\n\nmove 3 — one concept question to the group. one direct question about today's concept. one child answers. educator confirms in one sentence.",
     },
     {
-      title: "the four teacher questions — build only",
+      title: "the four educator questions — build only",
       content:
         "one per child per session. move on immediately. never fix. never tell.\n\n\"what is not working? what will you try?\"\n\"what did you change? what happened?\"\n\"which change made the bigger difference?\"\n\"point to the part that did the most important job.\"",
     },
@@ -1079,7 +1079,7 @@ const robotics58Manual: ManualConfig = {
 
 const robotics812Manual: ManualConfig = {
   slug: "robotics-8-12",
-  title: "teacher manual",
+  title: "educator manual",
   subtitle: "robotics · ages 8-12 · facilitation guide",
   intro:
     "three skills. three marking rows. under 2 minutes to fill in. at 8–12, what matters above all is whether the child can explain why — not just what happened. the ability name you circle and the note you write are what make the robotics journey specific to this child.",
@@ -1132,10 +1132,10 @@ const robotics812Manual: ManualConfig = {
     {
       title: "the three-move debrief — every session, under 3 minutes",
       content:
-        "move 1 — name what you saw. teacher names one specific observed behaviour linked to an ability name. not \"good job\" — a specific moment.\n\nmove 2 — name the next step. the next ability up from what was observed. described as an invitation.\n\nmove 3 — one concept question to the group. one direct question that requires a causal answer: \"why did that happen?\" one child answers. teacher confirms in one sentence.",
+        "move 1 — name what you saw. educator names one specific observed behaviour linked to an ability name. not \"good job\" — a specific moment.\n\nmove 2 — name the next step. the next ability up from what was observed. described as an invitation.\n\nmove 3 — one concept question to the group. one direct question that requires a causal answer: \"why did that happen?\" one child answers. educator confirms in one sentence.",
     },
     {
-      title: "the four teacher questions — build only",
+      title: "the four educator questions — build only",
       content:
         "one per child per session. move on immediately. never fix. never tell.\n\n\"what is not working? what will you try?\"\n\"what did you change? what happened?\"\n\"which change made the bigger difference?\"\n\"point to the part that did the most important job.\"",
     },
