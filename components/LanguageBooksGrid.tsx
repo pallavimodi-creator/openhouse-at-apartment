@@ -1,11 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { BookOpen, ChevronDown } from "lucide-react";
+import { BookOpen, ChevronDown, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { LanguageBook } from "@/content/types";
 import { LanguageBookPlanModal } from "@/components/LanguageBookPlanModal";
 import { getBookPlan } from "@/content/programmes/language-book-plans";
+import { VocabularyCardsModal } from "@/components/VocabularyCardsModal";
+import {
+  getVocabBookByOrder,
+  type VocabBook,
+} from "@/content/programmes/vocab-cards";
 
 const ACTIVITY_LABEL: Record<LanguageBook["groupActivityType"], string> = {
   "story-re-enactment": "story re-enactment",
@@ -29,6 +34,7 @@ const VOCAB_TYPE_LABEL: Record<LanguageBook["vocabularyType"], string> = {
 export function LanguageBooksGrid({ books }: { books: LanguageBook[] }) {
   const [openOrder, setOpenOrder] = useState<number | null>(null);
   const [planBook, setPlanBook] = useState<LanguageBook | null>(null);
+  const [vocabBook, setVocabBook] = useState<VocabBook | null>(null);
   const planBookPlan = planBook ? getBookPlan(planBook.order) ?? null : null;
   return (
     <>
@@ -43,6 +49,11 @@ export function LanguageBooksGrid({ books }: { books: LanguageBook[] }) {
                   setOpenOrder(openOrder === book.order ? null : book.order)
                 }
                 onOpenPlan={() => setPlanBook(book)}
+                onOpenVocab={() => {
+                  const v = getVocabBookByOrder(book.order);
+                  if (v) setVocabBook(v);
+                }}
+                hasVocabDeck={!!getVocabBookByOrder(book.order)}
               />
             </li>
           ))}
@@ -54,6 +65,11 @@ export function LanguageBooksGrid({ books }: { books: LanguageBook[] }) {
         book={planBook}
         plan={planBookPlan}
       />
+      <VocabularyCardsModal
+        isOpen={vocabBook !== null}
+        onClose={() => setVocabBook(null)}
+        book={vocabBook}
+      />
     </>
   );
 }
@@ -63,11 +79,15 @@ function BookRow({
   isOpen,
   onToggle,
   onOpenPlan,
+  onOpenVocab,
+  hasVocabDeck,
 }: {
   book: LanguageBook;
   isOpen: boolean;
   onToggle: () => void;
   onOpenPlan: () => void;
+  onOpenVocab: () => void;
+  hasVocabDeck: boolean;
 }) {
   return (
     <div>
@@ -164,14 +184,37 @@ function BookRow({
           </div>
 
           <div className="grid gap-2 md:grid-cols-2">
-            <div className="rounded-lg bg-brand-white p-3 ring-1 ring-ink/5">
-              <p className="text-[10px] font-semibold tracking-normal text-ink-subtle">
-                Wordsmiths resource
-              </p>
-              <p className="mt-1 text-[11.5px] font-bold text-ink">
-                {VOCAB_TYPE_LABEL[book.vocabularyType]}
-              </p>
-            </div>
+            {hasVocabDeck ? (
+              <button
+                type="button"
+                onClick={onOpenVocab}
+                className="group flex items-start gap-2 rounded-lg bg-segment-yellow/40 p-3 text-left ring-1 ring-segment-yellow/60 transition hover:bg-segment-yellow/55 active:scale-[0.99]"
+              >
+                <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-orange text-white">
+                  <Sparkles className="h-3 w-3" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-[10px] font-semibold tracking-normal text-ink-subtle">
+                    Wordsmiths resource
+                  </p>
+                  <p className="mt-0.5 truncate text-[11.5px] font-bold text-ink">
+                    {VOCAB_TYPE_LABEL[book.vocabularyType]} →
+                  </p>
+                </div>
+              </button>
+            ) : (
+              <div className="rounded-lg bg-brand-white p-3 ring-1 ring-ink/5">
+                <p className="text-[10px] font-semibold tracking-normal text-ink-subtle">
+                  Wordsmiths resource
+                </p>
+                <p className="mt-1 text-[11.5px] font-bold text-ink">
+                  {VOCAB_TYPE_LABEL[book.vocabularyType]}
+                </p>
+                <p className="mt-1 text-[9.5px] italic text-ink/40">
+                  coming soon
+                </p>
+              </div>
+            )}
             <div className="rounded-lg bg-brand-white p-3 ring-1 ring-ink/5">
               <p className="text-[10px] font-semibold tracking-normal text-ink-subtle">
                 Group activity

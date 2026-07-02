@@ -17,6 +17,22 @@ const rollCallActivities: Record<string, CurriculumActivity> = {
       "I'll say one sentence ending in a bold starter word. The next child begins with that word. Chain continues around the circle — no starter word may repeat.",
     howToPlay:
       "Sit in a circle. Educator reads one opening sentence from the prompt bank \u2014 the last word is a bold starter word the next child must open with. The chain continues. If a child cannot continue within 5 seconds, they say \"pass\" and the next child continues. At 8\u201312, no starter word may repeat across the whole chain.",
+    players: "3\u20138 children \u00b7 1 teacher",
+    duration: "10 min",
+    goal: "the child opens a sentence with the last word of the previous sentence to keep the chain alive.",
+    steps: [
+      "sit the children in a circle.",
+      "read one opening sentence from the prompt bank \u2014 the last word is the starter word for the next child.",
+      "the next child says a sentence that begins with that starter word.",
+      "keep the chain going around the circle \u2014 no starter word may repeat.",
+      "if a child cannot continue within 5 seconds, they say \"pass\" and the chain moves on.",
+    ],
+    endsWhen: "the chain has moved around the full circle and every child has spoken.",
+    easierVariation:
+      "the child does not have to continue the story \u2014 any sentence starting with the given word works.",
+    harderVariation:
+      "no starter word may repeat across the whole chain, so children track every word already used.",
+    skillIds: ["cs", "vs"],
     example:
       "Educator — \"I missed the bus because I woke up late.\" Child 1 — \"Late nights always make the next morning harder.\" Child 2 — \"Harder days teach you more than easy ones.\" No requirements — the child can make a sentence that does not necessarily continue the story.",
     materials: ["Opening-sentence prompt deck"],
@@ -47,6 +63,22 @@ const rollCallActivities: Record<string, CurriculumActivity> = {
       "I'm going to show a card. Your team has to become that object — using only your bodies. No speaking.",
     howToPlay:
       "Children divide into teams of 3–4. One child flips an object image card — visible to all teams. All teams immediately form that object using their bodies. No speaking. Teams work together silently. The educator decides which team's version is most convincing. That team flips the next card.",
+    players: "3–8 children · 1 teacher",
+    duration: "10 min",
+    goal: "the child works with their team to silently form the object on the card using only their bodies.",
+    steps: [
+      "divide the children into teams of 3–4.",
+      "one child flips an object image card so all teams can see it.",
+      "every team immediately forms that object with their bodies — no speaking.",
+      "the educator picks the most convincing team's version.",
+      "that team flips the next card and play continues.",
+    ],
+    endsWhen: "the card deck runs out or the segment time is up.",
+    easierVariation:
+      "children do the solo or partner action shown on the card — no group formation required.",
+    harderVariation:
+      "play find your pair — each child draws one card and walks around forming their object until they find the matching pair; first pair to lock in wins.",
+    skillIds: ["bl", "cs"],
     variations: [
       {
         name: "Formation guide",
@@ -113,6 +145,22 @@ const rollCallActivities: Record<string, CurriculumActivity> = {
       "Before you throw the ball, call a volume. The catcher has to say any word or sentence at exactly that volume.",
     howToPlay:
       "Children stand or sit in a circle. Before throwing a soft ball, the thrower calls one of three volume levels. The catcher must say any word at exactly that volume before throwing to someone new and calling a different level. Three volume levels: Loud \u2014 full voice, fill the room \u00b7 Medium \u2014 normal conversation voice \u00b7 Whisper \u2014 barely audible, lean in to hear. At 8\u201312, the thrower may also name a word to stress: \"Medium \u2014 and stress the last word.\"",
+    players: "3\u20138 children \u00b7 1 teacher",
+    duration: "10 min",
+    goal: "the child speaks a word at the exact volume called by the thrower.",
+    steps: [
+      "stand or sit the children in a circle.",
+      "the thrower calls loud, medium, or whisper before throwing the soft ball.",
+      "the catcher says any word at exactly that volume.",
+      "the catcher then throws to someone new and calls a different level.",
+      "keep passing the ball so every child has a turn at each volume.",
+    ],
+    endsWhen: "every child has caught and spoken at all three volume levels.",
+    easierVariation:
+      "the thrower just calls the volume \u2014 the catcher can pick any word they like.",
+    harderVariation:
+      "the thrower also names a word to stress \u2014 for example \"medium, and stress the last word.\"",
+    skillIds: ["vs", "bl"],
     variations: [
       {
         name: "Sing / Laugh / Cry and Speak",
@@ -138,6 +186,22 @@ const rollCallActivities: Record<string, CurriculumActivity> = {
       "Walk around. When the music stops, find someone and hold eye contact until the music starts again.",
     howToPlay:
       "Children walk around the space while music plays. When the music stops, each child makes eye contact with someone nearby and holds it according to today's variation.",
+    players: "3–8 children · 1 teacher",
+    duration: "10 min",
+    goal: "the child holds eye contact with a partner when the music stops.",
+    steps: [
+      "start the music and let the children walk around the space.",
+      "stop the music at random.",
+      "each child finds someone nearby and locks eyes with them.",
+      "both hold eye contact per today's variation until the music starts again.",
+      "restart the music and repeat the round.",
+    ],
+    endsWhen: "the segment time is up or every child has held eye contact several times.",
+    easierVariation:
+      "both children just hold eye contact until the music starts again — if a child looks away first, they sit out one round.",
+    harderVariation:
+      "after locking eyes, children try to make the other smile or laugh without touching or speaking.",
+    skillIds: ["bl", "cs"],
     variations: [
       {
         name: "Hold it",
@@ -182,6 +246,22 @@ const rollCallActivities: Record<string, CurriculumActivity> = {
       "I'm going to start a gesture with a sound. Copy it exactly and pass it on.",
     howToPlay:
       "Everyone stands in a circle. One player makes a small gesture with a small sound — for example, slowly raising one hand and humming softly. Their neighbour copies exactly and passes it around. Variations in what subtly changes are observed and discussed after. Also watch for small unplanned sounds — sighs, clicks, breaths — these should be copied too.",
+    players: "3–8 children · 1 teacher",
+    duration: "10 min",
+    goal: "the child copies the previous player's gesture and sound exactly and passes it on.",
+    steps: [
+      "stand the children in a circle.",
+      "one player makes a small gesture with a small sound.",
+      "their neighbour copies it exactly and passes it to the next child.",
+      "watch for small unplanned sounds — sighs, clicks, breaths — copy those too.",
+      "when the gesture returns to the starter, discuss what subtly changed along the way.",
+    ],
+    endsWhen: "the gesture returns to the child who started it.",
+    easierVariation:
+      "the child copies only the gesture — the sound is optional.",
+    harderVariation:
+      "the child must also copy every small unplanned sound the previous player made, like a sigh, click, or breath.",
+    skillIds: ["bl", "vs"],
     materials: [],
     promptHeading: "prompts — gesture + sound combinations",
     prompts: [
@@ -221,6 +301,22 @@ const rollCallActivities: Record<string, CurriculumActivity> = {
       "Pick a card. Don't show anyone. Make the sound of the ticked object — the rest of us guess.",
     howToPlay:
       "Children take turns. One child picks a card from the deck without showing it. On the card is a ticked object — a bell, a door, a cat, a kettle, a clap, a drum. The child makes the sound of that object using only their voice and body. The other children listen and guess. First correct guess picks the next card. After a correct guess, the child explains one specific mark-quality of their sound — pitch, rhythm, attack — that made it recognisable.",
+    players: "3–8 children · 1 teacher",
+    duration: "10 min",
+    goal: "the child makes the sound of the ticked object on their card using only voice and body while others guess.",
+    steps: [
+      "one child picks a card from the deck without showing it.",
+      "they make the sound of the ticked object using only their voice and body.",
+      "the other children listen and call out their guesses.",
+      "the first child to guess correctly picks the next card.",
+      "the sound-maker explains one specific quality — pitch, rhythm, or attack — that made their sound recognisable.",
+    ],
+    endsWhen: "the segment time is up or every child has had a turn making a sound.",
+    easierVariation:
+      "the child names the object out loud first, then makes the sound so peers can compare.",
+    harderVariation:
+      "play the quartets variation — deal 4 cards each and collect full sets by acting out or sounding the card being asked for.",
+    skillIds: ["vs", "cs"],
     variations: [
       {
         name: "Variation — Quartets",
@@ -254,6 +350,22 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
       "Every child gets a script card. They fill in the blanks and then narrate their script.",
     howToPlay:
       "Each child receives a laminated Script Flip card and an erasable marker. They fill in the story template blanks. When all blanks are filled, each child narrates their completed script.",
+    players: "3–8 children · 1 teacher",
+    duration: "25 min",
+    goal: "the child fills in the blanks of a story template and narrates the completed script.",
+    steps: [
+      "hand each child a laminated script flip card and an erasable marker.",
+      "the child fills in every blank on the story template.",
+      "when all blanks are filled, they read through their script once silently.",
+      "each child stands and narrates their completed script to the group.",
+      "collect cards, wipe them clean, and rotate for the next round.",
+    ],
+    endsWhen: "every child has narrated their completed script.",
+    easierVariation:
+      "use b1 cards — simpler templates with fewer blanks to fill.",
+    harderVariation:
+      "use b2 cards and add tone prompts — the child writes and performs to a set tone.",
+    skillIds: ["cs", "vs"],
     variations: [
       {
         name: "Write & perform — individual or as a team",
@@ -304,6 +416,22 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
       "Shuffle Story Cards and place face-up in 4 piles (character, object, event, emotion). Pick one card from any pile. Children place it on the story mat and each child continues the story line through the cards they pick and place.",
     howToPlay:
       "First child places their card and begins the story. The next child picks a card from any pile, places it on the Story Mat, and continues the story line from where the previous child left off. The tale builds card by card around the circle. The child placing the last card ends the story, or the educator ends it. At the end, the children give their story a title.",
+    players: "3–8 children · 1 teacher",
+    duration: "25 min",
+    goal: "the child adds one card and one line to a shared story that builds around the circle.",
+    steps: [
+      "shuffle the story cards and place them face-up in 4 piles — character, object, event, emotion.",
+      "the first child picks a card from any pile, places it on the story mat, and begins the story.",
+      "the next child picks a card from any pile, places it, and continues the story line.",
+      "keep going around the circle — the tale builds card by card.",
+      "the child placing the last card ends the story and the group gives it a title.",
+    ],
+    endsWhen: "the last card is placed on the mat and the story is given a title.",
+    easierVariation:
+      "the educator gives the opening sentence so the first child only has to continue.",
+    harderVariation:
+      "the educator rolls the theme dice — every child must keep their contribution inside that theme.",
+    skillIds: ["cs", "vs"],
     variations: [
       {
         name: "Transition cards",
@@ -354,6 +482,22 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
       "Divide into Performing Team and Questioning Team. Performing team gets cards, creates a story, and performs. Questioning team asks using their Question Bands.",
     howToPlay:
       "Divide into Performing Team and Questioning Team. The Performing Team draws one story — 6 cards — and lays them face-up in the story's printed order. They have preparation time to create and prepare their performance. Perform within set time. Questioning team asks questions using Question Bands — at least one Why and one How — and the Performing Team answers. One player summarises in 2–3 sentences. Roles rotate.",
+    players: "3–8 children · 1 teacher",
+    duration: "25 min",
+    goal: "the performing team builds and performs a story from 6 cards, then answers the questioning team's who/what/when/where/why/how questions.",
+    steps: [
+      "divide the group into a performing team and a questioning team.",
+      "the performing team draws one story — 6 cards — and lays them face-up in the printed order.",
+      "the performing team prepares and performs the story within the set time.",
+      "the questioning team asks questions using their question bands — at least one why and one how.",
+      "one performing-team player summarises in 2–3 sentences, then roles rotate.",
+    ],
+    endsWhen: "both teams have taken a turn performing and questioning.",
+    easierVariation:
+      "untimed — the performing team takes as long as they need to prepare.",
+    harderVariation:
+      "timed preparation, and the questioning team can ask follow-up questions beyond the normal round.",
+    skillIds: ["cs", "bl"],
     materials: [
       "Story Combination Cards — 10 stories × 6 cards = 60 A5 cards",
       "Question Bands (Who, What, When, Where, Why, How)",
@@ -397,6 +541,22 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
       "Each player receives a topic card. Assemble your Speech Puzzle Board — Topic, Opening, Argument, Evidence, Conclusion — using your cards. Then deliver your speech in the order of the cards on the board.",
     howToPlay:
       "Each player notes their topic from the digital topic deck on their topic card. Children pick any 5 puzzle cards from the shuffled deck placed face down by the educator. Educator gives out any 2 action cards to each player. On each turn, a child places one puzzle card on the Puzzle Board following the order (Topic, Opening, Argument, Evidence, Conclusion). During play, players use the action cards given to Swap / Steal / Stop and fill the puzzle board with cards. After all puzzle cards are placed, the child delivers their speech using the cards placed on the board. One token is awarded for each puzzle card successfully used in a sentence.",
+    players: "3–8 children · 1 teacher",
+    duration: "25 min",
+    goal: "the child assembles a speech puzzle board — topic, opening, argument, evidence, conclusion — and delivers their speech in that order.",
+    steps: [
+      "each child notes their topic from the digital topic deck on their topic card.",
+      "children pick any 5 puzzle cards from the shuffled face-down deck; educator hands out 2 action cards each.",
+      "on each turn, a child places one puzzle card on their board in the order topic → opening → argument → evidence → conclusion.",
+      "during play, children use action cards to swap, steal, or stop each other's placements.",
+      "once the board is full, the child delivers their speech using the cards placed — one token per card successfully used in a sentence.",
+    ],
+    endsWhen: "every child has filled their board and delivered their speech.",
+    easierVariation:
+      "the educator helps the child deliver their speech.",
+    harderVariation:
+      "the conclusion must connect back to the opening.",
+    skillIds: ["cs", "vs"],
     variations: [
       {
         name: "Variation — Ability lanyard",
@@ -442,6 +602,22 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
       "Investors draw a Problem Card. Teams select a Solution Card from their hand that best matches the problem and prepare their pitch. Investors evaluate and award tokens based on structure and how convincing the pitch is.",
     howToPlay:
       "Choose one pair to start as the Investors. This role rotates every round. Form teams of 2–3 children. Investors draw a Problem Card that presents a problem. Each team receives 3 Solution Cards. Teams select 1 Solution Card from their hand that they feel best matches the Problem Card, and prepare their pitch. Each team pitches to the Investors. The Investors are allowed to ask questions. The Investors evaluate and award tokens to each team based on the structure of the pitch and how convincing it was.",
+    players: "3–8 children · 1 teacher",
+    duration: "25 min",
+    goal: "the child pitches a solution card that matches the investors' problem card and wins tokens for structure and conviction.",
+    steps: [
+      "choose one pair to start as the investors — this role rotates each round.",
+      "form the rest of the children into teams of 2–3.",
+      "investors draw a problem card; each team receives 3 solution cards.",
+      "each team picks the solution card that best matches the problem and prepares their pitch.",
+      "teams pitch to the investors, investors ask questions, then award tokens for structure and conviction.",
+    ],
+    endsWhen: "every pair has rotated through the investor role.",
+    easierVariation:
+      "twist card not used — teams focus only on matching the solution to the problem.",
+    harderVariation:
+      "a twist card is drawn — teams must balance completing the twist with creating a pitch that appeals to the investors.",
+    skillIds: ["cs", "vs"],
     materials: [
       "Problem Cards",
       "Solution Cards",
@@ -474,6 +650,22 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
       "Each player rolls the dice, moves their meeple, and follows the action on the block they land on. Complete a challenge or fortune or simple action to earn tokens.",
     howToPlay:
       "Each player is given a meeple and a set amount of tokens. Each player rolls the dice, moves, and follows the action on the block they land on. The player draws a level-based challenge card or a fortune card, or does the simple action mentioned on the block. Completing the challenge or action earns the player tokens.",
+    players: "3–8 children · 1 teacher",
+    duration: "25 min",
+    goal: "the child rolls the dice, moves their meeple, and completes the challenge or action on the block they land on to earn tokens.",
+    steps: [
+      "hand each child a meeple and a starting set of tokens.",
+      "on their turn, the child rolls the dice and moves their meeple.",
+      "they read the action on the block they land on.",
+      "they draw a level-based challenge card, a fortune card, or perform the simple action shown.",
+      "they earn tokens for completing the challenge or action, then play passes to the next child.",
+    ],
+    endsWhen: "a child reaches the end of the board or the segment time is up.",
+    easierVariation:
+      "use only easy challenge cards.",
+    harderVariation:
+      "use only difficult challenge cards.",
+    skillIds: ["cs", "vs"],
     materials: [
       "Board",
       "Meeples (one per player)",
@@ -510,6 +702,22 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
       "Speak on your topic for a set time to move a set number of steps. Hesitate or stop, and the timer stops — you move by however many steps the time board gives you.",
     howToPlay:
       "Pieces start at the bottom of the gameboard. The time board at the side maps speaking time to steps — e.g. 15 seconds = 1 step, 30s = 2, 45s = 3, 60s = 4, and so on. Players can see the board so they can plan how long they want to keep speaking. Educator reads out a prompt from the digital deck in the app. Player starts speaking on that prompt. The timer runs. Hesitation, repetition, or going off-topic stops the timer — the piece moves by the number of steps the time board allows for that clock reading. Landing on a Slippery Step moves the piece back. Landing on a Risk Step: player attempts a Risk Card challenge — completing it earns a Reward Card. First individual / team to the top of the board wins.",
+    players: "3–8 children · 1 teacher",
+    duration: "25 min",
+    goal: "the child speaks on their prompt for as long as they can without hesitation to move their piece up the board.",
+    steps: [
+      "place all pieces at the bottom of the gameboard.",
+      "read the child a prompt from the digital deck — start the timer as they begin speaking.",
+      "the timer stops on hesitation, repetition, or going off-topic — the piece moves by the steps the time board allows for that reading.",
+      "landing on a slippery step sends the piece back; landing on a risk step, the child attempts a risk card for a reward card.",
+      "play rotates until the first individual or team reaches the top of the board.",
+    ],
+    endsWhen: "the first individual or team reaches the top of the board.",
+    easierVariation:
+      "the timer is visible to the speaker so they can plan how long to keep going.",
+    harderVariation:
+      "the opposing player gives the speaker 3 words they must incorporate into their speech before the turn begins.",
+    skillIds: ["cs", "vs"],
     variations: [
       {
         name: "Individual play",
@@ -567,6 +775,22 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
       "Three coloured card decks are in the centre. On your turn, draw one card from each deck and complete the speaking tasks one after another.",
     howToPlay:
       "Three coloured card decks are placed in the centre — each colour is a different type of speaking task. On their turn, a child draws one card and completes the speaking task, laying the completed card face-up in front of them. This line of completed cards is their train. The child wins by making a set of 3 cards of each colour — a total of 9 cards. At 8–12, no notes are permitted at any difficulty level.",
+    players: "3–8 children · 1 teacher",
+    duration: "25 min",
+    goal: "the child completes speaking tasks from three coloured decks to build a train of 9 cards — 3 of each colour.",
+    steps: [
+      "place the three coloured card decks in the centre.",
+      "on their turn, the child draws one card and completes the speaking task on it — no notes allowed.",
+      "they lay the completed card face-up in front of them as part of their train.",
+      "play passes to the next child; each keeps building their train card by card.",
+      "the first child with 3 cards of each colour — 9 in total — wins.",
+    ],
+    endsWhen: "a child completes a set of 3 cards of each colour — 9 cards total.",
+    easierVariation:
+      "the child only has to make sets of the same colour — no action cards in play.",
+    harderVariation:
+      "action cards are in play and every card in a set must belong to the same compartment and be of the same colour.",
+    skillIds: ["cs", "vs"],
     variations: [
       {
         name: "Longest train",
@@ -602,6 +826,22 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
       "One child holds a card to their forehead without looking at it. The group acts out what is on the card.",
     howToPlay:
       "One child holds a card to their forehead without looking at it. The group acts out what is on the card. The child guesses what is on the card based on the group's enactment.",
+    players: "3–8 children · 1 teacher",
+    duration: "25 min",
+    goal: "the child guesses what is on the card held to their forehead by watching the group's enactment.",
+    steps: [
+      "one child picks a guess me card and holds it to their forehead without looking.",
+      "the rest of the group looks at the card and starts acting it out.",
+      "the guessing child watches the group's enactment.",
+      "they call out guesses based on what they see.",
+      "when the guess is correct, a new child takes a card.",
+    ],
+    endsWhen: "every child has had a turn as the guesser or the segment time is up.",
+    easierVariation:
+      "standard gameplay with no time limit — the group keeps acting until the child guesses.",
+    harderVariation:
+      "add a time limit and, once they guess, the child must make sentences using the word.",
+    skillIds: ["bl", "cs"],
     variations: [
       {
         name: "Body and face only",
@@ -641,6 +881,22 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
       "Questioner steps outside. Group agrees on a hidden rule. Questioner returns and asks questions to figure out the rule.",
     howToPlay:
       "Questioner steps outside or turns away. Group secretly agrees on a hidden rule governing all their answers \u2014 for example, everyone ends every answer with the same word, or everyone answers as if they are the person sitting to their left. Questioner returns and asks each player a question in turn. After one full round, questioner states their theory. Group responds: Warm (close) or Cold (not close). Game ends when the questioner correctly identifies the rule. Post-reveal: group identifies the single most useful question asked and explains why. At 8\u201312, the group may secretly change the rule halfway through.",
+    players: "3\u20138 children \u00b7 1 teacher",
+    duration: "25 min",
+    goal: "the questioner works out the hidden rule the group is using to answer every question.",
+    steps: [
+      "the questioner steps outside or turns away.",
+      "the group secretly agrees on a hidden rule that will govern all their answers.",
+      "the questioner returns and asks each player a question in turn.",
+      "after one full round, the questioner states their theory \u2014 the group responds warm or cold.",
+      "post-reveal, the group names the single most useful question that was asked and why.",
+    ],
+    endsWhen: "the questioner correctly identifies the hidden rule.",
+    easierVariation:
+      "unlimited rounds \u2014 the questioner can ask as many rounds as they need to identify the rule.",
+    harderVariation:
+      "imposter variation \u2014 one group member has a different hidden rule; the questioner must identify both the group's rule and the imposter.",
+    skillIds: ["cs", "vs"],
     variations: [
       {
         name: "Imposter",
@@ -687,6 +943,22 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
       "Two performers, four quadrant zones, each with a different challenge. Perform a scene. The audience can move you between zones.",
     howToPlay:
       "Set up four quadrant mats, each with a slate showing a different challenge (e.g. speak only in questions, whisper, no hand gestures, rhyme every sentence). Two performers start a scene in one quadrant. Audience members hold Number Cards corresponding to quadrants. At any point, an audience member raises their card to move a performer to that quadrant — the performer must immediately switch to that quadrant's challenge while staying in character. Each performer has one Block Token to reject a move. Penalty Tokens for breaking a quadrant rule. Scene runs for a set time. Post-scene: audience names the smoothest transition.",
+    players: "3–8 children · 1 teacher",
+    duration: "25 min",
+    goal: "the child performs a scene and switches to a new challenge each time the audience moves them to a different quadrant.",
+    steps: [
+      "set up four quadrant mats — each with a slate showing a different challenge.",
+      "two performers start a scene in one quadrant; the rest hold number cards for the four quadrants.",
+      "at any point, an audience member raises a card to move a performer to that quadrant.",
+      "the performer immediately switches to that quadrant's challenge while staying in character.",
+      "each performer can play one block token to reject a move; breaking a quadrant rule earns a penalty token.",
+    ],
+    endsWhen: "the scene time runs out, then the audience names the smoothest transition.",
+    easierVariation:
+      "performers refer to the script book while performing.",
+    harderVariation:
+      "no script book — performers must rotate through all 4 quadrants during a single performance while still keeping the scene flowing.",
+    skillIds: ["vs", "bl", "cs"],
     variations: [
       {
         name: "Variation 2",
@@ -770,6 +1042,22 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
       "Educator gives a sentence prompt. A child starts speaking. Another player can call \"reverse gear\" on any word — the speaker then has to say the opposite of what was originally said.",
     howToPlay:
       "Educator gives a sentence prompt to speak. A child starts speaking. Another player can choose to call \"reverse gear\" on a specific word in between. The child then has to say the opposite of what was originally said, or change the original word to a different word, continuing from that point. For example, a player says \"I love eating mangoes.\" Another child calls \"reverse gear on I.\" The player repeats the sentence — \"You love eating mangoes.\"",
+    players: "3–8 children · 1 teacher",
+    duration: "25 min",
+    goal: "the child re-says their sentence with the called-out word reversed and keeps speaking from there.",
+    steps: [
+      "the educator gives a sentence prompt to speak on.",
+      "a child starts speaking on the prompt.",
+      "another player calls \"reverse gear\" on a specific word in the sentence.",
+      "the speaking child repeats the sentence with that word reversed or swapped for a different word.",
+      "they continue speaking from that point until the next reverse gear is called.",
+    ],
+    endsWhen: "every child has had a turn as the speaker.",
+    easierVariation:
+      "one reverse gear, one sentence — reverse gear can only be called once and only within one sentence.",
+    harderVariation:
+      "after the reversed sentence, the child adds 2–3 lines of their own continuing that sentence.",
+    skillIds: ["cs", "vs"],
     materials: ["Reverse Gear prompt deck (app)"],
     difficultyLevels: [
       {
@@ -817,6 +1105,22 @@ const showtimeActivities: Record<string, CurriculumActivity> = {
       "Two debaters, one topic. One argues For, one argues Against. Each draws a Challenge Card — a constraint they must handle during their debate.",
     howToPlay:
       "Arrange in a circle and select a moderator. Moderator draws a Topic Card and selects the topic. Moderator selects two debaters. Debaters draw For/Against chits. Each debater draws a Challenge Card that introduces a constraint they must incorporate. 1 minute of preparation. For and Against speak in turn, within set time. Non-debating players ask questions. Losing debater gets a Strike Card. Two Strikes = become moderator. Last debater standing wins.",
+    players: "3–8 children · 1 teacher",
+    duration: "15 min",
+    goal: "the child argues for or against a topic and handles a challenge card constraint through the debate.",
+    steps: [
+      "arrange the children in a circle and select a moderator.",
+      "the moderator draws a topic card and picks two debaters, who draw for or against chits.",
+      "each debater draws a challenge card with a constraint to incorporate, then gets 1 minute of prep.",
+      "for and against speak in turn within the set time, then non-debating players ask questions.",
+      "the losing debater takes a strike card — two strikes and they become the next moderator.",
+    ],
+    endsWhen: "only one debater is left without two strikes — the last debater standing wins.",
+    easierVariation:
+      "use b1 topics with 1-minute prep, and challenge cards are optional.",
+    harderVariation:
+      "use b2 topics and challenge cards are required.",
+    skillIds: ["cs", "vs", "bl"],
     materials: [
       "Debate Duel Topic Cards (B1 + B2)",
       "Challenge Cards",
@@ -849,6 +1153,22 @@ const showtimeActivities: Record<string, CurriculumActivity> = {
       "Share one experience connected to today's theme \u2014 tell us where you were, what happened, and how it ended. After each person shares, two people ask one real question.",
     howToPlay:
       "Educator gives today's theme from the prompt bank. Each child takes 30 seconds to think. Children share in turn \u2014 beginning (when and where), main event (what happened), conclusion (how it ended or what it meant). After each child shares, two peers each ask one genuine question connected to what was actually said. Mid-circle, educator asks the whole group: \"Before we continue \u2014 what is one thing someone said that you are still thinking about?\"",
+    players: "3\u20138 children \u00b7 1 teacher",
+    duration: "15 min",
+    goal: "the child shares one real experience connected to today's theme with a beginning, main event, and conclusion.",
+    steps: [
+      "give the group today's theme from the prompt bank.",
+      "each child takes 30 seconds to think.",
+      "children share in turn \u2014 beginning (when and where), main event (what happened), conclusion (how it ended).",
+      "after each share, two peers each ask one genuine question connected to what was said.",
+      "mid-circle, ask the group what one thing someone said they are still thinking about.",
+    ],
+    endsWhen: "every child has shared their experience and answered two questions.",
+    easierVariation:
+      "use familiar themes and the educator models with their own experience first.",
+    harderVariation:
+      "use abstract or challenging themes with no preparation time.",
+    skillIds: ["cs", "vs"],
     materials: ["App for theme prompts"],
     promptHeading: "prompts \u2014 themes to share about",
     prompts: [
@@ -881,6 +1201,22 @@ const showtimeActivities: Record<string, CurriculumActivity> = {
       "Reach in without looking. Whatever you pull out \u2014 build a story around it. Named character, a problem connected to the object, a surprising ending. Two minutes to think.",
     howToPlay:
       "Each child reaches into the Magic Box without looking and draws one object. Children build a story around the drawn object — beginning, middle, end. Named character, problem connected to object, surprising ending required.",
+    players: "3–8 children · 1 teacher",
+    duration: "15 min",
+    goal: "the child builds a story around a mystery object with a named character, a problem tied to the object, and a surprising ending.",
+    steps: [
+      "each child reaches into the magic box without looking and draws one object.",
+      "give them two minutes to build a story around it — beginning, middle, end.",
+      "the story needs a named character and a problem connected to the object.",
+      "the ending has to be surprising.",
+      "each child tells their story to the group in turn.",
+    ],
+    endsWhen: "every child has told their story to the group.",
+    easierVariation:
+      "the educator gives a sentence frame — \"one day, [object] was...\" — for the child to begin.",
+    harderVariation:
+      "the child draws two objects, and both must appear at named points in the story.",
+    skillIds: ["cs", "vs"],
     materials: [
       "Magic Box (decorated)",
       "30 small objects \u2014 10 animals, 10 vehicles, 10 everyday objects",
@@ -901,6 +1237,22 @@ const showtimeActivities: Record<string, CurriculumActivity> = {
       "You have a superpower. Sell it to the group. Tell us what it is, why it is the best, and answer two challenge questions.",
     howToPlay:
       "The child is given a superpower prompt from the app by the educator. 30 seconds to prepare. Child pitches their superpower to the class — what it is, why it is the best, how it would be used. The group votes — useful or useless. Child responds to two challenge questions from the group.",
+    players: "3–8 children · 1 teacher",
+    duration: "15 min",
+    goal: "the child pitches a superpower and defends it against two challenge questions from the group.",
+    steps: [
+      "give the child a superpower prompt from the app.",
+      "give them 30 seconds to prepare.",
+      "the child pitches to the class — what it is, why it is the best, how it would be used.",
+      "the group votes — useful or useless.",
+      "the child answers two challenge questions from the group.",
+    ],
+    endsWhen: "every child has pitched their superpower and answered their challenge questions.",
+    easierVariation:
+      "give 1 minute of prep and provide the opening frame for the pitch.",
+    harderVariation:
+      "no prep — the child must handle at least three challenge questions from the group.",
+    skillIds: ["cs", "vs", "bl"],
     materials: ["App for superpower prompts"],
     difficultyLevels: [
       { level: "Easy", description: "1 minute prep, educator provides the opening frame." },
@@ -933,6 +1285,22 @@ const showtimeActivities: Record<string, CurriculumActivity> = {
       "You are a news reporter. You have just heard something extraordinary. Tell the class what happened — beginning, middle, and end. After you finish, everyone asks you one question.",
     howToPlay:
       "Educator reads out a prompt from the app. The child prepares for a set time. Child delivers their report standing in front of the class — a clear opening (who they are and what happened), a middle (details), and a closing (what happens next). After the report, each child asks the reporter one question. The reporter answers each in one sentence. New child takes the next prompt.",
+    players: "3–8 children · 1 teacher",
+    duration: "15 min",
+    goal: "the child delivers a news report with a clear opening, middle, and closing, then answers one question from each peer.",
+    steps: [
+      "read the child a whacky news prompt from the app.",
+      "give them the set prep time.",
+      "the child stands in front of the class and delivers the report — opening, middle, closing.",
+      "each other child asks the reporter one question.",
+      "the reporter answers each in one sentence, then the next child takes a new prompt.",
+    ],
+    endsWhen: "every child has delivered a report and answered peer questions.",
+    easierVariation:
+      "the educator helps the child with the points to speak on.",
+    harderVariation:
+      "no preparation time — the child delivers the report straight after hearing the prompt.",
+    skillIds: ["cs", "vs", "bl"],
     materials: ["App for prompt cards (digital)"],
     difficultyLevels: [
       { level: "Easy", description: "Educator helps with points to speak." },
@@ -974,6 +1342,22 @@ const showtimeActivities: Record<string, CurriculumActivity> = {
       "You are selling something. Make it sound like the most amazing thing in the world. Hook → product name → one reason → the big ask.",
     howToPlay:
       "One child receives today's topic from the app. They invent a product connected to that topic. The child prepares for a set time and speaks — delivering a pitch in front of the class. The class decides: buying or not buying the product, after asking questions about the product. Performer answers in character. Ad structure: Hook — start with a question or surprise · Product name · One amazing reason to buy it · The big ask: \"So what are you waiting for? Get yours today!\"",
+    players: "3–8 children · 1 teacher",
+    duration: "15 min",
+    goal: "the child invents a product for today's topic and pitches it with a hook, product name, one reason, and a big ask.",
+    steps: [
+      "give the child today's topic from the app.",
+      "they invent a product connected to that topic and prep for the set time.",
+      "the child delivers the pitch to the class — hook, product name, one amazing reason, big ask.",
+      "the class asks questions about the product and the performer answers in character.",
+      "the class then decides — buying or not buying.",
+    ],
+    endsWhen: "every child has pitched a product and the class has voted.",
+    easierVariation:
+      "the educator helps with the opening sentence and structure.",
+    harderVariation:
+      "no preparation time and the child must include at least two deliberate changes of volume or energy.",
+    skillIds: ["cs", "vs", "bl"],
     materials: [
       "Topic prompts — https://wordwall.net/resource/77103607",
     ],
@@ -1001,6 +1385,22 @@ const showtimeActivities: Record<string, CurriculumActivity> = {
       "Create and perform a short story together using five simple prompts — a character, a setting, a problem, an action, and an ending.",
     howToPlay:
       "Children form groups of 3–4. Each group receives the prompt sheet with five anchor categories: Character (who is this story about? — robot, rabbit, child, pirate, monster), Setting (where is the story happening? — forest, space, school, home, ocean), Problem (oh no — what goes wrong? — gets lost, something breaks, chased, can't find something), Action (what do they try? — hide, build, run, fix, ask for help), and Ending (what happens in the end? — escapes, finds it, fixes it, wins, becomes safe). Each group picks one word from each category, builds a short story using all five, and performs it to the rest of the class. Writing is optional — speaking and acting is key. Educator chooses exactly one challenge for the round (see challenges below).",
+    players: "3–8 children · 1 teacher",
+    duration: "15 min",
+    goal: "the group builds and performs a short story using one word from each of the five anchor categories.",
+    steps: [
+      "form groups of 3–4 children and hand each group the prompt sheet.",
+      "each group picks one word from character, setting, problem, action, and ending.",
+      "they build a short story using all five words — speaking and acting is key, writing is optional.",
+      "each group performs the story to the rest of the class.",
+      "the educator applies one challenge for the round while they perform.",
+    ],
+    endsWhen: "every group has performed their story to the class.",
+    easierVariation:
+      "add an emotion — the story must show a feeling like happy, scared, angry, or excited.",
+    harderVariation:
+      "add a plot twist — something unexpected happens, someone changes, or a new problem appears.",
+    skillIds: ["cs", "vs", "bl"],
     materials: [
       "Story Spine prompt sheet — 5 anchor categories (character · setting · problem · action · ending) with example words under each",
     ],
@@ -1031,6 +1431,22 @@ const signOffActivities: Record<string, CurriculumActivity> = {
       "Read your scaffold card now \u2014 before the topic is revealed. Then speak immediately when the topic lands.",
     howToPlay:
       "Scaffold: say three things \u2014 one point, one example, one closing sentence. Start with whatever comes first. If stuck, say \"What I mean is...\" and try again. Pause instead of saying umm.",
+    players: "1 child \u00b7 1 teacher",
+    duration: "10 min",
+    goal: "the child speaks extempore on the topic using a three-part scaffold \u2014 point, example, closing sentence.",
+    steps: [
+      "hand the child their scaffold card to read before the topic is revealed.",
+      "reveal the topic \u2014 the child begins speaking immediately.",
+      "they cover one point, then one example, then one closing sentence.",
+      "if stuck, they say \"what i mean is...\" and try again.",
+      "they pause instead of saying umm and finish inside the time limit.",
+    ],
+    endsWhen: "the child hits their level's time limit \u2014 30, 60, or 90 seconds.",
+    easierVariation:
+      "30 seconds, any structure, no stop longer than 3 seconds.",
+    harderVariation:
+      "90 seconds, two angles, closes with intention, no visible hesitation.",
+    skillIds: ["cs", "vs"],
     materials: [],
     difficultyLevels: [
       { level: "Easy", description: "30 seconds, any structure, no stop >3s." },
@@ -1048,6 +1464,22 @@ const signOffActivities: Record<string, CurriculumActivity> = {
       "I'll give you a position. Argue for it as strongly as you can \u2014 even if you disagree. Then your partner challenges you once. Respond.",
     howToPlay:
       "Scaffold: Position \u2014 state clearly. Reason 1. Reason 2. Counter \u2014 acknowledge opposite. Close \u2014 one strong final sentence.",
+    players: "2 children \u00b7 1 teacher",
+    duration: "10 min",
+    goal: "the child argues a given position with reasons, acknowledges the counter, and answers one challenge from their partner.",
+    steps: [
+      "give the child a position to argue \u2014 even if they disagree with it.",
+      "the child states the position clearly, then gives reason 1 and reason 2.",
+      "they acknowledge the opposite view \u2014 the counter.",
+      "they close with one strong final sentence.",
+      "the partner then challenges them once, and the child responds.",
+    ],
+    endsWhen: "the child has closed their position and responded to their partner's challenge.",
+    easierVariation:
+      "the child states the position and one reason, then responds to the challenge.",
+    harderVariation:
+      "full structure with examples, counter pre-empted, handles challenge without repeating.",
+    skillIds: ["cs", "vs"],
     materials: [],
     difficultyLevels: [
       { level: "Easy", description: "States position and one reason, responds to challenge." },
@@ -1065,6 +1497,22 @@ const signOffActivities: Record<string, CurriculumActivity> = {
       "You are a reporter. Report on something connected to today's topic as if it is happening right now.",
     howToPlay:
       "Scaffold: Headline \u2014 one sentence hook. Facts \u2014 Who/What/Where/When one sentence each. Why it matters. Close \u2014 \"Reporting live from [place], this is [your name].\"",
+    players: "1 child \u00b7 1 teacher",
+    duration: "10 min",
+    goal: "the child reports live on the topic using the headline \u2192 facts \u2192 why it matters \u2192 signoff scaffold.",
+    steps: [
+      "give the child today's topic to report on as if it is happening now.",
+      "they open with a one-sentence headline hook.",
+      "they cover the facts \u2014 who, what, where, when \u2014 one sentence each.",
+      "they say why it matters.",
+      "they close with \"reporting live from [place], this is [your name].\"",
+    ],
+    endsWhen: "the child has delivered the closing \"reporting live from\" signoff.",
+    easierVariation:
+      "headline plus who/what/where, then signs off.",
+    harderVariation:
+      "full report with an invented detail plus a live interview question to the partner mid-report.",
+    skillIds: ["cs", "vs"],
     materials: [],
     difficultyLevels: [
       { level: "Easy", description: "Headline, who/what/where, signs off." },
@@ -1082,6 +1530,22 @@ const signOffActivities: Record<string, CurriculumActivity> = {
       "Build and tell a story connected to today's topic. Character, problem, ending. One minute.",
     howToPlay:
       "Scaffold: Who \u2014 name + detail. Problem. Turning point. End. Magic words: Suddenly / But then / Until / Even though.",
+    players: "1 child \u00b7 1 teacher",
+    duration: "10 min",
+    goal: "the child tells a one-minute story connected to today's topic with a character, problem, turning point, and end.",
+    steps: [
+      "give the child today's topic to build a story around.",
+      "they introduce the character \u2014 name and one detail.",
+      "they state the problem.",
+      "they hit a turning point using a magic word \u2014 suddenly, but then, until, even though.",
+      "they close the story with the end, all inside one minute.",
+    ],
+    endsWhen: "the child reaches the end of the story inside one minute.",
+    easierVariation:
+      "names the character, gives a beginning and ending, and uses one magic word.",
+    harderVariation:
+      "full structure, one unexpected detail, and voice differentiates the characters.",
+    skillIds: ["cs", "vs"],
     materials: [],
     difficultyLevels: [
       { level: "Easy", description: "Names character, beginning + ending, one magic word." },
@@ -1099,6 +1563,22 @@ const signOffActivities: Record<string, CurriculumActivity> = {
       "I'll give you an unlikely position. Defend it as if you fully believe it. Your partner challenges you once.",
     howToPlay:
       "Scaffold: Claim \u2014 \"I believe...because...\". Evidence \u2014 \"For example...\". Objection \u2014 \"You might think...but actually...\". Close \u2014 \"So that is why I stand by this.\"",
+    players: "2 children \u00b7 1 teacher",
+    duration: "10 min",
+    goal: "the child defends an unlikely position through the claim \u2192 evidence \u2192 objection \u2192 close scaffold and handles one partner challenge.",
+    steps: [
+      "give the child an unlikely position to defend as if they fully believe it.",
+      "they state the claim \u2014 \"i believe... because...\".",
+      "they give evidence \u2014 \"for example...\".",
+      "they raise and answer an objection \u2014 \"you might think... but actually...\".",
+      "they close with \"so that is why i stand by this,\" then handle one partner challenge.",
+    ],
+    endsWhen: "the child closes the defence and has answered the partner's challenge.",
+    easierVariation:
+      "claim plus one reason, then responds to the challenge.",
+    harderVariation:
+      "full structure with conviction, handles the challenge without repeating, closing feels like the final word.",
+    skillIds: ["cs", "vs"],
     materials: [],
     difficultyLevels: [
       { level: "Easy", description: "Claim + one reason, responds to challenge." },
@@ -1116,6 +1596,22 @@ const signOffActivities: Record<string, CurriculumActivity> = {
       "Respond to this scenario. What would happen \u2014 and what would you do? Think out loud.",
     howToPlay:
       "Scaffold: Imagine \u2014 what would happen first? Action \u2014 what specifically? Consequence \u2014 what comes next? Message \u2014 why does this matter?",
+    players: "1 child \u00b7 1 teacher",
+    duration: "10 min",
+    goal: "the child thinks out loud through a scenario using the imagine \u2192 action \u2192 consequence \u2192 message scaffold.",
+    steps: [
+      "give the child a what-if scenario to respond to.",
+      "they imagine what would happen first.",
+      "they name the specific action they would take.",
+      "they follow the consequence \u2014 what comes next.",
+      "they land on a message \u2014 why does this matter.",
+    ],
+    endsWhen: "the child lands on the message and closes their response.",
+    easierVariation:
+      "says what they would do and names one consequence.",
+    harderVariation:
+      "reasoning goes two steps forward and they handle the partner's \"and then what?\" with a specific answer.",
+    skillIds: ["cs", "vs"],
     materials: [],
     difficultyLevels: [
       { level: "Easy", description: "Says what they would do and one consequence." },
@@ -1133,6 +1629,22 @@ const signOffActivities: Record<string, CurriculumActivity> = {
       "Your partner asks three quick questions. Answer each clearly. No hesitation >3 seconds. Then swap.",
     howToPlay:
       "Questioner scaffold: Q1 \"What do you think about [topic]?\" Q2 \"Why does this matter to you?\" Q3 choose one. Speaker scaffold: 1\u20133 sentences each. No one-word answers. If stuck, say \"My instinct is...\"",
+    players: "2 children \u00b7 1 teacher",
+    duration: "10 min",
+    goal: "the child answers three quick questions from their partner in 1\u20133 sentences each with no hesitation over 3 seconds.",
+    steps: [
+      "pair the children \u2014 one questioner, one speaker.",
+      "the questioner asks q1 \u2014 \"what do you think about [topic]?\"",
+      "they follow with q2 \u2014 \"why does this matter to you?\"",
+      "they choose q3 from the deck and ask it.",
+      "the speaker answers each in 1\u20133 sentences, then the pair swaps roles.",
+    ],
+    endsWhen: "both partners have taken a turn as speaker and questioner.",
+    easierVariation:
+      "two questions, one sentence each, no hesitation over 3 seconds.",
+    harderVariation:
+      "all three fluently, then the speaker asks the partner one genuine follow-up based on what the partner said.",
+    skillIds: ["cs", "vs"],
     materials: [],
     difficultyLevels: [
       { level: "Easy", description: "Two questions, one sentence each, no hesitation >3s." },

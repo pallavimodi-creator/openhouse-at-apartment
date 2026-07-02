@@ -290,6 +290,7 @@ export default function LibraryPage() {
   const [query, setQuery] = useState("");
   const [segmentFilter, setSegmentFilter] = useState("all");
   const [selectedActivity, setSelectedActivity] = useState<CurriculumActivity | null>(null);
+  const [selectedActivityProgrammeSlug, setSelectedActivityProgrammeSlug] = useState<string | null>(null);
   const [selectedInfo, setSelectedInfo] = useState<SegmentInfo | null>(null);
   const [teacherSlug, setTeacherSlug] = useState<string | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
@@ -486,6 +487,7 @@ export default function LibraryPage() {
   const openItem = (it: LibraryItem) => {
     if (it.kind === "activity") {
       setSelectedActivity(it.item);
+      setSelectedActivityProgrammeSlug(it.programmeSlug);
     } else if (it.kind === "artiverse") {
       const u = it.item;
       // Artistotle projects share the artiverseUnits collection but are
@@ -879,9 +881,21 @@ export default function LibraryPage() {
       {/* Activity modal */}
       <Modal
         isOpen={!!selectedActivity}
-        onClose={() => setSelectedActivity(null)}
+        onClose={() => {
+          setSelectedActivity(null);
+          setSelectedActivityProgrammeSlug(null);
+        }}
       >
-        {selectedActivity && <ActivityPopup activity={selectedActivity} />}
+        {selectedActivity && (
+          <ActivityPopup
+            activity={selectedActivity}
+            skillAreas={
+              selectedActivityProgrammeSlug
+                ? getCurriculumProgramme(selectedActivityProgrammeSlug)?.skillAreas
+                : undefined
+            }
+          />
+        )}
       </Modal>
 
       {/* Segment / artiverse / primer modal */}

@@ -300,6 +300,20 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "look at this finished artwork. name the tool or medium used. what specific mark tells you?",
     howToPlay:
       "Educator shows image card of finished artwork. Children examine and name the tool/medium. Group discusses. Educator confirms and names the mark characteristic.",
+    players: "3–8 children · 1 teacher",
+    duration: "25 min",
+    goal: "the child spots which tool or medium made a finished artwork by reading the marks.",
+    steps: [
+      "hold up one image card of a finished artwork for the whole group to see.",
+      "ask the children to examine it and name the tool or medium used.",
+      "let the group discuss which specific mark gave it away.",
+      "confirm the answer and name the mark characteristic out loud.",
+      "move to the next card and repeat.",
+    ],
+    endsWhen: "the planned set of image cards has been shown and named.",
+    easierVariation: "the child only has to identify the tool or medium.",
+    harderVariation: "the child uses the identified tool or medium to draw creatively after guessing.",
+    skillIds: ["lt", "ic"],
     variations: [
       {
         name: "Variation — Making",
@@ -328,6 +342,20 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "follow step-by-step drawing instructions. then complete the extension challenge.",
     howToPlay:
       "Card placed centrally. Follow step-by-step. At 8-12, educator always adds extension challenge after completion — e.g. 'change angle by 45 degrees' or 'redraw at twice the scale.' Portrait and Landscape card sets available.",
+    players: "3–8 children · 1 teacher",
+    duration: "25 min",
+    goal: "the child follows a step-by-step drawing card and then completes an extension challenge.",
+    steps: [
+      "place one cue card in the centre where every child can see it.",
+      "the children follow the steps on the card and draw on their own paper.",
+      "once the drawing is done, name an extension challenge — for example, change the angle by 45 degrees or redraw at twice the scale.",
+      "the children complete the extension on the same sheet or a fresh one.",
+      "share the drawings around the group.",
+    ],
+    endsWhen: "every child has finished the cue card drawing and the extension challenge.",
+    easierVariation: "use B1 cards and keep the card visible for the whole activity.",
+    harderVariation: "show a B2 card for one minute, remove it, and the child draws from memory with the extension required.",
+    skillIds: ["lt", "sf", "bc"],
     materials: [
       "Cue Card sets B1 and B2 including Portrait and Landscape",
       "Drawing paper",
@@ -349,6 +377,20 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "build with transparent geometric pieces — either silently for your team to guess, or from a educator cue, then sketch it capturing proportions and negative space.",
     howToPlay:
       "Two ways to play — see variations.",
+    players: "3–8 children · 1 teacher",
+    duration: "25 min",
+    goal: "the child builds a subject or composition from transparent geometric pieces and sketches it capturing proportions and negative space.",
+    steps: [
+      "lay out the transparent geometric pieces and the shape cards in the middle.",
+      "pick a variation — build and guess, or compose from a cue.",
+      "each child builds their subject or composition silently.",
+      "the team guesses, or compare the build to the cue given.",
+      "the child sketches the arrangement on paper, holding proportions and negative space.",
+    ],
+    endsWhen: "each child has built once and sketched their arrangement, or a team finishes the agreed set of cards.",
+    easierVariation: "play variation 1 — build a subject from a shape card and let the team guess what it is.",
+    harderVariation: "the opposite team chooses the geometric shapes to be used or gives the cue instead of the educator.",
+    skillIds: ["sf", "bc", "ic"],
     variations: [
       {
         name: "Variation 1 — Build and guess",
@@ -381,6 +423,20 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "scene card in the centre. i name an object — you find and draw it.",
     howToPlay:
       "Educator shows a scene card or places multiple line/texture cards in a row. Educator names a texture, line/shape, or texture. Child finds it, then draws.",
+    players: "3–8 children · 1 teacher",
+    duration: "25 min",
+    goal: "the child spots a named object or mark on a card and then draws it on paper.",
+    steps: [
+      "place a scene card in the centre, or lay several line, shape, and texture cards in a row.",
+      "name one object, line, shape, or texture from the cards.",
+      "the child finds it on the card and points to it.",
+      "the child draws the found element on a blank sheet.",
+      "name the next one and repeat around the group.",
+    ],
+    endsWhen: "every child has spotted and drawn the agreed set of elements.",
+    easierVariation: "show easy scene cards and let the child draw a chosen object from what they see.",
+    harderVariation: "show any card for 30 seconds, then remove it — the child draws the named element from memory.",
+    skillIds: ["lt", "sf", "ic"],
     materials: [
       "Scene cards (A5)",
       "Line / shape / texture cards",
@@ -403,6 +459,20 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "roll the dice, move your token, land on an art zone, draw a challenge card (draw, colour, build or mixed media), and complete it within the time limit. after completing the challenge, child gives one sentence explaining one decision they made.",
     howToPlay:
       "Set up board game. Roll dice, move, land on an art zone. Draw a challenge card (draw, colour, build or mixed media) and complete it within the time limit. After completing the challenge, the child gives one sentence explaining one decision they made.",
+    players: "3–8 children · 1 teacher",
+    duration: "25 min",
+    goal: "the child rolls, lands on an art zone, and completes a sketch, colour, build, or mixed-media challenge in the time limit.",
+    steps: [
+      "set up the board, tokens, dice, timer, and the challenge card decks per zone.",
+      "the first child rolls the dice, moves their token, and lands on an art zone tile.",
+      "the child draws a challenge card from that zone's deck and starts the timer.",
+      "the child completes the challenge using the right materials before time runs out.",
+      "the child gives one sentence explaining one decision they made, then the next child rolls.",
+    ],
+    endsWhen: "every child has rolled, landed on a zone, and completed at least one challenge.",
+    easierVariation: "use only the B1 challenges from the challenge cards.",
+    harderVariation: "use the B2 challenges with a tighter time limit.",
+    skillIds: ["ic", "sf", "bc"],
     variations: [
       {
         name: "Cooperative variation",
@@ -444,6 +514,20 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "one child describes a card image without naming it. others draw what they hear.",
     howToPlay:
       "One child is the describer. The describer describes the card without naming the subject. The other children draw what they hear. After everyone is done, the describer picks the drawing that best matches what they had in mind. Variation — the child invents an imaginary subject and describes it while drawing simultaneously — for example, a whale with the body of a horse.",
+    players: "3–8 children · 1 teacher",
+    duration: "25 min",
+    goal: "the child describes a card image without naming it while the others draw what they hear.",
+    steps: [
+      "pick one child to be the describer and hand them a card from the animals or objects deck.",
+      "the describer describes the image without naming the subject.",
+      "the other children draw what they hear on their own paper.",
+      "once everyone is done, the describer looks at all the drawings.",
+      "the describer picks the drawing that best matches what they had in mind, then pass the role on.",
+    ],
+    endsWhen: "every child has had a turn as the describer.",
+    easierVariation: "use easy cards and let the guessing group ask the describer two questions.",
+    harderVariation: "use difficult cards with no clues or questions allowed.",
+    skillIds: ["ic", "sf", "lt"],
     materials: [
       "Physical card decks — Animals and Objects",
       "Drawing paper",
@@ -465,6 +549,20 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "educator reads a prompt. everyone draws. unique drawings score a point, duplicates score zero.",
     howToPlay:
       "The educator reads out the prompt to draw. All children draw simultaneously for a set time, then reveal. Example prompt — \"something that starts with the letter C.\" If two or more children draw the same thing, they each score 0; a unique drawing scores a point. Bonus points for the funniest or most artistic drawing, voted by the group. Variation — children draw individually or as a team taking turns.",
+    players: "3–8 children · 1 teacher",
+    duration: "25 min",
+    goal: "the child draws a prompt and scores a point if their drawing is unique in the group.",
+    steps: [
+      "read out one prompt — for example, something that starts with the letter c.",
+      "all children draw simultaneously for the set time on their own paper or whiteboard.",
+      "when time is up, everyone reveals their drawing at the same time.",
+      "score — matching drawings score zero, a unique drawing scores a point, and the group votes bonus points for funniest or most artistic.",
+      "read the next prompt and repeat.",
+    ],
+    endsWhen: "the agreed set of prompts has been played and scores are counted.",
+    easierVariation: "no time limit — the child takes as long as they need on each prompt.",
+    harderVariation: "rapid sketching — a set number of prompts in a limited time, and every drawing must be finished before time is up.",
+    skillIds: ["ic", "sf", "lt"],
     materials: [
       "Drawing prompts — https://wordwall.net/resource/86438051/sketch-it-up-deck-2",
       "Drawing paper or whiteboards",
@@ -487,6 +585,20 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "56 colour cards face-down. flip two. matching colour = keep the pair. most pairs wins.",
     howToPlay:
       "Children take turns flipping two cards. Match = keep pair. No match = flip back. Variation 2: each child has a Difficult Mixing Card primary and flips to find formula colours. Palette Build variation: educator names mood/time of day, children select 3-4 cards as palette.",
+    players: "3–8 children · 1 teacher",
+    duration: "25 min",
+    goal: "the child flips two colour cards at a time and keeps matching pairs to collect the most.",
+    steps: [
+      "lay all 56 colour cards face-down in a grid in the centre.",
+      "the first child flips two cards so the whole group can see them.",
+      "if the colours match, the child keeps the pair. if not, they flip both cards back.",
+      "the next child takes a turn and does the same.",
+      "keep going until every card has been paired.",
+    ],
+    endsWhen: "every card has been matched and the child with the most pairs wins.",
+    easierVariation: "play for colour recognition only — the child names each colour they flip.",
+    harderVariation: "play palette build — you name a mood or time of day and the child picks 3 to 4 cards as a palette, names each colour, and explains how it behaves in painting.",
+    skillIds: ["cp", "bc", "ic"],
     materials: [
       "56 Colour Cards",
       "Easy Mixing Cards (14)",
@@ -512,6 +624,20 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "each child works in their own laminated art gym book at their own pace. 1–3 pages per session, then a free replication on a sketch sheet.",
     howToPlay:
       "Children open the laminated art gym book (level 5 → level 6) to their next page and complete 1–3 pages with thread, clay, sequins, or erasable markers. Pages progress in order — page 1 to last — challenge increases page by page. Once the page is done, the child copies the same line / shape / pattern freely on a sketch sheet using a material of choice (brush pen, colour pencil, charcoal, ink). No extension-day follow-on — the page and the sketch happen in the same slot.",
+    players: "3–8 children · 1 teacher",
+    duration: "25 min",
+    goal: "the child completes 1 to 3 art gym book pages in order and then replicates the line, shape, or pattern freely on a sketch sheet.",
+    steps: [
+      "each child opens their laminated art gym book to their next page.",
+      "the child completes 1 to 3 pages using thread, clay, sequins, or erasable markers.",
+      "keep the pages in order — the challenge builds page by page.",
+      "once the pages are done, the child picks a material — brush pen, colour pencil, charcoal, or ink.",
+      "the child copies the same line, shape, or pattern freely on an a3 sketch sheet.",
+    ],
+    endsWhen: "the child has finished the book pages and the free replication on the sketch sheet.",
+    easierVariation: "the child does 1 page from the book and replicates it with the simplest material.",
+    harderVariation: "the child does 3 pages and invents an extension on the sketch sheet — applying the line type to a real-world object.",
+    skillIds: ["lt", "sf", "ic"],
     materials: [
       "Laminated Art Gym Book (book 5 → book 6)",
       "Erasable markers, thread, clay, sequins",
@@ -534,6 +660,20 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "educator picks one cue card from the pool. children follow the step-by-step illustrated prompt to draw on a fresh sketch sheet.",
     howToPlay:
       "Cue cards are illustrated step-by-step prompts the educator selects (rotates across types — animals, birds, buildings, food, nature, vehicles, plus 8-12-only landscape and portrait backgrounds). Children read or follow the steps and complete a drawing on a sketch sheet. The educator prompts each child to add one more detail their cue card didn't show. No extension-day follow-on — the cue card and any extension happen in the same slot.",
+    players: "3–8 children · 1 teacher",
+    duration: "25 min",
+    goal: "the child follows an illustrated cue card step by step and then adds one detail the card didn't show.",
+    steps: [
+      "pick one cue card from the pool — rotate across animals, birds, buildings, food, nature, vehicles, or landscape and portrait backgrounds.",
+      "show the card so every child can see the steps.",
+      "the child follows the steps and draws on a fresh a3 sketch sheet.",
+      "prompt the child to add one more detail their cue card didn't show.",
+      "the child finishes the drawing with brush pens, colour pencils, or charcoal.",
+    ],
+    endsWhen: "the child has completed the cue card drawing and added the one extra detail.",
+    easierVariation: "the child copies the cue card step by step, no additions.",
+    harderVariation: "the child completes the cue card, then invents one new step beyond it — a view from a different angle or a hidden detail.",
+    skillIds: ["lt", "sf", "ic"],
     materials: [
       "Cue card deck (laminated, age-appropriate, B1 + B2 + landscape and portrait backgrounds)",
       "A3 sketch sheets",

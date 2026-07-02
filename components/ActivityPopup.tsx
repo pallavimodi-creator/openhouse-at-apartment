@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { SEGMENT_COLORS, getActivityImage, getActivityVideo } from "@/lib/content";
-import type { CurriculumActivity } from "@/content/types";
+import type { CurriculumActivity, CurriculumSkillArea } from "@/content/types";
 import {
   Zap,
   Gamepad2,
@@ -8,6 +8,10 @@ import {
   Notebook,
   Dumbbell,
   Palette,
+  Users,
+  Clock,
+  Target,
+  Flag,
 } from "lucide-react";
 
 const SEGMENT_PANEL_BG: Record<string, string> = {
@@ -157,9 +161,27 @@ function parseHowToPlay(paragraph: string): HowToStep[] {
 
 export function ActivityPopup({
   activity,
+  skillAreas,
 }: {
   activity: CurriculumActivity;
+  /**
+   * Skill areas from the parent programme, used to resolve
+   * `activity.skillIds` into chip labels. Omit when the caller
+   * doesn't know the programme — the skills chip row simply
+   * won't render.
+   */
+  skillAreas?: CurriculumSkillArea[];
 }) {
+  // Manual mode is on whenever a game has been authored into the
+  // structured shape (goal + steps). Legacy games without these
+  // fields keep rendering the parsed how-to-play paragraph.
+  const hasManual = !!(activity.goal && activity.steps && activity.steps.length > 0);
+  const resolvedSkills =
+    activity.skillIds && skillAreas
+      ? activity.skillIds
+          .map((id) => skillAreas.find((s) => s.id === id))
+          .filter((s): s is CurriculumSkillArea => !!s)
+      : [];
   const img = getActivityImage(activity.id);
   const video = getActivityVideo(activity.id);
   // Detect YouTube URLs so we can render a responsive embed instead of a
@@ -249,53 +271,142 @@ export function ActivityPopup({
         <h2 className="mt-2 text-[22px] font-bold leading-tight text-ink">
           {activity.title}
         </h2>
+
+        {/* At-a-glance chip row — only when manual metadata is set */}
+        {(activity.players || activity.duration) && (
+          <div className="mt-3 flex flex-wrap gap-1.5">
+            {activity.players && (
+              <span className="inline-flex items-center gap-1.5 rounded-chip bg-ink/5 px-2.5 py-1 text-[11px] font-medium text-ink-muted">
+                <Users className="h-3 w-3" strokeWidth={2} />
+                {activity.players}
+              </span>
+            )}
+            {activity.duration && (
+              <span className="inline-flex items-center gap-1.5 rounded-chip bg-ink/5 px-2.5 py-1 text-[11px] font-medium text-ink-muted">
+                <Clock className="h-3 w-3" strokeWidth={2} />
+                {activity.duration}
+              </span>
+            )}
+          </div>
+        )}
       </div>
 
-      {/* Setup line */}
-      <div className="rounded-card bg-brand-orange/5 p-4">
-        <p className="text-[10px] font-semibold tracking-normal text-brand-orange">
-          Setup line
-        </p>
-        <p className="mt-1.5 text-[13px] italic leading-relaxed text-ink">
-          &ldquo;{activity.setupLine}&rdquo;
-        </p>
-      </div>
+      {/* Goal — the one-sentence what-the-child-does. Rendered when
+          the game has been authored into the structured manual shape;
+          otherwise the classic Setup line still leads. */}
+      {activity.goal ? (
+        <div className="rounded-card bg-brand-orange/5 p-4">
+          <p className="inline-flex items-center gap-1.5 text-[10px] font-semibold tracking-normal text-brand-orange">
+            <Target className="h-3 w-3" strokeWidth={2.5} />
+            the goal
+          </p>
+          <p className="mt-1.5 text-[13.5px] font-medium leading-relaxed text-ink">
+            {activity.goal}
+          </p>
+        </div>
+      ) : (
+        <div className="rounded-card bg-brand-orange/5 p-4">
+          <p className="text-[10px] font-semibold tracking-normal text-brand-orange">
+            Setup line
+          </p>
+          <p className="mt-1.5 text-[13px] italic leading-relaxed text-ink">
+            &ldquo;{activity.setupLine}&rdquo;
+          </p>
+        </div>
+      )}
 
-      {/* How to play — every sentence renders as its own bullet for
-          better scannability. Sub-bullets (split on " · " in the
-          source) nest under their lead. */}
+      {/* How to play — structured numbered steps when the game has
+          a hand-written manual; else parse the dense howToPlay
+          paragraph the way legacy games do. */}
       <div>
         <h3 className="text-[12px] font-semibold tracking-normal text-ink-muted">
-          How to play
+          how to play
         </h3>
-        <ul className="mt-2 space-y-2 rounded-card bg-ink/[0.03] px-4 py-3">
-          {parseHowToPlay(activity.howToPlay).map((step, i) => (
-            <li key={i} className="flex items-start gap-2.5 text-[13px] leading-relaxed text-ink">
-              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-orange" />
-              <div className="flex-1">
-                {step.bullets ? (
-                  <>
-                    {step.lead && <p>{step.lead}</p>}
-                    <ul className="mt-1.5 space-y-1">
-                      {step.bullets.map((b, j) => (
-                        <li
-                          key={j}
-                          className="flex items-start gap-2 text-[12.5px] text-ink-muted"
-                        >
-                          <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brand-orange/60" />
-                          <span className="flex-1">{b}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </>
-                ) : (
-                  <p>{step.text}</p>
-                )}
-              </div>
-            </li>
-          ))}
-        </ul>
+        {hasManual ? (
+          <ol className="mt-2 space-y-2 rounded-card bg-ink/[0.03] px-4 py-3">
+            {activity.steps!.map((s, i) => (
+              <li
+                key={i}
+                className="flex items-start gap-3 text-[13.5px] leading-relaxed text-ink"
+              >
+                <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-orange text-[11px] font-extrabold text-white">
+                  {i + 1}
+                </span>
+                <span className="flex-1">{s}</span>
+              </li>
+            ))}
+          </ol>
+        ) : (
+          <ul className="mt-2 space-y-2 rounded-card bg-ink/[0.03] px-4 py-3">
+            {parseHowToPlay(activity.howToPlay).map((step, i) => (
+              <li key={i} className="flex items-start gap-2.5 text-[13px] leading-relaxed text-ink">
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-orange" />
+                <div className="flex-1">
+                  {step.bullets ? (
+                    <>
+                      {step.lead && <p>{step.lead}</p>}
+                      <ul className="mt-1.5 space-y-1">
+                        {step.bullets.map((b, j) => (
+                          <li
+                            key={j}
+                            className="flex items-start gap-2 text-[12.5px] text-ink-muted"
+                          >
+                            <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brand-orange/60" />
+                            <span className="flex-1">{b}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  ) : (
+                    <p>{step.text}</p>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
+
+      {/* Ends when — one-sentence callout right after the steps. */}
+      {activity.endsWhen && (
+        <div className="flex items-start gap-3 rounded-card bg-category-language/10 p-3">
+          <Flag className="mt-0.5 h-4 w-4 shrink-0 text-green-800" strokeWidth={2} />
+          <div className="min-w-0">
+            <p className="text-[10px] font-semibold tracking-normal text-green-800">
+              ends when
+            </p>
+            <p className="mt-0.5 text-[12.5px] leading-relaxed text-ink">
+              {activity.endsWhen}
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Easier · Harder — quick classroom-floor pivot for the teacher. */}
+      {(activity.easierVariation || activity.harderVariation) && (
+        <div className="grid gap-2 md:grid-cols-2">
+          {activity.easierVariation && (
+            <div className="rounded-card bg-green-50 p-3 ring-1 ring-green-200/60">
+              <p className="text-[10px] font-bold tracking-normal text-green-700">
+                make it easier
+              </p>
+              <p className="mt-1 text-[12.5px] leading-relaxed text-ink">
+                {activity.easierVariation}
+              </p>
+            </div>
+          )}
+          {activity.harderVariation && (
+            <div className="rounded-card bg-amber-50 p-3 ring-1 ring-amber-200/60">
+              <p className="text-[10px] font-bold tracking-normal text-amber-700">
+                make it harder
+              </p>
+              <p className="mt-1 text-[12.5px] leading-relaxed text-ink">
+                {activity.harderVariation}
+              </p>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Example */}
       {activity.example && (
@@ -452,6 +563,28 @@ export function ActivityPopup({
           </div>
         );
       })()}
+
+      {/* Skills built — chip footer. Renders only when the caller
+          passed skillAreas AND the activity has skillIds that
+          resolve. Never invented; empty when unknown. */}
+      {resolvedSkills.length > 0 && (
+        <div>
+          <h3 className="text-[12px] font-semibold tracking-normal text-ink-muted">
+            skills built
+          </h3>
+          <div className="mt-2 flex flex-wrap gap-1.5">
+            {resolvedSkills.map((s) => (
+              <span
+                key={s.id}
+                className="inline-flex items-center gap-1.5 rounded-chip bg-brand-orange/10 px-2.5 py-1 text-[11px] font-semibold text-brand-orange ring-1 ring-brand-orange/20"
+                title={s.name}
+              >
+                {s.shortName || s.name}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Debrief */}
       {activity.debriefPrompts.length > 0 && (

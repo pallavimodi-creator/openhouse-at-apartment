@@ -375,6 +375,40 @@ export interface CurriculumActivity {
    * link by `ActivityPopup`.
    */
   pdfUrl?: string;
+
+  /* ─── structured game-manual fields ─────────────────────────
+   * When present, ActivityPopup renders these directly as a
+   * world-class rulebook (goal, players, setup, numbered steps,
+   * ends-when, variations, skills). When absent, it falls back
+   * to parsing the dense `howToPlay` paragraph.
+   * All fields are optional so legacy activities keep working.
+   * ─────────────────────────────────────────────────────────── */
+
+  /** "1–6 children + teacher" — quick at-a-glance chip. */
+  players?: string;
+  /** "10 min" — displayed alongside players. */
+  duration?: string;
+  /**
+   * One sentence describing what the CHILD does — not what they
+   * learn. e.g. "the child re-tells the story using picture cards."
+   */
+  goal?: string;
+  /**
+   * Numbered play steps in imperative voice, one action per step.
+   * Preferred over the dense `howToPlay` paragraph.
+   */
+  steps?: string[];
+  /** One sentence saying how the round finishes. */
+  endsWhen?: string;
+  /** Single-sentence easier variation. */
+  easierVariation?: string;
+  /** Single-sentence harder variation. */
+  harderVariation?: string;
+  /**
+   * Ids that reference this programme's `CurriculumSkillArea[].id`.
+   * Rendered as a small chip row in the footer of the manual.
+   */
+  skillIds?: string[];
 }
 
 export interface CurriculumVariation {

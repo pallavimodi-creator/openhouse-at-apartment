@@ -351,6 +351,20 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "each child has a 9-grid template. pick a bead from the bowl without looking. if it matches a square on your grid, place it.",
     howToPlay:
       "Coloured beads sit in a bowl or box in the centre. On their turn, a child picks one bead without looking, compares it to their grid, and places it if it matches. No match = bead goes back. First to finish a row or grid wins.",
+    players: "3–8 children · 1 teacher",
+    duration: "25 min",
+    goal: "the child picks a bead without looking and places it on the matching square of their 9-grid.",
+    steps: [
+      "give each child a 9-grid template card. put all the coloured beads in a bowl in the centre.",
+      "the first child picks one bead from the bowl without looking.",
+      "the child compares the bead to their grid. if it matches a square, they place it there. if not, the bead goes back in the bowl.",
+      "the next child takes a turn. keep going around the circle.",
+      "the first child to finish a row or the whole grid wins.",
+    ],
+    endsWhen: "the first child finishes a row or the whole grid.",
+    easierVariation: "match colours only — with beads or picture cards.",
+    harderVariation: "children play bingo without your cues — each child takes a turn to call out a colour and pattern.",
+    skillIds: ["cp", "lt", "ic"],
     variations: [
       {
         name: "Variation 1 — Picture matching",
@@ -386,6 +400,20 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "56 colour cards face-down. flip two. matching colour = keep the pair. most pairs wins.",
     howToPlay:
       "Shuffle cards and place them face down. Children take turns flipping two cards on each turn.",
+    players: "3–8 children · 1 teacher",
+    duration: "25 min",
+    goal: "the child flips two face-down colour cards and keeps the pair if the colours match.",
+    steps: [
+      "shuffle the 56 colour cards and lay them all out face down.",
+      "the first child flips two cards for the whole group to see.",
+      "if both cards show the same colour, the child keeps the pair. if not, they flip both cards back over.",
+      "the next child takes a turn. keep going until all pairs are found.",
+      "count each child's pairs. the child with the most pairs wins.",
+    ],
+    endsWhen: "all pairs have been found and no cards remain face down.",
+    easierVariation: "colour matching only.",
+    harderVariation: "use the difficult mixing cards and a timer to limit each turn.",
+    skillIds: ["cp", "ic"],
     variations: [
       {
         name: "Variation 1 — Colour matching",
@@ -425,6 +453,20 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "sew through templates using shoelaces. running stitch, backstitch, or a pattern combining stitches of your choice.",
     howToPlay:
       "Children sew through templates using shoelaces. Running Stitch = dashed line. Backstitch = continuous joined line. Whip stitch = over the edges in a loop. Pattern Stitching = combines stitch types in a design of the child's choosing.",
+    players: "3–8 children · 1 teacher",
+    duration: "25 min",
+    goal: "the child sews through a template with a shoelace using the chosen stitch type.",
+    steps: [
+      "give each child a sewing template and a shoelace.",
+      "show the stitch for the day — running stitch, backstitch, whip stitch, or pattern stitching.",
+      "the child threads the shoelace through the holes in the template following the stitch.",
+      "walk around and help children keep the shoelace from tangling and the stitch even.",
+      "when the child finishes their template, they show it to the group.",
+    ],
+    endsWhen: "every child has finished stitching their template.",
+    easierVariation: "running stitch and whip stitch.",
+    harderVariation: "pattern stitching — combine stitch types in a design of the child's choosing.",
+    skillIds: ["lt", "sf", "ic"],
     materials: [
       "Sewing templates (numbers, alphabets, and object outlines)",
       "Shoelaces",
@@ -445,6 +487,20 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "build a subject from geometric pieces without speaking. your team guesses what you are making.",
     howToPlay:
       "Each child builds a subject from geometric pieces silently while their team guesses what it is.",
+    players: "3–8 children · 1 teacher",
+    duration: "25 min",
+    goal: "the child builds a subject from transparent geometric pieces without speaking, while others guess what it is.",
+    steps: [
+      "put the transparent geometric pieces in the centre. show one shape card to a builder so no one else sees it.",
+      "the builder starts arranging the pieces silently to make the subject on the card.",
+      "the other children watch and call out guesses as the shape forms.",
+      "the round ends when a child guesses correctly or the builder finishes.",
+      "pass the turn to the next child with a new shape card.",
+    ],
+    endsWhen: "every child has had a turn as the builder.",
+    easierVariation: "use b1 cards and you name the category before the child starts building.",
+    harderVariation: "use b2 cards in a relay — teams race to finish the most cards.",
+    skillIds: ["sf", "ic", "bc"],
     variations: [
       {
         name: "Variation 1 — Child's choice",
@@ -477,6 +533,20 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "follow step-by-step drawing instructions from the card. then complete the extension challenge.",
     howToPlay:
       "One card placed centrally. Children follow step-by-step instructions simultaneously. Educator gives extension challenge after completion.",
+    players: "3–8 children · 1 teacher",
+    duration: "25 min",
+    goal: "the child follows step-by-step drawing instructions on a cue card and completes the extension challenge.",
+    steps: [
+      "place one cue card in the centre where every child can see it.",
+      "give each child a drawing sheet and a fine-line marker or pencil.",
+      "children follow the steps on the card simultaneously, one step at a time.",
+      "when everyone has finished the card, give the extension challenge.",
+      "children add the extension to their drawing.",
+    ],
+    endsWhen: "every child has completed the card and the extension challenge.",
+    easierVariation: "use b1 cards, keep them visible throughout, no timer.",
+    harderVariation: "show a b2 card for one minute then remove it — the child draws from memory.",
+    skillIds: ["sf", "lt", "bc"],
     materials: [
       "Cue Card sets B1 and B2",
       "Drawing paper",
@@ -498,6 +568,20 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "scene card in the centre. i name an object — you find and draw it.",
     howToPlay:
       "Educator shows a scene card or places multiple line/texture cards in a row. Educator names a texture, line/shape, or texture. Child finds it, then draws.",
+    players: "3–8 children · 1 teacher",
+    duration: "25 min",
+    goal: "the child finds a named object, line, shape, or texture on the card and draws it.",
+    steps: [
+      "place a scene card in the centre, or lay several line, shape, and texture cards in a row.",
+      "give each child a blank drawing sheet and a pencil or crayon.",
+      "name one object, line, shape, or texture on the cards.",
+      "the child looks, finds it, and then draws it on their sheet.",
+      "name the next thing and repeat until the round is complete.",
+    ],
+    endsWhen: "the child has found and drawn every item you have named.",
+    easierVariation: "show easy scene cards — the child draws the object they choose.",
+    harderVariation: "show any card for 30 seconds then remove it — the child draws from memory.",
+    skillIds: ["lt", "sf", "bc"],
     materials: [
       "Scene cards (A5)",
       "Line / shape / texture cards",
@@ -520,6 +604,20 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "roll the dice, move your token, land on an art zone, draw a challenge card (draw, colour, build or mixed media), and complete it within the time limit.",
     howToPlay:
       "Set up board game. Roll dice, move, land on an art zone. Draw a challenge card (draw, colour, build or mixed media) and complete it within the time limit.",
+    players: "3–8 children · 1 teacher",
+    duration: "25 min",
+    goal: "the child rolls the dice, lands on an art zone, and completes a challenge card within the time limit.",
+    steps: [
+      "set up the board with tokens on start and the four zone card decks nearby — sketch, colour, build, and mixed media.",
+      "the first child rolls the dice and moves their token that many spaces.",
+      "the child draws a challenge card from the deck that matches the zone they landed on.",
+      "start the timer. the child completes the challenge before time runs out.",
+      "pass the dice to the next child and repeat.",
+    ],
+    endsWhen: "every child has had a turn or the group reaches the end of the board.",
+    easierVariation: "use b1 challenges from the challenge cards.",
+    harderVariation: "use b2 challenges with limited time.",
+    skillIds: ["sf", "cp", "ic"],
     variations: [
       {
         name: "Cooperative variation",
@@ -561,6 +659,20 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "one child describes a card image without naming it. others draw what they hear.",
     howToPlay:
       "One child is the describer. The describer describes the card without naming the subject. The other children draw what they hear. After everyone is done, the describer picks the drawing that best matches what they had in mind. Variation — the child invents an imaginary subject and describes it while drawing simultaneously — for example, a whale with the body of a horse.",
+    players: "3–8 children · 1 teacher",
+    duration: "25 min",
+    goal: "the child describes a card image without naming it while the others draw what they hear.",
+    steps: [
+      "pick one child to be the describer. show them a card from the animals or objects deck without letting anyone else see.",
+      "give every other child a drawing sheet and a pencil or marker.",
+      "the describer describes the subject on the card without naming it.",
+      "the other children draw what they hear.",
+      "when everyone is done, the describer picks the drawing that best matches what they had in mind.",
+    ],
+    endsWhen: "every child has had a turn as the describer.",
+    easierVariation: "use easy cards — the drawing children can ask the describer two questions.",
+    harderVariation: "use difficult cards — no questions and no clues allowed.",
+    skillIds: ["ic", "sf", "bc"],
     materials: [
       "Physical card decks — Animals and Objects",
       "Drawing paper",
@@ -582,6 +694,20 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "educator reads a prompt. everyone draws. unique drawings score a point, duplicates score zero.",
     howToPlay:
       "The educator reads out the prompt to draw. All children draw simultaneously for a set time, then reveal. Example prompt — \"something that starts with the letter C.\" If two or more children draw the same thing, they each score 0; a unique drawing scores a point. Bonus points for the funniest or most artistic drawing, voted by the group. Variation — children draw individually or as a team taking turns.",
+    players: "3–8 children · 1 teacher",
+    duration: "25 min",
+    goal: "the child draws a prompt fast and scores a point if their drawing is unique to the group.",
+    steps: [
+      "give every child a drawing sheet or whiteboard and a pencil or marker.",
+      "read one prompt to the group, for example — something that starts with the letter c.",
+      "all children draw at the same time within the set time on the timer.",
+      "when time is up, everyone reveals their drawing.",
+      "duplicates score zero. a unique drawing scores a point. give bonus points for the funniest or most artistic, voted by the group.",
+    ],
+    endsWhen: "the group has finished the set number of prompts and tallied scores.",
+    easierVariation: "no time limit — take as long as you need.",
+    harderVariation: "rapid sketching — a set number of prompts in a limited time, team or individual, every drawing done before time is up.",
+    skillIds: ["ic", "sf", "bc"],
     materials: [
       "Drawing prompts — https://wordwall.net/resource/86438051/sketch-it-up-deck-2",
       "Drawing paper or whiteboards",
