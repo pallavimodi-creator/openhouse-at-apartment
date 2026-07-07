@@ -17,7 +17,7 @@ const playgroundGames: Record<string, CurriculumActivity> = {
     setupLine: "Make a sound and let your friends guess.",
     howToPlay:
       "Children learn to listen, recognise sounds, and speak clearly. Setup: children sit in a circle, sound cards in a pile. Turn order: one child plays at a time. On their turn, the child picks a card, looks at it (others should not see), and makes the sound — for example, dog → woof woof. Other children guess. If the guess is correct, the child keeps the card. If not, the next child plays. Game ends after a set time or a set number of rounds.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "10 min",
     goal: "the child picks a sound card and makes that sound so friends can guess what's on it.",
     steps: [
@@ -62,7 +62,7 @@ const playgroundGames: Record<string, CurriculumActivity> = {
     setupLine: "Open windows and find rhyming pairs.",
     howToPlay:
       "Children learn to identify rhyming sounds. Setup: place all window cards face down on the house mat; children sit around. Turn order: one child at a time. On their turn, the child picks any 2 windows, opens them, and says both words. If the words rhyme, they keep both windows and get another turn. If not, the windows close and the next child plays. The game ends when all rhyming pairs are found.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "10 min",
     goal: "the child opens two windows on the house and finds a rhyming pair.",
     steps: [
@@ -100,7 +100,7 @@ const playgroundGames: Record<string, CurriculumActivity> = {
     howToPlay:
       "Children build stories by rolling picture dice. The game is played through the three variations below — Story Chain, Story Maker, and Story Shuffle.",
     // ─── structured manual (pilot) ─────────────────────────
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "10 min",
     goal: "the child rolls a picture die and adds one sentence to a shared story.",
     steps: [
@@ -139,8 +139,8 @@ const playgroundGames: Record<string, CurriculumActivity> = {
     title: "language wheel",
     setupLine: "Roll, move, and complete the challenge.",
     howToPlay:
-      "Setup: place the game mat in the centre with the challenge cards. On their turn, the child rolls the dice, moves their piece on the wheel, picks the challenge card for that spot, and completes the task. If the task is complete, the child gets a token. The game ends after a set number of rounds or after each child completes their task. educator Note: Teachers may use cards from the Swat It, Snap It game or create a simple DIY version on a sheet to support challenge-card tasks such as reading, writing, word recognition, jumbled-word arrangement, and similar activities.",
-    players: "3–6 children · 1 teacher",
+      "Setup: place the game mat in the centre with the challenge cards. On their turn, the child rolls the dice, moves their piece on the wheel, picks the challenge card for that spot, and completes the task. If the task is complete, the child gets a token. The game ends after a set number of rounds or after each child completes their task. educator Note: Educators may use cards from the Swat It, Snap It game or create a simple DIY version on a sheet to support challenge-card tasks such as reading, writing, word recognition, jumbled-word arrangement, and similar activities.",
+    players: "3–6 children · 1 educator",
     duration: "10 min",
     goal: "the child rolls the dice, moves on the wheel, and does the language task where they land.",
     steps: [
@@ -179,7 +179,7 @@ const playgroundGames: Record<string, CurriculumActivity> = {
     setupLine: "Act it out or give clues — and guess.",
     howToPlay:
       "Guess Me is played through the two variations below.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "10 min",
     goal: "the child figures out what's on their card from what other children act out or describe.",
     steps: [
@@ -217,7 +217,7 @@ const playgroundGames: Record<string, CurriculumActivity> = {
     setupLine: "Look, find, and say.",
     howToPlay:
       "Observation and vocabulary. Setup: place the I Spy board in the centre. Turn order: educator leads. On a turn, the educator shows a card, children find the matching object on the board, and one child points to it, says its name, then uses it in a sentence.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "10 min",
     goal: "the child hears the clue, finds the object on the mat, and says its name in a sentence.",
     steps: [
@@ -257,7 +257,7 @@ const playgroundGames: Record<string, CurriculumActivity> = {
     setupLine: "Use your body to make things.",
     howToPlay:
       "Movement and expression. Setup: place body cards in a pile so all children can see. Turn order: one child flips a card. All children use their bodies — alone, in pairs, or as a group — to form the thing on the card. The educator names what they see. The next child flips the next card.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "10 min",
     goal: "the child uses their body — alone or with friends — to make the thing shown on the card.",
     steps: [
@@ -293,8 +293,8 @@ const playgroundGames: Record<string, CurriculumActivity> = {
     title: "swat it snap it",
     setupLine: "Find it fast and hit it.",
     howToPlay:
-      "Spread the cards face up around the box. The educator calls out a target letter, word, or missing word from a sentence. Children race to find and swat the matching card, snap it into the box, and read it aloud. The game ends after each child finds a target word or letter. educator Note: Use a selection of cards that best matches the children's learning level and the focus of the activity. Teachers may add or remove card types and adapt the challenges in different ways to support various learning objectives, needs, and interests.",
-    players: "3–8 children · 1 teacher",
+      "Spread the cards face up around the box. The educator calls out a target letter, word, or missing word from a sentence. Children race to find and swat the matching card, snap it into the box, and read it aloud. The game ends after each child finds a target word or letter. educator Note: Use a selection of cards that best matches the children's learning level and the focus of the activity. Educators may add or remove card types and adapt the challenges in different ways to support various learning objectives, needs, and interests.",
+    players: "3–8 children · 1 educator",
     duration: "10 min",
     goal: "the child hears a target and races to find the matching card and swat it.",
     steps: [
@@ -341,7 +341,7 @@ const playgroundGames: Record<string, CurriculumActivity> = {
     setupLine: "Arrange the story cards and narrate the story.",
     howToPlay:
       "Shuffle the story cards and place them face up. Children work together to arrange the cards in the correct order and narrate the story.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "10 min",
     goal: "the child helps arrange the picture cards in the right order and tells the story from them.",
     steps: [
@@ -384,7 +384,7 @@ const wordsmithsResources: Record<string, CurriculumActivity> = {
     setupLine: "Show the card. Act the word. Use it in a sentence.",
     howToPlay:
       "The educator shows a vocabulary card for a target word from the current book — a feeling, describing, action, or spatial word. All children act the word together with their faces and bodies. Then one child at a time uses the word in a sentence about the current book. The same see → act → say sequence runs every session. (Digital deck — to be added soon.)",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "10 min",
     goal: "the child sees a target word from the current book, acts it out with the group, and uses it in a sentence.",
     steps: [

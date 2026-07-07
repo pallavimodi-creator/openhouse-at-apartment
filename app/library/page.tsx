@@ -268,7 +268,7 @@ function buildItemsFor(prog: CurriculumProgramme): LibraryItem[] {
           segmentName: "Art Gym",
           title: "scribble book",
           description:
-            "A book of imagination — every page is a unique open-ended story. The teacher prompts the children about what the scene sets and does not give the solution. Children scribble freely from their imagination. This is not a laminated book — fill only with dry mediums: crayons, yarn, glue. No paint or clay. ArtGym book and Scribble book rotate on alternate days — only 1 artwork a day in the Scribble book. Use the book in linear order — first page to last — the challenge increases page by page.",
+            "A book of imagination — every page is a unique open-ended story. The  educator prompts the children about what the scene sets and does not give the solution. Children scribble freely from their imagination. This is not a laminated book — fill only with dry mediums: crayons, yarn, glue. No paint or clay. ArtGym book and Scribble book rotate on alternate days — only 1 artwork a day in the Scribble book. Use the book in linear order — first page to last — the challenge increases page by page.",
           heroImageUrl: scribbleThumb,
         },
         thumbImageUrl: scribbleThumb,

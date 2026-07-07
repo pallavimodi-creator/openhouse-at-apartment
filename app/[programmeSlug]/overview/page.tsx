@@ -1360,7 +1360,13 @@ function ProgrammeOverviewContent() {
         {isArt && programme.ageGroup !== "3-5" && (
           <p className="mt-2 rounded-lg bg-brand-orange/8 px-3 py-2 text-[12px] leading-relaxed text-ink-muted">
             <span aria-hidden className="mr-1">🎯</span>
-            <span className="font-semibold text-ink">1–2 games can be played in a day.</span> Art Games and the laminated art-gym book pages and cue-card prompts share one combined slot — the teacher picks 1 or 2 from the pool. No separate art-gym segment, no scribble book, no extension-day follow-on. If only one game runs, give the extra minutes to artiverse so children get more time to make.
+            <span className="font-semibold text-ink">1–2 games can be played in a day.</span> Art Games and the laminated art-gym book pages and cue-card prompts share one combined slot — the educator picks 1 or 2 from the pool. No separate art-gym segment, no scribble book, no extension-day follow-on. If only one game runs, give the extra minutes to artiverse so children get more time to make.
+          </p>
+        )}
+        {programme.slug === "stem-3-5" && (
+          <p className="mt-2 rounded-lg bg-brand-orange/8 px-3 py-2 text-[12px] leading-relaxed text-ink-muted">
+            <span aria-hidden className="mr-1">⏱️</span>
+            <span className="font-semibold text-ink">Scheduling note:</span> The duration of Imagine Playground / Wonderworld sessions may be adjusted based on the scope of the activity. If a project needs more time, educators may shorten Number Gym, Logic Lab by choosing an easier gameplay, or other components to ensure meaningful engagement and completion of the project.
           </p>
         )}
 

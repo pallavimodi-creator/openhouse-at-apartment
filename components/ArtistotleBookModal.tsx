@@ -34,7 +34,7 @@ type ProjectEntry = {
   title: string;
   /** Materials needed to make the artwork — extracted from how-to-conduct. */
   materials: string[];
-  /** How-to-conduct steps — what the teacher does in order. */
+  /** How-to-conduct steps — what the educator does in order. */
   steps: string[];
   /** Single primary image — kept for backwards compatibility. */
   image?: ProjectImage;
@@ -52,7 +52,7 @@ const CARLE: ProjectEntry[] = [
     title: "stripes collage",
     materials: [
       "A3 paper as the base sheet",
-      "Pre-cut paper strips in mixed colours (teacher cuts before class)",
+      "Pre-cut paper strips in mixed colours (educator cuts before class)",
       "Glue sticks",
       "Tempera paint trays — 2–3 colours",
       "Sponge dabbers",
@@ -76,7 +76,7 @@ const CARLE: ProjectEntry[] = [
     title: "caterpillar collage (round shape)",
     materials: [
       "A3 paper as the base sheet",
-      "Pre-cut paper circles (varied sizes, mixed colours) — teacher cuts before class",
+      "Pre-cut paper circles (varied sizes, mixed colours) —  educator cuts before class",
       "Glue sticks",
       "Black marker / crayon for details",
     ],
@@ -118,8 +118,8 @@ const CARLE: ProjectEntry[] = [
     title: "jellyfish collage (multi-medium, multi-shape)",
     materials: [
       "A3 paper as the base sheet",
-      "Pre-cut paper circles (varied sizes) — teacher cuts before class",
-      "Pre-cut paper strips (curly and straight) — teacher cuts before class",
+      "Pre-cut paper circles (varied sizes) —  educator cuts before class",
+      "Pre-cut paper strips (curly and straight) —  educator cuts before class",
       "Patterned scrap paper",
       "Glue sticks",
     ],
@@ -630,7 +630,7 @@ export function ArtistotleBookModal({
       <header className="flex shrink-0 items-center justify-between gap-4 border-b border-ink/5 bg-brand-orange px-4 py-3 text-white md:px-8">
         <div className="min-w-0">
           <p className="text-[10px] font-bold tracking-normal text-white/80">
-            teacher reference
+            educator reference
           </p>
           <h2 className="truncate text-[18px] font-extrabold lowercase leading-tight md:text-[22px]">
             the artistotle book · art &amp; design 3–5

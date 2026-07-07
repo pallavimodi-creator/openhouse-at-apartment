@@ -30,7 +30,7 @@ const logicLabGames: Record<string, CurriculumActivity> = {
     setupLine: "Roll the dice, spot the matching candy, win it for your team.",
     howToPlay:
       "Two teams race. The facilitator rolls two dice (colour, shape, or pattern). Teams scan the Candy Field — first hand to touch the candy whose traits match both dice claims it. No match visible? Both dice are rerolled. After several rounds, gather teams with their trays for an end-game math quiz: counting, more/less, add/take-away, comparing sets, simple equality — each correct answer = 1 bonus point.",
-    players: "6–8 children · 1 teacher",
+    players: "6–8 children · 1 educator",
     duration: "20 min",
     goal: "the child spots and grabs the candy whose traits match the dice roll before the other team does.",
     steps: [
@@ -114,7 +114,7 @@ const logicLabGames: Record<string, CurriculumActivity> = {
     setupLine: "Pair up. Solve the prompt. Lace the bead.",
     howToPlay:
       "Divide the children into pairs. Set up stations or scavenger bins around the room — one for beads, one for numbers, one for shapes. Give each pair a laminated template, a sewing base, and a shoelace. The educator calls out one prompt at a time. The current player runs to the right station, finds the matching bead, comes back, and laces it onto the template. The lace is passed to the next child. The round ends when every bead is sewn into the template.",
-    players: "2 children · 1 teacher",
+    players: "2 children · 1 educator",
     duration: "20 min",
     goal: "the child listens to a prompt, finds the matching bead, and laces it onto the template.",
     steps: [
@@ -164,7 +164,7 @@ const logicLabGames: Record<string, CurriculumActivity> = {
     setupLine: "Pick a card, place disks, check by laying the card on top.",
     howToPlay:
       "Two children per board. One picks a card. They read the card type and follow the rule for that puzzle type. They take turns placing disks. When done, they check their work by placing the card on top of the board — the cut-out windows let them see if disks line up underneath.",
-    players: "2 children · 1 teacher",
+    players: "2 children · 1 educator",
     duration: "20 min",
     goal: "the child picks a card, places disks on the board following the card's rule, and checks by laying the card on top.",
     steps: [
@@ -248,7 +248,7 @@ const logicLabGames: Record<string, CurriculumActivity> = {
     setupLine: "Build straight, then curvy paths — graduate to the puzzle book.",
     howToPlay:
       "Refer to the instruction book for understanding how the game is used. Start by introducing children to making straight and curvy paths using only half of the board. Give children puzzles using half the board. Once they are comfortable, let them graduate to puzzles from the starter level of the book.",
-    players: "1 child · 1 teacher",
+    players: "1 child · 1 educator",
     duration: "20 min",
     goal: "the child builds a road with tiles that solves the current puzzle from the book.",
     steps: [
@@ -309,7 +309,7 @@ const logicLabGames: Record<string, CurriculumActivity> = {
     setupLine: "Match a flashcard, build the shape — five levels of difficulty.",
     howToPlay:
       "Children build using Magna-Tiles. The educator shows a prompt flashcard (laminated for reuse). Each card specifies the level — children match colours, count tiles, copy structure, fill borders, or invent freely. Five levels run in sequence: 3D Build → 2D Match → 2D Stack → Border Fill → Open-ended.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "20 min",
     goal: "the child looks at a flashcard prompt and builds the matching shape with magna-tiles.",
     steps: [
@@ -380,7 +380,7 @@ const imaginePlaygroundProjects: Record<string, CurriculumActivity> = {
     setupLine: "Build a track and number the train cars.",
     howToPlay:
       "Children join track pieces, attach train cars, count pieces as they connect, and stick numbers on each car in order. Low-stakes entry to the block system; counting while building makes Number Sense visible from Day 1.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "35 min",
     goal: "the child builds a track, attaches train cars, and numbers each car in order.",
     steps: [
@@ -407,7 +407,7 @@ const imaginePlaygroundProjects: Record<string, CurriculumActivity> = {
     setupLine: "Build a station, build a destination, take the train across.",
     howToPlay:
       "Children build a double-ended track and discover that a coloured action brick (red) changes the train's behaviour — first exposure to cause-and-effect bricks.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "35 min",
     goal: "the child builds a double-ended track and uses action bricks to change what the train does.",
     steps: [
@@ -434,7 +434,7 @@ const imaginePlaygroundProjects: Record<string, CurriculumActivity> = {
     setupLine: "Pick a number card, load that many bricks.",
     howToPlay:
       "Direct number-to-quantity mapping. Children see 5 on a card, count 5 bricks, and load them. Number Sense made physical.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "35 min",
     goal: "the child reads a number on a card and loads that many bricks onto the train car.",
     steps: [
@@ -461,7 +461,7 @@ const imaginePlaygroundProjects: Record<string, CurriculumActivity> = {
     setupLine: "Build the longest track and measure it.",
     howToPlay:
       "Standard and non-standard measurement. Children build a track from a wall outwards, measure with a tape, and compare. Then they build towers and measure height.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "35 min",
     goal: "the child builds the longest track they can and measures it.",
     steps: [
@@ -488,7 +488,7 @@ const imaginePlaygroundProjects: Record<string, CurriculumActivity> = {
     setupLine: "Plan a journey using yellow, blue, and white bricks.",
     howToPlay:
       "Yellow, blue, and white action bricks change the train's behaviour. Children plan a journey before the train moves — first experience of forward planning and sequencing. White bricks light up inside a tunnel.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "35 min",
     goal: "the child plans a train journey using yellow, blue, and white bricks before the train moves.",
     steps: [
@@ -515,7 +515,7 @@ const imaginePlaygroundProjects: Record<string, CurriculumActivity> = {
     setupLine: "Build a looping track.",
     howToPlay:
       "Introduces looping — the same journey repeated. Children compare the O-track with a double-ended track. Foundation of computational thinking.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "35 min",
     goal: "the child builds a looping o-shaped track and notices the same journey repeating.",
     steps: [
@@ -542,7 +542,7 @@ const imaginePlaygroundProjects: Record<string, CurriculumActivity> = {
     setupLine: "Coloured tickets decide the path.",
     howToPlay:
       "First if-then thinking. If red ticket, then go to red stop. Children build a Y-track with a switch and use coloured bricks as tickets. Foundation of conditional logic.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "35 min",
     goal: "the child uses a coloured ticket to decide which branch the train takes at the switch.",
     steps: [
@@ -569,7 +569,7 @@ const imaginePlaygroundProjects: Record<string, CurriculumActivity> = {
     setupLine: "Read the traffic signs and solve the route problem.",
     howToPlay:
       "Children apply route planning to solve traffic problems. The educator places action bricks randomly along the track — children identify the problem and choose the right traffic sign to fix it.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "35 min",
     goal: "the child reads the trouble on the track and picks the right traffic sign to fix it.",
     steps: [
@@ -596,7 +596,7 @@ const imaginePlaygroundProjects: Record<string, CurriculumActivity> = {
     setupLine: "Build a ramp with magna tiles. Predict and measure how far cars roll.",
     howToPlay:
       "Children build ramps using magna tiles and other materials, then roll cars down. Before each roll they predict where the car will stop, then mark the actual stopping point on a number track and record results on a graph. Introduces motion, gravity, prediction.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "35 min",
     goal: "the child builds a ramp, predicts how far a car will roll, then rolls it and records where it stopped.",
     steps: [
@@ -623,7 +623,7 @@ const imaginePlaygroundProjects: Record<string, CurriculumActivity> = {
     setupLine: "One event triggers the next.",
     howToPlay:
       "Cause-and-effect at its richest. Children build trigger sequences in pairs, then combine all the pairs' work into one long chain reaction. They explain first cause, first event, and last event.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "35 min",
     goal: "the child builds a trigger sequence where one event sets off the next.",
     steps: [
@@ -650,7 +650,7 @@ const imaginePlaygroundProjects: Record<string, CurriculumActivity> = {
     setupLine: "Predict, spin, record. Build a prize from what you collect.",
     howToPlay:
       "A spinner with coloured sections. Children predict, spin, and record outcomes across many rounds. They notice that more spaces of one colour means a better chance — but never a guarantee. Foundation of statistical thinking.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "35 min",
     goal: "the child predicts a colour, spins the wheel, and records what comes up over many rounds.",
     steps: [
@@ -709,7 +709,7 @@ const wonderWorldActivities: Record<string, CurriculumActivity> = {
     setupLine: "Listen to the clue — guess the bread.",
     howToPlay:
       "Educator gives clues ('I am round and flat. I puff on the pan'). Children point to the matching picture or playdough bread. Then children invent their own clues.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "35 min",
     goal: "the child listens to a clue and points to the bread it describes.",
     steps: [
@@ -736,7 +736,7 @@ const wonderWorldActivities: Record<string, CurriculumActivity> = {
     setupLine: "Put the bread journey in order.",
     howToPlay:
       "5 cards — seed, wheat, flour, dough, bread. Children arrange them in order, then act out the sequence with their bodies (tiny seed → tall wheat → grinding → kneading → eating).",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "35 min",
     goal: "the child puts the 5 bread journey cards in order and acts each step out.",
     steps: [
@@ -763,7 +763,7 @@ const wonderWorldActivities: Record<string, CurriculumActivity> = {
     setupLine: "Sort the food from the not-food.",
     howToPlay:
       "Children pick out grains and stones/beads from a mixed tray, placing them in 'food' and 'not food' bowls. Then they try a sieve and compare.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "35 min",
     goal: "the child sorts grains from stones into 'food' and 'not food' bowls.",
     steps: [
@@ -792,7 +792,7 @@ const wonderWorldActivities: Record<string, CurriculumActivity> = {
     setupLine: "Sort foods into 'yes with cheese' / 'not with cheese'.",
     howToPlay:
       "Children make a pretend cheese piece from yellow playdough, then sort foods into two piles — what tastes good with cheese, what doesn't. They explain their choice each time.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "35 min",
     goal: "the child sorts foods into 'yes with cheese' and 'not with cheese' piles.",
     steps: [
@@ -819,7 +819,7 @@ const wonderWorldActivities: Record<string, CurriculumActivity> = {
     setupLine: "Clap if it comes from milk.",
     howToPlay:
       "Educator reads a food name. If it comes from milk (butter, paneer, cheese, yoghurt), children clap. If not, hands stay still. Builds categorisation and listening control.",
-    players: "whole class · 1 teacher",
+    players: "whole class · 1 educator",
     duration: "35 min",
     goal: "the child claps only when the food you name comes from milk.",
     steps: [
@@ -868,7 +868,7 @@ const wonderWorldActivities: Record<string, CurriculumActivity> = {
     setupLine: "Build the sandwich one ingredient at a time.",
     howToPlay:
       "Memory and sequencing game. First child names one ingredient. Next child adds another. Each child must repeat the full sandwich so far. Educator uses picture cards if support is needed.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "35 min",
     goal: "the child adds one ingredient to a shared sandwich after repeating everything that came before.",
     steps: [
@@ -908,7 +908,7 @@ const wonderWorldActivities: Record<string, CurriculumActivity> = {
     setupLine: "Fill the tiffin with one food per colour.",
     howToPlay:
       "Children pick one red food, one green, one orange, one yellow — and place each in its tiffin section. They name the food and the colour, count the colours, and notice what's missing.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "35 min",
     goal: "the child fills a 4-section tiffin with one food per colour.",
     steps: [
@@ -935,7 +935,7 @@ const wonderWorldActivities: Record<string, CurriculumActivity> = {
     setupLine: "Sort foods by where they grow.",
     howToPlay:
       "A brown paper sheet marks the soil line. Children take cards one at a time and place each above or below the line. Each placement is explained — 'tomato grows above because…'. Plant awareness and reasoning.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "35 min",
     goal: "the child sorts food cards above or below the soil line by where they grow.",
     steps: [
@@ -962,7 +962,7 @@ const wonderWorldActivities: Record<string, CurriculumActivity> = {
     setupLine: "First, next, last — follow the steps.",
     howToPlay:
       "Educator gives a salad recipe one step at a time — base, vegetables, topping, mix. Children follow in order, then a second round where they choose their own order and compare results. Sequencing and decision-making.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "35 min",
     goal: "the child follows a salad recipe step by step, then chooses their own order.",
     steps: [
@@ -989,7 +989,7 @@ const wonderWorldActivities: Record<string, CurriculumActivity> = {
     setupLine: "Be a food detective — find the answer.",
     howToPlay:
       "Four rounds — colour ('find something red'), texture ('which is crunchy?'), growing place ('which grows below?'), and odd one out ('which doesn't belong?'). Children explain their reasoning each time.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "35 min",
     goal: "the child answers a food detective question each round and explains why.",
     steps: [
@@ -1018,7 +1018,7 @@ const wonderWorldActivities: Record<string, CurriculumActivity> = {
     setupLine: "Ask up to 10 yes/no questions to guess the food.",
     howToPlay:
       "Picture-only Guider Tiles deck. One child holds a hidden food card; the others ask up to 10 yes/no questions to guess what it is. Builds questioning and visual deduction. Runs twice — mid-year and end-of-year.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "35 min",
     goal: "the child asks yes/no questions to guess the hidden food card.",
     steps: [
@@ -1045,7 +1045,7 @@ const wonderWorldActivities: Record<string, CurriculumActivity> = {
     setupLine: "Join tiles by colour, texture, food group, or shape.",
     howToPlay:
       "40 food tiles + dice. Children join tiles based on a shared attribute. Used at the easiest difficulty level only at this age. Runs twice — once after Chapter 2 and once after Chapter 4.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "35 min",
     goal: "the child joins a food tile to the chain by matching one shared attribute.",
     steps: [

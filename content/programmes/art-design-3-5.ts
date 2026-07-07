@@ -21,7 +21,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "sew through templates using shoelaces. running stitch, backstitch, or a pattern combining stitches of your choice.",
     howToPlay:
       "Children sew through templates using shoelaces. Running Stitch = dashed line. Backstitch = continuous joined line. Whip stitch = over the edges in a loop. Pattern Stitching = combines stitch types in a design of the child's choosing.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "25 min",
     goal: "the child sews through a template with a shoelace using one chosen stitch.",
     steps: [
@@ -59,7 +59,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "Make objects using geometric shapes — a whole world of geometric-shape objects.",
     howToPlay:
       "The purpose of this game is to attach shapes together to create an object. Children enjoy this because they can create a recognisable object using simple shapes and the result looks fun. Start with cue cards that show exactly how to put together the shape tiles to make objects (begin with objects that use fewer tiles), then move to objects with more tiles while still using the cue card as reference, then show the cue card briefly and remove it so children build from memory, until eventually children build recognisable objects from shapes on their own.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "25 min",
     goal: "the child assembles shape tiles into a recognisable object.",
     steps: [
@@ -126,7 +126,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "Imagine how to draw, then draw — drawing involves thinking.",
     howToPlay:
       "The purpose of this game is to help children think about and imagine the form of the drawing and then draw it consciously. Each child picks a card from the deck and describes it; the rest of the group draws what they hear.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "25 min",
     goal: "the child imagines an object from a description and draws it on paper.",
     steps: [
@@ -178,7 +178,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     setupLine: "Mix and match colours.",
     howToPlay:
       "This game builds colour matching, mixing, and naming. It is played through the five variations below — the educator picks one per round and lays out the cards needed for it. Children can play as individuals, pairs, or groups.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "25 min",
     goal: "the child matches, mixes, or names colours through one chosen variation.",
     steps: [
@@ -242,7 +242,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     setupLine: "Choose colour friends and tools to colour.",
     howToPlay:
       "Each child picks one colour card and one tool card. They are then given an artwork along with the selected material and tool. Once the educator has set up all the material, the children can start their artwork. The game ends once the children complete the artwork using the chosen tool and colour. Once the children are familiar with the colours, the educator can introduce wild cards. Note: 1. The educator can place the colour wheel on the table for the children to observe. 2. This gameplay doesn't depend on the worksheets — the educator can also swap in cards from other games (e.g. I Shop Texture, DIY sheets) to trace or directly work on.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "25 min",
     goal: "the child completes an artwork using the colour and tool they picked.",
     steps: [
@@ -291,7 +291,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     setupLine: "Learn how to create textures in this fun shopping-for-textures game.",
     howToPlay:
       "Children learn how to create diverse textures with different materials. Each child gets a limited number of tokens. The educator decides the price of both objects and textures, written on the cards in erasable marker. Children buy objects and textures of their choice within their token budget, then create the chosen texture on the object — directly on the card using clay or erasable marker. The game ends once all the children finish the task/artwork or after a set time.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "25 min",
     goal: "the child buys an object and a texture and then creates that texture on the object.",
     steps: [
@@ -345,7 +345,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     setupLine: "A board game where you roll the dice, do art tasks, and move ahead — an art-task adventure for the minis.",
     howToPlay:
       "Children learn drawing, colouring, moulding, and building in a board-game task format — the more tasks they complete, the more tokens they collect. Place the game board on a play mat, shuffle and sort challenge cards by zone colour, shuffle Fortune cards into their own mini-deck, and set up material trays for each zone. Each child picks a meeple and starts at the Start space. Decide on the number of rounds (6–8 is a good range) and keep a 2-minute timer ready. On their turn, each player rolls the dice and moves forward. The space they land on tells them what to do — Green Zone — Draw, Blue Zone — Colour, Purple Zone — Mould, Yellow Zone — Build. After all players have picked a challenge card, they head to the matching zone tray and start the 2-minute timer. On successful completion, the educator hands out a reward token. After all rounds, players count their tokens — everyone is a winner, the group celebrates participation and effort. The game ends when the set number of rounds is over.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "25 min",
     goal: "the child rolls the dice, lands on a zone, and completes an art task from that zone.",
     steps: [
@@ -357,7 +357,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     ],
     endsWhen: "the set number of rounds (6–8) is over.",
     easierVariation:
-      "the teacher helps the child pick a simpler challenge card from the same zone.",
+      "the educator helps the child pick a simpler challenge card from the same zone.",
     harderVariation:
       "play the team task — one player rolls and moves the meeple, and the whole group completes the designated task together.",
     skillIds: ["fm", "co", "ce"],
@@ -922,7 +922,7 @@ const checkpoints: CurriculumCheckpoint[] = [
 export const artDesign35: CurriculumProgramme = {
   id: "art-design-3-5",
   slug: "art-design-3-5",
-  title: "art and design",
+  title: "art",
   category: "art",
   heroImageUrl: "/prog-art-3-5.gif",
   ageGroup: "3-5",

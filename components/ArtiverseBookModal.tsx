@@ -66,9 +66,9 @@ type Chapter = {
 const PAPER: Chapter = {
   number: 1,
   name: "paper folding & sticking",
-  why: "Paper helps children build finger strength and understand shape, space, and construction. In this chapter children learn folding and sticking — they do not cut. The teacher pre-cuts every paper piece before the session.",
+  why: "Paper helps children build finger strength and understand shape, space, and construction. In this chapter children learn folding and sticking — they do not cut. The educator pre-cuts every paper piece before the session.",
   guidelines: [
-    "Teacher pre-cuts every piece before class. Children never use scissors here.",
+    "Educator pre-cuts every piece before class. Children never use scissors here.",
     "Children fold and stick — those are the two skills this chapter builds.",
     "Animal-face stencils are provided in the kit — give them to children as needed.",
     "Use coloured A4 paper as the background sheet for every project.",
@@ -82,7 +82,7 @@ const PAPER: Chapter = {
       artworks: 2,
       materials: [
         "Coloured A4 paper as the background sheet",
-        "Pre-cut paper strips in mixed colours (5–10 cm thick) — teacher cuts before class",
+        "Pre-cut paper strips in mixed colours (5–10 cm thick) —  educator cuts before class",
         "Animal face stencils (provided in the kit)",
         "Glue sticks",
         "Crayons or markers for details",
@@ -105,7 +105,7 @@ const PAPER: Chapter = {
       artworks: 3,
       materials: [
         "Coloured A4 paper as the background sheet",
-        "Pre-cut paper circles in different sizes and colours — teacher cuts before class",
+        "Pre-cut paper circles in different sizes and colours —  educator cuts before class",
         "Animal face stencils (provided in the kit)",
         "Glue sticks",
         "Crayons or markers for details",
@@ -128,7 +128,7 @@ const PAPER: Chapter = {
       artworks: 2,
       materials: [
         "Coloured A4 paper as the background sheet",
-        "Pre-torn coloured paper pieces (small, mixed colours) — teacher prepares before class",
+        "Pre-torn coloured paper pieces (small, mixed colours) —  educator prepares before class",
         "Simple outline sheets (animal or shape outlines)",
         "Glue sticks",
       ],
@@ -150,7 +150,7 @@ const PAPER: Chapter = {
       artworks: 1,
       materials: [
         "Coloured A4 paper as the background sheet",
-        "Pre-cut paper strips (short, mixed colours) — teacher cuts before class",
+        "Pre-cut paper strips (short, mixed colours) —  educator cuts before class",
         "Glue sticks",
         "Animal face stencils (provided)",
       ],
@@ -172,7 +172,7 @@ const PAPER: Chapter = {
       artworks: 2,
       materials: [
         "Coloured A4 paper as the background sheet",
-        "Square origami papers (pre-cut by the teacher)",
+        "Square origami papers (pre-cut by the educator)",
         "Glue sticks",
         "Crayons or markers for backgrounds and details",
       ],
@@ -212,7 +212,7 @@ const CRAYONS: Chapter = {
         "Crayons (oil pastel or wax)",
       ],
       steps: [
-        "Teacher draws simple shapes — circle, triangle, square — on the A4 paper.",
+        "Educator draws simple shapes — circle, triangle, square — on the A4 paper.",
         "Children fill each shape with one solid colour.",
         "Encourage neat strokes from edge to edge.",
         "Add simple details — eyes, smiles — to bring the shapes to life.",
@@ -231,7 +231,7 @@ const CRAYONS: Chapter = {
         "Crayons (oil pastel or wax)",
       ],
       steps: [
-        "Teacher draws a simple scene — sun, sky, ground, tree.",
+        "Educator draws a simple scene — sun, sky, ground, tree.",
         "Children colour each large area in a solid block — sky, grass, tree.",
         "Encourage covering the page fully — no white gaps.",
         "Compare day vs night versions in the second session.",
@@ -250,7 +250,7 @@ const CRAYONS: Chapter = {
         "Crayons (oil pastel or wax)",
       ],
       steps: [
-        "Teacher draws detailed objects — flower, butterfly, basket of fruit.",
+        "Educator draws detailed objects — flower, butterfly, basket of fruit.",
         "Children colour carefully within the smaller sections.",
         "Use multiple colours per object — petals, wings, fruits.",
         "Talk about staying inside the lines as a fun challenge — not a rule.",
@@ -294,7 +294,7 @@ const CRAYONS: Chapter = {
         "Crayons (oil pastel or wax)",
       ],
       steps: [
-        "Teacher draws simple shapes — triangle, square, star.",
+        "Educator draws simple shapes — triangle, square, star.",
         "Children fill each shape using 2 colours.",
         "Overlap the strokes and observe the new colour appearing.",
         "Name the new colour out loud — red + yellow = orange.",
@@ -313,7 +313,7 @@ const CRAYONS: Chapter = {
         "Crayons (oil pastel or wax)",
       ],
       steps: [
-        "Teacher draws an intricate object — flower, leaf, fruit.",
+        "Educator draws an intricate object — flower, leaf, fruit.",
         "Children colour the object using 2 blended colours.",
         "Layer the colours so the new mixed colour appears within the form.",
         "Notice how the object takes a new identity through the mix.",
@@ -332,7 +332,7 @@ const CRAYONS: Chapter = {
         "Crayons (oil pastel or wax)",
       ],
       steps: [
-        "Teacher draws a scene — sunset, garden, sea.",
+        "Educator draws a scene — sunset, garden, sea.",
         "Children fill backgrounds with strokes of 2 colours.",
         "Blend the strokes into each other for soft transitions.",
         "Add the foreground subject on top once the background is mixed.",
@@ -549,7 +549,7 @@ export function ArtiverseCoverArt({
               : "mt-5 text-[10px] font-bold lowercase tracking-tight text-ink/45"
           }
         >
-          teacher reference
+          educator reference
         </p>
       </div>
     </div>
@@ -623,7 +623,7 @@ function ChapterCoverPage({ chapter }: { chapter: Chapter }) {
       </div>
       <div className="mt-5">
         <p className="text-[10px] font-bold tracking-normal text-brand-orange">
-          teacher guidelines
+          educator guidelines
         </p>
         <ul className="mt-1.5 space-y-1">
           {chapter.guidelines.map((g) => (
@@ -858,7 +858,7 @@ export function ArtiverseBookModal({
       <header className="flex shrink-0 items-center justify-between gap-4 border-b border-ink/5 bg-segment-yellow px-4 py-3 md:px-8">
         <div className="min-w-0">
           <p className="text-[10px] font-bold tracking-normal text-ink/60">
-            teacher reference
+            educator reference
           </p>
           <h2 className="truncate text-[18px] font-extrabold lowercase leading-tight text-ink md:text-[22px]">
             the artiverse book · art &amp; design 3–5

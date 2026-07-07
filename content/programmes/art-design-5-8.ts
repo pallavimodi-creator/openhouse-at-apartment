@@ -351,7 +351,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "each child has a 9-grid template. pick a bead from the bowl without looking. if it matches a square on your grid, place it.",
     howToPlay:
       "Coloured beads sit in a bowl or box in the centre. On their turn, a child picks one bead without looking, compares it to their grid, and places it if it matches. No match = bead goes back. First to finish a row or grid wins.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "25 min",
     goal: "the child picks a bead without looking and places it on the matching square of their 9-grid.",
     steps: [
@@ -400,7 +400,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "56 colour cards face-down. flip two. matching colour = keep the pair. most pairs wins.",
     howToPlay:
       "Shuffle cards and place them face down. Children take turns flipping two cards on each turn.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "25 min",
     goal: "the child flips two face-down colour cards and keeps the pair if the colours match.",
     steps: [
@@ -453,7 +453,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "sew through templates using shoelaces. running stitch, backstitch, or a pattern combining stitches of your choice.",
     howToPlay:
       "Children sew through templates using shoelaces. Running Stitch = dashed line. Backstitch = continuous joined line. Whip stitch = over the edges in a loop. Pattern Stitching = combines stitch types in a design of the child's choosing.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "25 min",
     goal: "the child sews through a template with a shoelace using the chosen stitch type.",
     steps: [
@@ -487,7 +487,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "build a subject from geometric pieces without speaking. your team guesses what you are making.",
     howToPlay:
       "Each child builds a subject from geometric pieces silently while their team guesses what it is.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "25 min",
     goal: "the child builds a subject from transparent geometric pieces without speaking, while others guess what it is.",
     steps: [
@@ -533,7 +533,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "follow step-by-step drawing instructions from the card. then complete the extension challenge.",
     howToPlay:
       "One card placed centrally. Children follow step-by-step instructions simultaneously. Educator gives extension challenge after completion.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "25 min",
     goal: "the child follows step-by-step drawing instructions on a cue card and completes the extension challenge.",
     steps: [
@@ -568,7 +568,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "scene card in the centre. i name an object — you find and draw it.",
     howToPlay:
       "Educator shows a scene card or places multiple line/texture cards in a row. Educator names a texture, line/shape, or texture. Child finds it, then draws.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "25 min",
     goal: "the child finds a named object, line, shape, or texture on the card and draws it.",
     steps: [
@@ -604,7 +604,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "roll the dice, move your token, land on an art zone, draw a challenge card (draw, colour, build or mixed media), and complete it within the time limit.",
     howToPlay:
       "Set up board game. Roll dice, move, land on an art zone. Draw a challenge card (draw, colour, build or mixed media) and complete it within the time limit.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "25 min",
     goal: "the child rolls the dice, lands on an art zone, and completes a challenge card within the time limit.",
     steps: [
@@ -659,7 +659,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "one child describes a card image without naming it. others draw what they hear.",
     howToPlay:
       "One child is the describer. The describer describes the card without naming the subject. The other children draw what they hear. After everyone is done, the describer picks the drawing that best matches what they had in mind. Variation — the child invents an imaginary subject and describes it while drawing simultaneously — for example, a whale with the body of a horse.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "25 min",
     goal: "the child describes a card image without naming it while the others draw what they hear.",
     steps: [
@@ -694,7 +694,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "educator reads a prompt. everyone draws. unique drawings score a point, duplicates score zero.",
     howToPlay:
       "The educator reads out the prompt to draw. All children draw simultaneously for a set time, then reveal. Example prompt — \"something that starts with the letter C.\" If two or more children draw the same thing, they each score 0; a unique drawing scores a point. Bonus points for the funniest or most artistic drawing, voted by the group. Variation — children draw individually or as a team taking turns.",
-    players: "3–8 children · 1 teacher",
+    players: "3–8 children · 1 educator",
     duration: "25 min",
     goal: "the child draws a prompt fast and scores a point if their drawing is unique to the group.",
     steps: [

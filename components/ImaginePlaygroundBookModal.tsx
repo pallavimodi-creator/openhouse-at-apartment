@@ -9,7 +9,7 @@ import {
 } from "@/components/ImageFlipbook";
 
 /**
- * Imagine Playground — teacher reference book for STEM 3–5.
+ * Imagine Playground — educator reference book for STEM 3–5.
  *
  * 11 core build projects.
  * Each project page covers: connect → construct → contemplate →
@@ -61,7 +61,7 @@ const LESSONS: Lesson[] = [
       "Inspiration picture of a train engine.",
     ],
     grouping:
-      "Teacher explains to all 10 children together. Then divide into 3 groups (3, 3, 4). Each group makes its own track and train.",
+      "Educator explains to all 10 children together. Then divide into 3 groups (3, 3, 4). Each group makes its own track and train.",
     connect: [
       "Gather all children. Say: 'Today we are going to build a train and a train track.'",
       "Ask: 'What does a train look like? What sound does a train make? What does a train do?'",
@@ -233,7 +233,7 @@ const LESSONS: Lesson[] = [
       "Inspiration pictures 1–4.",
     ],
     grouping:
-      "Teacher demonstrates with all watching. 3 groups for track-building. Pairs for tower/crane.",
+      "Educator demonstrates with all watching. 3 groups for track-building. Pairs for tower/crane.",
     connect: [
       "Show two trains side by side — one with 2 cars, one with 3 cars.",
       "Ask: 'Which train is shorter? Longer? How can you tell?' Children point and answer.",
@@ -473,7 +473,7 @@ const LESSONS: Lesson[] = [
       "Say: 'Everybody needs to follow traffic rules. Traffic signs remind people what to do.'",
       "Show the four traffic signs. Ask: 'What do you think this sign means?' Let children guess.",
       "Place the signs around the classroom. Say: 'Now pretend you are each driving your own high-speed train. When you come near a traffic sign, slow down or stop.'",
-      "Teacher acts as police officer (or one child does). Children move carefully. Remind: 'Look for the signs. Slow down. Stop here.'",
+      "Educator acts as police officer (or one child does). Children move carefully. Remind: 'Look for the signs. Slow down. Stop here.'",
     ],
     construct: [
       "Each group picks a building card and builds the model.",
@@ -772,17 +772,17 @@ function StructurePage() {
           {
             n: 1,
             label: "connect / engage",
-            body: "The teacher introduces the idea — through a question, a story, or a body movement game.",
+            body: "The educator introduces the idea — through a question, a story, or a body movement game.",
           },
           {
             n: 2,
             label: "construct / explore",
-            body: "Children build, try, test, and play. The teacher circulates and asks questions, doesn't fix.",
+            body: "Children build, try, test, and play. The educator circulates and asks questions, doesn't fix.",
           },
           {
             n: 3,
             label: "explain / contemplate / debrief",
-            body: "Children talk about what happened. The teacher helps them put words to it.",
+            body: "Children talk about what happened. The educator helps them put words to it.",
           },
           {
             n: 4,
@@ -809,7 +809,7 @@ function StructurePage() {
         ))}
       </ol>
       <p className="mt-4 text-[10.5px] italic leading-relaxed text-ink-muted">
-        For every lesson, the teacher first gives instructions to all 10
+        For every lesson, the educator first gives instructions to all 10
         children together, then children work in small groups.
       </p>
     </div>
@@ -947,7 +947,7 @@ export function ImaginePlaygroundBookModal({
       <header className="flex shrink-0 items-center justify-between gap-4 border-b border-ink/5 bg-brand-orange px-4 py-3 text-white md:px-8">
         <div className="min-w-0">
           <p className="text-[10px] font-bold tracking-normal text-white/80">
-            teacher reference
+            educator reference
           </p>
           <h2 className="truncate text-[18px] font-extrabold lowercase leading-tight md:text-[22px]">
             the imagine playground book · stem 3–5

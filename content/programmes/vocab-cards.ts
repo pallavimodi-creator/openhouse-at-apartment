@@ -4,7 +4,7 @@
  *
  * Each card is a single word pulled from one of the 5 picture books we
  * have scene assets for. The scene image is the moment in the book
- * where the word is encountered; the rest is teacher-facing pedagogy.
+ * where the word is encountered; the rest is educator-facing pedagogy.
  *
  * Modes — five ways a 3–5 year old can play the word:
  *  - emote        : show the word as a face / feeling
@@ -14,7 +14,7 @@
  *  - what-why-how : open question for describing words
  *
  * Each card declares which modes are most natural for its word; the UI
- * still shows all five so the teacher can choose, but the natural ones
+ * still shows all five so the educator can choose, but the natural ones
  * are highlighted.
  */
 

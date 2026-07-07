@@ -21,7 +21,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "same load, different lever lengths. does it get easier to lift when the lever is longer?",
     howToPlay:
       "Set up a simple lever across a T-connector fulcrum. Hang a fixed load on one side and pull down on the other using a spring scale — first with a short arm (20cm), then a medium arm (30cm), then a long arm (40cm). Each child takes at least one reading. Record every reading in the result table. First use: children discover the pattern. Second use: children predict before reading — \"I think the 40cm will need less force because last time it was the smallest number.\"",
-    players: "2–4 children · 1 teacher",
+    players: "2–4 children · 1 educator",
     duration: "40 min",
     goal: "the child pulls the spring scale on 20cm, 30cm, and 40cm lever arms to find how lever length changes effort.",
     steps: [
@@ -61,7 +61,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "same lever length, different loads. does lifting a heavier load need more effort?",
     howToPlay:
       "Lever stays at the medium 30cm arm. Children hang a 0.5kg load, take a reading. Swap to 1kg, take a reading. Compare — is the spring scale number bigger when the load is heavier? First use: discover the pattern. Second use: predict before every reading.",
-    players: "2–4 children · 1 teacher",
+    players: "2–4 children · 1 educator",
     duration: "40 min",
     goal: "the child lifts a 0.5kg then a 1kg load on the same 30cm lever to find how load changes effort.",
     steps: [
@@ -98,7 +98,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "two equal weights, one on each side, fulcrum in the middle. does the lever balance?",
     howToPlay:
       "Place fulcrum at the centre of the 30cm lever. Hang 0.5kg on the left. Hang 0.5kg on the right. Does the lever sit flat? Now try 1kg each side. Still balanced? First use: children see balance as a pattern. Second use: before hanging, children say \"I predict it will balance\" and explain why.",
-    players: "2–4 children · 1 teacher",
+    players: "2–4 children · 1 educator",
     duration: "40 min",
     goal: "the child hangs equal weights on each side of the lever to see when it sits level.",
     steps: [
@@ -135,7 +135,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "you do not need a weighing set — any two things that weigh the same will balance a lever.",
     howToPlay:
       "Hang a known 0.5kg weight on one side. On the other side, try objects of different sizes but roughly equal weight — a filled water bottle, a book, a bag of rice. Which makes the lever balance? Children feel that shape and size do not matter — only weight does. First use: discover the idea. Second use: predict which object will balance before trying.",
-    players: "2–4 children · 1 teacher",
+    players: "2–4 children · 1 educator",
     duration: "40 min",
     goal: "the child tests everyday objects against a 0.5kg weight to find which ones balance the lever.",
     steps: [
@@ -172,7 +172,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "a single pulley does not make things lighter — heavier loads still need more effort.",
     howToPlay:
       "Clamp the pulley to the table. Thread the rope over it. Tie one end to the load cup, attach the spring scale to the other end. Lift 0.5kg, read the spring scale. Lift 1kg, read again. Compare. First use: discover. Second use: predict before every lift.",
-    players: "2–4 children · 1 teacher",
+    players: "2–4 children · 1 educator",
     duration: "40 min",
     goal: "the child lifts 0.5kg then 1kg through the pulley to find how load changes the effort reading.",
     steps: [
@@ -208,7 +208,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "without the pulley you lift up. with the pulley you pull down. same load, different direction.",
     howToPlay:
       "First, lift the 1kg load straight up by hand using the spring scale. Then thread rope over the pulley, hook load on one end, pull the other end down. Child feels: now I pull down to lift the load up. The pulley changes direction. First use: discover the direction switch. Second use: predict \"which direction will I pull this time?\" before setting up.",
-    players: "2–4 children · 1 teacher",
+    players: "2–4 children · 1 educator",
     duration: "40 min",
     goal: "the child lifts 1kg by hand and then through a pulley to feel the direction switch.",
     steps: [
@@ -244,7 +244,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "raise the pulley higher. does the spring scale read a bigger number?",
     howToPlay:
       "Clamp the pulley at table-edge height. Lift 1kg, take the reading. Move the pulley to a raised position (use a stack of books under the mount, or raise the clamp). Lift the same 1kg. Compare readings. They are the same. Height does not change effort — only the rope length you pull.",
-    players: "2–4 children · 1 teacher",
+    players: "2–4 children · 1 educator",
     duration: "40 min",
     goal: "the child lifts the same 1kg from two pulley heights to check if height changes the effort.",
     steps: [
@@ -280,7 +280,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "pull straight down. pull sideways. does the number on the spring scale change?",
     howToPlay:
       "With load hanging from the pulley rope, child pulls the free end straight down — reads the spring scale. Then pulls at an angle (sideways, 45°). Reads again. The spring scale reading is the same — but one feels more comfortable than the other.",
-    players: "2–4 children · 1 teacher",
+    players: "2–4 children · 1 educator",
     duration: "40 min",
     goal: "the child pulls the pulley rope from two directions to see if the reading changes.",
     steps: [
@@ -318,7 +318,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "lift 1kg, 1.5kg, 2kg two ways — straight up by hand, then using a lever. which way needs less effort?",
     howToPlay:
       "Children lift 1kg, 1.5kg, and 2kg two ways: Setup A — straight up with a spring scale; Setup B — with a medium lever, fulcrum at the centre. They read the effort for each setup and weight. Each child records both. The lever (Setup B) needs less effort than lifting directly — the core reason a see-saw beam helps.",
-    players: "2–4 children · 1 teacher",
+    players: "2–4 children · 1 educator",
     duration: "40 min",
     goal: "the child lifts 1kg, 1.5kg, and 2kg by hand and then with a lever to compare the effort.",
     steps: [
@@ -356,7 +356,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "0.5kg on one end, 1.5kg on the other. move the fulcrum until both sides balance — where does it sit?",
     howToPlay:
       "With 0.5kg on one end of the lever and 1.5kg on the other, children try different fulcrum positions until the beam balances level. Each child records where the fulcrum had to sit. The fulcrum moves closer to the heavier weight — how a weighing scale can balance unequal loads.",
-    players: "2–4 children · 1 teacher",
+    players: "2–4 children · 1 educator",
     duration: "40 min",
     goal: "the child moves the fulcrum until 0.5kg on one side balances 1.5kg on the other.",
     steps: [
@@ -396,7 +396,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "connect gear a and gear b two ways — side by side, then with a chain. which way does each one turn?",
     howToPlay:
       "Children connect Gear A and Gear B in two setups: (1) meshed side-by-side, and (2) linked with a chain. Turn Gear A and watch Gear B each time. Record the direction of Gear B for each setup. First use: children discover the pattern. Second use: children predict the direction before turning. Side-by-side gears turn opposite ways; a chain makes them turn the same way.",
-    players: "2–4 children · 1 teacher",
+    players: "2–4 children · 1 educator",
     duration: "40 min",
     goal: "the child connects two gears two ways to find which direction gear b turns.",
     steps: [
@@ -434,7 +434,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "a small gear and a big gear, joined by a chain. turn the small one 3, 5, 8 times — how many times does the big one turn?",
     howToPlay:
       "Two gears — one small, one big — connected with a chain. Turn the small gear 3 times, then 5, then 8, and count the turns on the big gear each time. Each child records both numbers. The big gear turns fewer times than the small gear — the first feel of a gear ratio.",
-    players: "2–4 children · 1 teacher",
+    players: "2–4 children · 1 educator",
     duration: "40 min",
     goal: "the child turns the small gear 3, 5, and 8 times and counts how many times the big gear turns.",
     steps: [
@@ -472,7 +472,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "same two gears, the other way round. turn the big one 3, 5, 8 times — how many times does the small one turn?",
     howToPlay:
       "The same small and big gears joined by a chain, but now drive the big gear. Turn it 3 times, then 5, then 8, and count the turns on the small gear each time. Each child records both numbers. The small gear turns more times than the big gear — the reverse of e2.",
-    players: "2–4 children · 1 teacher",
+    players: "2–4 children · 1 educator",
     duration: "40 min",
     goal: "the child turns the big gear 3, 5, and 8 times and counts how many times the small gear turns.",
     steps: [
@@ -510,7 +510,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "two gears exactly the same size, joined by a chain. turn one 4, 6, 9 times — how many times does the other turn?",
     howToPlay:
       "Two equal-sized gears connected with a chain. Turn Gear A 4 times, then 6, then 9, and count the turns on Gear B each time. Each child records both numbers. When the gears are the same size, B turns the same number of times as A — a one-to-one ratio that contrasts with the small/big pairs in e2 and e3.",
-    players: "2–4 children · 1 teacher",
+    players: "2–4 children · 1 educator",
     duration: "40 min",
     goal: "the child turns gear a 4, 6, and 9 times and counts how many times gear b turns.",
     steps: [
@@ -548,7 +548,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "a small gear and a big gear, chained together. turn the small one 6, 9, 12 times — how many times does the big one turn?",
     howToPlay:
       "Two gears — one small, one big — connected with a chain. Turn the small gear 6 times, then 9, then 12, and count the turns on the big gear each time. Each child records both numbers and works out the relationship — the big gear turns a predictable fraction of the small gear's turns. Extends e2 to larger numbers so children can spot the ratio.",
-    players: "2–4 children · 1 teacher",
+    players: "2–4 children · 1 educator",
     duration: "40 min",
     goal: "the child turns the small gear 6, 9, and 12 times and works out the ratio to the big gear's turns.",
     steps: [
@@ -588,7 +588,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "build a 4-wheel cart. load it with 0.5kg, then 1kg, then 1.5kg. one push from a to b — how far does it roll each time?",
     howToPlay:
       "Children build a cart with 4 wheels and 2 axles, then give it one steady push from point A and measure how far it travels carrying 0.5kg, 1kg, and 1.5kg in turn. Each child records the distance for each load. The heavier the load, the shorter the distance from the same push.",
-    players: "2–4 children · 1 teacher",
+    players: "2–4 children · 1 educator",
     duration: "40 min",
     goal: "the child pushes the cart carrying 0.5kg, 1kg, and 1.5kg to find how load changes the distance rolled.",
     steps: [
@@ -626,7 +626,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "put 1.5kg in the centre, then the back, then the front of the cart. does where it sits change how it rolls?",
     howToPlay:
       "Children place the same 1.5kg weight in three positions on the cart — centre, back, front — and push it the same way each time, watching the balance and measuring the distance. Each child records the distance for each setup. Where the load sits changes how steadily and how far the cart travels.",
-    players: "2–4 children · 1 teacher",
+    players: "2–4 children · 1 educator",
     duration: "40 min",
     goal: "the child places 1.5kg at the centre, back, and front of the cart to find how load position changes the roll.",
     steps: [
@@ -664,7 +664,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "build a cart and carry 2kg, 2.5kg, 3kg one at a time. a gentle push from a to b — measure how far it rolls.",
     howToPlay:
       "Children build a cart and give it the same gentle push from A while carrying 2kg, then 2.5kg, then 3kg. Each child measures and records the distance for each load. Extends the L1 idea to heavier weights so children can quantify how added load shortens the roll.",
-    players: "2–4 children · 1 teacher",
+    players: "2–4 children · 1 educator",
     duration: "40 min",
     goal: "the child pushes the cart carrying 2kg, 2.5kg, and 3kg to measure how far each load rolls.",
     steps: [
@@ -702,7 +702,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "point the front axle left, then centre, then right. push the cart each time — which way does it go?",
     howToPlay:
       "Children build a cart whose front axle can be angled, then set it to the left, centre, and right and push it each time, recording the direction the cart travels. Each child notes the direction for each setup. The front axle angle steers the cart — the first feel of how a steering axle works.",
-    players: "2–4 children · 1 teacher",
+    players: "2–4 children · 1 educator",
     duration: "40 min",
     goal: "the child points the front axle left, centre, then right and pushes the cart to see which way it travels.",
     steps: [
@@ -739,7 +739,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "two carts, 1.5kg on each — one centred, one at the back. push both. which rolls further?",
     howToPlay:
       "Children build two carts and add 1.5kg to each — one with the load centred, one with it at the back — then push both the same way and measure the distance for each. Each child records both distances. Where the load sits changes how far the cart rolls from the same push.",
-    players: "2–4 children · 1 teacher",
+    players: "2–4 children · 1 educator",
     duration: "40 min",
     goal: "the child pushes two carts with the same 1.5kg load — one centred, one at the back — to see which rolls further.",
     steps: [
@@ -777,7 +777,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "two carts — one with axles close together, one with axles far apart. push both. which rolls further?",
     howToPlay:
       "Children build two carts that differ only in axle spacing — one with axles close together (2 pipes), one far apart (3 pipes) — then push both the same way and measure the distance for each. Each child records both distances. Axle spacing changes how steadily and how far the cart travels.",
-    players: "2–4 children · 1 teacher",
+    players: "2–4 children · 1 educator",
     duration: "40 min",
     goal: "the child pushes two carts — one with axles close, one with axles far — to see which rolls further.",
     steps: [
@@ -816,7 +816,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "lift 0.5kg, 1kg, 1.5kg using a double pulley. how much effort does each one need?",
     howToPlay:
       "Children use a double pulley to lift 0.5kg, 1kg, and 1.5kg in turn, reading the spring scale each time. Each child records the effort for each weight. With a double pulley the effort is noticeably less than lifting by hand — a first look at how more pulleys share the load.",
-    players: "2–4 children · 1 teacher",
+    players: "2–4 children · 1 educator",
     duration: "40 min",
     goal: "the child lifts 0.5kg, 1kg, and 1.5kg on a double pulley to read the effort for each weight.",
     steps: [
@@ -853,7 +853,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "lift 0.5kg, 1kg, 1.5kg with a double pulley and measure the effort needed for each.",
     howToPlay:
       "Children lift 0.5kg, 1kg, and 1.5kg with a double pulley, reading and recording the spring-scale effort for each. Each child takes at least one reading. Builds on the L1 double-pulley idea with careful measurement so children can compare effort across weights.",
-    players: "2–4 children · 1 teacher",
+    players: "2–4 children · 1 educator",
     duration: "40 min",
     goal: "the child measures the effort to lift 0.5kg, 1kg, and 1.5kg on a double pulley.",
     steps: [
@@ -890,7 +890,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "lift 3kg with a fixed pulley three times, each time at a different pulley height. does the effort change?",
     howToPlay:
       "Children use a fixed pulley to lift a 3kg load three times, varying the height of the pulley each try, and read the spring scale each time. Each child records the effort for each height. The effort stays the same regardless of pulley height — a fixed pulley changes direction, not effort.",
-    players: "2–4 children · 1 teacher",
+    players: "2–4 children · 1 educator",
     duration: "40 min",
     goal: "the child lifts the same 3kg three times, each time at a different pulley height, to see if the effort changes.",
     steps: [
@@ -927,7 +927,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "lift 3kg with a pulley, pulling the rope from three different sides. find the effort for each.",
     howToPlay:
       "Children lift a 3kg load with a pulley, pulling the rope from three different directions, and read the spring scale each time. Each child records the effort for each pull. The effort reading is the same from every side — the pulley redirects the pull without changing how hard it is.",
-    players: "2–4 children · 1 teacher",
+    players: "2–4 children · 1 educator",
     duration: "40 min",
     goal: "the child lifts 3kg with a pulley, pulling from three different sides, to find the effort for each pull.",
     steps: [
@@ -964,7 +964,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
       "with the fulcrum close to the load, try short, medium, long levers. which size lifts 2kg with the least effort?",
     howToPlay:
       "With the fulcrum placed close to the load, children lift 2kg using a short (1 pipe), medium (2 pipe), and long (3 pipe) lever, reading the spring scale each time. Each child records the effort for each size. The long lever with the fulcrum near the load needs the least effort — combining lever length and fulcrum position.",
-    players: "2–4 children · 1 teacher",
+    players: "2–4 children · 1 educator",
     duration: "40 min",
     goal: "the child lifts 2kg with a short, medium, and long lever — fulcrum close to the load — to find which needs least effort.",
     steps: [
@@ -1006,7 +1006,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
       "each child builds their own see-saw from a personal kit and a step card. five sessions — day by day.",
     howToPlay:
       "The see-saw is a simple lever model — a beam balancing on a central fulcrum. Introduces lever concepts in the most physical way a child can feel. Day 1 Explore: read the manual cover to cover, lay out every component in manual order, begin first build stage. Days 2–3 Make: open manual where you left off, build, educator uses four questions only. Day 4 Complete and Test: finish, run the test (balance two known weights — does the beam stay level?), record the best result. Day 5 Improve and Disassemble: each child makes one deliberate change, states expected outcome, tests, records before and after — then sorts every component back using the tray map.",
-    players: "1 child · 1 teacher",
+    players: "1 child · 1 educator",
     duration: "40 min",
     goal: "the child builds a see-saw from their personal kit and tests whether it balances two known weights.",
     steps: [
@@ -1043,7 +1043,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
       "same cycle, new model — a two-pan lever. five sessions from kit to calibrated scale.",
     howToPlay:
       "The weighing scale is a more precise lever. The scale must balance — not just assemble. Children calibrate rather than just build. Day 1 Explore · Days 2–3 Make · Day 4 Complete and Test (place equal weights in both pans — does it balance? place unequal — which way does it tip?) · Day 5 Improve and Disassemble (child makes one change, measures before and after, then sorts the kit back using the tray map).",
-    players: "1 child · 1 teacher",
+    players: "1 child · 1 educator",
     duration: "40 min",
     goal: "the child builds a weighing scale and calibrates it so the beam balances with equal weights in each pan.",
     steps: [
@@ -1079,7 +1079,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
       "the pulley model — a crane that lifts a load with rope and pulley. five sessions.",
     howToPlay:
       "The crane uses a pulley system to lift loads. Pulley experiments explain directly how the lifting system works. Day 1 Explore · Days 2–3 Make · Day 4 Complete and Test (lift a known load — did it work? how heavy can it lift before it tips?) · Day 5 Improve and Disassemble (one deliberate change — try a different rope angle, reposition the pulley — then sort the kit back using the tray map).",
-    players: "1 child · 1 teacher",
+    players: "1 child · 1 educator",
     duration: "40 min",
     goal: "the child builds a working crane from their kit and tests how much it can lift before it tips.",
     steps: [
@@ -1116,7 +1116,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
       "the gear model — a copter whose blades spin through a gear train. five sessions from kit to spinning rotor.",
     howToPlay:
       "The copter turns a hand crank into spinning blades through meshed gears — the gear experiments explain directly why the rotor spins faster or slower than the handle. Day 1 Explore: read the manual cover to cover, lay out every component in manual order, begin the build. Days 2–3 Make: open the manual where you left off, build, educator uses four questions only. Day 4 Complete and Test: finish, turn the crank — do the blades spin? how many blade turns for one handle turn? Day 5 Improve and Disassemble: each child makes one deliberate change (swap a gear, change the handle), states the expected effect, tests, records before and after — then sorts the kit back using the tray map.",
-    players: "1 child · 1 teacher",
+    players: "1 child · 1 educator",
     duration: "40 min",
     goal: "the child builds a copter that turns a hand crank into spinning blades through a gear train.",
     steps: [
@@ -1153,7 +1153,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
       "the lever-and-pulley model — a rod that bends like a lever and reels in line through a pulley. five sessions.",
     howToPlay:
       "The fishing rod combines a lever (the rod arm) with a pulley (the reel) — the lever and pulley experiments both explain what the build is doing. Day 1 Explore: read the manual cover to cover, lay out every component in manual order, begin the build. Days 2–3 Make: continue, educator uses four questions only. Day 4 Complete and Test: finish, reel a small load up — does the rod lift it? how does the reel make it easier? Day 5 Improve and Disassemble: each child makes one deliberate change, states the expected effect, tests, records before and after — then sorts the kit back using the tray map.",
-    players: "1 child · 1 teacher",
+    players: "1 child · 1 educator",
     duration: "40 min",
     goal: "the child builds a fishing rod with a lever arm and a pulley reel, and reels a small load up.",
     steps: [
@@ -1190,7 +1190,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
       "the wheel-and-axle model — a rickshaw that rolls on wheels and axles. five sessions from kit to rolling cart.",
     howToPlay:
       "The rickshaw rolls on wheels fixed to axles — the wheel-and-axle experiments explain directly how load and axle placement change the way it rolls. Day 1 Explore: read the manual cover to cover, lay out every component in manual order, begin the build. Days 2–3 Make: continue, educator uses four questions only. Day 4 Complete and Test: finish, load it and give it a push — how far and how straight does it go? Day 5 Improve and Disassemble: each child makes one deliberate change, states the expected effect, tests, records before and after — then sorts the kit back using the tray map.",
-    players: "1 child · 1 teacher",
+    players: "1 child · 1 educator",
     duration: "40 min",
     goal: "the child builds a rickshaw that rolls on wheels and axles and tests how far and how straight it travels.",
     steps: [
@@ -1227,7 +1227,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
       "the pulley model — a wind turbine whose blades drive a pulley to lift a small load. five sessions.",
     howToPlay:
       "The wind turbine turns its spinning blades into lifting power through a pulley — the pulley experiments explain how the lifting system works. Day 1 Explore: read the manual cover to cover, lay out every component in manual order, begin the build. Days 2–3 Make: continue, educator uses four questions only. Day 4 Complete and Test: finish, spin the blades — does the pulley wind up and lift the load? Day 5 Improve and Disassemble: each child makes one deliberate change, states the expected effect, tests, records before and after — then sorts the kit back using the tray map.",
-    players: "1 child · 1 teacher",
+    players: "1 child · 1 educator",
     duration: "40 min",
     goal: "the child builds a wind turbine whose spinning blades drive a pulley to lift a small load.",
     steps: [
@@ -1264,7 +1264,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
       "the wheel, axle and pulley model — a drawbridge that raises and lowers on a pulley. five sessions.",
     howToPlay:
       "The drawbridge raises and lowers using axles and a pulley — the wheel-and-axle and pulley experiments both explain what the build is doing. Day 1 Explore: read the manual cover to cover, lay out every component in manual order, begin the build. Days 2–3 Make: continue, educator uses four questions only. Day 4 Complete and Test: finish, raise and lower the bridge — does it hold and move smoothly? Day 5 Improve and Disassemble: each child makes one deliberate change, states the expected effect, tests, records before and after — then sorts the kit back using the tray map.",
-    players: "1 child · 1 teacher",
+    players: "1 child · 1 educator",
     duration: "40 min",
     goal: "the child builds a drawbridge that raises and lowers smoothly using axles and a pulley.",
     steps: [
@@ -1301,7 +1301,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
       "the wheel, axle and pulley model — a tow truck that rolls on axles and winches a load on a pulley. five sessions.",
     howToPlay:
       "The tow truck rolls on wheels and axles and winches a load with a pulley — the wheel-and-axle and pulley experiments both explain what the build is doing. Day 1 Explore: read the manual cover to cover, lay out every component in manual order, begin the build. Days 2–3 Make: continue, educator uses four questions only. Day 4 Complete and Test: finish, drive it and winch a load — does it roll straight and pull the load up? Day 5 Improve and Disassemble: each child makes one deliberate change, states the expected effect, tests, records before and after — then sorts the kit back using the tray map.",
-    players: "1 child · 1 teacher",
+    players: "1 child · 1 educator",
     duration: "40 min",
     goal: "the child builds a tow truck that rolls on axles and winches a load up through a pulley.",
     steps: [
@@ -1338,7 +1338,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
       "the gear model — a bulldozer whose blade and tracks are driven through gears. five sessions.",
     howToPlay:
       "The bulldozer drives its blade and tracks through a gear train — the gear experiments explain directly how the gearing changes speed and turning. Day 1 Explore: read the manual cover to cover, lay out every component in manual order, begin the build. Days 2–3 Make: continue, educator uses four questions only. Day 4 Complete and Test: finish, run it — do the gears drive the blade and tracks? Day 5 Improve and Disassemble: each child makes one deliberate change, states the expected effect, tests, records before and after — then sorts the kit back using the tray map.",
-    players: "1 child · 1 teacher",
+    players: "1 child · 1 educator",
     duration: "40 min",
     goal: "the child builds a bulldozer whose blade and tracks are driven through a gear train.",
     steps: [
