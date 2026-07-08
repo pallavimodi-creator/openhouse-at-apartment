@@ -7,6 +7,7 @@ import { ChevronDown } from "lucide-react";
 import { Modal } from "./Modal";
 import { ActivityPopup } from "./ActivityPopup";
 import { SegmentInfoPopup, type SegmentInfo } from "./SegmentInfoPopup";
+import { getBookPlan } from "@/content/programmes/language-book-plans";
 import {
   Brain, Eye, Ear, Hand, Mic, Zap, Gamepad2, Star,
   Dumbbell, Palette, Sparkles, PenTool, Notebook,
@@ -345,6 +346,49 @@ function SegmentRow({
               const unitDescription = unit
                 ? `Today's session uses ${unit.medium.toLowerCase()}. Technique: ${unit.technique.toLowerCase()}. Children make their own piece — reference topic: ${unit.whatChildrenMake.toLowerCase()}.`
                 : segment.objective;
+              // Which 3-5 artiverse / artistotle units need educator prep
+              // before class (typically pre-cut craft paper). Matched
+              // against unit.medium + unit.technique so it survives
+              // renames of unit ids.
+              const prepNote = (() => {
+                if (!unit || programmeSlug !== "art-design-3-5") return undefined;
+                const m = unit.medium.toLowerCase();
+                const t = unit.technique.toLowerCase();
+                if (m.includes("paper") && t.includes("accordion")) {
+                  return "Craft paper cut in circle or animal-head shape to place on top of the accordion.";
+                }
+                if (m.includes("paper") && t.includes("circle")) {
+                  return "Craft paper cut in circles of different sizes.";
+                }
+                if (m.includes("paper") && t.includes("mosaic")) {
+                  return "Worksheet + craft paper cut into big pieces (children will make the pieces smaller).";
+                }
+                if (m.includes("paper") && (t.includes("loop") || t.includes("chain"))) {
+                  return "Craft paper strips long enough to form loops.";
+                }
+                if (m.includes("carle") && t.includes("stripe")) {
+                  return "Craft paper cut in stripes — some can be pointy, some blunt.";
+                }
+                if (m.includes("carle") && t.includes("caterpillar")) {
+                  return "Craft paper cut in circles of irregular shape.";
+                }
+                if (m.includes("carle") && t.includes("jellyfish")) {
+                  return "Craft paper cut in semicircles (heads) and stripes (tentacles).";
+                }
+                return undefined;
+              })();
+              // Deep link to the artiverse reference book — the
+              // multi-page flipbook where educators can look up the
+              // technique in context.
+              const referenceHref = isArtistotle
+                ? "/artiverse-book-8-12"
+                : programmeSlug === "art-design-3-5"
+                  ? "/artiverse-book"
+                  : programmeSlug === "art-design-5-8"
+                    ? "/artiverse-book-5-8"
+                    : programmeSlug === "art-design-8-12"
+                      ? "/artiverse-book-8-12"
+                      : undefined;
               info = {
                 segmentId: segment.segmentId,
                 segmentName: isArtistotle ? "Artistotle" : "Artiverse",
@@ -354,6 +398,15 @@ function SegmentRow({
                     ? `${isArtistotle ? "project" : "unit"} ${segment.artiverseUnit} · day ${segment.artiverseDay} of ${unit.days}`
                     : undefined,
                 description: unitDescription,
+                prepNote,
+                externalLink: referenceHref
+                  ? {
+                      href: referenceHref,
+                      label: isArtistotle
+                        ? "open artistotle reference book"
+                        : "open artiverse reference book",
+                    }
+                  : undefined,
                 artiverseUnit: unit
                   ? {
                       medium: unit.medium,
@@ -381,6 +434,54 @@ function SegmentRow({
                 description,
                 bookLinkSlug: bookSlug,
                 heroImageUrl: bookCoverUrl,
+              };
+            } else if (
+              segment.segmentId === "book-o-clock" &&
+              segment.bookOrder !== undefined &&
+              segment.bookDay !== undefined
+            ) {
+              // Wire the day's specific plan from the Overview's 6-day
+              // arc so the popup shows THIS day's read — not the
+              // generic segment blurb.
+              const plan = getBookPlan(segment.bookOrder);
+              const bookDay = segment.bookDay;
+              let dayPlan;
+              if (plan) {
+                // Days 1-3 -> blockA; days 4-6 -> blockB (revisit).
+                const isBlockB = bookDay >= 4;
+                const block = isBlockB ? plan.blockB : plan.blockA;
+                const dayIdx = ((bookDay - 1) % 3) + 1; // 1..3 within the block
+                if (dayIdx === 3) {
+                  dayPlan = {
+                    dayNumber: bookDay,
+                    steps: block.day3.steps,
+                    vocabulary: block.day3.vocabulary,
+                    activity: block.day3.activity,
+                    blockLabel: isBlockB ? "revisit" : "first read",
+                  };
+                } else {
+                  const src = dayIdx === 1 ? block.day1 : block.day2;
+                  dayPlan = {
+                    dayNumber: bookDay,
+                    when: src.when,
+                    learningObjective: src.learningObjective,
+                    vocabulary: src.vocabulary,
+                    steps: src.steps,
+                    blockLabel: isBlockB ? "revisit" : "first read",
+                  };
+                }
+              }
+              info = {
+                segmentId: segment.segmentId,
+                segmentName: segment.segmentName,
+                title: segment.bookTitle
+                  ? `${segment.bookTitle}`
+                  : "book'o'clock",
+                subText: `book ${segment.bookOrder} · day ${bookDay} of 6`,
+                description: dayPlan
+                  ? `The plan below runs today's Book'o'Clock — pulled straight from this book's 6-day arc in the Overview.`
+                  : description,
+                bookDayPlan: dayPlan,
               };
             } else {
               info = {

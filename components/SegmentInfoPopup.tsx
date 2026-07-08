@@ -49,6 +49,30 @@ function descriptionToBullets(text: string): string[] {
   return parts.length > 0 ? parts : [trimmed];
 }
 
+/**
+ * When Book'o'Clock is shown for a specific day, the popup renders
+ * the DAY's plan (not the generic segment blurb). This carries the
+ * exact content teachers see in the Overview section's 6-day lesson
+ * plan for the current book, so the Library and Daily Session Plan
+ * stay in sync from a single source of truth.
+ */
+export interface BookDayPlanInfo {
+  /** 1..6 across the book's arc (blockA d1/d2/d3 + blockB d1/d2/d3). */
+  dayNumber: number;
+  /** "Before and During Reading · Print Knowledge" — the phase. */
+  when?: string;
+  /** "Learning Objective N — …" */
+  learningObjective?: string;
+  /** Comma-separated vocabulary list. */
+  vocabulary?: string;
+  /** Numbered educator steps for the day. */
+  steps: string[];
+  /** Day 3/6 optional activity — { name, level }. */
+  activity?: { name: string; level: "Easy" | "Hard" };
+  /** Which block this day belongs to — "first read" or "revisit". */
+  blockLabel?: string;
+}
+
 export interface SegmentInfo {
   segmentId: string;
   segmentName: string;
@@ -68,6 +92,19 @@ export interface SegmentInfo {
    * undefined.
    */
   heroImageUrl?: string;
+  /**
+   * Set for Book'o'Clock segments so the popup can render the exact
+   * day's plan instead of the generic segment explanation. When set,
+   * the popup shows learning objective / vocabulary / numbered steps
+   * pulled from the language-book-plans single source of truth.
+   */
+  bookDayPlan?: BookDayPlanInfo;
+  /**
+   * Marks a session that needs educator prep before class (e.g. an
+   * artiverse chapter with pre-cut craft paper). Renders a scissor
+   * emoji + short prep-materials list in the popup.
+   */
+  prepNote?: string;
 }
 
 const SEGMENT_ICONS: Record<string, React.ReactNode> = {
@@ -203,6 +240,105 @@ export function SegmentInfoPopup({ info }: { info: SegmentInfo }) {
           );
         })()}
       </div>
+
+      {/* Prep note — scissor emoji + short prep-materials list. Renders
+          only when the caller marked this session as needing educator
+          prep (e.g. artiverse chapters with pre-cut craft paper). */}
+      {info.prepNote && (
+        <div className="flex items-start gap-3 rounded-card bg-amber-50 p-3 ring-1 ring-amber-200/70">
+          <span aria-hidden className="text-[20px] leading-none">✂️</span>
+          <div className="min-w-0">
+            <p className="text-[10px] font-bold tracking-normal text-amber-800">
+              educator prep needed
+            </p>
+            <p className="mt-0.5 text-[12.5px] leading-relaxed text-ink">
+              {info.prepNote}
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Book'o'Clock — the exact plan for THIS day, pulled from the
+          Overview's 6-day lesson plan for this book. Ensures the Daily
+          Session Plan and the Overview stay in sync from one source. */}
+      {info.bookDayPlan && (
+        <div className="space-y-3">
+          <div className="rounded-card bg-brand-orange/5 p-3 ring-1 ring-brand-orange/15">
+            <p className="text-[10px] font-bold tracking-normal text-brand-orange">
+              day {info.bookDayPlan.dayNumber} of 6
+              {info.bookDayPlan.blockLabel ? ` · ${info.bookDayPlan.blockLabel}` : ""}
+            </p>
+            {info.bookDayPlan.when && (
+              <p className="mt-1 text-[13px] font-semibold text-ink">
+                {info.bookDayPlan.when}
+              </p>
+            )}
+            {info.bookDayPlan.learningObjective && (
+              <p className="mt-1.5 text-[12.5px] italic leading-relaxed text-ink-muted">
+                {info.bookDayPlan.learningObjective}
+              </p>
+            )}
+          </div>
+
+          {info.bookDayPlan.vocabulary && (
+            <div>
+              <p className="text-[10px] font-semibold tracking-normal text-ink/50">
+                target vocabulary
+              </p>
+              <div className="mt-1 flex flex-wrap gap-1.5">
+                {info.bookDayPlan.vocabulary
+                  .split(/[,·]/)
+                  .map((w) => w.trim())
+                  .filter(Boolean)
+                  .map((w) => (
+                    <span
+                      key={w}
+                      className="rounded-chip bg-brand-white px-2 py-0.5 text-[11px] font-semibold text-ink ring-1 ring-ink/10"
+                    >
+                      {w}
+                    </span>
+                  ))}
+              </div>
+            </div>
+          )}
+
+          {info.bookDayPlan.steps.length > 0 && (
+            <div>
+              <p className="text-[10px] font-semibold tracking-normal text-ink/50">
+                how to run today's read
+              </p>
+              <ol className="mt-2 space-y-2 rounded-card bg-ink/[0.03] px-3 py-3">
+                {info.bookDayPlan.steps.map((step, i) => (
+                  <li
+                    key={i}
+                    className="flex items-start gap-3 text-[12.5px] leading-relaxed text-ink"
+                  >
+                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-orange text-[11px] font-extrabold text-white">
+                      {i + 1}
+                    </span>
+                    <span className="flex-1">{step}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          )}
+
+          {info.bookDayPlan.activity && (
+            <div className="rounded-card bg-category-language/10 p-3">
+              <p className="text-[10px] font-bold tracking-normal text-green-800">
+                narration + activity
+              </p>
+              <p className="mt-1 text-[12.5px] leading-relaxed text-ink">
+                <span className="font-semibold">{info.bookDayPlan.activity.name}</span>
+                {" · "}
+                <span className="rounded-chip bg-brand-white px-1.5 py-0.5 text-[10px] font-semibold text-ink ring-1 ring-ink/10">
+                  {info.bookDayPlan.activity.level.toLowerCase()}
+                </span>
+              </p>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Artiverse-specific details: medium, technique, what-children-make, topic options */}
       {unit && (
