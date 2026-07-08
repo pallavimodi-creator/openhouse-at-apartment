@@ -57,6 +57,19 @@ export interface VocabCard {
    * for the modes that genuinely fit the word — skip the rest.
    */
   prompts?: Partial<Record<VocabMode, string>>;
+  /**
+   * Very short phrase showing where this word appears in the story
+   * — e.g. "Long wavy grass." Rendered on the back of the card
+   * under the meaning as "in the story".
+   */
+  inStory?: string;
+  /**
+   * 3 short word-pair phrases for ages 3–5 — e.g. "treasure hunt",
+   * "hunt around", "animal hunt". Drawn from the prefix/suffix
+   * columns of the vocab sheet. Rendered on the back of the card
+   * as a chip row.
+   */
+  wordPairs?: string[];
 }
 
 export interface VocabBook {
@@ -96,6 +109,8 @@ const bearHunt: VocabBook = {
         "word-pairs":
           "hunt is like search. we hunt when we want to find something hidden.",
       },
+          inStory: "We're going on a bear hunt.",
+      wordPairs: ["treasure hunt", "animal hunt", "hunt around"],
     },
     {
       slug: "wavy",
@@ -106,6 +121,8 @@ const bearHunt: VocabBook = {
       synonym: "curly",
       antonym: "straight",
       modes: ["enact", "what-why-how", "word-pairs"],
+          inStory: "Long wavy grass.",
+      wordPairs: ["wavy hair", "wavy lines", "wavy pattern"],
     },
     {
       slug: "splash",
@@ -116,6 +133,8 @@ const bearHunt: VocabBook = {
       synonym: "splatter",
       antonym: "still",
       modes: ["enact", "sentence", "word-pairs"],
+          inStory: "Splash splosh!",
+      wordPairs: ["big splash", "water splash", "splash painting"],
     },
     {
       slug: "deep",
@@ -126,6 +145,8 @@ const bearHunt: VocabBook = {
       synonym: "low",
       antonym: "shallow",
       modes: ["what-why-how", "sentence", "word-pairs"],
+          inStory: "A deep cold river.",
+      wordPairs: ["deep hole", "deep water", "deep burrow"],
     },
     {
       slug: "oozy",
@@ -136,6 +157,8 @@ const bearHunt: VocabBook = {
       synonym: "gooey",
       antonym: "dry",
       modes: ["enact", "what-why-how", "word-pairs"],
+          inStory: "Thick oozy mud.",
+      wordPairs: ["oozy mud", "oozy slime", "sticky and oozy"],
     },
     {
       slug: "squelch",
@@ -145,6 +168,8 @@ const bearHunt: VocabBook = {
       tier: "harder",
       synonym: "squish",
       modes: ["enact", "sentence"],
+          inStory: "Squelch squerch!",
+      wordPairs: ["muddy squelch", "loud squelch", "squelch through"],
     },
     {
       slug: "dark",
@@ -155,6 +180,8 @@ const bearHunt: VocabBook = {
       synonym: "dim",
       antonym: "bright",
       modes: ["what-why-how", "word-pairs", "sentence"],
+          inStory: "A big dark forest.",
+      wordPairs: ["dark room", "dark cave", "dark night"],
     },
     {
       slug: "stumble",
@@ -165,6 +192,8 @@ const bearHunt: VocabBook = {
       synonym: "trip",
       antonym: "balance",
       modes: ["enact", "sentence"],
+          inStory: "Stumble trip!",
+      wordPairs: ["stumble on", "stumble over", "almost stumble"],
     },
     {
       slug: "swirling",
@@ -175,6 +204,8 @@ const bearHunt: VocabBook = {
       synonym: "spinning",
       antonym: "still",
       modes: ["enact", "what-why-how"],
+          inStory: "A swirling whirling snowstorm.",
+      wordPairs: ["swirling wind", "swirling leaves", "swirling water"],
     },
     {
       slug: "gloomy",
@@ -185,6 +216,8 @@ const bearHunt: VocabBook = {
       synonym: "sad",
       antonym: "cheerful",
       modes: ["emote", "what-why-how", "word-pairs"],
+          inStory: "A narrow gloomy cave.",
+      wordPairs: ["gloomy sky", "gloomy face", "gloomy clouds"],
     },
     {
       slug: "tip-toe",
@@ -195,6 +228,8 @@ const bearHunt: VocabBook = {
       synonym: "creep",
       antonym: "stomp",
       modes: ["enact", "sentence", "word-pairs"],
+          inStory: "Tiptoe! Tiptoe! Tiptoe!",
+      wordPairs: ["tiptoe quietly", "tiptoe across", "tiptoe around"],
     },
     {
       slug: "furry",
@@ -205,6 +240,8 @@ const bearHunt: VocabBook = {
       synonym: "hairy",
       antonym: "smooth",
       modes: ["what-why-how", "word-pairs", "sentence"],
+          inStory: "Two big furry ears!",
+      wordPairs: ["furry animal", "furry tail", "furry ears"],
     },
   ],
 };
@@ -226,6 +263,8 @@ const giraffes: VocabBook = {
       synonym: "thin",
       antonym: "wide",
       modes: ["what-why-how", "word-pairs"],
+          inStory: "Whose neck was long and slim.",
+      wordPairs: ["slim body", "slim legs", "slim neck"],
     },
     {
       slug: "munching",
@@ -236,6 +275,8 @@ const giraffes: VocabBook = {
       synonym: "chewing",
       antonym: "fasting",
       modes: ["enact", "sentence"],
+          inStory: "Munching shoots off trees.",
+      wordPairs: ["munching carrots", "munching snacks", "munching loudly"],
     },
     {
       slug: "buckled",
@@ -246,6 +287,8 @@ const giraffes: VocabBook = {
       synonym: "collapsed",
       antonym: "stood",
       modes: ["enact", "sentence"],
+          inStory: "He buckled at the knees.",
+      wordPairs: ["buckled knees", "buckled over", "completely buckled"],
     },
     {
       slug: "prance",
@@ -256,6 +299,8 @@ const giraffes: VocabBook = {
       synonym: "skip",
       antonym: "stomp",
       modes: ["enact", "sentence", "word-pairs"],
+          inStory: "Turns up to skip and prance.",
+      wordPairs: ["prance around", "prance along", "gently prance"],
     },
     {
       slug: "elegant",
@@ -266,6 +311,8 @@ const giraffes: VocabBook = {
       synonym: "graceful",
       antonym: "clumsy",
       modes: ["enact", "what-why-how", "word-pairs"],
+          inStory: "Which was elegant and bold.",
+      wordPairs: ["elegant swan", "elegant dress", "simple and elegant"],
     },
     {
       slug: "splendid",
@@ -276,6 +323,8 @@ const giraffes: VocabBook = {
       synonym: "wonderful",
       antonym: "awful",
       modes: ["emote", "what-why-how", "word-pairs"],
+          inStory: "For a splendid Scottish reel.",
+      wordPairs: ["splendid day", "splendid view", "splendid party"],
     },
     {
       slug: "clumsy",
@@ -286,6 +335,8 @@ const giraffes: VocabBook = {
       synonym: "awkward",
       antonym: "graceful",
       modes: ["enact", "what-why-how", "word-pairs"],
+          inStory: "Look at clumsy Gerald.",
+      wordPairs: ["clumsy footsteps", "clumsy bear", "clumsy puppy"],
     },
     {
       slug: "swaying",
@@ -295,6 +346,8 @@ const giraffes: VocabBook = {
       tier: "easy",
       synonym: "swinging",
       modes: ["enact", "what-why-how"],
+          inStory: "Listen to the swaying grass.",
+      wordPairs: ["swaying grass", "swaying leaves", "swaying branches"],
     },
     {
       slug: "somersault",
@@ -304,6 +357,8 @@ const giraffes: VocabBook = {
       tier: "harder",
       synonym: "roll",
       modes: ["enact", "sentence"],
+          inStory: "He did a backwards somersault.",
+      wordPairs: ["somersault jump", "somersault roll", "forward somersault"],
     },
   ],
 };
@@ -325,6 +380,8 @@ const colourMonster: VocabBook = {
       synonym: "puzzled",
       antonym: "certain",
       modes: ["emote", "what-why-how", "sentence"],
+          inStory: "All mixed up and confused.",
+      wordPairs: ["confused face", "confused child", "confused look"],
     },
     {
       slug: "gentle",
@@ -335,6 +392,8 @@ const colourMonster: VocabBook = {
       synonym: "soft",
       antonym: "rough",
       modes: ["enact", "what-why-how", "word-pairs"],
+          inStory: "Being gentle.",
+      wordPairs: ["gentle voice", "gentle smile", "gentle hands"],
     },
     {
       slug: "bright",
@@ -345,6 +404,8 @@ const colourMonster: VocabBook = {
       synonym: "shiny",
       antonym: "dull",
       modes: ["what-why-how", "word-pairs", "sentence"],
+          inStory: "A bright light.",
+      wordPairs: ["bright sun", "bright light", "bright smile"],
     },
     {
       slug: "stomp",
@@ -355,6 +416,8 @@ const colourMonster: VocabBook = {
       synonym: "thump",
       antonym: "tiptoe",
       modes: ["enact", "emote", "word-pairs"],
+          inStory: "Anger can make you stomp.",
+      wordPairs: ["stomp loudly", "sudden stomp", "fierce stomp"],
     },
     {
       slug: "blazes",
@@ -365,6 +428,8 @@ const colourMonster: VocabBook = {
       synonym: "burns",
       antonym: "fades",
       modes: ["enact", "what-why-how"],
+          inStory: "It blazes red like fire.",
+      wordPairs: ["blazes brightly", "fierce blaze", "blazes through"],
     },
     {
       slug: "afraid",
@@ -375,6 +440,8 @@ const colourMonster: VocabBook = {
       synonym: "scared",
       antonym: "brave",
       modes: ["emote", "what-why-how", "sentence"],
+          inStory: "Fear made the little mouse hide.",
+      wordPairs: ["afraid of the dark", "very afraid", "a little afraid"],
     },
     {
       slug: "calm",
@@ -385,6 +452,8 @@ const colourMonster: VocabBook = {
       synonym: "peaceful",
       antonym: "tense",
       modes: ["emote", "enact", "what-why-how"],
+          inStory: "This is calm.",
+      wordPairs: ["calm sea", "calm breeze", "calm voice"],
     },
   ],
 };
@@ -406,6 +475,8 @@ const lionInside: VocabBook = {
       synonym: "strong",
       antonym: "weak",
       modes: ["enact", "emote", "word-pairs"],
+          inStory: "A mighty flat rock.",
+      wordPairs: ["mighty lion", "mighty roar", "mighty king"],
     },
     {
       slug: "meekest",
@@ -416,6 +487,8 @@ const lionInside: VocabBook = {
       synonym: "gentlest",
       antonym: "boldest",
       modes: ["emote", "what-why-how", "word-pairs"],
+          inStory: "The meekest brown mouse.",
+      wordPairs: ["meekest mouse", "meekest child", "meekest lamb"],
     },
     {
       slug: "mane",
@@ -424,6 +497,8 @@ const lionInside: VocabBook = {
       type: "naming",
       tier: "easy",
       modes: ["sentence", "what-why-how"],
+          inStory: "A lion's mane.",
+      wordPairs: ["lion's mane", "golden mane", "wild mane"],
     },
     {
       slug: "trod",
@@ -434,6 +509,8 @@ const lionInside: VocabBook = {
       synonym: "stepped",
       antonym: "avoided",
       modes: ["enact", "sentence"],
+          inStory: "He got trod on and sat on.",
+      wordPairs: ["trod softly", "trod gently", "gently trod"],
     },
     {
       slug: "roar",
@@ -444,6 +521,8 @@ const lionInside: VocabBook = {
       synonym: "shout",
       antonym: "whisper",
       modes: ["enact", "emote", "sentence"],
+          inStory: "He could ROAR!",
+      wordPairs: ["loud roar", "lion roar", "fierce roar"],
     },
     {
       slug: "slumbering",
@@ -454,6 +533,8 @@ const lionInside: VocabBook = {
       synonym: "sleeping",
       antonym: "waking",
       modes: ["enact", "sentence", "word-pairs"],
+          inStory: "The slumbering lion.",
+      wordPairs: ["slumbering bear", "slumbering baby", "peacefully slumbering"],
     },
     {
       slug: "reclining",
@@ -464,6 +545,8 @@ const lionInside: VocabBook = {
       synonym: "leaning",
       antonym: "sitting up",
       modes: ["enact", "what-why-how"],
+          inStory: "Reclining on top.",
+      wordPairs: ["reclining chair", "reclining seat", "comfortably reclining"],
     },
     {
       slug: "frightened",
@@ -474,6 +557,8 @@ const lionInside: VocabBook = {
       synonym: "scared",
       antonym: "brave",
       modes: ["emote", "what-why-how", "sentence"],
+          inStory: "This lion was frightened of mice.",
+      wordPairs: ["frightened child", "frightened kitten", "very frightened"],
     },
     {
       slug: "impressed",
@@ -484,6 +569,8 @@ const lionInside: VocabBook = {
       synonym: "amazed",
       antonym: "bored",
       modes: ["emote", "what-why-how", "sentence"],
+          inStory: "Everyone was so impressed.",
+      wordPairs: ["impressed friend", "impressed educator", "very impressed"],
     },
   ],
 };
@@ -505,6 +592,8 @@ const gruffalo: VocabBook = {
       synonym: "walk",
       antonym: "run",
       modes: ["enact", "sentence", "word-pairs"],
+          inStory: "The mouse took a stroll.",
+      wordPairs: ["evening stroll", "morning stroll", "stroll along"],
     },
     {
       slug: "underground",
@@ -515,6 +604,8 @@ const gruffalo: VocabBook = {
       synonym: "below",
       antonym: "above",
       modes: ["enact", "what-why-how", "word-pairs"],
+          inStory: "Lunch in my underground house.",
+      wordPairs: ["underground cave", "underground tunnel", "underground passage"],
     },
     {
       slug: "roasted",
@@ -525,6 +616,8 @@ const gruffalo: VocabBook = {
       synonym: "cooked",
       antonym: "raw",
       modes: ["sentence", "what-why-how"],
+          inStory: "Roasted fox.",
+      wordPairs: ["roasted corn", "roasted peanuts", "roasted potato"],
     },
     {
       slug: "treetop",
@@ -534,6 +627,8 @@ const gruffalo: VocabBook = {
       tier: "easy",
       synonym: "canopy",
       modes: ["enact", "sentence"],
+          inStory: "Tea at the top of my treetop house.",
+      wordPairs: ["treetop house", "treetop nest", "high treetop"],
     },
     {
       slug: "knobbly",
@@ -544,6 +639,8 @@ const gruffalo: VocabBook = {
       synonym: "bumpy",
       antonym: "smooth",
       modes: ["what-why-how", "word-pairs"],
+          inStory: "Knobbly knees.",
+      wordPairs: ["knobbly knees", "knobbly tree", "knobbly branch"],
     },
     {
       slug: "poisonous",
@@ -554,6 +651,8 @@ const gruffalo: VocabBook = {
       synonym: "harmful",
       antonym: "safe",
       modes: ["what-why-how", "word-pairs"],
+          inStory: "A poisonous wart.",
+      wordPairs: ["poisonous snake", "poisonous plant", "poisonous fruit"],
     },
     {
       slug: "prickles",
@@ -563,6 +662,8 @@ const gruffalo: VocabBook = {
       tier: "easy",
       synonym: "spikes",
       modes: ["sentence", "what-why-how"],
+          inStory: "Purple prickles on his back.",
+      wordPairs: ["sharp prickles", "tiny prickles", "prickles around"],
     },
     {
       slug: "scrambled",
@@ -573,6 +674,8 @@ const gruffalo: VocabBook = {
       synonym: "rushed",
       antonym: "strolled",
       modes: ["enact", "sentence"],
+          inStory: "Scrambled snake.",
+      wordPairs: ["scrambled eggs", "scrambled words", "warm scrambled"],
     },
     {
       slug: "astounding",
@@ -583,6 +686,8 @@ const gruffalo: VocabBook = {
       synonym: "amazing",
       antonym: "ordinary",
       modes: ["emote", "what-why-how", "word-pairs"],
+          inStory: "'Astounding!' said the gruffalo.",
+      wordPairs: ["astounding view", "astounding trick", "astounding discovery"],
     },
     {
       slug: "fled",
@@ -593,6 +698,8 @@ const gruffalo: VocabBook = {
       synonym: "escaped",
       antonym: "stayed",
       modes: ["enact", "sentence", "word-pairs"],
+          inStory: "Turned and fled.",
+      wordPairs: ["fled away", "fled from", "suddenly fled"],
     },
   ],
 };
