@@ -41,6 +41,11 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "Sewing templates (numbers, alphabets, and object outlines)",
       "Shoelaces",
     ],
+    referenceLinks: [
+      { label: "Running stitch (Jennifer's Sewing Board tutorial)", url: "#running-stitch" },
+      { label: "Whip stitch", url: "https://youtube.com/shorts/4Z0qfHVjWQw?si=dC3Ib0D3rmSl7o9d" },
+      { label: "Back stitch (Jennifer's Sewing Board tutorial)", url: "#back-stitch" },
+    ],
     difficultyLevels: [
       { level: "Easy", description: "Running Stitch and Whip stitch." },
       { level: "Medium", description: "Backstitch." },
@@ -56,63 +61,39 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     segment: "art-games",
     title: "shape art",
     setupLine:
-      "Make objects using geometric shapes — a whole world of geometric-shape objects.",
+      "Match shapes to their outlines and colours on the mat.",
     howToPlay:
-      "The purpose of this game is to attach shapes together to create an object. Children enjoy this because they can create a recognisable object using simple shapes and the result looks fun. Start with cue cards that show exactly how to put together the shape tiles to make objects (begin with objects that use fewer tiles), then move to objects with more tiles while still using the cue card as reference, then show the cue card briefly and remove it so children build from memory, until eventually children build recognisable objects from shapes on their own.",
+      "The objective of this game is to identify and match shapes by placing each foam or paper shape onto its corresponding outline and colour on the mat. The game develops shape recognition, colour recognition, visual discrimination, fine motor skills, and hand-eye coordination.",
     players: "3–8 children · 1 educator",
     duration: "25 min",
-    goal: "the child assembles shape tiles into a recognisable object.",
+    goal: "the child matches shapes to their outlines and colours on the mat.",
     steps: [
-      "put the shape pile in a central tray. give each child a flat building surface.",
-      "show a cue card that has an object made of a few shape tiles.",
-      "the child picks the matching tiles from the pile and puts them together to build the object.",
-      "start the 2-minute timer for the round.",
-      "when the round ends, show the next cue card with more tiles and go again.",
+      "lay the mat where all children can see it.",
+      "place the shape pieces in a central pile.",
+      "children take turns picking a piece and matching it to its outline and colour on the mat.",
+      "continue until every space on the mat is filled.",
     ],
-    endsWhen: "children build a recognisable object from shapes on their own without the cue card.",
+    endsWhen: "every space on the mat is matched with the correct shape.",
     easierVariation:
-      "you keep the cue card in front of the child and pick objects that use fewer tiles.",
+      "the educator calls out colour or shape one at a time and helps children spot the right piece.",
     harderVariation:
-      "you race the timer to assemble the object, or teams build a whole scene together.",
+      "introduce the shape puzzle variation with whole, half, and quarter pieces.",
     skillIds: ["fm", "ce"],
-    example:
-      "Children learn to create objects using geometric shapes on their own, quickly.",
-    materials: [
-      "Foam (or paper) shape pieces in mixed colours and forms",
-      "Cue card decks — Easy, Medium, Hard",
-      "Central tray for the shape pile",
-      "Timer (2 minutes per round)",
-      "Flat building surface (table or floor mat)",
-    ],
     variations: [
       {
-        name: "Speed challenge",
-        description: "Race the timer to assemble the object.",
+        name: "Variation 1: Mat Match Makers",
+        description:
+          "Lay the mat on the floor and place all the shape pieces in a central pile.\nThe educator calls out a colour, a shape, or a shape-and-colour combination.\nChildren search through the pile, find the matching piece, and place it in the correct position on the mat.",
       },
       {
-        name: "Guessing game",
+        name: "Variation 2: Shape Focus",
         description:
-          "One child builds; the rest guess what the object is from the shapes alone.",
+          "Choose one shape mat from the set of four (Circle, Square, Rectangle, or Triangle).\nAssign 2–3 children to each mat.\nChildren search the central pile for the required shapes and place them in the correct spaces on their mat.",
       },
       {
-        name: "Tracing challenge",
+        name: "Variation 3: Shape Puzzle",
         description:
-          "Children trace around the assembled shapes onto paper to record what they made.",
-      },
-      {
-        name: "Barter tiles challenge",
-        description:
-          "Children trade tiles with each other to get the shapes they need.",
-      },
-      {
-        name: "Team challenges",
-        description:
-          "Teams build together — relay-style or one person draws and the team builds.",
-      },
-      {
-        name: "Make a scene",
-        description:
-          "Combine multiple objects to build a whole scene from geometric shapes.",
+          "Once children are familiar with matching shapes and colours on the Medium mat, introduce whole, half, and quarter shapes.\nEncourage children to complete each shape by finding and placing the correct matching pieces.",
       },
     ],
     debriefPrompts: [],
@@ -123,37 +104,38 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     segment: "art-games",
     title: "imagine that",
     setupLine:
-      "Imagine how to draw, then draw — drawing involves thinking.",
+      "Build the object on the card using shape tiles — and guess.",
     howToPlay:
-      "The purpose of this game is to help children think about and imagine the form of the drawing and then draw it consciously. Each child picks a card from the deck and describes it; the rest of the group draws what they hear.",
+      "Each child takes a turn picking a card and making the object using the shape tiles. Children join the shape tiles by following the picture on the card. The other children guess what it is. Children can also give verbal clues to describe the object or animal.",
     players: "3–8 children · 1 educator",
     duration: "25 min",
-    goal: "the child imagines an object from a description and draws it on paper.",
+    goal: "the child builds the object on the card using shape tiles while others guess what it is.",
     steps: [
-      "give each child paper and colour pencils. keep the animal and object card decks face down.",
-      "one child picks a card from the deck without showing it to the others.",
-      "they describe the picture on the card in their own words.",
-      "the rest of the group draws what they hear.",
-      "when everyone finishes, reveal the card and compare the drawings. the next child takes a turn.",
+      "keep the object and animal card decks face-down. spread the shape tiles in the middle.",
+      "on their turn, the child picks a card without showing it to the others.",
+      "the child joins the shape tiles to make the object, following the picture on the card.",
+      "the other children guess what it is.",
+      "the child can add verbal clues to describe the object or animal if needed.",
     ],
-    endsWhen: "every child has had a turn describing a card.",
+    endsWhen: "every child has had a turn making a card.",
     easierVariation:
-      "you help the child describe the card by asking simple prompts (what colour, what shape).",
+      "use only the easy cards; support the child in picking and placing shapes wherever required.",
     harderVariation:
-      "set a short timer for the round to add pace and focus, or play as teams and score points for the closest drawing.",
+      "the child draws the object on paper instead of using shape tiles, or plays draw relay against a timer.",
     skillIds: ["fm", "ce"],
-    example:
-      "Children learn how a certain object looks and start drawing from memory.",
+    educatorNote: "Use easy cards initially and support children wherever required.",
     materials: [
-      "Physical card decks — Animals and Objects",
-      "Drawing paper",
-      "Colour pencils or markers",
+      "Imagine that object cards (easy)",
+      "Imagine that animal cards (easy)",
+      "Shape tiles (from shape art game)",
+      "Paper and pencil (optional)",
+      "Timer",
     ],
     variations: [
       {
-        name: "Secret reveal",
+        name: "Draw & Guess",
         description:
-          "All children reveal each other's drawings; the describer (or the group) votes for the most apt.",
+          "The child looks at the card and draws the shapes by tracing or drawing them independently. The other children guess what it is.",
       },
       {
         name: "Team play — dumb charades",
@@ -161,10 +143,20 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
           "Children split into groups and each group guesses what the other group has made; teams score points.",
       },
       {
+        name: "Draw Relay",
+        description:
+          "Divide children into two groups. Each group gets a card.\nThe first child draws one part of the picture and passes it to the next child, who adds another part.\nThis continues until the drawing is complete.\nThe last child can add extra clues to help others guess the object or animal.",
+      },
+      {
         name: "Time challenge",
         description:
           "Set a short timer for the round to add pace and focus.",
       },
+    ],
+    difficultyLevels: [
+      { level: "Easy", description: "Original gameplay and team play with educator's support." },
+      { level: "Medium", description: "Children make on their own." },
+      { level: "Hard", description: "Draw & guess, draw relay, timed challenge." },
     ],
     debriefPrompts: [],
     type: "physical-game",
@@ -196,9 +188,8 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     skillIds: ["co"],
     materials: [
       "Colour cards — 12, 2 of each (24 total)",
-      "Colour frames — 12",
+      "Connector cards",
       "Simple object cards & complex object cards",
-      "Plastic stencils for colouring",
     ],
     variations: [
       {
@@ -241,7 +232,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     title: "colour friends",
     setupLine: "Choose colour friends and tools to colour.",
     howToPlay:
-      "Each child picks one colour card and one tool card. They are then given an artwork along with the selected material and tool. Once the educator has set up all the material, the children can start their artwork. The game ends once the children complete the artwork using the chosen tool and colour. Once the children are familiar with the colours, the educator can introduce wild cards. Note: 1. The educator can place the colour wheel on the table for the children to observe. 2. This gameplay doesn't depend on the worksheets — the educator can also swap in cards from other games (e.g. I Shop Texture, DIY sheets) to trace or directly work on.",
+      "Each child picks one colour card and one tool card. They are then given an artwork along with the selected material and tool. Once the educator has set up all the material, the children can start their artwork. The game ends once the children complete the artwork using the chosen tool and colour. Once the children are familiar with the colours, the educator can introduce wild cards.",
     players: "3–8 children · 1 educator",
     duration: "25 min",
     goal: "the child completes an artwork using the colour and tool they picked.",
@@ -250,7 +241,7 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
       "each child picks one colour card and one tool card.",
       "hand each child their worksheet along with the matching material and tool.",
       "the children start their artwork using only the chosen colour and tool.",
-      "when everyone finishes, place the colour wheel on the table and look at the finished pieces together.",
+      "when everyone finishes, look at the finished pieces together.",
     ],
     endsWhen: "the children complete the artwork using the chosen tool and colour.",
     easierVariation:
@@ -258,13 +249,22 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     harderVariation:
       "the child picks more than one colour and more than one tool on the same worksheet, or picks the colours, tools, and challenges for another child.",
     skillIds: ["co", "ce"],
-    example:
-      "Children get confident in using different colours, tools, and colour techniques.",
+    namedBlocks: [
+      {
+        title: "wild cards",
+        body: "Wild Cards introduce concepts of colour schemes. Initially, the educator introduces each concept one at a time and guides children through it. As children become familiar, they can choose and apply them independently. The colour wheel can be used as a reference for this.",
+      },
+    ],
+    educatorNote: [
+      "The educator can place the colour wheel on the table for the children to observe.",
+      "This gameplay doesn't depend on the worksheets — the educator can also swap in cards from other games (e.g. I Shop Texture, DIY sheets) to trace or directly work on.",
+    ],
     materials: [
       "Colour Friend cards",
       "Tool cards",
       "Colour Wild cards",
       "Colour Friend worksheets",
+      "Colour wheel poster — 2",
       "General art supplies (A4 paper, pencil, paint, crayons, cotton, etc.)",
     ],
     variations: [
@@ -307,20 +307,18 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     harderVariation:
       "the child recreates the textured object on an A4 sheet with more art materials, and adds a background and colour — or works against a timer.",
     skillIds: ["fm", "ce"],
-    example:
-      "Children comfortably create different textures using different tools.",
     materials: [
       "Texture cards",
-      "Object decks and cards",
+      "Object cards — mall, cafe, garden",
       "Tokens",
       "Erasable marker (to write prices and to draw textures)",
       "Clay (to create textures by hand)",
     ],
     variations: [
       {
-        name: "Recreate on paper with more mediums",
+        name: "Draw and add texture",
         description:
-          "Instead of working directly on the card, children recreate the textured object on paper using more art materials.",
+          "Instead of working directly on the card, children trace/draw the object on a paper and then add the chosen texture.",
       },
       {
         name: "Recreate",
@@ -361,8 +359,6 @@ const artGamesActivities: Record<string, CurriculumActivity> = {
     harderVariation:
       "play the team task — one player rolls and moves the meeple, and the whole group completes the designated task together.",
     skillIds: ["fm", "co", "ce"],
-    example:
-      "Children get faster, more creative, and more confident with the tasks over time.",
     materials: [
       "Game board with 4 colour-coded zones (Draw · Colour · Mould · Build) and Fortune squares",
       "Player tokens (chunky animal or shape tokens, easy to grip)",

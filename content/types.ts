@@ -409,6 +409,27 @@ export interface CurriculumActivity {
    * Rendered as a small chip row in the footer of the manual.
    */
   skillIds?: string[];
+
+  /**
+   * educator's note — a short block of guidance for the educator.
+   * If a single string: renders as one paragraph.
+   * If a string array: renders as a bulleted list.
+   */
+  educatorNote?: string | string[];
+
+  /**
+   * Reference links — external URLs (e.g. tutorial videos) shown as a
+   * "reference links" section below the how-to-play. Never inserted
+   * into materials.
+   */
+  referenceLinks?: { label: string; url: string }[];
+
+  /**
+   * Custom titled blocks for game-specific info (e.g. "wild cards" or
+   * "free play"). Rendered as titled cards between the play steps and
+   * the variations. Use sparingly.
+   */
+  namedBlocks?: { title: string; body: string | string[] }[];
 }
 
 export interface CurriculumVariation {

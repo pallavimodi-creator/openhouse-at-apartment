@@ -420,26 +420,43 @@ export function ActivityPopup({
         </div>
       )}
 
-      {/* Variations */}
+      {/* Variations — descriptions split on \n render as bullets so
+          multi-step variations read cleanly. Single-line descriptions
+          keep the original paragraph render. */}
       {activity.variations && activity.variations.length > 0 && (
         <div>
           <h3 className="text-[12px] font-semibold tracking-normal text-ink-muted">
             Variations
           </h3>
           <div className="mt-2 space-y-2">
-            {activity.variations.map((v, i) => (
-              <div
-                key={i}
-                className="rounded-card bg-ink/[0.03] p-3"
-              >
-                <p className="text-[12px] font-semibold text-ink">
-                  {v.name}
-                </p>
-                <p className="mt-0.5 text-[12px] leading-relaxed text-ink-muted">
-                  {v.description}
-                </p>
-              </div>
-            ))}
+            {activity.variations.map((v, i) => {
+              const lines = v.description.split(/\n+/).map((l) => l.trim()).filter(Boolean);
+              const isMultiline = lines.length > 1;
+              return (
+                <div key={i} className="rounded-card bg-ink/[0.03] p-3">
+                  <p className="text-[12px] font-semibold text-ink">
+                    {v.name}
+                  </p>
+                  {isMultiline ? (
+                    <ul className="mt-1.5 space-y-1">
+                      {lines.map((line, j) => (
+                        <li
+                          key={j}
+                          className="flex items-start gap-2 text-[12px] leading-relaxed text-ink-muted"
+                        >
+                          <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brand-orange/50" />
+                          <span className="flex-1">{line}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="mt-0.5 text-[12px] leading-relaxed text-ink-muted">
+                      {v.description}
+                    </p>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       )}
@@ -563,6 +580,96 @@ export function ActivityPopup({
           </div>
         );
       })()}
+
+      {/* Reference links — external URLs (tutorials, videos) */}
+      {activity.referenceLinks && activity.referenceLinks.length > 0 && (
+        <div>
+          <h3 className="text-[12px] font-semibold tracking-normal text-ink-muted">
+            reference links
+          </h3>
+          <ul className="mt-2 space-y-1">
+            {activity.referenceLinks.map((ref, i) => (
+              <li
+                key={i}
+                className="flex items-start gap-2 text-[12px] text-ink"
+              >
+                <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brand-orange/60" />
+                <a
+                  href={ref.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 font-medium text-brand-orange underline underline-offset-2 hover:opacity-80"
+                >
+                  {ref.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* Named blocks — custom titled info blocks (e.g. "wild cards",
+          "free play"). Rendered before variations. */}
+      {activity.namedBlocks && activity.namedBlocks.length > 0 && (
+        <div className="space-y-2">
+          {activity.namedBlocks.map((block, i) => {
+            const bodyLines = Array.isArray(block.body)
+              ? block.body
+              : block.body.split(/\n+/).map((l) => l.trim()).filter(Boolean);
+            const isMulti = bodyLines.length > 1;
+            return (
+              <div key={i} className="rounded-card bg-brand-orange/5 p-3 ring-1 ring-brand-orange/15">
+                <p className="text-[11px] font-bold tracking-normal text-brand-orange">
+                  {block.title}
+                </p>
+                {isMulti ? (
+                  <ul className="mt-1.5 space-y-1">
+                    {bodyLines.map((line, j) => (
+                      <li
+                        key={j}
+                        className="flex items-start gap-2 text-[12.5px] leading-relaxed text-ink"
+                      >
+                        <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brand-orange/60" />
+                        <span className="flex-1">{line}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="mt-1 text-[12.5px] leading-relaxed text-ink">
+                    {bodyLines[0]}
+                  </p>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      {/* educator's note — grouped guidance below variations */}
+      {activity.educatorNote && (
+        <div className="rounded-card bg-blue-50 p-3 ring-1 ring-blue-200/60">
+          <p className="text-[10px] font-bold tracking-normal text-blue-700">
+            educator's note
+          </p>
+          {Array.isArray(activity.educatorNote) ? (
+            <ul className="mt-1.5 space-y-1">
+              {activity.educatorNote.map((line, i) => (
+                <li
+                  key={i}
+                  className="flex items-start gap-2 text-[12.5px] leading-relaxed text-ink"
+                >
+                  <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-blue-500/60" />
+                  <span className="flex-1">{line}</span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="mt-1 text-[12.5px] leading-relaxed text-ink">
+              {activity.educatorNote}
+            </p>
+          )}
+        </div>
+      )}
 
       {/* Skills built — chip footer. Renders only when the caller
           passed skillAreas AND the activity has skillIds that

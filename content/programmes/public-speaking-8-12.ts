@@ -33,8 +33,17 @@ const rollCallActivities: Record<string, CurriculumActivity> = {
     harderVariation:
       "no starter word may repeat across the whole chain, so children track every word already used.",
     skillIds: ["cs", "vs"],
-    example:
-      "Educator — \"I missed the bus because I woke up late.\" Child 1 — \"Late nights always make the next morning harder.\" Child 2 — \"Harder days teach you more than easy ones.\" No requirements — the child can make a sentence that does not necessarily continue the story.",
+    educatorNote: [
+      "If the last word cannot be used to make a meaningful sentence, the educator can ask children to choose any word from the previous sentence instead.",
+      "Educators can also create their own prompts based on the group's level. The prompts provided below are only a few reference examples.",
+    ],
+    variations: [
+      {
+        name: "Variations",
+        description:
+          "Play individually, in pairs, or in groups.\nEach child chooses a word from their sentence for the next child to include anywhere in a new sentence.\nContinue using the last letter instead of the last word.",
+      },
+    ],
     materials: ["Opening-sentence prompt deck"],
     promptHeading: "prompts — last word is the starter for the next child",
     prompts: [
@@ -503,10 +512,29 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
       "Question Bands (Who, What, When, Where, Why, How)",
       "Timer",
     ],
+    variations: [
+      {
+        name: "Twist the story",
+        description:
+          "The educator can repeat the same story by swapping a few sequence cards and asking children to create and perform their own version. They can also remove the ending card and invite children to imagine and perform a new ending for the story.",
+      },
+      {
+        name: "Story switch",
+        description:
+          "The educator or the observing team challenges the performing team to change a character, setting, or theme, and then retell and perform the story with those changes.",
+      },
+      {
+        name: "Mix & match story",
+        description:
+          "Pick sequence cards from different stories to create a brand-new story. The observing team then asks questions about the new story, and the performing team explains their ideas.",
+      },
+    ],
+    educatorNote:
+      "Follow one story per class with narration, performance and questioning and repeat the same story with reversing roles. When revisiting the same story in a later session, use the variations to encourage fresh narratives, creative thinking, and different perspectives.",
     difficultyLevels: [
-      { level: "Easy", description: "Untimed — the Performing Team takes as long as they need to prepare." },
-      { level: "Medium", description: "Timed challenge — preparation time is limited (e.g. 3–5 minutes on the clock)." },
-      { level: "Hard", description: "Timed preparation, and the Questioning Team is allowed to ask follow-up questions beyond the normal round — digging deeper into any answer." },
+      { level: "Easy", description: "Untimed; original gameplay." },
+      { level: "Medium", description: "Twist the story; Story switch." },
+      { level: "Hard", description: "Mix & match story; time restriction." },
     ],
     promptHeading: "the 10 stories in the shuffle deck",
     prompts: [
@@ -772,24 +800,25 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
     segment: "playground",
     title: "train of thoughts",
     setupLine:
-      "Three coloured card decks are in the centre. On your turn, draw one card from each deck and complete the speaking tasks one after another.",
+      "Shuffle all cards face down as a draw pile. On your turn, draw a card, do the task, and build compartment sets.",
     howToPlay:
-      "Three coloured card decks are placed in the centre — each colour is a different type of speaking task. On their turn, a child draws one card and completes the speaking task, laying the completed card face-up in front of them. This line of completed cards is their train. The child wins by making a set of 3 cards of each colour — a total of 9 cards. At 8–12, no notes are permitted at any difficulty level.",
+      "Setup: Shuffle all the cards and place them face down in the centre as a draw pile. On each turn, a child draws one card from the draw pile. Question Card — answer the question aloud and place the card in front of you. Action Card — complete the action immediately and keep the card. Wild Card — complete the task and use the card as part of any compartment. Children collect cards by successfully completing the tasks. The objective is to make three complete compartment sets — one each in red, green, and blue. Each compartment set must contain three matching symbols. The first child to collect all three complete compartment sets wins.",
     players: "3–8 children · 1 educator",
     duration: "25 min",
-    goal: "the child completes speaking tasks from three coloured decks to build a train of 9 cards — 3 of each colour.",
+    goal: "the child draws cards, completes each task, and collects three complete compartment sets — one each in red, green, and blue.",
     steps: [
-      "place the three coloured card decks in the centre.",
-      "on their turn, the child draws one card and completes the speaking task on it — no notes allowed.",
-      "they lay the completed card face-up in front of them as part of their train.",
-      "play passes to the next child; each keeps building their train card by card.",
-      "the first child with 3 cards of each colour — 9 in total — wins.",
+      "shuffle all the cards and place them face-down in the centre as a draw pile.",
+      "on each turn, a child draws one card from the draw pile.",
+      "question card: answer the question aloud and place the card in front of you.",
+      "action card: complete the action immediately and keep the card.",
+      "wild card: complete the task and use the card as part of any compartment.",
+      "the first child to collect three complete compartment sets — one each in red, green, and blue, each with three matching symbols — wins.",
     ],
-    endsWhen: "a child completes a set of 3 cards of each colour — 9 cards total.",
+    endsWhen: "a child collects three complete compartment sets — one each in red, green, and blue.",
     easierVariation:
-      "the child only has to make sets of the same colour — no action cards in play.",
+      "create sets by matching colours instead of symbols.",
     harderVariation:
-      "action cards are in play and every card in a set must belong to the same compartment and be of the same colour.",
+      "increase the number of complete compartment sets required to win.",
     skillIds: ["cs", "vs"],
     variations: [
       {
@@ -797,14 +826,16 @@ const playgroundActivities: Record<string, CurriculumActivity> = {
         description: "At the end of the session, the child with the longest train — most cards completed in sequence — wins.",
       },
     ],
+    educatorNote:
+      "A complete compartment set cannot be made using three Wild Cards. Each set must include at least one Question Card.",
     materials: [
       "Coloured Question Cards — with 6 compartments (Package, Suitcase, Food, Beverage, Pet, Passenger)",
       "Wild cards and action cards",
     ],
     difficultyLevels: [
-      { level: "Easy", description: "Set of same colour only — no use of action cards." },
-      { level: "Medium", description: "Use action cards." },
-      { level: "Hard", description: "Use action cards + all cards in a set must belong to the same compartment and be of the same colour." },
+      { level: "Easy", description: "Create sets by matching colours instead of symbols." },
+      { level: "Medium", description: "Original gameplay; longest train variation." },
+      { level: "Hard", description: "Increase the number of complete compartment sets required to win." },
     ],
     debriefPrompts: [
       {

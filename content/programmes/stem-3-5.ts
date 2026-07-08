@@ -27,82 +27,80 @@ const logicLabGames: Record<string, CurriculumActivity> = {
     id: "ll-candy-sort",
     segment: "logic-lab",
     title: "candy sort",
-    setupLine: "Roll the dice, spot the matching candy, win it for your team.",
+    setupLine: "Sort, spot the pattern, and match candies by colour, shape, or pattern.",
     howToPlay:
-      "Two teams race. The facilitator rolls two dice (colour, shape, or pattern). Teams scan the Candy Field — first hand to touch the candy whose traits match both dice claims it. No match visible? Both dice are rerolled. After several rounds, gather teams with their trays for an end-game math quiz: counting, more/less, add/take-away, comparing sets, simple equality — each correct answer = 1 bonus point.",
-    players: "6–8 children · 1 educator",
+      "Candy Sort is played through three gameplay areas — Sort, Pattern, and Match/Find. Each area contains several games that progress in the order listed. Educators pick one game per session and lead children through the setup and rules for that game.",
+    players: "6–9 children · 1 educator",
     duration: "20 min",
-    goal: "the child spots and grabs the candy whose traits match the dice roll before the other team does.",
+    goal: "the child groups, identifies, or predicts candies by colour, shape, or pattern.",
     steps: [
-      "scatter all 66 candies picture-side up on the candy field. split the children into two teams and give each team a tray.",
-      "say 'ready… roll!' and roll the chosen dice — one die for single-trait, two dice for double-trait.",
-      "teams scan the field. the first hand to touch a candy whose traits match every die claims it and drops it in their tray.",
-      "if no candy matches, call 'pass!' and reroll both dice.",
-      "after several rounds, gather teams with their trays and run an end-game math quiz — one bonus point per correct answer.",
+      "pick one gameplay area for the session — Sort, Pattern, or Match/Find.",
+      "pick one game inside that area and gather the candy cards needed.",
+      "explain the rule of the game to the children before starting.",
+      "children take turns following the rule — sorting, matching, or predicting candies.",
+      "when the round finishes, choose the next game in the area or move to a new area next session.",
     ],
-    endsWhen: "the end-game math quiz is finished and bonus points are added to each team's round wins.",
+    endsWhen: "the round of the chosen game is over.",
     easierVariation:
-      "use the 36 single-trait candies and roll only one die at a time — the child finds a candy matching that single trait.",
+      "the educator demonstrates first and assists whenever required.",
     harderVariation:
-      "use the 30 double-trait candies and roll two dice at once — the child finds a candy whose two trait values both match.",
+      "children take on the level-up version — a second sorting rule, two dice, child-given clues, or a time limit.",
     skillIds: ["logic", "problem-solving", "number-sense"],
     materials: [
-      "4 dice — Colour Die A (6 colours) · Colour Die B (same 6 colours) · Shape Die (6 shapes) · Pattern Die (6 patterns)",
-      "36 single-trait candies — each shows one colour + one shape + one pattern (e.g. red-triangle-stripes)",
-      "30 double-trait candies (2 sets of 15) — each shows two colours + two shapes + two patterns (e.g. blue-yellow / square-circle / dots-zigzags)",
-      "Two sorting plates — team trays for collected candies",
-      "Play Mat — the 'Candy Field' where all 66 candies sit picture-side up",
-      "Timer or sand-glass (optional) — 30 sec per round keeps it zippy",
+      "Candy cards — colour, shape, and pattern varieties",
+      "Two dice (for Roll & Hunt)",
+      "Sorting plates or team trays",
+      "Timer (optional)",
     ],
     variations: [
       {
-        name: "Setup",
+        name: "Sort · Venn Sort",
         description:
-          "Scatter all 66 candies picture-side up on the Candy Field. Divide children into two teams (3–4 players per team). Place a tray beside each team for their winnings.",
+          "Divide the class into 2–3 groups.\nGive each group a pile of candy cards and place it in the centre.\nThe educator shows one sorting rule, such as: colour (red candies), shape (round candies), or pattern (striped candies).\nThe educator first picks and sorts 3–4 candies that follow the rule.\nChildren look through the pile and take turns picking one candy at a time.\nEach child checks if their candy matches the sorting rule.\nIf the candy matches the rule, the child places it in the correct group.\nContinue until all children have had a turn or the pile is sorted.",
       },
       {
-        name: "How a round works",
+        name: "Sort · Candy Sort",
         description:
-          "Facilitator says 'Ready… roll!' and rolls the two chosen dice. Teams scan the field. First hand to touch the correct candy claims it and pops it in their tray. No match visible? Say 'Pass!' — both dice are rerolled.",
+          "Divide the class into small groups of 2–3 children.\nGive each group a pile of candy cards and place it in the centre.\nThe educator gives each child or group one sorting rule — colour (red / blue / yellow), shape (round / wavy / umbrella), or pattern (striped / dotted / plain).\nChildren look through their pile and find all the candies that match their rule.\nOnce sorting is complete, each child or group counts how many matching candies they found.\nThe educator can also ask children to count the candies that do not match their rule.\nIf a group finds candies that belong to another group's rule, they can exchange them with that group.\nTo make it harder, the educator adds a second rule within the sorted set — e.g. \"from your blue candies, now find only the wavy blue candies.\"\nStart with simple sorting by colour, then move to shape, and finally introduce patterns.",
       },
       {
-        name: "Single-trait round",
+        name: "Sort · Secret Rule",
         description:
-          "Use the 36 single-trait candies. Roll one die at a time (colour OR shape OR pattern) — children find a candy matching that single trait.",
+          "Divide the class into small groups of 2–3 children.\nPlace a small group of candy cards in front of each group.\nMake sure all the candies follow one secret rule — colour (all red), shape (all round), or pattern (all striped).\nAsk children to look carefully at the candy cards.\nChildren try to guess what is the same about all the candies.\nEach child takes a turn to share their idea.\nChildren name the rule aloud, such as \"the rule is red candies.\"\nEducator can guide by asking: \"What do you notice? What is the same?\"",
       },
       {
-        name: "Double-trait round",
+        name: "Sort · Odd Candy Out",
         description:
-          "Use the 30 double-trait candies. Roll two dice at once — children find a candy whose two trait values both match.",
+          "Divide the class into small groups of 2–3 children.\nPlace a small group of candy cards in a row in front of each group.\nMost candies should share one trait — colour, shape, or pattern.\nAdd one candy that is different from the rest.\nAsk children to look carefully at all the candy cards.\nChildren find the candy that does not belong.\nEach child takes a turn to point to the odd candy.\nChildren can say why it is different, such as \"this one is not round\" or \"this one is a different colour.\"",
+      },
+      {
+        name: "Pattern · What's Next?",
+        description:
+          "Divide the class into small groups of 2–3 children.\nPlace a few candy cards in a simple pattern in front of each group.\nStart with an easy pattern — colour (red, blue, red, blue) or shape (round, wavy, round, wavy).\nAsk children to observe the pattern carefully.\nChildren guess what candy should come next.\nEach child takes a turn to pick one candy card and add it to the pattern chain.\nContinue until every child gets a turn or the pattern is complete.\nStart with colour patterns, then shape, then pattern-based sequences.",
+      },
+      {
+        name: "Match / Find · Roll & Hunt",
+        description:
+          "Divide the class into small groups of 2–3 children.\nGive each group a pile of candy cards and place it in the centre.\nEach child takes a turn to roll the die.\nThe child picks candies from the pile based on the number shown on the die.\nFor a challenge, children can roll two dice.\nChildren pick candies based on the dice result, up to a maximum of 6 candies.\nContinue until every child gets a turn.",
+      },
+      {
+        name: "Match / Find · Sweet Relay",
+        description:
+          "Divide the class into small groups of 2–3 children.\nGive each group a pile of candy cards and place it in the centre.\nOne child picks any candy from the pile.\nThe next child picks another candy that has one matching trait.\nThe child says the matching trait aloud, such as \"my candy is red too.\"\nContinue the relay until no more matching candies are left.\nEducator can start a new relay with a different candy and trait.",
+      },
+      {
+        name: "Match / Find · I Spy Candy",
+        description:
+          "Divide the class into small groups of 2–3 children.\nPlace all candy cards where everyone can see them.\nEducator or one child secretly chooses one candy.\nThey give a clue, such as \"I spy a candy that is shaped like an umbrella.\"\nOther children look carefully and try to find the matching candy.\nChildren take turns guessing the candy.\nContinue with a new candy and a new clue.",
       },
     ],
     difficultyLevels: [
-      {
-        level: "End-game · Counting",
-        description:
-          "Team Sunshine, count your red candies. How many do you have?",
-      },
-      {
-        level: "End-game · More / Less",
-        description:
-          "Who has more striped candies, Team Sunshine or Team Rainbow?",
-      },
-      {
-        level: "End-game · Add & Take Away",
-        description:
-          "Team Rainbow, if you eat two star candies, how many star candies are left?",
-      },
-      {
-        level: "End-game · Compare Sets",
-        description:
-          "Put your circle candies in a line. Does the line look shorter or longer than Team Sunshine's?",
-      },
-      {
-        level: "End-game · Simple Equality",
-        description:
-          "Can each team give me three candies? Do you both still have some left?",
-      },
+      { level: "Easy", description: "Educator demonstrates first and assists whenever required." },
+      { level: "Medium", description: "Children play the game independently." },
+      { level: "Hard", description: "Children take on the level-up version of the game — e.g. a second sorting rule, two dice, child-given clues, or a time limit." },
     ],
+    educatorNote:
+      "Each gameplay area (Sort, Pattern, Match/Find) contains several games that progress in the order listed — work through them in sequence. Within any one game, the educator sets the support level (Easy / Medium / Hard) to match the child. So a child might be at \"Easy\" on a new Pattern game while already at \"Hard\" on a familiar Sort game.",
     debriefPrompts: [],
     type: "physical-game",
   },
@@ -111,48 +109,48 @@ const logicLabGames: Record<string, CurriculumActivity> = {
     id: "ll-stitch-me",
     segment: "logic-lab",
     title: "stitch me",
-    setupLine: "Pair up. Solve the prompt. Lace the bead.",
+    setupLine: "Lace beads onto the base by following the pattern card.",
     howToPlay:
-      "Divide the children into pairs. Set up stations or scavenger bins around the room — one for beads, one for numbers, one for shapes. Give each pair a laminated template, a sewing base, and a shoelace. The educator calls out one prompt at a time. The current player runs to the right station, finds the matching bead, comes back, and laces it onto the template. The lace is passed to the next child. The round ends when every bead is sewn into the template.",
-    players: "2 children · 1 educator",
+      "Each child is given one base template card (start with Level Easy) along with a shoelace and beads. The kids can start lacing according to the pattern in the card. All kids have to start from Level Easy then gradually progress to Level Hard.",
+    players: "3–6 children · 1 educator",
     duration: "20 min",
-    goal: "the child listens to a prompt, finds the matching bead, and laces it onto the template.",
+    goal: "the child laces beads onto the base by following the pattern on the card.",
     steps: [
-      "pair the children up. scatter bead, number, and shape stations around the room.",
-      "give each pair a laminated template, a sewing base, and a shoelace.",
-      "call out one prompt at a time. the current player runs to the right station and finds the matching bead.",
-      "the child laces the bead onto the template and passes the shoelace to their partner.",
-      "keep calling prompts until every bead is sewn into the template.",
+      "give each child one base template card (start with Level Easy), a shoelace, and beads.",
+      "the child laces the beads onto the base following the pattern shown on the card.",
+      "when the child completes the card, move them up to the next level.",
+      "all children start from Level Easy and gradually progress to Level Hard.",
     ],
-    endsWhen: "every bead is sewn into the template.",
+    endsWhen: "every child has completed at least one Level Easy card and progressed to their next level.",
     easierVariation:
-      "prompt a simple abab colour pattern like red, yellow, red, yellow — the child finds the two colours and laces them in order.",
+      "the educator sits with the child and points to the next bead on the card each time.",
     harderVariation:
-      "read a verbal riddle like 'i'm as red as a strawberry on a sunny day' — the child works out the answer, runs, and laces the matching bead or number.",
+      "the child laces from a verbal riddle instead of a card — see Variation 3 below.",
     skillIds: ["logic", "problem-solving", "number-sense"],
     materials: [
-      "Laminated templates (beads · numbers · shapes)",
-      "Sewing bases",
-      "Shoelaces with a stiff tip",
-      "Bead, number, and shape stations scattered around the room",
+      "Stitch me pattern cards (easy, medium, difficult)",
+      "Sewing bases (beads, numbers)",
+      "Shoelaces",
     ],
-    difficultyLevels: [
+    variations: [
       {
-        level: "Easy — colour pattern beads",
+        name: "Variation 1: Free pattern",
         description:
-          "Prompt: \"Sew a necklace with this ABAB pattern — red, yellow, red, yellow.\" The child finds beads of the two colours and laces them in the alternating sequence shown on the template.",
+          "The educator can increase the difficulty level. In the difficulty the kids are free to make their own pattern.",
       },
       {
-        level: "Medium — beads + numbers",
+        name: "Variation 2: Verbal prompt scavenger",
         description:
-          "Prompt: \"Colour + number pattern — blue 1, yellow 2, orange + blue 3, ___\". The child finds the beads and numbers shown on the template and laces them in order.",
+          "The educator will give a verbal prompt including colour and number and the kids will find them in the scavenger bin (box). Example: \"Blue 2, yellow 1…\".",
       },
       {
-        level: "Hard — verbal riddles",
+        name: "Variation 3: Riddle relay",
         description:
-          "The educator reads a riddle. The child runs, picks the matching bead or number, and laces it. Examples: \"I'm as red as a strawberry on a sunny day\" → red bead. \"I'm what comes after 2 and before 4\" → number 3. \"Mix red and yellow, I'll show. I shine like the sunset's glow\" → orange bead. \"Double 2, that's me\" → number 4.",
+          "The whole class is divided into two groups. Each group has their own lace.\nThe educator reads a riddle.\nThe child from both groups races and picks the matching bead or number, and laces it.\nExamples: \"I'm the same colour as a strawberry\" → red bead. \"I'm what comes after 2 and before 5\" → number 3 or 4.",
       },
     ],
+    educatorNote:
+      "Since there is only one set of number cards, the educator's riddles should allow for multiple possible answers.",
     debriefPrompts: [],
     type: "physical-game",
   },
@@ -161,82 +159,56 @@ const logicLabGames: Record<string, CurriculumActivity> = {
     id: "ll-dot-grid",
     segment: "logic-lab",
     title: "dot grid",
-    setupLine: "Pick a card, place disks, check by laying the card on top.",
+    setupLine: "Pick a card, follow the puzzle type, place disks on the mat.",
     howToPlay:
-      "Two children per board. One picks a card. They read the card type and follow the rule for that puzzle type. They take turns placing disks. When done, they check their work by placing the card on top of the board — the cut-out windows let them see if disks line up underneath.",
-    players: "2 children · 1 educator",
+      "Set up: Place the play mat in the centre with the four colour disks beside it. Sort the cards by level. One child picks a card. Observe the puzzle type and follow the instructions and recreate it on the mat. Children take turns placing the colour disks on the mat to solve the puzzle. After completing the card, try the bonus challenge on the other side of the card as an added task.",
+    players: "2–4 children · 1 educator",
     duration: "20 min",
-    goal: "the child picks a card, places disks on the board following the card's rule, and checks by laying the card on top.",
+    goal: "the child picks a card, follows its puzzle type, and places disks on the mat to solve it.",
     steps: [
-      "place a play board flat on the table and spread the four colours of disks beside it.",
-      "sort the cards into two stacks — blue-backed for see-and-match, green-backed for see-and-predict.",
-      "one child picks a card and reads the card type. both children follow the rule for that puzzle.",
-      "take turns placing disks on the board until the puzzle is done.",
-      "check the work by placing the card on top of the board — the cut-out windows show if the disks line up underneath.",
+      "place the play mat in the centre with the four colour disks beside it.",
+      "sort the cards by level.",
+      "one child picks a card. observe the puzzle type and follow the instructions.",
+      "children take turns placing the colour disks on the mat to solve the puzzle.",
+      "after completing the card, try the bonus challenge on the other side of the card as an added task.",
     ],
-    endsWhen: "the disks placed on the board line up with the cut-out windows on the card.",
+    endsWhen: "every child has completed at least one card and its bonus challenge.",
     easierVariation:
-      "use the easy copy cards — the child builds exactly what they see on the card.",
+      "use the easy cards — the child builds exactly what they see on the card.",
     harderVariation:
-      "use the hard mirror cards — the child builds the spatial reflection of the pattern, left to right.",
+      "use the hard cards with the team challenge variation.",
     skillIds: ["logic", "number-sense", "problem-solving"],
+    namedBlocks: [
+      {
+        title: "Game Types",
+        body: "Copy — Direct visual replication. Children build exactly what they see on the card.\nFinish the Pattern — Pattern recognition + completion. Children continue an existing pattern into the next row or column.\nMirror It Across — Spatial reflection (left → right). Children build the mirror image on the next half, matching the first half.\nCount How Many? — Counting and comparison (more/less). Children arrange the dot pattern on the mat and count to answer \"how many?\"\nWhat Comes Next? — Identifying rules and predicting. Children look at a sequence and place disks to show what comes next in a given cell.",
+      },
+    ],
     materials: [
-      "5 play boards (one per pair of children)",
-      "240 disks — 60 each in red, yellow, blue, green",
-      "32 pattern cards — 16 see-and-match (blue-backed) + 16 see-and-predict (green-backed)",
-      "How-to-play booklet (8 pages, A5)",
-      "Answer key (1 sheet, A4 — for educator only)",
-      "Storage box (A3 footprint with compartments)",
+      "Dot grid mat",
+      "See and predict cards — 16",
+      "See and match cards — 16",
+      "Coloured disks",
     ],
     variations: [
       {
-        name: "Setup",
+        name: "Variation 1: Team Challenge",
         description:
-          "Place each play board flat on a table. Open the four colour pouches and spread disks beside the boards. Sort cards by game mode into two stacks (blue-backed for see-and-match, green-backed for see-and-predict).",
+          "One team creates a pattern on their mat. The other team observes it and recreates or completes the pattern on their own mat.\nThis variation can be used with all gameplays except Copy the Pattern.\nFor example, one team can build half of a mirror pattern and the other team completes the reflection. Similarly, one team can create the beginning of a What Comes Next? pattern, and the other team finishes the sequence.",
       },
       {
-        name: "Game 1 · See and Match (16 cards)",
+        name: "Variation 2: Create & Challenge",
         description:
-          "Children build what they see — direct visual replication, pattern recognition, symmetry, and mirror-image puzzles.",
-      },
-      {
-        name: "Game 2 · See and Predict (16 cards)",
-        description:
-          "Children think and answer — counting, subitising, comparison, and identifying rules to predict what comes next.",
+          "A child creates a pattern or arrangement on the grid. Their partner then solves the puzzle.\nThis variation can be used with card types — Mirror It Across, How Many?, Finish the Pattern, or What Comes Next?",
       },
     ],
     difficultyLevels: [
-      {
-        level: "Easy · Copy (4 cards · See and Match)",
-        description:
-          "Direct visual replication — children build exactly what they see on the card.",
-      },
-      {
-        level: "Easy · Continue (4 cards · See and Match)",
-        description:
-          "Pattern recognition + completion — children continue an existing pattern.",
-      },
-      {
-        level: "Medium · Symmetry (4 cards · See and Match)",
-        description:
-          "Recognising symmetrical structure — children build the matching half.",
-      },
-      {
-        level: "Hard · Mirror (4 cards · See and Match)",
-        description:
-          "Spatial reflection (left → right) — children build the mirror image.",
-      },
-      {
-        level: "Easy + Hard · Count (8 cards · See and Predict · 4 easy + 4 hard)",
-        description:
-          "Counting, subitising, comparison — children answer 'how many?' from the dot pattern.",
-      },
-      {
-        level: "Medium + Hard · Pattern Predict (8 cards · See and Predict · 4 medium + 4 hard)",
-        description:
-          "Identifying rules, predicting next — children look at a sequence and place disks to show what comes next.",
-      },
+      { level: "Easy", description: "Easy cards." },
+      { level: "Medium", description: "Medium cards; Variation 2 (Create & Challenge)." },
+      { level: "Hard", description: "Hard cards; Variation 1 (Team Challenge)." },
     ],
+    educatorNote:
+      "The bonus round prompts are provided as examples. Educators may create similar prompts based on the children's learning level and interests to extend gameplay.",
     debriefPrompts: [],
     type: "physical-game",
   },
@@ -245,57 +217,44 @@ const logicLabGames: Record<string, CurriculumActivity> = {
     id: "ll-logical-road-builder",
     segment: "logic-lab",
     title: "logical road builder",
-    setupLine: "Build straight, then curvy paths — graduate to the puzzle book.",
+    setupLine: "Build a connected road from start to end using straight and curved tiles.",
     howToPlay:
-      "Refer to the instruction book for understanding how the game is used. Start by introducing children to making straight and curvy paths using only half of the board. Give children puzzles using half the board. Once they are comfortable, let them graduate to puzzles from the starter level of the book.",
-    players: "1 child · 1 educator",
+      "Place tiles on the board one by one to create a connected road from the starting point to the end point. Choose between straight and curved tiles to make the path fit and flow without any gaps or dead ends. Educators can initially start with just one or two base boards, then add more base boards. Educators can add a timer to increase difficulty in later variations.",
+    players: "1–2 children · 1 educator",
     duration: "20 min",
-    goal: "the child builds a road with tiles that solves the current puzzle from the book.",
+    goal: "the child builds a connected road from the starting point to the end point using straight and curved tiles.",
     steps: [
-      "read the instruction book with the child so they know how the game works.",
-      "give the child half the board and let them practise making straight paths with the road tiles.",
-      "next, on half the board, let them practise making curvy paths.",
-      "once they are comfortable with both, hand them a puzzle from the starter level of the puzzle book.",
-      "let them place tiles until the road solves the puzzle.",
+      "place the base board(s) in front of the child. mark a starting point and an end point.",
+      "spread the straight and curved tiles beside the board.",
+      "the child places one tile at a time to make the road flow from start to end.",
+      "when a tile doesn't fit, swap it for a curved or straight one so the road connects without gaps.",
+      "when the road connects start to end, add another base board or a timer to raise the challenge.",
     ],
-    endsWhen: "the road built matches the solution for the puzzle in the book.",
+    endsWhen: "the child has connected the road from start to end without gaps.",
     easierVariation:
-      "stay on the half-board warm-up — the child builds straight, then curvy paths using only half of the board.",
+      "start with a single base board and a short path so the child feels the connection quickly.",
     harderVariation:
-      "move to expert single-player puzzles in the book — once solved, graduate to the next gameplay mode.",
+      "add a timer and use two or more base boards with multiple destinations.",
     skillIds: ["logic", "problem-solving"],
     materials: [
-      "Logical Road Builder game board",
+      "Logic Road Builder game board",
       "Road tiles",
-      "Instruction book + puzzle book (Starter / Junior / Expert levels)",
     ],
     variations: [
       {
-        name: "Modes",
+        name: "Variation 1: Limited tiles",
         description:
-          "There are 3 gameplay modes as given in the book. Start with the single-player mode. Only once players have completed all levels of this mode, move to the next mode and so on.",
-      },
-    ],
-    difficultyLevels: [
-      {
-        level: "Half-board warm-up",
-        description:
-          "Children build straight, then curvy paths using only half of the board. Once comfortable with both, graduate to the book.",
+          "The educator can give the child a limited number of tiles (example: 6 straight, 4 straight and 1 curved) and the child has to build the road using the given pieces only.",
       },
       {
-        level: "Starter",
+        name: "Variation 2: Multiple destinations",
         description:
-          "First level of the puzzle book. Single-player mode. Complete all Starter puzzles before moving on.",
+          "Educators can give more than 2 final points and the child has to build a path where they reach destination 1 then travel to destination 2.",
       },
       {
-        level: "Junior",
+        name: "Variation 3: Relay race",
         description:
-          "Second level of the puzzle book — more complex constraints. Stay in single-player mode until all Junior puzzles are done.",
-      },
-      {
-        level: "Expert",
-        description:
-          "Third level. Once all Expert single-player puzzles are complete, move to the next mode in the book.",
+          "Educators can ask two kids to start from opposite ends of the board and have one final destination, and both kids race to reach the destination first in a relay race.",
       },
     ],
     debriefPrompts: [],
@@ -316,7 +275,7 @@ const logicLabGames: Record<string, CurriculumActivity> = {
       "spread the magna-tiles out where every child can reach them.",
       "show one prompt flashcard and read the level's instruction aloud.",
       "let the child count the tiles shown and pick that many from the pile.",
-      "let the child build the shape flat or standing, matching the prompt.",
+      "children can play individually or as a group, depending on the child's level of understanding.",
       "once built, show the next flashcard or move up a level.",
     ],
     endsWhen: "the child's build matches the flashcard prompt for the current level.",
@@ -325,41 +284,20 @@ const logicLabGames: Record<string, CurriculumActivity> = {
     harderVariation:
       "run level 5 open-ended — give a tile limit or design challenge with no fixed picture, and let the child experiment freely and describe their build.",
     skillIds: ["problem-solving", "logic", "number-sense"],
+    namedBlocks: [
+      {
+        title: "Free Play",
+        body: "Children use the Magna-Tiles to explore, create, and build freely — their own shapes, structures, objects, or designs — following their imagination, with no set rules.",
+      },
+    ],
     materials: [
-      "Magna-Tiles (variety of shapes and colours)",
-      "Prompt flashcards (laminated):",
-      "  · Level 1 — 3D shaped prompts + number of tiles",
-      "  · Level 2 — 2D flat shapes + number of tiles",
-      "  · Level 3 — 2D double-layered prompts + number of tiles",
-      "  · Level 4 — Outlined borders + number of tiles",
-      "  · Level 5 — Open-ended prompts",
+      "Magna-Tiles set",
+      "Prompt cards (level 1 to 5)",
     ],
     difficultyLevels: [
-      {
-        level: "Level 1 — Build It Tall! (3D Structures)",
-        description:
-          "Show the 3D prompt (tower, bridge, cube house). Say 'Can you make this shape that stands up? Let's build it standing!'. Let them build vertically with your support to balance. Encourage 'strong and steady'. Builds: fine motor, stability, early engineering, 3D thinking.",
-      },
-      {
-        level: "Level 2 — Match & Build (2D Single Layer)",
-        description:
-          "Show the flashcard (a flat shape — house, rocket, fish — made with Magna-Tiles, with number of tiles + colours visible). Ask: 'Can you match and make this shape using Magna-Tiles?' Count the tiles. Complete the shape flat on the floor. Builds: colour & shape matching, tile counting, visual copying.",
-      },
-      {
-        level: "Level 3 — Stack & Copy (2D Double Layer)",
-        description:
-          "Show the layered flashcard (two distinct layers). Say: 'This one has two parts! Let's build the bottom first and then add the top.' Guide them to build the two layers one at a time, using the given number of tiles. Builds: sequencing, understanding structure, spatial layering.",
-      },
-      {
-        level: "Level 4 — Fill the Frame (Border with Tile Count)",
-        description:
-          "Place the border prompt card on the floor or table. Say: 'Here's your space. You get exactly ___ tiles. Can you fill this up?' Let them explore how to fill the shape using the right number of tiles. Offer help only if they run out or go over the tile count. Builds: problem-solving, estimation, planning, number sense.",
-      },
-      {
-        level: "Level 5 — Creative Builders (Open-Ended Challenges)",
-        description:
-          "Show a playful challenge — a goal but no fixed picture, just a tile limit or design challenge. Read the challenge aloud or show the prompt card. Give the set number of tiles (or let them pick). Encourage them to experiment freely, then describe their build. Builds: creativity, engineering thinking, experimentation, storytelling, resilience.",
-      },
+      { level: "Easy", description: "Level 1 cards; free play." },
+      { level: "Medium", description: "Level 2 and Level 3 cards." },
+      { level: "Hard", description: "Level 4 and Level 5 cards." },
     ],
     debriefPrompts: [],
     type: "physical-game",
