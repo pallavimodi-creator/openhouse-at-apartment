@@ -3431,14 +3431,14 @@ function ProgrammeOverviewContent() {
             href: `/book/${expSlug}`,
             cover: expCover[expSlug],
             title: "experience book",
-            subtitle: "the child's daily reflection book",
+            subtitle: "coming soon",
           });
         }
         if (books.length === 0) return null;
         return (
           <section className="mt-10 px-4 md:px-8">
-            <SectionTitle num={sectionNum("books")} label="teacher reference books">
-              flip through every reference book — for teachers, not children
+            <SectionTitle num={sectionNum("books")} label="educator reference books">
+              flip through every reference book — for educators, not children
             </SectionTitle>
             <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {books.map((book) => {

@@ -430,10 +430,9 @@ function SegmentRow({
               info = {
                 segmentId: segment.segmentId,
                 segmentName: segment.segmentName,
-                title: "experience book",
-                description,
-                bookLinkSlug: bookSlug,
-                heroImageUrl: bookCoverUrl,
+                title: "experience book — coming soon",
+                description:
+                  "Experience books are being redesigned. The new version will be up here shortly.",
               };
             } else if (
               segment.segmentId === "book-o-clock" &&
