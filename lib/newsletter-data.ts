@@ -1,13 +1,15 @@
 /**
  * Newsletter data helper — reads a programme's real activities from
- * content/programmes/*.ts and exposes them as a flat, checkbox-friendly
- * list for the /newsletter form. Skill-tagging is auto-derived from
- * each activity's own `skillIds`.
+ * content/programmes/*.ts and exposes them for the /newsletter form.
  *
- * Categories are programme-shaped:
- *   robotics → models (build segment) + experiments (experiment segment)
- *   art      → artworks (artiverse/artistotle units) + games (art-games)
- *   speaking → games (playground + showtime + roll-call + sign-off)
+ * Order is preserved exactly as declared in the programme file (which
+ * mirrors the plans) — never alphabetised.
+ *
+ * Every item carries:
+ *   - label       teacher-facing (may include a code like "L1 Levers e4")
+ *   - parentLabel clean, layman name for the parent doc (never a code)
+ *   - segment     the raw segment id, so games can be grouped by the
+ *                 segment name the teacher knows (roll call / playground…)
  */
 
 import { getCurriculumProgramme } from "@/lib/content";
@@ -18,17 +20,16 @@ import type {
 } from "@/content/types";
 import { parentItemDescription } from "@/lib/newsletter-item-copy";
 
-export type ItemCategory =
-  | "models"
-  | "experiments"
-  | "artworks"
-  | "games";
+export type ItemCategory = "models" | "experiments" | "artworks" | "games";
 
 export interface NewsletterItem {
   id: string;
-  label: string;
-  subtitle?: string;
+  label: string; // teacher-facing (may include a code)
+  parentLabel: string; // clean, layman name for the parent doc
+  subtitle?: string; // one-line parent description
   category: ItemCategory;
+  segment: string; // raw segment id from the programme file
+  segmentName: string; // friendly segment name (e.g. "Roll Call")
   skillIds: string[];
 }
 
@@ -40,7 +41,7 @@ export interface NewsletterProgramme {
   skillAreas: CurriculumSkillArea[];
   categories: {
     id: ItemCategory;
-    label: string; // "models we built" etc — brochure-voice
+    label: string;
     items: NewsletterItem[];
   }[];
 }
@@ -52,7 +53,6 @@ const CATEGORY_LABEL: Record<string, string> = {
   games: "games we played",
 };
 
-/** Turn a curriculum activity segment into a newsletter category. */
 function activityToCategory(seg: string): ItemCategory | null {
   if (seg === "build") return "models";
   if (seg === "experiment") return "experiments";
@@ -69,16 +69,31 @@ function activityToCategory(seg: string): ItemCategory | null {
   return null;
 }
 
-/**
- * Load newsletter-shaped data for a programme slug. Returns null if the
- * programme doesn't exist or has no activities at all. Categories with
- * zero items are omitted so the form doesn't render empty sections.
- */
+/** Clean a teacher-facing name into a layman parent label. */
+function toParentLabel(
+  category: ItemCategory,
+  rawLabel: string,
+  subtitle: string | undefined
+): string {
+  if (category === "experiments") {
+    // Never show the experiment code to parents — use the plain question.
+    return (subtitle ?? rawLabel).replace(/\.$/, "");
+  }
+  // Strip a trailing " build" so "bulldozer build" → "bulldozer".
+  return rawLabel.replace(/\s+build$/i, "").toLowerCase();
+}
+
 export function getNewsletterProgramme(
   programmeSlug: string
 ): NewsletterProgramme | null {
   const p = getCurriculumProgramme(programmeSlug);
   if (!p) return null;
+
+  // friendly segment names from the programme's own segmentDefinitions
+  const segmentNames = new Map<string, string>();
+  for (const s of p.segmentDefinitions ?? []) {
+    segmentNames.set(s.id, s.name);
+  }
 
   const activities = Object.values(p.activities ?? {});
   const buckets: Record<ItemCategory, NewsletterItem[]> = {
@@ -88,20 +103,25 @@ export function getNewsletterProgramme(
     games: [],
   };
 
-  // 1. Regular curriculum activities → their segment maps to a category.
+  // 1. Regular curriculum activities — insertion order preserved.
   for (const a of activities as CurriculumActivity[]) {
     const cat = activityToCategory(a.segment);
     if (!cat) continue;
+    const label = a.cardName ?? a.title;
+    const subtitle = parentItemDescription(
+      a.id,
+      a.goal ??
+        a.setupLine ??
+        (a.title !== label ? a.title : undefined)
+    );
     buckets[cat].push({
       id: a.id,
-      label: a.cardName ?? a.title,
-      subtitle: parentItemDescription(
-        a.id,
-        a.goal ??
-          a.setupLine ??
-          (a.title !== (a.cardName ?? a.title) ? a.title : undefined)
-      ),
+      label,
+      parentLabel: toParentLabel(cat, label, subtitle),
+      subtitle,
       category: cat,
+      segment: a.segment,
+      segmentName: segmentNames.get(a.segment) ?? a.segment,
       skillIds: a.skillIds ?? [],
     });
   }
@@ -111,11 +131,11 @@ export function getNewsletterProgramme(
     buckets.artworks.push({
       id: u.id,
       label: u.whatChildrenMake,
+      parentLabel: u.whatChildrenMake.toLowerCase(),
       subtitle: `${u.medium} · ${u.technique}`,
       category: "artworks",
-      // Artiverse units carry `abilitiesCovered` (skill names, not ids).
-      // Match against the programme's skillAreas by name / shortName to
-      // resolve to ids where possible.
+      segment: "artiverse",
+      segmentName: segmentNames.get("artiverse") ?? "artiverse",
       skillIds: (u.abilitiesCovered ?? [])
         .map((ability) => {
           const areaByAbility = (p.skillAreas ?? []).find((s) =>
@@ -131,17 +151,15 @@ export function getNewsletterProgramme(
     });
   }
 
-  // Dedupe + stable sort per category by label.
+  // Dedupe, PRESERVE insertion order (no sort).
   const categoriesOut: NewsletterProgramme["categories"] = [];
   for (const cat of ["models", "experiments", "artworks", "games"] as const) {
     const seen = new Set<string>();
-    const items = buckets[cat]
-      .filter((i) => {
-        if (seen.has(i.id)) return false;
-        seen.add(i.id);
-        return true;
-      })
-      .sort((a, b) => a.label.localeCompare(b.label));
+    const items = buckets[cat].filter((i) => {
+      if (seen.has(i.id)) return false;
+      seen.add(i.id);
+      return true;
+    });
     if (items.length > 0) {
       categoriesOut.push({ id: cat, label: CATEGORY_LABEL[cat], items });
     }
@@ -158,26 +176,27 @@ export function getNewsletterProgramme(
 }
 
 /**
- * From a set of selected item ids, derive the skills that were built
- * this month. Returns them ordered by how often they were touched
- * (most-touched first).
+ * Skills built this window, each with the plain-language names of the
+ * activities that built it — so the skill is shown LINKED to what was
+ * done, not as a separate abstract list.
  */
 export function skillsBuiltFrom(
   programme: NewsletterProgramme,
   selectedIds: Set<string>
-): { skill: CurriculumSkillArea; touches: number }[] {
-  const counts = new Map<string, number>();
+): { skill: CurriculumSkillArea; through: string[] }[] {
+  const throughMap = new Map<string, string[]>();
   const allItems = programme.categories.flatMap((c) => c.items);
   for (const item of allItems) {
     if (!selectedIds.has(item.id)) continue;
     for (const sid of item.skillIds) {
-      counts.set(sid, (counts.get(sid) ?? 0) + 1);
+      if (!throughMap.has(sid)) throughMap.set(sid, []);
+      const list = throughMap.get(sid)!;
+      if (!list.includes(item.parentLabel)) list.push(item.parentLabel);
     }
   }
   return programme.skillAreas
-    .map((s) => ({ skill: s, touches: counts.get(s.id) ?? 0 }))
-    .filter((r) => r.touches > 0)
-    .sort((a, b) => b.touches - a.touches);
+    .map((s) => ({ skill: s, through: throughMap.get(s.id) ?? [] }))
+    .filter((r) => r.through.length > 0);
 }
 
 /** Slugs eligible for the newsletter — the six 5-8 + 8-12 programmes. */

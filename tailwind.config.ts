@@ -62,6 +62,7 @@ const config: Config = {
           "system-ui",
           "sans-serif",
         ],
+        hand: ['"Caveat"', '"Kalam"', "cursive"],
       },
       borderRadius: {
         card: "16px",

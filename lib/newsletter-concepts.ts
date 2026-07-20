@@ -127,6 +127,23 @@ export const PROGRAMME_ENGINEERING_STORY: Record<
 export const PROGRAMME_SIGNATURE: Record<string, string> = {
   robotics: "your robotics team at openhouse",
   art: "your art & design team at openhouse",
-  language: "your language team at openhouse",
+  language: "your public speaking team at openhouse",
   stem: "your stem team at openhouse",
+};
+
+/**
+ * How to phrase each segment of a games-based programme (public
+ * speaking, art games) in the parent doc — the natural sentence a
+ * teacher would use. e.g. roll-call → "this time we warmed up with…".
+ */
+export const SEGMENT_PHRASING: Record<
+  string,
+  { icon: string; lead: string }
+> = {
+  "roll-call": { icon: "🙌", lead: "this time we warmed up with" },
+  playground: { icon: "🎲", lead: "we played" },
+  showtime: { icon: "🎤", lead: "we took to the stage with" },
+  "sign-off": { icon: "👋", lead: "we closed each class with" },
+  "art-games": { icon: "🎨", lead: "we played" },
+  "art-gym": { icon: "✏️", lead: "we warmed up our hands with" },
 };
