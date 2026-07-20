@@ -20,14 +20,17 @@ export function FooterNav() {
   const router = useRouter();
   const [building, setBuildingState] = useState<string | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [teacherProgrammeSlug, setTeacherProgrammeSlug] = useState<string | null>(null);
 
-  // Read the current building + admin flag from session storage on mount
-  // + whenever the route changes (so picking a new building on /building
-  // updates the chip, and admin sessions never get a building chip).
+  // Read the current building + admin flag + teacher's programme from
+  // session storage on mount + whenever the route changes.
   useEffect(() => {
     setBuildingState(getBuilding());
     const t = getTeacher();
     setIsAdmin(!!t && (t.role === "admin" || t.programmeSlug === "*"));
+    setTeacherProgrammeSlug(
+      t && t.programmeSlug && t.programmeSlug !== "*" ? t.programmeSlug : null
+    );
   }, [pathname]);
 
   // Hide the footer on the login + building-picker pages
@@ -35,32 +38,43 @@ export function FooterNav() {
     return null;
   }
 
-  // Detect if we're inside a programme page
+  // Detect the target programme for the overview / plans / experience-book
+  // tabs:
+  //   1. if the current page is inside a programme, that's the target
+  //   2. else if the teacher has a specific programme on their account,
+  //      keep those tabs visible anyway so plans is always reachable
+  //   3. admins have no default programme, so the tabs are hidden
+  //      (they pick a programme from the hub)
   const programmes = listCurriculumProgrammes();
   const programmeMatch = programmes.find(
     (p) => pathname === `/${p.slug}` || pathname.startsWith(`/${p.slug}/`)
   );
+  const targetProgramme =
+    programmeMatch ??
+    (teacherProgrammeSlug
+      ? programmes.find((p) => p.slug === teacherProgrammeSlug) ?? null
+      : null);
 
   const items: { href: string; label: string; icon: typeof Home }[] = [
     { href: "/", label: "home", icon: Home },
   ];
 
-  if (programmeMatch && programmeMatch.totalSessions > 0) {
+  if (targetProgramme && targetProgramme.totalSessions > 0) {
     // Surface the teacher journey in the order it should run:
     //   1. overview — the why
     //   2. plans    — the daily run sheet
     //   3. library  — reference (already added below)
     items.push({
-      href: `/${programmeMatch.slug}/overview`,
+      href: `/${targetProgramme.slug}/overview`,
       label: "overview",
       icon: LayoutGrid,
     });
     items.push({
-      href: `/${programmeMatch.slug}`,
+      href: `/${targetProgramme.slug}`,
       label: "plans",
       icon: CalendarDays,
     });
-    const bookSlug = PROGRAMME_TO_BOOK[programmeMatch.slug];
+    const bookSlug = PROGRAMME_TO_BOOK[targetProgramme.slug];
     if (bookSlug) {
       items.push({
         href: `/book/${bookSlug}`,
