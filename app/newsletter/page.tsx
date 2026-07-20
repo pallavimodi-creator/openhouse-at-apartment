@@ -23,7 +23,7 @@ import {
   type NewsletterItem,
   type NewsletterProgramme,
 } from "@/lib/newsletter-data";
-import { humanRange, CATEGORY_ACCENT } from "@/lib/newsletter-voice";
+import { humanRange, CATEGORY_ACCENT, parentSkillCopy } from "@/lib/newsletter-voice";
 import { getActivityImage } from "@/lib/content";
 import {
   BUILD_MECHANISM,
@@ -270,11 +270,14 @@ function Editor({
       {/* photos */}
       <div className="mt-5">
         <p className="text-[11.5px] font-bold tracking-normal text-ink-subtle">class photos (up to 3)</p>
+        <p className="mt-0.5 text-[11px] italic text-ink-muted">
+          add group photos of the children or their projects. skip, and the newsletter uses model pictures instead.
+        </p>
         <div className="mt-2 grid grid-cols-3 gap-2">
           {draft.photos.map((src, i) => (
-            <div key={i} className="relative aspect-square overflow-hidden rounded-md bg-brand-cream ring-1 ring-ink/10">
+            <div key={i} className="relative flex aspect-square items-center justify-center overflow-hidden rounded-md bg-brand-cream ring-1 ring-ink/10">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={src} alt="" className="h-full w-full object-cover" />
+              <img src={src} alt="" className="h-full w-full object-contain" />
               <button type="button" onClick={() => onDraftChange((d) => ({ ...d, photos: d.photos.filter((_, j) => j !== i) }))}
                 className="absolute right-1 top-1 rounded-full bg-black/60 p-1 text-white" aria-label="remove"><X className="h-3 w-3" /></button>
             </div>
@@ -385,6 +388,8 @@ function ParentNewsletter({
 
   const conceptGroups = isRobotics ? groupByMechanism(pickedItems) : null;
   const segmentGroups = isGamesProgramme ? groupBySegment(pickedItems) : null;
+  // artworks (art programmes) — shown image-first as their own grid
+  const pickedArtworks = pickedItems.filter((i) => i.category === "artworks");
 
   const photos = draft.photos.slice(0, 3);
   const fallback = pickedItems.map((i) => getActivityImage(i.id)).filter((x): x is string => !!x).slice(0, 3);
@@ -414,14 +419,19 @@ function ParentNewsletter({
           <Squiggle color={accent} />
         </div>
 
-        {/* photo strip — image first */}
+        {/* photo strip — image first. object-contain so nothing is ever
+            cropped; the cream background fills any spare space. */}
         <div className="mt-4 grid grid-cols-3 gap-2 px-10">
           {(heroImages.length > 0 ? heroImages : [null, null, null]).slice(0, 3).map((src, i) => (
-            <div key={i} className="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-card text-[26px] ring-1 ring-ink/10" style={{ background: "#F9F2E8" }}>
+            <div key={i} className="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-card text-center ring-1 ring-ink/10" style={{ background: "#F9F2E8" }}>
               {src ? (
                 /* eslint-disable-next-line @next/next/no-img-element */
-                <img src={src} alt="" className="h-full w-full object-cover" />
-              ) : (<span aria-hidden>{["🔧", "🧩", "🔬"][i] ?? "✨"}</span>)}
+                <img src={src} alt="" className="h-full w-full object-contain" />
+              ) : (
+                <span className="px-2 text-[10.5px] font-semibold leading-tight" style={{ color: "#6b6457" }}>
+                  {["📷 group photo", "📷 the children", "📷 their projects"][i] ?? "📷"}
+                </span>
+              )}
             </div>
           ))}
         </div>
@@ -457,6 +467,33 @@ function ParentNewsletter({
                         we ran <span className="font-bold">{experiments.length}</span> experiments to discover how it works.
                       </p>
                     )}
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        )}
+
+        {/* artworks — image-first grid (art programmes) */}
+        {pickedArtworks.length > 0 && (
+          <section className="mt-5 px-10">
+            <h2 className="text-[19px] font-extrabold text-ink" style={{ borderLeft: `4px solid ${accent}`, paddingLeft: 10 }}>
+              what we made
+            </h2>
+            <div className="mt-3 grid grid-cols-3 gap-2">
+              {pickedArtworks.slice(0, 9).map((art) => {
+                const img = getActivityImage(art.id);
+                return (
+                  <div key={art.id} className="overflow-hidden rounded-card ring-1 ring-ink/10" style={{ background: "#F9F2E8" }}>
+                    <div className="flex aspect-[4/3] items-center justify-center">
+                      {img ? (
+                        /* eslint-disable-next-line @next/next/no-img-element */
+                        <img src={img} alt="" className="h-full w-full object-contain" />
+                      ) : (
+                        <span className="text-[22px]" aria-hidden>🎨</span>
+                      )}
+                    </div>
+                    <p className="px-2 py-1.5 text-[11px] font-bold leading-tight text-ink">{art.parentLabel}</p>
                   </div>
                 );
               })}
@@ -503,18 +540,24 @@ function ParentNewsletter({
         style={{ minHeight: "1123px", overflow: "hidden" }}>
         <CoralRibbon />
 
-        {/* skills linked to what was done — light */}
+        {/* skills — each with its OWN plain-language meaning, not a
+            repeated list of the same models */}
         {skillsBuilt.length > 0 && (
           <section className="px-10 pt-6">
             <h2 className="text-[22px] font-extrabold text-ink">what the children got better at</h2>
             <Squiggle color={accent} />
             <div className="mt-3 space-y-2">
-              {skillsBuilt.map(({ skill, through }) => (
-                <div key={skill.id} className="flex items-baseline gap-2 rounded-card px-3.5 py-2.5" style={{ background: `${accent}14` }}>
-                  <span className="text-[13.5px] font-extrabold text-ink">{skill.name}</span>
-                  <span className="text-[12px] text-ink-muted">— through {joinNice(through.slice(0, 3))}</span>
-                </div>
-              ))}
+              {skillsBuilt.map(({ skill }) => {
+                const copy = parentSkillCopy(skill.id, category);
+                return (
+                  <div key={skill.id} className="rounded-card px-3.5 py-2.5" style={{ background: `${accent}14` }}>
+                    <p className="text-[13.5px] font-extrabold text-ink">
+                      <span className="mr-1.5" aria-hidden>{copy.icon}</span>{copy.label}
+                    </p>
+                    <p className="mt-0.5 text-[12.5px] leading-snug text-ink-muted">{copy.body}</p>
+                  </div>
+                );
+              })}
             </div>
           </section>
         )}
@@ -573,12 +616,14 @@ function ParentNewsletter({
             ask the children to show you one thing they built or figured out this month — in their own words. that&apos;s the best review of all.
           </p>
           <p className="mt-4 font-hand text-[26px] leading-none text-ink">
-            with warmth,
+            best,
           </p>
-          <p className="mt-1 font-hand text-[24px] leading-none" style={{ color: "#F25E35" }}>
-            {draft.teacherName.trim() ? draft.teacherName.trim().toLowerCase() + " · " : ""}{signature}
+          <p className="mt-1 font-hand text-[26px] leading-none" style={{ color: "#F25E35" }}>
+            {draft.teacherName.trim() ? draft.teacherName.trim().toLowerCase() : signature}
           </p>
-          <p className="mt-1 text-[12px] text-ink-muted">{apartment}</p>
+          <p className="mt-1 text-[12px] text-ink-muted">
+            {draft.teacherName.trim() ? `${signature} · ${apartment}` : apartment}
+          </p>
         </section>
 
         <PageFooter apartment={apartment} pageIndex={2} />

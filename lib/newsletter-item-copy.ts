@@ -36,40 +36,35 @@ export const PARENT_ITEM_DESCRIPTION: Record<string, string> = {
     "a wind turbine — spinning blades drive a pulley that lifts a load.",
 
   // ─── robotics 5-8 · experiments (level 1) ────────────
-  "l1-levers-e1": "does a longer lever make lifting easier?",
-  "l1-levers-e2": "does a heavier weight need more effort?",
-  "l1-levers-e3": "when does a see-saw balance?",
-  "l1-levers-e4": "which everyday objects balance a 0.5 kg weight?",
-  "l1-pulleys-e1": "does the load change the effort on a pulley?",
-  "l1-pulleys-e2": "how does a pulley change the direction of a pull?",
-  "l1-pulleys-e3": "does the pulley's height change the effort?",
-  "l1-pulleys-e4": "does the pull direction change the effort reading?",
-  "l1-pulleys-e5": "does load change effort on a double pulley?",
-  "l1-gears-e1": "which way does the second gear turn?",
-  "l1-gears-e2": "how many big-gear turns for 3, 5, 8 small-gear turns?",
-  "l1-gears-e3": "how many small-gear turns for 3, 5, 8 big-gear turns?",
-  "l1-gears-e4": "how many gear-b turns for 4, 6, 9 gear-a turns?",
-  "l1-wheel-axle-e2": "does load change how far a cart rolls?",
-  "l1-wheel-axle-e3": "does where you place the load change the roll?",
+  // simple "what the children did" statements, for parents.
+  "l1-levers-e1": "lifting a weight with long and short levers, to feel which is easier.",
+  "l1-levers-e2": "lifting a light and a heavy weight, to feel which takes more effort.",
+  "l1-levers-e3": "balancing equal weights on either side of a see-saw.",
+  "l1-levers-e4": "hunting for everyday things that balance a weight.",
+  "l1-pulleys-e1": "lifting light and heavy loads with a pulley.",
+  "l1-pulleys-e2": "using a pulley to pull down and lift something up.",
+  "l1-pulleys-e3": "lifting a load from different heights with a pulley.",
+  "l1-pulleys-e4": "pulling the pulley rope from different sides.",
+  "l1-pulleys-e5": "lifting three different weights with a two-wheel pulley.",
+  "l1-gears-e1": "connecting two gears to see which way they turn.",
+  "l1-gears-e2": "counting how the big gear turns when the small one spins.",
+  "l1-gears-e3": "counting how the small gear turns when the big one spins.",
+  "l1-gears-e4": "counting the turns as two gears drive each other.",
+  "l1-wheel-axle-e2": "pushing a loaded cart to see how far it rolls.",
+  "l1-wheel-axle-e3": "moving the load around the cart to see how it rolls.",
 
   // ─── robotics 5-8 · experiments (level 2) ────────────
-  "l2-levers-e1":
-    "how much easier does a lever make lifting 1, 1.5, and 2 kg?",
-  "l2-levers-e5": "move the fulcrum until 0.5 kg balances 1.5 kg.",
-  "l2-levers-e6":
-    "which lever length needs the least effort to lift 2 kg?",
-  "l2-pulleys-e1": "measure the effort to lift 0.5, 1, 1.5 kg on a double pulley.",
-  "l2-pulleys-e4": "does pulley height change the effort for 3 kg?",
-  "l2-pulleys-e5": "does pull direction change the effort for 3 kg?",
-  "l2-gears-e1":
-    "work out the ratio when you turn a small gear 6, 9, 12 times.",
-  "l2-wheel-axle-e2": "does load change roll distance for 2, 2.5, 3 kg?",
-  "l2-wheel-axle-e3":
-    "does front-axle angle change the direction the cart rolls?",
-  "l2-wheel-axle-e4":
-    "does load position change the roll — centre vs back?",
-  "l2-wheel-axle-e5":
-    "do close vs far axles change how far a cart rolls?",
+  "l2-levers-e1": "comparing lifting weights by hand and with a lever.",
+  "l2-levers-e5": "moving the balance point until two different weights sit level.",
+  "l2-levers-e6": "finding which lever length lifts a heavy weight most easily.",
+  "l2-pulleys-e1": "measuring the effort to lift three weights on a pulley.",
+  "l2-pulleys-e4": "checking if pulley height changes how hard the lift feels.",
+  "l2-pulleys-e5": "checking if the pull direction changes how hard the lift feels.",
+  "l2-gears-e1": "working out how many times one gear turns the other.",
+  "l2-wheel-axle-e2": "measuring how far a cart rolls with different loads.",
+  "l2-wheel-axle-e3": "steering a cart by pointing the front axle.",
+  "l2-wheel-axle-e4": "seeing how the load's place changes how far a cart rolls.",
+  "l2-wheel-axle-e5": "seeing how the wheels' spacing changes how far a cart rolls.",
 };
 
 /**

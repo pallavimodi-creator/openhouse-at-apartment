@@ -70,7 +70,7 @@ export default function LoginPage() {
       {/* Sign-in card */}
       <div className="w-full max-w-md rounded-card bg-brand-white p-6 shadow-float md:p-8">
         <h1 className="text-[22px] font-extrabold leading-tight text-ink md:text-[26px]">
-          teacher sign in
+          educator sign in
         </h1>
         <p className="mt-1 text-[13px] font-medium text-ink-muted">
           enter the login id and password you were given.
