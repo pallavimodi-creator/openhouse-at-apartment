@@ -16,7 +16,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { Printer, ChevronLeft, RotateCcw, Eye, Pencil } from "lucide-react";
+import { Download, ChevronLeft, RotateCcw } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTeacher, TeacherGate } from "@/components/TeacherGate";
 import {
@@ -124,7 +124,6 @@ function NewsletterContent() {
   const [slug, setSlug] = useState<string>(defaultSlug);
   const [from, setFrom] = useState<string>(isoMonthStart());
   const [to, setTo] = useState<string>(isoToday());
-  const [view, setView] = useState<"editor" | "parent">("editor");
   const [draft, setDraft] = useState<Draft>(() => readDraft(slug, from, to));
 
   useEffect(() => {
@@ -166,9 +165,8 @@ function NewsletterContent() {
     });
   }
 
-  function printPage() {
-    setView("parent");
-    setTimeout(() => window.print(), 100);
+  function downloadPdf() {
+    window.print();
   }
 
   if (!programme) {
@@ -234,34 +232,6 @@ function NewsletterContent() {
 
           <span className="flex-1" />
 
-          {/* view toggle */}
-          <div className="flex overflow-hidden rounded-md border border-ink/15 bg-brand-white text-[11px] font-semibold">
-            <button
-              type="button"
-              onClick={() => setView("editor")}
-              className={cn(
-                "flex items-center gap-1 px-2.5 py-1.5 transition",
-                view === "editor"
-                  ? "bg-brand-orange text-white"
-                  : "text-ink-muted hover:bg-ink/5"
-              )}
-            >
-              <Pencil className="h-3 w-3" /> editor
-            </button>
-            <button
-              type="button"
-              onClick={() => setView("parent")}
-              className={cn(
-                "flex items-center gap-1 px-2.5 py-1.5 transition",
-                view === "parent"
-                  ? "bg-brand-orange text-white"
-                  : "text-ink-muted hover:bg-ink/5"
-              )}
-            >
-              <Eye className="h-3 w-3" /> parent view
-            </button>
-          </div>
-
           <button
             type="button"
             onClick={reset}
@@ -271,25 +241,28 @@ function NewsletterContent() {
           </button>
           <button
             type="button"
-            onClick={printPage}
+            onClick={downloadPdf}
             className="inline-flex items-center gap-1.5 rounded-md bg-brand-orange px-3 py-1.5 text-[12px] font-bold text-white shadow-card active:scale-[0.99]"
           >
-            <Printer className="h-3.5 w-3.5" /> print / save pdf
+            <Download className="h-3.5 w-3.5" /> download as pdf
           </button>
         </div>
       </div>
 
-      {/* View — editor OR parent-view */}
-      {view === "editor" ? (
-        <Editor
-          programme={programme}
-          draft={draft}
-          selectedSet={selectedSet}
-          skillsBuilt={skillsBuilt.map((s) => s.skill)}
-          onToggle={toggle}
-          onDraftChange={setDraft}
-        />
-      ) : (
+      {/* Fill the form on the left · newsletter preview on the right.
+          Stacks on mobile — form first, then newsletter below.
+          Print CSS hides the form so only the newsletter is on the PDF. */}
+      <div className="grid gap-6 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
+        <div className="print:hidden">
+          <Editor
+            programme={programme}
+            draft={draft}
+            selectedSet={selectedSet}
+            skillsBuilt={skillsBuilt.map((s) => s.skill)}
+            onToggle={toggle}
+            onDraftChange={setDraft}
+          />
+        </div>
         <ParentNewsletter
           programme={programme}
           from={from}
@@ -297,7 +270,7 @@ function NewsletterContent() {
           draft={draft}
           skillsBuilt={skillsBuilt.map((s) => s.skill)}
         />
-      )}
+      </div>
 
       <style jsx global>{`
         @media print {
@@ -334,15 +307,16 @@ function Editor({
   return (
     <div className="rounded-card bg-brand-white p-4 shadow-card ring-1 ring-ink/5 print:hidden md:p-6">
       <p className="text-[10px] font-bold tracking-normal text-brand-orange">
-        newsletter · editor
+        fill in
       </p>
       <h2 className="mt-1 text-[20px] font-extrabold leading-tight text-ink">
         what did the children do?
       </h2>
       <p className="mt-1 text-[12.5px] leading-relaxed text-ink-muted">
         tick each thing that happened between the dates you picked. the
-        parent view below writes itself from your ticks — the skills, the
-        prose, all of it. no captions to fill.
+        newsletter on the right writes itself from your ticks — the
+        skills, the prose, all of it. hit <b>download as pdf</b> when
+        you&apos;re ready to share.
       </p>
 
       {/* apartment */}
@@ -442,8 +416,7 @@ function Editor({
       </div>
 
       <p className="mt-5 text-[11.5px] italic text-ink-subtle">
-        tap <b>parent view</b> in the toolbar to see the newsletter your
-        parents will read.
+        as you tick, the newsletter on the right updates in real time.
       </p>
     </div>
   );
