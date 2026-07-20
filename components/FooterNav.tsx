@@ -74,14 +74,7 @@ export function FooterNav() {
       label: "plans",
       icon: CalendarDays,
     });
-    const bookSlug = PROGRAMME_TO_BOOK[targetProgramme.slug];
-    if (bookSlug) {
-      items.push({
-        href: `/book/${bookSlug}`,
-        label: "experience book",
-        icon: Notebook,
-      });
-    }
+    // experience-book tab hidden across all programmes for now.
   }
 
   items.push({ href: "/library", label: "library", icon: BookOpen });
