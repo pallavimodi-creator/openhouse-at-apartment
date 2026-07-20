@@ -27,9 +27,12 @@ import {
 } from "@/lib/newsletter-data";
 import {
   parentSkillCopy,
-  joinParentList,
   humanRange,
+  CATEGORY_ACCENT,
+  PARENT_DESTINATION,
+  PARENT_WHY,
 } from "@/lib/newsletter-voice";
+import { getActivityImage } from "@/lib/content";
 
 /* ─── draft state ──────────────────────────────────────────── */
 
@@ -446,7 +449,29 @@ function Editor({
   );
 }
 
-/* ─── parent-view newsletter (the generated output) ───────── */
+/* ─── parent-view newsletter (image-first, 2 pages) ───────── */
+/*
+ * two A4 portrait pages, mirroring the openhouse-onepager brand rules.
+ *
+ * page 1 — what they did:
+ *   coral ribbon · header + destination line · value-prop band · hero
+ *   "why" line · image grid of every ticked item (image = the thing they
+ *   built/made/played, caption = its name + a short parent-voice line).
+ *
+ * page 2 — what they grew into:
+ *   coral ribbon (repeat) · per-skill prose with icon + at-home nudge ·
+ *   the road ahead · warm sign-off with coral footer.
+ *
+ * category accent (yellow / sage / periwinkle) is used only for the
+ * title dot, the squiggle and the section stripes — never on body text.
+ */
+
+const CATEGORY_HEADING: Record<string, string> = {
+  models: "what they built",
+  experiments: "what they tested",
+  artworks: "what they made",
+  games: "what they played",
+};
 
 function ParentNewsletter({
   programme,
@@ -469,160 +494,335 @@ function ParentNewsletter({
     }))
     .filter((c) => c.items.length > 0);
 
-  const totalPicked = perCategory.reduce((s, c) => s + c.items.length, 0);
   const apartment = draft.apartment.trim() || "openhouse · at-apartment";
   const rangeLabel = humanRange(from, to);
-
-  // build the opening paragraph as parent prose — main-idea-first,
-  // concrete, warm. no comparison, no jargon.
-  const opening =
-    totalPicked === 0
-      ? `this month's ${programme.title} at ${apartment} is still being written — check back once your educator ticks off what the children did.`
-      : `this is what your children built, tried and played in ${programme.title} at ${apartment}. every moment named here actually happened in class.`;
+  const totalPicked = perCategory.reduce((s, c) => s + c.items.length, 0);
+  const category = programme.categoryLabel;
+  const accent = CATEGORY_ACCENT[category] ?? "#B8B5DD";
+  const destination = PARENT_DESTINATION[category] ?? "";
+  const why = PARENT_WHY[category] ?? "";
 
   return (
-    <article
-      className="brochure mx-auto w-full max-w-[794px] bg-brand-white text-ink shadow-card ring-1 ring-ink/5 print:!shadow-none print:!ring-0"
-      style={{ minHeight: "1123px" }}
-    >
-      {/* coral header — same tagline & wordmark as the reference brochure */}
-      <header
-        className="flex items-center justify-between px-8 py-3"
-        style={{ background: "#F25E35", color: "#fff" }}
+    <div className="parent-doc mx-auto w-full max-w-[794px] space-y-6 md:space-y-8 print:!space-y-0">
+      {/* ─── PAGE 1 — what they did ─────────────────── */}
+      <article
+        className="page bg-brand-white text-ink shadow-card ring-1 ring-ink/5 print:!shadow-none print:!ring-0"
+        style={{ minHeight: "1123px", overflow: "hidden" }}
       >
-        <p className="text-[13px] font-semibold italic">
-          raising curious humans, together.
-        </p>
-        <p className="text-[13px] font-extrabold">openhouse</p>
-      </header>
+        <CoralRibbon />
 
-      {/* title block */}
-      <div className="px-8 pt-6">
-        <p className="text-[11px] font-bold tracking-normal text-brand-orange">
-          a note home · {programme.ageLabel}
-          {rangeLabel ? ` · ${rangeLabel}` : ""}
-        </p>
-        <h1 className="mt-2 text-[36px] font-extrabold leading-none">
-          {programme.title.toLowerCase()} at {apartment.toLowerCase()}
-        </h1>
-        <p className="mt-4 text-[14px] leading-relaxed text-ink">
-          {opening}
-        </p>
-      </div>
-
-      {/* per-category prose */}
-      {perCategory.map((cat) => (
-        <section key={cat.id} className="px-8 pt-6">
-          <h2 className="text-[19px] font-extrabold text-ink">
-            {catToParentHeading(cat.id)}
-          </h2>
-          <p className="mt-2 text-[14px] leading-relaxed text-ink">
-            {catToParentSentence(cat.id, cat.items.map((i) => i.label))}
+        {/* header: kicker · title with accent dot + squiggle · destination */}
+        <div className="px-10 pt-6">
+          <p
+            className="text-[11px] font-extrabold tracking-normal"
+            style={{ color: "#F25E35" }}
+          >
+            {programme.title} · {programme.ageLabel}
+            {rangeLabel ? ` · ${rangeLabel}` : ""}
           </p>
-        </section>
-      ))}
+          <h1 className="mt-2 flex items-baseline gap-2 text-[38px] font-extrabold leading-none">
+            <span>a note home from {apartment.toLowerCase()}</span>
+            <span
+              aria-hidden
+              className="inline-block h-2 w-2 rounded-full"
+              style={{ background: accent }}
+            />
+          </h1>
+          <Squiggle color={accent} />
+          {destination && (
+            <p className="mt-3 text-[14px] leading-relaxed text-ink-muted">
+              see your child <span className="font-extrabold text-ink">{destination}</span>
+            </p>
+          )}
+        </div>
 
-      {/* worth remembering — warm pull */}
-      {draft.highlights.trim() && (
-        <section className="px-8 pt-6">
-          <h2 className="text-[19px] font-extrabold text-ink">
-            a moment worth naming
-          </h2>
-          <p className="mt-2 rounded-card bg-brand-orange/5 p-4 text-[14px] italic leading-relaxed text-ink ring-1 ring-brand-orange/15">
-            &ldquo;{draft.highlights.trim()}&rdquo;
-          </p>
-        </section>
-      )}
+        {/* value-prop / hero-why band */}
+        {why && (
+          <div className="mx-10 mt-5 rounded-card px-5 py-4" style={{ background: `${accent}22` }}>
+            <p className="text-[17px] font-extrabold leading-snug text-ink">
+              this window,{" "}
+              <span style={{ color: "#F25E35" }}>{why}</span>
+            </p>
+          </div>
+        )}
 
-      {/* skills — parent voice, not chips */}
-      {skillsBuilt.length > 0 && (
-        <section className="px-8 pt-6">
-          <h2 className="text-[19px] font-extrabold text-ink">
-            the skills that grew
-          </h2>
-          <p className="mt-2 text-[13.5px] leading-relaxed text-ink-muted">
-            here&apos;s what your children practised — not tests, just what
-            they got more sure about this window.
+        {/* opening — one warm main-idea line */}
+        <p className="mx-10 mt-5 text-[13.5px] leading-relaxed text-ink-muted">
+          {totalPicked === 0
+            ? "your educator will fill this in once the window's classes are done."
+            : `here is what your children built, tried and played this window at ${apartment.toLowerCase()} — every moment shown is one that actually happened in class.`}
+        </p>
+
+        {/* image grid — one card per ticked item */}
+        {perCategory.map((cat) => (
+          <section key={cat.id} className="mt-6 px-10">
+            <h2
+              className="text-[18px] font-extrabold leading-tight text-ink"
+              style={{ borderLeft: `4px solid ${accent}`, paddingLeft: 10 }}
+            >
+              {CATEGORY_HEADING[cat.id] ?? cat.label}
+            </h2>
+            <div className="mt-3 grid gap-3 sm:grid-cols-2 md:grid-cols-3">
+              {cat.items.map((item) => {
+                const img = getActivityImage(item.id);
+                return (
+                  <div
+                    key={item.id}
+                    className="overflow-hidden rounded-card bg-[#FAF5EC] ring-1 ring-ink/5"
+                  >
+                    <div
+                      className="relative flex h-28 items-center justify-center"
+                      style={{ background: "#F9F2E8" }}
+                    >
+                      {img ? (
+                        /* eslint-disable-next-line @next/next/no-img-element */
+                        <img
+                          src={img}
+                          alt=""
+                          className="h-full w-full object-cover"
+                          onError={(e) => {
+                            (e.currentTarget as HTMLImageElement).style.display = "none";
+                          }}
+                        />
+                      ) : (
+                        <span
+                          className="text-[11px] font-bold text-ink-subtle"
+                          style={{ color: "#6b6457" }}
+                        >
+                          {cat.id === "models" ? "🔧" : cat.id === "experiments" ? "🔬" : cat.id === "artworks" ? "🎨" : "🎯"}{" "}
+                          {item.label.toLowerCase()}
+                        </span>
+                      )}
+                    </div>
+                    <div className="px-3 py-2">
+                      <p className="text-[12.5px] font-extrabold leading-tight text-ink">
+                        {item.label.toLowerCase()}
+                      </p>
+                      {item.subtitle && (
+                        <p className="mt-0.5 text-[10.5px] leading-snug text-ink-muted">
+                          {item.subtitle.toLowerCase()}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        ))}
+
+        {/* highlight — warm pull */}
+        {draft.highlights.trim() && (
+          <section className="mx-10 mt-6 rounded-card p-4" style={{ background: "#F25E3512" }}>
+            <p
+              className="text-[10.5px] font-extrabold tracking-normal"
+              style={{ color: "#F25E35" }}
+            >
+              a moment worth naming
+            </p>
+            <p className="mt-1 text-[14px] italic leading-relaxed text-ink">
+              &ldquo;{draft.highlights.trim()}&rdquo;
+            </p>
+          </section>
+        )}
+
+        <PageFooter apartment={apartment} pageIndex={1} />
+      </article>
+
+      {/* ─── PAGE 2 — what they grew into ────────────── */}
+      <article
+        className="page bg-brand-white text-ink shadow-card ring-1 ring-ink/5 print:!shadow-none print:!ring-0 print:break-before-page"
+        style={{ minHeight: "1123px", overflow: "hidden" }}
+      >
+        <CoralRibbon />
+
+        <div className="px-10 pt-6">
+          <p
+            className="text-[11px] font-extrabold tracking-normal"
+            style={{ color: "#F25E35" }}
+          >
+            {programme.title} · {programme.ageLabel}
           </p>
-          <div className="mt-3 space-y-3">
+          <h1 className="mt-2 flex items-baseline gap-2 text-[34px] font-extrabold leading-none">
+            <span>what your children grew into</span>
+            <span
+              aria-hidden
+              className="inline-block h-2 w-2 rounded-full"
+              style={{ background: accent }}
+            />
+          </h1>
+          <Squiggle color={accent} />
+          <p className="mt-3 text-[13.5px] leading-relaxed text-ink-muted">
+            here&apos;s what your children practised this window — not tests, just what they got more sure about. each one includes a small nudge for how to keep it going at home.
+          </p>
+        </div>
+
+        {skillsBuilt.length === 0 ? (
+          <p className="mx-10 mt-6 text-[13px] italic text-ink-muted">
+            once your educator ticks off what happened, the skills your children grew into will appear here.
+          </p>
+        ) : (
+          <div className="mx-10 mt-5 space-y-3">
             {skillsBuilt.map((skill) => {
-              const copy = parentSkillCopy(skill.id, programme.categoryLabel);
+              const copy = parentSkillCopy(skill.id, category);
               return (
                 <div
                   key={skill.id}
-                  className="rounded-card bg-[#F6F0FE] p-4 ring-1 ring-[#EDE5FA]"
+                  className="rounded-card p-4"
+                  style={{ background: `${accent}18`, border: `1px solid ${accent}55` }}
                 >
-                  <p className="text-[13.5px] font-extrabold text-[#4B2E83]">
-                    {copy.label}
-                  </p>
-                  <p className="mt-1 text-[13.5px] leading-relaxed text-ink">
-                    {copy.body}
-                  </p>
+                  <div className="flex items-start gap-3">
+                    <div
+                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-[18px]"
+                      style={{ background: "#fff", boxShadow: `0 1px 0 ${accent}55` }}
+                      aria-hidden
+                    >
+                      {copy.icon}
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-[14px] font-extrabold text-ink">
+                        {copy.label}
+                      </p>
+                      <p className="mt-1 text-[13px] leading-relaxed text-ink">
+                        {copy.body}
+                      </p>
+                      <p
+                        className="mt-2 text-[12px] leading-snug"
+                        style={{ color: "#6b6457" }}
+                      >
+                        <span
+                          className="mr-1 font-extrabold"
+                          style={{ color: "#F25E35" }}
+                        >
+                          try at home:
+                        </span>
+                        {copy.atHome}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               );
             })}
           </div>
+        )}
+
+        {/* the road ahead */}
+        <section className="mx-10 mt-6 rounded-card p-4" style={{ background: "#F9F2E8" }}>
+          <p
+            className="text-[10.5px] font-extrabold tracking-normal"
+            style={{ color: "#F25E35" }}
+          >
+            the road ahead
+          </p>
+          <p className="mt-1 text-[13.5px] leading-relaxed text-ink">
+            your children are on a long, steady journey. the next window brings more building, more asking, more trying. we work one small step at a time — that&apos;s the pace that lasts.
+          </p>
         </section>
-      )}
 
-      {/* what's next — always renders, warm sign-off */}
-      <section className="px-8 pt-8">
-        <h2 className="text-[19px] font-extrabold text-ink">
-          the road ahead
-        </h2>
-        <p className="mt-2 text-[14px] leading-relaxed text-ink">
-          next window brings more of the same — one small step at a time.
-          your children are on a long, steady journey, and every session is
-          a rung on it. if you want to keep the momentum going at home, ask
-          your child to <b>show</b> you one thing they built or said this
-          month, in their own words. that&apos;s the best possible review.
-        </p>
-        <p className="mt-3 text-[13.5px] leading-relaxed text-ink-muted">
-          thank you for trusting us with these curious humans.
-        </p>
-        <p className="mt-4 text-[13.5px] font-extrabold text-ink">
-          — the openhouse team
-        </p>
-      </section>
+        {/* warm sign-off */}
+        <section className="mx-10 mt-6">
+          <p className="text-[13.5px] leading-relaxed text-ink-muted">
+            if you want to keep the momentum going at home, ask your child to <span className="font-extrabold text-ink">show you one thing</span> they built or said this month, in their own words. that&apos;s the best possible review.
+          </p>
+          <p className="mt-4 text-[13.5px] italic text-ink-muted">
+            thank you for trusting us with these curious humans.
+          </p>
+          <p className="mt-2 text-[14px] font-extrabold text-ink">
+            — the openhouse team
+          </p>
+        </section>
 
-      {/* footer */}
-      <footer className="mt-10 flex items-end justify-between px-8 pb-6 pt-6 text-[11px] text-ink-subtle">
-        <span>openhouse · at-apartment</span>
-        <span>{apartment.toLowerCase()}</span>
-      </footer>
-    </article>
+        <PageFooter apartment={apartment} pageIndex={2} />
+      </article>
+
+      <style jsx>{`
+        .page {
+          position: relative;
+        }
+        @media print {
+          .parent-doc {
+            gap: 0 !important;
+          }
+          .page {
+            page-break-after: always;
+            box-shadow: none !important;
+            outline: none !important;
+          }
+          .page:last-child {
+            page-break-after: auto;
+          }
+        }
+      `}</style>
+    </div>
   );
 }
 
-/* ─── parent-prose helpers ─────────────────────────────────── */
+/* small brand primitives — used by both pages */
 
-function catToParentHeading(id: string): string {
-  switch (id) {
-    case "models":
-      return "what they built";
-    case "experiments":
-      return "what they tested";
-    case "artworks":
-      return "what they made";
-    case "games":
-      return "what they played";
-    default:
-      return "what they did";
-  }
+function CoralRibbon() {
+  return (
+    <>
+      <header
+        className="flex items-center justify-between px-10 py-3"
+        style={{ background: "#F25E35", color: "#fff" }}
+      >
+        <p className="text-[13px] font-extrabold">openhouse</p>
+        <p className="text-[12.5px] font-semibold italic">
+          raising curious humans, together.
+        </p>
+      </header>
+      {/* cream wave under the ribbon, per the onepager brand */}
+      <svg
+        viewBox="0 0 800 24"
+        preserveAspectRatio="none"
+        className="block w-full"
+        style={{ height: 18, marginTop: -1 }}
+        aria-hidden
+      >
+        <path
+          d="M0,10 C120,24 260,0 400,10 C540,20 660,0 800,10 L800,24 L0,24 Z"
+          fill="#F9F2E8"
+        />
+      </svg>
+    </>
+  );
 }
 
-function catToParentSentence(id: string, labels: string[]): string {
-  const list = joinParentList(labels);
-  switch (id) {
-    case "models":
-      return `your children built ${list}. each one is a real working machine — parts fitted, pieces held together, moving when it should. not a plastic toy — the real thing.`;
-    case "experiments":
-      return `your children ran ${list}. they predicted first, tested with their own hands, and said what actually happened. this is what science looks like when it's a habit, not a subject.`;
-    case "artworks":
-      return `your children made ${list}. each artwork is their own choice — the medium, the colour, the subject. we set the technique; they brought the idea.`;
-    case "games":
-      return `your children played ${list}. the games look playful because they are — and every one is a workout for listening, thinking, speaking, or working with a friend.`;
-    default:
-      return `your children took part in ${list}.`;
-  }
+function Squiggle({ color }: { color: string }) {
+  return (
+    <svg
+      viewBox="0 0 220 10"
+      preserveAspectRatio="none"
+      className="mt-1"
+      style={{ height: 8, width: 220 }}
+      aria-hidden
+    >
+      <path
+        d="M2,6 Q30,-2 60,6 T120,6 T180,6 T216,6"
+        fill="none"
+        stroke={color}
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function PageFooter({
+  apartment,
+  pageIndex,
+}: {
+  apartment: string;
+  pageIndex: number;
+}) {
+  return (
+    <footer className="mt-10 flex items-end justify-between px-10 pb-5 pt-6 text-[10.5px] text-ink-subtle">
+      <span className="font-extrabold" style={{ color: "#F25E35" }}>
+        openhouse · at-apartment
+      </span>
+      <span>
+        {apartment.toLowerCase()} · page {pageIndex} of 2
+      </span>
+    </footer>
+  );
 }
