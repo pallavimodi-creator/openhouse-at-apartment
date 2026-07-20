@@ -600,10 +600,13 @@ function ParentNewsletter({
                 </div>
               )}
               <div className="min-w-0 flex-1 p-4">
-                <p className="text-[11px] font-extrabold tracking-normal" style={{ color: "#F25E35" }}>new for your child</p>
-                <p className="mt-1 font-hand text-[24px] leading-none text-ink">their very own book!</p>
+                <div className="flex items-center gap-2">
+                  <p className="text-[11px] font-extrabold tracking-normal" style={{ color: "#F25E35" }}>coming soon</p>
+                  <span className="rounded-chip bg-brand-orange/15 px-2 py-0.5 text-[9px] font-extrabold text-brand-orange">the experience book</span>
+                </div>
+                <p className="mt-1 font-hand text-[24px] leading-none text-ink">a book of their own — on its way!</p>
                 <p className="mt-2 text-[12.5px] leading-relaxed text-ink">
-                  every child now has a book that travels home and back — where they draw, note, and keep everything they build and discover. flip through it any time to see how they are growing.
+                  soon every child will have a book that travels home and back — where they draw, note, and keep everything they build and discover. we&apos;ll share it with you the moment it&apos;s ready.
                 </p>
               </div>
             </div>
