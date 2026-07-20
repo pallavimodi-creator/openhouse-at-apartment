@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { Home, BookOpen, LayoutGrid, LogOut, Notebook, CalendarDays, Building2 } from "lucide-react";
+import { Home, BookOpen, LayoutGrid, LogOut, Notebook, CalendarDays, Building2, Newspaper } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { listCurriculumProgrammes } from "@/lib/content";
 import { clearTeacher, getBuilding, clearBuilding, getTeacher } from "@/lib/teacher-state";
@@ -71,6 +71,7 @@ export function FooterNav() {
   }
 
   items.push({ href: "/library", label: "library", icon: BookOpen });
+  items.push({ href: "/newsletter", label: "newsletter", icon: Newspaper });
 
   const handleSignOut = () => {
     clearTeacher();
