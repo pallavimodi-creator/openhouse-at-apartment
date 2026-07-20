@@ -16,6 +16,7 @@ import type {
   CurriculumActivity,
   CurriculumSkillArea,
 } from "@/content/types";
+import { parentItemDescription } from "@/lib/newsletter-item-copy";
 
 export type ItemCategory =
   | "models"
@@ -94,10 +95,12 @@ export function getNewsletterProgramme(
     buckets[cat].push({
       id: a.id,
       label: a.cardName ?? a.title,
-      subtitle:
+      subtitle: parentItemDescription(
+        a.id,
         a.goal ??
-        a.setupLine ??
-        (a.title !== (a.cardName ?? a.title) ? a.title : undefined),
+          a.setupLine ??
+          (a.title !== (a.cardName ?? a.title) ? a.title : undefined)
+      ),
       category: cat,
       skillIds: a.skillIds ?? [],
     });

@@ -38,7 +38,6 @@ import { getActivityImage } from "@/lib/content";
 
 interface Draft {
   selected: string[]; // item ids the teacher ticked
-  highlights: string; // free text — one or two moments worth naming
   apartment: string; // "openhouse jayanagar"
   from: string; // "YYYY-MM-DD"
   to: string; // "YYYY-MM-DD"
@@ -51,7 +50,6 @@ function draftKey(slug: string, from: string, to: string) {
 function readDraft(slug: string, from: string, to: string): Draft {
   const base: Draft = {
     selected: [],
-    highlights: "",
     apartment: "",
     from,
     to,
@@ -158,7 +156,6 @@ function NewsletterContent() {
     if (!confirm("clear this newsletter draft?")) return;
     setDraft({
       selected: [],
-      highlights: "",
       apartment: draft.apartment,
       from,
       to,
@@ -258,7 +255,6 @@ function NewsletterContent() {
             programme={programme}
             draft={draft}
             selectedSet={selectedSet}
-            skillsBuilt={skillsBuilt.map((s) => s.skill)}
             onToggle={toggle}
             onDraftChange={setDraft}
           />
@@ -293,14 +289,12 @@ function Editor({
   programme,
   draft,
   selectedSet,
-  skillsBuilt,
   onToggle,
   onDraftChange,
 }: {
   programme: NewsletterProgramme;
   draft: Draft;
   selectedSet: Set<string>;
-  skillsBuilt: NewsletterProgramme["skillAreas"];
   onToggle: (id: string) => void;
   onDraftChange: (updater: (d: Draft) => Draft) => void;
 }) {
@@ -375,45 +369,6 @@ function Editor({
           </ul>
         </div>
       ))}
-
-      {/* worth remembering */}
-      <div className="mt-5">
-        <p className="text-[11.5px] font-bold tracking-normal text-ink-subtle">
-          worth remembering (optional)
-        </p>
-        <textarea
-          rows={4}
-          value={draft.highlights}
-          onChange={(e) =>
-            onDraftChange((d) => ({ ...d, highlights: e.target.value }))
-          }
-          placeholder="one or two moments worth naming — e.g. the children built a working crane on their own for the first time this month."
-          className="mt-1 w-full resize-none rounded-md border border-ink/15 bg-brand-cream px-3 py-2 text-[13px] italic outline-none focus:border-brand-orange"
-        />
-      </div>
-
-      {/* skills preview — auto */}
-      <div className="mt-5 rounded-card bg-brand-orange/5 p-3 ring-1 ring-brand-orange/15">
-        <p className="text-[11px] font-bold tracking-normal text-brand-orange">
-          skills the newsletter will name · auto-generated
-        </p>
-        {skillsBuilt.length === 0 ? (
-          <p className="mt-1 text-[11.5px] italic text-ink-muted">
-            tick things above and the skills will show up here.
-          </p>
-        ) : (
-          <div className="mt-1.5 flex flex-wrap gap-1.5">
-            {skillsBuilt.map((skill) => (
-              <span
-                key={skill.id}
-                className="rounded-chip bg-[#EDE5FA] px-2.5 py-1 text-[11px] font-semibold text-[#4B2E83]"
-              >
-                {parentSkillCopy(skill.id, programme.categoryLabel).label}
-              </span>
-            ))}
-          </div>
-        )}
-      </div>
 
       <p className="mt-5 text-[11.5px] italic text-ink-subtle">
         as you tick, the newsletter on the right updates in real time.
@@ -584,21 +539,6 @@ function ParentNewsletter({
           </section>
         ))}
 
-        {/* highlight — warm pull */}
-        {draft.highlights.trim() && (
-          <section className="mx-10 mt-6 rounded-card p-4" style={{ background: "#F25E3512" }}>
-            <p
-              className="text-[10.5px] font-extrabold tracking-normal"
-              style={{ color: "#F25E35" }}
-            >
-              a moment worth naming
-            </p>
-            <p className="mt-1 text-[14px] italic leading-relaxed text-ink">
-              &ldquo;{draft.highlights.trim()}&rdquo;
-            </p>
-          </section>
-        )}
-
         <PageFooter apartment={apartment} pageIndex={1} />
       </article>
 
@@ -658,18 +598,6 @@ function ParentNewsletter({
                       </p>
                       <p className="mt-1 text-[13px] leading-relaxed text-ink">
                         {copy.body}
-                      </p>
-                      <p
-                        className="mt-2 text-[12px] leading-snug"
-                        style={{ color: "#6b6457" }}
-                      >
-                        <span
-                          className="mr-1 font-extrabold"
-                          style={{ color: "#F25E35" }}
-                        >
-                          try at home:
-                        </span>
-                        {copy.atHome}
                       </p>
                     </div>
                   </div>
