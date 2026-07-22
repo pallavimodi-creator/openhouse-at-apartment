@@ -34,7 +34,7 @@ import {
   SEGMENT_PHRASING,
   type Mechanism,
 } from "@/lib/newsletter-concepts";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Camera } from "lucide-react";
 
 export interface NewsletterDocumentProps {
   programmeSlug: string;
@@ -54,6 +54,16 @@ const MASCOT: Record<string, string> = {
   art: "/newsletter/mascot-art.png",
   language: "/newsletter/mascot-ps.png",
 };
+
+/** category → what a good photo shows (empty-slot hints, never faces). */
+const PHOTO_HINTS: Record<string, string[]> = {
+  stem: ["a model", "a build", "a project"],
+  art: ["an artwork", "a creation", "the making"],
+  language: ["on stage", "a prop", "the setup"],
+};
+
+/** heading icon per programme section. */
+const SECTION_ICON = { explored: "🔍", made: "🎨", inClass: "🎪", skills: "🌱" };
 
 export function NewsletterDocument(props: NewsletterDocumentProps) {
   const programme = getNewsletterProgramme(props.programmeSlug);
@@ -82,6 +92,7 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
   const isPublicSpeaking = programme.slug.startsWith("public-speaking");
   const isArt = programme.slug.startsWith("art-design");
   const mascot = MASCOT[category];
+  const photoHints = PHOTO_HINTS[category] ?? PHOTO_HINTS.stem;
 
   const conceptGroups = isRobotics ? groupByMechanism(pickedItems) : null;
   const segmentGroups = isPublicSpeaking || isArt ? groupBySegment(pickedItems) : null;
@@ -150,8 +161,9 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
                 /* eslint-disable-next-line @next/next/no-img-element */
                 <img src={src} alt="" className="h-full w-full object-contain" />
               ) : (
-                <span className="px-2 text-[10px] font-semibold leading-tight" style={{ color: "#6b6457" }}>
-                  {["📷 a model", "📷 a project", "📷 the build"][i] ?? "📷"}
+                <span className="flex flex-col items-center gap-1 px-2 text-[10.5px] font-semibold leading-tight" style={{ color: "#8a8177" }}>
+                  <Camera className="h-4 w-4" strokeWidth={2} style={{ opacity: 0.5 }} />
+                  {photoHints[i] ?? "a photo"}
                 </span>
               )}
             </div>
@@ -165,7 +177,7 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
         {conceptGroups && conceptGroups.length > 0 && (
           <section className="mt-5 px-10">
             <h2 className="text-[19px] font-extrabold text-ink" style={{ borderLeft: `4px solid ${accent}`, paddingLeft: 10 }}>
-              what we explored
+              <span className="mr-1.5" aria-hidden>{SECTION_ICON.explored}</span>what we explored
             </h2>
             <div className="mt-3 space-y-2.5">
               {conceptGroups.map(({ mechanism, builds, experiments }) => {
@@ -181,13 +193,13 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
                     <p className="mt-0.5 text-[12.5px] leading-snug text-ink-muted">{s.what}</p>
                     {builds.length > 0 && (
                       <p className="mt-2 text-[12.5px] text-ink">
-                        <span className="font-bold">the models we built:</span>{" "}
+                        <span className="font-bold">🛠 the models we built:</span>{" "}
                         {joinNice(builds.map((b) => b.parentLabel))}.
                       </p>
                     )}
                     {experiments.length > 0 && (
                       <div className="mt-1.5">
-                        <p className="text-[12px] font-bold text-ink">the experiments we ran:</p>
+                        <p className="text-[12px] font-bold text-ink">🧪 the experiments we ran:</p>
                         <ul className="mt-0.5 space-y-0.5">
                           {experiments.map((e) => (
                             <li key={e.id} className="flex items-start gap-1.5 text-[12px] leading-snug text-ink-muted">
@@ -209,7 +221,7 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
         {isArt && pickedArtworks.length > 0 && (
           <section className="mt-5 px-10">
             <h2 className="text-[19px] font-extrabold text-ink" style={{ borderLeft: `4px solid ${accent}`, paddingLeft: 10 }}>
-              what we made
+              <span className="mr-1.5" aria-hidden>{SECTION_ICON.made}</span>what we made
             </h2>
             <div className="mt-3 grid grid-cols-3 gap-2">
               {pickedArtworks.slice(0, 9).map((label, i) => (
@@ -226,7 +238,7 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
         {segmentGroups && segmentGroups.length > 0 && (
           <section className="mt-5 px-10">
             <h2 className="text-[19px] font-extrabold text-ink" style={{ borderLeft: `4px solid ${accent}`, paddingLeft: 10 }}>
-              what we did in class
+              <span className="mr-1.5" aria-hidden>{SECTION_ICON.inClass}</span>what we did in class
             </h2>
             <div className="mt-3 space-y-2.5">
               {segmentGroups.map(({ segment, segmentName, items }) => {
@@ -263,7 +275,7 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
         {/* skills — each with its own plain meaning */}
         {skillsBuilt.length > 0 && (
           <section className="px-10 pt-6">
-            <h2 className="text-[22px] font-extrabold text-ink">what the children got better at</h2>
+            <h2 className="text-[22px] font-extrabold text-ink"><span className="mr-1.5" aria-hidden>{SECTION_ICON.skills}</span>what the children got better at</h2>
             <Squiggle color={accent} />
             <div className="mt-3 space-y-2">
               {skillsBuilt.map(({ skill }) => {
@@ -389,10 +401,10 @@ function groupByMechanism(items: NewsletterItem[]) {
 }
 
 const NEXT_GROUP_LABEL: Record<ItemCategory, string> = {
-  models: "models to build",
-  experiments: "experiments to run",
-  artworks: "artworks to make",
-  games: "games to play",
+  models: "🛠 models to build",
+  experiments: "🧪 experiments to run",
+  artworks: "🎨 artworks to make",
+  games: "🎲 games to play",
 };
 const NEXT_GROUP_ORDER: ItemCategory[] = ["models", "experiments", "artworks", "games"];
 

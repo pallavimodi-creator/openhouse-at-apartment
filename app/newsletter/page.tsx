@@ -20,10 +20,40 @@ import { getBuilding } from "@/lib/teacher-state";
 import {
   NEWSLETTER_PROGRAMME_SLUGS,
   getNewsletterProgramme,
+  type NewsletterItem,
   type NewsletterProgramme,
 } from "@/lib/newsletter-data";
+import { SEGMENT_PHRASING } from "@/lib/newsletter-concepts";
 import { NewsletterDocument } from "@/components/NewsletterDocument";
 import { submitNewsletter } from "@/lib/newsletter-submissions";
+
+/* ─── editor display helpers ───────────────────────────────── */
+
+/** icon per activity type — echoes the parent doc's section icons. */
+const CAT_ICON: Record<string, string> = {
+  models: "🛠", experiments: "🧪", artworks: "🎨", games: "🎲",
+};
+/** category → what a photo should show (never faces). */
+const PHOTO_NOUN: Record<string, string> = {
+  stem: "the models & builds",
+  art: "the artworks",
+  language: "props & the stage",
+};
+/** stable day-order for grouping games by segment of the class. */
+const SEGMENT_ORDER = [
+  "roll-call", "roll-rhyme", "art-gym", "playground",
+  "art-games", "wordsmiths", "showtime", "sign-off",
+];
+function segmentGroupsOf(items: NewsletterItem[]) {
+  const g = new Map<string, { name: string; items: NewsletterItem[] }>();
+  for (const it of items) {
+    if (!g.has(it.segment)) g.set(it.segment, { name: it.segmentName, items: [] });
+    g.get(it.segment)!.items.push(it);
+  }
+  const known = SEGMENT_ORDER.filter((s) => g.has(s));
+  const rest = [...g.keys()].filter((s) => !SEGMENT_ORDER.includes(s));
+  return [...known, ...rest].map((s) => ({ segment: s, name: g.get(s)!.name, items: g.get(s)!.items }));
+}
 
 /* ─── draft state ──────────────────────────────────────────── */
 
@@ -305,12 +335,84 @@ function Editor({
     });
   }
 
+  // one shared row renderer for the "done" list …
+  const doneList = (items: NewsletterItem[]) => (
+    <ul className="mt-1.5 divide-y divide-ink/5 rounded-card bg-ink/[0.03]">
+      {items.map((item) => {
+        const checked = selectedSet.has(item.id);
+        const lockedByNext = nextSet.has(item.id);
+        return (
+          <li key={item.id}>
+            <label className={cn("flex items-start gap-2.5 px-3 py-2 text-[12.5px] leading-snug",
+              lockedByNext ? "cursor-not-allowed opacity-40" : "cursor-pointer hover:bg-ink/[0.03]")}>
+              <input type="checkbox" checked={checked} disabled={lockedByNext}
+                onChange={() => onToggle(item.id)} className="mt-0.5 h-4 w-4 shrink-0 accent-brand-orange" />
+              <span className="min-w-0 flex-1">
+                <span className={cn("font-semibold text-ink", !checked && "opacity-90")}>{item.label}</span>
+                {item.subtitle && <span className="ml-1.5 text-[11.5px] text-ink-muted">— {item.subtitle}</span>}
+                {lockedByNext && <span className="ml-1 text-[10px] font-bold text-brand-orange">(in coming up)</span>}
+              </span>
+            </label>
+          </li>
+        );
+      })}
+    </ul>
+  );
+
+  // … and the tighter "coming up" list.
+  const nextList = (items: NewsletterItem[]) => (
+    <ul className="mt-1 divide-y divide-ink/5 rounded-md bg-brand-white ring-1 ring-ink/5">
+      {items.map((item) => {
+        const checked = nextSet.has(item.id);
+        const lockedByDone = selectedSet.has(item.id);
+        return (
+          <li key={item.id}>
+            <label className={cn("flex items-start gap-2.5 px-3 py-1.5 text-[12px] leading-snug",
+              lockedByDone ? "cursor-not-allowed opacity-40" : "cursor-pointer hover:bg-ink/[0.03]")}>
+              <input type="checkbox" checked={checked} disabled={lockedByDone}
+                onChange={() => onToggleNext(item.id)} className="mt-0.5 h-4 w-4 shrink-0 accent-brand-orange" />
+              <span className="min-w-0 flex-1 font-semibold text-ink">
+                {item.label}
+                {lockedByDone && <span className="ml-1 text-[10px] font-bold text-brand-orange">(done)</span>}
+              </span>
+            </label>
+          </li>
+        );
+      })}
+    </ul>
+  );
+
+  // games get split by segment of the class (roll call / playground / …);
+  // every other category is a single flat list.
+  const renderCategory = (
+    cat: NewsletterProgramme["categories"][number],
+    render: (items: NewsletterItem[]) => React.ReactNode,
+  ) => {
+    const groups = cat.id === "games" ? segmentGroupsOf(cat.items) : null;
+    if (groups && groups.length > 1) {
+      return (
+        <div className="mt-1.5 space-y-2.5">
+          {groups.map((grp) => (
+            <div key={grp.segment}>
+              <p className="mb-1 flex items-center gap-1 text-[10.5px] font-bold tracking-normal text-ink-muted">
+                <span aria-hidden>{SEGMENT_PHRASING[grp.segment]?.icon ?? "✨"}</span>
+                {grp.name.toLowerCase()}
+              </p>
+              {render(grp.items)}
+            </div>
+          ))}
+        </div>
+      );
+    }
+    return render(cat.items);
+  };
+
   return (
     <div className="rounded-card bg-brand-white p-4 shadow-card ring-1 ring-ink/5 md:p-6">
       <p className="text-[10px] font-bold tracking-normal text-brand-orange">fill in</p>
       <h2 className="mt-1 text-[20px] font-extrabold leading-tight text-ink">what happened in the classes?</h2>
       <p className="mt-1 text-[12px] leading-relaxed text-ink-muted">
-        tick what the children did. the newsletter writes itself. an item can be in <b>done</b> or <b>coming up</b> — not both. when it&apos;s ready, <b>submit to openhouse</b>.
+        tick what the children did — the newsletter writes itself. each item is either <b>done</b> or <b>coming up</b>.
       </p>
 
       {/* building */}
@@ -325,9 +427,9 @@ function Editor({
 
       {/* photos */}
       <div className="mt-5">
-        <p className="text-[11.5px] font-bold tracking-normal text-ink-subtle">photos (up to 3)</p>
+        <p className="text-[11.5px] font-bold tracking-normal text-ink-subtle">📷 photos (up to 3)</p>
         <p className="mt-0.5 text-[11px] font-semibold text-brand-orange">
-          photos of models &amp; projects only — please do not add photos of children&apos;s faces.
+          photos of {PHOTO_NOUN[programme.categoryLabel] ?? "the work"} only — please, no children&apos;s faces.
         </p>
         <div className="mt-2 grid grid-cols-3 gap-2">
           {draft.photos.map((src, i) => (
@@ -352,27 +454,10 @@ function Editor({
       {/* what happened */}
       {programme.categories.map((cat) => (
         <div key={cat.id} className="mt-5">
-          <p className="text-[11.5px] font-bold tracking-normal text-ink-subtle">{cat.label}</p>
-          <ul className="mt-1.5 divide-y divide-ink/5 rounded-card bg-ink/[0.03]">
-            {cat.items.map((item) => {
-              const checked = selectedSet.has(item.id);
-              const lockedByNext = nextSet.has(item.id);
-              return (
-                <li key={item.id}>
-                  <label className={cn("flex items-start gap-2.5 px-3 py-2 text-[12.5px] leading-snug",
-                    lockedByNext ? "cursor-not-allowed opacity-40" : "cursor-pointer hover:bg-ink/[0.03]")}>
-                    <input type="checkbox" checked={checked} disabled={lockedByNext}
-                      onChange={() => onToggle(item.id)} className="mt-0.5 h-4 w-4 shrink-0 accent-brand-orange" />
-                    <span className="min-w-0 flex-1">
-                      <span className={cn("font-semibold text-ink", !checked && "opacity-90")}>{item.label}</span>
-                      {item.subtitle && <span className="ml-1.5 text-[11.5px] text-ink-muted">— {item.subtitle}</span>}
-                      {lockedByNext && <span className="ml-1 text-[10px] font-bold text-brand-orange">(in coming up)</span>}
-                    </span>
-                  </label>
-                </li>
-              );
-            })}
-          </ul>
+          <p className="text-[11.5px] font-bold tracking-normal text-ink-subtle">
+            <span className="mr-1" aria-hidden>{CAT_ICON[cat.id] ?? "•"}</span>{cat.label}
+          </p>
+          {renderCategory(cat, doneList)}
         </div>
       ))}
 
@@ -422,26 +507,10 @@ function Editor({
         <p className="mt-0.5 text-[11px] italic text-ink-muted">the next things you&apos;ll do in the coming classes.</p>
         {programme.categories.map((cat) => (
           <div key={cat.id} className="mt-3">
-            <p className="text-[10.5px] font-bold tracking-normal text-ink-subtle">next · {cat.label}</p>
-            <ul className="mt-1 divide-y divide-ink/5 rounded-md bg-brand-white ring-1 ring-ink/5">
-              {cat.items.map((item) => {
-                const checked = nextSet.has(item.id);
-                const lockedByDone = selectedSet.has(item.id);
-                return (
-                  <li key={item.id}>
-                    <label className={cn("flex items-start gap-2.5 px-3 py-1.5 text-[12px] leading-snug",
-                      lockedByDone ? "cursor-not-allowed opacity-40" : "cursor-pointer hover:bg-ink/[0.03]")}>
-                      <input type="checkbox" checked={checked} disabled={lockedByDone}
-                        onChange={() => onToggleNext(item.id)} className="mt-0.5 h-4 w-4 shrink-0 accent-brand-orange" />
-                      <span className="min-w-0 flex-1 font-semibold text-ink">
-                        {item.label}
-                        {lockedByDone && <span className="ml-1 text-[10px] font-bold text-brand-orange">(done)</span>}
-                      </span>
-                    </label>
-                  </li>
-                );
-              })}
-            </ul>
+            <p className="text-[10.5px] font-bold tracking-normal text-ink-subtle">
+              <span className="mr-1" aria-hidden>{CAT_ICON[cat.id] ?? "•"}</span>next · {cat.label}
+            </p>
+            {renderCategory(cat, nextList)}
           </div>
         ))}
       </div>
