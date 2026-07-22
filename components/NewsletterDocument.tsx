@@ -6,12 +6,18 @@
  * Pure render from primitives, so both the teacher's live preview and
  * the admin's download page render the identical document.
  *
+ * Design language (openhouse): lowercase throughout, coral + cream, the
+ * category accent used sparingly (thin rules, soft icon chips — never big
+ * colour fills), one consistent line-icon system, and the handwritten
+ * Caveat reserved for the two personal moments — the greeting and the
+ * sign-off. Everything else earns hierarchy through type + whitespace.
+ *
  * Content rules baked in (per operator):
  *  - addressed to the BUILDING ("dear parents at raheja")
  *  - concept-grouped for robotics; segment-grouped for public speaking;
  *    image-first artworks grid for art
  *  - selections are named explicitly and simply — what was ticked shows
- *  - signed "from openhouse" — no educator name
+ *  - signed "the openhouse team" — no educator name
  *  - photos are models/projects only (the upload UI enforces this); the
  *    experience-book block is a neutral graphic (no children's faces)
  */
@@ -34,7 +40,11 @@ import {
   SEGMENT_PHRASING,
   type Mechanism,
 } from "@/lib/newsletter-concepts";
-import { ArrowRight, Camera } from "lucide-react";
+import {
+  ArrowUpRight, Camera, Compass, Palette, Drama, Sprout, Wrench,
+  FlaskConical, Dices, Mic, Sun, Waves, PenTool, Scale, ArrowUpDown,
+  Cog, Disc3, Sparkles, type LucideIcon,
+} from "lucide-react";
 
 export interface NewsletterDocumentProps {
   programmeSlug: string;
@@ -47,6 +57,11 @@ export interface NewsletterDocumentProps {
   /** art only — extra artworks the educator typed that aren't in the list */
   customArtworks?: string[];
 }
+
+const CORAL = "#F25E35";
+const INK = "#2C2B28";
+const HAIRLINE = "rgba(44,43,40,0.10)";
+const CREAM = "#FBF6EE";
 
 /** category → mascot image (the operator-supplied openhouse mascots). */
 const MASCOT: Record<string, string> = {
@@ -62,8 +77,17 @@ const PHOTO_HINTS: Record<string, string[]> = {
   language: ["on stage", "a prop", "the setup"],
 };
 
-/** heading icon per programme section. */
-const SECTION_ICON = { explored: "🔍", made: "🎨", inClass: "🎪", skills: "🌱" };
+/* one consistent line-icon system ------------------------------------ */
+const MECHANISM_ICON: Record<Mechanism, LucideIcon> = {
+  lever: Scale, pulley: ArrowUpDown, gear: Cog, "wheel-axle": Disc3,
+};
+const SEGMENT_ICON: Record<string, LucideIcon> = {
+  "roll-call": Sun, playground: Dices, showtime: Mic, "sign-off": Waves,
+  "art-gym": PenTool, "art-games": Dices,
+};
+const TYPE_ICON: Record<ItemCategory, LucideIcon> = {
+  models: Wrench, experiments: FlaskConical, artworks: Palette, games: Dices,
+};
 
 export function NewsletterDocument(props: NewsletterDocumentProps) {
   const programme = getNewsletterProgramme(props.programmeSlug);
@@ -129,85 +153,72 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
   return (
     <div className="parent-doc mx-auto w-full max-w-[794px] space-y-6 md:space-y-8 print:!space-y-0">
       {/* ─── PAGE 1 ─── */}
-      <article className="page bg-brand-white text-ink shadow-card ring-1 ring-ink/5 print:!shadow-none print:!ring-0"
+      <article className="page flex flex-col bg-brand-white text-ink shadow-card ring-1 ring-ink/5 print:!shadow-none print:!ring-0"
         style={{ minHeight: "1123px", overflow: "hidden" }}>
-        <CoralRibbon />
+        <Masthead accent={accent} />
 
-        <div className="flex items-start justify-between gap-4 px-10 pt-5">
+        {/* greeting */}
+        <div className="flex items-start justify-between gap-4 px-11 pt-7">
           <div className="min-w-0 flex-1">
-            {rangeLabel && (
-              <p className="font-hand text-[20px] leading-none" style={{ color: "#F25E35" }}>{rangeLabel}</p>
-            )}
-            <p className="mt-1 text-[11px] font-extrabold tracking-normal text-ink-subtle">
+            <p className="text-[9.5px] font-bold uppercase tracking-[0.2em] text-ink-subtle">
               newsletter · {programme.title} · {programme.ageLabel}
             </p>
-            <h1 className="mt-2 font-hand text-[38px] font-bold leading-none" style={{ letterSpacing: 0 }}>
+            <h1 className="mt-2.5 font-hand text-[36px] font-bold leading-[1.04] text-ink">
               dear parents at {building},
             </h1>
-            <Squiggle color={accent} />
+            <div className="mt-2.5 h-[3px] w-10 rounded-full" style={{ background: accent }} />
+            <p className="mt-3 max-w-[46ch] text-[12.5px] leading-relaxed text-ink-muted">
+              {rangeLabel ? `${rangeLabel} — ` : ""}here&apos;s a look at what the children explored this month, and what&apos;s coming next.
+            </p>
           </div>
           {mascot && (
             /* eslint-disable-next-line @next/next/no-img-element */
-            <img src={mascot} alt="" className="h-24 w-24 shrink-0 object-contain"
-              style={{ filter: "drop-shadow(0 6px 9px rgba(0,0,0,.10))" }} />
+            <img src={mascot} alt="" className="h-[88px] w-[88px] shrink-0 object-contain"
+              style={{ filter: "drop-shadow(0 6px 10px rgba(44,43,40,.10))" }} />
           )}
         </div>
 
-        {/* photo strip — models / projects only */}
-        <div className="mt-4 grid grid-cols-3 gap-2 px-10">
-          {(heroImages.length > 0 ? heroImages : [null, null, null]).map((src, i) => (
-            <div key={i} className="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-card text-center ring-1 ring-ink/10" style={{ background: "#F9F2E8" }}>
-              {src ? (
-                /* eslint-disable-next-line @next/next/no-img-element */
-                <img src={src} alt="" className="h-full w-full object-contain" />
-              ) : (
-                <span className="flex flex-col items-center gap-1 px-2 text-[10.5px] font-semibold leading-tight" style={{ color: "#8a8177" }}>
-                  <Camera className="h-4 w-4" strokeWidth={2} style={{ opacity: 0.5 }} />
-                  {photoHints[i] ?? "a photo"}
-                </span>
-              )}
-            </div>
-          ))}
-        </div>
-        <p className="mt-1.5 px-10 font-hand text-[16px]" style={{ color: "#6b6457" }}>
-          a peek at what the children made this month ✎
-        </p>
+        {/* photo feature — models / projects only, adapts to how many there are */}
+        <PhotoFeature images={heroImages} hints={photoHints} />
 
         {/* ROBOTICS — concept groups, with the actual experiments named simply */}
         {conceptGroups && conceptGroups.length > 0 && (
-          <section className="mt-5 px-10">
-            <h2 className="text-[19px] font-extrabold text-ink" style={{ borderLeft: `4px solid ${accent}`, paddingLeft: 10 }}>
-              <span className="mr-1.5" aria-hidden>{SECTION_ICON.explored}</span>what we explored
-            </h2>
-            <div className="mt-3 space-y-2.5">
+          <section className="mt-7 px-11">
+            <SectionHead icon={Compass} eyebrow="hands-on" title="what we explored" accent={accent} />
+            <div className="space-y-2.5">
               {conceptGroups.map(({ mechanism, builds, experiments }) => {
                 const s = MECHANISM_STORY[mechanism];
                 return (
-                  <div key={mechanism} className="rounded-card p-3.5" style={{ background: `${accent}14`, border: `1px solid ${accent}55` }}>
-                    <p className="text-[10px] font-extrabold tracking-normal" style={{ color: "#F25E35" }}>
-                      the concept
-                    </p>
-                    <p className="text-[15px] font-extrabold text-ink">
-                      <span className="mr-1.5" aria-hidden>{s.icon}</span>{s.label}
-                    </p>
-                    <p className="mt-0.5 text-[12.5px] leading-snug text-ink-muted">{s.what}</p>
+                  <div key={mechanism} className="rounded-xl bg-white p-4 ring-1 ring-ink/[0.09]"
+                    style={{ boxShadow: "0 1px 2px rgba(44,43,40,0.04)" }}>
+                    <div className="flex items-center gap-2.5">
+                      <IconChip icon={MECHANISM_ICON[mechanism] ?? Cog} accent={accent} size={32} />
+                      <div className="min-w-0">
+                        <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-ink-subtle">the concept</p>
+                        <p className="text-[16px] font-extrabold leading-none text-ink">{s.label}</p>
+                      </div>
+                    </div>
+                    <p className="mt-2.5 text-[12px] leading-relaxed text-ink-muted">{s.what}</p>
                     {builds.length > 0 && (
-                      <p className="mt-2 text-[12.5px] text-ink">
-                        <span className="font-bold">🛠 the models we built:</span>{" "}
-                        {joinNice(builds.map((b) => b.parentLabel))}.
+                      <p className="mt-3 flex items-start gap-2 text-[12px] leading-snug text-ink">
+                        <Wrench className="mt-[3px] h-3.5 w-3.5 shrink-0 text-ink-muted" strokeWidth={2.2} />
+                        <span><span className="font-bold">models we built</span> — {joinNice(builds.map((b) => b.parentLabel))}.</span>
                       </p>
                     )}
                     {experiments.length > 0 && (
-                      <div className="mt-1.5">
-                        <p className="text-[12px] font-bold text-ink">🧪 the experiments we ran:</p>
-                        <ul className="mt-0.5 space-y-0.5">
-                          {experiments.map((e) => (
-                            <li key={e.id} className="flex items-start gap-1.5 text-[12px] leading-snug text-ink-muted">
-                              <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full" style={{ background: accent }} />
-                              <span>{e.parentLabel}</span>
-                            </li>
-                          ))}
-                        </ul>
+                      <div className="mt-2 flex items-start gap-2">
+                        <FlaskConical className="mt-[3px] h-3.5 w-3.5 shrink-0 text-ink-muted" strokeWidth={2.2} />
+                        <div className="min-w-0">
+                          <p className="text-[12px] font-bold text-ink">experiments we ran</p>
+                          <ul className="mt-1 space-y-1">
+                            {experiments.map((e) => (
+                              <li key={e.id} className="flex items-start gap-2 text-[11.5px] leading-snug text-ink-muted">
+                                <span className="mt-[6px] h-1 w-1 shrink-0 rounded-full" style={{ background: accent }} />
+                                <span>{e.parentLabel}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
                       </div>
                     )}
                   </div>
@@ -219,15 +230,15 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
 
         {/* ART — artworks (listed + educator's custom additions) */}
         {isArt && pickedArtworks.length > 0 && (
-          <section className="mt-5 px-10">
-            <h2 className="text-[19px] font-extrabold text-ink" style={{ borderLeft: `4px solid ${accent}`, paddingLeft: 10 }}>
-              <span className="mr-1.5" aria-hidden>{SECTION_ICON.made}</span>what we made
-            </h2>
-            <div className="mt-3 grid grid-cols-3 gap-2">
+          <section className="mt-7 px-11">
+            <SectionHead icon={Palette} eyebrow="the studio" title="what we made" accent={accent} />
+            <div className="grid grid-cols-3 gap-2.5">
               {pickedArtworks.slice(0, 9).map((label, i) => (
-                <div key={`${label}-${i}`} className="overflow-hidden rounded-card ring-1 ring-ink/5" style={{ background: "#F9F2E8" }}>
-                  <div className="flex aspect-square items-center justify-center text-[22px]" aria-hidden>🎨</div>
-                  <p className="px-2 py-1 text-center text-[10.5px] font-bold leading-tight text-ink">{label}</p>
+                <div key={`${label}-${i}`} className="overflow-hidden rounded-xl bg-white ring-1 ring-ink/[0.09]">
+                  <div className="flex aspect-square items-center justify-center" style={{ background: `${accent}22` }}>
+                    <Palette className="h-6 w-6" strokeWidth={1.7} style={{ color: INK, opacity: 0.65 }} />
+                  </div>
+                  <p className="px-2 py-1.5 text-center text-[10.5px] font-bold leading-tight text-ink">{label}</p>
                 </div>
               ))}
             </div>
@@ -236,21 +247,20 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
 
         {/* GAMES BY SEGMENT — public speaking + art games */}
         {segmentGroups && segmentGroups.length > 0 && (
-          <section className="mt-5 px-10">
-            <h2 className="text-[19px] font-extrabold text-ink" style={{ borderLeft: `4px solid ${accent}`, paddingLeft: 10 }}>
-              <span className="mr-1.5" aria-hidden>{SECTION_ICON.inClass}</span>what we did in class
-            </h2>
-            <div className="mt-3 space-y-2.5">
+          <section className="mt-7 px-11">
+            <SectionHead icon={Drama} eyebrow="in the room" title="what we did in class" accent={accent} />
+            <div className="space-y-2.5">
               {segmentGroups.map(({ segment, segmentName, items }) => {
-                const phrasing = SEGMENT_PHRASING[segment] ?? { icon: "✨", lead: "we did" };
+                const phrasing = SEGMENT_PHRASING[segment] ?? { icon: "", lead: "we did" };
                 return (
-                  <div key={segment} className="rounded-card p-3.5" style={{ background: `${accent}14`, border: `1px solid ${accent}55` }}>
-                    <p className="text-[14.5px] font-extrabold text-ink">
-                      <span className="mr-1.5" aria-hidden>{phrasing.icon}</span>{segmentName.toLowerCase()}
-                    </p>
-                    <p className="mt-1 text-[12.5px] text-ink">
-                      {phrasing.lead} <span className="font-bold">{joinNice(items.map((i) => i.parentLabel))}</span>.
-                    </p>
+                  <div key={segment} className="flex items-start gap-3 rounded-xl bg-white p-3.5 ring-1 ring-ink/[0.09]">
+                    <IconChip icon={SEGMENT_ICON[segment] ?? Sparkles} accent={accent} size={30} />
+                    <div className="min-w-0">
+                      <p className="text-[14px] font-extrabold leading-none text-ink">{segmentName.toLowerCase()}</p>
+                      <p className="mt-1.5 text-[12px] leading-relaxed text-ink-muted">
+                        {phrasing.lead} <span className="font-semibold text-ink">{joinNice(items.map((i) => i.parentLabel))}</span>.
+                      </p>
+                    </div>
                   </div>
                 );
               })}
@@ -259,7 +269,7 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
         )}
 
         {!hasContent && (
-          <p className="mx-10 mt-6 rounded-card bg-ink/[0.03] p-6 text-center text-[13px] italic text-ink-muted">
+          <p className="mx-11 mt-7 rounded-xl bg-ink/[0.03] p-6 text-center text-[13px] italic text-ink-muted ring-1 ring-ink/[0.06]">
             tick what the children did — it appears here.
           </p>
         )}
@@ -268,24 +278,27 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
       </article>
 
       {/* ─── PAGE 2 ─── */}
-      <article className="page bg-brand-white text-ink shadow-card ring-1 ring-ink/5 print:!shadow-none print:!ring-0 print:break-before-page"
+      <article className="page flex flex-col bg-brand-white text-ink shadow-card ring-1 ring-ink/5 print:!shadow-none print:!ring-0 print:break-before-page"
         style={{ minHeight: "1123px", overflow: "hidden" }}>
-        <CoralRibbon />
+        <Masthead accent={accent} />
 
-        {/* skills — each with its own plain meaning */}
+        {/* skills — numbered, each with its own plain meaning */}
         {skillsBuilt.length > 0 && (
-          <section className="px-10 pt-6">
-            <h2 className="text-[22px] font-extrabold text-ink"><span className="mr-1.5" aria-hidden>{SECTION_ICON.skills}</span>what the children got better at</h2>
-            <Squiggle color={accent} />
-            <div className="mt-3 space-y-2">
-              {skillsBuilt.map(({ skill }) => {
+          <section className="px-11 pt-7">
+            <SectionHead icon={Sprout} eyebrow="growth" title="what the children got better at" accent={accent} />
+            <div className="divide-y divide-ink/[0.08]">
+              {skillsBuilt.map(({ skill }, idx) => {
                 const copy = parentSkillCopy(skill.id, category);
                 return (
-                  <div key={skill.id} className="rounded-card px-3.5 py-2.5" style={{ background: `${accent}14` }}>
-                    <p className="text-[13.5px] font-extrabold text-ink">
-                      <span className="mr-1.5" aria-hidden>{copy.icon}</span>{copy.label}
-                    </p>
-                    <p className="mt-0.5 text-[12.5px] leading-snug text-ink-muted">{copy.body}</p>
+                  <div key={skill.id} className="flex items-start gap-3 py-3">
+                    <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[10px] font-extrabold"
+                      style={{ background: `${accent}2e`, color: INK }}>
+                      {String(idx + 1).padStart(2, "0")}
+                    </span>
+                    <div className="min-w-0">
+                      <p className="text-[13.5px] font-extrabold leading-tight text-ink">{copy.label}</p>
+                      <p className="mt-0.5 text-[12px] leading-relaxed text-ink-muted">{copy.body}</p>
+                    </div>
                   </div>
                 );
               })}
@@ -293,68 +306,74 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
           </section>
         )}
 
-        {/* engineering foundation — one line */}
+        {/* engineering / craft foundation — one line, quiet accent rule */}
         {engineering && (
-          <section className="mx-10 mt-6 rounded-card p-4" style={{ background: `${accent}12` }}>
-            <p className="text-[11px] font-extrabold tracking-normal" style={{ color: "#F25E35" }}>{engineering.headline}</p>
-            <p className="mt-1 text-[14px] font-extrabold leading-snug text-ink">
-              {isRobotics
-                ? "mechanics — levers, pulleys, gears, wheels — are the simple machines every bigger machine is built from. this is where engineering begins."
-                : engineering.body.split(". ")[0] + "."}
-            </p>
+          <section className="mx-11 mt-7">
+            <div className="rounded-xl px-4 py-3.5" style={{ background: CREAM, borderLeft: `3px solid ${accent}` }}>
+              <p className="text-[9px] font-bold uppercase tracking-[0.18em]" style={{ color: CORAL }}>{engineering.headline}</p>
+              <p className="mt-1.5 text-[13px] font-bold leading-snug text-ink">
+                {isRobotics
+                  ? "mechanics — levers, pulleys, gears, wheels — are the simple machines every bigger machine is built from. this is where engineering begins."
+                  : engineering.body.split(". ")[0] + "."}
+              </p>
+            </div>
           </section>
         )}
 
         {/* coming up — grouped by type (models / experiments / games / artworks) */}
         {nextItems.length > 0 && (
-          <section className="mt-6 px-10">
-            <h3 className="font-hand text-[24px] leading-none text-ink">coming up next ✎</h3>
-            <div className="mt-3 space-y-3">
-              {groupByCategory(nextItems).map(({ category, label, items }) => (
-                <div key={category}>
-                  <p className="text-[11px] font-extrabold tracking-normal" style={{ color: "#F25E35" }}>
-                    {label}
-                  </p>
-                  <ul className="mt-1 space-y-1">
-                    {items.map((i) => (
-                      <li key={i.id} className="flex items-start gap-2 text-[13px] text-ink">
-                        <ArrowRight className="mt-1 h-3 w-3 shrink-0" style={{ color: accent }} />
-                        <span className="font-semibold">{i.parentLabel}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+          <section className="mt-7 px-11">
+            <SectionHead icon={ArrowUpRight} eyebrow="next classes" title="coming up next" accent={accent} />
+            <div className="space-y-3.5">
+              {groupByCategory(nextItems).map(({ category: cat, label, items }) => {
+                const Icon = TYPE_ICON[cat] ?? ArrowUpRight;
+                return (
+                  <div key={cat}>
+                    <p className="flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-[0.1em] text-ink">
+                      <Icon className="h-3.5 w-3.5 text-ink-muted" strokeWidth={2.2} /> {label}
+                    </p>
+                    <ul className="mt-1.5 space-y-1">
+                      {items.map((i) => (
+                        <li key={i.id} className="flex items-start gap-2 text-[12.5px] text-ink-muted">
+                          <span className="mt-[6px] h-1 w-1 shrink-0 rounded-full" style={{ background: accent }} />
+                          <span className="font-semibold text-ink">{i.parentLabel}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              })}
             </div>
           </section>
         )}
 
         {/* experience book — coming soon, neutral graphic (no faces) */}
-        <section className="mt-6 px-10">
-          <div className="flex items-center gap-4 overflow-hidden rounded-card p-4 ring-1 ring-ink/10" style={{ background: `${accent}12` }}>
-            <div className="flex h-24 w-[68px] shrink-0 items-center justify-center" aria-hidden>
+        <section className="mt-7 px-11">
+          <div className="flex items-center gap-4 rounded-xl p-4 ring-1 ring-ink/[0.09]" style={{ background: CREAM }}>
+            <div className="flex h-24 w-[64px] shrink-0 items-center justify-center" aria-hidden>
               <BookGraphic accent={accent} />
             </div>
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-2">
-                <p className="text-[11px] font-extrabold tracking-normal" style={{ color: "#F25E35" }}>coming soon</p>
-                <span className="rounded-chip bg-brand-orange/15 px-2 py-0.5 text-[9px] font-extrabold text-brand-orange">the experience book</span>
+                <p className="text-[9px] font-bold uppercase tracking-[0.18em]" style={{ color: CORAL }}>coming soon</p>
+                <span className="rounded-chip bg-brand-orange/12 px-2 py-0.5 text-[9px] font-extrabold text-brand-orange">the experience book</span>
               </div>
-              <p className="mt-1 font-hand text-[24px] leading-none text-ink">a book of their own — on its way!</p>
-              <p className="mt-2 text-[12.5px] leading-relaxed text-ink">
+              <p className="mt-1.5 text-[16px] font-extrabold leading-tight text-ink">a book of their own — on its way.</p>
+              <p className="mt-1 text-[12px] leading-relaxed text-ink-muted">
                 a book that travels home and back, holding everything the children draw, build, and discover.
               </p>
             </div>
           </div>
         </section>
 
-        {/* sign-off — from openhouse, no name */}
-        <section className="mt-8 px-10">
-          <p className="text-[13px] leading-relaxed text-ink-muted">
+        {/* sign-off — the openhouse team, no name */}
+        <section className="mt-8 px-11">
+          <div className="h-px w-full" style={{ background: HAIRLINE }} />
+          <p className="mt-5 max-w-[52ch] text-[12.5px] leading-relaxed text-ink-muted">
             ask the children to show you one thing they built or figured out this month — in their own words. that&apos;s the best review of all.
           </p>
           <p className="mt-4 font-hand text-[26px] leading-none text-ink">with love,</p>
-          <p className="mt-1 font-hand text-[26px] leading-none" style={{ color: "#F25E35" }}>the openhouse team</p>
+          <p className="mt-1 font-hand text-[26px] leading-none" style={{ color: CORAL }}>the openhouse team</p>
         </section>
 
         <PageFooter building={building} pageIndex={2} />
@@ -369,6 +388,64 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
         }
       `}</style>
     </div>
+  );
+}
+
+/* ─── building blocks ──────────────────────────────────────── */
+
+/** A soft accent circle holding one line icon — the whole doc's icon language. */
+function IconChip({ icon: Icon, accent, size = 30 }: { icon: LucideIcon; accent: string; size?: number }) {
+  const inner = Math.round(size * 0.48);
+  return (
+    <span className="inline-flex shrink-0 items-center justify-center rounded-full"
+      style={{ width: size, height: size, background: `${accent}2e` }}>
+      <Icon style={{ width: inner, height: inner, color: INK }} strokeWidth={2.1} />
+    </span>
+  );
+}
+
+/** Section header: icon chip + eyebrow + title, closed by a hairline rule. */
+function SectionHead({ icon, eyebrow, title, accent }: { icon: LucideIcon; eyebrow?: string; title: string; accent: string }) {
+  return (
+    <div className="mb-3.5">
+      <div className="flex items-center gap-2.5">
+        <IconChip icon={icon} accent={accent} size={30} />
+        <div className="min-w-0">
+          {eyebrow && <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-ink-subtle">{eyebrow}</p>}
+          <h2 className="text-[18px] font-extrabold leading-tight text-ink">{title}</h2>
+        </div>
+      </div>
+      <div className="mt-2.5 h-px w-full" style={{ background: HAIRLINE }} />
+    </div>
+  );
+}
+
+/** Photo feature that adapts to 0/1/2/3+ images — no lone lopsided tile. */
+function PhotoFeature({ images, hints }: { images: string[]; hints: string[] }) {
+  const cells: (string | null)[] = images.length > 0 ? images : [null, null, null];
+  const n = cells.length;
+  const cols = n <= 1 ? "grid-cols-1" : n === 2 ? "grid-cols-2" : "grid-cols-3";
+  const aspect = images.length === 1 ? "16 / 9" : "4 / 3";
+  return (
+    <figure className="mt-6 px-11">
+      <div className={`grid ${cols} gap-2.5`}>
+        {cells.map((src, i) => (
+          <div key={i} className="flex items-center justify-center overflow-hidden rounded-xl ring-1 ring-ink/[0.10]"
+            style={{ aspectRatio: aspect, background: "#F7F0E4" }}>
+            {src ? (
+              /* eslint-disable-next-line @next/next/no-img-element */
+              <img src={src} alt="" className="h-full w-full object-contain" />
+            ) : (
+              <span className="flex flex-col items-center gap-1.5 px-2 text-[10.5px] font-semibold leading-tight" style={{ color: "#8a8177" }}>
+                <Camera className="h-4 w-4" strokeWidth={2} style={{ opacity: 0.5 }} />
+                {hints[i] ?? "a photo"}
+              </span>
+            )}
+          </div>
+        ))}
+      </div>
+      <figcaption className="mt-2 text-[11px] italic text-ink-subtle">a peek at what the children made this month.</figcaption>
+    </figure>
   );
 }
 
@@ -401,10 +478,10 @@ function groupByMechanism(items: NewsletterItem[]) {
 }
 
 const NEXT_GROUP_LABEL: Record<ItemCategory, string> = {
-  models: "🛠 models to build",
-  experiments: "🧪 experiments to run",
-  artworks: "🎨 artworks to make",
-  games: "🎲 games to play",
+  models: "models to build",
+  experiments: "experiments to run",
+  artworks: "artworks to make",
+  games: "games to play",
 };
 const NEXT_GROUP_ORDER: ItemCategory[] = ["models", "experiments", "artworks", "games"];
 
@@ -432,18 +509,17 @@ function groupBySegment(items: NewsletterItem[]) {
   return order.filter((s) => g.has(s)).map((s) => ({ segment: s, ...g.get(s)! }));
 }
 
-function CoralRibbon() {
+/** Refined masthead — coral nameplate closed by a thin category-accent rule. */
+function Masthead({ accent }: { accent: string }) {
   return (
-    <>
-      <header className="flex items-center justify-between px-10 py-3" style={{ background: "#F25E35" }}>
+    <header>
+      <div className="flex items-center justify-between px-11" style={{ background: CORAL, height: 50 }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/newsletter/logo-white.png" alt="openhouse" className="h-[22px] w-auto object-contain" />
-        <p className="text-[12.5px] font-semibold italic text-white">raising curious humans, together.</p>
-      </header>
-      <svg viewBox="0 0 800 24" preserveAspectRatio="none" className="block w-full" style={{ height: 18, marginTop: -1 }} aria-hidden>
-        <path d="M0,10 C120,24 260,0 400,10 C540,20 660,0 800,10 L800,24 L0,24 Z" fill="#F9F2E8" />
-      </svg>
-    </>
+        <img src="/newsletter/logo-white.png" alt="openhouse" className="h-[19px] w-auto object-contain" />
+        <p className="text-[11px] font-semibold tracking-wide text-white/95">raising curious humans, together.</p>
+      </div>
+      <div style={{ height: 3, background: accent }} />
+    </header>
   );
 }
 
@@ -451,27 +527,24 @@ function CoralRibbon() {
 function BookGraphic({ accent }: { accent: string }) {
   return (
     <svg viewBox="0 0 56 72" className="h-[92%] w-auto" aria-hidden>
-      <rect x="6" y="4" width="44" height="64" rx="4" fill="#fff" stroke="#2C2B28" strokeWidth="2.5" />
-      <rect x="6" y="4" width="12" height="64" rx="4" fill={accent} stroke="#2C2B28" strokeWidth="2.5" />
-      <line x1="26" y1="18" x2="44" y2="18" stroke="#2C2B28" strokeWidth="2" strokeLinecap="round" />
-      <line x1="26" y1="28" x2="44" y2="28" stroke="#2C2B28" strokeWidth="2" strokeLinecap="round" />
-      <line x1="26" y1="38" x2="38" y2="38" stroke="#2C2B28" strokeWidth="2" strokeLinecap="round" />
-      <path d="M34 4 v16 l4 -4 l4 4 V4 Z" fill="#F25E35" stroke="#2C2B28" strokeWidth="1.5" />
+      <rect x="6" y="4" width="44" height="64" rx="4" fill="#fff" stroke={INK} strokeWidth="2.5" />
+      <rect x="6" y="4" width="12" height="64" rx="4" fill={accent} stroke={INK} strokeWidth="2.5" />
+      <line x1="26" y1="18" x2="44" y2="18" stroke={INK} strokeWidth="2" strokeLinecap="round" />
+      <line x1="26" y1="28" x2="44" y2="28" stroke={INK} strokeWidth="2" strokeLinecap="round" />
+      <line x1="26" y1="38" x2="38" y2="38" stroke={INK} strokeWidth="2" strokeLinecap="round" />
+      <path d="M34 4 v16 l4 -4 l4 4 V4 Z" fill={CORAL} stroke={INK} strokeWidth="1.5" />
     </svg>
   );
 }
-function Squiggle({ color }: { color: string }) {
-  return (
-    <svg viewBox="0 0 220 10" preserveAspectRatio="none" className="mt-1" style={{ height: 8, width: 220 }} aria-hidden>
-      <path d="M2,6 Q30,-2 60,6 T120,6 T180,6 T216,6" fill="none" stroke={color} strokeWidth="3" strokeLinecap="round" />
-    </svg>
-  );
-}
+
 function PageFooter({ building, pageIndex }: { building: string; pageIndex: number }) {
   return (
-    <footer className="mt-10 flex items-end justify-between px-10 pb-5 pt-6 text-[10.5px] text-ink-subtle">
-      <span className="font-extrabold" style={{ color: "#F25E35" }}>openhouse · at-apartment</span>
-      <span>{building} · page {pageIndex} of 2</span>
+    <footer className="mt-auto px-11 pb-5 pt-8">
+      <div className="h-px w-full" style={{ background: HAIRLINE }} />
+      <div className="mt-3 flex items-end justify-between text-[10px] tracking-wide text-ink-subtle">
+        <span className="font-extrabold" style={{ color: CORAL }}>openhouse · at-apartment</span>
+        <span>{building} · page {pageIndex} of 2</span>
+      </div>
     </footer>
   );
 }

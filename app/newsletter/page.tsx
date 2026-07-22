@@ -13,7 +13,11 @@
 
 import { useEffect, useMemo, useState, useRef } from "react";
 import Link from "next/link";
-import { Send, ChevronLeft, RotateCcw, Camera, X, Check, Plus } from "lucide-react";
+import {
+  Send, ChevronLeft, RotateCcw, Camera, X, Check, Plus,
+  Wrench, FlaskConical, Palette, Dices, Sun, Mic, Waves, PenTool, Circle,
+  type LucideIcon,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTeacher, TeacherGate } from "@/components/TeacherGate";
 import { getBuilding } from "@/lib/teacher-state";
@@ -23,16 +27,23 @@ import {
   type NewsletterItem,
   type NewsletterProgramme,
 } from "@/lib/newsletter-data";
-import { SEGMENT_PHRASING } from "@/lib/newsletter-concepts";
 import { NewsletterDocument } from "@/components/NewsletterDocument";
 import { submitNewsletter } from "@/lib/newsletter-submissions";
 
 /* ─── editor display helpers ───────────────────────────────── */
 
-/** icon per activity type — echoes the parent doc's section icons. */
-const CAT_ICON: Record<string, string> = {
-  models: "🛠", experiments: "🧪", artworks: "🎨", games: "🎲",
+/** icon per activity type — the same line-icon language as the doc. */
+const TYPE_ICONS: Record<string, LucideIcon> = {
+  models: Wrench, experiments: FlaskConical, artworks: Palette, games: Dices,
 };
+/** icon per class segment. */
+const SEG_ICONS: Record<string, LucideIcon> = {
+  "roll-call": Sun, playground: Dices, showtime: Mic, "sign-off": Waves,
+  "art-gym": PenTool, "art-games": Dices,
+};
+function SmallIcon({ icon: Icon }: { icon: LucideIcon }) {
+  return <Icon className="h-3.5 w-3.5 shrink-0 text-ink-muted" strokeWidth={2.2} />;
+}
 /** category → what a photo should show (never faces). */
 const PHOTO_NOUN: Record<string, string> = {
   stem: "the models & builds",
@@ -394,8 +405,8 @@ function Editor({
         <div className="mt-1.5 space-y-2.5">
           {groups.map((grp) => (
             <div key={grp.segment}>
-              <p className="mb-1 flex items-center gap-1 text-[10.5px] font-bold tracking-normal text-ink-muted">
-                <span aria-hidden>{SEGMENT_PHRASING[grp.segment]?.icon ?? "✨"}</span>
+              <p className="mb-1 flex items-center gap-1.5 text-[10.5px] font-bold tracking-normal text-ink-muted">
+                <SmallIcon icon={SEG_ICONS[grp.segment] ?? Circle} />
                 {grp.name.toLowerCase()}
               </p>
               {render(grp.items)}
@@ -427,7 +438,9 @@ function Editor({
 
       {/* photos */}
       <div className="mt-5">
-        <p className="text-[11.5px] font-bold tracking-normal text-ink-subtle">📷 photos (up to 3)</p>
+        <p className="flex items-center gap-1.5 text-[11.5px] font-bold tracking-normal text-ink-subtle">
+          <SmallIcon icon={Camera} /> photos (up to 3)
+        </p>
         <p className="mt-0.5 text-[11px] font-semibold text-brand-orange">
           photos of {PHOTO_NOUN[programme.categoryLabel] ?? "the work"} only — please, no children&apos;s faces.
         </p>
@@ -454,8 +467,8 @@ function Editor({
       {/* what happened */}
       {programme.categories.map((cat) => (
         <div key={cat.id} className="mt-5">
-          <p className="text-[11.5px] font-bold tracking-normal text-ink-subtle">
-            <span className="mr-1" aria-hidden>{CAT_ICON[cat.id] ?? "•"}</span>{cat.label}
+          <p className="flex items-center gap-1.5 text-[11.5px] font-bold tracking-normal text-ink-subtle">
+            <SmallIcon icon={TYPE_ICONS[cat.id] ?? Circle} />{cat.label}
           </p>
           {renderCategory(cat, doneList)}
         </div>
@@ -507,8 +520,8 @@ function Editor({
         <p className="mt-0.5 text-[11px] italic text-ink-muted">the next things you&apos;ll do in the coming classes.</p>
         {programme.categories.map((cat) => (
           <div key={cat.id} className="mt-3">
-            <p className="text-[10.5px] font-bold tracking-normal text-ink-subtle">
-              <span className="mr-1" aria-hidden>{CAT_ICON[cat.id] ?? "•"}</span>next · {cat.label}
+            <p className="flex items-center gap-1.5 text-[10.5px] font-bold tracking-normal text-ink-subtle">
+              <SmallIcon icon={TYPE_ICONS[cat.id] ?? Circle} />next · {cat.label}
             </p>
             {renderCategory(cat, nextList)}
           </div>
