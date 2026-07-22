@@ -19,6 +19,7 @@
 import {
   getNewsletterProgramme,
   skillsBuiltFrom,
+  type ItemCategory,
   type NewsletterItem,
   type NewsletterProgramme,
 } from "@/lib/newsletter-data";
@@ -88,13 +89,29 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
   const customArtworks = (props.customArtworks ?? []).map((s) => s.trim().toLowerCase()).filter(Boolean);
   const pickedArtworks = [...listedArtworks, ...customArtworks];
 
-  // photo strip — teacher photos first; else model/project images (never faces)
-  const photos = props.photos.slice(0, 3);
-  const fallback = pickedItems
-    .map((i) => getActivityImage(i.id))
-    .filter((x): x is string => !!x)
-    .slice(0, 3);
-  const heroImages = photos.length > 0 ? photos : fallback;
+  // photo strip (models / projects only — never faces).
+  const photos = props.photos;
+  // robotics: the auto-generated model-manual illustrations for the picked
+  // models — these always show, and any teacher photos sit alongside them.
+  const modelImages = Array.from(
+    new Set(
+      pickedItems
+        .filter((i) => i.category === "models")
+        .map((i) => getActivityImage(i.id))
+        .filter((x): x is string => !!x)
+    )
+  );
+  // other programmes: teacher photos, else any activity image as a fallback.
+  const genericFallback = Array.from(
+    new Set(
+      pickedItems
+        .map((i) => getActivityImage(i.id))
+        .filter((x): x is string => !!x)
+    )
+  );
+  const heroImages = isRobotics
+    ? Array.from(new Set([...photos, ...modelImages])).slice(0, 6)
+    : (photos.length > 0 ? photos : genericFallback).slice(0, 3);
 
   const hasContent = pickedItems.length > 0;
 
@@ -127,7 +144,7 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
 
         {/* photo strip — models / projects only */}
         <div className="mt-4 grid grid-cols-3 gap-2 px-10">
-          {(heroImages.length > 0 ? heroImages : [null, null, null]).slice(0, 3).map((src, i) => (
+          {(heroImages.length > 0 ? heroImages : [null, null, null]).map((src, i) => (
             <div key={i} className="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-card text-center ring-1 ring-ink/10" style={{ background: "#F9F2E8" }}>
               {src ? (
                 /* eslint-disable-next-line @next/next/no-img-element */
@@ -276,18 +293,27 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
           </section>
         )}
 
-        {/* coming up */}
+        {/* coming up — grouped by type (models / experiments / games / artworks) */}
         {nextItems.length > 0 && (
           <section className="mt-6 px-10">
             <h3 className="font-hand text-[24px] leading-none text-ink">coming up next ✎</h3>
-            <ul className="mt-2 space-y-1">
-              {nextItems.map((i) => (
-                <li key={i.id} className="flex items-start gap-2 text-[13px] text-ink">
-                  <ArrowRight className="mt-1 h-3 w-3 shrink-0" style={{ color: accent }} />
-                  <span className="font-semibold">{i.parentLabel}</span>
-                </li>
+            <div className="mt-3 space-y-3">
+              {groupByCategory(nextItems).map(({ category, label, items }) => (
+                <div key={category}>
+                  <p className="text-[11px] font-extrabold tracking-normal" style={{ color: "#F25E35" }}>
+                    {label}
+                  </p>
+                  <ul className="mt-1 space-y-1">
+                    {items.map((i) => (
+                      <li key={i.id} className="flex items-start gap-2 text-[13px] text-ink">
+                        <ArrowRight className="mt-1 h-3 w-3 shrink-0" style={{ color: accent }} />
+                        <span className="font-semibold">{i.parentLabel}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ))}
-            </ul>
+            </div>
           </section>
         )}
 
@@ -304,7 +330,7 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
               </div>
               <p className="mt-1 font-hand text-[24px] leading-none text-ink">a book of their own — on its way!</p>
               <p className="mt-2 text-[12.5px] leading-relaxed text-ink">
-                soon every child will have a book that travels home and back — where they draw, note, and keep everything they build and discover. we&apos;ll share it the moment it&apos;s ready.
+                a book that travels home and back, holding everything the children draw, build, and discover.
               </p>
             </div>
           </div>
@@ -360,6 +386,27 @@ function groupByMechanism(items: NewsletterItem[]) {
     }
   }
   return MECHANISM_ORDER.filter((m) => g.has(m)).map((m) => ({ mechanism: m, ...g.get(m)! }));
+}
+
+const NEXT_GROUP_LABEL: Record<ItemCategory, string> = {
+  models: "models to build",
+  experiments: "experiments to run",
+  artworks: "artworks to make",
+  games: "games to play",
+};
+const NEXT_GROUP_ORDER: ItemCategory[] = ["models", "experiments", "artworks", "games"];
+
+function groupByCategory(items: NewsletterItem[]) {
+  const g = new Map<ItemCategory, NewsletterItem[]>();
+  for (const item of items) {
+    if (!g.has(item.category)) g.set(item.category, []);
+    g.get(item.category)!.push(item);
+  }
+  return NEXT_GROUP_ORDER.filter((c) => g.has(c)).map((c) => ({
+    category: c,
+    label: NEXT_GROUP_LABEL[c],
+    items: g.get(c)!,
+  }));
 }
 
 function groupBySegment(items: NewsletterItem[]) {
