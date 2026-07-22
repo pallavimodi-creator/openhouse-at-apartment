@@ -57,6 +57,32 @@ function writeDraft(slug: string, from: string, to: string, d: Draft) {
   if (typeof window === "undefined") return;
   try { localStorage.setItem(draftKey(slug, from, to), JSON.stringify(d)); } catch {}
 }
+/** Downscale + compress an image file to a JPEG data-URL so submissions
+ *  stay small. Longest edge capped at maxEdge px. */
+function downscaleImage(file: File, maxEdge: number, quality: number): Promise<string> {
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const img = new Image();
+      img.onload = () => {
+        const scale = Math.min(1, maxEdge / Math.max(img.width, img.height));
+        const w = Math.round(img.width * scale);
+        const h = Math.round(img.height * scale);
+        const canvas = document.createElement("canvas");
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext("2d");
+        if (!ctx) { resolve(String(reader.result)); return; }
+        ctx.drawImage(img, 0, 0, w, h);
+        resolve(canvas.toDataURL("image/jpeg", quality));
+      };
+      img.onerror = () => resolve(String(reader.result));
+      img.src = String(reader.result);
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
 function isoToday() {
   const d = new Date();
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
@@ -134,8 +160,10 @@ function NewsletterContent() {
     setDraft({ selected: [], nextSelected: [], building: draft.building, photos: [], from, to });
   }
 
-  function submit() {
-    if (!programme) return;
+  const [submitting, setSubmitting] = useState(false);
+
+  async function submit() {
+    if (!programme || submitting) return;
     if (draft.selected.length === 0) {
       alert("tick at least one thing the children did before submitting.");
       return;
@@ -144,24 +172,31 @@ function NewsletterContent() {
       alert("add your building name before submitting.");
       return;
     }
-    submitNewsletter({
-      building: draft.building.trim(),
-      programmeSlug: programme.slug,
-      programmeTitle: programme.title,
-      ageLabel: programme.ageLabel,
-      from,
-      to,
-      draft: {
-        selected: draft.selected,
-        nextSelected: draft.nextSelected,
-        photos: draft.photos,
+    setSubmitting(true);
+    try {
+      await submitNewsletter({
         building: draft.building.trim(),
+        programmeSlug: programme.slug,
+        programmeTitle: programme.title,
+        ageLabel: programme.ageLabel,
         from,
         to,
-      },
-    });
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
+        draft: {
+          selected: draft.selected,
+          nextSelected: draft.nextSelected,
+          photos: draft.photos,
+          building: draft.building.trim(),
+          from,
+          to,
+        },
+      });
+      setSubmitted(true);
+      setTimeout(() => setSubmitted(false), 4000);
+    } catch {
+      alert("could not submit — please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   if (!programme) {
@@ -200,12 +235,14 @@ function NewsletterContent() {
             className="inline-flex items-center gap-1 rounded-md bg-ink/5 px-2 py-1.5 text-[11px] font-semibold text-ink-muted hover:bg-ink/10">
             <RotateCcw className="h-3 w-3" /> clear
           </button>
-          <button type="button" onClick={submit}
+          <button type="button" onClick={submit} disabled={submitting}
             className={cn(
-              "inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-[12px] font-bold text-white shadow-card active:scale-[0.99]",
+              "inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-[12px] font-bold text-white shadow-card active:scale-[0.99] disabled:opacity-60",
               submitted ? "bg-green-600" : "bg-brand-orange"
             )}>
-            {submitted ? (<><Check className="h-3.5 w-3.5" /> sent to openhouse</>) : (<><Send className="h-3.5 w-3.5" /> submit to openhouse</>)}
+            {submitted ? (<><Check className="h-3.5 w-3.5" /> sent to openhouse</>)
+              : submitting ? "sending…"
+              : (<><Send className="h-3.5 w-3.5" /> submit to openhouse</>)}
           </button>
         </div>
         {submitted && (
@@ -259,9 +296,9 @@ function Editor({
     if (!files) return;
     const remaining = Math.max(0, 3 - draft.photos.length);
     Array.from(files).slice(0, remaining).forEach((file) => {
-      const r = new FileReader();
-      r.onload = () => onDraftChange((d) => ({ ...d, photos: [...d.photos, String(r.result)].slice(0, 3) }));
-      r.readAsDataURL(file);
+      downscaleImage(file, 1000, 0.8).then((dataUrl) => {
+        onDraftChange((d) => ({ ...d, photos: [...d.photos, dataUrl].slice(0, 3) }));
+      });
     });
   }
 

@@ -11,7 +11,7 @@ import { useParams, useRouter } from "next/navigation";
 import { ChevronLeft, Download } from "lucide-react";
 import { useTeacher, TeacherGate } from "@/components/TeacherGate";
 import { NewsletterDocument } from "@/components/NewsletterDocument";
-import { getSubmission, type NewsletterSubmission } from "@/lib/newsletter-submissions";
+import { getSubmission, getAdminKey, type NewsletterSubmission } from "@/lib/newsletter-submissions";
 
 export default function AdminNewsletterViewPage() {
   return (
@@ -34,7 +34,11 @@ function ViewContent() {
   }, [teacher, isAdmin, router]);
 
   useEffect(() => {
-    setSub(getSubmission(params.id) ?? null);
+    let alive = true;
+    getSubmission(params.id, getAdminKey()).then((s) => {
+      if (alive) setSub(s ?? null);
+    });
+    return () => { alive = false; };
   }, [params.id]);
 
   if (!teacher) {
