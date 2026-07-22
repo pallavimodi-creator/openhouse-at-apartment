@@ -13,7 +13,7 @@
 
 import { useEffect, useMemo, useState, useRef } from "react";
 import Link from "next/link";
-import { Send, ChevronLeft, RotateCcw, Camera, X, Check } from "lucide-react";
+import { Send, ChevronLeft, RotateCcw, Camera, X, Check, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTeacher, TeacherGate } from "@/components/TeacherGate";
 import { getBuilding } from "@/lib/teacher-state";
@@ -32,6 +32,7 @@ interface Draft {
   nextSelected: string[];
   building: string;
   photos: string[];
+  customArtworks: string[];
   from: string;
   to: string;
 }
@@ -41,7 +42,7 @@ function draftKey(slug: string, from: string, to: string) {
 }
 function readDraft(slug: string, from: string, to: string, buildingDefault: string): Draft {
   const base: Draft = {
-    selected: [], nextSelected: [], building: buildingDefault, photos: [], from, to,
+    selected: [], nextSelected: [], building: buildingDefault, photos: [], customArtworks: [], from, to,
   };
   if (typeof window === "undefined") return base;
   try {
@@ -157,7 +158,7 @@ function NewsletterContent() {
   }
   function reset() {
     if (!confirm("clear this newsletter draft?")) return;
-    setDraft({ selected: [], nextSelected: [], building: draft.building, photos: [], from, to });
+    setDraft({ selected: [], nextSelected: [], building: draft.building, photos: [], customArtworks: [], from, to });
   }
 
   const [submitting, setSubmitting] = useState(false);
@@ -186,6 +187,7 @@ function NewsletterContent() {
           nextSelected: draft.nextSelected,
           photos: draft.photos,
           building: draft.building.trim(),
+          customArtworks: draft.customArtworks,
           from,
           to,
         },
@@ -272,6 +274,7 @@ function NewsletterContent() {
           selected={draft.selected}
           nextSelected={draft.nextSelected}
           photos={draft.photos}
+          customArtworks={draft.customArtworks}
         />
       </div>
     </div>
@@ -372,6 +375,46 @@ function Editor({
           </ul>
         </div>
       ))}
+
+      {/* art only — add your own artworks not in the list */}
+      {programme.slug.startsWith("art-design") && (
+        <div className="mt-5">
+          <p className="text-[11.5px] font-bold tracking-normal text-ink-subtle">
+            add your own artworks
+          </p>
+          <p className="mt-0.5 text-[11px] italic text-ink-muted">
+            made something not on the list? add it here — as many as you like.
+          </p>
+          <div className="mt-1.5 space-y-1.5">
+            {draft.customArtworks.map((val, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <input
+                  type="text"
+                  value={val}
+                  onChange={(e) =>
+                    onDraftChange((d) => ({
+                      ...d,
+                      customArtworks: d.customArtworks.map((v, j) => (j === i ? e.target.value : v)),
+                    }))
+                  }
+                  placeholder="e.g. clay diya, leaf print"
+                  className="flex-1 rounded-md border border-ink/15 bg-brand-cream px-3 py-1.5 text-[12.5px] outline-none focus:border-brand-orange"
+                />
+                <button type="button"
+                  onClick={() => onDraftChange((d) => ({ ...d, customArtworks: d.customArtworks.filter((_, j) => j !== i) }))}
+                  className="rounded-md p-1.5 text-ink-muted hover:bg-red-50 hover:text-red-600" aria-label="remove">
+                  <X className="h-3.5 w-3.5" />
+                </button>
+              </div>
+            ))}
+            <button type="button"
+              onClick={() => onDraftChange((d) => ({ ...d, customArtworks: [...d.customArtworks, ""] }))}
+              className="flex items-center gap-1 rounded-md border-2 border-dashed border-ink/20 px-3 py-1.5 text-[12px] font-semibold text-ink-muted hover:border-brand-orange hover:text-brand-orange">
+              <Plus className="h-3.5 w-3.5" /> add an artwork
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* coming up */}
       <div className="mt-6 rounded-card bg-brand-orange/5 p-4 ring-1 ring-brand-orange/15">

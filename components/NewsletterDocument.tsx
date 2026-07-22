@@ -43,7 +43,16 @@ export interface NewsletterDocumentProps {
   selected: string[];
   nextSelected: string[];
   photos: string[];
+  /** art only — extra artworks the educator typed that aren't in the list */
+  customArtworks?: string[];
 }
+
+/** category → mascot image (the operator-supplied openhouse mascots). */
+const MASCOT: Record<string, string> = {
+  stem: "/newsletter/mascot-robotics.png",
+  art: "/newsletter/mascot-art.png",
+  language: "/newsletter/mascot-ps.png",
+};
 
 export function NewsletterDocument(props: NewsletterDocumentProps) {
   const programme = getNewsletterProgramme(props.programmeSlug);
@@ -71,10 +80,13 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
   const isRobotics = programme.slug.startsWith("robotics");
   const isPublicSpeaking = programme.slug.startsWith("public-speaking");
   const isArt = programme.slug.startsWith("art-design");
+  const mascot = MASCOT[category];
 
   const conceptGroups = isRobotics ? groupByMechanism(pickedItems) : null;
   const segmentGroups = isPublicSpeaking || isArt ? groupBySegment(pickedItems) : null;
-  const pickedArtworks = isArt ? pickedItems.filter((i) => i.category === "artworks") : [];
+  const listedArtworks = isArt ? pickedItems.filter((i) => i.category === "artworks").map((i) => i.parentLabel) : [];
+  const customArtworks = (props.customArtworks ?? []).map((s) => s.trim().toLowerCase()).filter(Boolean);
+  const pickedArtworks = [...listedArtworks, ...customArtworks];
 
   // photo strip — teacher photos first; else model/project images (never faces)
   const photos = props.photos.slice(0, 3);
@@ -93,17 +105,24 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
         style={{ minHeight: "1123px", overflow: "hidden" }}>
         <CoralRibbon />
 
-        <div className="px-10 pt-5">
-          {rangeLabel && (
-            <p className="font-hand text-[20px] leading-none" style={{ color: "#F25E35" }}>{rangeLabel}</p>
+        <div className="flex items-start justify-between gap-4 px-10 pt-5">
+          <div className="min-w-0 flex-1">
+            {rangeLabel && (
+              <p className="font-hand text-[20px] leading-none" style={{ color: "#F25E35" }}>{rangeLabel}</p>
+            )}
+            <p className="mt-1 text-[11px] font-extrabold tracking-normal text-ink-subtle">
+              newsletter · {programme.title} · {programme.ageLabel}
+            </p>
+            <h1 className="mt-2 font-hand text-[38px] font-bold leading-none" style={{ letterSpacing: 0 }}>
+              dear parents at {building},
+            </h1>
+            <Squiggle color={accent} />
+          </div>
+          {mascot && (
+            /* eslint-disable-next-line @next/next/no-img-element */
+            <img src={mascot} alt="" className="h-24 w-24 shrink-0 object-contain"
+              style={{ filter: "drop-shadow(0 6px 9px rgba(0,0,0,.10))" }} />
           )}
-          <p className="mt-1 text-[11px] font-extrabold tracking-normal text-ink-subtle">
-            a note home · {programme.title} · {programme.ageLabel}
-          </p>
-          <h1 className="mt-2 font-hand text-[40px] font-bold leading-none" style={{ letterSpacing: 0 }}>
-            dear parents at {building},
-          </h1>
-          <Squiggle color={accent} />
         </div>
 
         {/* photo strip — models / projects only */}
@@ -136,18 +155,22 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
                 const s = MECHANISM_STORY[mechanism];
                 return (
                   <div key={mechanism} className="rounded-card p-3.5" style={{ background: `${accent}14`, border: `1px solid ${accent}55` }}>
-                    <p className="text-[14.5px] font-extrabold text-ink">
+                    <p className="text-[10px] font-extrabold tracking-normal" style={{ color: "#F25E35" }}>
+                      the concept
+                    </p>
+                    <p className="text-[15px] font-extrabold text-ink">
                       <span className="mr-1.5" aria-hidden>{s.icon}</span>{s.label}
                     </p>
                     <p className="mt-0.5 text-[12.5px] leading-snug text-ink-muted">{s.what}</p>
                     {builds.length > 0 && (
-                      <p className="mt-1.5 text-[12.5px] text-ink">
-                        we built <span className="font-bold">{joinNice(builds.map((b) => b.parentLabel))}</span>.
+                      <p className="mt-2 text-[12.5px] text-ink">
+                        <span className="font-bold">the models we built:</span>{" "}
+                        {joinNice(builds.map((b) => b.parentLabel))}.
                       </p>
                     )}
                     {experiments.length > 0 && (
                       <div className="mt-1.5">
-                        <p className="text-[12px] font-bold text-ink">we tried:</p>
+                        <p className="text-[12px] font-bold text-ink">the experiments we ran:</p>
                         <ul className="mt-0.5 space-y-0.5">
                           {experiments.map((e) => (
                             <li key={e.id} className="flex items-start gap-1.5 text-[12px] leading-snug text-ink-muted">
@@ -165,27 +188,19 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
           </section>
         )}
 
-        {/* ART — artworks image-first */}
+        {/* ART — artworks (listed + educator's custom additions) */}
         {isArt && pickedArtworks.length > 0 && (
           <section className="mt-5 px-10">
             <h2 className="text-[19px] font-extrabold text-ink" style={{ borderLeft: `4px solid ${accent}`, paddingLeft: 10 }}>
               what we made
             </h2>
             <div className="mt-3 grid grid-cols-3 gap-2">
-              {pickedArtworks.slice(0, 6).map((a) => {
-                const img = getActivityImage(a.id);
-                return (
-                  <div key={a.id} className="overflow-hidden rounded-card ring-1 ring-ink/5" style={{ background: "#F9F2E8" }}>
-                    <div className="flex aspect-square items-center justify-center">
-                      {img ? (
-                        /* eslint-disable-next-line @next/next/no-img-element */
-                        <img src={img} alt="" className="h-full w-full object-contain" />
-                      ) : (<span className="text-[20px]" aria-hidden>🎨</span>)}
-                    </div>
-                    <p className="px-2 py-1 text-center text-[10.5px] font-bold leading-tight text-ink">{a.parentLabel}</p>
-                  </div>
-                );
-              })}
+              {pickedArtworks.slice(0, 9).map((label, i) => (
+                <div key={`${label}-${i}`} className="overflow-hidden rounded-card ring-1 ring-ink/5" style={{ background: "#F9F2E8" }}>
+                  <div className="flex aspect-square items-center justify-center text-[22px]" aria-hidden>🎨</div>
+                  <p className="px-2 py-1 text-center text-[10.5px] font-bold leading-tight text-ink">{label}</p>
+                </div>
+              ))}
             </div>
           </section>
         )}
@@ -279,8 +294,8 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
         {/* experience book — coming soon, neutral graphic (no faces) */}
         <section className="mt-6 px-10">
           <div className="flex items-center gap-4 overflow-hidden rounded-card p-4 ring-1 ring-ink/10" style={{ background: `${accent}12` }}>
-            <div className="flex h-24 w-16 shrink-0 items-center justify-center rounded-sm text-[30px] ring-1 ring-ink/15" style={{ background: "#fff" }} aria-hidden>
-              📓
+            <div className="flex h-24 w-[68px] shrink-0 items-center justify-center" aria-hidden>
+              <BookGraphic accent={accent} />
             </div>
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-2">
@@ -300,9 +315,8 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
           <p className="text-[13px] leading-relaxed text-ink-muted">
             ask the children to show you one thing they built or figured out this month — in their own words. that&apos;s the best review of all.
           </p>
-          <p className="mt-4 font-hand text-[26px] leading-none text-ink">warmly,</p>
+          <p className="mt-4 font-hand text-[26px] leading-none text-ink">with love,</p>
           <p className="mt-1 font-hand text-[26px] leading-none" style={{ color: "#F25E35" }}>the openhouse team</p>
-          <p className="mt-1 text-[12px] text-ink-muted">{building}</p>
         </section>
 
         <PageFooter building={building} pageIndex={2} />
@@ -362,14 +376,29 @@ function groupBySegment(items: NewsletterItem[]) {
 function CoralRibbon() {
   return (
     <>
-      <header className="flex items-center justify-between px-10 py-3" style={{ background: "#F25E35", color: "#fff" }}>
-        <p className="text-[13px] font-extrabold">openhouse</p>
-        <p className="text-[12.5px] font-semibold italic">raising curious humans, together.</p>
+      <header className="flex items-center justify-between px-10 py-3" style={{ background: "#F25E35" }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/newsletter/logo-white.png" alt="openhouse" className="h-[22px] w-auto object-contain" />
+        <p className="text-[12.5px] font-semibold italic text-white">raising curious humans, together.</p>
       </header>
       <svg viewBox="0 0 800 24" preserveAspectRatio="none" className="block w-full" style={{ height: 18, marginTop: -1 }} aria-hidden>
         <path d="M0,10 C120,24 260,0 400,10 C540,20 660,0 800,10 L800,24 L0,24 Z" fill="#F9F2E8" />
       </svg>
     </>
+  );
+}
+
+/** A simple closed-book graphic (no faces) for the coming-soon block. */
+function BookGraphic({ accent }: { accent: string }) {
+  return (
+    <svg viewBox="0 0 56 72" className="h-[92%] w-auto" aria-hidden>
+      <rect x="6" y="4" width="44" height="64" rx="4" fill="#fff" stroke="#2C2B28" strokeWidth="2.5" />
+      <rect x="6" y="4" width="12" height="64" rx="4" fill={accent} stroke="#2C2B28" strokeWidth="2.5" />
+      <line x1="26" y1="18" x2="44" y2="18" stroke="#2C2B28" strokeWidth="2" strokeLinecap="round" />
+      <line x1="26" y1="28" x2="44" y2="28" stroke="#2C2B28" strokeWidth="2" strokeLinecap="round" />
+      <line x1="26" y1="38" x2="38" y2="38" stroke="#2C2B28" strokeWidth="2" strokeLinecap="round" />
+      <path d="M34 4 v16 l4 -4 l4 4 V4 Z" fill="#F25E35" stroke="#2C2B28" strokeWidth="1.5" />
+    </svg>
   );
 }
 function Squiggle({ color }: { color: string }) {

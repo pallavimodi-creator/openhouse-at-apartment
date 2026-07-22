@@ -25,6 +25,8 @@ export interface NewsletterDraftSnapshot {
   building: string;
   from: string;
   to: string;
+  /** art only — extra artworks the educator typed, not from the list */
+  customArtworks?: string[];
 }
 
 export type SubmissionStatus = "pending" | "approved";

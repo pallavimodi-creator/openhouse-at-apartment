@@ -79,6 +79,7 @@ function ViewContent() {
         selected={sub.draft.selected}
         nextSelected={sub.draft.nextSelected}
         photos={sub.draft.photos}
+        customArtworks={sub.draft.customArtworks}
       />
 
       <style jsx global>{`
