@@ -78,7 +78,12 @@ export function FooterNav() {
   }
 
   items.push({ href: "/library", label: "library", icon: BookOpen });
-  items.push({ href: "/newsletter", label: "newsletter", icon: Newspaper });
+  // admins review + download submitted newsletters; educators create them.
+  items.push({
+    href: isAdmin ? "/admin/newsletters" : "/newsletter",
+    label: "newsletter",
+    icon: Newspaper,
+  });
 
   const handleSignOut = () => {
     clearTeacher();
