@@ -21,6 +21,7 @@ export function FooterNav() {
   const [building, setBuildingState] = useState<string | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [teacherProgrammeSlug, setTeacherProgrammeSlug] = useState<string | null>(null);
+  const [teacherCategory, setTeacherCategory] = useState<string | null>(null);
 
   // Read the current building + admin flag + teacher's programme from
   // session storage on mount + whenever the route changes.
@@ -31,6 +32,7 @@ export function FooterNav() {
     setTeacherProgrammeSlug(
       t && t.programmeSlug && t.programmeSlug !== "*" ? t.programmeSlug : null
     );
+    setTeacherCategory(t?.category ?? null);
   }, [pathname]);
 
   // Hide the footer on the login + building-picker pages
@@ -78,12 +80,22 @@ export function FooterNav() {
   }
 
   items.push({ href: "/library", label: "library", icon: BookOpen });
-  // admins review + download submitted newsletters; educators create them.
-  items.push({
-    href: isAdmin ? "/admin/newsletters" : "/newsletter",
-    label: "newsletter",
-    icon: Newspaper,
-  });
+  // Newsletter is for the 5-8 and 8-12 programmes only (not 3-5).
+  //   · admins always see it (they review every building's submissions)
+  //   · category teachers span 5-8/8-12, so they qualify
+  //   · a single-programme teacher qualifies only if their slug is 5-8/8-12
+  const newsletterEligible =
+    isAdmin ||
+    teacherCategory != null ||
+    (teacherProgrammeSlug != null && !teacherProgrammeSlug.endsWith("-3-5"));
+  if (newsletterEligible) {
+    // admins review + download submitted newsletters; educators create them.
+    items.push({
+      href: isAdmin ? "/admin/newsletters" : "/newsletter",
+      label: "newsletter",
+      icon: Newspaper,
+    });
+  }
 
   const handleSignOut = () => {
     clearTeacher();
