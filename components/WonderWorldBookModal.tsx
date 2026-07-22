@@ -9,12 +9,12 @@ import {
 } from "@/components/ImageFlipbook";
 
 /**
- * WonderWorld — teacher reference book for STEM 3–5.
+ * WonderWorld — educator reference book for STEM 3–5.
  *
  * One workbook all year — "What Is In Your Tiffin?" — covering bread,
  * cheese, and salad. 15 activities (3 chapters × 5 activities), each
  * met twice across the year. Each activity page covers concept,
- * materials, setup, how-to-conduct, teacher prompts, and learning focus.
+ * materials, setup, how-to-conduct, educator prompts, and learning focus.
  */
 
 type ActivityImage = { src: string; alt: string; caption?: string };
@@ -149,7 +149,7 @@ const BREAD: Chapter = {
       setup: "Shuffle the cards before the activity.",
       howToConduct: [
         "Say: 'Bread has a journey. Let's put the journey in order.'",
-        "Teacher first says all stages randomly: 'bread, dough, wheat, flour, seed.'",
+        "Educator first says all stages randomly: 'bread, dough, wheat, flour, seed.'",
         "Ask: 'Does wheat come first? Can bread come before dough? What comes before flour?'",
         "Spread the picture cards on the floor.",
         "Children arrange them in correct order: seed, wheat, flour, dough, bread.",
@@ -249,13 +249,13 @@ const CHEESE: Chapter = {
       time: "10–15 minutes",
       concept: "Some foods are made from milk; some are not.",
       materials: [
-        "Teacher-read food list.",
+        "Educator-read food list.",
         "Optional: picture cards from existing deck.",
       ],
       setup: "Children sit in a circle with hands on knees.",
       howToConduct: [
         "Say: 'If the food comes from milk, clap. If it does not, keep your hands still.'",
-        "Teacher slowly reads food names aloud.",
+        "Educator slowly reads food names aloud.",
         "Pause after each word and let children respond.",
         "After a few rounds, ask: 'Why did we clap for butter?'",
         "Repeat faster once children understand the game.",
@@ -351,9 +351,9 @@ const CHEESE: Chapter = {
       howToConduct: [
         "Say: 'I am making a cheese sandwich. What goes in it?'",
         "First child says one ingredient.",
-        "Teacher repeats: 'Now I have cheese and tomato.'",
+        "Educator repeats: 'Now I have cheese and tomato.'",
         "Next child adds another ingredient.",
-        "Teacher repeats the full list each time.",
+        "Educator repeats the full list each time.",
         "Continue for as long as children can remember.",
         "Use picture cards for support if needed.",
         "Ask: 'What was first? What was last?'",
@@ -491,7 +491,7 @@ const SALAD: Chapter = {
       setup: "Arrange ingredients in separate bowls.",
       howToConduct: [
         "Say: 'A recipe tells us what to do first, next, and last.'",
-        "Teacher gives each step verbally:",
+        "Educator gives each step verbally:",
         "Step 1 — add the base.",
         "Step 2 — add two vegetables.",
         "Step 3 — add one topping.",
@@ -525,7 +525,7 @@ const SALAD: Chapter = {
         "Round 2 — texture: 'Which is crunchy? Which is soft?'",
         "Round 3 — growing place: 'Which grows above the soil? Which grows below?'",
         "Round 4 — odd one out: place 3–4 cards together and ask: 'Which one does not belong?'",
-        "Bonus: let children make their own quiz question for the teacher.",
+        "Bonus: let children make their own quiz question for the educator.",
       ],
       prompts: [
         "Why did you choose this?",
@@ -685,7 +685,7 @@ function ActivityPage({
           ))}
         </ol>
 
-        <Section label="teacher prompts" items={activity.prompts} />
+        <Section label="educator prompts" items={activity.prompts} />
 
         <p className="mt-3 text-[10px] font-bold tracking-normal text-brand-orange">
           learning focus
@@ -813,7 +813,7 @@ export function WonderWorldBookModal({
       <header className="flex shrink-0 items-center justify-between gap-4 border-b border-ink/5 bg-brand-orange px-4 py-3 text-white md:px-8">
         <div className="min-w-0">
           <p className="text-[10px] font-bold tracking-normal text-white/80">
-            teacher reference
+            educator reference
           </p>
           <h2 className="truncate text-[18px] font-extrabold lowercase leading-tight md:text-[22px]">
             the wonderworld book · stem 3–5

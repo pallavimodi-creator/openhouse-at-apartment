@@ -10,6 +10,7 @@
     "sync:assets": "tsx scripts/sync-drive-assets.ts"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.110.8",
     "clsx": "^2.1.1",
     "lucide-react": "^0.441.0",
     "next": "14.2.5",

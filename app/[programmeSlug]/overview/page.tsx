@@ -1360,7 +1360,13 @@ function ProgrammeOverviewContent() {
         {isArt && programme.ageGroup !== "3-5" && (
           <p className="mt-2 rounded-lg bg-brand-orange/8 px-3 py-2 text-[12px] leading-relaxed text-ink-muted">
             <span aria-hidden className="mr-1">🎯</span>
-            <span className="font-semibold text-ink">1–2 games can be played in a day.</span> Art Games and the laminated art-gym book pages and cue-card prompts share one combined slot — the teacher picks 1 or 2 from the pool. No separate art-gym segment, no scribble book, no extension-day follow-on. If only one game runs, give the extra minutes to artiverse so children get more time to make.
+            <span className="font-semibold text-ink">1–2 games can be played in a day.</span> Art Games and the laminated art-gym book pages and cue-card prompts share one combined slot — the educator picks 1 or 2 from the pool. No separate art-gym segment, no scribble book, no extension-day follow-on. If only one game runs, give the extra minutes to artiverse so children get more time to make.
+          </p>
+        )}
+        {programme.slug === "stem-3-5" && (
+          <p className="mt-2 rounded-lg bg-brand-orange/8 px-3 py-2 text-[12px] leading-relaxed text-ink-muted">
+            <span aria-hidden className="mr-1">⏱️</span>
+            <span className="font-semibold text-ink">Scheduling note:</span> The duration of Imagine Playground / Wonderworld sessions may be adjusted based on the scope of the activity. If a project needs more time, educators may shorten Number Gym, Logic Lab by choosing an easier gameplay, or other components to ensure meaningful engagement and completion of the project.
           </p>
         )}
 
@@ -3282,9 +3288,9 @@ function ProgrammeOverviewContent() {
             </div>
           </section>
 
-          {/* ─── PLAY-WRITES WORKBOOKS — teacher reference ─── */}
+          {/* ─── PLAY-WRITES WORKBOOKS — educator reference ─── */}
           <section className="mt-10 px-4 md:px-8">
-            <SectionTitle num="·" label="teacher reference books">
+            <SectionTitle num="·" label="educator reference books">
               the play-writes workbook
             </SectionTitle>
             <p className="mt-2 text-[13px] font-medium leading-relaxed text-ink md:text-[14px]">
@@ -3309,7 +3315,7 @@ function ProgrammeOverviewContent() {
                       play-writes · level {lvl}
                     </p>
                     <p className="mt-1 text-[11px] italic text-ink-muted">
-                      teacher reference · 27 pages · 8 chapters
+                      educator reference · 27 pages · 8 chapters
                     </p>
                     <p className="mt-2 inline-flex items-center gap-1 text-[11px] font-bold text-brand-orange">
                       open the book →
@@ -3347,14 +3353,14 @@ function ProgrammeOverviewContent() {
             modalKey: "artiverse-3-5",
             cover: "/artiverse-book/01-accordion.png",
             title: "the artiverse book",
-            subtitle: "teacher reference · 3 chapters · ~37 artworks",
+            subtitle: "educator reference · 3 chapters · ~37 artworks",
           });
           books.push({
             kind: "modal",
             modalKey: "artistotle-3-5",
             cover: "/artistotle-book/01-cover.png",
             title: "the artistotle book",
-            subtitle: "teacher reference · 3 artists · 13 projects",
+            subtitle: "educator reference · 3 artists · 13 projects",
           });
         }
         // 5-8 / 8-12 art programmes — each has its own artiverse book
@@ -3367,7 +3373,7 @@ function ProgrammeOverviewContent() {
             href: "/artiverse-book-5-8",
             cover: firstUnit?.heroImageUrl ?? "/artiverse/art-5-8/unit-1.png",
             title: "the artiverse book",
-            subtitle: `teacher reference · ${programme.artiverseUnits?.length ?? 0} units`,
+            subtitle: `educator reference · ${programme.artiverseUnits?.length ?? 0} units`,
           });
         }
         if (programme.slug === "art-design-8-12") {
@@ -3377,10 +3383,10 @@ function ProgrammeOverviewContent() {
             href: "/artiverse-book-8-12",
             cover: firstUnit?.heroImageUrl ?? "/artiverse/art-8-12/unit-1.png",
             title: "the artiverse book",
-            subtitle: `teacher reference · ${programme.artiverseUnits?.length ?? 0} units`,
+            subtitle: `educator reference · ${programme.artiverseUnits?.length ?? 0} units`,
           });
         }
-        // STEM 3–5 — two teacher reference books built like the
+        // STEM 3–5 — two educator reference books built like the
         // artiverse / artistotle books.
         if (programme.slug === "robotics-3-5") {
           books.push({
@@ -3388,21 +3394,21 @@ function ProgrammeOverviewContent() {
             modalKey: "imagine-playground-3-5",
             cover: "/prog-stem-3-5.png",
             title: "the imagine playground book",
-            subtitle: "teacher reference · 11 build projects",
+            subtitle: "educator reference · 11 build projects",
           });
           books.push({
             kind: "modal",
             modalKey: "wonderworld-3-5",
             cover: "/prog-stem-3-5.png",
             title: "the wonderworld book",
-            subtitle: "teacher reference · 3 chapters · 15 activities",
+            subtitle: "educator reference · 3 chapters · 15 activities",
           });
           books.push({
             kind: "modal",
             modalKey: "numbersgym-3-5",
             cover: "/prog-stem-3-5.png",
             title: "the numbersgym book",
-            subtitle: "teacher reference · 3 levels · self-paced",
+            subtitle: "educator reference · 3 levels · self-paced",
           });
         }
         // Experience book (programmes that have one wired)
@@ -3425,14 +3431,14 @@ function ProgrammeOverviewContent() {
             href: `/book/${expSlug}`,
             cover: expCover[expSlug],
             title: "experience book",
-            subtitle: "the child's daily reflection book",
+            subtitle: "coming soon",
           });
         }
         if (books.length === 0) return null;
         return (
           <section className="mt-10 px-4 md:px-8">
-            <SectionTitle num={sectionNum("books")} label="teacher reference books">
-              flip through every reference book — for teachers, not children
+            <SectionTitle num={sectionNum("books")} label="educator reference books">
+              flip through every reference book — for educators, not children
             </SectionTitle>
             <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {books.map((book) => {

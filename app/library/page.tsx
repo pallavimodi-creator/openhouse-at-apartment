@@ -268,7 +268,7 @@ function buildItemsFor(prog: CurriculumProgramme): LibraryItem[] {
           segmentName: "Art Gym",
           title: "scribble book",
           description:
-            "A book of imagination — every page is a unique open-ended story. The teacher prompts the children about what the scene sets and does not give the solution. Children scribble freely from their imagination. This is not a laminated book — fill only with dry mediums: crayons, yarn, glue. No paint or clay. ArtGym book and Scribble book rotate on alternate days — only 1 artwork a day in the Scribble book. Use the book in linear order — first page to last — the challenge increases page by page.",
+            "A book of imagination — every page is a unique open-ended story. The  educator prompts the children about what the scene sets and does not give the solution. Children scribble freely from their imagination. This is not a laminated book — fill only with dry mediums: crayons, yarn, glue. No paint or clay. ArtGym book and Scribble book rotate on alternate days — only 1 artwork a day in the Scribble book. Use the book in linear order — first page to last — the challenge increases page by page.",
           heroImageUrl: scribbleThumb,
         },
         thumbImageUrl: scribbleThumb,
@@ -290,6 +290,7 @@ export default function LibraryPage() {
   const [query, setQuery] = useState("");
   const [segmentFilter, setSegmentFilter] = useState("all");
   const [selectedActivity, setSelectedActivity] = useState<CurriculumActivity | null>(null);
+  const [selectedActivityProgrammeSlug, setSelectedActivityProgrammeSlug] = useState<string | null>(null);
   const [selectedInfo, setSelectedInfo] = useState<SegmentInfo | null>(null);
   const [teacherSlug, setTeacherSlug] = useState<string | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
@@ -486,6 +487,7 @@ export default function LibraryPage() {
   const openItem = (it: LibraryItem) => {
     if (it.kind === "activity") {
       setSelectedActivity(it.item);
+      setSelectedActivityProgrammeSlug(it.programmeSlug);
     } else if (it.kind === "artiverse") {
       const u = it.item;
       // Artistotle projects share the artiverseUnits collection but are
@@ -879,9 +881,21 @@ export default function LibraryPage() {
       {/* Activity modal */}
       <Modal
         isOpen={!!selectedActivity}
-        onClose={() => setSelectedActivity(null)}
+        onClose={() => {
+          setSelectedActivity(null);
+          setSelectedActivityProgrammeSlug(null);
+        }}
       >
-        {selectedActivity && <ActivityPopup activity={selectedActivity} />}
+        {selectedActivity && (
+          <ActivityPopup
+            activity={selectedActivity}
+            skillAreas={
+              selectedActivityProgrammeSlug
+                ? getCurriculumProgramme(selectedActivityProgrammeSlug)?.skillAreas
+                : undefined
+            }
+          />
+        )}
       </Modal>
 
       {/* Segment / artiverse / primer modal */}

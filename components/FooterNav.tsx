@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { Home, BookOpen, LayoutGrid, LogOut, Notebook, CalendarDays, Building2 } from "lucide-react";
+import { Home, BookOpen, LayoutGrid, LogOut, Notebook, CalendarDays, Building2, Newspaper } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { listCurriculumProgrammes } from "@/lib/content";
 import { clearTeacher, getBuilding, clearBuilding, getTeacher } from "@/lib/teacher-state";
@@ -20,14 +20,19 @@ export function FooterNav() {
   const router = useRouter();
   const [building, setBuildingState] = useState<string | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [teacherProgrammeSlug, setTeacherProgrammeSlug] = useState<string | null>(null);
+  const [teacherCategory, setTeacherCategory] = useState<string | null>(null);
 
-  // Read the current building + admin flag from session storage on mount
-  // + whenever the route changes (so picking a new building on /building
-  // updates the chip, and admin sessions never get a building chip).
+  // Read the current building + admin flag + teacher's programme from
+  // session storage on mount + whenever the route changes.
   useEffect(() => {
     setBuildingState(getBuilding());
     const t = getTeacher();
     setIsAdmin(!!t && (t.role === "admin" || t.programmeSlug === "*"));
+    setTeacherProgrammeSlug(
+      t && t.programmeSlug && t.programmeSlug !== "*" ? t.programmeSlug : null
+    );
+    setTeacherCategory(t?.category ?? null);
   }, [pathname]);
 
   // Hide the footer on the login + building-picker pages
@@ -35,42 +40,62 @@ export function FooterNav() {
     return null;
   }
 
-  // Detect if we're inside a programme page
+  // Detect the target programme for the overview / plans / experience-book
+  // tabs:
+  //   1. if the current page is inside a programme, that's the target
+  //   2. else if the teacher has a specific programme on their account,
+  //      keep those tabs visible anyway so plans is always reachable
+  //   3. admins have no default programme, so the tabs are hidden
+  //      (they pick a programme from the hub)
   const programmes = listCurriculumProgrammes();
   const programmeMatch = programmes.find(
     (p) => pathname === `/${p.slug}` || pathname.startsWith(`/${p.slug}/`)
   );
+  const targetProgramme =
+    programmeMatch ??
+    (teacherProgrammeSlug
+      ? programmes.find((p) => p.slug === teacherProgrammeSlug) ?? null
+      : null);
 
   const items: { href: string; label: string; icon: typeof Home }[] = [
     { href: "/", label: "home", icon: Home },
   ];
 
-  if (programmeMatch && programmeMatch.totalSessions > 0) {
+  if (targetProgramme && targetProgramme.totalSessions > 0) {
     // Surface the teacher journey in the order it should run:
     //   1. overview — the why
     //   2. plans    — the daily run sheet
     //   3. library  — reference (already added below)
     items.push({
-      href: `/${programmeMatch.slug}/overview`,
+      href: `/${targetProgramme.slug}/overview`,
       label: "overview",
       icon: LayoutGrid,
     });
     items.push({
-      href: `/${programmeMatch.slug}`,
+      href: `/${targetProgramme.slug}`,
       label: "plans",
       icon: CalendarDays,
     });
-    const bookSlug = PROGRAMME_TO_BOOK[programmeMatch.slug];
-    if (bookSlug) {
-      items.push({
-        href: `/book/${bookSlug}`,
-        label: "experience book",
-        icon: Notebook,
-      });
-    }
+    // experience-book tab hidden across all programmes for now.
   }
 
   items.push({ href: "/library", label: "library", icon: BookOpen });
+  // Newsletter is for the 5-8 and 8-12 programmes only (not 3-5).
+  //   · admins always see it (they review every building's submissions)
+  //   · category teachers span 5-8/8-12, so they qualify
+  //   · a single-programme teacher qualifies only if their slug is 5-8/8-12
+  const newsletterEligible =
+    isAdmin ||
+    teacherCategory != null ||
+    (teacherProgrammeSlug != null && !teacherProgrammeSlug.endsWith("-3-5"));
+  if (newsletterEligible) {
+    // admins review + download submitted newsletters; educators create them.
+    items.push({
+      href: isAdmin ? "/admin/newsletters" : "/newsletter",
+      label: "newsletter",
+      icon: Newspaper,
+    });
+  }
 
   const handleSignOut = () => {
     clearTeacher();

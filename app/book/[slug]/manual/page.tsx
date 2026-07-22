@@ -178,7 +178,7 @@ function TeacherManualContent() {
         <div className="rounded-2xl bg-white p-6 shadow-card md:p-8">
           {/* Header */}
           <p className="text-[10px] font-bold tracking-widest text-ink/40">
-            teacher manual
+            educator manual
           </p>
           <h1 className="mt-2 text-[24px] font-extrabold text-ink">
             {book.title}
@@ -263,7 +263,7 @@ function TeacherManualContent() {
           {/* Footer */}
           <div className="mt-12 rounded-2xl bg-brand-orange/5 p-5 text-center">
             <p className="text-[12px] font-medium text-ink/50">
-              end of teacher manual · {book.title} · {book.subtitle}
+              end of educator manual · {book.title} · {book.subtitle}
             </p>
           </div>
         </div>

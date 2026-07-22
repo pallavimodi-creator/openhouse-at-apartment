@@ -1,4 +1,4 @@
-// Core content types for the Openhouse Teacher Tool.
+// Core content types for the Openhouse Educator Tool.
 // All content is statically typed and loaded at build time — no DB in v1.
 
 export type SkillTag = "L&T" | "S&F" | "C&P" | "I&E" | "Responsibility";
@@ -160,7 +160,7 @@ export interface CurriculumProgramme {
   /**
    * Songs used as the warm-up playlist (e.g. Roll & Rhyme in the
    * language programme). Each song embeds an existing YouTube video
-   * so teachers can play it directly inside the overview.
+   * so educators can play it directly inside the overview.
    */
   songs?: ProgrammeSong[];
   trialSession?: TrialSession;
@@ -222,7 +222,7 @@ export interface ProgrammeSong {
   whatItBuilds: string;
   /** Which book or programme moment this song pairs with. */
   pairsWith: string;
-  /** Hint to the teacher about when to introduce this song. */
+  /** Hint to the educator about when to introduce this song. */
   introHint: string;
 }
 
@@ -344,12 +344,12 @@ export interface CurriculumSessionEntry {
   buildDayLabel?: string; // "Day 1 — Explore", "Day 6 — Disassemble", etc.
   /**
    * Engage question — asked at the start of the 40-min Build segment.
-   * Short, curiosity-opening; teacher takes 3-4 answers and moves on.
+   * Short, curiosity-opening; educator takes 3-4 answers and moves on.
    */
   engageQuestion?: string;
   /**
    * Concept question — asked in the closing debrief. One direct question
-   * about today's concept; one child answers; teacher confirms.
+   * about today's concept; one child answers; educator confirms.
    */
   conceptQuestion?: string;
 }
@@ -375,6 +375,61 @@ export interface CurriculumActivity {
    * link by `ActivityPopup`.
    */
   pdfUrl?: string;
+
+  /* ─── structured game-manual fields ─────────────────────────
+   * When present, ActivityPopup renders these directly as a
+   * world-class rulebook (goal, players, setup, numbered steps,
+   * ends-when, variations, skills). When absent, it falls back
+   * to parsing the dense `howToPlay` paragraph.
+   * All fields are optional so legacy activities keep working.
+   * ─────────────────────────────────────────────────────────── */
+
+  /** "1–6 children + educator" — quick at-a-glance chip. */
+  players?: string;
+  /** "10 min" — displayed alongside players. */
+  duration?: string;
+  /**
+   * One sentence describing what the CHILD does — not what they
+   * learn. e.g. "the child re-tells the story using picture cards."
+   */
+  goal?: string;
+  /**
+   * Numbered play steps in imperative voice, one action per step.
+   * Preferred over the dense `howToPlay` paragraph.
+   */
+  steps?: string[];
+  /** One sentence saying how the round finishes. */
+  endsWhen?: string;
+  /** Single-sentence easier variation. */
+  easierVariation?: string;
+  /** Single-sentence harder variation. */
+  harderVariation?: string;
+  /**
+   * Ids that reference this programme's `CurriculumSkillArea[].id`.
+   * Rendered as a small chip row in the footer of the manual.
+   */
+  skillIds?: string[];
+
+  /**
+   * educator's note — a short block of guidance for the educator.
+   * If a single string: renders as one paragraph.
+   * If a string array: renders as a bulleted list.
+   */
+  educatorNote?: string | string[];
+
+  /**
+   * Reference links — external URLs (e.g. tutorial videos) shown as a
+   * "reference links" section below the how-to-play. Never inserted
+   * into materials.
+   */
+  referenceLinks?: { label: string; url: string }[];
+
+  /**
+   * Custom titled blocks for game-specific info (e.g. "wild cards" or
+   * "free play"). Rendered as titled cards between the play steps and
+   * the variations. Use sparingly.
+   */
+  namedBlocks?: { title: string; body: string | string[] }[];
 }
 
 export interface CurriculumVariation {
