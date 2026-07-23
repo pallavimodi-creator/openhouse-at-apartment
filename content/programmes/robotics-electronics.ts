@@ -305,10 +305,10 @@ function buildModel(o: {
 }
 
 const buildActivities: Record<string, CurriculumActivity> = {
-  "elec-build-parking-barrier": buildModel({
-    id: "elec-build-parking-barrier",
-    title: "parking barrier build",
-    model: "Parking Barrier",
+  "elec-build-railway-barrier": buildModel({
+    id: "elec-build-railway-barrier",
+    title: "railway barrier build",
+    model: "Railway Barrier",
     concept: "open & closed circuit",
     days: 5,
     what: "a barrier that raises and lowers on a switch —",
@@ -348,7 +348,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
     concept: "input and output",
     days: 6,
     what: "a crane that senses what is near it and responds —",
-    // manual still to come — flagged in the educator note
+    manual: "/robotics-manuals/elec-model-crane.pdf",
   }),
 };
 
@@ -494,16 +494,16 @@ function s(
 }
 
 const sessionTable: CurriculumSessionEntry[] = [
-  // ── Parking Barrier · 5 days · open & closed circuits ──
-  s(1, "elec-c-safety", "Parking Barrier", "elec-build-parking-barrier", 1, 5,
+  // ── Railway Barrier · 5 days · open & closed circuits ──
+  s(1, "elec-c-safety", "Railway Barrier", "elec-build-railway-barrier", 1, 5,
     "why must we never join + straight to −?"),
-  s(2, "elec-c-conductors", "Parking Barrier", "elec-build-parking-barrier", 2, 5,
+  s(2, "elec-c-conductors", "Railway Barrier", "elec-build-railway-barrier", 2, 5,
     "which things carried the electricity, and what did they all have in common?"),
-  s(3, "elec-c-resistor-led", "Parking Barrier", "elec-build-parking-barrier", 3, 5,
+  s(3, "elec-c-resistor-led", "Railway Barrier", "elec-build-railway-barrier", 3, 5,
     "what has to be true before the led will light — and what is the resistor protecting?"),
-  s(4, "elec-c-switch", "Parking Barrier", "elec-build-parking-barrier", 4, 5,
+  s(4, "elec-c-switch", "Railway Barrier", "elec-build-railway-barrier", 4, 5,
     "what is the switch actually doing to the loop?"),
-  s(5, "elec-c-resistor-led", "Parking Barrier", "elec-build-parking-barrier", 5, 5,
+  s(5, "elec-c-resistor-led", "Railway Barrier", "elec-build-railway-barrier", 5, 5,
     "predict, then prove: what happens to the led if we break the loop anywhere?"),
 
   // ── Wind Turbine · 4 days · polarity ──
@@ -590,8 +590,8 @@ const checkpoints: CurriculumCheckpoint[] = [
 // ─── Model ↔ experiment pairings ────────────────────────────
 
 const modelPairings: ModelPairing[] = [
-  { model: "Parking Barrier", topic: "Open & closed circuits",
-    why: "A parking barrier is a loop that is deliberately broken and rejoined — which is exactly what a switch does. Its cards build the first complete circuit, add the switch, and protect the LED with a resistor." },
+  { model: "Railway Barrier", topic: "Open & closed circuits",
+    why: "A railway barrier is a loop that is deliberately broken and rejoined — which is exactly what a switch does. Its cards build the first complete circuit, add the switch, and protect the LED with a resistor." },
   { model: "Wind Turbine", topic: "Polarity",
     why: "A turbine's blades spin whichever way the wires say. Its cards are the polarity cards — swap the wires and the motor reverses — so the child wires the spin they want on purpose." },
   { model: "Soccer Bot", topic: "Polarity reversal",
@@ -673,7 +673,7 @@ function activitiesFor(ageSlug: "5-8" | "8-12") {
 }
 
 const DESCRIPTION =
-  "level 2 — electronics. across five models — parking barrier, wind turbine, soccer bot, cleaning bot, and sensor-controlled crane — children run experiments on circuits, polarity, sharing power, and sensors, then build a machine that uses what they just discovered. they finish able to look at a circuit and explain why it works — and build one that senses and responds. no mechanics background is needed: this level starts from the very first circuit.";
+  "level 2 — electronics. across five models — railway barrier, wind turbine, soccer bot, cleaning bot, and sensor-controlled crane — children run experiments on circuits, polarity, sharing power, and sensors, then build a machine that uses what they just discovered. they finish able to look at a circuit and explain why it works — and build one that senses and responds. no mechanics background is needed: this level starts from the very first circuit.";
 
 export const roboticsElectronics58: CurriculumProgramme = {
   ...shared,
