@@ -191,6 +191,15 @@ export interface CurriculumProgramme {
   glossary?: { term: string; inChildsWords: string }[];
   /** The component blocks a child can name and hold. */
   components?: { block: string; whatItIs: string }[];
+  /**
+   * How the same programme differs across its two age bands — same content,
+   * different depth. Rendered as a two-column comparison in the overview.
+   */
+  ageBandComparison?: {
+    younger: string[]; // what ages 5–8 do
+    older: string[]; // what ages 8–12 do
+    note?: string; // one line on what stays the same
+  };
 }
 
 export interface ModelPairing {

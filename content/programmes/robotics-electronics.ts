@@ -664,6 +664,19 @@ const shared = {
   foundationalConcepts,
   glossary,
   components,
+  ageBandComparison: {
+    younger: [
+      "builds and completes the circuit, and answers by circling",
+      "observes what happens — works or doesn't, which way it spins, brighter or dimmer",
+      "explains why it works in their own words",
+    ],
+    older: [
+      "designs their own circuit and draws it as a schematic",
+      "compares and proves — brighter or dimmer, faster or slower, at what distance the sensor triggers",
+      "explains with a clear reason; there's no multimeter in the kit, so “measuring” means structured comparison, not voltage numbers",
+    ],
+    note: "same five machines, same four skills — it's the depth of observing, measuring and designing that climbs.",
+  },
 };
 
 /** Activities differ only by which age's experience book is attached. */

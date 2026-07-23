@@ -1192,6 +1192,57 @@ function ProgrammeOverviewContent() {
         </p>
       </section>
 
+      {/* ─── AGES 5–8 vs 8–12 — same content, different depth ─── */}
+      {programme.ageBandComparison && (
+        <section className="mt-10 px-4 md:px-8">
+          <h2 className="text-[20px] font-extrabold lowercase leading-tight text-ink md:text-[24px]">
+            ages 5–8 vs 8–12
+          </h2>
+          <p className="mt-1 text-[13px] leading-relaxed text-ink-muted md:text-[14px]">
+            both age groups run the very same programme — {programme.ageBandComparison.note}
+          </p>
+          <div className="mt-4 grid gap-3 md:grid-cols-2">
+            {([
+              { band: "5-8", label: "ages 5–8", items: programme.ageBandComparison.younger },
+              { band: "8-12", label: "ages 8–12", items: programme.ageBandComparison.older },
+            ] as const).map((col) => {
+              const isCurrent = programme.ageGroup === col.band;
+              return (
+                <div
+                  key={col.band}
+                  className={cn(
+                    "rounded-2xl p-5 ring-1",
+                    isCurrent
+                      ? "bg-brand-orange/[0.06] ring-brand-orange/40"
+                      : "bg-brand-cream ring-ink/10"
+                  )}
+                >
+                  <div className="flex items-center gap-2">
+                    <p className="text-[15px] font-extrabold text-ink">{col.label}</p>
+                    {isCurrent && (
+                      <span className="rounded-chip bg-brand-orange/15 px-2 py-0.5 text-[10px] font-extrabold text-brand-orange">
+                        this programme
+                      </span>
+                    )}
+                  </div>
+                  <ul className="mt-3 space-y-2">
+                    {col.items.map((it, i) => (
+                      <li key={i} className="flex items-start gap-2 text-[13px] leading-relaxed text-ink md:text-[13.5px]">
+                        <span
+                          className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-brand-orange"
+                          aria-hidden
+                        />
+                        <span>{it}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
       {/* ─── WELCOME — 3-5 art only ─── */}
       {programme.slug === "art-design-3-5" && (
         <section className="mt-10 px-4 md:px-8">
