@@ -42,7 +42,8 @@ import {
   Compass,
   type LucideIcon,
 } from "lucide-react";
-import { getCurriculumProgramme, getActivityImage, GYM_BOOK_IMAGES } from "@/lib/content";
+import { getCurriculumProgramme, getActivityImage, GYM_BOOK_IMAGES, getTrackLevels } from "@/lib/content";
+import { LevelSwitcher } from "@/components/LevelSwitcher";
 import { cn } from "@/lib/utils";
 import { TeacherGate } from "@/components/TeacherGate";
 import { ArtiverseChapters } from "@/components/ArtiverseChapters";
@@ -1144,6 +1145,12 @@ function ProgrammeOverviewContent() {
                     </p>
                   </div>
                 )}
+              {/* Multi-level track (robotics: mechanics → electronics) —
+                  how an educator moves to the next level from inside. */}
+              <LevelSwitcher
+                levels={getTrackLevels(programme.slug)}
+                currentSlug={programme.slug}
+              />
             </div>
           </div>
 

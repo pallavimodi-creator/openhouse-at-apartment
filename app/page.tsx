@@ -3,7 +3,7 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { listCurriculumProgrammes, getCurriculumProgramme } from "@/lib/content";
+import { listHomeProgrammes, getCurriculumProgramme } from "@/lib/content";
 import { HeroBanner } from "@/components/HeroBanner";
 import { ProgrammeCard } from "@/components/ProgrammeCard";
 import { getTeacher, type TeacherState } from "@/lib/teacher-state";
@@ -93,12 +93,13 @@ export default function HomePage() {
   // (e.g. language through storytelling 3-5 while content is still
   // being authored), so previously hiding them by filter is no longer
   // necessary — teachers see what's coming next.
+  // listHomeProgrammes() shows only level 1 of a multi-level track — later
+  // levels (e.g. robotics level 2, electronics) are reached from inside the
+  // programme via the level switcher, so the grid stays one card per name.
   const programmes = isAdmin
-    ? listCurriculumProgrammes()
+    ? listHomeProgrammes()
     : teacher.category
-      ? listCurriculumProgrammes().filter(
-          (p) => p.category === teacher.category,
-        )
+      ? listHomeProgrammes().filter((p) => p.category === teacher.category)
       : (() => {
           const p = getCurriculumProgramme(teacher.programmeSlug);
           return p ? [p] : [];

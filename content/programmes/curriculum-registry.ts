@@ -6,6 +6,10 @@ import { artDesign58 } from "./art-design-5-8";
 import { artDesign812 } from "./art-design-8-12";
 import { robotics58 } from "./robotics-5-8";
 import { robotics812 } from "./robotics-8-12";
+import {
+  roboticsElectronics58,
+  roboticsElectronics812,
+} from "./robotics-electronics";
 import { languageStorytelling35 } from "./language-storytelling-3-5";
 import { stem35 } from "./stem-3-5";
 
@@ -24,7 +28,12 @@ export const curriculumProgrammes: CurriculumProgramme[] = [
   publicSpeaking812,
 
   // ── Robotics / STEM ──
+  // Robotics runs as a track: level 1 (mechanics) then level 2
+  // (electronics). Only level 1 shows on the home grid — level 2 is
+  // reached from inside the programme, via the level switcher.
   stem35,
   robotics58,
+  roboticsElectronics58,
   robotics812,
+  roboticsElectronics812,
 ];

@@ -171,6 +171,26 @@ export interface CurriculumProgramme {
    * list per model is derived from the sessionTable; `why` is the rationale.
    */
   modelPairings?: ModelPairing[];
+  /**
+   * Level within a multi-level track — robotics runs level 1 (mechanics)
+   * and then level 2 (electronics). Programmes without a level are
+   * single-level and behave exactly as before.
+   */
+  level?: number;
+  /** Short level name for the level switcher — "mechanics", "electronics". */
+  levelName?: string;
+  /**
+   * Slug of the level-1 programme this level belongs to. Levels sharing a
+   * trackSlug are shown together by the level switcher; only level 1 (or a
+   * programme with no level) appears on the home grid.
+   */
+  trackSlug?: string;
+  /** The big ideas a level is built on — each discovered by building. */
+  foundationalConcepts?: { name: string; body: string }[];
+  /** Concepts a child can explain, phrased in a child's words. */
+  glossary?: { term: string; inChildsWords: string }[];
+  /** The component blocks a child can name and hold. */
+  components?: { block: string; whatItIs: string }[];
 }
 
 export interface ModelPairing {
