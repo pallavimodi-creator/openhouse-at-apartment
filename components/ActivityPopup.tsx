@@ -82,7 +82,9 @@ function extractYouTubeId(url: string): string | null {
  * the result is an alternating sequence of [text, url, text, url, ...].
  */
 function linkifyMaterial(text: string): React.ReactNode {
-  const urlRe = /https?:\/\/[^\s)]+/g;
+  // Match full http(s) URLs OR root-relative asset paths (e.g. a cue card
+  // or model-manual PDF at /robotics-manuals/…pdf) so both are clickable.
+  const urlRe = /(?:https?:\/\/[^\s)]+|\/[^\s)]+\.(?:pdf|png|jpg|jpeg))/gi;
   const parts = text.split(urlRe);
   const matches = text.match(urlRe) ?? [];
   const nodes: React.ReactNode[] = [];
