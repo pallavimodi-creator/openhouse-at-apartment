@@ -554,10 +554,18 @@ export function ActivityPopup({
       {(() => {
         const materials = [...(activity.materials ?? [])];
         if (activity.pdfUrl) {
-          // Derive a readable label — "L1 Levers cue cards (PDF)"
+          // Derive a readable label that matches what the educator is
+          // holding — "L1 Levers cue card (PDF)" for an experiment,
+          // "Soccer Bot model manual (PDF)" for a build.
+          const kind =
+            activity.segment === "build"
+              ? "model manual"
+              : activity.segment === "experience-book"
+                ? "experience book"
+                : "cue card";
           const label = activity.cardName
-            ? `${activity.cardName} cue card (PDF)`
-            : `reference (PDF)`;
+            ? `${activity.cardName} ${kind} (PDF)`
+            : `${kind} (PDF)`;
           materials.push(`${label} — ${activity.pdfUrl}`);
         }
         if (materials.length === 0) return null;

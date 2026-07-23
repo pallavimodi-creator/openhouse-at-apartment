@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { SEGMENT_COLORS, GYM_BOOK_IMAGES, getActivityImage } from "@/lib/content";
+import { SEGMENT_COLORS, GYM_BOOK_IMAGES, getActivityImage, getCurriculumProgramme } from "@/lib/content";
 import { ChevronDown } from "lucide-react";
 import { Modal } from "./Modal";
 import { ActivityPopup } from "./ActivityPopup";
@@ -427,13 +427,31 @@ function SegmentRow({
                   : undefined,
               };
             } else if (segment.segmentId === "log-book" || segment.segmentId === "experience-book") {
-              info = {
-                segmentId: segment.segmentId,
-                segmentName: segment.segmentName,
-                title: "experience book — coming soon",
-                description:
-                  "Experience books are being redesigned. The new version will be up here shortly.",
-              };
+              // A programme that actually ships its experience book (a PDF is
+              // attached to the activity) shows the real thing. The rest are
+              // still being redesigned and keep the "coming soon" note.
+              const ebProg = programmeSlug
+                ? getCurriculumProgramme(programmeSlug)
+                : undefined;
+              const ebAct = ebProg
+                ? Object.values(ebProg.activities).find(
+                    (a) => a.segment === "experience-book",
+                  )
+                : undefined;
+              info = ebAct?.pdfUrl
+                ? {
+                    segmentId: segment.segmentId,
+                    segmentName: segment.segmentName,
+                    title: ebAct.title,
+                    description: ebAct.setupLine,
+                  }
+                : {
+                    segmentId: segment.segmentId,
+                    segmentName: segment.segmentName,
+                    title: "experience book — coming soon",
+                    description:
+                      "Experience books are being redesigned. The new version will be up here shortly.",
+                  };
             } else if (
               segment.segmentId === "book-o-clock" &&
               segment.bookOrder !== undefined &&

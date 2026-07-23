@@ -29,78 +29,35 @@ import type {
   ModelPairing,
 } from "@/content/types";
 
-const CARD_PDF = {
-  easy: "/robotics-manuals/elec-cards-easy.pdf",
-  medium: "/robotics-manuals/elec-cards-medium.pdf",
-  difficult: "/robotics-manuals/elec-cards-difficult.pdf",
-} as const;
+const CUE_CARDS = "/robotics-manuals/elec-cue-cards.pdf";
+const COMPONENT_GALLERY = "/robotics-manuals/elec-component-gallery.pdf";
+const TEACHER_REFERENCE = "/robotics-manuals/elec-teacher-reference.pdf";
 
 /** Every card is a "make it work" task, not a worksheet. */
 const HOW_A_CARD_RUNS =
-  "Children work in small groups of 2–4 on this one card while the rest of the session's build waits. The card is a \"make it work\" task, not a worksheet — the children connect the blocks until the thing actually happens. Many cards carry a missing-wire challenge (a \"?\"): the connection is left out on purpose and the children work it out themselves. The educator asks one question per group and never gives the answer — the child tries, tests, and fixes. Every child gets hands on the blocks.";
+  "Children work in small groups of 2–4 on this one card while today's build waits. The card is a \"make it work\" task, not a worksheet — the children connect the blocks until the thing actually happens. Most cards carry a missing-wire challenge (a \"?\"): the connection is left out on purpose and the children work it out themselves. The educator asks one question per group and never gives the answer — the child tries, tests, and fixes. Every child gets hands on the blocks.";
 
-const BLOCKS = {
-  circuit: [
-    "Circuit Card (laminated, wipe-clean)",
-    "Power block (battery & holder)",
-    "Jumper wires",
-    "LED block",
-    "Resistor block",
-    "Switch block",
-  ],
-  polarity: [
-    "Circuit Card (laminated, wipe-clean)",
-    "Power block (battery & holder)",
-    "Jumper wires",
-    "Motor block",
-    "LED block",
-    "Motor clamp",
-  ],
-  control: [
-    "Circuit Card (laminated, wipe-clean)",
-    "Power block (battery & holder)",
-    "Jumper wires",
-    "Motor block — 2",
-    "Direction (DPDT) block",
-    "Motor clamp",
-  ],
-  power: [
-    "Circuit Card (laminated, wipe-clean)",
-    "Power block (battery & holder)",
-    "Jumper wires",
-    "Motor block — 3",
-    "Speed (potentiometer) block",
-    "LED block",
-  ],
-  sensing: [
-    "Circuit Card (laminated, wipe-clean)",
-    "Power block (battery & holder)",
-    "Jumper wires",
-    "IR sensor block",
-    "Motor driver block",
-    "Motor block",
-  ],
-};
-
-/** Shorthand for an experiment card — keeps the 25 entries readable. */
+/**
+ * One entry per printed card in the Electronic Cue Cards deck. `task` is
+ * the card's own wording, kept verbatim so what the educator reads on
+ * screen matches the laminated card in their hand.
+ */
 function card(o: {
   id: string;
-  cardName: string;
-  title: string;
-  question: string;
-  goal: string;
+  name: string;
   tier: "easy" | "medium" | "difficult";
-  materials: string[];
+  task: string;
+  goal: string;
+  blocks: string[];
   skillIds: string[];
-  conceptQuestion: string;
   note?: string;
 }): CurriculumActivity {
   return {
     id: o.id,
     segment: "experiment",
-    title: o.title,
-    cardName: o.cardName,
-    setupLine: o.question,
+    title: `${o.name} · ${o.tier}`,
+    cardName: o.name,
+    setupLine: o.task,
     howToPlay: HOW_A_CARD_RUNS,
     players: "2–4 children · 1 educator",
     duration: "40 min",
@@ -112,336 +69,193 @@ function card(o: {
     harderVariation:
       "the child predicts what the circuit will do before connecting, then proves it — and draws the circuit afterwards.",
     skillIds: o.skillIds,
-    materials: o.materials,
+    materials: ["Electronic cue card — " + o.name, ...o.blocks],
     difficultyLevels: [
-      {
-        level: "Easy",
-        description:
-          "Educator reads the card and names the blocks. Child connects and says what happened.",
-      },
-      {
-        level: "Medium",
-        description:
-          "Child reads the card, builds the circuit, and works out the missing connection themselves.",
-      },
-      {
-        level: "Hard",
-        description:
-          "Child predicts before connecting — \"this will happen because…\" — then tests, and explains the result in real electronics words.",
-      },
+      { level: "Easy", description: "Educator reads the card and names the blocks. Child connects and says what happened." },
+      { level: "Medium", description: "Child reads the card, builds the circuit, and works out the missing wire themselves." },
+      { level: "Hard", description: "Child predicts before connecting — \"this will happen because…\" — then tests and explains the result in real electronics words." },
     ],
     debriefPrompts: [],
     type: "physical-game",
-    pdfUrl: CARD_PDF[o.tier],
+    pdfUrl: CUE_CARDS,
+    referenceLinks: [
+      { label: "component gallery — name every block", url: COMPONENT_GALLERY },
+      { label: "electronics teacher reference", url: TEACHER_REFERENCE },
+    ],
     educatorNote: o.note,
   };
 }
 
-// ─── Experiment cards (25 — the Circuit Cards deck) ─────────
+const POWER = "Power block (battery & holder)";
+const WIRES = "Jumper wires";
+const LED = "LED block";
+const RES = "Resistor block";
+const SW = "Switch block";
+const MOTOR = "Motor block";
+const DPDT = "Direction (DPDT) block";
+const POT = "Speed (potentiometer) block";
+const IR = "IR sensor block";
+const DRIVER = "Motor driver block";
+const LDR = "LDR sensor block";
+const SERVO = "Servo motor + tester";
+const CLAMP = "Motor clamp";
+
+// ─── Experiment cards — the real Electronic Cue Cards deck ──
+// 21 printed cards, plus the two the copy flags as still to be made (⚑).
 
 const experimentActivities: Record<string, CurriculumActivity> = {
-  // ── circuits · easy · runs alongside the parking barrier ──
-  "elec-circuits-e1": card({
-    id: "elec-circuits-e1",
-    cardName: "Staying safe",
-    title: "circuits — staying safe: never join + to −",
-    question:
-      "what must we never do with the power block, and how do we handle it safely?",
-    goal: "the child learns the one safety rule — never join + straight to − — and shows they can set up the power block correctly.",
-    tier: "easy",
-    materials: BLOCKS.circuit,
-    skillIds: ["bm", "ou"],
-    conceptQuestion: "why must we never join + straight to −?",
-    note: "⚑ this card is still to be created for the deck. Until it is printed, run it as a short educator-led safety briefing using the power block and the safety rule.",
+  // ── still to be created (⚑ in the operator's copy) ──
+  "elec-c-safety": card({
+    id: "elec-c-safety", name: "staying safe", tier: "easy",
+    task: "what must we never do with the power block, and how do we handle it safely? never join + straight to −.",
+    goal: "the child learns the one safety rule — never join + straight to − — and sets the power block up correctly.",
+    blocks: [POWER, WIRES], skillIds: ["bm", "ou"],
+    note: "⚑ not in the printed deck yet. Run it as a short educator-led safety briefing with the power block before the first circuit.",
   }),
-  "elec-circuits-e2": card({
-    id: "elec-circuits-e2",
-    cardName: "Conductors vs insulators",
-    title: "circuits — conductors vs insulators",
-    question:
-      "which materials let the electricity through, and which ones block it?",
-    goal: "the child tests everyday objects in the gap of a circuit and sorts them into things that carry electricity and things that block it.",
-    tier: "easy",
-    materials: [...BLOCKS.circuit, "Test objects — metal spoon, paperclip, plastic ruler, rubber band, pencil lead"],
+  "elec-c-conductors": card({
+    id: "elec-c-conductors", name: "conductors vs insulators", tier: "easy",
+    task: "which materials let the electricity through, and which ones block it? drop each object into the gap in the circuit and watch the led.",
+    goal: "the child tests everyday objects in a gap in the circuit and sorts them into carriers and blockers.",
+    blocks: [POWER, WIRES, LED, RES, "Test objects — metal spoon, paperclip, plastic ruler, rubber band"],
     skillIds: ["ou", "bm"],
-    conceptQuestion: "which things carried the electricity, and what did they all have in common?",
-    note: "⚑ this card is still to be created for the deck. Until it is printed, run it with the LED circuit and a gap the children drop each test object into.",
-  }),
-  "elec-circuits-e3": card({
-    id: "elec-circuits-e3",
-    cardName: "A complete loop",
-    title: "circuits — a complete loop lights the led",
-    question: "what has to be true before the led will light?",
-    goal: "the child connects the blocks into a complete ring so the LED lights, then breaks the ring and sees it stop.",
-    tier: "easy",
-    materials: BLOCKS.circuit,
-    skillIds: ["bm", "ou", "ps"],
-    conceptQuestion: "what happens to the led if we break the loop anywhere?",
-  }),
-  "elec-circuits-e4": card({
-    id: "elec-circuits-e4",
-    cardName: "The switch",
-    title: "circuits — a switch opens and closes the loop",
-    question: "how do we turn the circuit on and off without pulling a wire out?",
-    goal: "the child puts a switch into the loop and uses it to open and close the circuit on demand.",
-    tier: "easy",
-    materials: BLOCKS.circuit,
-    skillIds: ["bm", "ou"],
-    conceptQuestion: "what is the switch actually doing to the loop when you press it?",
-  }),
-  "elec-circuits-e5": card({
-    id: "elec-circuits-e5",
-    cardName: "The resistor",
-    title: "circuits — the resistor keeps the led safe",
-    question: "why does the led need a resistor next to it?",
-    goal: "the child adds the resistor block to the LED circuit and can say what it protects the LED from.",
-    tier: "easy",
-    materials: BLOCKS.circuit,
-    skillIds: ["ou", "bm"],
-    conceptQuestion: "what would happen to the led without the resistor?",
+    note: "⚑ not in the printed deck yet. Run it with the LED circuit and a deliberate gap the children drop each test object into.",
   }),
 
-  // ── polarity · easy · runs alongside the wind turbine ──
-  "elec-polarity-e1": card({
-    id: "elec-polarity-e1",
-    cardName: "Swap the wires",
-    title: "polarity — swap the wires, the motor reverses",
-    question: "what happens to the motor when we swap the two wires around?",
-    goal: "the child runs the motor, swaps + and −, and sees the motor spin the other way.",
-    tier: "easy",
-    materials: BLOCKS.polarity,
-    skillIds: ["ou", "bm"],
-    conceptQuestion: "what did swapping the wires change about the motor?",
+  // ── easy ──
+  "elec-c-resistor-led": card({
+    id: "elec-c-resistor-led", name: "resistor block & led block", tier: "easy",
+    task: "Connect all blocks as per the circuit below such that the LED lights up when it gets safe power.",
+    goal: "the child completes the loop so the LED lights, with the resistor protecting it.",
+    blocks: [POWER, WIRES, LED, RES], skillIds: ["bm", "ou", "ps"],
   }),
-  "elec-polarity-e2": card({
-    id: "elec-polarity-e2",
-    cardName: "The led only lights one way",
-    title: "polarity — the led only lights one way",
-    question: "does the led care which way round it is connected?",
-    goal: "the child connects the LED both ways round and finds that it only lights in one direction.",
-    tier: "easy",
-    materials: BLOCKS.polarity,
-    skillIds: ["ou", "ps"],
-    conceptQuestion: "why does the led light one way round but not the other?",
+  "elec-c-switch": card({
+    id: "elec-c-switch", name: "switch block", tier: "easy",
+    task: "Connect all blocks in a circuit and place the switch such that the LED turns on when the switch is ON.",
+    goal: "the child places a switch in the loop so the LED can be turned on and off on demand.",
+    blocks: [POWER, WIRES, LED, RES, SW], skillIds: ["bm", "ou"],
   }),
-  "elec-polarity-e3": card({
-    id: "elec-polarity-e3",
-    cardName: "Predict the spin",
-    title: "polarity — predict which way it will spin",
-    question: "looking at the wires, can you say which way the motor will turn before you switch it on?",
-    goal: "the child predicts the motor's direction from how the wires are connected, then tests the prediction.",
-    tier: "easy",
-    materials: BLOCKS.polarity,
-    skillIds: ["ou", "pe"],
-    conceptQuestion: "what did you look at to decide which way it would spin?",
+  "elec-c-motor": card({
+    id: "elec-c-motor", name: "motor block", tier: "easy",
+    task: "Task A: Connect the battery to the motor and observe the motor spin. Task B: Reverse the wire connections and observe how the motor spins in the opposite direction.",
+    goal: "the child runs the motor, then reverses the wires and sees it spin the other way.",
+    blocks: [POWER, WIRES, MOTOR, CLAMP], skillIds: ["ou", "bm"],
   }),
-  "elec-polarity-e4": card({
-    id: "elec-polarity-e4",
-    cardName: "Make it spin the way i ask",
-    title: "polarity — make it spin the way i ask",
-    question: "can you wire the motor so it spins the exact way i ask for?",
-    goal: "the child is given a direction and wires the motor to spin that way on the first try.",
-    tier: "easy",
-    materials: BLOCKS.polarity,
-    skillIds: ["bm", "ou", "pe"],
-    conceptQuestion: "how did you decide which wire went where?",
+  "elec-c-dpdt": card({
+    id: "elec-c-dpdt", name: "dpdt block", tier: "easy",
+    task: "Connect the battery and motor through the DPDT block. Press the DPDT switch to change the direction of the motor.",
+    goal: "the child reverses the motor with one press — no rewiring.",
+    blocks: [POWER, WIRES, MOTOR, DPDT, CLAMP], skillIds: ["bm", "ou"],
   }),
-
-  // ── control · medium · runs alongside the soccer bot ──
-  "elec-control-e1": card({
-    id: "elec-control-e1",
-    cardName: "The direction switch",
-    title: "control — a switch flips the motor's direction",
-    question: "can we reverse the motor without pulling any wires out?",
-    goal: "the child wires the direction (DPDT) block so one press reverses the motor with no rewiring.",
-    tier: "medium",
-    materials: BLOCKS.control,
-    skillIds: ["bm", "ou"],
-    conceptQuestion: "what is the direction switch doing to the electricity?",
-  }),
-  "elec-control-e2": card({
-    id: "elec-control-e2",
-    cardName: "One switch each",
-    title: "control — each motor gets its own direction switch",
-    question: "how do we control two motors separately?",
+  "elec-c-dual-dpdt": card({
+    id: "elec-c-dual-dpdt", name: "dual dpdt circuit", tier: "easy",
+    task: "Connect each motor to its own DPDT switch and to the battery. Press each DPDT switch to control each motor's direction.",
     goal: "the child gives each motor its own direction switch and drives them independently.",
-    tier: "medium",
-    materials: BLOCKS.control,
-    skillIds: ["bm", "ps"],
-    conceptQuestion: "why does each motor need its own switch?",
+    blocks: [POWER, WIRES, "Motor block — 2", "Direction (DPDT) block — 2", CLAMP], skillIds: ["bm", "ps"],
   }),
-  "elec-control-e3": card({
-    id: "elec-control-e3",
-    cardName: "Steer with two motors",
-    title: "control — steer with two motors",
-    question: "how do two motors make the bot turn instead of going straight?",
-    goal: "the child runs the two motors in different directions to make the bot turn on the spot.",
-    tier: "medium",
-    materials: BLOCKS.control,
-    skillIds: ["ou", "ps", "bm"],
-    conceptQuestion: "what did the two motors have to be doing for it to turn?",
+  "elec-c-pot": card({
+    id: "elec-c-pot", name: "potentiometer block", tier: "easy",
+    task: "Connect the battery and motor through the potentiometer block. Turn the knob to control the speed of the motor.",
+    goal: "the child dials the motor faster and slower without changing the battery.",
+    blocks: [POWER, WIRES, MOTOR, POT, CLAMP], skillIds: ["bm", "ou"],
   }),
-  "elec-control-e4": card({
-    id: "elec-control-e4",
-    cardName: "Drive a set path",
-    title: "control — drive a set path: forward, reverse, turn",
-    question: "can you drive the bot along a path we mark out — forward, reverse, and a turn?",
-    goal: "the child plans and drives a marked path using the direction switches, correcting as they go.",
-    tier: "medium",
-    materials: [...BLOCKS.control, "Floor tape to mark the path"],
-    skillIds: ["ps", "bm", "pe"],
-    conceptQuestion: "which switch did what, at each part of the path?",
+  "elec-c-driver-ir": card({
+    id: "elec-c-driver-ir", name: "motor driver + ir sensor", tier: "easy",
+    task: "Connect the IR sensor to the motor driver and connect the motor to the driver outputs. The IR sensor's signal will tell the motor driver when to run the motor, such that the motor moves only when the IR sensor is activated.",
+    goal: "the child wires a sensor (input) through the driver to a motor (output) so it runs only when the sensor sees something.",
+    blocks: [POWER, WIRES, IR, DRIVER, MOTOR], skillIds: ["bm", "ou"],
   }),
 
-  // ── power-sharing · medium · runs alongside the cleaning bot ──
-  "elec-power-e1": card({
-    id: "elec-power-e1",
-    cardName: "Flip direction with three motors",
-    title: "power-sharing — flip direction with three motors running",
-    question: "can we still reverse the motors once three of them are running together?",
-    goal: "the child runs three motors from one battery and reverses them together with the direction block.",
-    tier: "medium",
-    materials: BLOCKS.power,
-    skillIds: ["bm", "ps"],
-    conceptQuestion: "did adding more motors change what the direction switch does?",
+  // ── medium ──
+  "elec-c-dpdt-motor": card({
+    id: "elec-c-dpdt-motor", name: "dpdt block + motor block", tier: "medium",
+    task: "Control motor block (A) using a dpdt block while motor block (B) should remain ON. Can you complete the missing wire in the circuit?",
+    goal: "the child flips one motor's direction while a second motor keeps running.",
+    blocks: [POWER, WIRES, "Motor block — 2", DPDT, CLAMP], skillIds: ["bm", "ps"],
   }),
-  "elec-power-e2": card({
-    id: "elec-power-e2",
-    cardName: "Parallel — its own path",
-    title: "power-sharing — a parallel circuit gives each part its own path",
-    question: "what happens when each part gets its own path back to the battery?",
-    goal: "the child wires parts in parallel and sees each one keep working when another is removed.",
-    tier: "medium",
-    materials: BLOCKS.power,
-    skillIds: ["ou", "bm"],
-    conceptQuestion: "what happened to the others when you took one part out?",
+  "elec-c-series": card({
+    id: "elec-c-series", name: "series circuit", tier: "medium",
+    task: "Make a series circuit with the following and find the missing block and missing wire to complete the circuit.",
+    goal: "the child builds one shared path and finds that breaking it stops everything.",
+    blocks: [POWER, WIRES, "Lamp block — 3", "Resistor block — 2", SW], skillIds: ["ou", "ps"],
   }),
-  "elec-power-e3": card({
-    id: "elec-power-e3",
-    cardName: "Series — one shared path",
-    title: "power-sharing — a series circuit shares one path",
-    question: "what happens when all the parts have to share one single path?",
-    goal: "the child wires parts in series and finds that breaking the line stops everything.",
-    tier: "medium",
-    materials: BLOCKS.power,
-    skillIds: ["ou", "ps"],
-    conceptQuestion: "why did everything stop when you removed just one part?",
+  "elec-c-parallel": card({
+    id: "elec-c-parallel", name: "parallel circuit", tier: "medium",
+    task: "Make a parallel circuit with the following and find the missing block and missing wires to complete the circuit.",
+    goal: "the child gives each part its own path and sees the others keep working when one is removed.",
+    blocks: [POWER, WIRES, "LED block — 2", "Resistor block — 3"], skillIds: ["ou", "bm"],
   }),
-  "elec-power-e4": card({
-    id: "elec-power-e4",
-    cardName: "The speed dial",
-    title: "power-sharing — a dial changes the motor's speed",
-    question: "can we make the motor run faster and slower without changing the battery?",
-    goal: "the child uses the speed (potentiometer) block to dial the motor faster and slower.",
-    tier: "medium",
-    materials: BLOCKS.power,
-    skillIds: ["bm", "ou"],
-    conceptQuestion: "what is the dial changing about the electricity reaching the motor?",
+  "elec-c-pot-dual-motor-series": card({
+    id: "elec-c-pot-dual-motor-series", name: "potentiometer + dual motor blocks", tier: "medium",
+    task: "A circuit uses a pot block to control the speed of 2 motor blocks connected in series. Can you complete missing wire in the circuit and adjust the speed?",
+    goal: "the child controls the speed of two motors sharing one path.",
+    blocks: [POWER, WIRES, "Motor block — 2", POT, CLAMP], skillIds: ["bm", "ou"],
   }),
-  "elec-power-e5": card({
-    id: "elec-power-e5",
-    cardName: "Three motors, one battery",
-    title: "power-sharing — run three motors from one battery",
-    question: "can one battery do three jobs at once?",
-    goal: "the child powers three motors from a single battery and keeps all three running.",
-    tier: "medium",
-    materials: BLOCKS.power,
-    skillIds: ["bm", "ps", "ou"],
-    conceptQuestion: "how did you share one battery between three motors?",
+  "elec-c-pot-switch-parallel": card({
+    id: "elec-c-pot-switch-parallel", name: "potentiometer + switch block", tier: "medium",
+    task: "Use a potentiometer block to control the speed of 2 motor blocks connected in parallel. The circuit needs to be turned ON/OFF using a switch block. Can you complete missing wire in the circuit and adjust the speed?",
+    goal: "the child runs two motors on their own paths, dials their speed, and switches the whole thing on and off.",
+    blocks: [POWER, WIRES, "Motor block — 2", POT, SW, CLAMP], skillIds: ["bm", "ps", "ou"],
   }),
-  "elec-power-e6": card({
-    id: "elec-power-e6",
-    cardName: "Series vs parallel",
-    title: "power-sharing — compare series vs parallel",
-    question: "which arrangement keeps the parts brighter and stronger — series or parallel?",
-    goal: "the child builds the same parts both ways, compares the result, and explains the difference.",
-    tier: "medium",
-    materials: BLOCKS.power,
-    skillIds: ["ou", "pe"],
-    conceptQuestion: "which way was brighter, and why?",
-    note: "Pitched at ages 8–12 — the comparison is the point. At 5–8 run it as a simpler \"which one looks brighter?\" observation.",
+  "elec-c-motor-led-generator": card({
+    id: "elec-c-motor-led-generator", name: "motor + led", tier: "medium",
+    task: "Connect the Motor to the LED. Rotate the wheel to light up the LED!",
+    goal: "the child turns the wheel by hand and generates enough power to light the LED — a motor working backwards.",
+    blocks: [WIRES, MOTOR, LED, "Wheel"], skillIds: ["ou", "pe"],
+    note: "This is the generating card — it is what makes the wind turbine an energy-generating model.",
+  }),
+  "elec-c-servo": card({
+    id: "elec-c-servo", name: "servo motor + servo controller", tier: "medium",
+    task: "Control servo motor(a) using Servo controller(a) in manual mode and Servo motor (b) using servo controller(b) in Auto mode.",
+    goal: "the child moves a servo to an exact position in manual mode, then lets it run in auto.",
+    blocks: [POWER, WIRES, SERVO, "Servo controller — 2", DRIVER], skillIds: ["bm", "ou"],
+    note: "✚ extension card — for children who finish early. Optional, never required.",
   }),
 
-  // ── sensing · difficult · runs alongside the sensor-controlled crane ──
-  "elec-sensing-e1": card({
-    id: "elec-sensing-e1",
-    cardName: "The sensor tells the driver",
-    title: "sensing — a sensor tells the driver when to run the motor",
-    question: "how does the machine know when to start on its own?",
-    goal: "the child wires the IR sensor to the motor driver so the motor runs only when the sensor sees something.",
-    tier: "difficult",
-    materials: BLOCKS.sensing,
-    skillIds: ["bm", "ou"],
-    conceptQuestion: "which part was the input, and which was the output?",
+  // ── difficult ──
+  "elec-c-ir-motor-direction": card({
+    id: "elec-c-ir-motor-direction", name: "ir sensor + motor block", tier: "difficult",
+    task: "Use a motor driver to control a motor block. Control the direction of motor by swapping the Out PIN of the sensor with IN1 and IN2 of the motor driver. Can you complete the missing wire in the circuit and change the direction of the motor using the sensor?",
+    goal: "the child makes the sensor decide which way the motor turns, not just whether it runs.",
+    blocks: [POWER, WIRES, IR, DRIVER, MOTOR], skillIds: ["bm", "ps"],
   }),
-  "elec-sensing-e2": card({
-    id: "elec-sensing-e2",
-    cardName: "The sensor changes direction",
-    title: "sensing — a sensor changes the motor's direction",
-    question: "can the sensor decide which way the motor turns?",
-    goal: "the child sets up the driver so the sensor reverses the motor instead of just starting it.",
-    tier: "difficult",
-    materials: BLOCKS.sensing,
-    skillIds: ["bm", "ps"],
-    conceptQuestion: "what decision is the driver making for the motor?",
+  "elec-c-ir-range": card({
+    id: "elec-c-ir-range", name: "ir sensor + motor block — range", tier: "difficult",
+    task: "Send a signal to the motor driver block using an IR sensor block. Adjust the range of the IR Sensor to detect objects that are close enough. Complete the missing wires in the circuit.",
+    goal: "the child tunes the sensor so it triggers only when something is close enough.",
+    blocks: [POWER, WIRES, IR, DRIVER, MOTOR, "Measuring tape"], skillIds: ["ou", "ps", "pe"],
   }),
-  "elec-sensing-e3": card({
-    id: "elec-sensing-e3",
-    cardName: "Two sensors",
-    title: "sensing — two sensors drive forward and back",
-    question: "what can the machine do when it has two sets of eyes?",
-    goal: "the child wires two sensors so one drives the motor forward and the other drives it back.",
-    tier: "difficult",
-    materials: [...BLOCKS.sensing, "IR sensor block — 2nd"],
-    skillIds: ["bm", "ps", "ou"],
-    conceptQuestion: "how does the driver know which sensor is talking?",
+  "elec-c-dual-ir-fwd-back": card({
+    id: "elec-c-dual-ir-fwd-back", name: "dual ir sensor + motor", tier: "difficult",
+    task: "Use a motor driver to control a motor block. The signal to the motor block is sent through the IR Sensor block (A) to move forward and IR sensor block (B) to move backward. Can you complete the missing wire in the circuit and control the motors using the sensors?",
+    goal: "the child uses two sensors — one drives the motor forward, the other drives it back.",
+    blocks: [POWER, WIRES, "IR sensor block — 2", DRIVER, MOTOR], skillIds: ["bm", "ps", "ou"],
   }),
-  "elec-sensing-e4": card({
-    id: "elec-sensing-e4",
-    cardName: "Tune the distance",
-    title: "sensing — tune how close the sensor must be",
-    question: "how close does something have to get before the sensor notices?",
-    goal: "the child adjusts the sensor and measures the distance at which it reliably triggers.",
-    tier: "difficult",
-    materials: [...BLOCKS.sensing, "Measuring tape"],
-    skillIds: ["ou", "ps", "pe"],
-    conceptQuestion: "at what distance did it trigger every single time?",
+  "elec-c-dual-ir-circuit": card({
+    id: "elec-c-dual-ir-circuit", name: "dual ir sensor circuit", tier: "difficult",
+    task: "Use a motor driver to control 2 motor blocks. The signal to the motor block (A) is sent through the IR sensor block(A) and the signal to the motor block (B) is sent through the IR sensor block(B). Can you complete the missing wire in the circuit and control the motors using the sensors?",
+    goal: "the child wires two sensor–motor pairs so each sensor drives its own motor.",
+    blocks: [POWER, WIRES, "IR sensor block — 2", DRIVER, "Motor block — 2"], skillIds: ["bm", "ps"],
+    note: "Spare card — use it as a challenge for a group that finishes the scheduled sensing cards early.",
   }),
-  "elec-sensing-e5": card({
-    id: "elec-sensing-e5",
-    cardName: "Servo to an exact position",
-    title: "sensing — a servo moves to an exact position",
-    question: "can a motor stop at exactly the place we choose?",
-    goal: "the child uses the servo and its tester to move the arm to an exact position and hold it there.",
-    tier: "difficult",
-    materials: [
-      "Circuit Card (laminated, wipe-clean)",
-      "Power block (battery & holder)",
-      "Jumper wires",
-      "Servo motor + tester",
-    ],
-    skillIds: ["bm", "ou"],
-    conceptQuestion: "how is the servo different from the motors you used before?",
+  "elec-c-dual-motor-ir-turn": card({
+    id: "elec-c-dual-motor-ir-turn", name: "dual motor blocks + ir sensors", tier: "difficult",
+    task: "Use a motor driver to control 2 motor blocks. Motor block (A) must turn Right and Motor block (b) must turn left. Use the Sensor OUT pins to control the direction of the motors and complete the missing wires in the circuit.",
+    goal: "the child drives two motors in opposite directions so the bot turns on the spot.",
+    blocks: [POWER, WIRES, "IR sensor block — 2", DRIVER, "Motor block — 2"], skillIds: ["ps", "bm", "pe"],
+  }),
+  "elec-c-ldr-led": card({
+    id: "elec-c-ldr-led", name: "ldr sensor + motor driver + led & resistor", tier: "difficult",
+    task: "Connect the LED to the Motor Driver. The input signal to the motor driver is sent using a LDR Sensor to turn LED ON/OFF.",
+    goal: "the child makes the light sensor switch the LED — an automatic light.",
+    blocks: [POWER, WIRES, LDR, DRIVER, LED, RES], skillIds: ["bm", "ou", "pe"],
     note: "✚ extension card — for children who finish early. Optional, never required.",
   }),
-  "elec-sensing-e6": card({
-    id: "elec-sensing-e6",
-    cardName: "Light sensor switches an led",
-    title: "sensing — a light sensor switches an led",
-    question: "can the circuit switch itself on when the room goes dark?",
-    goal: "the child wires the LDR so the LED comes on in the dark, like an automatic street light.",
-    tier: "difficult",
-    materials: [
-      "Circuit Card (laminated, wipe-clean)",
-      "Power block (battery & holder)",
-      "Jumper wires",
-      "LDR sensor block",
-      "LED block",
-      "Resistor block",
-    ],
-    skillIds: ["bm", "ou", "pe"],
-    conceptQuestion: "what is the ldr telling the circuit?",
-    note: "✚ extension card — for children who finish early. Optional, never required.",
+  "elec-c-ldr-ir-led": card({
+    id: "elec-c-ldr-ir-led", name: "ldr sensor + ir sensor + motor driver + led & resistor", tier: "difficult",
+    task: "Connect the LED to the Motor Driver. The input signal to the motor driver is sent using a LDR Sensor to turn LED ON/OFF.",
+    goal: "the child combines a light sensor and an IR sensor into one driver, switching two LEDs.",
+    blocks: [POWER, WIRES, LDR, IR, DRIVER, "LED block — 2", "Resistor block — 2"], skillIds: ["bm", "ps", "pe"],
+    note: "Spare card — the hardest in the deck. Use it as a challenge for a group that is fully secure on the sensing cards.",
   }),
 };
 
@@ -457,15 +271,16 @@ function buildModel(o: {
   concept: string;
   days: number;
   what: string;
+  manual?: string;
 }): CurriculumActivity {
   return {
     id: o.id,
     segment: "build",
     title: o.title,
     cardName: o.model,
-    setupLine: `${o.what} built over ${o.days} sessions — one stage a day, from a personal kit and a step card.`,
+    setupLine: `${o.what} built over ${o.days} sessions — one stage a day, from a personal kit and the model manual.`,
     howToPlay:
-      "A 5-minute engage question opens the segment, then each child builds their own model from their personal kit and the step card, one stage a day. The educator never fixes and never tells — they ask, and let the child find it. The model is completed, tested, improved, and taken apart across the day arc.",
+      "A 5-minute engage question opens the segment, then each child builds their own model from their personal kit, following the model manual one stage a day. The educator never fixes and never tells — they ask, and let the child find it. The model is completed, tested, improved, and taken apart across the day arc.",
     players: "each child builds their own · 1 educator",
     duration: "40 min",
     goal: `the child builds a working ${o.model.toLowerCase()} and can explain the ${o.concept} that makes it work.`,
@@ -473,13 +288,19 @@ function buildModel(o: {
       "the model does its job, and the child can point to the part of the circuit that makes it happen.",
     skillIds: ["bm", "ps", "pe"],
     materials: [
-      `Step card — ${o.model} (one stage per session)`,
+      `Model manual — ${o.model}`,
       "Personal electronics kit — one per child",
     ],
     debriefPrompts: [],
     type: "physical-game",
-    educatorNote:
-      "The printed step card and model manual for this build are being added. Until they arrive, run the build from the kit's own stage sequence and keep the day arc below.",
+    pdfUrl: o.manual,
+    referenceLinks: [
+      { label: "component gallery — name every block", url: COMPONENT_GALLERY },
+      { label: "electronics teacher reference", url: TEACHER_REFERENCE },
+    ],
+    educatorNote: o.manual
+      ? undefined
+      : "The printed model manual for this build is still to come. Until it arrives, run the build from the kit's own stage sequence and keep the day arc below.",
   };
 }
 
@@ -490,7 +311,8 @@ const buildActivities: Record<string, CurriculumActivity> = {
     model: "Parking Barrier",
     concept: "open & closed circuit",
     days: 5,
-    what: "a parking barrier that raises and lowers on a switch —",
+    what: "a barrier that raises and lowers on a switch —",
+    manual: "/robotics-manuals/elec-model-railway-barrier.pdf",
   }),
   "elec-build-wind-turbine": buildModel({
     id: "elec-build-wind-turbine",
@@ -498,7 +320,8 @@ const buildActivities: Record<string, CurriculumActivity> = {
     model: "Wind Turbine",
     concept: "polarity",
     days: 4,
-    what: "a wind turbine whose blades spin the way you wire them —",
+    what: "an energy-generating wind turbine whose spinning wheel lights an led —",
+    manual: "/robotics-manuals/elec-model-wind-turbine.pdf",
   }),
   "elec-build-soccer-bot": buildModel({
     id: "elec-build-soccer-bot",
@@ -507,6 +330,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
     concept: "polarity reversal",
     days: 4,
     what: "a two-motor soccer bot you can drive and steer —",
+    manual: "/robotics-manuals/elec-model-soccer-bot.pdf",
   }),
   "elec-build-cleaning-bot": buildModel({
     id: "elec-build-cleaning-bot",
@@ -514,7 +338,8 @@ const buildActivities: Record<string, CurriculumActivity> = {
     model: "Cleaning Bot",
     concept: "sharing power between many jobs",
     days: 6,
-    what: "a cleaning bot that runs three motors from one battery —",
+    what: "a cleaning bot that runs several motors from one battery —",
+    manual: "/robotics-manuals/elec-model-cleaning-bot.pdf",
   }),
   "elec-build-sensor-crane": buildModel({
     id: "elec-build-sensor-crane",
@@ -523,27 +348,35 @@ const buildActivities: Record<string, CurriculumActivity> = {
     concept: "input and output",
     days: 6,
     what: "a crane that senses what is near it and responds —",
+    // manual still to come — flagged in the educator note
   }),
 };
 
 // ─── Experience book ────────────────────────────────────────
 
-const experienceBookActivity: CurriculumActivity = {
-  id: "elec-experience-book",
-  segment: "experience-book",
-  title: "experience book",
-  setupLine:
-    "ten minutes at the end of every session. each child records what they discovered and ticks off the words and skills they can now use.",
-  howToPlay:
-    "The educator fills in four things per child: the experiment card name, the build day, the ability seen clearly today for each of the four skills (B&M, O&U, PS, P&E), and one specific note. The child ticks the electronics words they can now use — circuit, open & closed, conductor, insulator, resistance, polarity, series, parallel, input, output. Always close with the 3-move debrief: name what you saw (linked to an ability) · name the next step (the next ability up) · ask one concept question to the group.",
-  materials: [
-    "My Robotics Experience Book — level 2, electronics (per child)",
-    "Ability Reference card (inside cover)",
-    "Electronics word list (inside back cover)",
-  ],
-  debriefPrompts: [],
-  type: "facilitated",
-};
+function experienceBook(ageSlug: "5-8" | "8-12"): CurriculumActivity {
+  return {
+    id: "elec-experience-book",
+    segment: "experience-book",
+    title: "experience book",
+    setupLine:
+      "ten minutes at the end of every session. each child records what they discovered and ticks off the words and skills they can now use.",
+    howToPlay:
+      "The educator fills in four things per child: the cue card used, the build day, the ability seen clearly today for each of the four skills (B&M, O&U, PS, P&E), and one specific note. The child ticks the electronics words they can now use — circuit, open & closed, conductor, insulator, resistance, polarity, series, parallel, input, output. Always close with the 3-move debrief: name what you saw (linked to an ability) · name the next step (the next ability up) · ask one concept question to the group.",
+    materials: [
+      `My Robotics Experience Book — level 2, electronics (ages ${ageSlug === "5-8" ? "5–8" : "8–12"}), per child`,
+      "Ability Reference card (inside cover)",
+      "Electronics word list (inside back cover)",
+    ],
+    debriefPrompts: [],
+    type: "facilitated",
+    pdfUrl: `/robotics-manuals/elec-experience-book-${ageSlug}.pdf`,
+    referenceLinks: [
+      { label: "electronics teacher reference", url: TEACHER_REFERENCE },
+      { label: "component gallery — name every block", url: COMPONENT_GALLERY },
+    ],
+  };
+}
 
 // ─── Skills — the same ladders as level 1, plus presenting & explaining ─
 // "the same skills run through every robotics level, so progress carries
@@ -662,63 +495,63 @@ function s(
 
 const sessionTable: CurriculumSessionEntry[] = [
   // ── Parking Barrier · 5 days · open & closed circuits ──
-  s(1, "elec-circuits-e1", "Parking Barrier", "elec-build-parking-barrier", 1, 5,
+  s(1, "elec-c-safety", "Parking Barrier", "elec-build-parking-barrier", 1, 5,
     "why must we never join + straight to −?"),
-  s(2, "elec-circuits-e2", "Parking Barrier", "elec-build-parking-barrier", 2, 5,
+  s(2, "elec-c-conductors", "Parking Barrier", "elec-build-parking-barrier", 2, 5,
     "which things carried the electricity, and what did they all have in common?"),
-  s(3, "elec-circuits-e3", "Parking Barrier", "elec-build-parking-barrier", 3, 5,
-    "what happens to the led if we break the loop anywhere?"),
-  s(4, "elec-circuits-e4", "Parking Barrier", "elec-build-parking-barrier", 4, 5,
+  s(3, "elec-c-resistor-led", "Parking Barrier", "elec-build-parking-barrier", 3, 5,
+    "what has to be true before the led will light — and what is the resistor protecting?"),
+  s(4, "elec-c-switch", "Parking Barrier", "elec-build-parking-barrier", 4, 5,
     "what is the switch actually doing to the loop?"),
-  s(5, "elec-circuits-e5", "Parking Barrier", "elec-build-parking-barrier", 5, 5,
-    "what would happen to the led without the resistor?"),
+  s(5, "elec-c-resistor-led", "Parking Barrier", "elec-build-parking-barrier", 5, 5,
+    "predict, then prove: what happens to the led if we break the loop anywhere?"),
 
   // ── Wind Turbine · 4 days · polarity ──
-  s(6, "elec-polarity-e1", "Wind Turbine", "elec-build-wind-turbine", 1, 4,
-    "what did swapping the wires change about the motor?"),
-  s(7, "elec-polarity-e2", "Wind Turbine", "elec-build-wind-turbine", 2, 4,
-    "why does the led light one way round but not the other?"),
-  s(8, "elec-polarity-e3", "Wind Turbine", "elec-build-wind-turbine", 3, 4,
+  s(6, "elec-c-motor", "Wind Turbine", "elec-build-wind-turbine", 1, 4,
+    "what did reversing the wires change about the motor?"),
+  s(7, "elec-c-motor-led-generator", "Wind Turbine", "elec-build-wind-turbine", 2, 4,
+    "you turned the wheel and the led lit — where did that electricity come from?"),
+  s(8, "elec-c-dpdt", "Wind Turbine", "elec-build-wind-turbine", 3, 4,
     "what did you look at to decide which way it would spin?"),
-  s(9, "elec-polarity-e4", "Wind Turbine", "elec-build-wind-turbine", 4, 4,
-    "how did you decide which wire went where?"),
+  s(9, "elec-c-motor", "Wind Turbine", "elec-build-wind-turbine", 4, 4,
+    "make it spin the way i ask — how did you decide which wire went where?"),
 
   // ── Soccer Bot · 4 days · polarity reversal ──
-  s(10, "elec-control-e1", "Soccer Bot", "elec-build-soccer-bot", 1, 4,
-    "what is the direction switch doing to the electricity?"),
-  s(11, "elec-control-e2", "Soccer Bot", "elec-build-soccer-bot", 2, 4,
+  s(10, "elec-c-dual-dpdt", "Soccer Bot", "elec-build-soccer-bot", 1, 4,
     "why does each motor need its own switch?"),
-  s(12, "elec-control-e3", "Soccer Bot", "elec-build-soccer-bot", 3, 4,
+  s(11, "elec-c-dpdt-motor", "Soccer Bot", "elec-build-soccer-bot", 2, 4,
+    "how did you flip one motor while the other kept running?"),
+  s(12, "elec-c-dual-motor-ir-turn", "Soccer Bot", "elec-build-soccer-bot", 3, 4,
     "what did the two motors have to be doing for it to turn?"),
-  s(13, "elec-control-e4", "Soccer Bot", "elec-build-soccer-bot", 4, 4,
-    "which switch did what, at each part of the path?"),
+  s(13, "elec-c-dual-dpdt", "Soccer Bot", "elec-build-soccer-bot", 4, 4,
+    "drive a set path — which switch did what, at each part of the path?"),
 
   // ── Cleaning Bot · 6 days · one battery, many jobs ──
-  s(14, "elec-power-e1", "Cleaning Bot", "elec-build-cleaning-bot", 1, 6,
-    "did adding more motors change what the direction switch does?"),
-  s(15, "elec-power-e2", "Cleaning Bot", "elec-build-cleaning-bot", 2, 6,
-    "what happened to the others when you took one part out?"),
-  s(16, "elec-power-e3", "Cleaning Bot", "elec-build-cleaning-bot", 3, 6,
-    "why did everything stop when you removed just one part?"),
-  s(17, "elec-power-e4", "Cleaning Bot", "elec-build-cleaning-bot", 4, 6,
+  s(14, "elec-c-pot", "Cleaning Bot", "elec-build-cleaning-bot", 1, 6,
     "what is the dial changing about the electricity reaching the motor?"),
-  s(18, "elec-power-e5", "Cleaning Bot", "elec-build-cleaning-bot", 5, 6,
-    "how did you share one battery between three motors?"),
-  s(19, "elec-power-e6", "Cleaning Bot", "elec-build-cleaning-bot", 6, 6,
-    "which way was brighter — series or parallel — and why?"),
+  s(15, "elec-c-series", "Cleaning Bot", "elec-build-cleaning-bot", 2, 6,
+    "why did everything stop when you removed just one part?"),
+  s(16, "elec-c-parallel", "Cleaning Bot", "elec-build-cleaning-bot", 3, 6,
+    "what happened to the others when you took one part out?"),
+  s(17, "elec-c-pot-dual-motor-series", "Cleaning Bot", "elec-build-cleaning-bot", 4, 6,
+    "two motors sharing one path — what happened to their speed?"),
+  s(18, "elec-c-pot-switch-parallel", "Cleaning Bot", "elec-build-cleaning-bot", 5, 6,
+    "how did you share one battery between two motors and still switch it all off?"),
+  s(19, "elec-c-parallel", "Cleaning Bot", "elec-build-cleaning-bot", 6, 6,
+    "compare series and parallel — which was brighter or stronger, and why?"),
 
   // ── Sensor-controlled Crane · 6 days · input & output ──
-  s(20, "elec-sensing-e1", "Sensor-controlled Crane", "elec-build-sensor-crane", 1, 6,
+  s(20, "elec-c-driver-ir", "Sensor-controlled Crane", "elec-build-sensor-crane", 1, 6,
     "which part was the input, and which was the output?"),
-  s(21, "elec-sensing-e2", "Sensor-controlled Crane", "elec-build-sensor-crane", 2, 6,
+  s(21, "elec-c-ir-motor-direction", "Sensor-controlled Crane", "elec-build-sensor-crane", 2, 6,
     "what decision is the driver making for the motor?"),
-  s(22, "elec-sensing-e3", "Sensor-controlled Crane", "elec-build-sensor-crane", 3, 6,
+  s(22, "elec-c-dual-ir-fwd-back", "Sensor-controlled Crane", "elec-build-sensor-crane", 3, 6,
     "how does the driver know which sensor is talking?"),
-  s(23, "elec-sensing-e4", "Sensor-controlled Crane", "elec-build-sensor-crane", 4, 6,
+  s(23, "elec-c-ir-range", "Sensor-controlled Crane", "elec-build-sensor-crane", 4, 6,
     "at what distance did it trigger every single time?"),
-  s(24, "elec-sensing-e5", "Sensor-controlled Crane", "elec-build-sensor-crane", 5, 6,
+  s(24, "elec-c-servo", "Sensor-controlled Crane", "elec-build-sensor-crane", 5, 6,
     "how is the servo different from the motors you used before?"),
-  s(25, "elec-sensing-e6", "Sensor-controlled Crane", "elec-build-sensor-crane", 6, 6,
+  s(25, "elec-c-ldr-led", "Sensor-controlled Crane", "elec-build-sensor-crane", 6, 6,
     "what is the light sensor telling the circuit?"),
 ];
 
@@ -823,17 +656,21 @@ const shared = {
   skillAreas,
   segmentDefinitions,
   sessionTable,
-  activities: {
-    ...experimentActivities,
-    ...buildActivities,
-    "elec-experience-book": experienceBookActivity,
-  },
   checkpoints,
   modelPairings,
   foundationalConcepts,
   glossary,
   components,
 };
+
+/** Activities differ only by which age's experience book is attached. */
+function activitiesFor(ageSlug: "5-8" | "8-12") {
+  return {
+    ...experimentActivities,
+    ...buildActivities,
+    "elec-experience-book": experienceBook(ageSlug),
+  };
+}
 
 const DESCRIPTION =
   "level 2 — electronics. across five models — parking barrier, wind turbine, soccer bot, cleaning bot, and sensor-controlled crane — children run experiments on circuits, polarity, sharing power, and sensors, then build a machine that uses what they just discovered. they finish able to look at a circuit and explain why it works — and build one that senses and responds. no mechanics background is needed: this level starts from the very first circuit.";
@@ -846,6 +683,7 @@ export const roboticsElectronics58: CurriculumProgramme = {
   ageGroup: "5-8",
   ageLabel: "ages 5–8",
   description: DESCRIPTION,
+  activities: activitiesFor("5-8"),
 };
 
 export const roboticsElectronics812: CurriculumProgramme = {
@@ -859,4 +697,5 @@ export const roboticsElectronics812: CurriculumProgramme = {
   description:
     DESCRIPTION +
     " at 8–12, observing & understanding becomes comparing and proving — brighter or dimmer, faster or slower, at what distance it triggers — and children draw their circuits as schematics.",
+  activities: activitiesFor("8-12"),
 };
