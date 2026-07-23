@@ -43,6 +43,7 @@ function card(o: {
   id: string;
   name: string;
   tier: "easy" | "medium" | "difficult";
+  circuit: number;
   task: string;
   goal: string;
   blocks: string[];
@@ -52,7 +53,7 @@ function card(o: {
   return {
     id: o.id,
     segment: "experiment",
-    title: `${o.name} · ${o.tier}`,
+    title: `${o.name} · ${o.tier} · circuit ${o.circuit}`,
     cardName: o.name,
     setupLine: o.task,
     howToPlay: HOW_A_CARD_RUNS,
@@ -104,43 +105,43 @@ const CLAMP = "Motor clamp";
 const experimentActivities: Record<string, CurriculumActivity> = {
   // ── easy ──
   "elec-c-resistor-led": card({
-    id: "elec-c-resistor-led", name: "resistor block & led block", tier: "easy",
+    id: "elec-c-resistor-led", name: "resistor block & led block", tier: "easy", circuit: 1,
     task: "Connect all blocks as per the circuit below such that the LED lights up when it gets safe power.",
     goal: "the child completes the loop so the LED lights, with the resistor protecting it.",
     blocks: [POWER, WIRES, LED, RES], skillIds: ["bm", "ou", "ps"],
   }),
   "elec-c-switch": card({
-    id: "elec-c-switch", name: "switch block", tier: "easy",
+    id: "elec-c-switch", name: "switch block", tier: "easy", circuit: 2,
     task: "Connect all blocks in a circuit and place the switch such that the LED turns on when the switch is ON.",
     goal: "the child places a switch in the loop so the LED can be turned on and off on demand.",
     blocks: [POWER, WIRES, LED, RES, SW], skillIds: ["bm", "ou"],
   }),
   "elec-c-motor": card({
-    id: "elec-c-motor", name: "motor block", tier: "easy",
+    id: "elec-c-motor", name: "motor block", tier: "easy", circuit: 3,
     task: "Task A: Connect the battery to the motor and observe the motor spin. Task B: Reverse the wire connections and observe how the motor spins in the opposite direction.",
     goal: "the child runs the motor, then reverses the wires and sees it spin the other way.",
     blocks: [POWER, WIRES, MOTOR, CLAMP], skillIds: ["ou", "bm"],
   }),
   "elec-c-dpdt": card({
-    id: "elec-c-dpdt", name: "dpdt block", tier: "easy",
+    id: "elec-c-dpdt", name: "dpdt block", tier: "easy", circuit: 4,
     task: "Connect the battery and motor through the DPDT block. Press the DPDT switch to change the direction of the motor.",
     goal: "the child reverses the motor with one press — no rewiring.",
     blocks: [POWER, WIRES, MOTOR, DPDT, CLAMP], skillIds: ["bm", "ou"],
   }),
   "elec-c-dual-dpdt": card({
-    id: "elec-c-dual-dpdt", name: "dual dpdt circuit", tier: "easy",
+    id: "elec-c-dual-dpdt", name: "dual dpdt circuit", tier: "easy", circuit: 5,
     task: "Connect each motor to its own DPDT switch and to the battery. Press each DPDT switch to control each motor's direction.",
     goal: "the child gives each motor its own direction switch and drives them independently.",
     blocks: [POWER, WIRES, "Motor block — 2", "Direction (DPDT) block — 2", CLAMP], skillIds: ["bm", "ps"],
   }),
   "elec-c-pot": card({
-    id: "elec-c-pot", name: "potentiometer block", tier: "easy",
+    id: "elec-c-pot", name: "potentiometer block", tier: "easy", circuit: 6,
     task: "Connect the battery and motor through the potentiometer block. Turn the knob to control the speed of the motor.",
     goal: "the child dials the motor faster and slower without changing the battery.",
     blocks: [POWER, WIRES, MOTOR, POT, CLAMP], skillIds: ["bm", "ou"],
   }),
   "elec-c-driver-ir": card({
-    id: "elec-c-driver-ir", name: "motor driver + ir sensor", tier: "easy",
+    id: "elec-c-driver-ir", name: "motor driver + ir sensor", tier: "easy", circuit: 7,
     task: "Connect the IR sensor to the motor driver and connect the motor to the driver outputs. The IR sensor's signal will tell the motor driver when to run the motor, such that the motor moves only when the IR sensor is activated.",
     goal: "the child wires a sensor (input) through the driver to a motor (output) so it runs only when the sensor sees something.",
     blocks: [POWER, WIRES, IR, DRIVER, MOTOR], skillIds: ["bm", "ou"],
@@ -148,44 +149,44 @@ const experimentActivities: Record<string, CurriculumActivity> = {
 
   // ── medium ──
   "elec-c-dpdt-motor": card({
-    id: "elec-c-dpdt-motor", name: "dpdt block + motor block", tier: "medium",
+    id: "elec-c-dpdt-motor", name: "dpdt block + motor block", tier: "medium", circuit: 1,
     task: "Control motor block (A) using a dpdt block while motor block (B) should remain ON. Can you complete the missing wire in the circuit?",
     goal: "the child flips one motor's direction while a second motor keeps running.",
     blocks: [POWER, WIRES, "Motor block — 2", DPDT, CLAMP], skillIds: ["bm", "ps"],
   }),
   "elec-c-series": card({
-    id: "elec-c-series", name: "series circuit", tier: "medium",
+    id: "elec-c-series", name: "series circuit", tier: "medium", circuit: 5,
     task: "Make a series circuit with the following and find the missing block and missing wire to complete the circuit.",
     goal: "the child builds one shared path and finds that breaking it stops everything.",
     blocks: [POWER, WIRES, "Lamp block — 3", "Resistor block — 2", SW], skillIds: ["ou", "ps"],
   }),
   "elec-c-parallel": card({
-    id: "elec-c-parallel", name: "parallel circuit", tier: "medium",
+    id: "elec-c-parallel", name: "parallel circuit", tier: "medium", circuit: 4,
     task: "Make a parallel circuit with the following and find the missing block and missing wires to complete the circuit.",
     goal: "the child gives each part its own path and sees the others keep working when one is removed.",
     blocks: [POWER, WIRES, "LED block — 2", "Resistor block — 3"], skillIds: ["ou", "bm"],
   }),
   "elec-c-pot-dual-motor-series": card({
-    id: "elec-c-pot-dual-motor-series", name: "potentiometer + dual motor blocks", tier: "medium",
+    id: "elec-c-pot-dual-motor-series", name: "potentiometer + dual motor blocks", tier: "medium", circuit: 2,
     task: "A circuit uses a pot block to control the speed of 2 motor blocks connected in series. Can you complete missing wire in the circuit and adjust the speed?",
     goal: "the child controls the speed of two motors sharing one path.",
     blocks: [POWER, WIRES, "Motor block — 2", POT, CLAMP], skillIds: ["bm", "ou"],
   }),
   "elec-c-pot-switch-parallel": card({
-    id: "elec-c-pot-switch-parallel", name: "potentiometer + switch block", tier: "medium",
+    id: "elec-c-pot-switch-parallel", name: "potentiometer + switch block", tier: "medium", circuit: 3,
     task: "Use a potentiometer block to control the speed of 2 motor blocks connected in parallel. The circuit needs to be turned ON/OFF using a switch block. Can you complete missing wire in the circuit and adjust the speed?",
     goal: "the child runs two motors on their own paths, dials their speed, and switches the whole thing on and off.",
     blocks: [POWER, WIRES, "Motor block — 2", POT, SW, CLAMP], skillIds: ["bm", "ps", "ou"],
   }),
   "elec-c-motor-led-generator": card({
-    id: "elec-c-motor-led-generator", name: "motor + led", tier: "medium",
+    id: "elec-c-motor-led-generator", name: "motor + led", tier: "medium", circuit: 6,
     task: "Connect the Motor to the LED. Rotate the wheel to light up the LED!",
     goal: "the child turns the wheel by hand and generates enough power to light the LED — a motor working backwards.",
     blocks: [WIRES, MOTOR, LED, "Wheel"], skillIds: ["ou", "pe"],
     note: "This is the generating card — it is what makes the wind turbine an energy-generating model.",
   }),
   "elec-c-servo": card({
-    id: "elec-c-servo", name: "servo motor + servo controller", tier: "medium",
+    id: "elec-c-servo", name: "servo motor + servo controller", tier: "medium", circuit: 7,
     task: "Control servo motor(a) using Servo controller(a) in manual mode and Servo motor (b) using servo controller(b) in Auto mode.",
     goal: "the child moves a servo to an exact position in manual mode, then lets it run in auto.",
     blocks: [POWER, WIRES, SERVO, "Servo controller — 2", DRIVER], skillIds: ["bm", "ou"],
@@ -194,45 +195,45 @@ const experimentActivities: Record<string, CurriculumActivity> = {
 
   // ── difficult ──
   "elec-c-ir-motor-direction": card({
-    id: "elec-c-ir-motor-direction", name: "ir sensor + motor block", tier: "difficult",
+    id: "elec-c-ir-motor-direction", name: "ir sensor + motor block", tier: "difficult", circuit: 1,
     task: "Use a motor driver to control a motor block. Control the direction of motor by swapping the Out PIN of the sensor with IN1 and IN2 of the motor driver. Can you complete the missing wire in the circuit and change the direction of the motor using the sensor?",
     goal: "the child makes the sensor decide which way the motor turns, not just whether it runs.",
     blocks: [POWER, WIRES, IR, DRIVER, MOTOR], skillIds: ["bm", "ps"],
   }),
   "elec-c-ir-range": card({
-    id: "elec-c-ir-range", name: "ir sensor + motor block — range", tier: "difficult",
+    id: "elec-c-ir-range", name: "ir sensor + motor block — range", tier: "difficult", circuit: 4,
     task: "Send a signal to the motor driver block using an IR sensor block. Adjust the range of the IR Sensor to detect objects that are close enough. Complete the missing wires in the circuit.",
     goal: "the child tunes the sensor so it triggers only when something is close enough.",
     blocks: [POWER, WIRES, IR, DRIVER, MOTOR, "Measuring tape"], skillIds: ["ou", "ps", "pe"],
   }),
   "elec-c-dual-ir-fwd-back": card({
-    id: "elec-c-dual-ir-fwd-back", name: "dual ir sensor + motor", tier: "difficult",
+    id: "elec-c-dual-ir-fwd-back", name: "dual ir sensor + motor", tier: "difficult", circuit: 5,
     task: "Use a motor driver to control a motor block. The signal to the motor block is sent through the IR Sensor block (A) to move forward and IR sensor block (B) to move backward. Can you complete the missing wire in the circuit and control the motors using the sensors?",
     goal: "the child uses two sensors — one drives the motor forward, the other drives it back.",
     blocks: [POWER, WIRES, "IR sensor block — 2", DRIVER, MOTOR], skillIds: ["bm", "ps", "ou"],
   }),
   "elec-c-dual-ir-circuit": card({
-    id: "elec-c-dual-ir-circuit", name: "dual ir sensor circuit", tier: "difficult",
+    id: "elec-c-dual-ir-circuit", name: "dual ir sensor circuit", tier: "difficult", circuit: 2,
     task: "Use a motor driver to control 2 motor blocks. The signal to the motor block (A) is sent through the IR sensor block(A) and the signal to the motor block (B) is sent through the IR sensor block(B). Can you complete the missing wire in the circuit and control the motors using the sensors?",
     goal: "the child wires two sensor–motor pairs so each sensor drives its own motor.",
     blocks: [POWER, WIRES, "IR sensor block — 2", DRIVER, "Motor block — 2"], skillIds: ["bm", "ps"],
     note: "Spare card — use it as a challenge for a group that finishes the scheduled sensing cards early.",
   }),
   "elec-c-dual-motor-ir-turn": card({
-    id: "elec-c-dual-motor-ir-turn", name: "dual motor blocks + ir sensors", tier: "difficult",
+    id: "elec-c-dual-motor-ir-turn", name: "dual motor blocks + ir sensors", tier: "difficult", circuit: 3,
     task: "Use a motor driver to control 2 motor blocks. Motor block (A) must turn Right and Motor block (b) must turn left. Use the Sensor OUT pins to control the direction of the motors and complete the missing wires in the circuit.",
     goal: "the child drives two motors in opposite directions so the bot turns on the spot.",
     blocks: [POWER, WIRES, "IR sensor block — 2", DRIVER, "Motor block — 2"], skillIds: ["ps", "bm", "pe"],
   }),
   "elec-c-ldr-led": card({
-    id: "elec-c-ldr-led", name: "ldr sensor + motor driver + led & resistor", tier: "difficult",
+    id: "elec-c-ldr-led", name: "ldr sensor + motor driver + led & resistor", tier: "difficult", circuit: 6,
     task: "Connect the LED to the Motor Driver. The input signal to the motor driver is sent using a LDR Sensor to turn LED ON/OFF.",
     goal: "the child makes the light sensor switch the LED — an automatic light.",
     blocks: [POWER, WIRES, LDR, DRIVER, LED, RES], skillIds: ["bm", "ou", "pe"],
     note: "✚ extension card — for children who finish early. Optional, never required.",
   }),
   "elec-c-ldr-ir-led": card({
-    id: "elec-c-ldr-ir-led", name: "ldr sensor + ir sensor + motor driver + led & resistor", tier: "difficult",
+    id: "elec-c-ldr-ir-led", name: "ldr sensor + ir sensor + motor driver + led & resistor", tier: "difficult", circuit: 7,
     task: "Connect the LED to the Motor Driver. The input signal to the motor driver is sent using a LDR Sensor to turn LED ON/OFF.",
     goal: "the child combines a light sensor and an IR sensor into one driver, switching two LEDs.",
     blocks: [POWER, WIRES, LDR, IR, DRIVER, "LED block — 2", "Resistor block — 2"], skillIds: ["bm", "ps", "pe"],
