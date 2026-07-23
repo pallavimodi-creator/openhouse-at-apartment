@@ -2,21 +2,18 @@
  * Robotics · Level 2 — Electronics (ages 5–8 and 8–12).
  *
  * Authored from the operator's at-apartment website copy. Both age groups
- * share the same 25-day spine (5 models × the experiment card that sits
- * alongside each build session); they differ in how far the observing &
- * understanding skill is pushed — at 8–12 it becomes comparing, proving,
- * and drawing circuits as schematics.
+ * share the same 23-day spine (5 models, one cue card alongside each
+ * build session — repeated to fill a model's remaining days); they differ
+ * in how far observing & understanding is pushed: at 8–12 it becomes
+ * comparing, proving, and drawing circuits as schematics.
  *
  * Source-true notes:
- *  - The experiment cards are the real Circuit Cards deck, split by tier
- *    (easy / medium / difficult). Each card links to its tier PDF.
- *  - Build step-cards for the five models are not in the asset set yet —
- *    the operator is adding them. Build activities therefore carry the
- *    model, its concept and the day arc, and deliberately do NOT invent
- *    step-by-step instructions.
- *  - ⚑ marks a card still to be created for the deck; ✚ marks an
- *    optional extension for early finishers. Both are flagged in the
- *    activity's educatorNote rather than hidden.
+ *  - The experiment cards are the real Electronic Cue Cards deck; the
+ *    session order + repeats follow the operator's model↔card table.
+ *  - Each build links its real model manual (crane included).
+ *  - Card + model images are extracted per page and shown in the library.
+ *  - ✚ marks an optional early-finisher extension, flagged in the
+ *    activity's educatorNote; spare cards sit in the library, unscheduled.
  */
 
 import type {
@@ -101,26 +98,10 @@ const SERVO = "Servo motor + tester";
 const CLAMP = "Motor clamp";
 
 // ─── Experiment cards — the real Electronic Cue Cards deck ──
-// 21 printed cards, plus the two the copy flags as still to be made (⚑).
+// 21 printed cards. Safety is taught aloud from the teacher reference on
+// day one (see the railway barrier build note), not as a card.
 
 const experimentActivities: Record<string, CurriculumActivity> = {
-  // ── still to be created (⚑ in the operator's copy) ──
-  "elec-c-safety": card({
-    id: "elec-c-safety", name: "staying safe", tier: "easy",
-    task: "what must we never do with the power block, and how do we handle it safely? never join + straight to −.",
-    goal: "the child learns the one safety rule — never join + straight to − — and sets the power block up correctly.",
-    blocks: [POWER, WIRES], skillIds: ["bm", "ou"],
-    note: "⚑ not in the printed deck yet. Run it as a short educator-led safety briefing with the power block before the first circuit.",
-  }),
-  "elec-c-conductors": card({
-    id: "elec-c-conductors", name: "conductors vs insulators", tier: "easy",
-    task: "which materials let the electricity through, and which ones block it? drop each object into the gap in the circuit and watch the led.",
-    goal: "the child tests everyday objects in a gap in the circuit and sorts them into carriers and blockers.",
-    blocks: [POWER, WIRES, LED, RES, "Test objects — metal spoon, paperclip, plastic ruler, rubber band"],
-    skillIds: ["ou", "bm"],
-    note: "⚑ not in the printed deck yet. Run it with the LED circuit and a deliberate gap the children drop each test object into.",
-  }),
-
   // ── easy ──
   "elec-c-resistor-led": card({
     id: "elec-c-resistor-led", name: "resistor block & led block", tier: "easy",
@@ -208,7 +189,7 @@ const experimentActivities: Record<string, CurriculumActivity> = {
     task: "Control servo motor(a) using Servo controller(a) in manual mode and Servo motor (b) using servo controller(b) in Auto mode.",
     goal: "the child moves a servo to an exact position in manual mode, then lets it run in auto.",
     blocks: [POWER, WIRES, SERVO, "Servo controller — 2", DRIVER], skillIds: ["bm", "ou"],
-    note: "✚ extension card — for children who finish early. Optional, never required.",
+    note: "✚ extension card — not on the timetable. Hand it to a group that finishes the crane's sensing cards early. Optional, never required.",
   }),
 
   // ── difficult ──
@@ -272,6 +253,7 @@ function buildModel(o: {
   days: number;
   what: string;
   manual?: string;
+  note?: string;
 }): CurriculumActivity {
   return {
     id: o.id,
@@ -298,9 +280,11 @@ function buildModel(o: {
       { label: "component gallery — name every block", url: COMPONENT_GALLERY },
       { label: "electronics teacher reference", url: TEACHER_REFERENCE },
     ],
-    educatorNote: o.manual
-      ? undefined
-      : "The printed model manual for this build is still to come. Until it arrives, run the build from the kit's own stage sequence and keep the day arc below.",
+    educatorNote:
+      o.note ??
+      (o.manual
+        ? undefined
+        : "The printed model manual for this build is still to come. Until it arrives, run the build from the kit's own stage sequence and keep the day arc below."),
   };
 }
 
@@ -310,9 +294,10 @@ const buildActivities: Record<string, CurriculumActivity> = {
     title: "railway barrier build",
     model: "Railway Barrier",
     concept: "open & closed circuit",
-    days: 5,
+    days: 4,
     what: "a barrier that raises and lowers on a switch —",
     manual: "/robotics-manuals/elec-model-railway-barrier.pdf",
+    note: "Day one of the whole level: before any building, say the safety points aloud from the teacher reference — the kit's battery blocks are safe, but never put anything in a wall socket, and never join + straight to − with nothing in between. Then start the switch cue card.",
   }),
   "elec-build-wind-turbine": buildModel({
     id: "elec-build-wind-turbine",
@@ -346,13 +331,27 @@ const buildActivities: Record<string, CurriculumActivity> = {
     title: "sensor-controlled crane build",
     model: "Sensor-controlled Crane",
     concept: "input and output",
-    days: 6,
+    days: 5,
     what: "a crane that senses what is near it and responds —",
     manual: "/robotics-manuals/elec-model-crane.pdf",
   }),
 };
 
-// ─── Experience book ────────────────────────────────────────
+// ─── Experience book (child-facing, 6 steps per machine) ────
+// The electronics book is the CHILD's own portfolio — they explore,
+// experiment, complete, build, solve and present largely on their own.
+// The educator's job is to open the right page each day, prompt, and
+// check the "present & reflect" page. Instructions below render in the
+// day-plan popup so every educator fills it the same way.
+
+const EB_STEPS = [
+  { title: "1 · explore", body: "the child reads the machine's story, meets the words to know, does a quick 'your turn' tick, and reads the 'did you know'. open this on the first day of a new machine." },
+  { title: "2 · experiment & observe", body: "the child runs the real circuit from today's cue card, circles their answer, and draws what they saw. this is the observing & understanding page — prompt, don't tell." },
+  { title: "3 · complete the circuit", body: "the child finishes a circuit on paper — picks the missing block or draws the missing wire. check their choice against the loop." },
+  { title: "4 · build & name", body: "the child builds the real model from their kit and cue card, ticks 'when it works', then draws their circuit and labels the named blocks. this is the building & making page." },
+  { title: "5 · solve", body: "the child fixes a circuit that won't work and draws the fix — and you reinforce the safety line. this is the problem solving page." },
+  { title: "6 · show", body: "the child shows the machine to a friend and says three things — what it is, its blocks, what it does — then writes what each new word means. this present & reflect page is your best check of real understanding." },
+];
 
 function experienceBook(ageSlug: "5-8" | "8-12"): CurriculumActivity {
   return {
@@ -360,13 +359,19 @@ function experienceBook(ageSlug: "5-8" | "8-12"): CurriculumActivity {
     segment: "experience-book",
     title: "experience book",
     setupLine:
-      "ten minutes at the end of every session. each child records what they discovered and ticks off the words and skills they can now use.",
+      "the child's own portfolio — six pages per machine they complete themselves. ten minutes at the end of every session to move it forward.",
     howToPlay:
-      "The educator fills in four things per child: the cue card used, the build day, the ability seen clearly today for each of the four skills (B&M, O&U, PS, P&E), and one specific note. The child ticks the electronics words they can now use — circuit, open & closed, conductor, insulator, resistance, polarity, series, parallel, input, output. Always close with the 3-move debrief: name what you saw (linked to an ability) · name the next step (the next ability up) · ask one concept question to the group.",
+      "This book is the child's, not yours — the pages are written so a child can do them independently. Each machine has the same six steps (below), spread across its build days: explore on day one, then experiment, complete, build & name, solve and show as the machine progresses. Your job each session: open to the step that matches today, read the story or safety line aloud where needed, prompt with one question, and never give the answer. The four skills — observing & understanding, building & making, problem solving, and presenting & explaining — each climb one rung per machine, and the pages are named by skill so you can see the growth. The 'show' (present & reflect) page is the real assessment: listen to the child explain their machine and read what they wrote each word means.",
+    namedBlocks: EB_STEPS,
     materials: [
       `My Robotics Experience Book — level 2, electronics (ages ${ageSlug === "5-8" ? "5–8" : "8–12"}), per child`,
-      "Ability Reference card (inside cover)",
-      "Electronics word list (inside back cover)",
+      "Their circuit card and kit for the day",
+    ],
+    educatorNote: [
+      "It is the child's book — guide and check, don't fill it in for them.",
+      "5–8 completes circuits and answers by circling; 8–12 designs its own circuits and draws them as schematics.",
+      "Close every session with the 3-move debrief: name what you saw · name the next rung up · ask one concept question to the group.",
+      "The 'show' page is where you see real understanding — make time for it on each machine's last day.",
     ],
     debriefPrompts: [],
     type: "facilitated",
@@ -378,32 +383,31 @@ function experienceBook(ageSlug: "5-8" | "8-12"): CurriculumActivity {
   };
 }
 
-// ─── Skills — the same ladders as level 1, plus presenting & explaining ─
-// "the same skills run through every robotics level, so progress carries
-// across" — so the B&M / PS / O&U ability ladders are unchanged. P&E is
-// newly added at this level.
+// ─── Skills — the four ladders, matched to the experience book ─
+// The child's book climbs each skill one rung per machine; the outcome
+// wording here is the book's, so the tool and the book agree.
 
 const skillAreas: CurriculumSkillArea[] = [
-  {
-    id: "bm",
-    name: "building & making",
-    shortName: "B&M",
-    abilities: [
-      { name: "Fit", description: "connects the blocks so they sit correctly and the circuit carries power" },
-      { name: "Follow", description: "reads the circuit card and builds it in the right order" },
-      { name: "Adjust", description: "fixes a connection that isn't working — reseats, reroutes, reconnects" },
-      { name: "Improve", description: "makes one deliberate change to make the circuit work better — and checks whether it worked", isNorthStar: true },
-    ],
-  },
   {
     id: "ou",
     name: "observing & understanding",
     shortName: "O&U",
     abilities: [
-      { name: "Observe", description: "looks closely and identifies what the circuit is actually doing" },
-      { name: "Trace", description: "follows the path of the electricity around the loop, block by block" },
-      { name: "Predict", description: "says what the circuit will do before switching it on — without being prompted" },
-      { name: "Explain", description: "explains why the circuit behaves that way, using a clear reason", isNorthStar: true },
+      { name: "Notice", description: "notices when the circuit works and when it doesn't" },
+      { name: "Describe", description: "describes the pattern in words" },
+      { name: "Compare", description: "compares two circuits — brighter or dimmer, faster or slower" },
+      { name: "Predict", description: "predicts whether a circuit will work, and says why", isNorthStar: true },
+    ],
+  },
+  {
+    id: "bm",
+    name: "building & making",
+    shortName: "B&M",
+    abilities: [
+      { name: "Snap", description: "snaps the blocks together from the card" },
+      { name: "Complete", description: "completes the loop so it works" },
+      { name: "Name", description: "builds it and names each block's job" },
+      { name: "Change", description: "adds or swaps a block to change what it does", isNorthStar: true },
     ],
   },
   {
@@ -411,10 +415,10 @@ const skillAreas: CurriculumSkillArea[] = [
     name: "problem solving",
     shortName: "PS",
     abilities: [
-      { name: "Notice", description: "recognises that the circuit isn't working — without being told" },
-      { name: "Isolate", description: "narrows the fault down to one part of the loop instead of guessing" },
-      { name: "Fix", description: "finds the break in the circuit and repairs it" },
-      { name: "Persist", description: "keeps working through a stubborn fault without giving up", isNorthStar: true },
+      { name: "Notice", description: "notices the circuit isn't working" },
+      { name: "Try", description: "tries a fix instead of repeating what failed" },
+      { name: "Adjust", description: "changes one thing and sees if it helps" },
+      { name: "Fix", description: "finds the break and gets the circuit working", isNorthStar: true },
     ],
   },
   {
@@ -422,10 +426,10 @@ const skillAreas: CurriculumSkillArea[] = [
     name: "presenting & explaining",
     shortName: "P&E",
     abilities: [
-      { name: "Show", description: "shows their circuit to the group and points out the parts" },
-      { name: "Name", description: "names the blocks and the concepts using the real electronics words" },
-      { name: "Explain", description: "explains how and why the circuit works — not just what it does" },
-      { name: "Answer", description: "answers a question about their circuit with a clear reason", isNorthStar: true },
+      { name: "Name", description: "names their circuit and its blocks in real words" },
+      { name: "Say", description: "says what it does" },
+      { name: "Explain", description: "says why it works" },
+      { name: "Answer", description: "shows it and answers a question about it", isNorthStar: true },
     ],
   },
 ];
@@ -494,95 +498,93 @@ function s(
 }
 
 const sessionTable: CurriculumSessionEntry[] = [
-  // ── Railway Barrier · 5 days · open & closed circuits ──
-  s(1, "elec-c-safety", "Railway Barrier", "elec-build-railway-barrier", 1, 5,
-    "why must we never join + straight to −?"),
-  s(2, "elec-c-conductors", "Railway Barrier", "elec-build-railway-barrier", 2, 5,
-    "which things carried the electricity, and what did they all have in common?"),
-  s(3, "elec-c-resistor-led", "Railway Barrier", "elec-build-railway-barrier", 3, 5,
-    "what has to be true before the led will light — and what is the resistor protecting?"),
-  s(4, "elec-c-switch", "Railway Barrier", "elec-build-railway-barrier", 4, 5,
-    "what is the switch actually doing to the loop?"),
-  s(5, "elec-c-resistor-led", "Railway Barrier", "elec-build-railway-barrier", 5, 5,
-    "predict, then prove: what happens to the led if we break the loop anywhere?"),
+  // ── Railway Barrier · 4 days ──
+  s(1, "elec-c-switch", "Railway Barrier", "elec-build-railway-barrier", 1, 4,
+    "what is the switch doing to the loop — and when does the light come on?"),
+  s(2, "elec-c-switch", "Railway Barrier", "elec-build-railway-barrier", 2, 4,
+    "revisit — predict what will happen before you connect, then prove it: what is the switch doing to the loop — and when does the light come on?"),
+  s(3, "elec-c-switch", "Railway Barrier", "elec-build-railway-barrier", 3, 4,
+    "revisit — predict what will happen before you connect, then prove it: what is the switch doing to the loop — and when does the light come on?"),
+  s(4, "elec-c-switch", "Railway Barrier", "elec-build-railway-barrier", 4, 4,
+    "revisit — predict what will happen before you connect, then prove it: what is the switch doing to the loop — and when does the light come on?"),
 
-  // ── Wind Turbine · 4 days · polarity ──
-  s(6, "elec-c-motor", "Wind Turbine", "elec-build-wind-turbine", 1, 4,
+  // ── Wind Turbine · 4 days ──
+  s(5, "elec-c-motor", "Wind Turbine", "elec-build-wind-turbine", 1, 4,
     "what did reversing the wires change about the motor?"),
-  s(7, "elec-c-motor-led-generator", "Wind Turbine", "elec-build-wind-turbine", 2, 4,
-    "you turned the wheel and the led lit — where did that electricity come from?"),
-  s(8, "elec-c-dpdt", "Wind Turbine", "elec-build-wind-turbine", 3, 4,
-    "what did you look at to decide which way it would spin?"),
-  s(9, "elec-c-motor", "Wind Turbine", "elec-build-wind-turbine", 4, 4,
-    "make it spin the way i ask — how did you decide which wire went where?"),
+  s(6, "elec-c-dpdt", "Wind Turbine", "elec-build-wind-turbine", 2, 4,
+    "how did you make the motor change direction without swapping any wires?"),
+  s(7, "elec-c-motor", "Wind Turbine", "elec-build-wind-turbine", 3, 4,
+    "revisit — predict what will happen before you connect, then prove it: what did reversing the wires change about the motor?"),
+  s(8, "elec-c-dpdt", "Wind Turbine", "elec-build-wind-turbine", 4, 4,
+    "revisit — predict what will happen before you connect, then prove it: how did you make the motor change direction without swapping any wires?"),
 
-  // ── Soccer Bot · 4 days · polarity reversal ──
-  s(10, "elec-c-dual-dpdt", "Soccer Bot", "elec-build-soccer-bot", 1, 4,
-    "why does each motor need its own switch?"),
-  s(11, "elec-c-dpdt-motor", "Soccer Bot", "elec-build-soccer-bot", 2, 4,
+  // ── Soccer Bot · 4 days ──
+  s(9, "elec-c-dpdt", "Soccer Bot", "elec-build-soccer-bot", 1, 4,
+    "how did you make the motor change direction without swapping any wires?"),
+  s(10, "elec-c-dual-dpdt", "Soccer Bot", "elec-build-soccer-bot", 2, 4,
+    "what did the two motors have to be doing for the bot to turn?"),
+  s(11, "elec-c-dpdt", "Soccer Bot", "elec-build-soccer-bot", 3, 4,
+    "revisit — predict what will happen before you connect, then prove it: how did you make the motor change direction without swapping any wires?"),
+  s(12, "elec-c-dual-dpdt", "Soccer Bot", "elec-build-soccer-bot", 4, 4,
+    "revisit — predict what will happen before you connect, then prove it: what did the two motors have to be doing for the bot to turn?"),
+
+  // ── Cleaning Bot · 6 days ──
+  s(13, "elec-c-dpdt-motor", "Cleaning Bot", "elec-build-cleaning-bot", 1, 6,
     "how did you flip one motor while the other kept running?"),
-  s(12, "elec-c-dual-motor-ir-turn", "Soccer Bot", "elec-build-soccer-bot", 3, 4,
-    "what did the two motors have to be doing for it to turn?"),
-  s(13, "elec-c-dual-dpdt", "Soccer Bot", "elec-build-soccer-bot", 4, 4,
-    "drive a set path — which switch did what, at each part of the path?"),
+  s(14, "elec-c-dpdt", "Cleaning Bot", "elec-build-cleaning-bot", 2, 6,
+    "how did you make the motor change direction without swapping any wires?"),
+  s(15, "elec-c-dual-dpdt", "Cleaning Bot", "elec-build-cleaning-bot", 3, 6,
+    "what did the two motors have to be doing for the bot to turn?"),
+  s(16, "elec-c-dpdt-motor", "Cleaning Bot", "elec-build-cleaning-bot", 4, 6,
+    "revisit — predict what will happen before you connect, then prove it: how did you flip one motor while the other kept running?"),
+  s(17, "elec-c-dpdt", "Cleaning Bot", "elec-build-cleaning-bot", 5, 6,
+    "revisit — predict what will happen before you connect, then prove it: how did you make the motor change direction without swapping any wires?"),
+  s(18, "elec-c-dual-dpdt", "Cleaning Bot", "elec-build-cleaning-bot", 6, 6,
+    "revisit — predict what will happen before you connect, then prove it: what did the two motors have to be doing for the bot to turn?"),
 
-  // ── Cleaning Bot · 6 days · one battery, many jobs ──
-  s(14, "elec-c-pot", "Cleaning Bot", "elec-build-cleaning-bot", 1, 6,
-    "what is the dial changing about the electricity reaching the motor?"),
-  s(15, "elec-c-series", "Cleaning Bot", "elec-build-cleaning-bot", 2, 6,
-    "why did everything stop when you removed just one part?"),
-  s(16, "elec-c-parallel", "Cleaning Bot", "elec-build-cleaning-bot", 3, 6,
-    "what happened to the others when you took one part out?"),
-  s(17, "elec-c-pot-dual-motor-series", "Cleaning Bot", "elec-build-cleaning-bot", 4, 6,
-    "two motors sharing one path — what happened to their speed?"),
-  s(18, "elec-c-pot-switch-parallel", "Cleaning Bot", "elec-build-cleaning-bot", 5, 6,
-    "how did you share one battery between two motors and still switch it all off?"),
-  s(19, "elec-c-parallel", "Cleaning Bot", "elec-build-cleaning-bot", 6, 6,
-    "compare series and parallel — which was brighter or stronger, and why?"),
-
-  // ── Sensor-controlled Crane · 6 days · input & output ──
-  s(20, "elec-c-driver-ir", "Sensor-controlled Crane", "elec-build-sensor-crane", 1, 6,
+  // ── Sensor-controlled Crane · 5 days ──
+  s(19, "elec-c-driver-ir", "Sensor-controlled Crane", "elec-build-sensor-crane", 1, 5,
     "which part was the input, and which was the output?"),
-  s(21, "elec-c-ir-motor-direction", "Sensor-controlled Crane", "elec-build-sensor-crane", 2, 6,
+  s(20, "elec-c-ir-motor-direction", "Sensor-controlled Crane", "elec-build-sensor-crane", 2, 5,
     "what decision is the driver making for the motor?"),
-  s(22, "elec-c-dual-ir-fwd-back", "Sensor-controlled Crane", "elec-build-sensor-crane", 3, 6,
+  s(21, "elec-c-dual-ir-fwd-back", "Sensor-controlled Crane", "elec-build-sensor-crane", 3, 5,
     "how does the driver know which sensor is talking?"),
-  s(23, "elec-c-ir-range", "Sensor-controlled Crane", "elec-build-sensor-crane", 4, 6,
-    "at what distance did it trigger every single time?"),
-  s(24, "elec-c-servo", "Sensor-controlled Crane", "elec-build-sensor-crane", 5, 6,
-    "how is the servo different from the motors you used before?"),
-  s(25, "elec-c-ldr-led", "Sensor-controlled Crane", "elec-build-sensor-crane", 6, 6,
-    "what is the light sensor telling the circuit?"),
+  s(22, "elec-c-driver-ir", "Sensor-controlled Crane", "elec-build-sensor-crane", 4, 5,
+    "revisit — predict what will happen before you connect, then prove it: which part was the input, and which was the output?"),
+  s(23, "elec-c-ir-motor-direction", "Sensor-controlled Crane", "elec-build-sensor-crane", 5, 5,
+    "revisit — predict what will happen before you connect, then prove it: what decision is the driver making for the motor?"),
 ];
 
 // ─── Checkpoints ────────────────────────────────────────────
+// Land on the model boundaries: after Railway Barrier (4), after Soccer
+// Bot (12), after the Sensor-controlled Crane (23).
 
 const checkpoints: CurriculumCheckpoint[] = [
   {
-    afterSession: 5,
+    afterSession: 4,
     descriptors: [
-      { skillArea: "B&M", beginning: "needs help to seat the blocks so power flows (Fit)", developing: "reads the circuit card and builds it in order (Follow)", secure: "fixes a connection that isn't working without being told (Adjust)" },
-      { skillArea: "O&U", beginning: "watches but does not notice specifics", developing: "identifies what the circuit is doing (Observe)", secure: "follows the path of the electricity around the loop (Trace)" },
-      { skillArea: "PS", beginning: "waits to be told what is wrong", developing: "notices the circuit isn't working (Notice)", secure: "narrows the fault to one part of the loop (Isolate)" },
-      { skillArea: "P&E", beginning: "shows the circuit without words", developing: "shows and points out the parts (Show)", secure: "names the blocks using the real words (Name)" },
+      { skillArea: "B&M", beginning: "needs help to snap the blocks from the card", developing: "snaps the blocks together from the card (Snap)", secure: "completes the loop so it works (Complete)" },
+      { skillArea: "O&U", beginning: "watches without noticing specifics", developing: "notices when it works and when it doesn't (Notice)", secure: "describes the pattern in words (Describe)" },
+      { skillArea: "PS", beginning: "waits to be told what is wrong", developing: "notices the circuit isn't working (Notice)", secure: "tries a fix instead of repeating what failed (Try)" },
+      { skillArea: "P&E", beginning: "shows the circuit without words", developing: "names their circuit and its blocks (Name)", secure: "says what it does (Say)" },
     ],
   },
   {
-    afterSession: 13,
+    afterSession: 12,
     descriptors: [
-      { skillArea: "B&M", beginning: "builds from the card in order (Follow)", developing: "adjusts a failing connection independently (Adjust)", secure: "makes a deliberate change to make the circuit work better and checks it (Improve ★)" },
-      { skillArea: "O&U", beginning: "traces the loop with prompts (Trace)", developing: "says what the circuit will do before switching on (Predict)", secure: "explains why the circuit behaves that way (Explain ★)" },
-      { skillArea: "PS", beginning: "isolates the fault to one area (Isolate)", developing: "finds the break and repairs it (Fix)", secure: "keeps going through a stubborn fault (Persist ★)" },
-      { skillArea: "P&E", beginning: "names some blocks (Name)", developing: "explains how the circuit works (Explain)", secure: "answers a question about it with a clear reason (Answer ★)" },
+      { skillArea: "B&M", beginning: "completes the loop (Complete)", developing: "builds it and names each block's job (Name)", secure: "adds or swaps a block to change what it does (Change ★)" },
+      { skillArea: "O&U", beginning: "describes the pattern (Describe)", developing: "compares two circuits (Compare)", secure: "predicts whether it will work and says why (Predict ★)" },
+      { skillArea: "PS", beginning: "tries a fix (Try)", developing: "changes one thing and sees if it helps (Adjust)", secure: "finds the break and gets it working (Fix ★)" },
+      { skillArea: "P&E", beginning: "says what it does (Say)", developing: "says why it works (Explain)", secure: "shows it and answers a question (Answer ★)" },
     ],
   },
   {
-    afterSession: 25,
+    afterSession: 23,
     descriptors: [
-      { skillArea: "B&M", beginning: "adjusts independently (Adjust)", developing: "improves the circuit deliberately (Improve)", secure: "builds a machine that senses and responds, and improves it on purpose (Improve ★)" },
-      { skillArea: "O&U", beginning: "predicts before switching on (Predict)", developing: "gives a reason for what happened (Explain)", secure: "predicts and proves how a circuit behaves — linked to what was observed (Explain ★)" },
-      { skillArea: "PS", beginning: "finds and fixes a break (Fix)", developing: "fixes faults across a multi-part circuit (Fix)", secure: "persists through repeated faults to get the machine working (Persist ★)" },
-      { skillArea: "P&E", beginning: "explains with prompting (Explain)", developing: "explains in real electronics words (Explain)", secure: "explains how and why it works, then answers a question about it (Answer ★)" },
+      { skillArea: "B&M", beginning: "names each block's job (Name)", developing: "changes one block on purpose (Change)", secure: "builds a machine that senses and responds, and improves it deliberately (Change ★)" },
+      { skillArea: "O&U", beginning: "compares two circuits (Compare)", developing: "predicts before testing (Predict)", secure: "predicts and proves how a circuit behaves — with a reason (Predict ★)" },
+      { skillArea: "PS", beginning: "changes one thing to help (Adjust)", developing: "finds and fixes a break (Fix)", secure: "works through several faults to get the machine going (Fix ★)" },
+      { skillArea: "P&E", beginning: "says why it works (Explain)", developing: "answers a question about it (Answer)", secure: "shows the machine, explains how and why, and answers a question (Answer ★)" },
     ],
   },
 ];
@@ -652,7 +654,7 @@ const shared = {
   levelName: "electronics",
   heroImageUrl: "/prog-stem-5-8.gif",
   tagline: "build real circuits and make machines light up, move, and sense the world.",
-  totalSessions: 25,
+  totalSessions: 23,
   skillAreas,
   segmentDefinitions,
   sessionTable,

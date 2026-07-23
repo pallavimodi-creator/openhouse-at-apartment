@@ -376,6 +376,36 @@ export const ACTIVITY_IMAGES: Record<string, string> = {
   // in the rotation pool, so a single thumbnail per id is fine.
   "art-gym-book": "/gym-books/book-3.png",
   "art-gym-cue-card": "/games/art/cue-cards-game.png",
+
+  // ─── Robotics level 2 · electronics ───
+  // Per-card images extracted from the Electronic Cue Cards deck, plus a
+  // cover thumbnail per model manual — so the library shows the real card.
+  "elec-c-resistor-led": "/robotics-manuals/elec-c-resistor-led.png",
+  "elec-c-switch": "/robotics-manuals/elec-c-switch.png",
+  "elec-c-motor": "/robotics-manuals/elec-c-motor.png",
+  "elec-c-dpdt": "/robotics-manuals/elec-c-dpdt.png",
+  "elec-c-dual-dpdt": "/robotics-manuals/elec-c-dual-dpdt.png",
+  "elec-c-pot": "/robotics-manuals/elec-c-pot.png",
+  "elec-c-driver-ir": "/robotics-manuals/elec-c-driver-ir.png",
+  "elec-c-dpdt-motor": "/robotics-manuals/elec-c-dpdt-motor.png",
+  "elec-c-pot-dual-motor-series": "/robotics-manuals/elec-c-pot-dual-motor-series.png",
+  "elec-c-pot-switch-parallel": "/robotics-manuals/elec-c-pot-switch-parallel.png",
+  "elec-c-parallel": "/robotics-manuals/elec-c-parallel.png",
+  "elec-c-series": "/robotics-manuals/elec-c-series.png",
+  "elec-c-motor-led-generator": "/robotics-manuals/elec-c-motor-led-generator.png",
+  "elec-c-servo": "/robotics-manuals/elec-c-servo.png",
+  "elec-c-ir-motor-direction": "/robotics-manuals/elec-c-ir-motor-direction.png",
+  "elec-c-dual-ir-circuit": "/robotics-manuals/elec-c-dual-ir-circuit.png",
+  "elec-c-dual-motor-ir-turn": "/robotics-manuals/elec-c-dual-motor-ir-turn.png",
+  "elec-c-ir-range": "/robotics-manuals/elec-c-ir-range.png",
+  "elec-c-dual-ir-fwd-back": "/robotics-manuals/elec-c-dual-ir-fwd-back.png",
+  "elec-c-ldr-led": "/robotics-manuals/elec-c-ldr-led.png",
+  "elec-c-ldr-ir-led": "/robotics-manuals/elec-c-ldr-ir-led.png",
+  "elec-build-railway-barrier": "/robotics-manuals/elec-build-railway-barrier.png",
+  "elec-build-wind-turbine": "/robotics-manuals/elec-build-wind-turbine.png",
+  "elec-build-soccer-bot": "/robotics-manuals/elec-build-soccer-bot.png",
+  "elec-build-cleaning-bot": "/robotics-manuals/elec-build-cleaning-bot.png",
+  "elec-build-sensor-crane": "/robotics-manuals/elec-build-sensor-crane.png",
 };
 
 // Art gym book images, keyed by book number.

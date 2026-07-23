@@ -47,6 +47,7 @@ import {
 import {
   getCurriculumProgramme,
   listCurriculumProgrammes,
+  getTrackLevels,
   SEGMENT_COLORS,
   getActivityImage,
   GYM_BOOK_IMAGES,
@@ -177,7 +178,9 @@ const BOOK_COVER_BY_PROGRAMME: Record<string, string> = {
 };
 
 function programmeShortLabel(p: CurriculumProgramme): string {
-  return `${p.title} · ${p.ageLabel}`;
+  // Disambiguate the two robotics levels — "robotics · electronics · 5–8".
+  const level = p.levelName ? ` · ${p.levelName}` : "";
+  return `${p.title}${level} · ${p.ageLabel}`;
 }
 
 function buildItemsFor(prog: CurriculumProgramme): LibraryItem[] {
@@ -328,8 +331,11 @@ export default function LibraryPage() {
           ? programmes
           : programmes.filter((p) => p.slug === selectedProgSlug);
     } else if (teacherSlug) {
+      // Show every level of the teacher's track — a robotics teacher gets
+      // both mechanics (level 1) and electronics (level 2) in one library.
+      const track = getTrackLevels(teacherSlug).filter((p) => p.totalSessions > 0);
       const p = getCurriculumProgramme(teacherSlug);
-      progsToShow = p ? [p] : [];
+      progsToShow = track.length ? track : p ? [p] : [];
     }
 
     const items = progsToShow.flatMap(buildItemsFor);

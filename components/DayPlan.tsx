@@ -442,8 +442,16 @@ function SegmentRow({
                 ? {
                     segmentId: segment.segmentId,
                     segmentName: segment.segmentName,
-                    title: ebAct.title,
-                    description: ebAct.setupLine,
+                    title: "experience book — the child's portfolio",
+                    subText: "six pages per machine · the child completes it themselves",
+                    description:
+                      "This is the child's own book — they complete it themselves; you guide and check. Each machine has the same six pages, spread across its build days. 1 explore — read the story and meet the words on the machine's first day. 2 experiment & observe — run today's cue card, circle the answer, and draw what you saw. 3 complete the circuit — pick the missing block or draw the missing wire. 4 build & name — build the model, then draw it and label its blocks. 5 solve — fix a circuit that won't work, and say the safety line aloud. 6 show — present the machine to a friend, say what it is, its blocks and what it does, then write what each new word means.",
+                    prepNote:
+                      "It's the child's book — guide and check, don't fill it in for them. 5–8 answers by circling; 8–12 designs its own circuits and draws them as schematics. The 'show' page is your best check of real understanding — make time for it on each machine's last day. Close every session with the 3-move debrief: name what you saw · name the next rung up · one concept question.",
+                    externalLink: {
+                      href: ebAct.pdfUrl,
+                      label: "open the experience book (PDF)",
+                    },
                   }
                 : {
                     segmentId: segment.segmentId,
