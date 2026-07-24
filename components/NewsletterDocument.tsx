@@ -63,6 +63,9 @@ const INK = "#2C2B28";
 const HAIRLINE = "rgba(44,43,40,0.10)";
 const CREAM = "#FBF6EE";
 
+/** one artwork tile in the "what we made" grid — image optional. */
+type ArtworkTile = { label: string; image?: string };
+
 /** category → mascot image (the operator-supplied openhouse mascots). */
 const MASCOT: Record<string, string> = {
   stem: "/newsletter/mascot-robotics.png",
@@ -120,8 +123,17 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
 
   const conceptGroups = isRobotics ? groupByMechanism(pickedItems) : null;
   const segmentGroups = isPublicSpeaking || isArt ? groupBySegment(pickedItems) : null;
-  const listedArtworks = isArt ? pickedItems.filter((i) => i.category === "artworks").map((i) => i.parentLabel) : [];
-  const customArtworks = (props.customArtworks ?? []).map((s) => s.trim().toLowerCase()).filter(Boolean);
+  // Artworks carry their reference image (the artiverse unit) where we have
+  // one; educator-typed custom artworks are label-only.
+  const listedArtworks: ArtworkTile[] = isArt
+    ? pickedItems
+        .filter((i) => i.category === "artworks")
+        .map((i) => ({ label: i.parentLabel, image: i.heroImageUrl ?? getActivityImage(i.id) }))
+    : [];
+  const customArtworks: ArtworkTile[] = (props.customArtworks ?? [])
+    .map((s) => s.trim().toLowerCase())
+    .filter(Boolean)
+    .map((label) => ({ label }));
   const pickedArtworks = [...listedArtworks, ...customArtworks];
 
   // photo strip (models / projects only — never faces).
@@ -154,7 +166,7 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
     <div className="parent-doc mx-auto w-full max-w-[794px] space-y-6 md:space-y-8 print:!space-y-0">
       {/* ─── PAGE 1 ─── */}
       <article className="page flex flex-col bg-brand-white text-ink shadow-card ring-1 ring-ink/5 print:!shadow-none print:!ring-0"
-        style={{ minHeight: "1123px", overflow: "hidden" }}>
+        style={{ overflow: "hidden" }}>
         <Masthead accent={accent} />
 
         {/* greeting */}
@@ -233,12 +245,17 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
           <section className="mt-7 px-11">
             <SectionHead icon={Palette} eyebrow="the studio" title="what we made" accent={accent} />
             <div className="grid grid-cols-3 gap-2.5">
-              {pickedArtworks.slice(0, 9).map((label, i) => (
-                <div key={`${label}-${i}`} className="overflow-hidden rounded-xl bg-white ring-1 ring-ink/[0.09]">
-                  <div className="flex aspect-square items-center justify-center" style={{ background: `${accent}22` }}>
-                    <Palette className="h-6 w-6" strokeWidth={1.7} style={{ color: INK, opacity: 0.65 }} />
+              {pickedArtworks.slice(0, 9).map((art, i) => (
+                <div key={`${art.label}-${i}`} className="overflow-hidden rounded-xl bg-white ring-1 ring-ink/[0.09]">
+                  <div className="flex aspect-square items-center justify-center overflow-hidden" style={{ background: `${accent}22` }}>
+                    {art.image ? (
+                      /* eslint-disable-next-line @next/next/no-img-element */
+                      <img src={art.image} alt="" className="h-full w-full object-cover" />
+                    ) : (
+                      <Palette className="h-6 w-6" strokeWidth={1.7} style={{ color: INK, opacity: 0.65 }} />
+                    )}
                   </div>
-                  <p className="px-2 py-1.5 text-center text-[10.5px] font-bold leading-tight text-ink">{label}</p>
+                  <p className="px-2 py-1.5 text-center text-[10.5px] font-bold leading-tight text-ink">{art.label}</p>
                 </div>
               ))}
             </div>
@@ -279,7 +296,7 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
 
       {/* ─── PAGE 2 ─── */}
       <article className="page flex flex-col bg-brand-white text-ink shadow-card ring-1 ring-ink/5 print:!shadow-none print:!ring-0 print:break-before-page"
-        style={{ minHeight: "1123px", overflow: "hidden" }}>
+        style={{ overflow: "hidden" }}>
         <Masthead accent={accent} />
 
         {/* skills — numbered, each with its own plain meaning */}
@@ -383,7 +400,9 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
         .page { position: relative; }
         @media print {
           .parent-doc { gap: 0 !important; }
-          .page { page-break-after: always; box-shadow: none !important; }
+          /* A4 height only for print — on screen each sheet wraps its own
+             content so a short page never leaves a gap above the footer. */
+          .page { min-height: 1123px; page-break-after: always; box-shadow: none !important; }
           .page:last-child { page-break-after: auto; }
         }
       `}</style>

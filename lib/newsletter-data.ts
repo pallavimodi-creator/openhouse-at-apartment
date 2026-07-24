@@ -31,6 +31,7 @@ export interface NewsletterItem {
   segment: string; // raw segment id from the programme file
   segmentName: string; // friendly segment name (e.g. "Roll Call")
   skillIds: string[];
+  heroImageUrl?: string; // reference image (e.g. an artiverse unit's artwork)
 }
 
 export interface NewsletterProgramme {
@@ -136,6 +137,7 @@ export function getNewsletterProgramme(
       category: "artworks",
       segment: "artiverse",
       segmentName: segmentNames.get("artiverse") ?? "artiverse",
+      heroImageUrl: u.heroImageUrl,
       skillIds: (u.abilitiesCovered ?? [])
         .map((ability) => {
           const areaByAbility = (p.skillAreas ?? []).find((s) =>

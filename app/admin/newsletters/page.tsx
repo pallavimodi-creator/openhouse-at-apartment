@@ -145,16 +145,17 @@ function AdminNewslettersContent() {
                         <Clock className="h-3 w-3" /> pending
                       </span>
                     )}
-                    {s.status === "pending" ? (
+                    {/* review the actual newsletter first — works for
+                        pending and approved (download unlocks on approval). */}
+                    <Link href={`/admin/newsletters/${s.id}`}
+                      className="inline-flex items-center gap-1 rounded-md bg-ink px-2.5 py-1.5 text-[11px] font-bold text-white active:scale-[0.99]">
+                      {s.status === "pending" ? "review" : "open + download"}
+                    </Link>
+                    {s.status === "pending" && (
                       <button type="button" onClick={async () => { await approveSubmission(s.id, getAdminKey()); refresh(); }}
                         className="inline-flex items-center gap-1 rounded-md bg-brand-orange px-2.5 py-1.5 text-[11px] font-bold text-white active:scale-[0.99]">
                         <Check className="h-3 w-3" /> approve
                       </button>
-                    ) : (
-                      <Link href={`/admin/newsletters/${s.id}`}
-                        className="inline-flex items-center gap-1 rounded-md bg-ink px-2.5 py-1.5 text-[11px] font-bold text-white active:scale-[0.99]">
-                        open + download
-                      </Link>
                     )}
                     <button type="button" onClick={async () => { if (confirm("delete this submission?")) { await deleteSubmission(s.id, getAdminKey()); refresh(); } }}
                       className="rounded-md p-1.5 text-ink-muted transition hover:bg-red-50 hover:text-red-600" aria-label="delete">

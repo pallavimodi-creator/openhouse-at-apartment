@@ -160,6 +160,20 @@ function NewsletterContent() {
     return "robotics-5-8";
   }, [teacher]);
 
+  // Which programmes this educator may write a newsletter for. An admin
+  // sees all; a category educator (art / language / stem) sees only their
+  // category; a single-programme educator sees only that programme.
+  const isAdmin = teacher?.role === "admin" || teacher?.programmeSlug === "*";
+  const visibleSlugs = useMemo(() => {
+    if (isAdmin) return [...NEWSLETTER_PROGRAMME_SLUGS];
+    if (teacher?.category) {
+      const prefix = teacher.category === "art" ? "art-design"
+        : teacher.category === "language" ? "public-speaking" : "robotics";
+      return NEWSLETTER_PROGRAMME_SLUGS.filter((s) => s.startsWith(prefix));
+    }
+    return NEWSLETTER_PROGRAMME_SLUGS.filter((s) => s === teacher?.programmeSlug);
+  }, [teacher, isAdmin]);
+
   const [slug, setSlug] = useState<string>(defaultSlug);
   const [from, setFrom] = useState<string>(isoMonthStart());
   const [to, setTo] = useState<string>(isoToday());
@@ -171,6 +185,15 @@ function NewsletterContent() {
   useEffect(() => {
     setBuildingDefault(getBuilding() ?? "");
   }, []);
+
+  // If the current slug isn't one this educator may write for (e.g. the
+  // teacher loaded after the initial fallback), snap to their first allowed
+  // programme — so the preview always matches their category.
+  useEffect(() => {
+    if (visibleSlugs.length && !(visibleSlugs as readonly string[]).includes(slug)) {
+      setSlug(visibleSlugs[0]);
+    }
+  }, [visibleSlugs, slug]);
 
   useEffect(() => { setDraft(readDraft(slug, from, to, buildingDefault)); }, [slug, from, to, buildingDefault]);
   useEffect(() => { writeDraft(slug, from, to, draft); }, [slug, from, to, draft]);
@@ -260,7 +283,7 @@ function NewsletterContent() {
           </Link>
           <select value={slug} onChange={(e) => setSlug(e.target.value)}
             className="rounded-md border border-ink/15 bg-brand-white px-2 py-1.5 text-[12px] font-semibold text-ink focus:border-brand-orange focus:outline-none">
-            {NEWSLETTER_PROGRAMME_SLUGS.map((s) => {
+            {visibleSlugs.map((s) => {
               const p = getNewsletterProgramme(s);
               return p ? <option key={s} value={s}>{p.title} · {p.ageLabel}</option> : null;
             })}

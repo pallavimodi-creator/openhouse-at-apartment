@@ -8,10 +8,10 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
-import { ChevronLeft, Download } from "lucide-react";
+import { ChevronLeft, Download, Check, Clock, CheckCircle2 } from "lucide-react";
 import { useTeacher, TeacherGate } from "@/components/TeacherGate";
 import { NewsletterDocument } from "@/components/NewsletterDocument";
-import { getSubmission, getAdminKey, type NewsletterSubmission } from "@/lib/newsletter-submissions";
+import { getSubmission, approveSubmission, getAdminKey, type NewsletterSubmission } from "@/lib/newsletter-submissions";
 
 export default function AdminNewsletterViewPage() {
   return (
@@ -60,15 +60,36 @@ function ViewContent() {
 
   return (
     <div className="mx-auto w-full max-w-4xl px-3 pb-24 md:px-6">
-      <div className="flex items-center gap-3 py-3 print:hidden">
+      <div className="flex flex-wrap items-center gap-3 py-3 print:hidden">
         <Link href="/admin/newsletters" className="inline-flex items-center gap-1 text-[12px] font-semibold text-ink-muted hover:text-ink">
           <ChevronLeft className="h-3.5 w-3.5" /> all newsletters
         </Link>
+        {sub.status === "approved" ? (
+          <span className="inline-flex items-center gap-1 rounded-chip bg-green-100 px-2 py-0.5 text-[10px] font-bold text-green-800">
+            <CheckCircle2 className="h-3 w-3" /> approved
+          </span>
+        ) : (
+          <span className="inline-flex items-center gap-1 rounded-chip bg-amber-100 px-2 py-0.5 text-[10px] font-bold text-amber-800">
+            <Clock className="h-3 w-3" /> pending — review below
+          </span>
+        )}
         <span className="flex-1" />
-        <button type="button" onClick={() => window.print()}
-          className="inline-flex items-center gap-1.5 rounded-md bg-brand-orange px-3 py-1.5 text-[12px] font-bold text-white shadow-card active:scale-[0.99]">
-          <Download className="h-3.5 w-3.5" /> download as pdf
-        </button>
+        {sub.status === "pending" ? (
+          <button type="button"
+            onClick={async () => {
+              await approveSubmission(sub.id, getAdminKey());
+              const fresh = await getSubmission(sub.id, getAdminKey());
+              if (fresh) setSub(fresh);
+            }}
+            className="inline-flex items-center gap-1.5 rounded-md bg-brand-orange px-3 py-1.5 text-[12px] font-bold text-white shadow-card active:scale-[0.99]">
+            <Check className="h-3.5 w-3.5" /> approve to share
+          </button>
+        ) : (
+          <button type="button" onClick={() => window.print()}
+            className="inline-flex items-center gap-1.5 rounded-md bg-brand-orange px-3 py-1.5 text-[12px] font-bold text-white shadow-card active:scale-[0.99]">
+            <Download className="h-3.5 w-3.5" /> download as pdf
+          </button>
+        )}
       </div>
 
       <NewsletterDocument
