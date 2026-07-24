@@ -9,7 +9,7 @@
  */
 
 import { NextResponse } from "next/server";
-import { getServiceSupabase, isValidAdminKey } from "@/lib/supabase-server";
+import { getServiceSupabase, isValidAdminKey, adminKeyConfigured } from "@/lib/supabase-server";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -37,7 +37,7 @@ function guard(req: Request) {
   if (!supabase) {
     return { error: NextResponse.json({ configured: false }, { status: 503 }) };
   }
-  if (!isValidAdminKey(req.headers.get("x-admin-key"))) {
+  if (adminKeyConfigured() && !isValidAdminKey(req.headers.get("x-admin-key"))) {
     return { error: NextResponse.json({ error: "invalid admin key" }, { status: 401 }) };
   }
   return { supabase };

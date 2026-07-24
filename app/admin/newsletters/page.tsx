@@ -46,7 +46,10 @@ function AdminNewslettersContent() {
     const key = getAdminKey();
     const { submissions, configured, authError } = await listSubmissions(key);
     setConfigured(configured);
-    setNeedsKey(configured && (authError || !key));
+    // Only prompt for a key if the server actually rejects the request
+    // (i.e. a key is still configured). With the gate removed, the list is
+    // open and this never fires.
+    setNeedsKey(configured && authError);
     setSubs(submissions);
     setLoading(false);
   }, []);

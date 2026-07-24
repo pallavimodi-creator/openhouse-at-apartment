@@ -10,7 +10,7 @@
  */
 
 import { NextResponse } from "next/server";
-import { getServiceSupabase, isValidAdminKey } from "@/lib/supabase-server";
+import { getServiceSupabase, isValidAdminKey, adminKeyConfigured } from "@/lib/supabase-server";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -83,8 +83,11 @@ export async function GET(req: Request) {
   if (!supabase) {
     return NextResponse.json({ configured: false }, { status: 503 });
   }
+  // When a key is configured on the server it's still enforced; when it's
+  // unset (the operator removed the gate), the admin list is open — the
+  // dashboard is already reached only after the app admin login.
   const adminKey = req.headers.get("x-admin-key");
-  if (!isValidAdminKey(adminKey)) {
+  if (adminKeyConfigured() && !isValidAdminKey(adminKey)) {
     return NextResponse.json({ error: "invalid admin key" }, { status: 401 });
   }
 
