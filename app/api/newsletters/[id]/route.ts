@@ -55,21 +55,38 @@ export async function GET(req: Request, { params }: { params: { id: string } }) 
 export async function PATCH(req: Request, { params }: { params: { id: string } }) {
   const g = guard(req);
   if ("error" in g) return g.error;
-  let body: { action?: string };
+  let body: { action?: string; draft?: unknown; building?: string };
   try {
     body = await req.json();
   } catch {
     body = {};
   }
-  if (body.action !== "approve") {
-    return NextResponse.json({ error: "unsupported action" }, { status: 400 });
+
+  // "update" — an admin saved edits to the submission's content before
+  // approving. Overwrites the payload (and mirrors the building column).
+  if (body.action === "update") {
+    if (!body.draft) {
+      return NextResponse.json({ error: "draft is required" }, { status: 400 });
+    }
+    const patch: Record<string, unknown> = { payload: body.draft };
+    if (typeof body.building === "string" && body.building.trim()) {
+      patch.building = body.building.trim();
+    }
+    const { error } = await g.supabase.from(TABLE).update(patch).eq("id", params.id);
+    if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ ok: true });
   }
-  const { error } = await g.supabase
-    .from(TABLE)
-    .update({ status: "approved", approved_at: new Date().toISOString() })
-    .eq("id", params.id);
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-  return NextResponse.json({ ok: true });
+
+  if (body.action === "approve") {
+    const { error } = await g.supabase
+      .from(TABLE)
+      .update({ status: "approved", approved_at: new Date().toISOString() })
+      .eq("id", params.id);
+    if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ ok: true });
+  }
+
+  return NextResponse.json({ error: "unsupported action" }, { status: 400 });
 }
 
 export async function DELETE(req: Request, { params }: { params: { id: string } }) {

@@ -161,6 +161,30 @@ export async function getSubmission(
   }
 }
 
+/** An admin edits a submission's content before approving it. */
+export async function updateSubmission(
+  id: string,
+  draft: NewsletterDraftSnapshot,
+  adminKey: string
+): Promise<void> {
+  try {
+    const res = await fetch(`/api/newsletters/${id}`, {
+      method: "PATCH",
+      headers: { "content-type": "application/json", "x-admin-key": adminKey },
+      body: JSON.stringify({ action: "update", draft, building: draft.building }),
+    });
+    if (await isUnconfigured(res)) throw new Error("unconfigured");
+    if (!res.ok) throw new Error("update failed");
+  } catch {
+    const list = lsReadAll();
+    const idx = list.findIndex((s) => s.id === id);
+    if (idx !== -1) {
+      list[idx] = { ...list[idx], draft, building: draft.building || list[idx].building };
+      lsWriteAll(list);
+    }
+  }
+}
+
 export async function approveSubmission(id: string, adminKey: string): Promise<void> {
   try {
     const res = await fetch(`/api/newsletters/${id}`, {
