@@ -56,6 +56,8 @@ export interface NewsletterDocumentProps {
   photos: string[];
   /** art only — extra artworks the educator typed that aren't in the list */
   customArtworks?: string[];
+  /** optional free-text note (added by an admin) shown near the top */
+  note?: string;
 }
 
 const CORAL = "#F25E35";
@@ -189,6 +191,16 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
               style={{ filter: "drop-shadow(0 6px 10px rgba(44,43,40,.10))" }} />
           )}
         </div>
+
+        {/* optional free-text note from the team (added by an admin) */}
+        {props.note && props.note.trim() && (
+          <section className="mt-5 px-11">
+            <div className="rounded-xl px-4 py-3.5" style={{ background: CREAM, borderLeft: `3px solid ${accent}` }}>
+              <p className="text-[9px] font-bold uppercase tracking-[0.18em]" style={{ color: CORAL }}>a note from us</p>
+              <p className="mt-1.5 whitespace-pre-line text-[12.5px] leading-relaxed text-ink">{props.note.trim()}</p>
+            </div>
+          </section>
+        )}
 
         {/* photo feature — models / projects only, adapts to how many there are */}
         <PhotoFeature images={heroImages} hints={photoHints} />

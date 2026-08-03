@@ -42,6 +42,7 @@ function toDraft(s: NewsletterSubmission): Draft {
     customArtworks: d.customArtworks ?? [],
     from: d.from ?? s.from,
     to: d.to ?? s.to,
+    note: d.note ?? "",
   };
 }
 
@@ -77,13 +78,16 @@ function ViewContent() {
   const selectedSet = useMemo(() => new Set(draft?.selected ?? []), [draft?.selected]);
   const nextSet = useMemo(() => new Set(draft?.nextSelected ?? []), [draft?.nextSelected]);
 
+  // public speaking is continuous — done + coming-up aren't exclusive.
+  const continuous = !!sub && sub.programmeSlug.startsWith("public-speaking");
+
   function toggle(id: string) {
     setDraft((d) => {
       if (!d) return d;
       const next = new Set(d.selected);
       const nextUp = new Set(d.nextSelected);
       if (next.has(id)) next.delete(id);
-      else { next.add(id); nextUp.delete(id); }
+      else { next.add(id); if (!continuous) nextUp.delete(id); }
       return { ...d, selected: Array.from(next), nextSelected: Array.from(nextUp) };
     });
   }
@@ -93,7 +97,7 @@ function ViewContent() {
       const nextUp = new Set(d.nextSelected);
       const next = new Set(d.selected);
       if (nextUp.has(id)) nextUp.delete(id);
-      else { nextUp.add(id); next.delete(id); }
+      else { nextUp.add(id); if (!continuous) next.delete(id); }
       return { ...d, nextSelected: Array.from(nextUp), selected: Array.from(next) };
     });
   }
@@ -187,7 +191,21 @@ function ViewContent() {
 
       {editing && programme ? (
         <div className="grid gap-6 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
-          <div>
+          <div className="space-y-4">
+            {/* free-text note — optional; appears near the top of the doc */}
+            <div className="rounded-card bg-brand-white p-4 shadow-card ring-1 ring-ink/5 md:p-5">
+              <p className="text-[10px] font-bold tracking-normal text-brand-orange">a note to parents</p>
+              <p className="mt-0.5 text-[11px] italic text-ink-muted">
+                optional — a free-text message from openhouse. leave it blank to show nothing.
+              </p>
+              <textarea
+                value={draft.note ?? ""}
+                onChange={(e) => setDraft((d) => (d ? { ...d, note: e.target.value } : d))}
+                rows={3}
+                placeholder="e.g. thank you for a wonderful month — our showcase is on the 15th, do join us!"
+                className="mt-2 w-full resize-y rounded-md border border-ink/15 bg-brand-cream px-3 py-2 text-[12.5px] leading-relaxed outline-none focus:border-brand-orange"
+              />
+            </div>
             <NewsletterEditor
               programme={programme}
               draft={draft}
@@ -196,6 +214,7 @@ function ViewContent() {
               onToggle={toggle}
               onToggleNext={toggleNext}
               onDraftChange={(u) => setDraft((d) => (d ? u(d) : d))}
+              allowBoth={continuous}
             />
           </div>
           <NewsletterDocument
@@ -207,6 +226,7 @@ function ViewContent() {
             nextSelected={draft.nextSelected}
             photos={draft.photos}
             customArtworks={draft.customArtworks}
+            note={draft.note}
           />
         </div>
       ) : (
@@ -219,6 +239,7 @@ function ViewContent() {
           nextSelected={draft.nextSelected}
           photos={draft.photos}
           customArtworks={draft.customArtworks}
+          note={draft.note}
         />
       )}
 

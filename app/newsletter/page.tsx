@@ -125,12 +125,16 @@ function NewsletterContent() {
   const selectedSet = useMemo(() => new Set(draft.selected), [draft.selected]);
   const nextSet = useMemo(() => new Set(draft.nextSelected), [draft.nextSelected]);
 
+  // public speaking is continuous — a game played this month can also be
+  // "coming up" next month, so done/coming-up aren't mutually exclusive.
+  const continuous = slug.startsWith("public-speaking");
+
   function toggle(id: string) {
     setDraft((d) => {
       const next = new Set(d.selected);
       const nextUp = new Set(d.nextSelected);
       if (next.has(id)) next.delete(id);
-      else { next.add(id); nextUp.delete(id); }
+      else { next.add(id); if (!continuous) nextUp.delete(id); }
       return { ...d, selected: Array.from(next), nextSelected: Array.from(nextUp) };
     });
   }
@@ -139,7 +143,7 @@ function NewsletterContent() {
       const nextUp = new Set(d.nextSelected);
       const next = new Set(d.selected);
       if (nextUp.has(id)) nextUp.delete(id);
-      else { nextUp.add(id); next.delete(id); }
+      else { nextUp.add(id); if (!continuous) next.delete(id); }
       return { ...d, nextSelected: Array.from(nextUp), selected: Array.from(next) };
     });
   }
@@ -251,6 +255,7 @@ function NewsletterContent() {
             onToggle={toggle}
             onToggleNext={toggleNext}
             onDraftChange={setDraft}
+            allowBoth={continuous}
           />
         </div>
         <NewsletterDocument

@@ -25,6 +25,8 @@ export interface Draft {
   customArtworks: string[];
   from: string;
   to: string;
+  /** an optional free-text note an admin adds before approving. */
+  note?: string;
 }
 
 /** Downscale + compress an image file to a JPEG data-URL so submissions
@@ -91,6 +93,7 @@ function segmentGroupsOf(items: NewsletterItem[]) {
 
 export function NewsletterEditor({
   programme, draft, selectedSet, nextSet, onToggle, onToggleNext, onDraftChange,
+  allowBoth = false,
 }: {
   programme: NewsletterProgramme;
   draft: Draft;
@@ -99,6 +102,10 @@ export function NewsletterEditor({
   onToggle: (id: string) => void;
   onToggleNext: (id: string) => void;
   onDraftChange: (u: (d: Draft) => Draft) => void;
+  /** when true, an item may be in BOTH done and coming up (continuous
+   *  subjects like public speaking — a game played this month can also be
+   *  scheduled next month). */
+  allowBoth?: boolean;
 }) {
   const fileRef = useRef<HTMLInputElement>(null);
   function pickPhotos(files: FileList | null) {
@@ -116,7 +123,7 @@ export function NewsletterEditor({
     <ul className="mt-1.5 divide-y divide-ink/5 rounded-card bg-ink/[0.03]">
       {items.map((item) => {
         const checked = selectedSet.has(item.id);
-        const lockedByNext = nextSet.has(item.id);
+        const lockedByNext = !allowBoth && nextSet.has(item.id);
         return (
           <li key={item.id}>
             <label className={cn("flex items-start gap-2.5 px-3 py-2 text-[12.5px] leading-snug",
@@ -140,7 +147,7 @@ export function NewsletterEditor({
     <ul className="mt-1 divide-y divide-ink/5 rounded-md bg-brand-white ring-1 ring-ink/5">
       {items.map((item) => {
         const checked = nextSet.has(item.id);
-        const lockedByDone = selectedSet.has(item.id);
+        const lockedByDone = !allowBoth && selectedSet.has(item.id);
         return (
           <li key={item.id}>
             <label className={cn("flex items-start gap-2.5 px-3 py-1.5 text-[12px] leading-snug",
