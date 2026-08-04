@@ -1424,6 +1424,17 @@ const skillAreas: CurriculumSkillArea[] = [
       { name: "Explain", description: "explains why something happened using a clear reason — not just what happened", isNorthStar: true },
     ],
   },
+  {
+    id: "pe",
+    name: "presenting & explaining",
+    shortName: "P&E",
+    abilities: [
+      { name: "Name", description: "names their model and its parts (beam, fulcrum, load, wheel…)" },
+      { name: "Say", description: "says what the model does" },
+      { name: "Explain", description: "explains how it works in their own words" },
+      { name: "Answer", description: "shows the model and answers a question about it", isNorthStar: true },
+    ],
+  },
 ];
 
 // ─── Segments ───────────────────────────────────────────────

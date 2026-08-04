@@ -3030,8 +3030,9 @@ function ProgrammeOverviewContent() {
                 <div className="flex-1">
                   <div className="flex flex-wrap items-center gap-1.5">
                     <p className="text-[14px] font-extrabold lowercase text-ink">{skill.name}</p>
-                    {/* Presenting & explaining is a newly-tracked robotics skill. */}
-                    {isRobotics && /present/i.test(skill.name) && (
+                    {/* Presenting & explaining is NEWLY added to mechanics (level 1);
+                        electronics (level 2) always had it, so it is not flagged there. */}
+                    {isRobotics && programme.level !== 2 && /present/i.test(skill.name) && (
                       <span className="rounded-full bg-brand-orange/12 px-1.5 py-0.5 text-[8.5px] font-bold uppercase tracking-wide text-brand-orange">
                         newly tracked
                       </span>
