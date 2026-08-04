@@ -1827,6 +1827,19 @@ function ProgrammeOverviewContent() {
                   />
                 </button>
 
+                {/* Always-visible cue for the electronics experience book so the
+                    "threaded across build days, not last 10 min" correction is
+                    seen WITHOUT expanding the card. */}
+                {/experience book/i.test(seg.segment) && isRobotics && programme.level === 2 && (
+                  <div className="border-t border-ink/5 bg-brand-orange/5 px-3 py-2.5">
+                    <p className="text-[11px] leading-relaxed text-ink-muted">
+                      <span className="font-bold text-ink">not just the last 10 minutes</span> — the experience book is worked step-by-step{" "}
+                      <span className="font-bold text-ink">across the machine&apos;s build days</span> (explore → experiment → complete → build &amp; name → solve → show); open the card for the full flow.
+                      <span className="ml-1.5 inline-block rounded-full bg-brand-orange/15 px-1.5 py-0.5 align-middle text-[8.5px] font-bold uppercase tracking-wide text-brand-orange">updated · aug 2026</span>
+                    </p>
+                  </div>
+                )}
+
                 {/* Expanded body — pool list + extras */}
                 {isOpen && (
                   <div className="space-y-3 border-t border-ink/5 p-3">
