@@ -653,7 +653,19 @@ function ProgrammeOverviewContent() {
     },
     experiment: { icon: FlaskConical, durationFlex: 40, meaning: "Groups of 2–4 children find the answer to one specific question. Every child takes at least one measurement independently. Teacher asks one question per group and never gives the answer. Tool orientation is embedded here — each tool introduced once, confirmed once, never revisited." },
     build: { icon: Wrench, durationFlex: 40, meaning: "Each child builds their own mechanical model using a personal kit and a step card. The teacher never fixes anything and never tells anyone what to do next. Four questions only. When something doesn't work, the child figures it out." },
-    "experience-book": { icon: Notebook, durationFlex: 10, meaning: "Five marks per child per session — O&U and LT from the experiment, B&M and PS from the build, concept ticked when the child can explain it. One specific note per child. Compiles into a monthly robotics journey letter." },
+    "experience-book": {
+      icon: Notebook,
+      durationFlex: 10,
+      // Level-aware: for electronics the experience book is the child's
+      // working book threaded through the machine's build days (a step per
+      // day) — NOT a last-10-minutes record. Mechanics keeps the close-of-
+      // session teacher-marks framing, which is fair (see the "when it
+      // happens" note in the segment detail).
+      meaning:
+        programme.level === 2
+          ? "Not a last-10-minutes slot — the experience book is the child's own working book, done step by step across each machine's build days: explore · experiment · complete · build & name · solve · show. The child works in it during the experiment and the build (the step that matches today); only the last few minutes are the 'show & reflect' close. The 'show' page is the real check of understanding."
+          : "Five marks per child per session — O&U and LT from the experiment, B&M and PS from the build, concept ticked when the child can explain it. One specific note per child. Compiles into a monthly robotics journey letter.",
+    },
 
     // Language through Storytelling — six segments. Meanings sourced
     // from the programme's segmentDefinitions when present so the
@@ -1886,9 +1898,27 @@ function ProgrammeOverviewContent() {
                     </p>
                     {seg.segment === "build" && (
                       <p className="mt-2 text-[11px] italic leading-relaxed text-ink-muted">
-                        At the end of the build, teacher says &ldquo;two minutes to tidy your kit.&rdquo; Children sort components back to the kit box before the experience book begins.
+                        {programme.level === 2
+                          ? "At the end of the build, teacher says “two minutes to tidy your kit.” Children sort components back to the kit box, then finish today’s experience-book step."
+                          : "At the end of the build, teacher says “two minutes to tidy your kit.” Children sort components back to the kit box before the experience book begins."}
                       </p>
                     )}
+                  </div>
+                )}
+                {/* Electronics experience book — corrects the "last 10 minutes"
+                    impression: it is the child's working book, threaded across
+                    the machine's build days. Flagged as recently updated. */}
+                {/experience book/i.test(seg.segment) && isRobotics && programme.level === 2 && (
+                  <div className="rounded-xl bg-brand-orange/5 p-4">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <p className="text-[12px] font-bold text-ink">when it happens — not just the last 10 minutes</p>
+                      <span className="rounded-full bg-brand-orange/12 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-brand-orange">updated · aug 2026</span>
+                    </div>
+                    <p className="mt-1 text-[11px] leading-relaxed text-ink-muted">
+                      The experience book is the child&apos;s working book — done step by step across each machine&apos;s build days:{" "}
+                      <b className="text-ink">explore · experiment · complete · build &amp; name · solve · show</b>. The child works in it{" "}
+                      <b className="text-ink">during the experiment and the build</b> (the step that matches today); the last few minutes are the &ldquo;show &amp; reflect&rdquo; close, and the &ldquo;show&rdquo; page is the real check of understanding.
+                    </p>
                   </div>
                 )}
 
@@ -2985,7 +3015,15 @@ function ProgrammeOverviewContent() {
                   })()}
                 </span>
                 <div className="flex-1">
-                  <p className="text-[14px] font-extrabold lowercase text-ink">{skill.name}</p>
+                  <div className="flex flex-wrap items-center gap-1.5">
+                    <p className="text-[14px] font-extrabold lowercase text-ink">{skill.name}</p>
+                    {/* Presenting & explaining is a newly-tracked robotics skill. */}
+                    {isRobotics && /present/i.test(skill.name) && (
+                      <span className="rounded-full bg-brand-orange/12 px-1.5 py-0.5 text-[8.5px] font-bold uppercase tracking-wide text-brand-orange">
+                        newly tracked
+                      </span>
+                    )}
+                  </div>
                   <p className="text-[10px] text-ink-muted">{skill.abilities.length} abilities</p>
                 </div>
               </div>
