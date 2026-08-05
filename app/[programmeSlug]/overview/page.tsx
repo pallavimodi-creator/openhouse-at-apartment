@@ -3571,6 +3571,21 @@ function ProgrammeOverviewContent() {
             subtitle: "extra design challenges — hand to a child who builds a model faster than the class",
           });
         }
+        // Music — the child's level book, per level (keyboard · ukulele · drums · vocals).
+        {
+          const musicBook: Record<string, string> = {
+            "music-l1": "1", "music-l2": "2", "music-l3": "3",
+          };
+          const lvl = musicBook[programme.slug];
+          if (lvl) {
+            books.push({
+              kind: "route", href: `/music/music-book-l${lvl}.pdf`, newTab: true,
+              cover: `/experience-books/covers/music-book-l${lvl}.png`,
+              title: `music book · level ${lvl}`,
+              subtitle: "the child's level book — keyboard · ukulele · drums · vocals",
+            });
+          }
+        }
         // STEM 3–5 — two educator reference books built like the
         // artiverse / artistotle books.
         if (programme.slug === "robotics-3-5") {

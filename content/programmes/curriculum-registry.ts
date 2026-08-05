@@ -12,6 +12,7 @@ import {
 } from "./robotics-electronics";
 import { languageStorytelling35 } from "./language-storytelling-3-5";
 import { stem35 } from "./stem-3-5";
+import { musicL1, musicL2, musicL3 } from "./music-levels";
 
 // Registry of all 8 programmes for the homepage cards.
 // Ordered: all art first (youngest → oldest), then language/speaking (youngest → oldest), then robotics (youngest → oldest).
@@ -36,4 +37,11 @@ export const curriculumProgrammes: CurriculumProgramme[] = [
   roboticsElectronics58,
   robotics812,
   roboticsElectronics812,
+
+  // ── Music ──
+  // Level-based track (music-l1/l2/l3, ages 5–12, ability-gated). Only
+  // level 1 shows on the home grid; levels 2–3 via the level switcher.
+  musicL1,
+  musicL2,
+  musicL3,
 ];

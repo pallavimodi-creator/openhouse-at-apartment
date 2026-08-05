@@ -340,6 +340,10 @@ export interface CurriculumSessionEntry {
   artGym?: string;
   artGames?: string;
   artiverse?: string;
+  // Music segments (class flow: warm-up → your instrument → play together)
+  warmUp?: string;        // warm-up exercise id (pitch / rhythm / voice / theory)
+  yourInstrument?: string; // the child's chosen-instrument work for the class
+  ensemble?: string;       // play-together / ensemble — the song of the month
   // Robotics segments
   experiment?: string;
   build?: string;
@@ -385,7 +389,7 @@ export interface CurriculumSessionEntry {
 
 export interface CurriculumActivity {
   id: string;
-  segment: "roll-call" | "playground" | "showtime" | "sign-off" | "log-book" | "art-gym" | "art-games" | "artiverse" | "art-care" | "experiment" | "build" | "experience-book" | "roll-rhyme" | "book-o-clock" | "wordsmiths" | "play-writes" | "imagine-playground" | "wonder-world" | "logic-lab" | "numbers-gym";
+  segment: "roll-call" | "playground" | "showtime" | "sign-off" | "log-book" | "art-gym" | "art-games" | "artiverse" | "art-care" | "experiment" | "build" | "experience-book" | "roll-rhyme" | "book-o-clock" | "wordsmiths" | "play-writes" | "imagine-playground" | "wonder-world" | "logic-lab" | "numbers-gym" | "warm-up" | "your-instrument" | "ensemble";
   title: string;
   cardName?: string;
   setupLine: string;
