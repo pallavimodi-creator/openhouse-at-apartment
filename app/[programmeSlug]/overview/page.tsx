@@ -3547,6 +3547,21 @@ function ProgrammeOverviewContent() {
             title: "level-up assessment", subtitle: "mechanics → electronics · the tow-truck readiness check",
           });
         }
+        // Electronics (Level 2) child experience books — one per band.
+        if (programme.slug === "robotics-electronics-5-8") {
+          books.push({
+            kind: "route", href: "/robotics-manuals/elec-experience-book-5-8.pdf", newTab: true,
+            cover: "/experience-books/covers/elec-experience-book-5-8.png",
+            title: "electronics experience book", subtitle: "child's portfolio · level 2 · 5 machines",
+          });
+        }
+        if (programme.slug === "robotics-electronics-8-12") {
+          books.push({
+            kind: "route", href: "/robotics-manuals/elec-experience-book-8-12.pdf", newTab: true,
+            cover: "/experience-books/covers/elec-experience-book-8-12.png",
+            title: "electronics experience book", subtitle: "child's portfolio · level 2 · 5 machines",
+          });
+        }
         // STEM 3–5 — two educator reference books built like the
         // artiverse / artistotle books.
         if (programme.slug === "robotics-3-5") {

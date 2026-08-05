@@ -426,11 +426,13 @@ const skillAreas: CurriculumSkillArea[] = [
     id: "pe",
     name: "presenting & explaining",
     shortName: "P&E",
+    // Level 2 advances presenting beyond mechanics' Name→Say→Explain→Answer: the child now presents
+    // to a group, walks through how it works, justifies the design, and fields questions / teaches a peer.
     abilities: [
-      { name: "Name", description: "names their circuit and its blocks in real words" },
-      { name: "Say", description: "says what it does" },
-      { name: "Explain", description: "says why it works" },
-      { name: "Answer", description: "shows it and answers a question about it", isNorthStar: true },
+      { name: "Present", description: "presents the circuit to the group — shows it working and names what each block does" },
+      { name: "Walk through", description: "traces how the electricity flows, step by step, so a listener can follow" },
+      { name: "Justify", description: "explains why it's built this way — what each block adds, and what changes if one is removed" },
+      { name: "Field", description: "fields a question from the audience, or coaches a peer to build or fix it", isNorthStar: true },
     ],
   },
 ];
