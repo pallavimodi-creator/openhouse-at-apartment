@@ -141,7 +141,7 @@ function ViewContent() {
   const btn = "inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-[12px] font-bold shadow-card active:scale-[0.99]";
 
   return (
-    <div className={cn("mx-auto w-full px-3 pb-24 md:px-6", editing ? "max-w-6xl" : "max-w-4xl")}>
+    <div className={cn("mx-auto w-full px-3 pb-24 md:px-6 print:p-0 print:m-0 print:max-w-none", editing ? "max-w-6xl" : "max-w-4xl")}>
       <div className="flex flex-wrap items-center gap-3 py-3 print:hidden">
         <Link href="/admin/newsletters" className="inline-flex items-center gap-1 text-[12px] font-semibold text-ink-muted hover:text-ink">
           <ChevronLeft className="h-3.5 w-3.5" /> all newsletters

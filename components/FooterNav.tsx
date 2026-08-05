@@ -109,7 +109,7 @@ export function FooterNav() {
 
   return (
     <nav
-      className="fixed bottom-0 left-0 right-0 z-50 bg-brand-white"
+      className="fixed bottom-0 left-0 right-0 z-50 bg-brand-white print:hidden"
       style={{
         borderTop: "1.5px solid rgba(44,43,40,0.12)",
         boxShadow: "0 -4px 12px rgba(0,0,0,0.08)",

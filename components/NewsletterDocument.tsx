@@ -411,11 +411,19 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
       <style jsx>{`
         .page { position: relative; }
         @media print {
-          .parent-doc { gap: 0 !important; }
-          /* A4 height only for print — on screen each sheet wraps its own
-             content so a short page never leaves a gap above the footer. */
-          .page { min-height: 1123px; page-break-after: always; box-shadow: none !important; }
-          .page:last-child { page-break-after: auto; }
+          .parent-doc { gap: 0 !important; margin: 0 !important; }
+          /* Exactly ONE A4 sheet per page. Must be 297mm — NOT 1123px, which
+             is 297.13mm and spills a ~0.5px sliver onto a blank extra sheet
+             (that was the "4 pages / blank pages" bug). overflow:hidden caps
+             each page to its sheet. The single page break lives only on
+             page 2 (print:break-before-page); there is no page-break-after,
+             so pages never double-break or leave a trailing blank sheet. */
+          .page {
+            height: 297mm;
+            box-sizing: border-box;
+            overflow: hidden;
+            box-shadow: none !important;
+          }
         }
       `}</style>
     </div>
