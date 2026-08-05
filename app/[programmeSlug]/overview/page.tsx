@@ -3445,7 +3445,7 @@ function ProgrammeOverviewContent() {
           title: string;
           subtitle: string;
         } & (
-          | { kind: "route"; href: string }
+          | { kind: "route"; href: string; newTab?: boolean }
           | {
               kind: "modal";
               modalKey:
@@ -3496,6 +3496,57 @@ function ProgrammeOverviewContent() {
             subtitle: `educator reference · ${programme.artiverseUnits?.length ?? 0} units`,
           });
         }
+        // ── Child EXPERIENCE BOOKS + resources (downloadable PDFs) ──
+        // The child's own portfolio book + its sticker pack (art), the
+        // mechanics portfolio (robotics L1), and the level-up assessment.
+        if (programme.slug === "art-design-5-8") {
+          books.push({
+            kind: "route", href: "/experience-books/art-experience-book-5-8.pdf", newTab: true,
+            cover: "/experience-books/covers/art-experience-book-5-8.png",
+            title: "art experience book", subtitle: "child's portfolio · daily sketchbook practice",
+          });
+          books.push({
+            kind: "route", href: "/experience-books/art-sticker-pack-5-8.pdf", newTab: true,
+            cover: "/experience-books/covers/art-sticker-pack-5-8.png",
+            title: "art sticker pack", subtitle: "peel & stick · pairs with the experience book",
+          });
+        }
+        if (programme.slug === "art-design-8-12") {
+          books.push({
+            kind: "route", href: "/experience-books/art-experience-book-8-12.pdf", newTab: true,
+            cover: "/experience-books/covers/art-experience-book-8-12.png",
+            title: "art experience book", subtitle: "child's portfolio · daily sketchbook practice",
+          });
+          books.push({
+            kind: "route", href: "/experience-books/art-sticker-pack-8-12.pdf", newTab: true,
+            cover: "/experience-books/covers/art-sticker-pack-8-12.png",
+            title: "art sticker pack", subtitle: "peel & stick · pairs with the experience book",
+          });
+        }
+        if (programme.slug === "robotics-5-8") {
+          books.push({
+            kind: "route", href: "/experience-books/mechanics-experience-book-5-8.pdf", newTab: true,
+            cover: "/experience-books/covers/mechanics-experience-book-5-8.png",
+            title: "mechanics experience book", subtitle: "child's portfolio · level 1 · machines 1–10",
+          });
+          books.push({
+            kind: "route", href: "/experience-books/robotics-levelup-assessment.pdf", newTab: true,
+            cover: "/experience-books/covers/robotics-levelup-assessment.png",
+            title: "level-up assessment", subtitle: "mechanics → electronics · the tow-truck readiness check",
+          });
+        }
+        if (programme.slug === "robotics-8-12") {
+          books.push({
+            kind: "route", href: "/experience-books/mechanics-experience-book-8-12.pdf", newTab: true,
+            cover: "/experience-books/covers/mechanics-experience-book-8-12.png",
+            title: "mechanics experience book", subtitle: "child's portfolio · level 1 · machines 1–10",
+          });
+          books.push({
+            kind: "route", href: "/experience-books/robotics-levelup-assessment.pdf", newTab: true,
+            cover: "/experience-books/covers/robotics-levelup-assessment.png",
+            title: "level-up assessment", subtitle: "mechanics → electronics · the tow-truck readiness check",
+          });
+        }
         // STEM 3–5 — two educator reference books built like the
         // artiverse / artistotle books.
         if (programme.slug === "robotics-3-5") {
@@ -3522,9 +3573,9 @@ function ProgrammeOverviewContent() {
           });
         }
         // Experience book (programmes that have one wired)
+        // art now ships a real downloadable experience book (above), so it no longer shows the
+        // "coming soon" placeholder card. public-speaking stays coming-soon until its book is built.
         const expBookSlug: Record<string, string> = {
-          "art-design-5-8": "art-5-8",
-          "art-design-8-12": "art-8-12",
           "public-speaking-5-8": "speaking-5-8",
           "public-speaking-8-12": "speaking-8-12",
         };
@@ -3638,6 +3689,20 @@ function ProgrammeOverviewContent() {
                     >
                       {inner}
                     </button>
+                  );
+                }
+                if (book.newTab) {
+                  // downloadable PDF (experience book / sticker pack / assessment) — open in a new tab
+                  return (
+                    <a
+                      key={book.href}
+                      href={book.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={cardClasses}
+                    >
+                      {inner}
+                    </a>
                   );
                 }
                 return (
