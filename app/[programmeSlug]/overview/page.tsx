@@ -3562,6 +3562,15 @@ function ProgrammeOverviewContent() {
             title: "electronics experience book", subtitle: "child's portfolio · level 2 · 5 machines",
           });
         }
+        // Extra assignments — for a child who finishes a model early (both electronics bands).
+        if (programme.slug === "robotics-electronics-5-8" || programme.slug === "robotics-electronics-8-12") {
+          books.push({
+            kind: "route", href: "/experience-books/electronics-level-up-exercises.pdf", newTab: true,
+            cover: "/experience-books/covers/electronics-level-up-exercises.png",
+            title: "level-up exercises (extra)",
+            subtitle: "extra design challenges — hand to a child who builds a model faster than the class",
+          });
+        }
         // STEM 3–5 — two educator reference books built like the
         // artiverse / artistotle books.
         if (programme.slug === "robotics-3-5") {
