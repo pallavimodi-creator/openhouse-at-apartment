@@ -146,6 +146,13 @@ export interface CurriculumProgramme {
   description: string;
   heroImageUrl?: string;
   totalSessions: number;
+  /**
+   * Optional human-readable level length shown instead of a session count
+   * (e.g. music, where a level is paced by months, not a fixed number of
+   * uploaded sessions). When set, the overview + level switcher show this
+   * label in place of "N sessions".
+   */
+  durationLabel?: string;
   skillAreas: CurriculumSkillArea[];
   segmentDefinitions: CurriculumSegmentDef[];
   sessionTable: CurriculumSessionEntry[];

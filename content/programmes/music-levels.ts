@@ -279,6 +279,7 @@ export const musicL1: CurriculumProgramme = {
   slug: "music-l1",
   level: 1,
   levelName: "level 1",
+  durationLabel: "~1–2 months",
   skillAreas: skillAreas(1),
   description:
     DESCRIPTION_BASE +
@@ -291,6 +292,7 @@ export const musicL2: CurriculumProgramme = {
   slug: "music-l2",
   level: 2,
   levelName: "level 2",
+  durationLabel: "~2–4 months",
   skillAreas: skillAreas(2),
   description:
     DESCRIPTION_BASE +
@@ -303,6 +305,7 @@ export const musicL3: CurriculumProgramme = {
   slug: "music-l3",
   level: 3,
   levelName: "level 3",
+  durationLabel: "~4–6 months",
   skillAreas: skillAreas(3),
   description:
     DESCRIPTION_BASE +

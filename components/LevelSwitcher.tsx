@@ -69,7 +69,7 @@ export function LevelSwitcher({
                     </span>
                   ) : (
                     <span className="text-[10px] font-semibold text-ink-muted">
-                      {lv.totalSessions} sessions
+                      {lv.durationLabel ?? `${lv.totalSessions} sessions`}
                     </span>
                   )}
                 </span>

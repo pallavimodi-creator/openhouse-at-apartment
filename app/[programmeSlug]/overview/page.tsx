@@ -36,6 +36,8 @@ import {
   Ear,
   MessageCircle,
   Music,
+  Mic,
+  Users,
   Search,
   Hash,
   Puzzle,
@@ -729,6 +731,28 @@ function ProgrammeOverviewContent() {
         programme.segmentDefinitions.find((s) => s.id === "numbers-gym")?.objective ??
         "Every child works in their personal gamebook at their own level. Three level books — children move up at their own pace.",
     },
+    // ── music ──
+    "warm-up": {
+      icon: Mic,
+      durationFlex: 10,
+      meaning:
+        programme.segmentDefinitions.find((s) => s.id === "warm-up")?.objective ??
+        "a short whole-group warm-up — a pitch, rhythm, voice or theory game that wakes up the ear and body before the instruments come out.",
+    },
+    "your-instrument": {
+      icon: Music,
+      durationFlex: 25,
+      meaning:
+        programme.segmentDefinitions.find((s) => s.id === "your-instrument")?.objective ??
+        "each child plays their chosen instrument — keyboard, ukulele, drums or vocals — working through their level book at their own pace, while the educator moves between them.",
+    },
+    ensemble: {
+      icon: Users,
+      durationFlex: 15,
+      meaning:
+        programme.segmentDefinitions.find((s) => s.id === "ensemble")?.objective ??
+        "the whole group plays the song of the month together — every instrument at once — learning to listen, keep time and perform like a band.",
+    },
   };
   const dailyFlow = programme.segmentDefinitions.map((s) => {
     const meta = segmentMeta[s.id] ?? segmentMeta["log-book"];
@@ -1171,10 +1195,12 @@ function ProgrammeOverviewContent() {
               uploaded over time. */}
           <div className="grid grid-cols-2 gap-px bg-ink/5 md:grid-cols-4">
             {[
-              {
-                label: "sessions uploaded",
-                value: String(programme.totalSessions),
-              },
+              programme.durationLabel
+                ? { label: "level length", value: programme.durationLabel }
+                : {
+                    label: "sessions uploaded",
+                    value: String(programme.totalSessions),
+                  },
               { label: "age group", value: programme.ageLabel.replace(/^ages?\s+/i, "") },
               {
                 label: "session length",
@@ -1200,60 +1226,82 @@ function ProgrammeOverviewContent() {
           </div>
         </div>
         <p className="mx-auto mt-3 max-w-2xl text-center text-[11px] italic leading-relaxed text-ink-muted md:text-[12px]">
-          this is an ongoing programme — {programme.totalSessions} sessions are uploaded so far, more will be uploaded over time.
+          {programme.durationLabel
+            ? "children are paced by a monthly assessment, not a fixed number of classes — level lengths above are typical, and move faster or slower with each child."
+            : `this is an ongoing programme — ${programme.totalSessions} sessions are uploaded so far, more will be uploaded over time.`}
         </p>
       </section>
 
       {/* ─── AGES 5–8 vs 8–12 — same content, different depth ─── */}
-      {programme.ageBandComparison && (
-        <section className="mt-10 px-4 md:px-8">
-          <h2 className="text-[20px] font-extrabold lowercase leading-tight text-ink md:text-[24px]">
-            ages 5–8 vs 8–12
-          </h2>
-          <p className="mt-1 text-[13px] leading-relaxed text-ink-muted md:text-[14px]">
-            both age groups run the very same programme — {programme.ageBandComparison.note}
-          </p>
-          <div className="mt-4 grid gap-3 md:grid-cols-2">
-            {([
-              { band: "5-8", label: "ages 5–8", items: programme.ageBandComparison.younger },
-              { band: "8-12", label: "ages 8–12", items: programme.ageBandComparison.older },
-            ] as const).map((col) => {
-              const isCurrent = programme.ageGroup === col.band;
-              return (
-                <div
-                  key={col.band}
-                  className={cn(
-                    "rounded-2xl p-5 ring-1",
-                    isCurrent
-                      ? "bg-brand-orange/[0.06] ring-brand-orange/40"
-                      : "bg-brand-cream ring-ink/10"
-                  )}
-                >
-                  <div className="flex items-center gap-2">
-                    <p className="text-[15px] font-extrabold text-ink">{col.label}</p>
-                    {isCurrent && (
-                      <span className="rounded-chip bg-brand-orange/15 px-2 py-0.5 text-[10px] font-extrabold text-brand-orange">
-                        this programme
-                      </span>
-                    )}
-                  </div>
-                  <ul className="mt-3 space-y-2">
-                    {col.items.map((it, i) => (
-                      <li key={i} className="flex items-start gap-2 text-[13px] leading-relaxed text-ink md:text-[13.5px]">
-                        <span
-                          className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-brand-orange"
-                          aria-hidden
-                        />
-                        <span>{it}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              );
-            })}
-          </div>
-        </section>
-      )}
+      {programme.ageBandComparison &&
+        (() => {
+          const abc = programme.ageBandComparison;
+          // When both age bands do exactly the same thing (e.g. music, which
+          // is banded by level & ability, not age), don't split into an
+          // "ages 5–8 vs 8–12" grid — show one general note instead.
+          const sameForBothAges =
+            JSON.stringify(abc.younger) === JSON.stringify(abc.older);
+          const columns = sameForBothAges
+            ? ([{ band: "all", label: "this programme", items: abc.younger }] as const)
+            : ([
+                { band: "5-8", label: "ages 5–8", items: abc.younger },
+                { band: "8-12", label: "ages 8–12", items: abc.older },
+              ] as const);
+          return (
+            <section className="mt-10 px-4 md:px-8">
+              <h2 className="text-[20px] font-extrabold lowercase leading-tight text-ink md:text-[24px]">
+                {sameForBothAges ? "how it works" : "ages 5–8 vs 8–12"}
+              </h2>
+              <p className="mt-1 text-[13px] leading-relaxed text-ink-muted md:text-[14px]">
+                {sameForBothAges
+                  ? abc.note
+                  : `both age groups run the very same programme — ${abc.note}`}
+              </p>
+              <div
+                className={cn(
+                  "mt-4 grid gap-3",
+                  !sameForBothAges && "md:grid-cols-2"
+                )}
+              >
+                {columns.map((col) => {
+                  const isCurrent =
+                    col.band === "all" || programme.ageGroup === col.band;
+                  return (
+                    <div
+                      key={col.band}
+                      className={cn(
+                        "rounded-2xl p-5 ring-1",
+                        isCurrent
+                          ? "bg-brand-orange/[0.06] ring-brand-orange/40"
+                          : "bg-brand-cream ring-ink/10"
+                      )}
+                    >
+                      <div className="flex items-center gap-2">
+                        <p className="text-[15px] font-extrabold text-ink">{col.label}</p>
+                        {isCurrent && col.band !== "all" && (
+                          <span className="rounded-chip bg-brand-orange/15 px-2 py-0.5 text-[10px] font-extrabold text-brand-orange">
+                            this programme
+                          </span>
+                        )}
+                      </div>
+                      <ul className="mt-3 space-y-2">
+                        {col.items.map((it, i) => (
+                          <li key={i} className="flex items-start gap-2 text-[13px] leading-relaxed text-ink md:text-[13.5px]">
+                            <span
+                              className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-brand-orange"
+                              aria-hidden
+                            />
+                            <span>{it}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+          );
+        })()}
 
       {/* ─── WELCOME — 3-5 art only ─── */}
       {programme.slug === "art-design-3-5" && (
