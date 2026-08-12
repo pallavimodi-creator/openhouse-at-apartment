@@ -151,7 +151,7 @@ const checkpoints: CurriculumCheckpoint[] = [
 ];
 
 // ─── The four skills — one ladder each, climbing every level ──
-function skillAreas(level: 1 | 2 | 3): CurriculumSkillArea[] {
+function skillAreas(level: 1 | 2 | 3 | 4): CurriculumSkillArea[] {
   const rp: Record<number, string[]> = {
     1: [
       "identify and play slow, medium and fast tempos",
@@ -170,11 +170,22 @@ function skillAreas(level: 1 | 2 | 3): CurriculumSkillArea[] {
       "sing 4–8 note phrases and the major scale from any note",
       "identify pitch direction in medium intervals (1–2 octaves), and whether two notes are the same or different",
     ],
+    4: [
+      "clap and play rhythms combining eighth notes, dotted quarter notes and rests",
+      "sing 5th and octave (8ve) intervals within the C4–C5 range",
+      "identify pitch direction in small intervals — half steps and whole steps",
+      "identify and sing harmonic intervals (5ths and octaves)",
+    ],
   };
   const mt: Record<number, string[]> = {
     1: ["an introduction to beats and speed — counting to 4 and to 3"],
     2: ["identify 4/4, 3/4 and 2/4 time signatures"],
     3: ["identify and play C, F and G major and D, E and A minor chords"],
+    4: [
+      "identify and play the 6/4 time signature",
+      "identify and demonstrate half steps and whole steps",
+      "identify and demonstrate how a major diatonic scale is built",
+    ],
   };
   const sr: Record<number, string[]> = {
     1: [
@@ -192,6 +203,11 @@ function skillAreas(level: 1 | 2 | 3): CurriculumSkillArea[] {
       "ukulele: shift between chords with basic strumming",
       "drums: read hi-hat, kick and snare staff notation with fills",
     ],
+    4: [
+      "keyboard: identify notes on both the treble and bass clef (the grand staff)",
+      "ukulele: read and play from tabs across all 4 strings, and read and follow strumming patterns",
+      "drums: follow staff notation for all drums",
+    ],
   };
   const tech: Record<number, string[]> = {
     1: [
@@ -208,6 +224,12 @@ function skillAreas(level: 1 | 2 | 3): CurriculumSkillArea[] {
       "keyboard: play with both hands — left-hand chords, right-hand melody",
       "ukulele: switch smoothly between chords and mute with either hand",
       "vocals: controlled breathing, sustaining notes for 10–12 seconds",
+    ],
+    4: [
+      "keyboard: play with both hands together, using the correct finger numbers for the song and wider dynamics (crescendo, decrescendo, mezzo forte)",
+      "ukulele: play eighth-note strumming with accurate down- and up-strokes, switch chords smoothly, and shape wider dynamics",
+      "drums: perform hi-hat, snare and kick combination rhythm patterns and fills",
+      "vocals: sustain notes for 14–18 seconds, shaping crescendo and decrescendo",
     ],
   };
   return [
@@ -282,4 +304,16 @@ export const musicL3: CurriculumProgramme = {
   description:
     DESCRIPTION_BASE +
     " level 3 moves to real notation — reading note names A–G with accidentals, rhythms with rests, C/F/G major and D/E/A minor chords, both hands on the keyboard, and switching chords on the ukulele.",
+};
+
+export const musicL4: CurriculumProgramme = {
+  ...shared,
+  id: "music-l4",
+  slug: "music-l4",
+  level: 4,
+  levelName: "level 4",
+  skillAreas: skillAreas(4),
+  description:
+    DESCRIPTION_BASE +
+    " level 4 is where a child becomes a real player — reading the full grand staff (treble and bass clef), playing with both hands together, eighth-note and dotted rhythms in 6/4, building the major scale from half and whole steps, hearing 5ths and octaves, and performing pop, rock and hip-hop pieces they record — through lead-sheet songs like Ode to Joy, Somewhere Over the Rainbow and The Lion Sleeps Tonight.",
 };

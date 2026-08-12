@@ -12,7 +12,7 @@ import {
 } from "./robotics-electronics";
 import { languageStorytelling35 } from "./language-storytelling-3-5";
 import { stem35 } from "./stem-3-5";
-import { musicL1, musicL2, musicL3 } from "./music-levels";
+import { musicL1, musicL2, musicL3, musicL4 } from "./music-levels";
 
 // Registry of all 8 programmes for the homepage cards.
 // Ordered: all art first (youngest → oldest), then language/speaking (youngest → oldest), then robotics (youngest → oldest).
@@ -44,4 +44,5 @@ export const curriculumProgrammes: CurriculumProgramme[] = [
   musicL1,
   musicL2,
   musicL3,
+  musicL4,
 ];

@@ -3574,7 +3574,7 @@ function ProgrammeOverviewContent() {
         // Music — the child's level book, per level (keyboard · ukulele · drums · vocals).
         {
           const musicBook: Record<string, string> = {
-            "music-l1": "1", "music-l2": "2", "music-l3": "3",
+            "music-l1": "1", "music-l2": "2", "music-l3": "3", "music-l4": "4",
           };
           const lvl = musicBook[programme.slug];
           if (lvl) {
