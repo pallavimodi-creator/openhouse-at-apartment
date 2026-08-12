@@ -34,22 +34,14 @@ const segmentDefinitions: CurriculumSegmentDef[] = [
   {
     id: "your-instrument",
     name: "instrument rotation",
-    durationRange: "40 min",
+    durationRange: "50 min",
     objective:
-      "the heart of the class — each child rotates through two instruments a class, chosen by their own interest, working through their level book on each (keyboard, ukulele, drums or vocals) in 2–3 rounds of 15–20 min, 2–4 weeks per exercise or song. the instrument a child isn't playing in the band is practised here too. the educator moves between children; a monthly assessment on this work moves a child up a level, per instrument.",
-    type: "fixed",
-  },
-  {
-    id: "play",
-    name: "play",
-    durationRange: "5–10 min",
-    objective:
-      "children take turns playing what they've practised for the educator — the ideal moment to hear each child individually and mark progress.",
+      "the heart of the class — each child rotates through two instruments a class, chosen by their own interest, working through their level book on each (keyboard, ukulele, drums or vocals), 2–4 weeks per exercise or song. the instrument a child isn't playing in the band is practised here too. children take turns playing for the educator, who moves between them and marks progress; a monthly assessment on this work moves a child up a level, per instrument.",
     type: "fixed",
   },
   {
     id: "ensemble",
-    name: "ensemble practice",
+    name: "ensemble play",
     durationRange: "30 min",
     objective:
       "the whole group learns and plays the band song together. each child is given one instrument for the performance — chosen by interest, ability and rotation — and reads their part at their book level. children learn each part over 2–3 weeks, then perform as a band, with individual performances too, roughly every two months.",
@@ -465,7 +457,7 @@ const shared = {
   activities,
   checkpoints,
   foundationalConcepts: [
-    { name: "warm up → instrument rotation → play → ensemble", body: "every class opens the ear, then each child works through their own level book on their instrument, a short play-for-the-educator to mark progress, and finally the whole group plays the band song together." },
+    { name: "warm up → instrument rotation → ensemble play", body: "every class opens the ear, then each child works through their own level book on their instrument (playing for the educator, who marks progress), and finally the whole group plays the band song together." },
     { name: "one child, one instrument — but everyone plays together", body: "children choose keyboard, ukulele, drums or vocals and go deep on it, while learning to play in an ensemble." },
     { name: "the notation scaffold fades as you climb", body: "level 1 uses colour-coded keys, level 2 adds finger numbers, level 3 reads real note names — the crutch is removed as reading grows." },
     { name: "you move up when you're ready, not when you're older", body: "a monthly assessment on your instrument work moves you up the levels; the group performs roughly every two months." },
@@ -480,7 +472,7 @@ const shared = {
 const DESCRIPTION_BASE =
   "a multi-instrument, choice-based programme — children learn keyboard, ukulele, drums and vocals.\n" +
   "from day one, they play together like a band.\n" +
-  "every class runs warm up → instrument rotation → play → ensemble.\n" +
+  "every class runs warm up → instrument rotation → ensemble play.\n" +
   "children move up by a monthly assessment on their own instrument.\n" +
   "the group performs roughly every two months — as a band and with individual performances.";
 

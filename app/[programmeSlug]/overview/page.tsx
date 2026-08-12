@@ -70,6 +70,7 @@ import { LanguageBooksGrid } from "@/components/LanguageBooksGrid";
 import { SongsPlaylist } from "@/components/SongsPlaylist";
 import { MusicSongsSection } from "@/components/MusicSongsSection";
 import { MusicWarmupsSection } from "@/components/MusicWarmupsSection";
+import { MusicDailyFlow } from "@/components/MusicDailyFlow";
 import { PdfFlipbookModal } from "@/components/PdfFlipbookModal";
 import { segmentPalette } from "@/components/segmentPalette";
 
@@ -755,17 +756,10 @@ function ProgrammeOverviewContent() {
     },
     "your-instrument": {
       icon: Music,
-      durationFlex: 40,
+      durationFlex: 50,
       meaning:
         programme.segmentDefinitions.find((s) => s.id === "your-instrument")?.objective ??
         "each child works through their own level book on their chosen instrument — keyboard, ukulele, drums or vocals — while the educator moves between them.",
-    },
-    play: {
-      icon: Sparkles,
-      durationFlex: 8,
-      meaning:
-        programme.segmentDefinitions.find((s) => s.id === "play")?.objective ??
-        "children take turns playing what they've practised for the educator — the moment to hear each child and mark progress.",
     },
     ensemble: {
       icon: Users,
@@ -1488,7 +1482,9 @@ function ProgrammeOverviewContent() {
       <section className="mt-8 px-4 md:px-8">
         <SectionTitle num={sectionNum("daily-flow")} label="daily flow" />
         <p className="mt-2 text-[13px] font-medium leading-relaxed text-ink md:text-[14px]">
-          A 90-minute session — {dailyFlow.length} segments, in this order. Tap a segment to see what is used, why it sits here, and the rules for using it.
+          {isMusic
+            ? `a 90-minute class — ${dailyFlow.length} parts, in this order.`
+            : `A 90-minute session — ${dailyFlow.length} segments, in this order. Tap a segment to see what is used, why it sits here, and the rules for using it.`}
         </p>
         {isArt && programme.ageGroup === "3-5" && (
           <p className="mt-2 rounded-lg bg-brand-orange/8 px-3 py-2 text-[12px] leading-relaxed text-ink-muted">
@@ -1533,6 +1529,10 @@ function ProgrammeOverviewContent() {
             })}
           </div>
         </div>
+
+        {/* Music — the 3 parts explained: rotating vs linear, and how band
+            play works with its general rules. */}
+        {isMusic && <MusicDailyFlow />}
 
         {/* ─── WHY THIS ORDER — programme-specific session flow rationale ─── */}
         {(() => {
