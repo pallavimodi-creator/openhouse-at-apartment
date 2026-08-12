@@ -119,6 +119,7 @@ export default function HomePage() {
     { key: "art", label: "art & design" },
     { key: "language", label: "language through storytelling and public speaking" },
     { key: "stem", label: "stem & robotics" },
+    { key: "music", label: "music" },
   ];
   const programmesByCategory = categoryOrder
     .map((c) => ({

@@ -390,7 +390,7 @@ function skillAreas(level: 1 | 2 | 3 | 4): CurriculumSkillArea[] {
   };
   const sr: Record<number, string[]> = {
     1: [
-      "keyboard: press the colour-coded keys in order, holding each for 1–4 beats; find the groups of 2 and 3 black keys",
+      "keyboard: press the five colour-coded keys in order, holding each for 1–4 beats; find the groups of 2 and 3 black keys",
       "ukulele: follow visual patterns of up- and down-strokes",
       "drums: follow visual patterns of right and left hands",
     ],
@@ -419,11 +419,12 @@ function skillAreas(level: 1 | 2 | 3 | 4): CurriculumSkillArea[] {
     2: [
       "play with dynamic variation — soft (p) and loud (f)",
       "ukulele: strum any string without looking; drums: hi-hat and snare combinations",
-      "vocals: match single-note pitch and sustain notes for 4–6 seconds",
+      "vocals: maintain correct posture, match single-note pitch and sing simple songs, sustaining notes for 4–6 seconds",
     ],
     3: [
       "keyboard: play with both hands — left-hand chords, right-hand melody",
-      "ukulele: switch smoothly between chords and mute with either hand",
+      "ukulele: play left-hand exercises for note clarity, switch between chords, and mute with either hand",
+      "drums: play hi-hat, kick and snare combination rhythms",
       "vocals: controlled breathing, sustaining notes for 10–12 seconds",
     ],
     4: [
