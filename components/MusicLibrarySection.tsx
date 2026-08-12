@@ -6,6 +6,7 @@ import type { LucideIcon } from "lucide-react";
 import {
   MUSIC_SONGS,
   MUSIC_INSTRUMENTS,
+  MUSIC_WARMUPS,
   musicNotationUrl,
   type MusicInstrumentId,
 } from "@/content/programmes/music-levels";
@@ -123,6 +124,36 @@ export function MusicLibrarySection() {
           ))}
         </div>
       </div>
+
+      {/* Board games (OH game PDFs used in warm-ups) */}
+      {(() => {
+        const games = MUSIC_WARMUPS.flatMap((w) =>
+          w.resources
+            .filter((r) => r.pdf)
+            .map((r) => ({ name: w.name, label: r.label, pdf: r.pdf! }))
+        );
+        if (games.length === 0) return null;
+        return (
+          <div>
+            <p className="mb-2 text-[11px] font-bold tracking-[0.06em] text-brand-orange">
+              warm-up games
+            </p>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {games.map((g) => (
+                <button
+                  key={g.pdf}
+                  type="button"
+                  onClick={() => setOpenPdf({ url: g.pdf, title: g.name })}
+                  className="flex items-center gap-2 rounded-2xl bg-brand-white p-4 text-left shadow-card ring-1 ring-ink/[0.06] transition hover:ring-brand-orange/40"
+                >
+                  <Piano className="h-4 w-4 shrink-0 text-brand-orange" strokeWidth={2.2} />
+                  <span className="text-[12.5px] font-bold text-ink">{g.label}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        );
+      })()}
 
       <PdfFlipbookModal pdf={openPdf} onClose={() => setOpenPdf(null)} />
     </section>

@@ -1,17 +1,28 @@
 "use client";
 
+import { useState } from "react";
 import { MUSIC_WARMUPS, type MusicWarmup } from "@/content/programmes/music-levels";
+import { PdfFlipbookModal } from "@/components/PdfFlipbookModal";
 
 /**
  * Music — warm-up games (they rotate).
  *
  * Every class opens with a short vocal warm-up and a short rhythm warm-up;
  * the educator picks one from each group and rotates them across classes.
- * Resources are named from the OH music sheet; the one with an embedded link
- * (dancing tempos) is clickable.
+ * Each resource is either an external link (opens in a new tab) or an OH game
+ * PDF (opens in the in-page flip viewer). Games with only spoken instructions
+ * carry no link — the description IS the how-to.
  */
 
-function WarmupGroup({ label, items }: { label: string; items: MusicWarmup[] }) {
+function WarmupGroup({
+  label,
+  items,
+  onOpenPdf,
+}: {
+  label: string;
+  items: MusicWarmup[];
+  onOpenPdf: (pdf: { url: string; title: string }) => void;
+}) {
   return (
     <div className="mt-5">
       <p className="text-[11px] font-bold tracking-[0.06em] text-brand-orange">
@@ -32,7 +43,16 @@ function WarmupGroup({ label, items }: { label: string; items: MusicWarmup[] }) 
             {w.resources.length > 0 && (
               <div className="mt-2.5 flex flex-wrap gap-1.5">
                 {w.resources.map((r) =>
-                  r.url ? (
+                  r.pdf ? (
+                    <button
+                      key={r.label}
+                      type="button"
+                      onClick={() => onOpenPdf({ url: r.pdf!, title: w.name })}
+                      className="inline-flex items-center gap-1 rounded-md bg-brand-orange/10 px-2 py-0.5 text-[10.5px] font-bold text-brand-orange transition hover:bg-brand-orange hover:text-white"
+                    >
+                      {r.label}
+                    </button>
+                  ) : r.url ? (
                     <a
                       key={r.label}
                       href={r.url}
@@ -63,6 +83,9 @@ function WarmupGroup({ label, items }: { label: string; items: MusicWarmup[] }) 
 export function MusicWarmupsSection() {
   const vocal = MUSIC_WARMUPS.filter((w) => w.group === "vocal");
   const rhythm = MUSIC_WARMUPS.filter((w) => w.group === "rhythm");
+  const [openPdf, setOpenPdf] = useState<{ url: string; title: string } | null>(
+    null
+  );
 
   return (
     <section className="mt-10 px-4 md:px-8">
@@ -73,8 +96,10 @@ export function MusicWarmupsSection() {
         every class opens with a short vocal warm-up and a short rhythm warm-up —
         the educator picks one from each group and rotates them across classes.
       </p>
-      <WarmupGroup label="vocal — pick one" items={vocal} />
-      <WarmupGroup label="rhythm — pick one" items={rhythm} />
+      <WarmupGroup label="vocal — pick one" items={vocal} onOpenPdf={setOpenPdf} />
+      <WarmupGroup label="rhythm — pick one" items={rhythm} onOpenPdf={setOpenPdf} />
+
+      <PdfFlipbookModal pdf={openPdf} onClose={() => setOpenPdf(null)} />
     </section>
   );
 }

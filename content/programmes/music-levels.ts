@@ -173,7 +173,9 @@ export interface MusicWarmup {
   group: "vocal" | "rhythm";
   name: string;
   detail: string;
-  resources: { label: string; url?: string }[];
+  // A resource is either an external link (url → opens in a new tab) or a
+  // local OH game PDF (pdf → opens in the in-page flip viewer).
+  resources: { label: string; url?: string; pdf?: string }[];
 }
 export const MUSIC_WARMUPS: MusicWarmup[] = [
   {
@@ -218,7 +220,9 @@ export const MUSIC_WARMUPS: MusicWarmup[] = [
     group: "rhythm",
     name: "rhythm bingo",
     detail: "match the rhythm you hear on your bingo card.",
-    resources: [{ label: "Rhythm Bingo (openhouse board game)" }],
+    resources: [
+      { label: "Rhythm Bingo — open the game", pdf: "/music/games/rhythm-bingo.pdf" },
+    ],
   },
   {
     group: "rhythm",
@@ -237,7 +241,9 @@ export const MUSIC_WARMUPS: MusicWarmup[] = [
     group: "rhythm",
     name: "composition game",
     detail: "build and play a short pattern of your own — for older children (8–12).",
-    resources: [{ label: "Composition Game (openhouse board game · 8–12)" }],
+    resources: [
+      { label: "Composition Game (8–12) — open the game", pdf: "/music/games/composition-game.pdf" },
+    ],
   },
 ];
 
