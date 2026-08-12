@@ -1,6 +1,6 @@
 "use client";
 
-import { forwardRef, useEffect, useRef, useState } from "react";
+import { forwardRef, useCallback, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -29,19 +29,24 @@ export function PdfFlipbook({ pdfUrl, preferSpread }: PdfFlipbookProps) {
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const flipRef = useRef<any>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const roRef = useRef<ResizeObserver | null>(null);
   const [containerWidth, setContainerWidth] = useState(0);
 
-  // Track container width for responsive sizing.
-  useEffect(() => {
-    if (!containerRef.current) return;
+  // Measure the container the moment ANY state's wrapper attaches (loading,
+  // error, or the book). A mount-only effect misses this because the ref
+  // isn't attached during the initial loading render — which left the width
+  // at 0 and made react-pageflip throw "Invalid width or height".
+  const setContainer = useCallback((node: HTMLDivElement | null) => {
+    containerRef.current = node;
+    roRef.current?.disconnect();
+    if (!node) return;
     const ro = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        setContainerWidth(entry.contentRect.width);
-      }
+      for (const entry of entries) setContainerWidth(entry.contentRect.width);
     });
-    ro.observe(containerRef.current);
-    return () => ro.disconnect();
+    ro.observe(node);
+    roRef.current = ro;
+    setContainerWidth(node.getBoundingClientRect().width);
   }, []);
 
   // Render all PDF pages to data URLs on mount.
@@ -49,10 +54,13 @@ export function PdfFlipbook({ pdfUrl, preferSpread }: PdfFlipbookProps) {
     let cancelled = false;
     async function render() {
       try {
-        // Dynamic import so pdfjs is only pulled in on the client.
-        const pdfjs: any = await import("pdfjs-dist");
-        // The worker file was copied into /public at dev time so it ships
-        // with the version-matched library.
+        // Dynamic import so pdfjs is only pulled in on the client. The
+        // legacy build transpiles to a lower target and bundles cleanly
+        // under Next.js/webpack (the default ESM build throws
+        // "Object.defineProperty called on non-object" here).
+        // @ts-expect-error legacy build path ships no bundled type declarations
+        const pdfjs: any = await import("pdfjs-dist/legacy/build/pdf.min.mjs");
+        // The worker file was copied into /public and must match this build.
         pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
 
         const loadingTask = pdfjs.getDocument(pdfUrl);
@@ -115,12 +123,15 @@ export function PdfFlipbook({ pdfUrl, preferSpread }: PdfFlipbookProps) {
     );
   }
 
-  if (!pages) {
+  if (!pages || containerWidth === 0) {
     return (
-      <div className="flex h-64 items-center justify-center rounded-card bg-ink/[0.02]">
+      <div
+        ref={setContainer}
+        className="flex h-64 w-full items-center justify-center rounded-card bg-ink/[0.02]"
+      >
         <div className="flex flex-col items-center gap-2">
           <div className="h-8 w-8 animate-spin rounded-full border-2 border-brand-orange border-t-transparent" />
-          <p className="text-[11px] text-ink-muted">loading experience book…</p>
+          <p className="text-[11px] text-ink-muted">loading…</p>
         </div>
       </div>
     );
@@ -141,7 +152,7 @@ export function PdfFlipbook({ pdfUrl, preferSpread }: PdfFlipbookProps) {
   const atEnd = currentPage >= totalPages - 1;
 
   return (
-    <div ref={containerRef} className="w-full">
+    <div ref={setContainer} className="w-full">
       <div className="relative mx-auto" style={{ width: "fit-content" }}>
         {/* Book frame */}
         <div className="rounded-2xl bg-brand-cream p-3 ring-1 ring-ink/5 shadow-[0_8px_30px_rgba(44,43,40,0.12)] md:p-5">

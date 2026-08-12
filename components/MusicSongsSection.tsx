@@ -1,11 +1,16 @@
 "use client";
 
+import { useState } from "react";
+import { Piano, Guitar, Drum } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import {
   MUSIC_BAND_SONGS_BY_LEVEL,
   MUSIC_PRACTICE_SONGS,
   MUSIC_INSTRUMENTS,
   musicNotationUrl,
+  type MusicInstrumentId,
 } from "@/content/programmes/music-levels";
+import { PdfFlipbookModal } from "@/components/PdfFlipbookModal";
 
 /**
  * Music — songs & sheet music (per level).
@@ -16,34 +21,47 @@ import {
  *  • the SHEET MUSIC below → used in "ensemble / band" time.
  *
  * Rule: a child performs the band song at the SAME level they are on in
- * their book, so the sheets shown here are for THIS level.
- *
- * Play-together (band) songs are assigned per level; performances happen
- * roughly every two months (group + individual). The only extra-practice
- * songs at levels 1–3 are Yellow Submarine and Count On Me.
+ * their book, so the sheets shown here are for THIS level. Sheets open in an
+ * in-page flip viewer — nothing to download.
  */
 
-function InstrumentSheets({ slug, level }: { slug: string; level: number }) {
-  return (
-    <div className="mt-3 flex flex-wrap gap-2">
-      {MUSIC_INSTRUMENTS.map((inst) => (
-        <a
-          key={inst.id}
-          href={musicNotationUrl(slug, inst.id, level)}
-          target="_blank"
-          rel="noopener noreferrer"
-          title={`${inst.label} sheet — level ${level}`}
-          className="inline-flex items-center gap-1 rounded-md bg-brand-orange/10 px-2.5 py-1 text-[11.5px] font-bold text-brand-orange transition hover:bg-brand-orange hover:text-white"
-        >
-          {inst.label} sheet →
-        </a>
-      ))}
-    </div>
-  );
-}
+const INSTRUMENT_ICON: Record<MusicInstrumentId, LucideIcon> = {
+  keys: Piano,
+  ukulele: Guitar,
+  drums: Drum,
+};
 
 export function MusicSongsSection({ level }: { level: number }) {
   const bandSongs = MUSIC_BAND_SONGS_BY_LEVEL[level] ?? [];
+  const [openPdf, setOpenPdf] = useState<{ url: string; title: string } | null>(
+    null
+  );
+
+  function InstrumentSheets({ slug, title }: { slug: string; title: string }) {
+    return (
+      <div className="mt-3 flex flex-wrap gap-2">
+        {MUSIC_INSTRUMENTS.map((inst) => {
+          const Icon = INSTRUMENT_ICON[inst.id];
+          return (
+            <button
+              key={inst.id}
+              type="button"
+              onClick={() =>
+                setOpenPdf({
+                  url: musicNotationUrl(slug, inst.id, level),
+                  title: `${title} · ${inst.label} · level ${level}`,
+                })
+              }
+              className="inline-flex items-center gap-1.5 rounded-md bg-brand-orange/10 px-2.5 py-1 text-[11.5px] font-bold text-brand-orange transition hover:bg-brand-orange hover:text-white"
+            >
+              <Icon className="h-3.5 w-3.5" strokeWidth={2.2} />
+              {inst.label}
+            </button>
+          );
+        })}
+      </div>
+    );
+  }
 
   return (
     <section className="mt-10 px-4 md:px-8">
@@ -56,7 +74,7 @@ export function MusicSongsSection({ level }: { level: number }) {
         <span className="font-semibold text-ink">sheet music</span> below is for
         band (ensemble) time — and each child plays their part at{" "}
         <span className="font-semibold text-ink">level {level}</span>, the level
-        they&apos;re on in their book.
+        they&apos;re on in their book. tap an instrument to flip through the sheet.
       </p>
 
       {/* play together — the band */}
@@ -80,7 +98,7 @@ export function MusicSongsSection({ level }: { level: number }) {
               <p className="mt-1 text-[12px] italic leading-relaxed text-ink-muted">
                 {song.performLabel}
               </p>
-              <InstrumentSheets slug={song.slug} level={level} />
+              <InstrumentSheets slug={song.slug} title={song.title} />
             </div>
           ))}
         </div>
@@ -104,11 +122,13 @@ export function MusicSongsSection({ level }: { level: number }) {
               <p className="text-[14px] font-extrabold lowercase text-ink">
                 {song.title.toLowerCase()}
               </p>
-              <InstrumentSheets slug={song.slug} level={level} />
+              <InstrumentSheets slug={song.slug} title={song.title} />
             </div>
           ))}
         </div>
       </div>
+
+      <PdfFlipbookModal pdf={openPdf} onClose={() => setOpenPdf(null)} />
     </section>
   );
 }

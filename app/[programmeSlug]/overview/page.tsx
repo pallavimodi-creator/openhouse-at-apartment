@@ -70,6 +70,7 @@ import { PlayWritesBookModal } from "@/components/PlayWritesBookModal";
 import { LanguageBooksGrid } from "@/components/LanguageBooksGrid";
 import { SongsPlaylist } from "@/components/SongsPlaylist";
 import { MusicSongsSection } from "@/components/MusicSongsSection";
+import { PdfFlipbookModal } from "@/components/PdfFlipbookModal";
 import { segmentPalette } from "@/components/segmentPalette";
 
 // ─── Artiverse — how it works · sequence data ────────────────
@@ -473,6 +474,10 @@ function ProgrammeOverviewContent() {
   const [numbersGymBookOpen, setNumbersGymBookOpen] = useState(false);
   // Play-writes (language 3-5) — Level 1 / Level 2 workbook flipbooks.
   const [playWritesLevel, setPlayWritesLevel] = useState<1 | 2 | null>(null);
+  // In-page flip viewer for PDFs (music book + notation open here, no download).
+  const [flipPdf, setFlipPdf] = useState<{ url: string; title: string } | null>(
+    null
+  );
 
   if (!programme) {
     notFound();
@@ -3528,6 +3533,7 @@ function ProgrammeOverviewContent() {
           subtitle: string;
         } & (
           | { kind: "route"; href: string; newTab?: boolean }
+          | { kind: "pdf-flip"; pdfUrl: string }
           | {
               kind: "modal";
               modalKey:
@@ -3661,7 +3667,7 @@ function ProgrammeOverviewContent() {
           const lvl = musicBook[programme.slug];
           if (lvl) {
             books.push({
-              kind: "route", href: `/music/music-book-l${lvl}.pdf`, newTab: true,
+              kind: "pdf-flip", pdfUrl: `/music/music-book-l${lvl}.pdf`,
               cover: `/experience-books/covers/music-book-l${lvl}.png`,
               title: `music book · level ${lvl}`,
               subtitle: "the child's level book — keyboard · ukulele · drums · vocals",
@@ -3812,6 +3818,21 @@ function ProgrammeOverviewContent() {
                     </button>
                   );
                 }
+                if (book.kind === "pdf-flip") {
+                  // open the PDF in the in-page flip viewer — no download
+                  return (
+                    <button
+                      key={book.pdfUrl}
+                      type="button"
+                      onClick={() =>
+                        setFlipPdf({ url: book.pdfUrl, title: book.title })
+                      }
+                      className={cardClasses}
+                    >
+                      {inner}
+                    </button>
+                  );
+                }
                 if (book.newTab) {
                   // downloadable PDF (experience book / sticker pack / assessment) — open in a new tab
                   return (
@@ -3839,6 +3860,9 @@ function ProgrammeOverviewContent() {
 
       {/* ─── MUSIC — songs & sheet music (band songs per level + practice) ─── */}
       {isMusic && <MusicSongsSection level={programme.level ?? 1} />}
+
+      {/* In-page PDF flip viewer for the music book (opens from the books row). */}
+      <PdfFlipbookModal pdf={flipPdf} onClose={() => setFlipPdf(null)} />
 
       {/* ─── ARTIVERSE BOOK MODAL — opens from the books row ─── */}
       <ArtiverseBookModal
