@@ -3033,7 +3033,15 @@ function ProgrammeOverviewContent() {
       {/* ─── SKILLS & ABILITIES ─── */}
       <section className="mt-10 px-4 md:px-8">
         <SectionTitle num={sectionNum("skills")} label="skills & abilities">
-          {skills.length} skills · {skills[0]?.abilities.length ?? 0} abilities each
+          {skills.length} skills ·{" "}
+          {(() => {
+            const counts = skills.map((s) => s.abilities.length);
+            const uniform = counts.length > 0 && counts.every((c) => c === counts[0]);
+            if (uniform)
+              return `${counts[0]} ${counts[0] === 1 ? "ability" : "abilities"} each`;
+            const total = counts.reduce((a, b) => a + b, 0);
+            return `${total} abilities in all`;
+          })()}
         </SectionTitle>
 
         {/* Explainer — for the 3-5 art programme only. Why these
