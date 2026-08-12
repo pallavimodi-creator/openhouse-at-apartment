@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useParams, notFound, useRouter } from "next/navigation";
 import { CheckCircle2, Circle } from "lucide-react";
 import { getCurriculumProgramme } from "@/lib/content";
+import { MUSIC_CLASS_COUNTS } from "@/content/programmes/music-levels";
 import { ProgrammeHero } from "@/components/ProgrammeHero";
 import { DaySelector } from "@/components/DaySelector";
 import { DayPlan } from "@/components/DayPlan";
@@ -153,6 +154,29 @@ export default function ProgrammeDetailPage() {
         <h2 className="mb-2 text-[12px] font-bold text-ink-muted">
           select a session
         </h2>
+        {/* Music — classes needed differ by age (5–8 take ~20% more than
+            8–12 to reach the same level). */}
+        {programme.category === "music" &&
+          MUSIC_CLASS_COUNTS[programme.level ?? 1] && (
+            <div className="mb-3 flex flex-wrap items-center gap-x-4 gap-y-1 rounded-xl bg-brand-cream px-3 py-2 text-[11.5px] text-ink-muted ring-1 ring-ink/5">
+              <span className="font-semibold text-ink">classes to complete this level:</span>
+              <span>
+                ages 5–8 · ~
+                <span className="font-bold text-ink">
+                  {MUSIC_CLASS_COUNTS[programme.level ?? 1].younger}
+                </span>{" "}
+                classes
+              </span>
+              <span>
+                ages 8–12 · ~
+                <span className="font-bold text-ink">
+                  {MUSIC_CLASS_COUNTS[programme.level ?? 1].older}
+                </span>{" "}
+                classes
+              </span>
+              <span className="text-ink-subtle">(8–12 progress ~20% faster)</span>
+            </div>
+          )}
         <DaySelector
           totalDays={programme.totalSessions}
           selectedDay={selectedDay}

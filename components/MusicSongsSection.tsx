@@ -92,9 +92,20 @@ export function MusicSongsSection({ level }: { level: number }) {
               key={song.slug}
               className="rounded-2xl bg-brand-white p-4 shadow-card ring-1 ring-ink/[0.06]"
             >
-              <p className="text-[14px] font-extrabold lowercase text-ink">
-                {song.title.toLowerCase()}
-              </p>
+              <div className="flex items-center justify-between gap-2">
+                <p className="text-[14px] font-extrabold lowercase text-ink">
+                  {song.title.toLowerCase()}
+                </p>
+                <span
+                  className={
+                    song.perform
+                      ? "shrink-0 rounded-chip bg-brand-orange/15 px-2 py-0.5 text-[10px] font-extrabold lowercase text-brand-orange"
+                      : "shrink-0 rounded-chip bg-ink/[0.06] px-2 py-0.5 text-[10px] font-extrabold lowercase text-ink-muted"
+                  }
+                >
+                  {song.perform ? "performed" : "practice only"}
+                </span>
+              </div>
               <p className="mt-1 text-[12px] italic leading-relaxed text-ink-muted">
                 {song.performLabel}
               </p>

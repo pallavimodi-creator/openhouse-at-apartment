@@ -59,6 +59,7 @@ import type {
   CurriculumProgramme,
 } from "@/content/types";
 import { Modal } from "@/components/Modal";
+import { MusicLibrarySection } from "@/components/MusicLibrarySection";
 import { ActivityPopup } from "@/components/ActivityPopup";
 import { SegmentInfoPopup, type SegmentInfo } from "@/components/SegmentInfoPopup";
 import { getTeacher } from "@/lib/teacher-state";
@@ -671,6 +672,16 @@ export default function LibraryPage() {
         {filtered.length} {filtered.length === 1 ? "entry" : "entries"}
         {query.trim() ? ` for "${query.trim()}"` : ""}
       </p>
+
+      {/* Music — all books + notation sheets, opening in the flip viewer.
+          Shown for the music track and for admins. */}
+      {(isAdmin ||
+        teacherSlug?.startsWith("music") ||
+        selectedProgSlug.startsWith("music")) && (
+        <div className="mt-6">
+          <MusicLibrarySection />
+        </div>
+      )}
 
       {/* Results — grouped programme → segment in conduction order */}
       <div className="mt-4 space-y-8">

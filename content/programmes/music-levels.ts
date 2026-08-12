@@ -81,19 +81,15 @@ export interface MusicSong {
   tier: "easy" | "intermediate" | "hard";
   ensemble: boolean; // true = a play-together "song of the term"
 }
+// The 6 songs that ship notation on the site (levels 1–3). The harder songs
+// and level-4 sheets were removed; add them back here if level 4 returns.
 export const MUSIC_SONGS: MusicSong[] = [
   { slug: "yams", title: "You Are My Sunshine", tier: "easy", ensemble: true },
   { slug: "chfil", title: "Can't Help Falling in Love", tier: "easy", ensemble: true },
   { slug: "opalite", title: "Opalite", tier: "easy", ensemble: true },
   { slug: "500m", title: "500 Miles", tier: "easy", ensemble: true },
-  { slug: "ys", title: "Yellow Submarine", tier: "easy", ensemble: true },
-  { slug: "com", title: "Count On Me", tier: "intermediate", ensemble: true },
-  { slug: "got", title: "Game of Thrones", tier: "intermediate", ensemble: false },
-  { slug: "oo", title: "Ob-La-Di, Ob-La-Da", tier: "intermediate", ensemble: false },
-  { slug: "edelweiss", title: "Edelweiss", tier: "intermediate", ensemble: false },
-  { slug: "potc", title: "He's a Pirate", tier: "hard", ensemble: false },
-  { slug: "qss", title: "Que Sera Sera", tier: "hard", ensemble: false },
-  { slug: "sf", title: "Scarborough Fair", tier: "hard", ensemble: false },
+  { slug: "ys", title: "Yellow Submarine", tier: "easy", ensemble: false },
+  { slug: "com", title: "Count On Me", tier: "intermediate", ensemble: false },
 ];
 // ── Play-together (band) songs, per level ──
 // Each child performs the band song at the SAME level they are on in their
@@ -102,6 +98,7 @@ export const MUSIC_SONGS: MusicSong[] = [
 export interface MusicBandSong {
   slug: string;
   title: string;
+  perform: boolean; // performed at the end of the level, vs practised only
   performLabel: string;
 }
 export const MUSIC_BAND_SONGS_BY_LEVEL: Record<number, MusicBandSong[]> = {
@@ -109,6 +106,7 @@ export const MUSIC_BAND_SONGS_BY_LEVEL: Record<number, MusicBandSong[]> = {
     {
       slug: "yams",
       title: "You Are My Sunshine",
+      perform: true,
       performLabel:
         "performed at the end of month 1 — as a band, plus individual performances",
     },
@@ -117,24 +115,45 @@ export const MUSIC_BAND_SONGS_BY_LEVEL: Record<number, MusicBandSong[]> = {
     {
       slug: "chfil",
       title: "Can't Help Falling in Love",
+      perform: true,
       performLabel:
         "performed at the end of month 2 — as a band, plus individual performances",
+    },
+    {
+      slug: "opalite",
+      title: "Opalite",
+      perform: false,
+      performLabel: "practised this level — performed later, at level 3",
     },
   ],
   3: [
     {
       slug: "opalite",
       title: "Opalite",
+      perform: true,
       performLabel:
         "performed at the end of month 2 — as a band, plus individual performances",
     },
     {
       slug: "500m",
       title: "500 Miles",
+      perform: true,
       performLabel:
         "performed at the end of month 4 — as a band, plus individual performances",
     },
   ],
+};
+
+// ── Approx. class counts per level, by age band ──
+// Classes run roughly weekly. 5–8 year-olds take ~20% more classes than
+// 8–12 to reach the same level, so each level is calibrated by age.
+export const MUSIC_CLASS_COUNTS: Record<
+  number,
+  { younger: number; older: number }
+> = {
+  1: { younger: 5, older: 4 },
+  2: { younger: 10, older: 8 },
+  3: { younger: 19, older: 16 },
 };
 
 // ── Extra practice songs (levels 1–3) — the only practice songs at these
