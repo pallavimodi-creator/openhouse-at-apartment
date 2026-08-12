@@ -79,7 +79,7 @@ export function MusicSongsSection({ level }: { level: number }) {
 
       {/* play together — the band */}
       <div className="mt-6">
-        <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-brand-orange">
+        <p className="text-[11px] font-bold tracking-[0.06em] text-brand-orange">
           play together — the band
         </p>
         <p className="mt-1.5 text-[12.5px] leading-relaxed text-ink-muted md:text-[13px]">
@@ -106,7 +106,7 @@ export function MusicSongsSection({ level }: { level: number }) {
 
       {/* extra practice */}
       <div className="mt-8">
-        <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-brand-orange">
+        <p className="text-[11px] font-bold tracking-[0.06em] text-brand-orange">
           extra practice
         </p>
         <p className="mt-1.5 text-[12.5px] leading-relaxed text-ink-muted md:text-[13px]">

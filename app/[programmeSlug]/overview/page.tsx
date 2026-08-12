@@ -3030,17 +3030,49 @@ function ProgrammeOverviewContent() {
 
       {/* ─── SKILLS & ABILITIES ─── */}
       <section className="mt-10 px-4 md:px-8">
-        <SectionTitle num={sectionNum("skills")} label="skills & abilities">
+        <SectionTitle
+          num={sectionNum("skills")}
+          label={isMusic ? "skills & milestones" : "skills & abilities"}
+        >
           {skills.length} skills ·{" "}
           {(() => {
+            const word = isMusic ? "milestone" : "ability";
+            const wordP = isMusic ? "milestones" : "abilities";
             const counts = skills.map((s) => s.abilities.length);
             const uniform = counts.length > 0 && counts.every((c) => c === counts[0]);
             if (uniform)
-              return `${counts[0]} ${counts[0] === 1 ? "ability" : "abilities"} each`;
+              return `${counts[0]} ${counts[0] === 1 ? word : wordP} each`;
             const total = counts.reduce((a, b) => a + b, 0);
-            return `${total} abilities in all`;
+            return `${total} ${wordP} in all`;
           })()}
         </SectionTitle>
+
+        {/* Music — how level progression works (instrument vs general
+            milestones). Instrument milestones decide level-ups; general
+            milestones are progress only. */}
+        {isMusic && (
+          <div className="mt-4 rounded-2xl bg-brand-white p-4 shadow-card ring-1 ring-ink/5 md:p-5">
+            <p className="text-[11px] font-bold tracking-normal text-brand-orange">
+              how a child moves up
+            </p>
+            <div className="mt-2 space-y-2 text-[12.5px] leading-relaxed text-ink-muted md:text-[13px]">
+              <p>
+                each skill lists its <span className="font-semibold text-ink">milestones</span>.{" "}
+                <span className="font-semibold text-ink">sight reading</span> and{" "}
+                <span className="font-semibold text-ink">technique</span> are{" "}
+                <span className="font-semibold text-ink">per-instrument</span> milestones — when a
+                child reaches them on an instrument, they move up a level{" "}
+                <span className="font-semibold text-ink">on that instrument</span>.
+              </p>
+              <p>
+                <span className="font-semibold text-ink">rhythm</span>,{" "}
+                <span className="font-semibold text-ink">music theory</span> and{" "}
+                <span className="font-semibold text-ink">ear training</span> are general
+                milestones — they show overall progress, but don&apos;t decide level-ups on their own.
+              </p>
+            </div>
+          </div>
+        )}
 
         {/* Explainer — for the 3-5 art programme only. Why these
             skills matter, how the class builds them, and how to
@@ -3118,7 +3150,9 @@ function ProgrammeOverviewContent() {
                       </span>
                     )}
                   </div>
-                  <p className="text-[10px] text-ink-muted">{skill.abilities.length} abilities</p>
+                  <p className="text-[10px] text-ink-muted">
+                    {skill.abilities.length} {isMusic ? "milestones" : "abilities"}
+                  </p>
                 </div>
               </div>
 

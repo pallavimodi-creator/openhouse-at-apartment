@@ -14,7 +14,7 @@ import { MUSIC_WARMUPS, type MusicWarmup } from "@/content/programmes/music-leve
 function WarmupGroup({ label, items }: { label: string; items: MusicWarmup[] }) {
   return (
     <div className="mt-5">
-      <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-brand-orange">
+      <p className="text-[11px] font-bold tracking-[0.06em] text-brand-orange">
         {label}
       </p>
       <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">

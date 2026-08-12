@@ -36,7 +36,7 @@ const segmentDefinitions: CurriculumSegmentDef[] = [
     name: "instrument rotation",
     durationRange: "40 min",
     objective:
-      "the heart of the class — each child works through their own level book on their chosen instrument (keyboard, ukulele, drums or vocals), in 2–3 rounds of 15–20 min, spending 2–4 weeks on an exercise or song. the educator targets at least two instruments per class and moves between children; a monthly assessment on this work moves a child up a level.",
+      "the heart of the class — each child rotates through two instruments a class, chosen by their own interest, working through their level book on each (keyboard, ukulele, drums or vocals) in 2–3 rounds of 15–20 min, 2–4 weeks per exercise or song. the instrument a child isn't playing in the band is practised here too. the educator moves between children; a monthly assessment on this work moves a child up a level, per instrument.",
     type: "fixed",
   },
   {
@@ -52,7 +52,7 @@ const segmentDefinitions: CurriculumSegmentDef[] = [
     name: "ensemble practice",
     durationRange: "30 min",
     objective:
-      "the whole group learns and plays the song of the term together — each child on their own instrument at their book level — building listening and timing. children learn each part over 2–3 weeks, then perform as a band, with individual performances too, roughly every two months.",
+      "the whole group learns and plays the band song together. each child is given one instrument for the performance — chosen by interest, ability and rotation — and reads their part at their book level. children learn each part over 2–3 weeks, then perform as a band, with individual performances too, roughly every two months.",
     type: "rotating",
     rotationPool: ["sotm-1", "sotm-2", "sotm-3", "sotm-4", "sotm-5", "sotm-6"],
   },
@@ -162,8 +162,8 @@ export const MUSIC_WARMUPS: MusicWarmup[] = [
     name: "breathing",
     detail: "steady breathing in and out to settle and open the voice.",
     resources: [
-      { label: "Dots Singing (Spotify)" },
-      { label: "Jacob Vocal Academy (Spotify)" },
+      { label: "breathing track 1 (Spotify)", url: "https://open.spotify.com/track/00ZvV86YTswzJU8bjvmwzA" },
+      { label: "breathing track 2 (Spotify)", url: "https://open.spotify.com/track/6BZkIMe6dqCnCgfhOfDAtG" },
     ],
   },
   {
@@ -171,39 +171,41 @@ export const MUSIC_WARMUPS: MusicWarmup[] = [
     name: "pitch matching",
     detail: "sing back single notes and short phrases — match the pitch.",
     resources: [
-      { label: "5-note major scale" },
-      { label: "single-note matching" },
-      { label: "Pitchy Ninja" },
-      { label: "Vocal Match" },
+      { label: "sing-back 1 (Spotify)", url: "https://open.spotify.com/track/5noggtKIruVMNmJej37SFI" },
+      { label: "sing-back 2 (Spotify)", url: "https://open.spotify.com/track/3hgSFCw3VVRwhtrOzDXP1H" },
+      { label: "sing-back 3 (Spotify)", url: "https://open.spotify.com/track/575K9PfmTnXX9eMyjTqs0O" },
+      { label: "Pitchy Ninja", url: "https://pitchy.ninja/" },
+      { label: "Vocal Match", url: "https://trainer.thetamusic.com/index.php/en/content/html5-vocal-match" },
     ],
   },
   {
     group: "vocal",
     name: "pitch direction",
     detail: "a note goes up or down — name the direction.",
-    resources: [{ label: "Musicca" }, { label: "Speed Pitch" }],
+    resources: [
+      { label: "Musicca", url: "https://www.musicca.com/exercises/circle/12" },
+      { label: "Speed Pitch", url: "https://trainer.thetamusic.com/en/content/html5-speed-pitch" },
+    ],
   },
   {
     group: "rhythm",
     name: "tempo quiz",
     detail: "slow, medium or fast — identify the tempo.",
     resources: [
-      {
-        label: "Dancing Tempos",
-        url: "https://kids.carnegiehall.org/quiz/dancing-tempos",
-      },
+      { label: "Dancing Tempos", url: "https://kids.carnegiehall.org/quiz/dancing-tempos" },
     ],
   },
   {
     group: "rhythm",
     name: "rhythm bingo",
     detail: "match the rhythm you hear on your bingo card.",
-    resources: [{ label: "Rhythm Bingo (openhouse game)" }],
+    resources: [{ label: "Rhythm Bingo (openhouse board game)" }],
   },
   {
     group: "rhythm",
-    name: "counting games",
-    detail: "clap and count a steady beat together, then change the speed.",
+    name: "change the time signature",
+    detail:
+      "the educator sets a time signature; clap the counts in time for 4 bars.",
     resources: [],
   },
   {
@@ -214,10 +216,9 @@ export const MUSIC_WARMUPS: MusicWarmup[] = [
   },
   {
     group: "rhythm",
-    name: "change the time signature",
-    detail:
-      "the educator sets a time signature; clap the counts in time for 4 bars.",
-    resources: [],
+    name: "composition game",
+    detail: "build and play a short pattern of your own — for older children (8–12).",
+    resources: [{ label: "Composition Game (openhouse board game · 8–12)" }],
   },
 ];
 
@@ -286,8 +287,7 @@ const ensembleActivities: Record<string, CurriculumActivity> = Object.fromEntrie
       title: `band song · ${title}`,
       setupLine: "the whole group together, each on their instrument, notation on the stand.",
       howToPlay:
-        "the group learns and plays the band song together, each child reading the notation for their instrument at their own level. play it slowly first, then up to tempo — everyone at once, listening to each other. roughly every two months the group performs what they've built, as a band and with individual performances.",
-      pdfUrl: `/music/sotm-scores-${i + 1}.pdf`,
+        "the group learns and plays the band song together, each child reading the notation for their instrument at their own level (see songs & sheet music). play it slowly first, then up to tempo — everyone at once, listening to each other. roughly every two months the group performs what they've built, as a band and with individual performances.",
       type: "facilitated",
       debriefPrompts: [
         { questions: ["did we stay together?", "which part do we need to practise before we can perform it?"] },
