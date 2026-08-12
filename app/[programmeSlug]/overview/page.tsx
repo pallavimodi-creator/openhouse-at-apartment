@@ -1152,7 +1152,7 @@ function ProgrammeOverviewContent() {
               {programme.slug !== "art-design-3-5" &&
                 programme.slug !== "language-storytelling-3-5" && (
                   <div className="mt-4 border-l-[3px] border-brand-orange pl-4">
-                    <p className="text-[13px] leading-relaxed text-ink md:text-[14px]">
+                    <p className="whitespace-pre-line text-[13px] leading-relaxed text-ink md:text-[14px]">
                       {programme.description}
                     </p>
                   </div>
@@ -3574,7 +3574,7 @@ function ProgrammeOverviewContent() {
         // Music — the child's level book, per level (keyboard · ukulele · drums · vocals).
         {
           const musicBook: Record<string, string> = {
-            "music-l1": "1", "music-l2": "2", "music-l3": "3", "music-l4": "4",
+            "music-l1": "1", "music-l2": "2", "music-l3": "3",
           };
           const lvl = musicBook[programme.slug];
           if (lvl) {

@@ -268,7 +268,10 @@ const shared = {
 };
 
 const DESCRIPTION_BASE =
-  "a multi-instrument, choice-based music programme. children learn keyboard, ukulele, drums and vocals and, from day one, play together like a band. every class runs warm-up → your instrument → play together, with a song of the month as the ensemble piece. children move up the levels by a monthly assessment on their own instrument, and the group performs every three months.";
+  "a multi-instrument, choice-based music programme.\n" +
+  "children learn keyboard, ukulele, drums and vocals — and from day one, play together like a band.\n" +
+  "every class runs warm-up → your instrument → play together, with a song of the month as the ensemble piece.\n" +
+  "children move up the levels by a monthly assessment on their own instrument, and the group performs every three months.";
 
 export const musicL1: CurriculumProgramme = {
   ...shared,
@@ -279,7 +282,7 @@ export const musicL1: CurriculumProgramme = {
   skillAreas: skillAreas(1),
   description:
     DESCRIPTION_BASE +
-    " level 1 starts from the very beginning — colour-coded keys, first tempos and steady counting, matching pitch with the voice, and correct posture at every instrument, through first songs like Jingle Bells and Baby Shark.",
+    "\nlevel 1 starts from the very beginning — colour-coded keys, first tempos and steady counting, matching pitch with the voice, and correct posture at every instrument, through first songs like Jingle Bells and Baby Shark.",
 };
 
 export const musicL2: CurriculumProgramme = {
@@ -291,7 +294,7 @@ export const musicL2: CurriculumProgramme = {
   skillAreas: skillAreas(2),
   description:
     DESCRIPTION_BASE +
-    " level 2 adds finger numbers and technique — whole/half/quarter-note rhythms, time signatures (4/4, 3/4, 2/4), dynamics (soft/loud), the C major chord on ukulele, and reading 7 colour-coded keys.",
+    "\nlevel 2 adds finger numbers and technique — whole/half/quarter-note rhythms, time signatures (4/4, 3/4, 2/4), dynamics (soft/loud), the C major chord on ukulele, and reading 7 colour-coded keys.",
 };
 
 export const musicL3: CurriculumProgramme = {
@@ -303,17 +306,5 @@ export const musicL3: CurriculumProgramme = {
   skillAreas: skillAreas(3),
   description:
     DESCRIPTION_BASE +
-    " level 3 moves to real notation — reading note names A–G with accidentals, rhythms with rests, C/F/G major and D/E/A minor chords, both hands on the keyboard, and switching chords on the ukulele.",
-};
-
-export const musicL4: CurriculumProgramme = {
-  ...shared,
-  id: "music-l4",
-  slug: "music-l4",
-  level: 4,
-  levelName: "level 4",
-  skillAreas: skillAreas(4),
-  description:
-    DESCRIPTION_BASE +
-    " level 4 is where a child becomes a real player — reading the full grand staff (treble and bass clef), playing with both hands together, eighth-note and dotted rhythms in 6/4, building the major scale from half and whole steps, hearing 5ths and octaves, and performing pop, rock and hip-hop pieces they record — through lead-sheet songs like Ode to Joy, Somewhere Over the Rainbow and The Lion Sleeps Tonight.",
+    "\nlevel 3 moves to real notation — reading note names A–G with accidentals, rhythms with rests, C/F/G major and D/E/A minor chords, both hands on the keyboard, and switching chords on the ukulele.",
 };

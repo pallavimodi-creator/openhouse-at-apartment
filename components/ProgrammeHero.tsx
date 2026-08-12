@@ -48,7 +48,7 @@ export function ProgrammeHero({
           <h1 className="mt-2 text-[26px] font-extrabold leading-[1.05] tracking-tight text-ink md:text-[36px]">
             {title}
           </h1>
-          <p className="mt-3 text-[13px] leading-relaxed text-ink-muted md:mt-4 md:max-w-2xl md:text-[15px]">
+          <p className="mt-3 whitespace-pre-line text-[13px] leading-relaxed text-ink-muted md:mt-4 md:max-w-2xl md:text-[15px]">
             {description}
           </p>
         </div>
