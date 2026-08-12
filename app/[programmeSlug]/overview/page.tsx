@@ -38,6 +38,7 @@ import {
   Music,
   Mic,
   Users,
+  Coffee,
   Search,
   Hash,
   Puzzle,
@@ -592,6 +593,12 @@ function ProgrammeOverviewContent() {
     fm: { color: "bg-segment-yellow", accent: "border-segment-yellow" },
     co: { color: "bg-segment-pink", accent: "border-segment-pink" },
     ce: { color: "bg-segment-blue", accent: "border-segment-blue" },
+    // music skill families (rhythm · music theory · ear training · sight reading · technique)
+    rhythm: { color: "bg-segment-yellow", accent: "border-segment-yellow" },
+    mt: { color: "bg-segment-blue", accent: "border-segment-blue" },
+    et: { color: "bg-segment-green", accent: "border-segment-green" },
+    sr: { color: "bg-segment-pink", accent: "border-segment-pink" },
+    tech: { color: "bg-brand-orange", accent: "border-brand-orange" },
     // public speaking skill families
     cs: { color: "bg-segment-yellow", accent: "border-segment-yellow" },
     bl: { color: "bg-segment-blue", accent: "border-segment-blue" },
@@ -739,21 +746,35 @@ function ProgrammeOverviewContent() {
       durationFlex: 10,
       meaning:
         programme.segmentDefinitions.find((s) => s.id === "warm-up")?.objective ??
-        "a short whole-group warm-up — a pitch, rhythm, voice or theory game that wakes up the ear and body before the instruments come out.",
+        "a short whole-group warm-up — vocal training then rhythm training — that wakes up the ear, voice and body before the instruments come out.",
     },
     "your-instrument": {
       icon: Music,
-      durationFlex: 25,
+      durationFlex: 40,
       meaning:
         programme.segmentDefinitions.find((s) => s.id === "your-instrument")?.objective ??
-        "each child plays their chosen instrument — keyboard, ukulele, drums or vocals — working through their level book at their own pace, while the educator moves between them.",
+        "each child works through their own level book on their chosen instrument — keyboard, ukulele, drums or vocals — while the educator moves between them.",
+    },
+    play: {
+      icon: Sparkles,
+      durationFlex: 8,
+      meaning:
+        programme.segmentDefinitions.find((s) => s.id === "play")?.objective ??
+        "children take turns playing what they've practised for the educator — the moment to hear each child and mark progress.",
+    },
+    break: {
+      icon: Coffee,
+      durationFlex: 5,
+      meaning:
+        programme.segmentDefinitions.find((s) => s.id === "break")?.objective ??
+        "a short rest before the group comes together to play as a band.",
     },
     ensemble: {
       icon: Users,
-      durationFlex: 15,
+      durationFlex: 30,
       meaning:
         programme.segmentDefinitions.find((s) => s.id === "ensemble")?.objective ??
-        "the whole group plays the song of the month together — every instrument at once — learning to listen, keep time and perform like a band.",
+        "the whole group learns and plays the song of the term together — each child on their own instrument at their book level — then performs as a band.",
     },
   };
   const dailyFlow = programme.segmentDefinitions.map((s) => {
@@ -1210,7 +1231,7 @@ function ProgrammeOverviewContent() {
               },
               {
                 label: "class size",
-                value: programme.category === "art" ? "6–10" : programme.category === "stem" ? "6–10" : "6–10",
+                value: programme.category === "music" ? "5–6" : "6–10",
               },
             ].map((stat) => (
               <div
@@ -1811,7 +1832,9 @@ function ProgrammeOverviewContent() {
 
       {/* ─── SEGMENT DETAIL — merged into the daily flow above. Each
           segment expands to show its games, materials, rules, and
-          alteration notes. ─── */}
+          alteration notes. Hidden for music: its segments have no
+          games-per-segment pool, and the daily flow above already lists them. ─── */}
+      {!isMusic && (
       <section className="mt-3 px-4 md:px-8">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <p className="text-[11px] font-bold tracking-normal text-ink-subtle">
@@ -3005,6 +3028,7 @@ function ProgrammeOverviewContent() {
           })}
         </div>
       </section>
+      )}
 
       {/* ─── SKILLS & ABILITIES ─── */}
       <section className="mt-10 px-4 md:px-8">
@@ -3805,8 +3829,8 @@ function ProgrammeOverviewContent() {
         );
       })()}
 
-      {/* ─── MUSIC — songs & sheet music (notation per instrument/level) ─── */}
-      {isMusic && <MusicSongsSection />}
+      {/* ─── MUSIC — songs & sheet music (band songs per level + practice) ─── */}
+      {isMusic && <MusicSongsSection level={programme.level ?? 1} />}
 
       {/* ─── ARTIVERSE BOOK MODAL — opens from the books row ─── */}
       <ArtiverseBookModal

@@ -24,27 +24,43 @@ import type {
 const segmentDefinitions: CurriculumSegmentDef[] = [
   {
     id: "warm-up",
-    name: "warm-up",
+    name: "warm up",
     durationRange: "10 min",
     objective:
-      "a short whole-group warm-up to open every class — a pitch, rhythm, voice or music-theory exercise that wakes up the ear and the body before the instruments come out.",
+      "a short whole-group warm-up — vocal training (breathing and pitch-matching games) then rhythm training (tempo and counting games) — waking up the ear, voice and body before the instruments come out.",
     type: "rotating",
     rotationPool: ["warmup-pitch", "warmup-rhythm"],
   },
   {
     id: "your-instrument",
-    name: "your instrument",
-    durationRange: "25 min",
+    name: "instrument rotation",
+    durationRange: "40 min",
     objective:
-      "each child plays their chosen instrument — keyboard, ukulele, drums or vocals — working through their level book at their own pace. the educator moves between children; a monthly assessment on this work moves a child up a level.",
+      "the heart of the class — each child works through their own level book on their chosen instrument (keyboard, ukulele, drums or vocals), in 2–3 rounds of 15–20 min, spending 2–4 weeks on an exercise or song. the educator targets at least two instruments per class and moves between children; a monthly assessment on this work moves a child up a level.",
+    type: "fixed",
+  },
+  {
+    id: "play",
+    name: "play",
+    durationRange: "5–10 min",
+    objective:
+      "children take turns playing what they've practised for the educator — the ideal moment to hear each child individually and mark progress.",
+    type: "fixed",
+  },
+  {
+    id: "break",
+    name: "break",
+    durationRange: "5 min",
+    objective:
+      "a short rest before the group comes together to play as a band.",
     type: "fixed",
   },
   {
     id: "ensemble",
-    name: "play together",
-    durationRange: "15 min",
+    name: "ensemble practice",
+    durationRange: "30 min",
     objective:
-      "the whole group plays the song of the term together — every instrument at once — learning to listen, keep time and perform like a band. one song runs across a whole term and the group performs it every three months; the term songs follow a fixed order, and each child reads their own instrument's sheet at their level.",
+      "the whole group learns and plays the song of the term together — each child on their own instrument at their book level — building listening and timing. children learn each part over 2–3 weeks, then perform as a band, with individual performances too, roughly every two months.",
     type: "rotating",
     rotationPool: ["sotm-1", "sotm-2", "sotm-3", "sotm-4", "sotm-5", "sotm-6"],
   },
@@ -87,6 +103,56 @@ export const MUSIC_SONGS: MusicSong[] = [
   { slug: "qss", title: "Que Sera Sera", tier: "hard", ensemble: false },
   { slug: "sf", title: "Scarborough Fair", tier: "hard", ensemble: false },
 ];
+// ── Play-together (band) songs, per level ──
+// Each child performs the band song at the SAME level they are on in their
+// book. Performances happen roughly every two months (level 1 is one month,
+// its single beginner song), as a group AND with individual performances.
+export interface MusicBandSong {
+  slug: string;
+  title: string;
+  performLabel: string;
+}
+export const MUSIC_BAND_SONGS_BY_LEVEL: Record<number, MusicBandSong[]> = {
+  1: [
+    {
+      slug: "yams",
+      title: "You Are My Sunshine",
+      performLabel:
+        "performed at the end of month 1 — as a band, plus individual performances",
+    },
+  ],
+  2: [
+    {
+      slug: "chfil",
+      title: "Can't Help Falling in Love",
+      performLabel:
+        "performed at the end of month 2 — as a band, plus individual performances",
+    },
+  ],
+  3: [
+    {
+      slug: "opalite",
+      title: "Opalite",
+      performLabel:
+        "performed at the end of month 2 — as a band, plus individual performances",
+    },
+    {
+      slug: "500m",
+      title: "500 Miles",
+      performLabel:
+        "performed at the end of month 4 — as a band, plus individual performances",
+    },
+  ],
+};
+
+// ── Extra practice songs (levels 1–3) — the only practice songs at these
+// levels. Given during individual-instrument time once a child has finished
+// their book work. ──
+export const MUSIC_PRACTICE_SONGS: { slug: string; title: string }[] = [
+  { slug: "ys", title: "Yellow Submarine" },
+  { slug: "com", title: "Count On Me" },
+];
+
 export const MUSIC_INSTRUMENTS: { id: MusicInstrumentId; label: string }[] = [
   { id: "keys", label: "keyboard" },
   { id: "ukulele", label: "ukulele" },
@@ -132,7 +198,7 @@ const instrumentActivity: Record<string, CurriculumActivity> = {
   "inst-choice": {
     id: "inst-choice",
     segment: "your-instrument",
-    title: "your instrument",
+    title: "instrument rotation",
     setupLine: "each child at their chosen instrument with their level book.",
     howToPlay:
       "children work individually on keyboard, ukulele, drums or vocals, moving through their level book page by page — the notation scaffold changes as levels rise (level 1 colour-coded keys → level 2 finger numbers → level 3 real note names). the educator circulates, and a monthly check on this work decides when a child moves up.",
@@ -149,10 +215,10 @@ const ensembleActivities: Record<string, CurriculumActivity> = Object.fromEntrie
     {
       id: `sotm-${i + 1}`,
       segment: "ensemble",
-      title: `song of the month · ${title}`,
+      title: `band song · ${title}`,
       setupLine: "the whole group together, each on their instrument, notation on the stand.",
       howToPlay:
-        "the group learns and plays this month's song together, reading from the notation for their instrument and level. play it slowly first, then up to tempo — everyone at once, listening to each other. every three months the group performs what they've built.",
+        "the group learns and plays the band song together, each child reading the notation for their instrument at their own level. play it slowly first, then up to tempo — everyone at once, listening to each other. roughly every two months the group performs what they've built, as a band and with individual performances.",
       pdfUrl: `/music/sotm-scores-${i + 1}.pdf`,
       type: "facilitated",
       debriefPrompts: [
@@ -192,26 +258,36 @@ const checkpoints: CurriculumCheckpoint[] = [
 
 // ─── The four skills — one ladder each, climbing every level ──
 function skillAreas(level: 1 | 2 | 3 | 4): CurriculumSkillArea[] {
-  const rp: Record<number, string[]> = {
+  const rhythm: Record<number, string[]> = {
     1: [
       "identify and play slow, medium and fast tempos",
-      "count steadily with 3 or 4 beats",
-      "sing and match pitches between C4 and C5",
-      "identify high and low, loud and soft sounds",
+      "demonstrate steady counting with 3 or 4 beats",
     ],
-    2: [
-      "clap and play rhythms combining whole, half and quarter notes",
-      "identify dynamics — soft (p) and loud (f)",
-      "hear pitch direction across large intervals (over 2 octaves)",
-      "sing back single notes and short call-and-response melodies",
-    ],
+    2: ["identify, clap and play rhythms combining whole, half and quarter notes"],
     3: [
-      "play rhythms combining whole, half, quarter notes and rests",
-      "sing 4–8 note phrases and the major scale from any note",
-      "identify pitch direction in medium intervals (1–2 octaves), and whether two notes are the same or different",
+      "identify, clap and play rhythms combining whole, half and quarter notes and rests",
     ],
     4: [
-      "clap and play rhythms combining eighth notes, dotted quarter notes and rests",
+      "identify, clap and play rhythms combining eighth notes, dotted quarter notes and rests",
+    ],
+  };
+  const et: Record<number, string[]> = {
+    1: [
+      "sing and match pitches with single notes between C4 and C5",
+      "identify high and low pitches",
+      "identify loud and soft sounds",
+    ],
+    2: [
+      "identify dynamics — soft (p) and loud (f)",
+      "identify pitch direction in large intervals (over 2 octaves)",
+      "sing back individual notes, and short melodies with call and response",
+    ],
+    3: [
+      "sing phrases of 4–8 notes, and the major scale starting on any note",
+      "identify whether two played notes are the same or different",
+      "identify pitch direction in medium intervals (1–2 octaves)",
+    ],
+    4: [
       "sing 5th and octave (8ve) intervals within the C4–C5 range",
       "identify pitch direction in small intervals — half steps and whole steps",
       "identify and sing harmonic intervals (5ths and octaves)",
@@ -273,8 +349,9 @@ function skillAreas(level: 1 | 2 | 3 | 4): CurriculumSkillArea[] {
     ],
   };
   return [
-    { id: "rp", name: "rhythm & pitch", shortName: "R&P", abilities: rp[level] },
+    { id: "rhythm", name: "rhythm", shortName: "RHY", abilities: rhythm[level] },
     { id: "mt", name: "music theory", shortName: "MT", abilities: mt[level] },
+    { id: "et", name: "ear training", shortName: "EAR", abilities: et[level] },
     { id: "sr", name: "sight reading", shortName: "SR", abilities: sr[level] },
     { id: "tech", name: "technique", shortName: "TECH", abilities: tech[level] },
   ];
@@ -295,10 +372,10 @@ const shared = {
   activities,
   checkpoints,
   foundationalConcepts: [
-    { name: "warm-up → your instrument → play together", body: "every class opens the ear, then individual play on your chosen instrument, then the whole group plays the song of the month as a band." },
+    { name: "warm up → instrument rotation → play → ensemble", body: "every class opens the ear, then each child works through their own level book on their instrument, a short play-for-the-educator to mark progress, and finally the whole group plays the band song together." },
     { name: "one child, one instrument — but everyone plays together", body: "children choose keyboard, ukulele, drums or vocals and go deep on it, while learning to play in an ensemble." },
     { name: "the notation scaffold fades as you climb", body: "level 1 uses colour-coded keys, level 2 adds finger numbers, level 3 reads real note names — the crutch is removed as reading grows." },
-    { name: "you move up when you're ready, not when you're older", body: "a monthly assessment on your instrument work moves you up the levels; the group performs every three months." },
+    { name: "you move up when you're ready, not when you're older", body: "a monthly assessment on your instrument work moves you up the levels; the group performs roughly every two months." },
   ],
   ageBandComparison: {
     younger: ["works through the same level books and songs", "moves up by a monthly assessment, not by age"],
@@ -310,8 +387,8 @@ const shared = {
 const DESCRIPTION_BASE =
   "a multi-instrument, choice-based music programme.\n" +
   "children learn keyboard, ukulele, drums and vocals — and from day one, play together like a band.\n" +
-  "every class runs warm-up → your instrument → play together, with a song of the month as the ensemble piece.\n" +
-  "children move up the levels by a monthly assessment on their own instrument, and the group performs every three months.";
+  "every class runs warm up → instrument rotation → play → ensemble, building a song the group performs together as a band.\n" +
+  "children move up the levels by a monthly assessment on their own instrument, and the group performs roughly every two months.";
 
 export const musicL1: CurriculumProgramme = {
   ...shared,
