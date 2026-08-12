@@ -38,7 +38,6 @@ import {
   Music,
   Mic,
   Users,
-  Coffee,
   Search,
   Hash,
   Puzzle,
@@ -70,6 +69,7 @@ import { PlayWritesBookModal } from "@/components/PlayWritesBookModal";
 import { LanguageBooksGrid } from "@/components/LanguageBooksGrid";
 import { SongsPlaylist } from "@/components/SongsPlaylist";
 import { MusicSongsSection } from "@/components/MusicSongsSection";
+import { MusicWarmupsSection } from "@/components/MusicWarmupsSection";
 import { PdfFlipbookModal } from "@/components/PdfFlipbookModal";
 import { segmentPalette } from "@/components/segmentPalette";
 
@@ -766,13 +766,6 @@ function ProgrammeOverviewContent() {
       meaning:
         programme.segmentDefinitions.find((s) => s.id === "play")?.objective ??
         "children take turns playing what they've practised for the educator — the moment to hear each child and mark progress.",
-    },
-    break: {
-      icon: Coffee,
-      durationFlex: 5,
-      meaning:
-        programme.segmentDefinitions.find((s) => s.id === "break")?.objective ??
-        "a short rest before the group comes together to play as a band.",
     },
     ensemble: {
       icon: Users,
@@ -3858,7 +3851,8 @@ function ProgrammeOverviewContent() {
         );
       })()}
 
-      {/* ─── MUSIC — songs & sheet music (band songs per level + practice) ─── */}
+      {/* ─── MUSIC — warm-ups (they rotate) + songs & sheet music ─── */}
+      {isMusic && <MusicWarmupsSection />}
       {isMusic && <MusicSongsSection level={programme.level ?? 1} />}
 
       {/* In-page PDF flip viewer for the music book (opens from the books row). */}

@@ -48,14 +48,6 @@ const segmentDefinitions: CurriculumSegmentDef[] = [
     type: "fixed",
   },
   {
-    id: "break",
-    name: "break",
-    durationRange: "5 min",
-    objective:
-      "a short rest before the group comes together to play as a band.",
-    type: "fixed",
-  },
-  {
     id: "ensemble",
     name: "ensemble practice",
     durationRange: "30 min",
@@ -153,6 +145,82 @@ export const MUSIC_PRACTICE_SONGS: { slug: string; title: string }[] = [
   { slug: "com", title: "Count On Me" },
 ];
 
+// ── Warm-up games (they rotate) ──
+// Every class opens with a short vocal warm-up and a short rhythm warm-up;
+// the educator picks one from each group and rotates them. Names + resources
+// come from the OH music sheet. Only "dancing tempos" ships an embedded link
+// in the sheet; the rest are named resources (apps / Spotify / OH games).
+export interface MusicWarmup {
+  group: "vocal" | "rhythm";
+  name: string;
+  detail: string;
+  resources: { label: string; url?: string }[];
+}
+export const MUSIC_WARMUPS: MusicWarmup[] = [
+  {
+    group: "vocal",
+    name: "breathing",
+    detail: "steady breathing in and out to settle and open the voice.",
+    resources: [
+      { label: "Dots Singing (Spotify)" },
+      { label: "Jacob Vocal Academy (Spotify)" },
+    ],
+  },
+  {
+    group: "vocal",
+    name: "pitch matching",
+    detail: "sing back single notes and short phrases — match the pitch.",
+    resources: [
+      { label: "5-note major scale" },
+      { label: "single-note matching" },
+      { label: "Pitchy Ninja" },
+      { label: "Vocal Match" },
+    ],
+  },
+  {
+    group: "vocal",
+    name: "pitch direction",
+    detail: "a note goes up or down — name the direction.",
+    resources: [{ label: "Musicca" }, { label: "Speed Pitch" }],
+  },
+  {
+    group: "rhythm",
+    name: "tempo quiz",
+    detail: "slow, medium or fast — identify the tempo.",
+    resources: [
+      {
+        label: "Dancing Tempos",
+        url: "https://kids.carnegiehall.org/quiz/dancing-tempos",
+      },
+    ],
+  },
+  {
+    group: "rhythm",
+    name: "rhythm bingo",
+    detail: "match the rhythm you hear on your bingo card.",
+    resources: [{ label: "Rhythm Bingo (openhouse game)" }],
+  },
+  {
+    group: "rhythm",
+    name: "counting games",
+    detail: "clap and count a steady beat together, then change the speed.",
+    resources: [],
+  },
+  {
+    group: "rhythm",
+    name: "musical hide & seek",
+    detail: "louder = warmer, softer = colder — hear the dynamics.",
+    resources: [],
+  },
+  {
+    group: "rhythm",
+    name: "change the time signature",
+    detail:
+      "the educator sets a time signature; clap the counts in time for 4 bars.",
+    resources: [],
+  },
+];
+
 export const MUSIC_INSTRUMENTS: { id: MusicInstrumentId; label: string }[] = [
   { id: "keys", label: "keyboard" },
   { id: "ukulele", label: "ukulele" },
@@ -171,10 +239,10 @@ const warmupActivities: Record<string, CurriculumActivity> = {
   "warmup-pitch": {
     id: "warmup-pitch",
     segment: "warm-up",
-    title: "pitch & voice warm-up",
-    setupLine: "everyone standing, teacher at the keyboard or with a ukulele.",
+    title: "vocal warm-up",
+    setupLine: "everyone standing, educator at the keyboard or with a ukulele.",
     howToPlay:
-      "the educator sings or plays a single note; the children sing it back and match it. move between high and low, loud and soft, so children hear pitch and dynamics with their own voices before playing.",
+      "open the voice with breathing, then a pitch game — sing back single notes and short phrases (5-note major scale, single-note matching), and name whether a note goes up or down. rotate through the vocal warm-ups so it stays fresh.",
     type: "facilitated",
     debriefPrompts: [
       { questions: ["was that note high or low?", "did we match it — or is it still climbing?"] },
@@ -183,10 +251,10 @@ const warmupActivities: Record<string, CurriculumActivity> = {
   "warmup-rhythm": {
     id: "warmup-rhythm",
     segment: "warm-up",
-    title: "rhythm & tempo warm-up",
+    title: "rhythm warm-up",
     setupLine: "everyone in a circle, hands free.",
     howToPlay:
-      "clap and count a steady beat together — slow, then medium, then fast (snail · rabbit · cheetah). the educator changes tempo and the group follows, keeping the count steady in 3s and 4s.",
+      "pick one rhythm game and rotate them across classes — a tempo quiz (slow/medium/fast), rhythm bingo, counting games, musical hide & seek for loud/soft, or setting a time signature and clapping the counts.",
     type: "facilitated",
     debriefPrompts: [
       { questions: ["did the beat stay steady when we sped up?", "how many beats were we counting?"] },
@@ -385,10 +453,11 @@ const shared = {
 };
 
 const DESCRIPTION_BASE =
-  "a multi-instrument, choice-based music programme.\n" +
-  "children learn keyboard, ukulele, drums and vocals — and from day one, play together like a band.\n" +
-  "every class runs warm up → instrument rotation → play → ensemble, building a song the group performs together as a band.\n" +
-  "children move up the levels by a monthly assessment on their own instrument, and the group performs roughly every two months.";
+  "a multi-instrument, choice-based programme — children learn keyboard, ukulele, drums and vocals.\n" +
+  "from day one, they play together like a band.\n" +
+  "every class runs warm up → instrument rotation → play → ensemble.\n" +
+  "children move up by a monthly assessment on their own instrument.\n" +
+  "the group performs roughly every two months — as a band and with individual performances.";
 
 export const musicL1: CurriculumProgramme = {
   ...shared,
@@ -398,9 +467,7 @@ export const musicL1: CurriculumProgramme = {
   levelName: "level 1",
   durationLabel: "~1–2 months",
   skillAreas: skillAreas(1),
-  description:
-    DESCRIPTION_BASE +
-    "\nlevel 1 starts from the very beginning — colour-coded keys, first tempos and steady counting, matching pitch with the voice, and correct posture at every instrument, through first songs like Jingle Bells and Baby Shark.",
+  description: DESCRIPTION_BASE,
 };
 
 export const musicL2: CurriculumProgramme = {
@@ -411,9 +478,7 @@ export const musicL2: CurriculumProgramme = {
   levelName: "level 2",
   durationLabel: "~2–4 months",
   skillAreas: skillAreas(2),
-  description:
-    DESCRIPTION_BASE +
-    "\nlevel 2 adds finger numbers and technique — whole/half/quarter-note rhythms, time signatures (4/4, 3/4, 2/4), dynamics (soft/loud), the C major chord on ukulele, and reading 7 colour-coded keys.",
+  description: DESCRIPTION_BASE,
 };
 
 export const musicL3: CurriculumProgramme = {
@@ -424,7 +489,5 @@ export const musicL3: CurriculumProgramme = {
   levelName: "level 3",
   durationLabel: "~4–6 months",
   skillAreas: skillAreas(3),
-  description:
-    DESCRIPTION_BASE +
-    "\nlevel 3 moves to real notation — reading note names A–G with accidentals, rhythms with rests, C/F/G major and D/E/A minor chords, both hands on the keyboard, and switching chords on the ukulele.",
+  description: DESCRIPTION_BASE,
 };
