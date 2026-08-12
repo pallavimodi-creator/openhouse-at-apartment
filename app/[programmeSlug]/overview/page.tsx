@@ -68,6 +68,7 @@ import {
 import { PlayWritesBookModal } from "@/components/PlayWritesBookModal";
 import { LanguageBooksGrid } from "@/components/LanguageBooksGrid";
 import { SongsPlaylist } from "@/components/SongsPlaylist";
+import { MusicSongsSection } from "@/components/MusicSongsSection";
 import { segmentPalette } from "@/components/segmentPalette";
 
 // ─── Artiverse — how it works · sequence data ────────────────
@@ -480,6 +481,7 @@ function ProgrammeOverviewContent() {
   const isArt = programme.category === "art";
   const isRobotics = programme.category === "stem";
   const isLanguage = programme.category === "language";
+  const isMusic = programme.category === "music";
 
   // Every overview has the same four top-level sections now: daily flow
   // · skills · segments (each segment card contains its full info inline)
@@ -3802,6 +3804,9 @@ function ProgrammeOverviewContent() {
           </section>
         );
       })()}
+
+      {/* ─── MUSIC — songs & sheet music (notation per instrument/level) ─── */}
+      {isMusic && <MusicSongsSection />}
 
       {/* ─── ARTIVERSE BOOK MODAL — opens from the books row ─── */}
       <ArtiverseBookModal

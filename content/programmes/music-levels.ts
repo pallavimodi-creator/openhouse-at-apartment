@@ -44,7 +44,7 @@ const segmentDefinitions: CurriculumSegmentDef[] = [
     name: "play together",
     durationRange: "15 min",
     objective:
-      "the whole group plays the song of the month together — every instrument at once — learning to listen, keep time and perform like a band. the six songs rotate in a fixed order across the term; the group performs every three months.",
+      "the whole group plays the song of the term together — every instrument at once — learning to listen, keep time and perform like a band. one song runs across a whole term and the group performs it every three months; the term songs follow a fixed order, and each child reads their own instrument's sheet at their level.",
     type: "rotating",
     rotationPool: ["sotm-1", "sotm-2", "sotm-3", "sotm-4", "sotm-5", "sotm-6"],
   },
@@ -59,6 +59,46 @@ const SONGS_OF_THE_MONTH = [
   "Yellow Submarine",
   "Count On Me",
 ];
+
+// ─── The full song library ───────────────────────────────────
+// 6 ensemble "songs of the term" (play together) + 6 harder songs for
+// extra practice in individual-instrument time. Every song ships a notation
+// sheet per instrument (keyboard · ukulele · drums) and per level (1–4),
+// matched to each child's part. Titles + order come from the OH "Songs of
+// the Month" source folder (public/music/notation/<slug>-<inst>-l<n>.pdf).
+export type MusicInstrumentId = "keys" | "ukulele" | "drums";
+export interface MusicSong {
+  slug: string;
+  title: string;
+  tier: "easy" | "intermediate" | "hard";
+  ensemble: boolean; // true = a play-together "song of the term"
+}
+export const MUSIC_SONGS: MusicSong[] = [
+  { slug: "yams", title: "You Are My Sunshine", tier: "easy", ensemble: true },
+  { slug: "chfil", title: "Can't Help Falling in Love", tier: "easy", ensemble: true },
+  { slug: "opalite", title: "Opalite", tier: "easy", ensemble: true },
+  { slug: "500m", title: "500 Miles", tier: "easy", ensemble: true },
+  { slug: "ys", title: "Yellow Submarine", tier: "easy", ensemble: true },
+  { slug: "com", title: "Count On Me", tier: "intermediate", ensemble: true },
+  { slug: "got", title: "Game of Thrones", tier: "intermediate", ensemble: false },
+  { slug: "oo", title: "Ob-La-Di, Ob-La-Da", tier: "intermediate", ensemble: false },
+  { slug: "edelweiss", title: "Edelweiss", tier: "intermediate", ensemble: false },
+  { slug: "potc", title: "He's a Pirate", tier: "hard", ensemble: false },
+  { slug: "qss", title: "Que Sera Sera", tier: "hard", ensemble: false },
+  { slug: "sf", title: "Scarborough Fair", tier: "hard", ensemble: false },
+];
+export const MUSIC_INSTRUMENTS: { id: MusicInstrumentId; label: string }[] = [
+  { id: "keys", label: "keyboard" },
+  { id: "ukulele", label: "ukulele" },
+  { id: "drums", label: "drums" },
+];
+export function musicNotationUrl(
+  slug: string,
+  inst: MusicInstrumentId,
+  level: number
+): string {
+  return `/music/notation/${slug}-${inst}-l${level}.pdf`;
+}
 
 // ─── Activities ─────────────────────────────────────────────
 const warmupActivities: Record<string, CurriculumActivity> = {
