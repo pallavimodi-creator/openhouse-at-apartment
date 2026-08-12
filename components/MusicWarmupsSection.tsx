@@ -96,6 +96,12 @@ export function MusicWarmupsSection() {
         every class opens with a short vocal warm-up and a short rhythm warm-up —
         the educator picks one from each group and rotates them across classes.
       </p>
+      <p className="mt-2 rounded-lg bg-brand-orange/8 px-3 py-2 text-[12px] leading-relaxed text-ink-muted">
+        <span aria-hidden className="mr-1">📱</span>
+        <span className="font-semibold text-ink">when a resource is a video,</span>{" "}
+        play it on your phone for the sound and to lead the exercise — don&apos;t
+        show the screen to the children.
+      </p>
       <WarmupGroup label="vocal — pick one" items={vocal} onOpenPdf={setOpenPdf} />
       <WarmupGroup label="rhythm — pick one" items={rhythm} onOpenPdf={setOpenPdf} />
 
