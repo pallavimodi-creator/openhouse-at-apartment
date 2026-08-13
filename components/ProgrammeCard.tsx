@@ -1,8 +1,20 @@
 import Link from "next/link";
+import { Music, Palette, BookOpen, FlaskConical, Sparkles } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CategoryChip } from "./CategoryChip";
 import { AgeChip } from "./AgeChip";
 import type { CurriculumProgramme, Category } from "@/content/types";
+
+// Decorative icon shown behind cards that have no hero image (e.g. music),
+// so a hero-less card reads as designed rather than blank.
+const placeholderIcon: Record<Category, LucideIcon> = {
+  art: Palette,
+  language: BookOpen,
+  music: Music,
+  movement: Sparkles,
+  stem: FlaskConical,
+};
 
 const cardAccent: Record<Category, string> = {
   art: "from-category-art/30 via-brand-orange/5 to-brand-cream",
@@ -58,6 +70,17 @@ export function ProgrammeCard({
             <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-black/20 to-transparent" />
           </>
         )}
+        {!programme.heroImageUrl &&
+          (() => {
+            const PIcon = placeholderIcon[programme.category];
+            return (
+              <PIcon
+                className="pointer-events-none absolute right-4 top-4 h-16 w-16 text-ink/10"
+                strokeWidth={1.5}
+                aria-hidden
+              />
+            );
+          })()}
         <div className="relative z-10 flex gap-1.5">
           <CategoryChip
             category={programme.category}

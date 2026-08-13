@@ -58,7 +58,7 @@ export function LevelSwitcher({
                   <span className="block text-[9px] font-bold uppercase tracking-[0.16em] text-ink-subtle">
                     level {levelNo}
                   </span>
-                  <span className="block truncate text-[13.5px] font-extrabold leading-tight text-ink">
+                  <span className="block text-[13.5px] font-extrabold leading-tight text-ink">
                     {lv.levelName ?? lv.title}
                   </span>
                 </span>
