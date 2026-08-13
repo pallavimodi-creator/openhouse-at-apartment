@@ -3687,11 +3687,12 @@ function ProgrammeOverviewContent() {
           });
         }
         // Music — the child's level book, per level (keyboard · ukulele · drums · vocals).
+        // Both age bands share the same per-level books, so pull the level from
+        // the slug (e.g. music-5-8-l2 / music-8-12-l2 → "2").
         {
-          const musicBook: Record<string, string> = {
-            "music-l1": "1", "music-l2": "2", "music-l3": "3",
-          };
-          const lvl = musicBook[programme.slug];
+          const lvl = isMusic
+            ? programme.slug.match(/-l(\d)$/)?.[1]
+            : undefined;
           if (lvl) {
             books.push({
               kind: "pdf-flip", pdfUrl: `/music/music-book-l${lvl}.pdf`,

@@ -477,35 +477,50 @@ const DESCRIPTION_BASE =
   "children move up by a monthly assessment on their own instrument.\n" +
   "the group performs roughly every two months — as a band and with individual performances.";
 
-export const musicL1: CurriculumProgramme = {
-  ...shared,
-  id: "music-l1",
-  slug: "music-l1",
-  level: 1,
-  levelName: "level 1",
-  durationLabel: "~1–2 months",
-  skillAreas: skillAreas(1),
-  description: DESCRIPTION_BASE,
-};
+// ── Two age bands (5–8 · 8–12) ──
+// Music is banded by level & ability, but 5–8 and 8–12 are PACED differently
+// (5–8 take ~20% more classes to reach the same level, per the OH music sheet).
+// So each age band is its own track — its own home-page card, durations, class
+// counts and plans — while the content of each level is identical.
+const MUSIC_AGE_BANDS = [
+  {
+    key: "5-8" as const,
+    label: "ages 5–8",
+    track: "music-5-8",
+    older: false,
+    durations: { 1: "~2 months", 2: "~4 months", 3: "~6 months" } as Record<number, string>,
+  },
+  {
+    key: "8-12" as const,
+    label: "ages 8–12",
+    track: "music-8-12",
+    older: true,
+    durations: { 1: "~1 month", 2: "~2–3 months", 3: "~4–5 months" } as Record<number, string>,
+  },
+];
 
-export const musicL2: CurriculumProgramme = {
-  ...shared,
-  id: "music-l2",
-  slug: "music-l2",
-  level: 2,
-  levelName: "level 2",
-  durationLabel: "~2–4 months",
-  skillAreas: skillAreas(2),
-  description: DESCRIPTION_BASE,
-};
+function makeMusicLevel(
+  band: (typeof MUSIC_AGE_BANDS)[number],
+  level: 1 | 2 | 3
+): CurriculumProgramme {
+  const counts = MUSIC_CLASS_COUNTS[level];
+  return {
+    ...shared,
+    id: `${band.track}-l${level}`,
+    slug: `${band.track}-l${level}`,
+    level,
+    levelName: `level ${level}`,
+    ageGroup: band.key,
+    ageLabel: band.label,
+    trackSlug: band.track,
+    durationLabel: band.durations[level],
+    totalSessions: band.older ? counts.older : counts.younger,
+    skillAreas: skillAreas(level),
+    description: DESCRIPTION_BASE,
+    heroImageUrl: "/prog-music.jpg",
+  };
+}
 
-export const musicL3: CurriculumProgramme = {
-  ...shared,
-  id: "music-l3",
-  slug: "music-l3",
-  level: 3,
-  levelName: "level 3",
-  durationLabel: "~4–6 months",
-  skillAreas: skillAreas(3),
-  description: DESCRIPTION_BASE,
-};
+export const musicProgrammes: CurriculumProgramme[] = MUSIC_AGE_BANDS.flatMap(
+  (band) => ([1, 2, 3] as const).map((level) => makeMusicLevel(band, level))
+);
