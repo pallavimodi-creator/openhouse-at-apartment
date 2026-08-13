@@ -133,6 +133,10 @@ const SEGMENT_FIELD_MAP: Record<string, keyof CurriculumSessionEntry> = {
   "wonder-world": "wonderWorld",
   "logic-lab": "logicLab",
   "numbers-gym": "numbersGym",
+  // Music segments (warm up → instrument rotation → ensemble play)
+  "warm-up": "warmUp",
+  "your-instrument": "yourInstrument",
+  ensemble: "ensemble",
 };
 
 // Segments where activities run in fixed order with deliberate
