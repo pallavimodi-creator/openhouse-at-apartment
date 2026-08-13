@@ -8,6 +8,8 @@ import { Modal } from "./Modal";
 import { ActivityPopup } from "./ActivityPopup";
 import { SegmentInfoPopup, type SegmentInfo } from "./SegmentInfoPopup";
 import { getBookPlan } from "@/content/programmes/language-book-plans";
+import { MusicWarmupPlan } from "./MusicWarmupPlan";
+import { MusicEnsemblePlan } from "./MusicEnsemblePlan";
 import {
   Brain, Eye, Ear, Hand, Mic, Zap, Gamepad2, Star,
   Dumbbell, Palette, Sparkles, PenTool, Notebook,
@@ -266,6 +268,13 @@ function SegmentRow({
 
   const currentActivity = viewingActivity ?? segment.assignedActivity;
 
+  // Music gets bespoke plan detail: the warm-up shows every warm-up format +
+  // links, the ensemble shows the band song(s) with openable notation.
+  const isMusic = programmeSlug?.startsWith("music") ?? false;
+  const musicLevel = Number(programmeSlug?.match(/-l(\d)$/)?.[1] ?? 1);
+  const isMusicWarmup = isMusic && segment.segmentId === "warm-up";
+  const isMusicEnsemble = isMusic && segment.segmentId === "ensemble";
+
   const isBlocked = (actId: string) => {
     if (selectionHistory.length === 0) return false;
     // If all activities have been used, reset — nothing blocked
@@ -322,7 +331,11 @@ function SegmentRow({
       </div>
 
       {/* Activity content */}
-      {segment.type === "fixed" ? (
+      {isMusicWarmup ? (
+        <MusicWarmupPlan />
+      ) : isMusicEnsemble ? (
+        <MusicEnsemblePlan level={musicLevel} />
+      ) : segment.type === "fixed" ? (
         <button
           onClick={() => {
             let info: SegmentInfo;
@@ -642,6 +655,11 @@ function SegmentRow({
                 </p>
               </div>
             </div>
+          ) : isMusic && segment.segmentId === "your-instrument" ? (
+            <p className="text-[12px] leading-relaxed text-ink-muted">
+              each child works their own level book on their instrument — two
+              instruments a class, by their choice.
+            </p>
           ) : (
             <p className="text-[12px] leading-relaxed text-ink-muted">
               {segment.objective}
