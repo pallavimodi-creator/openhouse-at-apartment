@@ -488,6 +488,7 @@ const MUSIC_AGE_BANDS = [
     label: "ages 5–8",
     track: "music-5-8",
     older: false,
+    hero: "/prog-music-young.jpg",
     durations: { 1: "~2 months", 2: "~4 months", 3: "~6 months" } as Record<number, string>,
   },
   {
@@ -495,6 +496,7 @@ const MUSIC_AGE_BANDS = [
     label: "ages 8–12",
     track: "music-8-12",
     older: true,
+    hero: "/prog-music.jpg",
     durations: { 1: "~1 month", 2: "~2–3 months", 3: "~4–5 months" } as Record<number, string>,
   },
 ];
@@ -517,7 +519,7 @@ function makeMusicLevel(
     totalSessions: band.older ? counts.older : counts.younger,
     skillAreas: skillAreas(level),
     description: DESCRIPTION_BASE,
-    heroImageUrl: "/prog-music.jpg",
+    heroImageUrl: band.hero,
   };
 }
 
