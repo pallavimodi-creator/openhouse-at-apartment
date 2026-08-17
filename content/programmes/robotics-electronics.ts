@@ -346,9 +346,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
 
   // ── the sensing & smart-machines half (models 6–13) ──
   // These apply the input/output, servo and light-sensor cards in richer
-  // machines. Day-counts are each model manual's "no. of sessions". The
-  // printed manuals exist but are not yet uploaded to the site — the build
-  // entries carry the model, concept and day arc until they are.
+  // machines. Day-counts are each model manual's "no. of sessions".
   "elec-build-robotic-arm": buildModel({
     id: "elec-build-robotic-arm",
     title: "robotic arm build",
@@ -356,6 +354,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
     concept: "input and output with servo control",
     days: 5,
     what: "a robot arm that picks up, moves and places objects with two servos —",
+    manual: "/robotics-manuals/elec-model-robotic-arm.pdf",
   }),
   "elec-build-carrier-truck": buildModel({
     id: "elec-build-carrier-truck",
@@ -364,6 +363,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
     concept: "servo control and polarity reversal together",
     days: 5,
     what: "a truck that drives forward and back and tips its carrier bed —",
+    manual: "/robotics-manuals/elec-model-carrier-truck.pdf",
   }),
   "elec-build-drawbridge": buildModel({
     id: "elec-build-drawbridge",
@@ -372,6 +372,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
     concept: "input and output — sensing",
     days: 5,
     what: "a bridge that senses a boat and lifts to let it pass —",
+    manual: "/robotics-manuals/elec-model-drawbridge.pdf",
   }),
   "elec-build-light-house": buildModel({
     id: "elec-build-light-house",
@@ -380,6 +381,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
     concept: "input, output and automatic light",
     days: 5,
     what: "a lighthouse that lights up in the dark and sweeps its beam —",
+    manual: "/robotics-manuals/elec-model-light-house.pdf",
   }),
   "elec-build-elevator": buildModel({
     id: "elec-build-elevator",
@@ -388,6 +390,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
     concept: "input and output — sensing a position",
     days: 5,
     what: "a lift that stops at the floor its sensors detect —",
+    manual: "/robotics-manuals/elec-model-elevator.pdf",
   }),
   "elec-build-follow-me-bot": buildModel({
     id: "elec-build-follow-me-bot",
@@ -396,6 +399,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
     concept: "input and output — following",
     days: 4,
     what: "a bot that senses you and follows —",
+    manual: "/robotics-manuals/elec-model-follow-me-bot.pdf",
   }),
   "elec-build-smart-stadium-lights": buildModel({
     id: "elec-build-smart-stadium-lights",
@@ -404,6 +408,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
     concept: "input, output and automatic light",
     days: 4,
     what: "floodlights that switch on by themselves when it gets dark —",
+    manual: "/robotics-manuals/elec-model-smart-stadium-lights.pdf",
   }),
   "elec-build-obstacle-avoider": buildModel({
     id: "elec-build-obstacle-avoider",
@@ -412,6 +417,7 @@ const buildActivities: Record<string, CurriculumActivity> = {
     concept: "input and output — sensing and avoiding",
     days: 5,
     what: "a bot that senses a wall and stops before it hits —",
+    manual: "/robotics-manuals/elec-model-obstacle-avoider.pdf",
   }),
 };
 
