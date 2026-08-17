@@ -2,10 +2,17 @@
  * Robotics · Level 2 — Electronics (ages 5–8 and 8–12).
  *
  * Authored from the operator's at-apartment website copy. Both age groups
- * share the same 23-day spine (5 models, one cue card alongside each
+ * share the same 61-day spine (13 models, one cue card alongside each
  * build session — repeated to fill a model's remaining days); they differ
  * in how far observing & understanding is pushed: at 8–12 it becomes
  * comparing, proving, and drawing circuits as schematics.
+ *
+ * Models 1–5 (railway barrier · wind turbine · soccer bot · cleaning bot ·
+ * sensor crane) are the release-1 set with printed manuals + step images.
+ * Models 6–13 (robotic arm · carrier truck · drawbridge · light house ·
+ * elevator · follow-me bot · smart stadium lights · obstacle avoider) apply
+ * the input/output, servo and light-sensor cards in richer machines; their
+ * printed manuals are not yet uploaded (build entries carry the day arc).
  *
  * Source-true notes:
  *  - The experiment cards are the real Electronic Cue Cards deck; the
@@ -336,6 +343,76 @@ const buildActivities: Record<string, CurriculumActivity> = {
     what: "a crane that senses what is near it and responds —",
     manual: "/robotics-manuals/elec-model-crane.pdf",
   }),
+
+  // ── the sensing & smart-machines half (models 6–13) ──
+  // These apply the input/output, servo and light-sensor cards in richer
+  // machines. Day-counts are each model manual's "no. of sessions". The
+  // printed manuals exist but are not yet uploaded to the site — the build
+  // entries carry the model, concept and day arc until they are.
+  "elec-build-robotic-arm": buildModel({
+    id: "elec-build-robotic-arm",
+    title: "robotic arm build",
+    model: "Robotic Arm",
+    concept: "input and output with servo control",
+    days: 5,
+    what: "a robot arm that picks up, moves and places objects with two servos —",
+  }),
+  "elec-build-carrier-truck": buildModel({
+    id: "elec-build-carrier-truck",
+    title: "carrier truck build",
+    model: "Carrier Truck",
+    concept: "servo control and polarity reversal together",
+    days: 5,
+    what: "a truck that drives forward and back and tips its carrier bed —",
+  }),
+  "elec-build-drawbridge": buildModel({
+    id: "elec-build-drawbridge",
+    title: "drawbridge build",
+    model: "Drawbridge",
+    concept: "input and output — sensing",
+    days: 5,
+    what: "a bridge that senses a boat and lifts to let it pass —",
+  }),
+  "elec-build-light-house": buildModel({
+    id: "elec-build-light-house",
+    title: "light house build",
+    model: "Light House",
+    concept: "input, output and automatic light",
+    days: 5,
+    what: "a lighthouse that lights up in the dark and sweeps its beam —",
+  }),
+  "elec-build-elevator": buildModel({
+    id: "elec-build-elevator",
+    title: "elevator build",
+    model: "Elevator",
+    concept: "input and output — sensing a position",
+    days: 5,
+    what: "a lift that stops at the floor its sensors detect —",
+  }),
+  "elec-build-follow-me-bot": buildModel({
+    id: "elec-build-follow-me-bot",
+    title: "follow-me bot build",
+    model: "Follow-me Bot",
+    concept: "input and output — following",
+    days: 4,
+    what: "a bot that senses you and follows —",
+  }),
+  "elec-build-smart-stadium-lights": buildModel({
+    id: "elec-build-smart-stadium-lights",
+    title: "smart stadium lights build",
+    model: "Smart Stadium Lights",
+    concept: "input, output and automatic light",
+    days: 4,
+    what: "floodlights that switch on by themselves when it gets dark —",
+  }),
+  "elec-build-obstacle-avoider": buildModel({
+    id: "elec-build-obstacle-avoider",
+    title: "obstacle avoider build",
+    model: "Obstacle Avoider",
+    concept: "input and output — sensing and avoiding",
+    days: 5,
+    what: "a bot that senses a wall and stops before it hits —",
+  }),
 };
 
 // ─── Experience book (child-facing, 6 steps per machine) ────
@@ -556,6 +633,98 @@ const sessionTable: CurriculumSessionEntry[] = [
     "revisit — predict what will happen before you connect, then prove it: which part was the input, and which was the output?"),
   s(23, "elec-c-ir-motor-direction", "Sensor-controlled Crane", "elec-build-sensor-crane", 5, 5,
     "revisit — predict what will happen before you connect, then prove it: what decision is the driver making for the motor?"),
+
+  // ── Robotic Arm · 5 days ── (input & output + servo control)
+  s(24, "elec-c-servo", "Robotic Arm", "elec-build-robotic-arm", 1, 5,
+    "which servo does each job — and how do you set it to an exact position?"),
+  s(25, "elec-c-servo", "Robotic Arm", "elec-build-robotic-arm", 2, 5,
+    "how do you make the gripper open and close on demand?"),
+  s(26, "elec-c-servo", "Robotic Arm", "elec-build-robotic-arm", 3, 5,
+    "revisit — predict what will happen before you connect, then prove it: which servo does each job?"),
+  s(27, "elec-c-servo", "Robotic Arm", "elec-build-robotic-arm", 4, 5,
+    "revisit — how do the two servos work together to pick up and place an object?"),
+  s(28, "elec-c-servo", "Robotic Arm", "elec-build-robotic-arm", 5, 5,
+    "revisit — predict what will happen before you connect, then prove it: how do you set a servo to an exact position?"),
+
+  // ── Carrier Truck · 5 days ── (current & voltage + polarity reversal)
+  s(29, "elec-c-servo", "Carrier Truck", "elec-build-carrier-truck", 1, 5,
+    "how do you set the carrier bed to an exact tipping angle?"),
+  s(30, "elec-c-dpdt", "Carrier Truck", "elec-build-carrier-truck", 2, 5,
+    "how do you drive the wheels forward and back without swapping any wires?"),
+  s(31, "elec-c-dual-dpdt", "Carrier Truck", "elec-build-carrier-truck", 3, 5,
+    "how does each drive motor get its own direction?"),
+  s(32, "elec-c-pot-switch-parallel", "Carrier Truck", "elec-build-carrier-truck", 4, 5,
+    "how do you set the driving speed and switch the whole truck on and off?"),
+  s(33, "elec-c-servo", "Carrier Truck", "elec-build-carrier-truck", 5, 5,
+    "revisit — predict, then prove: how do you combine tipping the bed with driving the wheels?"),
+
+  // ── Drawbridge · 5 days ── (input & output — sensing)
+  s(34, "elec-c-driver-ir", "Drawbridge", "elec-build-drawbridge", 1, 5,
+    "which part is the input, and which is the output that lifts the bridge?"),
+  s(35, "elec-c-ir-motor-direction", "Drawbridge", "elec-build-drawbridge", 2, 5,
+    "how does the sensor decide whether the bridge lifts or lowers?"),
+  s(36, "elec-c-dual-ir-fwd-back", "Drawbridge", "elec-build-drawbridge", 3, 5,
+    "how do two sensors raise the bridge and then lower it again?"),
+  s(37, "elec-c-ir-range", "Drawbridge", "elec-build-drawbridge", 4, 5,
+    "how close must the boat be before the bridge starts to lift?"),
+  s(38, "elec-c-driver-ir", "Drawbridge", "elec-build-drawbridge", 5, 5,
+    "revisit — predict, then prove: what makes the bridge open for a boat and close after it passes?"),
+
+  // ── Light House · 5 days ── (input & output + current & voltage)
+  s(39, "elec-c-parallel", "Light House", "elec-build-light-house", 1, 5,
+    "how does each lamp get its own path so both stay lit?"),
+  s(40, "elec-c-servo", "Light House", "elec-build-light-house", 2, 5,
+    "how does the servo sweep the beam to an exact position?"),
+  s(41, "elec-c-ldr-led", "Light House", "elec-build-light-house", 3, 5,
+    "how does the lamp switch itself on when it gets dark?"),
+  s(42, "elec-c-series", "Light House", "elec-build-light-house", 4, 5,
+    "what changes when the two lamps share one path instead?"),
+  s(43, "elec-c-ldr-ir-led", "Light House", "elec-build-light-house", 5, 5,
+    "revisit — predict, then prove: how can a light sensor and an object sensor work together?"),
+
+  // ── Elevator · 5 days ── (input & output — sensing a position)
+  s(44, "elec-c-driver-ir", "Elevator", "elec-build-elevator", 1, 5,
+    "how does a floor sensor tell the motor to stop the cabin?"),
+  s(45, "elec-c-ir-motor-direction", "Elevator", "elec-build-elevator", 2, 5,
+    "how does the sensor decide whether the cabin goes up or down?"),
+  s(46, "elec-c-dual-ir-fwd-back", "Elevator", "elec-build-elevator", 3, 5,
+    "how do two sensors move the cabin up to one floor and down to another?"),
+  s(47, "elec-c-ir-range", "Elevator", "elec-build-elevator", 4, 5,
+    "how do you tune a sensor so the cabin stops level with the floor?"),
+  s(48, "elec-c-driver-ir", "Elevator", "elec-build-elevator", 5, 5,
+    "revisit — predict, then prove: which part is the input and which is the output?"),
+
+  // ── Follow-me Bot · 4 days ── (input & output — following)
+  s(49, "elec-c-driver-ir", "Follow-me Bot", "elec-build-follow-me-bot", 1, 4,
+    "how does the sensor tell the motor to move the bot?"),
+  s(50, "elec-c-dual-ir-fwd-back", "Follow-me Bot", "elec-build-follow-me-bot", 2, 4,
+    "how do two sensors, one on each side, steer the bot toward you?"),
+  s(51, "elec-c-dual-motor-ir-turn", "Follow-me Bot", "elec-build-follow-me-bot", 3, 4,
+    "what must the two motors do for the bot to turn and follow?"),
+  s(52, "elec-c-ir-range", "Follow-me Bot", "elec-build-follow-me-bot", 4, 4,
+    "revisit — predict, then prove: how do you tune each sensor so it follows at the right distance?"),
+
+  // ── Smart Stadium Lights · 4 days ── (input & output + current & voltage)
+  s(53, "elec-c-parallel", "Smart Stadium Lights", "elec-build-smart-stadium-lights", 1, 4,
+    "how does each floodlight get its own path so both stay lit?"),
+  s(54, "elec-c-ldr-led", "Smart Stadium Lights", "elec-build-smart-stadium-lights", 2, 4,
+    "how do the lights switch on by themselves when it gets dark?"),
+  s(55, "elec-c-series", "Smart Stadium Lights", "elec-build-smart-stadium-lights", 3, 4,
+    "what changes when the floodlights share one path instead?"),
+  s(56, "elec-c-ldr-ir-led", "Smart Stadium Lights", "elec-build-smart-stadium-lights", 4, 4,
+    "revisit — predict, then prove: how can a light sensor and an object sensor control the lights together?"),
+
+  // ── Obstacle Avoider · 5 days ── (input & output — sensing & avoiding)
+  s(57, "elec-c-driver-ir", "Obstacle Avoider", "elec-build-obstacle-avoider", 1, 5,
+    "how does the sensor tell the bot that something is ahead?"),
+  s(58, "elec-c-pot", "Obstacle Avoider", "elec-build-obstacle-avoider", 2, 5,
+    "how does the speed dial change how fast the bot drives?"),
+  s(59, "elec-c-pot-dual-motor-series", "Obstacle Avoider", "elec-build-obstacle-avoider", 3, 5,
+    "how do you set the speed of both drive motors at once?"),
+  s(60, "elec-c-ir-motor-direction", "Obstacle Avoider", "elec-build-obstacle-avoider", 4, 5,
+    "how does the sensor make the bot change direction away from a wall?"),
+  s(61, "elec-c-dual-motor-ir-turn", "Obstacle Avoider", "elec-build-obstacle-avoider", 5, 5,
+    "revisit — predict, then prove: how do the two motors steer the bot around the obstacle?"),
 ];
 
 // ─── Checkpoints ────────────────────────────────────────────
@@ -590,6 +759,27 @@ const checkpoints: CurriculumCheckpoint[] = [
       { skillArea: "P&E", beginning: "says why it works (Explain)", developing: "answers a question about it (Answer)", secure: "shows the machine, explains how and why, and answers a question (Answer ★)" },
     ],
   },
+  // The back half (models 6–13) applies the ★ rungs in richer sensing,
+  // servo and automatic-light machines — the ladder tops out at ★, so these
+  // checkpoints track how securely the child applies it in new contexts.
+  {
+    afterSession: 43,
+    descriptors: [
+      { skillArea: "B&M", beginning: "builds a sensing or servo model from the manual", developing: "names each block's job in a sensing model (Name)", secure: "adds or swaps a block to change what a sensing machine does (Change ★)" },
+      { skillArea: "O&U", beginning: "describes what the sensor makes happen", developing: "compares — at what light level or distance it triggers (Compare)", secure: "predicts and proves how a sensing circuit behaves (Predict ★)" },
+      { skillArea: "PS", beginning: "notices a sensing circuit isn't responding", developing: "changes one thing — range or wiring — to help (Adjust)", secure: "finds the break in a sensor–driver–motor circuit and fixes it (Fix ★)" },
+      { skillArea: "P&E", beginning: "shows the machine working", developing: "explains input → driver → output (Explain)", secure: "explains why it's built this way and answers a question (Answer ★)" },
+    ],
+  },
+  {
+    afterSession: 61,
+    descriptors: [
+      { skillArea: "B&M", beginning: "builds a machine that senses and responds", developing: "combines two sensors, or a sensor and a servo (Change)", secure: "designs and improves a machine that senses and responds (Change ★)" },
+      { skillArea: "O&U", beginning: "predicts before testing (Predict)", developing: "compares and proves across machines", secure: "predicts and proves how any circuit in the kit behaves, with a reason (Predict ★)" },
+      { skillArea: "PS", beginning: "fixes a single fault (Fix)", developing: "works through several faults", secure: "gets a multi-sensor machine going through several faults (Fix ★)" },
+      { skillArea: "P&E", beginning: "explains how it works (Explain)", developing: "explains how and why, and fields a question (Answer)", secure: "presents the machine, explains how and why, and coaches a peer (Answer ★)" },
+    ],
+  },
 ];
 
 // ─── Model ↔ experiment pairings ────────────────────────────
@@ -605,6 +795,22 @@ const modelPairings: ModelPairing[] = [
     why: "A cleaning bot runs several motors at once from one battery. Its cards are the power-sharing cards — series, parallel, and a speed dial — which is how the bot shares its power." },
   { model: "Sensor-controlled Crane", topic: "Input & output",
     why: "A sensing crane reacts to what is near it. Its cards wire a sensor (input) through the driver to a motor (output) — the decision-making the crane is built on." },
+  { model: "Robotic Arm", topic: "Input & output with servo control",
+    why: "An arm has to move to exact positions and hold them. Its card is the servo card — set a servo precisely in manual mode — so the child places, grips and lifts on purpose, one servo per job." },
+  { model: "Carrier Truck", topic: "Servo control + polarity reversal",
+    why: "A carrier truck drives both ways and tips its bed to an angle. Its cards pair the servo (the tipping bed) with the direction switch and speed dial (driving the wheels forward and back) — the two controls the truck needs at once." },
+  { model: "Drawbridge", topic: "Input & output",
+    why: "A drawbridge lifts when a boat is sensed and closes after. Its cards are the sensing cards — a sensor tells the driver to run the motor, and its range decides how close the boat must be." },
+  { model: "Light House", topic: "Input & output + automatic light",
+    why: "A lighthouse lights in the dark and sweeps its beam. Its cards combine the light-sensor card (auto on in the dark), the servo card (sweeping the beam) and parallel/series (lighting both lamps)." },
+  { model: "Elevator", topic: "Input & output",
+    why: "An elevator stops at the floor it senses. Its cards are the sensing cards — a sensor stops the motor, and its range is tuned so the cabin lands level with the floor." },
+  { model: "Follow-me Bot", topic: "Input & output",
+    why: "A follow-me bot uses two sensors to steer after you. Its cards give one sensor per side and turn the two motors in opposite directions — exactly how the bot follows and turns." },
+  { model: "Smart Stadium Lights", topic: "Input & output + automatic light",
+    why: "Stadium floodlights switch on by themselves at dusk. Its cards are the light-sensor cards with parallel and series — the lights come on automatically and share their power across the stand." },
+  { model: "Obstacle Avoider", topic: "Input & output",
+    why: "An obstacle avoider senses a wall and stops or turns before it hits. Its cards pair the sensing cards with the speed dial — the bot drives, senses, slows and steers away." },
 ];
 
 // ─── Level 2 reference — concepts, glossary, components ─────
@@ -657,7 +863,7 @@ const shared = {
   levelName: "electronics",
   heroImageUrl: "/prog-stem-5-8.gif",
   tagline: "build real circuits and make machines light up, move, and sense the world.",
-  totalSessions: 23,
+  totalSessions: 61,
   skillAreas,
   segmentDefinitions,
   sessionTable,
@@ -677,7 +883,7 @@ const shared = {
       "compares and proves — brighter or dimmer, faster or slower, at what distance the sensor triggers",
       "explains with a clear reason; there's no multimeter in the kit, so “measuring” means structured comparison, not voltage numbers",
     ],
-    note: "same five machines, same four skills — it's the depth of observing, measuring and designing that climbs.",
+    note: "same thirteen machines, same four skills — it's the depth of observing, measuring and designing that climbs.",
   },
 };
 
@@ -691,7 +897,7 @@ function activitiesFor(ageSlug: "5-8" | "8-12") {
 }
 
 const DESCRIPTION =
-  "level 2 — electronics. across five models — railway barrier, wind turbine, soccer bot, cleaning bot, and sensor-controlled crane — children run experiments on circuits, polarity, sharing power, and sensors, then build a machine that uses what they just discovered. they finish able to look at a circuit and explain why it works — and build one that senses and responds. no mechanics background is needed: this level starts from the very first circuit.";
+  "level 2 — electronics. across thirteen models — from a railway barrier and a wind turbine up to a robotic arm, a light house, and a follow-me bot — children run experiments on circuits, polarity, reversing motors, sharing power, and sensors, then build a machine that uses what they just discovered. the climb goes from a first switch to machines that sense the world and respond on their own. they finish able to look at a circuit and explain why it works — and build one that senses and responds. no mechanics background is needed: this level starts from the very first circuit.";
 
 export const roboticsElectronics58: CurriculumProgramme = {
   ...shared,
