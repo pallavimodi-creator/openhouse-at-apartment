@@ -674,10 +674,12 @@ export default function LibraryPage() {
       </p>
 
       {/* Music — all books + notation sheets, opening in the flip viewer.
-          Shown for the music track and for admins. */}
-      {(isAdmin ||
-        teacherSlug?.startsWith("music") ||
-        selectedProgSlug.startsWith("music")) && (
+          Shown only when music is actually in scope: a music teacher's track,
+          or (for admins) the "all programmes" or a music category — never when
+          a non-music programme like stem is selected. */}
+      {(isAdmin
+        ? selectedProgSlug === "all" || selectedProgSlug.startsWith("music")
+        : teacherSlug?.startsWith("music")) && (
         <div className="mt-6">
           <MusicLibrarySection />
         </div>
