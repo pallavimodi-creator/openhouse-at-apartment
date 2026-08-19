@@ -11,10 +11,11 @@ import {
 /**
  * WonderWorld — educator reference book for STEM 3–5.
  *
- * One workbook all year — "What Is In Your Tiffin?" — covering bread,
- * cheese, and salad. 15 activities (3 chapters × 5 activities), each
- * met twice across the year. Each activity page covers concept,
- * materials, setup, how-to-conduct, educator prompts, and learning focus.
+ * The Little Kitchen kit — one kitchen kit, four repeatable games that grow
+ * with the child (sort & guess · cooking · restaurant · recipe development).
+ * Each game is played two ways — easy (3–4) and medium (4–5). No scores, no
+ * winners — the educator reads the play as observation. Rebuilt from the
+ * lexagod little_kitchen game design (replaces the earlier tiffin workbook).
  */
 
 type ActivityImage = { src: string; alt: string; caption?: string };
@@ -39,535 +40,174 @@ type Chapter = {
   activities: Activity[];
 };
 
-const BREAD: Chapter = {
+const GAMES: Chapter = {
   number: 1,
-  name: "the bread journey",
+  name: "the four games",
   caption:
-    "Wheat becomes flour. Flour becomes dough. Dough becomes bread. Children meet the bread journey through their hands.",
+    "One kit, four games that grow with the child. Each game is played two ways — easy (3–4) and medium (4–5). Same pieces, same skills — only how much of the recipe is used, and what the educator asks for, changes.",
   activities: [
     {
       number: 1,
-      title: "punch and squish",
-      time: "10–15 minutes",
+      title: "game 1 · sort & guess",
+      time: "15–20 minutes",
       concept:
-        "Wheat becomes flour, flour becomes dough, and dough changes when we knead it.",
+        "Sort foods by a true rule, then guess a hidden one by ruling out. Mainly builds logic (and curiosity).",
       materials: [
-        "1 ball of beige/yellow playdough per child.",
-        "Clean table mat or tiffin mat (can be replaced with A4 sheet divided into 4 sections).",
+        "Fruit cards (10) + vegetable cards (10).",
+        "The cooking mat's number track (1–20).",
       ],
       setup:
-        "Give each child one playdough ball. Ask them to keep both hands on the mat.",
+        "Lay the food cards out face-up. A rule must be TRUE — underground foods are potato, carrot, radish, onion, beetroot; everything else grows above ground. Never sort by colour (some foods come in more than one).",
       howToConduct: [
-        "Say: 'Today we are bakers. We are going to turn dough soft by pressing and kneading.'",
-        "Ask children to press the dough with both palms. Count together from 1 to 10.",
-        "Stop and touch the dough. Ask: 'Is it flat? Soft? Warm? Smooth?'",
-        "Roll it back into a ball.",
-        "Knead again — press, fold, press, fold. Count 10 more times.",
-        "Compare before and after: 'What changed?'",
-        "End: 'When we knead dough, it changes. That is how bread begins.'",
+        "Name a true rule — fruit / vegetable, or grows underground / above ground (by the part we eat).",
+        "Sort the cards into two piles.",
+        "Count each pile and find its number on the mat's track — which has more?",
+        "One child (the hider) hides a card and gives clues in their own words: 'it's long, you peel it, it grows underground'.",
+        "The others (the guessers) turn ruled-out cards face-down; before the last flip, re-check the face-down cards against the clues.",
+        "A guesser names the card and says the 'because…'. The round ends when the hidden card is named.",
       ],
       prompts: [
-        "What happens when you press harder?",
-        "Is your dough flat or round now?",
-        "Did it become softer?",
+        "Easy (3–4): one rule, teacher-named; sort and count one pile; skip the guess.",
+        "Medium (4–5): the child chooses the rule, compares both piles, then gives free spoken clues for the guess.",
+        "Which pile has more? How did you know?",
       ],
       learningFocus:
-        "Material transformation, hand strength, counting, observation.",
-      images: [
-        {
-          src: "/wonderworld-book/projects/bread-1-punch-and-squish.png",
-          alt: "punch and squish — children kneading dough",
-        },
-      ],
+        "Logic (sorts → reasons), number sense (count, compare, sorting & data), curiosity (predicts → investigates).",
     },
     {
       number: 2,
-      title: "make a bread from somewhere in the world",
-      time: "10–15 minutes",
-      concept: "Bread can come in many shapes, sizes, and forms.",
+      title: "game 2 · cooking",
+      time: "15–20 minutes",
+      concept:
+        "Cook a dish by counting with dots and putting the steps in order. Mainly builds number sense (and problem solving).",
       materials: [
-        "1 small ball of beige/yellow playdough per child (each child makes one kind of bread).",
-        "A4 tiffin mat or paper divided into 4 boxes.",
+        "Dish / recipe cards (18 dishes, ★ and ★★ rings).",
+        "Ingredient + action cards.",
+        "The cooking mat (number track + ½ / ¼ plate + glass).",
+        "Play-dough + number tokens (1–10).",
       ],
-      setup: "Place one 4-section mat in front of each child.",
+      setup:
+        "Pick a dish whose ★ stars match the age — ★ for 3–4, ★★ for 4–5. Keep one play-dough portion per dot (check the gaps).",
       howToConduct: [
-        "Say: 'Bread does not look the same everywhere. Different breads have different shapes.'",
-        "Assign or let children choose one kind to make.",
-        "Some children: round chapati. Some: long loaf. Some: tiny bun. Some: square slice.",
-        "Once all breads are ready, compare: biggest, smallest, round, long, flat, thick.",
-        "Each child says: 'I made a ___.'",
+        "Pick a dish card and turn it over to the recipe (count-dots, a ½-glass, numbered steps).",
+        "Place one play-dough portion per dot and find the total on the mat's number track.",
+        "At 4–5: combine the two dot-groups, place a number token for the total, then check it against the track — make it, then verify.",
+        "Lay the action cards in a row to match the numbered steps.",
+        "Cook on the plate — mould the dish, halve on the ½ / ¼ lines, fill the glass to ½.",
+        "Check and serve — re-do any step that misfired.",
       ],
       prompts: [
-        "Which bread is flat?",
-        "Which one is long?",
-        "Which one would fit in your tiffin?",
+        "Easy (3–4): a 2–3 ingredient ★ dish (fruit bowl, lassi); count to ~10, one portion per dot.",
+        "Medium (4–5): a 3–4 ingredient ★★ dish; add two dot-groups within 10 and halve on the ½ line.",
+        "How many did you count? Is the glass filled to half?",
       ],
       learningFocus:
-        "Shape recognition, comparison, vocabulary, fine motor control.",
-      images: [
-        {
-          src: "/wonderworld-book/projects/bread-2-make-a-bread.png",
-          alt: "make a bread from somewhere in the world — bread varieties",
-        },
-      ],
+        "Number sense (count → add within 10 → measure), problem solving (tries → solves), logic (ordering the steps).",
     },
     {
       number: 3,
-      title: "bread riddles",
-      time: "10–15 minutes",
-      concept: "Children identify food using clues.",
+      title: "game 3 · restaurant",
+      time: "15–20 minutes",
+      concept:
+        "Run a café off the menu and invoice — order, cook, bill and make change. Mainly builds number sense / money (and problem solving).",
       materials: [
-        "Picture cards of chapati, loaf, bun, toast.",
-        "Optional playdough bread models from the previous activity.",
+        "Two cooking mats (one flipped to its menu | invoice back).",
+        "Dish cards.",
+        "Pretend money — ₹1 · ₹2 · ₹5 · ₹10.",
       ],
-      setup: "Place picture cards face up where children can see them.",
+      setup:
+        "Flip one mat to its menu | invoice back; roles are customer · chef · cashier. With two children, one is both chef and cashier — the two mats let that child cook on mat-A and bill on mat-B without flipping.",
       howToConduct: [
-        "Say: 'I will give you clues. You have to guess the bread.'",
-        "Read one clue at a time: 'I am round and flat. I puff on the pan.' / 'I am long and sliced. I make sandwiches.' / 'I am small and soft. You can hold me in one hand.' / 'I pop up and become crunchy.'",
-        "Children point to the answer or say it aloud.",
-        "Optional: children make the described bread using playdough and show it.",
-        "After each answer, ask: 'How did you know?'",
-        "Let children create one simple clue: 'I am ___ and ___.'",
+        "The customer orders off the menu by pointing, and sets the table.",
+        "The chef cooks the ordered dish on mat-A's front (as in cooking).",
+        "Bill by token — drop each dish's price-coin into an invoice row and stack the coins in the total box.",
+        "Pay, then put the change in the change box.",
       ],
       prompts: [
-        "What clue helped you?",
-        "Can you describe your favourite bread?",
-        "Is it soft, crunchy, round, or flat?",
+        "Easy (3–4): order, cook and serve; count the plates — no money.",
+        "Medium (4–5): menu ₹1–₹10; pay and make change within 10 — a ₹6 bill paid with ₹10 gives ₹4 change.",
+        "How much is the bill? How much change is left?",
       ],
-      learningFocus: "Listening, reasoning, descriptive vocabulary, recall.",
+      learningFocus:
+        "Number sense (money, +/− within 10), problem solving (solves), curiosity (role-play).",
     },
     {
       number: 4,
-      title: "what comes next?",
-      time: "10–15 minutes",
-      concept: "Bread follows a sequence: seed → wheat → flour → dough → bread.",
+      title: "game 4 · recipe development",
+      time: "15–20 minutes",
+      concept:
+        "Invent a dish from the existing cards, predict it, then say why it works. Reaches the ★ of curiosity, problem solving and logic.",
       materials: [
-        "5 picture cards: seed, wheat, flour, dough, bread.",
-        "Table or floor space.",
-        "Optional printed sequence strip.",
+        "Ingredient + action cards.",
+        "The small tray + the cooking mat.",
+        "Play-dough.",
       ],
-      setup: "Shuffle the cards before the activity.",
+      setup:
+        "No recipe card — the child chooses ingredients into the tray (the tray caps the pile). The teacher notes the 'because' in their own notebook; there's no card to make.",
       howToConduct: [
-        "Say: 'Bread has a journey. Let's put the journey in order.'",
-        "Educator first says all stages randomly: 'bread, dough, wheat, flour, seed.'",
-        "Ask: 'Does wheat come first? Can bread come before dough? What comes before flour?'",
-        "Spread the picture cards on the floor.",
-        "Children arrange them in correct order: seed, wheat, flour, dough, bread.",
-        "Say the full sequence together.",
-        "Remove one card and ask: 'What is missing?'",
-        "End by acting it out together: tiny seed, tall wheat, grinding, kneading, eating bread.",
+        "Choose ingredients into the tray.",
+        "Lay your own action cards in order toward a goal ('make it drinkable in the glass').",
+        "Predict an observable — colour, count, pieces, halves or shape ('it'll be 3 yellow pieces').",
+        "Make it on the plate, name it, and check — did the prediction hold?",
+        "Say the 'because…'; the teacher notes it.",
       ],
       prompts: [
-        "What happens after wheat?",
-        "Can bread come before dough?",
-        "What do we need to make dough?",
-      ],
-      learningFocus: "Sequencing, process thinking, memory, cause and effect.",
-      images: [
-        {
-          src: "/wonderworld-book/projects/bread-4-what-comes-next.png",
-          alt: "what comes next? — bread journey from wheat to bread",
-        },
-      ],
-    },
-    {
-      number: 5,
-      title: "sieve the wheat & stone",
-      time: "10–15 minutes",
-      concept: "Grains are cleaned by separating food from non-food items.",
-      materials: [
-        "Rice / wheat / lentils.",
-        "Small pebbles or large beads.",
-        "1 tray per group.",
-        "2 small bowls: 'food' and 'not food'.",
-        "Sieve, optional.",
-      ],
-      setup: "Mix grains with a few stones/beads in each tray.",
-      howToConduct: [
-        "Say: 'Before wheat becomes flour, farmers clean it. Let's help.'",
-        "Show the mixed tray. Ask: 'Can we eat everything here?'",
-        "Children pick out grains and stones/beads.",
-        "Place grains in the 'food' bowl and stones/beads in the 'not food' bowl.",
-        "Try again with a sieve if available.",
-        "Compare: 'Was it easier with fingers or sieve?'",
-        "End: 'Sorting helps us make food clean and safe.'",
-      ],
-      prompts: [
-        "What belongs in the food bowl?",
-        "What should we remove?",
-        "How did you know?",
+        "Easy (3–4): combine 2–3 cards and name it; the teacher prompts one sense.",
+        "Medium (4–5): order the actions, predict an observable and check it, then justify the 'because'.",
+        "What do you think will happen? Did it happen?",
       ],
       learningFocus:
-        "Sorting, observation, food safety, fine motor precision.",
+        "Curiosity (predicts → investigates), problem solving (tries → solves), logic (reasons).",
     },
   ],
 };
 
-const CHEESE: Chapter = {
-  number: 2,
-  name: "say butter, say cheese",
-  caption:
-    "Some foods come from milk. Some pair well with cheese. Spreading and cutting build hand control. Memory builds the sandwich.",
-  activities: [
-    {
-      number: 1,
-      title: "make a pretend cheese",
-      time: "10–15 minutes",
-      concept: "Some foods pair well with cheese and some do not.",
-      materials: [
-        "Yellow playdough.",
-        "Plastic fruits/vegetables or picture cards from an existing deck.",
-        "2 sorting mats or bowls: 'yes with cheese' / 'not with cheese'.",
-      ],
-      setup:
-        "Give each child or group one cheese piece and a mixed basket of foods/cards.",
-      howToConduct: [
-        "Say: 'We are making pretend cheese. What tastes good with cheese?'",
-        "Children make one small cheese piece from playdough.",
-        "Pick one item at a time. Ask: 'Would this taste good with cheese?'",
-        "Children sort into two piles.",
-        "Ask them to explain: 'I put tomato here because…'",
-        "End by building one pretend cheese plate from the 'yes' pile.",
-      ],
-      prompts: [
-        "Would cheese go with cucumber?",
-        "Why did you put banana there?",
-        "What would you add to a sandwich?",
-      ],
-      learningFocus:
-        "Classification, food pairing, reasoning, expressive language.",
-      images: [
-        {
-          src: "/wonderworld-book/projects/cheese-1-make-a-pretend-cheese.png",
-          alt: "make a pretend cheese — children with giant cheese block and milk",
-        },
-      ],
-    },
-    {
-      number: 2,
-      title: "does it come from milk?",
-      time: "10–15 minutes",
-      concept: "Some foods are made from milk; some are not.",
-      materials: [
-        "Educator-read food list.",
-        "Optional: picture cards from existing deck.",
-      ],
-      setup: "Children sit in a circle with hands on knees.",
-      howToConduct: [
-        "Say: 'If the food comes from milk, clap. If it does not, keep your hands still.'",
-        "Educator slowly reads food names aloud.",
-        "Pause after each word and let children respond.",
-        "After a few rounds, ask: 'Why did we clap for butter?'",
-        "Repeat faster once children understand the game.",
-        "End by asking children to name one milk food.",
-      ],
-      prompts: [
-        "Does paneer come from milk?",
-        "Does banana come from milk?",
-        "What else is made from milk?",
-      ],
-      learningFocus:
-        "Categorisation, listening control, food source awareness.",
-      images: [
-        {
-          src: "/wonderworld-book/projects/cheese-2-does-it-come-from-milk.png",
-          alt: "does it come from milk? — food grid (milk, banana, paneer, butter, etc.)",
-        },
-      ],
-    },
-    {
-      number: 3,
-      title: "spread your butter",
-      time: "10–15 minutes",
-      concept: "Spreading needs pressure, control, and direction.",
-      materials: [
-        "Brown craft paper squares as toast.",
-        "Small yellow playdough pieces as butter.",
-        "Table mats.",
-        "Optional child-safe spreaders.",
-      ],
-      setup: "Give each child one toast paper and one butter piece.",
-      howToConduct: [
-        "Say: 'This is your toast. This is your butter. Can you spread it all over?'",
-        "Children place the butter in the centre of the toast.",
-        "Ask them to spread using one finger only.",
-        "Encourage them to move from middle to corners.",
-        "Ask: 'Which corner is still empty?'",
-        "Try again using thumb or child-safe spreader.",
-        "Compare: 'Which tool/finger worked best?'",
-      ],
-      prompts: [
-        "Can you reach the corner?",
-        "Do you need to press softly or hard?",
-        "Is your butter thick or thin?",
-      ],
-      learningFocus:
-        "Fine motor control, spatial awareness, pressure control, problem-solving.",
-    },
-    {
-      number: 4,
-      title: "cut your cheese into pieces",
-      time: "10–15 minutes",
-      concept: "One whole can be divided into smaller parts.",
-      materials: [
-        "Yellow playdough.",
-        "Clay tools or blunt plastic knives.",
-        "Mat.",
-      ],
-      setup: "Give each child or group one flat playdough cheese block.",
-      howToConduct: [
-        "Say: 'We have one big cheese. Let's share it.'",
-        "First cut into 2 pieces. Say: 'Now we have halves.'",
-        "Cut again into 4. Say: 'Now we have quarters.'",
-        "Cut some pieces into tiny cubes.",
-        "Ask children to count after each cut.",
-        "Compare: 'Are 4 pieces bigger or smaller than 2 pieces?'",
-        "End: 'When we cut more, each piece becomes smaller.'",
-      ],
-      prompts: [
-        "How many pieces now?",
-        "Which piece is bigger?",
-        "What happened when we cut again?",
-      ],
-      learningFocus:
-        "Early fractions, counting, size comparison, hand control.",
-      images: [
-        {
-          src: "/wonderworld-book/projects/cheese-4-cut-your-cheese.png",
-          alt: "cut your cheese into pieces — 1 whole, 2 halves, 4 quarters, 8 wedges",
-        },
-      ],
-    },
-    {
-      number: 5,
-      title: "the cheese sandwich game",
-      time: "10–15 minutes",
-      concept: "Children build and remember a sequence.",
-      materials: [
-        "Picture cards for bread, cheese, vegetables and sandwich ingredients from existing deck.",
-        "Optional DIY bread and cheese cards.",
-      ],
-      setup: "Children sit in a circle. Keep picture cards visible if using.",
-      howToConduct: [
-        "Say: 'I am making a cheese sandwich. What goes in it?'",
-        "First child says one ingredient.",
-        "Educator repeats: 'Now I have cheese and tomato.'",
-        "Next child adds another ingredient.",
-        "Educator repeats the full list each time.",
-        "Continue for as long as children can remember.",
-        "Use picture cards for support if needed.",
-        "Ask: 'What was first? What was last?'",
-      ],
-      prompts: [
-        "Can you remember the whole sandwich?",
-        "What comes after tomato?",
-        "What should we add next?",
-      ],
-      learningFocus:
-        "Working memory, sequencing, food vocabulary, turn-taking.",
-    },
-  ],
-};
-
-const SALAD: Chapter = {
-  number: 3,
-  name: "salad days",
-  caption:
-    "Cutting changes pieces. Salads are rainbows. Some food grows above the soil, some below. Recipes follow an order. Children become food detectives.",
-  activities: [
-    {
-      number: 1,
-      title: "cut your tomato",
-      time: "10–15 minutes",
-      concept: "Cutting changes size and number of pieces.",
-      materials: [
-        "Red playdough.",
-        "Clay tools or blunt plastic knives.",
-        "Mat.",
-      ],
-      setup: "Give each child or group one red playdough tomato.",
-      howToConduct: [
-        "Say: 'Let's make a tomato and cut it in different ways.'",
-        "Children roll a red playdough ball.",
-        "Cut it into 2 halves. Count: 1, 2.",
-        "Cut into 4 quarters. Count: 1, 2, 3, 4.",
-        "Make thin slices.",
-        "Make tiny cubes.",
-        "Compare all forms: whole, half, quarter, slice, cube.",
-        "End: 'Smaller pieces cook faster because heat reaches them quickly.'",
-      ],
-      prompts: [
-        "Which has the smallest pieces?",
-        "Which has the most pieces?",
-        "What changed after cutting?",
-      ],
-      learningFocus:
-        "Counting, comparison, early fractions, observation.",
-      images: [
-        {
-          src: "/wonderworld-book/projects/salad-1-cut-your-tomato.png",
-          alt: "cut your tomato — whole, halves, quarters, tiny cubes",
-        },
-      ],
-    },
-    {
-      number: 2,
-      title: "the rainbow tiffin",
-      time: "10–15 minutes",
-      concept: "Salads have different colours and food groups.",
-      materials: [
-        "Plastic/real food items or picture cards in different colours.",
-        "Tiffin tray or 4-section mat.",
-      ],
-      setup: "Place mixed vegetables/fruits in a basket.",
-      howToConduct: [
-        "Say: 'A salad can be a rainbow. Let's make a rainbow tiffin.'",
-        "Ask children to choose one red food. Place it in one section.",
-        "Choose one green food. Place it in another section.",
-        "Continue with orange and yellow.",
-        "Count the colours together.",
-        "Ask children to name each food and colour.",
-        "Ask: 'Which colour is missing? Can we add it?'",
-      ],
-      prompts: [
-        "Find something red.",
-        "What colour is cucumber?",
-        "How many colours are in your tiffin?",
-      ],
-      learningFocus:
-        "Colour sorting, classification, counting, vocabulary.",
-      images: [
-        {
-          src: "/wonderworld-book/projects/salad-2-rainbow-tiffin.png",
-          alt: "the rainbow tiffin — 4-quadrant tiffin with red, yellow, green, orange",
-        },
-      ],
-    },
-    {
-      number: 3,
-      title: "above or below the soil?",
-      time: "10–15 minutes",
-      concept:
-        "Some foods grow above the soil and some below.",
-      materials: [
-        "Picture cards or toy foods from existing deck.",
-        "Brown paper sheet to show soil line.",
-      ],
-      setup:
-        "Place the brown paper on the floor or table to create a soil line.",
-      howToConduct: [
-        "Say: 'Some foods grow above the soil. Some grow below. Let's sort them.'",
-        "Pick one card at a time.",
-        "Ask: 'Above or below?'",
-        "Children place the card on the correct side of the brown paper.",
-        "After each placement, ask children to explain their thinking.",
-        "End by reviewing all items together.",
-      ],
-      prompts: [
-        "Where does carrot grow?",
-        "How do you know tomato grows above?",
-        "Can you say: tomato grows above because…",
-      ],
-      learningFocus:
-        "Classification, plant awareness, reasoning, oral explanation.",
-      images: [
-        {
-          src: "/wonderworld-book/projects/salad-3-above-or-below.png",
-          alt: "above or below the soil? — sorting foods by where they grow",
-        },
-      ],
-    },
-    {
-      number: 4,
-      title: "follow the salad recipe",
-      time: "10–15 minutes",
-      concept:
-        "Recipes follow an order; order helps us make something correctly.",
-      materials: [
-        "Bowl or plate.",
-        "Pretend or real salad ingredients.",
-        "Spoon or tongs.",
-      ],
-      setup: "Arrange ingredients in separate bowls.",
-      howToConduct: [
-        "Say: 'A recipe tells us what to do first, next, and last.'",
-        "Educator gives each step verbally:",
-        "Step 1 — add the base.",
-        "Step 2 — add two vegetables.",
-        "Step 3 — add one topping.",
-        "Step 4 — mix gently.",
-        "Ask: 'What did we add first? What did we add last?'",
-        "Try a second round where children choose their own order, then compare.",
-        "End: 'When we follow steps, we make a recipe.'",
-      ],
-      prompts: [
-        "What comes first?",
-        "What comes after vegetables?",
-        "What happens if we mix before adding everything?",
-      ],
-      learningFocus:
-        "Sequencing, following instructions, decision-making, process thinking.",
-    },
-    {
-      number: 5,
-      title: "the salad quiz",
-      time: "10–15 minutes",
-      concept:
-        "Children classify foods by colour, texture, growing place, and category.",
-      materials: [
-        "Picture cards or toy foods from existing deck.",
-        "Basket or tray.",
-      ],
-      setup: "Place all items in a tray where children can see them.",
-      howToConduct: [
-        "Say: 'Today we are food detectives. I will ask questions. You find the answer.'",
-        "Round 1 — colour: 'Find something red. Find something green.'",
-        "Round 2 — texture: 'Which is crunchy? Which is soft?'",
-        "Round 3 — growing place: 'Which grows above the soil? Which grows below?'",
-        "Round 4 — odd one out: place 3–4 cards together and ask: 'Which one does not belong?'",
-        "Bonus: let children make their own quiz question for the educator.",
-      ],
-      prompts: [
-        "Why did you choose this?",
-        "What is same about these two?",
-        "What is different?",
-      ],
-      learningFocus:
-        "Reasoning, comparison, categorisation, expressive language.",
-      images: [
-        {
-          src: "/wonderworld-book/projects/salad-5-salad-quiz.png",
-          alt: "the salad quiz — tiffin with tomatoes, cucumber, carrots",
-        },
-      ],
-    },
-  ],
-};
-
-const CHAPTERS = [BREAD, CHEESE, SALAD] as const;
+const CHAPTERS = [GAMES] as const;
 
 // ─── Page renderers ──────────────────────────────────────────────
 
 /**
- * WonderWorld cover — uses the actual activity-book cover image so
- * teachers see the same artwork as the printed book. Same component
- * is reused as the books-row thumbnail (size="thumb") and as the
- * full first page of the flipbook (size="full").
+ * Little Kitchen cover — a text cover in the openhouse register (cream +
+ * coral). Reused as the books-row thumbnail (size="thumb") and as the full
+ * first page of the flipbook (size="full").
  */
 export function WonderWorldCoverArt({
   size = "full",
 }: {
   size?: "full" | "thumb";
 }) {
+  const isThumb = size === "thumb";
   return (
-    <div className="relative h-full w-full overflow-hidden bg-brand-cream">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src="/wonderworld-book/cover.png"
-        alt="the wonderworld book — what is in your tiffin?"
-        className="h-full w-full object-contain"
-        draggable={false}
-      />
+    <div className="flex h-full w-full flex-col items-center justify-center bg-brand-cream p-4 text-center">
+      <p
+        className={
+          isThumb
+            ? "text-[8px] font-bold tracking-normal text-brand-orange"
+            : "text-[11px] font-bold tracking-normal text-brand-orange"
+        }
+      >
+        stem · ages 3–5
+      </p>
+      <h1
+        className={
+          isThumb
+            ? "mt-1 text-[16px] font-extrabold lowercase leading-none text-ink"
+            : "mt-2 text-[40px] font-extrabold lowercase leading-none text-ink md:text-[52px]"
+        }
+      >
+        little
+        <br />
+        kitchen
+      </h1>
+      <p
+        className={
+          isThumb
+            ? "mt-1.5 text-[7px] italic leading-tight text-ink-muted"
+            : "mt-4 max-w-xs text-[12px] italic leading-relaxed text-ink-muted md:text-[13px]"
+        }
+      >
+        a counting · sorting · money · pretend-play kit — one kit, four games
+      </p>
     </div>
   );
 }
@@ -583,13 +223,21 @@ function TocPage() {
         contents
       </p>
       <h2 className="mt-2 text-[22px] font-extrabold lowercase leading-tight text-ink md:text-[26px]">
-        three chapters · fifteen activities
+        one kit · four games
       </h2>
       <ol className="mt-4 space-y-3 overflow-y-auto pr-2 scroll-visible">
+        <li>
+          <p className="text-[10px] font-bold tracking-normal text-ink-subtle">
+            start here
+          </p>
+          <p className="mt-0.5 text-[14px] font-extrabold lowercase text-ink">
+            what&apos;s in the box &amp; how it works
+          </p>
+        </li>
         {CHAPTERS.map((c) => (
           <li key={c.name}>
             <p className="text-[10px] font-bold tracking-normal text-ink-subtle">
-              chapter {c.number}
+              the games
             </p>
             <p className="mt-0.5 text-[14px] font-extrabold lowercase text-ink">
               {c.name}
@@ -614,11 +262,74 @@ function TocPage() {
   );
 }
 
+/** The kit intro page — what's in the box, how counting works, how to read a
+ *  recipe, the dishes, and how to read the play. */
+function KitPage() {
+  return (
+    <div className="flex h-full w-full flex-col bg-brand-cream p-5 md:p-7">
+      <div>
+        <p className="text-[10px] font-bold tracking-normal text-ink-subtle">
+          the little kitchen kit
+        </p>
+        <h3 className="mt-1 text-[20px] font-extrabold lowercase leading-tight text-ink md:text-[24px]">
+          what&apos;s in the box &amp; how it works
+        </h3>
+      </div>
+      <div className="mt-3 flex-1 overflow-y-auto pr-1 scroll-visible">
+        <Section
+          label="what's in the box"
+          items={[
+            "Fruit cards (10) + vegetable cards (10); dairy cards (4) + pantry cards (6).",
+            "Action cards — stir, pour, scoop, heat, cool, cut, mould (pretend only).",
+            "Dish / recipe cards — 18 dishes, ring-bound by tier: ★ (for 3–4) and ★★ (for 4–5).",
+            "Two A3 cooking mats — front: work-plate (½ & ¼ lines) + a glass + a number track 1–20; back: menu | invoice.",
+            "Number tokens (1–10), a small tray, play-dough + clay tools, and pretend money ₹1 · ₹2 · ₹5 · ₹10.",
+          ]}
+        />
+        <p className="mt-3 text-[10px] font-bold tracking-normal text-brand-orange">
+          how counting works (dots)
+        </p>
+        <p className="mt-1 text-[11.5px] leading-relaxed text-ink-muted">
+          Quantity is always shown as a matching number of dots. The child
+          places one play-dough portion per dot (level a), then finds the number
+          on the mat&apos;s track. To add (level b), combine two dot-groups,
+          count them all, and place the number token for the total.
+        </p>
+        <p className="mt-3 text-[10px] font-bold tracking-normal text-brand-orange">
+          how to read a recipe — no words
+        </p>
+        <p className="mt-1 text-[11.5px] leading-relaxed text-ink-muted">
+          Pick a dish by its front picture, then turn it over: the dots tell you
+          how many of each ingredient (one portion per dot), a ½-glass means
+          fill to half, and the numbered little pictures show the order of the
+          actions.
+        </p>
+        <Section
+          label="the dishes"
+          items={[
+            "★ dishes, for 3–4 (just count): fruit bowl, fruit salad, lassi, banana milkshake, orange juice, mashed potato, carrot salad, mango shrikhand, paneer cubes.",
+            "★★ dishes, for 4–5 (count and add): vegetable salad, mixed-fruit lassi, vegetable soup, vegetable rice, aloo sabzi, palak paneer, paneer bhurji, fruity milk bowl, cauliflower fry.",
+            "18 dishes in all — a class can cook for months without repeating (and re-cooking a favourite is good practice).",
+          ]}
+        />
+        <p className="mt-3 text-[10px] font-bold tracking-normal text-brand-orange">
+          reading the play — no scores
+        </p>
+        <p className="mt-1 text-[11.5px] leading-relaxed text-ink-muted">
+          Watch the move, not the answer. Assisted = progressing; unaided and
+          repeated = secured. &quot;Not yet&quot; is the only fail state — about
+          timing, not the child. Place by observation, not age.
+        </p>
+      </div>
+    </div>
+  );
+}
+
 function ChapterCoverPage({ chapter }: { chapter: Chapter }) {
   return (
     <div className="flex h-full w-full flex-col items-center justify-center bg-brand-cream p-6 text-center md:p-10">
       <p className="text-[10px] font-bold tracking-normal text-brand-orange">
-        chapter {chapter.number}
+        the games
       </p>
       <h3 className="mt-2 text-[26px] font-extrabold lowercase leading-tight text-ink md:text-[32px]">
         {chapter.name}
@@ -627,7 +338,7 @@ function ChapterCoverPage({ chapter }: { chapter: Chapter }) {
         {chapter.caption}
       </p>
       <p className="mt-5 text-[10.5px] italic text-ink-subtle">
-        {chapter.activities.length} activities
+        {chapter.activities.length} games · played easy (3–4) and medium (4–5)
       </p>
     </div>
   );
@@ -644,7 +355,7 @@ function ActivityPage({
     <div className="flex h-full w-full flex-col gap-3 overflow-hidden bg-brand-cream p-5 md:p-7">
       <div>
         <p className="text-[10px] font-bold tracking-normal text-ink-subtle">
-          {chapterName} · activity {activity.number} · {activity.time}
+          {chapterName} · {activity.time}
         </p>
         <h3 className="mt-1 text-[20px] font-extrabold lowercase leading-tight text-ink md:text-[24px]">
           {activity.title}
@@ -653,23 +364,23 @@ function ActivityPage({
 
       <div className="flex-1 overflow-y-auto pr-1 scroll-visible">
         <p className="text-[10px] font-bold tracking-normal text-brand-orange">
-          concept
+          what it is
         </p>
         <p className="mt-1 text-[11.5px] leading-relaxed text-ink-muted">
           {activity.concept}
         </p>
 
-        <Section label="materials needed" items={activity.materials} />
+        <Section label="what you need" items={activity.materials} />
 
         <p className="mt-3 text-[10px] font-bold tracking-normal text-brand-orange">
-          teacher setup
+          before you start
         </p>
         <p className="mt-1 text-[11.5px] leading-relaxed text-ink-muted">
           {activity.setup}
         </p>
 
         <p className="mt-4 text-[10px] font-bold tracking-normal text-brand-orange">
-          how to conduct
+          how to play
         </p>
         <ol className="mt-1.5 space-y-1.5">
           {activity.howToConduct.map((s, i) => (
@@ -685,10 +396,10 @@ function ActivityPage({
           ))}
         </ol>
 
-        <Section label="educator prompts" items={activity.prompts} />
+        <Section label="two ways to play &amp; prompts" items={activity.prompts} />
 
         <p className="mt-3 text-[10px] font-bold tracking-normal text-brand-orange">
-          learning focus
+          what it builds
         </p>
         <p className="mt-1 text-[11.5px] leading-relaxed text-ink-muted">
           {activity.learningFocus}
@@ -732,7 +443,7 @@ function ActivityPhotoPage({
     <div className="flex h-full w-full flex-col bg-brand-cream p-5 md:p-7">
       <div className="shrink-0 text-center">
         <p className="text-[10px] font-bold tracking-normal text-ink-subtle">
-          {chapterName} · activity {activity.number}
+          {chapterName}
           {image.caption ? ` · ${image.caption}` : ""}
         </p>
         <h3 className="mt-1 text-[16px] font-extrabold lowercase leading-tight text-ink md:text-[18px]">
@@ -755,6 +466,7 @@ function buildPages(): FlipbookPage[] {
   const pages: FlipbookPage[] = [];
   pages.push({ kind: "node", node: <CoverPage /> });
   pages.push({ kind: "node", node: <TocPage /> });
+  pages.push({ kind: "node", node: <KitPage /> });
   for (const chapter of CHAPTERS) {
     pages.push({ kind: "node", node: <ChapterCoverPage chapter={chapter} /> });
     for (const activity of chapter.activities) {
@@ -816,13 +528,13 @@ export function WonderWorldBookModal({
             educator reference
           </p>
           <h2 className="truncate text-[18px] font-extrabold lowercase leading-tight md:text-[22px]">
-            the wonderworld book · stem 3–5
+            the little kitchen book · stem 3–5
           </h2>
         </div>
         <button
           onClick={onClose}
           className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/15 text-white transition hover:bg-white/25"
-          aria-label="close wonderworld book"
+          aria-label="close little kitchen book"
         >
           <X className="h-4 w-4" />
         </button>
@@ -832,12 +544,12 @@ export function WonderWorldBookModal({
         <div className="mx-auto w-full max-w-3xl px-3 py-5 md:px-6 md:py-8">
           <div className="rounded-2xl bg-white p-3 shadow-card ring-1 ring-ink/5 md:p-5">
             <p className="mb-3 text-[11px] italic leading-relaxed text-ink-muted md:text-[12px]">
-              One book all year — bread, cheese, salad. 15 activities, each
-              met twice across 30 sessions.
+              One kit, four games that grow with the child — played easy (3–4)
+              and medium (4–5). No scores, no winners.
             </p>
             <ImageFlipbook
               pages={pages}
-              altPrefix="wonderworld book page"
+              altPrefix="little kitchen book page"
             />
           </div>
         </div>

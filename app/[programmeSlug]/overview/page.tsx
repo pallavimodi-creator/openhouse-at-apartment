@@ -3716,8 +3716,8 @@ function ProgrammeOverviewContent() {
             kind: "modal",
             modalKey: "wonderworld-3-5",
             cover: "/prog-stem-3-5.png",
-            title: "the wonderworld book",
-            subtitle: "educator reference · 3 chapters · 15 activities",
+            title: "the little kitchen book",
+            subtitle: "educator reference · one kit · four games",
           });
           books.push({
             kind: "modal",
