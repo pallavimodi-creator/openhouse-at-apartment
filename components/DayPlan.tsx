@@ -146,6 +146,12 @@ const SEGMENT_FIELD_MAP: Record<string, keyof CurriculumSessionEntry> = {
 // "(re-visit)" flag so the day plan can mark second / third meetings.
 const REVISIT_SEGMENTS = new Set(["imagine-playground", "wonder-world"]);
 
+// Segments that run on only one of the alternating session types (STEM 3-5:
+// Imagine Playground on Session A, WonderWorld on Session B). A session assigns
+// exactly one of them, so the other must be hidden for that class — otherwise
+// the plan shows both game blocks and the class time double-counts.
+const SESSION_EXCLUSIVE_SEGMENTS = new Set(["imagine-playground", "wonder-world"]);
+
 /**
  * Returns true if `assignedId` has already appeared in any session
  * before the current `sessionNumber` on the same `fieldKey` of the
@@ -168,10 +174,13 @@ function resolveSegments(
   programme: CurriculumProgramme,
   session: CurriculumSessionEntry
 ): ResolvedSegment[] {
-  return programme.segmentDefinitions.map((segDef) => {
+  return programme.segmentDefinitions.flatMap((segDef) => {
     const actMap = programme.activities;
     const fieldKey = SEGMENT_FIELD_MAP[segDef.id];
     const assignedId = fieldKey ? (session[fieldKey] as string | undefined) : undefined;
+    // A session-exclusive segment (Imagine Playground / WonderWorld) only runs
+    // on the session type that assigns it — hide it on the other type.
+    if (SESSION_EXCLUSIVE_SEGMENTS.has(segDef.id) && !assignedId) return [];
     const isRevisit =
       REVISIT_SEGMENTS.has(segDef.id) && fieldKey && assignedId
         ? hasAppearedEarlier(programme, fieldKey, assignedId, session.sessionNumber)
