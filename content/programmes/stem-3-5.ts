@@ -617,398 +617,177 @@ const imaginePlaygroundProjects: Record<string, CurriculumActivity> = {
  * Lesson-plan detail lives in components/WonderWorldBookModal.tsx. */
 
 const wonderWorldActivities: Record<string, CurriculumActivity> = {
-  // Chapter 1 — The Bread (5 activities)
-  "ww-bread-1-punch-and-squish": {
-    id: "ww-bread-1-punch-and-squish",
+  // The Little Kitchen kit — one kit, four repeatable games that grow with the
+  // child (played two ways: easy 3–4 · medium 4–5). Replaces the earlier
+  // one-off tiffin activities. No scores, no winners — the educator reads the
+  // play as observation. Source: lexagod little_kitchen game design.
+  "kg-sort-guess": {
+    id: "kg-sort-guess",
     segment: "wonder-world",
-    title: "punch and squish",
-    setupLine: "Knead playdough — count the presses, feel the change.",
+    title: "little kitchen · sort & guess",
+    setupLine: "Sort real foods by a true rule, then guess a hidden one by ruling out.",
     howToPlay:
-      "Children press and knead beige playdough, counting from 1 to 10 each round. They notice how dough changes — flat, soft, warm, smooth. Material transformation, hand strength, counting, observation.",
-    materials: ["Beige/yellow playdough", "Tiffin mat or A4 sheet"],
-    debriefPrompts: [],
-    type: "physical-game",
-  },
-  "ww-bread-2-make-a-bread": {
-    id: "ww-bread-2-make-a-bread",
-    segment: "wonder-world",
-    title: "make a bread from somewhere in the world",
-    setupLine: "Each child shapes one kind of bread.",
-    howToPlay:
-      "Bread comes in many shapes. Each child chooses one — round chapati, long loaf, tiny bun, or square slice — and makes it from playdough. Children compare biggest, smallest, round, long.",
-    materials: ["Beige/yellow playdough", "4-section tiffin mat"],
-    debriefPrompts: [],
-    type: "physical-game",
-  },
-  "ww-bread-3-bread-riddles": {
-    id: "ww-bread-3-bread-riddles",
-    segment: "wonder-world",
-    title: "bread riddles",
-    setupLine: "Listen to the clue — guess the bread.",
-    howToPlay:
-      "Educator gives clues ('I am round and flat. I puff on the pan'). Children point to the matching picture or playdough bread. Then children invent their own clues.",
-    players: "3–8 children · 1 educator",
-    duration: "35 min",
-    goal: "the child listens to a clue and points to the bread it describes.",
+      "Children sort the food cards into two piles by a true rule, count each pile, then one child hides a card and gives clues while the others rule cards out until they name it.",
+    players: "2–4 children · 1 educator",
+    duration: "15–20 min",
+    goal: "the child sorts food cards by a true rule, then names a hidden card from clues.",
     steps: [
-      "lay the picture cards or playdough breads out where every child can see them.",
-      "give one clue at a time — for example 'i am round and flat. i puff on the pan.'",
-      "the child listens and points to the matching bread.",
-      "confirm the answer and name the bread together.",
-      "once children have caught on, let each child invent their own clue for the group to guess.",
+      "lay out the food cards face-up.",
+      "name a true rule — fruit / vegetable, or grows underground / above ground (by the part we eat).",
+      "sort the cards into two piles on the table.",
+      "count each pile and find its number on the mat's number track — which has more?",
+      "one child hides a card and gives clues in their own words; the others turn ruled-out cards face-down, then name the card and say the \"because…\".",
     ],
-    endsWhen: "every child has both guessed a clue and invented one for the group.",
+    endsWhen: "the hidden card is named.",
     easierVariation:
-      "give a very simple clue with the shape word — 'i am round' — and point roughly at the cards.",
+      "one rule, teacher-named; sort and count one pile; skip the guess (level a, 3–4).",
     harderVariation:
-      "the child invents a two-part clue that names shape and how it is cooked, and the group has to guess.",
-    skillIds: ["logic", "curiosity"],
-    materials: ["Picture cards (chapati, loaf, bun, toast)"],
-    debriefPrompts: [],
-    type: "physical-game",
-  },
-  "ww-bread-4-what-comes-next": {
-    id: "ww-bread-4-what-comes-next",
-    segment: "wonder-world",
-    title: "what comes next?",
-    setupLine: "Put the bread journey in order.",
-    howToPlay:
-      "5 cards — seed, wheat, flour, dough, bread. Children arrange them in order, then act out the sequence with their bodies (tiny seed → tall wheat → grinding → kneading → eating).",
-    players: "3–8 children · 1 educator",
-    duration: "35 min",
-    goal: "the child puts the 5 bread journey cards in order and acts each step out.",
-    steps: [
-      "spread the 5 cards face up in a mixed order in front of the child.",
-      "the child looks at each card and picks which one comes first.",
-      "the child lays the cards left to right in the order they think is right.",
-      "check the order together — seed, wheat, flour, dough, bread.",
-      "the child acts out each step with their body — tiny seed, tall wheat, grinding, kneading, eating.",
-    ],
-    endsWhen: "the child has laid the 5 cards in the right order and acted every step.",
-    easierVariation:
-      "give the child only the first and last card and ask which comes first.",
-    harderVariation:
-      "the child adds their own sixth card — what happens after the bread — and acts it out.",
-    skillIds: ["logic", "curiosity"],
-    materials: ["5 picture cards (seed, wheat, flour, dough, bread)"],
-    debriefPrompts: [],
-    type: "physical-game",
-  },
-  "ww-bread-5-sieve": {
-    id: "ww-bread-5-sieve",
-    segment: "wonder-world",
-    title: "sieve the wheat & stone",
-    setupLine: "Sort the food from the not-food.",
-    howToPlay:
-      "Children pick out grains and stones/beads from a mixed tray, placing them in 'food' and 'not food' bowls. Then they try a sieve and compare.",
-    players: "3–8 children · 1 educator",
-    duration: "35 min",
-    goal: "the child sorts grains from stones into 'food' and 'not food' bowls.",
-    steps: [
-      "fill a tray with a mix of grains and stones or beads.",
-      "place two bowls next to the tray — one labelled 'food', one 'not food'.",
-      "the child picks pieces out one at a time, deciding which bowl each belongs in.",
-      "keep going until the tray is empty and everything is sorted.",
-      "then give the child a sieve and let them try sorting the same mix again — compare which was faster.",
-    ],
-    endsWhen: "the tray is empty and every piece has landed in the right bowl, both by hand and with the sieve.",
-    easierVariation:
-      "use only two clearly different items — big pebbles and rice — so the choice is obvious.",
-    harderVariation:
-      "mix in items of similar size and race a friend to see who sorts fastest with the sieve.",
-    skillIds: ["logic", "problem-solving", "curiosity"],
-    materials: ["Rice/wheat/lentils", "Pebbles or large beads", "Tray", "2 bowls", "Sieve (optional)"],
-    debriefPrompts: [],
-    type: "physical-game",
-  },
-
-  // Chapter 2 — Say Cheese (5 activities)
-  "ww-cheese-1-make-a-pretend-cheese": {
-    id: "ww-cheese-1-make-a-pretend-cheese",
-    segment: "wonder-world",
-    title: "make a pretend cheese",
-    setupLine: "Sort foods into 'yes with cheese' / 'not with cheese'.",
-    howToPlay:
-      "Children make a pretend cheese piece from yellow playdough, then sort foods into two piles — what tastes good with cheese, what doesn't. They explain their choice each time.",
-    players: "3–8 children · 1 educator",
-    duration: "35 min",
-    goal: "the child sorts foods into 'yes with cheese' and 'not with cheese' piles.",
-    steps: [
-      "the child shapes a pretend cheese piece from yellow playdough.",
-      "lay two sorting mats — one 'yes with cheese', one 'not with cheese'.",
-      "the child picks one food card or plastic food at a time.",
-      "the child places it on the mat they think fits and says why.",
-      "keep going until every food is sorted onto one of the two mats.",
-    ],
-    endsWhen: "every food card has been placed on one of the two sorting mats and explained.",
-    easierVariation:
-      "use only three or four very obvious foods — the child sorts and you name the group.",
-    harderVariation:
-      "add tricky foods where the child has to argue why they belong on their chosen mat.",
-    skillIds: ["logic", "problem-solving"],
-    materials: ["Yellow playdough", "Plastic foods or picture cards", "2 sorting mats"],
-    debriefPrompts: [],
-    type: "physical-game",
-  },
-  "ww-cheese-2-does-it-come-from-milk": {
-    id: "ww-cheese-2-does-it-come-from-milk",
-    segment: "wonder-world",
-    title: "does it come from milk?",
-    setupLine: "Clap if it comes from milk.",
-    howToPlay:
-      "Educator reads a food name. If it comes from milk (butter, paneer, cheese, yoghurt), children clap. If not, hands stay still. Builds categorisation and listening control.",
-    players: "whole class · 1 educator",
-    duration: "35 min",
-    goal: "the child claps only when the food you name comes from milk.",
-    steps: [
-      "gather the children in a circle where everyone can see you.",
-      "explain the rule — clap if it comes from milk, hands still if it doesn't.",
-      "read a food name aloud, one at a time.",
-      "pause and check who clapped and who kept still.",
-      "confirm the answer and keep going through the list.",
-    ],
-    endsWhen: "you have read through the whole food list and every food has been clap-checked.",
-    easierVariation:
-      "hold up a picture card as you say each food so the child can see what it is.",
-    harderVariation:
-      "read faster and mix in tricky foods like ice cream or ghee — the child has to decide quickly.",
-    skillIds: ["logic", "curiosity"],
-    materials: ["Educator-read food list (optional picture cards)"],
-    debriefPrompts: [],
-    type: "physical-game",
-  },
-  "ww-cheese-3-spread-your-butter": {
-    id: "ww-cheese-3-spread-your-butter",
-    segment: "wonder-world",
-    title: "spread your butter",
-    setupLine: "Spread the butter all over the toast.",
-    howToPlay:
-      "Children get a brown craft-paper 'toast' and a small playdough 'butter'. They spread it from the centre to every corner using one finger, then thumb, then a child-safe spreader. They compare which tool worked best.",
-    materials: ["Brown craft paper squares", "Small yellow playdough pieces", "Child-safe spreaders (optional)"],
-    debriefPrompts: [],
-    type: "physical-game",
-  },
-  "ww-cheese-4-cut-your-cheese": {
-    id: "ww-cheese-4-cut-your-cheese",
-    segment: "wonder-world",
-    title: "cut your cheese into pieces",
-    setupLine: "Cut a whole into halves, quarters, cubes.",
-    howToPlay:
-      "Starting with one playdough cheese block, children cut into 2, then 4, then tiny cubes. They count after each cut and compare: 'are 4 pieces bigger or smaller than 2?' Early fractions and size comparison.",
-    materials: ["Yellow playdough", "Clay tools or blunt plastic knives"],
-    debriefPrompts: [],
-    type: "physical-game",
-  },
-  "ww-cheese-5-sandwich-game": {
-    id: "ww-cheese-5-sandwich-game",
-    segment: "wonder-world",
-    title: "the cheese sandwich game",
-    setupLine: "Build the sandwich one ingredient at a time.",
-    howToPlay:
-      "Memory and sequencing game. First child names one ingredient. Next child adds another. Each child must repeat the full sandwich so far. Educator uses picture cards if support is needed.",
-    players: "3–8 children · 1 educator",
-    duration: "35 min",
-    goal: "the child adds one ingredient to a shared sandwich after repeating everything that came before.",
-    steps: [
-      "sit the children in a circle. lay the picture cards out for backup.",
-      "the first child names one ingredient — 'i am putting bread'.",
-      "the next child repeats the first and adds one more — 'i am putting bread and cheese'.",
-      "keep going around the circle, each child repeating the whole sandwich and adding one new ingredient.",
-      "if a child forgets, they check the picture cards to recover.",
-    ],
-    endsWhen: "every child has taken a turn and the sandwich has grown one ingredient per child.",
-    easierVariation:
-      "the child picks and names an ingredient from a picture card — they don't need to repeat the full sandwich.",
-    harderVariation:
-      "no picture cards — the child holds the full sandwich in their head and adds one more.",
-    skillIds: ["logic", "curiosity"],
-    materials: ["Picture cards (bread, cheese, vegetables, sandwich ingredients)"],
-    debriefPrompts: [],
-    type: "physical-game",
-  },
-
-  // Chapter 3 — Salad Days (5 activities)
-  "ww-salad-1-cut-your-tomato": {
-    id: "ww-salad-1-cut-your-tomato",
-    segment: "wonder-world",
-    title: "cut your tomato",
-    setupLine: "Cut the tomato many ways and compare.",
-    howToPlay:
-      "Children roll a red playdough tomato and cut it into halves, quarters, slices, then tiny cubes. They compare which has the most pieces, which has the smallest pieces, and discuss why smaller pieces cook faster.",
-    materials: ["Red playdough", "Clay tools or blunt plastic knives"],
-    debriefPrompts: [],
-    type: "physical-game",
-  },
-  "ww-salad-2-rainbow-tiffin": {
-    id: "ww-salad-2-rainbow-tiffin",
-    segment: "wonder-world",
-    title: "the rainbow tiffin",
-    setupLine: "Fill the tiffin with one food per colour.",
-    howToPlay:
-      "Children pick one red food, one green, one orange, one yellow — and place each in its tiffin section. They name the food and the colour, count the colours, and notice what's missing.",
-    players: "3–8 children · 1 educator",
-    duration: "35 min",
-    goal: "the child fills a 4-section tiffin with one food per colour.",
-    steps: [
-      "place the tiffin tray or 4-section mat in front of the child.",
-      "spread out the plastic foods or coloured picture cards.",
-      "the child picks one red food and places it in one section.",
-      "the child picks a green, an orange, and a yellow food and fills the other three sections.",
-      "the child names each food and colour, and says which colours are missing.",
-    ],
-    endsWhen: "the child's tiffin has one food in every section, one per colour.",
-    easierVariation:
-      "you name the colour and the child just finds a food to match.",
-    harderVariation:
-      "add more colours or rules — like 'no colour can repeat and each food has to grow above the soil'.",
+      "the child chooses the rule, compares both piles, then gives free spoken clues for the guess (level b, 4–5).",
     skillIds: ["logic", "number-sense", "curiosity"],
-    materials: ["Plastic foods or coloured picture cards", "Tiffin tray or 4-section mat"],
+    materials: [
+      "Fruit cards (10) + vegetable cards (10)",
+      "The cooking mat's number track (1–20)",
+    ],
+    educatorNote:
+      "A rule must be TRUE. Underground foods are potato, carrot, radish, onion, beetroot — everything else grows above ground. Never sort by colour (apple, grapes come in more than one).",
+    variations: [
+      { name: "Two children", description: "One sorts, one checks and counts." },
+      { name: "Small group", description: "Each child owns a pile." },
+      { name: "Level up", description: "Sort by both rules in turn." },
+      { name: "Level down", description: "The teacher places the first card." },
+    ],
     debriefPrompts: [],
     type: "physical-game",
   },
-  "ww-salad-3-above-or-below": {
-    id: "ww-salad-3-above-or-below",
+  "kg-cooking": {
+    id: "kg-cooking",
     segment: "wonder-world",
-    title: "above or below the soil?",
-    setupLine: "Sort foods by where they grow.",
+    title: "little kitchen · cooking",
+    setupLine: "Follow a picture recipe — count with dots and put the steps in order.",
     howToPlay:
-      "A brown paper sheet marks the soil line. Children take cards one at a time and place each above or below the line. Each placement is explained — 'tomato grows above because…'. Plant awareness and reasoning.",
-    players: "3–8 children · 1 educator",
-    duration: "35 min",
-    goal: "the child sorts food cards above or below the soil line by where they grow.",
+      "Children pick a dish card, count one play-dough portion per dot on the recipe, lay the action cards in order, then cook the dish on the mat's plate.",
+    players: "2–4 children · 1 educator",
+    duration: "15–20 min",
+    goal: "the child cooks a dish by counting play-dough portions to the dots and sequencing the action cards.",
     steps: [
-      "lay the brown paper sheet flat — this is the soil.",
-      "stack the picture cards face down beside it.",
-      "the child takes one card from the top of the stack.",
-      "the child places it above or below the soil line and says why — 'tomato grows above because…'.",
-      "keep going until the whole stack is placed.",
+      "pick a dish card and turn it over to the recipe (count-dots, a ½-glass, numbered steps).",
+      "place one play-dough portion per dot and find the total on the mat's number track.",
+      "lay the action cards in a row to match the numbered steps.",
+      "cook on the plate — mould the dish, halve on the ½ / ¼ lines, fill the glass to ½.",
+      "check and re-do any step that misfired.",
     ],
-    endsWhen: "every food card is placed above or below the soil line with a reason.",
+    endsWhen: "the dish is cooked and served.",
     easierVariation:
-      "you hold up two clear examples first — potato and tomato — and let the child copy the idea.",
+      "a 2–3 ingredient ★ dish (fruit bowl, lassi); count to ~10, one portion per dot (level a).",
     harderVariation:
-      "add tricky cards like carrot leaves and onions where part grows above and part below — the child decides and defends the choice.",
-    skillIds: ["logic", "curiosity"],
-    materials: ["Picture cards (foods that grow above and below)", "Brown paper sheet"],
+      "a 3–4 ingredient ★★ dish; add two dot-groups within 10 and place the number token for the total, then halve on the ½ line (level b).",
+    skillIds: ["number-sense", "problem-solving", "logic"],
+    materials: [
+      "Dish / recipe cards (18 dishes, ★ and ★★ rings)",
+      "Ingredient + action cards",
+      "The cooking mat (number track + ½ / ¼ plate + glass)",
+      "Play-dough + number tokens (1–10)",
+    ],
+    namedBlocks: [
+      {
+        title: "how to read a recipe — no words",
+        body:
+          "Pick a dish by its front picture, then turn it over: the dots tell you how many of each ingredient (one play-dough portion per dot), a ½-glass means fill to half, and the numbered little pictures show the order of the actions.",
+      },
+    ],
+    variations: [
+      { name: "Kitchen line", description: "Each child does one action in turn." },
+      { name: "Read & cook", description: "One child reads the dots, one cooks." },
+      { name: "Level up", description: "Halve or share a portion." },
+      { name: "Level down", description: "The teacher pre-places the portions, the child counts." },
+    ],
     debriefPrompts: [],
     type: "physical-game",
   },
-  "ww-salad-4-follow-the-recipe": {
-    id: "ww-salad-4-follow-the-recipe",
+  "kg-restaurant": {
+    id: "kg-restaurant",
     segment: "wonder-world",
-    title: "follow the salad recipe",
-    setupLine: "First, next, last — follow the steps.",
+    title: "little kitchen · restaurant",
+    setupLine: "Run a café — take orders, cook, bill and make change with pretend money.",
     howToPlay:
-      "Educator gives a salad recipe one step at a time — base, vegetables, topping, mix. Children follow in order, then a second round where they choose their own order and compare results. Sequencing and decision-making.",
-    players: "3–8 children · 1 educator",
-    duration: "35 min",
-    goal: "the child follows a salad recipe step by step, then chooses their own order.",
+      "Children take roles (customer, chef, cashier), order off the menu, cook the dish, then bill and make change with pretend money on the invoice mat.",
+    players: "2–4 children · 1 educator",
+    duration: "15–20 min",
+    goal: "the child runs a café off the menu and invoice — ordering, cooking, billing and making change.",
     steps: [
-      "place a bowl or plate in front of the child with the salad ingredients spread beside it.",
-      "call the first step — 'first, add the base'. the child adds it.",
-      "call the next steps in order — vegetables, topping, mix — one at a time.",
-      "the child finishes the first salad in the given order.",
-      "run a second round where the child picks their own order and compares the two salads.",
+      "set up — flip one mat to its menu | invoice back; take roles customer · chef · cashier (with two children, one is chef and cashier).",
+      "the customer orders off the menu by pointing, and sets the table.",
+      "the chef cooks the dish on the plate (as in cooking).",
+      "bill by token — drop each dish's price-coin into an invoice row and stack the coins in the total box.",
+      "pay, then put the change in the change box.",
     ],
-    endsWhen: "the child has made one salad following your recipe and one salad in their own chosen order.",
+    endsWhen: "the bill is paid and change is given.",
     easierVariation:
-      "run only two steps — base and topping — so the child holds a shorter sequence.",
+      "order, cook and serve; count the plates — no money (level a).",
     harderVariation:
-      "the child plans the full recipe before touching anything and only starts once they can say every step in order.",
-    skillIds: ["logic", "problem-solving"],
-    materials: ["Bowl or plate", "Pretend or real salad ingredients", "Spoon/tongs"],
+      "menu ₹1–₹10; pay and make change within 10 — a ₹6 bill paid with ₹10 gives ₹4 change (level b).",
+    skillIds: ["number-sense", "problem-solving", "curiosity"],
+    materials: [
+      "Two cooking mats (one on its menu | invoice back)",
+      "Dish cards",
+      "Pretend money — ₹1 · ₹2 · ₹5 · ₹10",
+    ],
+    variations: [
+      { name: "Swap roles", description: "Change roles each order." },
+      { name: "Busy café", description: "More orders come in at once." },
+      { name: "Level up", description: "A 2-dish bill, total ≤ ₹10." },
+      { name: "Level down", description: "Every dish costs ₹1." },
+    ],
     debriefPrompts: [],
     type: "physical-game",
   },
-  "ww-salad-5-salad-quiz": {
-    id: "ww-salad-5-salad-quiz",
+  "kg-recipe-dev": {
+    id: "kg-recipe-dev",
     segment: "wonder-world",
-    title: "the salad quiz",
-    setupLine: "Be a food detective — find the answer.",
+    title: "little kitchen · recipe development",
+    setupLine: "Invent your own dish from the cards, predict it, then say why it works.",
     howToPlay:
-      "Four rounds — colour ('find something red'), texture ('which is crunchy?'), growing place ('which grows below?'), and odd one out ('which doesn't belong?'). Children explain their reasoning each time.",
-    players: "3–8 children · 1 educator",
-    duration: "35 min",
-    goal: "the child answers a food detective question each round and explains why.",
+      "Children choose ingredients into the tray, sequence their own action cards toward a goal, predict an observable, make and name the dish, then say why it works.",
+    players: "2–4 children · 1 educator",
+    duration: "15–20 min",
+    goal: "the child invents a dish, predicts an observable, makes it, and says the \"because…\".",
     steps: [
-      "spread the picture cards or toy foods on a tray in the middle.",
-      "round 1 — colour: ask 'find something red' and the child picks a card and says why.",
-      "round 2 — texture: ask 'which is crunchy?' and the child picks and explains.",
-      "round 3 — growing place: ask 'which grows below?' and the child picks and explains.",
-      "round 4 — odd one out: lay a small group and ask 'which doesn't belong?' — the child picks and says the rule.",
+      "choose ingredients into the tray (no recipe card).",
+      "lay your own action cards in order toward a goal (\"make it drinkable in the glass\").",
+      "predict an observable — colour, count, pieces, halves or shape (\"it'll be 3 yellow pieces\").",
+      "make it on the plate, name it, and check — did the prediction hold?",
+      "say the \"because…\"; the teacher notes it.",
     ],
-    endsWhen: "the child has answered all four rounds with a reason.",
+    endsWhen: "the child names the dish and says why it works.",
     easierVariation:
-      "you name only the colour round with obvious foods and skip the odd-one-out.",
+      "combine 2–3 cards and name it; the teacher prompts one sense (level a).",
     harderVariation:
-      "the child invents their own round and asks the group a food detective question of their own.",
-    skillIds: ["logic", "curiosity", "problem-solving"],
-    materials: ["Picture cards or toy foods", "Basket or tray"],
-    debriefPrompts: [],
-    type: "physical-game",
-  },
-
-  // 2 food games — used as game support on select WonderWorld days
-  "ww-game-food-guess": {
-    id: "ww-game-food-guess",
-    segment: "wonder-world",
-    title: "food guess",
-    setupLine: "Ask up to 10 yes/no questions to guess the food.",
-    howToPlay:
-      "Picture-only Guider Tiles deck. One child holds a hidden food card; the others ask up to 10 yes/no questions to guess what it is. Builds questioning and visual deduction. Runs twice — mid-year and end-of-year.",
-    players: "3–8 children · 1 educator",
-    duration: "35 min",
-    goal: "the child asks yes/no questions to guess the hidden food card.",
-    steps: [
-      "one child picks a food card from the deck and keeps it hidden from the group.",
-      "the other children take turns asking one yes/no question at a time.",
-      "the card holder answers only yes or no.",
-      "the group tracks how many questions they have used out of ten.",
-      "when the group thinks they know the food, they guess it out loud.",
+      "order the actions, predict an observable and check it, then justify the \"because\" (level b).",
+    skillIds: ["curiosity", "problem-solving", "logic"],
+    materials: [
+      "Ingredient + action cards",
+      "The small tray + the cooking mat",
+      "Play-dough",
     ],
-    endsWhen: "the group guesses the food correctly or reaches ten yes/no questions.",
-    easierVariation:
-      "show three possible cards face up — the child holds one hidden and the group narrows it down from three.",
-    harderVariation:
-      "drop the question limit to five — the group has to ask smarter, wider questions.",
-    skillIds: ["curiosity", "logic", "problem-solving"],
-    materials: ["Food Guess card deck (Guider Tiles · picture only)"],
-    debriefPrompts: [],
-    type: "physical-game",
-  },
-  "ww-game-food-connect": {
-    id: "ww-game-food-connect",
-    segment: "wonder-world",
-    title: "food connect",
-    setupLine: "Join tiles by colour, texture, food group, or shape.",
-    howToPlay:
-      "40 food tiles + dice. Children join tiles based on a shared attribute. Used at the easiest difficulty level only at this age. Runs twice — once after Chapter 2 and once after Chapter 4.",
-    players: "3–8 children · 1 educator",
-    duration: "35 min",
-    goal: "the child joins a food tile to the chain by matching one shared attribute.",
-    steps: [
-      "lay one food tile in the middle to start the chain.",
-      "spread the rest of the 40 tiles in front of the children.",
-      "the first child rolls the dice — the dice picks the attribute to match on (colour, texture, food group, or shape).",
-      "the child finds a tile that shares that attribute with the last tile in the chain and joins it.",
-      "pass the dice to the next child and keep going.",
+    variations: [
+      { name: "Why-taster", description: "One invents, one keeps asking \"why?\"." },
+      { name: "Menu of the day", description: "Invent a dish to add to the café menu." },
+      { name: "Level up", description: "Add a constraint — \"use a vegetable\"." },
+      { name: "Level down", description: "\"What could these two make?\"" },
     ],
-    endsWhen: "the children run out of matchable tiles or every child has taken several turns.",
-    easierVariation:
-      "use the easiest level only — the child joins by colour, texture, food group, or shape, whichever they can spot fastest.",
-    harderVariation:
-      "the child must justify each match with a sentence — 'i'm joining this because it also grows below the soil'.",
-    skillIds: ["logic", "curiosity", "problem-solving"],
-    materials: ["40 food tiles", "Dice"],
     debriefPrompts: [],
     type: "physical-game",
   },
 };
 
-/* ─── 60-session table — Imagine Playground / WonderWorld alternate
- * Sessions 1, 3, 5… are Session A (Imagine Playground).
- * Sessions 2, 4, 6… are Session B (WonderWorld).
- * Logic Lab and NumbersGym run every session. ──────────────────── */
+const buildWonderWorld = (n: number): string => {
+  // Little Kitchen — the four games rotate in a fixed order and are replayed
+  // across the Session-B slots. Re-playing a game is the point: the same game
+  // runs easy (3–4) then medium (4–5), deepening every time; 18 dishes mean a
+  // class can cook for months without repeating.
+  const cycle = ["kg-sort-guess", "kg-cooking", "kg-restaurant", "kg-recipe-dev"];
+  return cycle[(n - 1) % cycle.length];
+};
 
 const buildPlayground = (n: number): string => {
   // 30 Session-A slots covering 11 core projects in fixed order.
@@ -1029,45 +808,6 @@ const buildPlayground = (n: number): string => {
     "ip-probability",
   ];
   return order[(n - 1) % order.length];
-};
-
-const buildWonderWorld = (n: number): string => {
-  // 30 Session-B slots: 14 activities × 2 (28) + 4 game days,
-  // then revisits with extensions. Map by index.
-  const cycle = [
-    "ww-bread-1-punch-and-squish",
-    "ww-bread-2-make-a-bread",
-    "ww-bread-3-bread-riddles",
-    "ww-bread-4-what-comes-next",
-    "ww-bread-5-sieve",
-    "ww-cheese-1-make-a-pretend-cheese",
-    "ww-cheese-2-does-it-come-from-milk",
-    "ww-cheese-3-spread-your-butter",
-    "ww-cheese-4-cut-your-cheese",
-    "ww-cheese-5-sandwich-game",
-    "ww-game-food-connect",
-    "ww-salad-1-cut-your-tomato",
-    "ww-salad-2-rainbow-tiffin",
-    "ww-salad-3-above-or-below",
-    "ww-salad-4-follow-the-recipe",
-    "ww-salad-5-salad-quiz",
-    "ww-game-food-guess",
-    // Second cycle — revisited, deepened
-    "ww-bread-1-punch-and-squish",
-    "ww-bread-2-make-a-bread",
-    "ww-bread-3-bread-riddles",
-    "ww-bread-4-what-comes-next",
-    "ww-cheese-1-make-a-pretend-cheese",
-    "ww-cheese-3-spread-your-butter",
-    "ww-cheese-4-cut-your-cheese",
-    "ww-cheese-5-sandwich-game",
-    "ww-game-food-connect",
-    "ww-salad-1-cut-your-tomato",
-    "ww-salad-3-above-or-below",
-    "ww-salad-5-salad-quiz",
-    "ww-game-food-guess",
-  ];
-  return cycle[(n - 1) % cycle.length];
 };
 
 const LOGIC_LAB_CYCLE = [
@@ -1179,7 +919,7 @@ export const stem35: CurriculumProgramme = {
       name: "WonderWorld",
       durationRange: "35 min",
       objective:
-        "Imagination through everyday things. Children meet stem concepts — sorting, sequencing, fractions, classification — through food, families, and the world around them. The book this year is What Is In Your Tiffin? — covering bread, cheese, butter, salad. Materials are basic art supplies (playdough, crayons, paper, plastic foods) and DIY food games (Food Connect, Food Guess) — no blocks. 15 activities run in a fixed order, each met twice across the year — deeper every time. Why it alternates with Imagine Playground: both are creation- and curiosity-driven, but WonderWorld grounds learning in daily life while Imagine Playground stretches it through imaginary worlds. Runs on Session B only.",
+        "Imagination through everyday things. Children meet stem concepts — sorting, sequencing, fractions, classification — through the Little Kitchen kit — a repeatable kitchen board game played with food cards, two cooking mats and play-dough (no blocks). One kit, four games that grow with the child: sort & guess (logic), cooking (number sense), restaurant (money) and recipe development (invention). The same game is played two ways — easy for 3–4, medium for 4–5 — so it deepens across the year; 18 dishes mean a class can cook for months without repeating. No scores, no winners — the educator reads the play as observation. Why it alternates with Imagine Playground: both are creation- and curiosity-driven, but WonderWorld grounds learning in daily life while Imagine Playground stretches it through imaginary worlds. Runs on Session B only.",
       type: "rotating",
       rotationPool: Object.keys(wonderWorldActivities),
     },
