@@ -153,6 +153,7 @@ function NewsletterContent() {
   }
 
   const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
 
   async function submit() {
     if (!programme || submitting) return;
@@ -165,6 +166,7 @@ function NewsletterContent() {
       return;
     }
     setSubmitting(true);
+    setSubmitError(false);
     try {
       await submitNewsletter({
         building: draft.building.trim(),
@@ -186,7 +188,9 @@ function NewsletterContent() {
       setSubmitted(true);
       setTimeout(() => setSubmitted(false), 4000);
     } catch {
-      alert("could not submit — please try again.");
+      // The submit did NOT reach openhouse — show it clearly instead of a
+      // false "sent", so nothing silently goes missing.
+      setSubmitError(true);
     } finally {
       setSubmitting(false);
     }
@@ -241,6 +245,11 @@ function NewsletterContent() {
         {submitted && (
           <p className="mb-2 rounded-md bg-green-50 px-3 py-2 text-[12px] text-green-800 ring-1 ring-green-200/60">
             sent for approval. once openhouse reviews it, it can be shared with parents — you&apos;ll be notified. you can keep editing and re-submit any time.
+          </p>
+        )}
+        {submitError && (
+          <p className="mb-2 rounded-md bg-red-50 px-3 py-2 text-[12px] text-red-800 ring-1 ring-red-200/60">
+            couldn&apos;t reach openhouse — your newsletter was <b>not</b> submitted. please check your connection and try again in a moment. if it keeps failing, let the openhouse team know.
           </p>
         )}
       </div>

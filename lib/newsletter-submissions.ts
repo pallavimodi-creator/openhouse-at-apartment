@@ -96,18 +96,24 @@ async function isUnconfigured(res: Response): Promise<boolean> {
 export async function submitNewsletter(
   input: Omit<NewsletterSubmission, "id" | "status" | "submittedAt" | "approvedAt">
 ): Promise<NewsletterSubmission> {
+  let res: Response;
   try {
-    const res = await fetch("/api/newsletters", {
+    res = await fetch("/api/newsletters", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(input),
     });
-    if (await isUnconfigured(res)) throw new Error("unconfigured");
-    if (!res.ok) throw new Error((await res.json())?.error ?? "submit failed");
-    const { submission } = await res.json();
-    return submission as NewsletterSubmission;
   } catch {
-    // fallback: localStorage
+    // Network-level failure — the request never reached openhouse. Do NOT
+    // silently save to localStorage and report success (that's how a whole
+    // month of submissions once went unnoticed). Throw so the educator sees
+    // it wasn't submitted and can retry.
+    throw new Error("offline");
+  }
+
+  // Backend intentionally not configured (e.g. local dev before the DB is
+  // wired). This is the ONLY case where the localStorage fallback is right.
+  if (await isUnconfigured(res)) {
     const list = lsReadAll();
     const submission: NewsletterSubmission = {
       ...input,
@@ -119,6 +125,19 @@ export async function submitNewsletter(
     lsWriteAll(list);
     return submission;
   }
+
+  // Backend is configured but the write failed — a real error the educator
+  // must see, not a silent local save that never reaches the dashboard.
+  if (!res.ok) {
+    let msg = "submit failed";
+    try {
+      msg = (await res.json())?.error ?? msg;
+    } catch {}
+    throw new Error(msg);
+  }
+
+  const { submission } = await res.json();
+  return submission as NewsletterSubmission;
 }
 
 export async function listSubmissions(adminKey: string): Promise<{
