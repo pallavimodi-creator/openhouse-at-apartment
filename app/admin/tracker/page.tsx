@@ -46,7 +46,7 @@ function Content() {
           progress tracker · preview
         </h1>
         <p className="mt-0.5 text-[12px] text-ink-muted">
-          admin-only test build (robotics · mechanics). the teacher marks the grid; the parent note writes itself. tap cells to explore.
+          admin-only test build (robotics · mechanics + electronics). pick a programme up top. the teacher marks the grid; the parent note writes itself. tap cells to explore.
         </p>
       </div>
       <iframe

@@ -5,19 +5,17 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Nunito',-apple-system,'Segoe UI',system-ui,sans-serif;background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;padding:20px 14px 60px}
 .wrap{max-width:920px;margin:0 auto}
-.head{text-align:center}.head h1{font-size:20px;font-weight:800}.head p{font-size:12px;color:var(--mute);margin-top:3px;max-width:600px;margin-inline:auto;line-height:1.5}
+.head{text-align:center}.head h1{font-size:20px;font-weight:800}
 .flow{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:16px;align-items:start}
 @media(max-width:860px){.flow{grid-template-columns:1fr}}
 .col{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 8px 22px rgba(44,43,40,.05)}
 .tg{font-size:11px;font-weight:800;letter-spacing:.02em;padding:12px 16px 0}.tg.f{color:var(--peri2)}.tg.r{color:var(--coral)}
 .body{padding:11px 16px 18px}
 .fc{font-weight:800;font-size:15px}.fs{font-size:11.5px;color:var(--mute)}
-/* attendance */
-.att{display:flex;align-items:center;gap:8px;margin:11px 0;font-size:12px;font-weight:800;flex-wrap:wrap}
-.att .lab{color:var(--mute);font-weight:700}
-.step{display:inline-flex;align-items:center;gap:0;border:1.4px solid var(--line);border-radius:10px;overflow:hidden}
-.step button{width:26px;height:26px;border:none;background:#faf8f3;cursor:pointer;font-size:15px;font-weight:800;color:var(--peri2)}
-.step .v{min-width:26px;text-align:center;font-weight:800;font-size:13px}
+.progsel{display:flex;gap:5px;align-items:center;margin:9px 0 2px}.progsel .pl2{font-size:11px;font-weight:800;color:var(--mute)}
+.progsel button{font-size:11px;font-weight:800;border:1.4px solid var(--line);background:#faf8f3;border-radius:12px;padding:3px 11px;cursor:pointer;color:var(--mute)}.progsel button.on{background:var(--peri);border-color:var(--peri);color:#fff}
+.att{display:flex;align-items:center;gap:8px;margin:11px 0;font-size:12px;font-weight:800;flex-wrap:wrap}.att .lab{color:var(--mute);font-weight:700}
+.step{display:inline-flex;align-items:center;border:1.4px solid var(--line);border-radius:10px;overflow:hidden}.step button{width:26px;height:26px;border:none;background:#faf8f3;cursor:pointer;font-size:15px;font-weight:800;color:var(--peri2)}.step .v{min-width:26px;text-align:center;font-weight:800;font-size:13px}
 .flead{font-size:11.5px;color:var(--mute);margin:9px 0;line-height:1.45}.flead b{color:var(--ink)}
 table{width:100%;border-collapse:separate;border-spacing:0}
 thead th{font-size:9.5px;font-weight:800;color:var(--mute);text-align:center;padding:0 1px 7px;line-height:1.15}thead th.mh{text-align:left;padding-left:2px}thead th .ic{font-size:14px;display:block}
@@ -27,61 +25,47 @@ tbody td.mn{font-size:12px;font-weight:800;padding:5px 5px 5px 2px;white-space:n
 .addchip{font-size:11px;font-weight:700;border:1.4px dashed #cfc6b4;background:#faf8f3;color:var(--peri2);border-radius:14px;padding:4px 10px;cursor:pointer}.addchip:hover{border-color:var(--peri);background:#f2f0fa}
 .mk{width:32px;height:32px;border-radius:9px;border:1.6px solid var(--line);background:#faf8f3;cursor:pointer;font-size:14px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;color:#c9bfa9;transition:.1s}
 .mk.yes{background:#eaf4ec;border-color:#bfe0c8;color:var(--green)}.mk.no{background:#fdf1ec;border-color:#f3d3c3;color:var(--red)}.mk.sel{outline:3px solid rgba(142,138,201,.45);outline-offset:1px}
-.guide{margin-top:13px;border:1.5px solid #e2dbee;background:#f6f4fb;border-radius:14px;padding:12px 14px}
-.guide.e{border-style:dashed;border-color:var(--line);background:var(--soft);color:var(--mute);font-size:11.5px;text-align:center;padding:15px}
+.guide{margin-top:13px;border:1.5px solid #e2dbee;background:#f6f4fb;border-radius:14px;padding:12px 14px}.guide.e{border-style:dashed;border-color:var(--line);background:var(--soft);color:var(--mute);font-size:11.5px;text-align:center;padding:15px}
 .gh{font-size:11.5px;font-weight:800;color:var(--peri2);margin-bottom:8px}
 .two{display:flex;gap:8px}@media(max-width:520px){.two{flex-direction:column}}
 .ib{flex:1;border-radius:10px;padding:8px 10px;font-size:11.5px;line-height:1.4}.ib.o{background:#eef2fb}.ib.b{background:#eef7f0}
 .ibh{display:block;font-weight:800;font-size:9.5px;margin-bottom:2px}.ib.o .ibh{color:#5a6bb0}.ib.b .ibh{color:var(--green)}
 .grule{font-size:11px;color:var(--mute);margin-top:9px;line-height:1.4;background:#fff;border:1px solid var(--line);border-radius:9px;padding:7px 10px}
-.gbtns{display:flex;gap:8px;margin-top:9px}
-.gbtn{flex:1;border:1.6px solid var(--line);background:#fff;border-radius:11px;padding:9px;font-size:12.5px;font-weight:800;cursor:pointer;color:var(--mute)}
-.gbtn.a.on{background:#eaf4ec;border-color:var(--green);color:var(--green)}.gbtn.n.on{background:#fdf1ec;border-color:var(--red);color:var(--red)}
+.gbtns{display:flex;gap:8px;margin-top:9px}.gbtn{flex:1;border:1.6px solid var(--line);background:#fff;border-radius:11px;padding:9px;font-size:12.5px;font-weight:800;cursor:pointer;color:var(--mute)}.gbtn.a.on{background:#eaf4ec;border-color:var(--green);color:var(--green)}.gbtn.n.on{background:#fdf1ec;border-color:var(--red);color:var(--red)}
 .hint{font-size:10.5px;color:var(--mute);margin-top:11px;font-style:italic;line-height:1.4}
-/* report — lean */
-.rt{background:var(--coral);color:#fff;padding:15px 17px}.rt .k{font-size:10px;font-weight:800;opacity:.9}.rt h2{font-size:19px;font-weight:800;margin-top:2px}.rt .m{font-size:11.5px;opacity:.95;margin-top:1px}
-.rt .att2{display:inline-block;margin-top:8px;background:rgba(255,255,255,.2);border-radius:20px;padding:3px 11px;font-size:11.5px;font-weight:800}
+.rt{background:var(--coral);color:#fff;padding:15px 17px}.rt .k{font-size:10px;font-weight:800;opacity:.9}.rt h2{font-size:19px;font-weight:800;margin-top:2px}.rt .m{font-size:11.5px;opacity:.95;margin-top:1px}.rt .att2{display:inline-block;margin-top:8px;background:rgba(255,255,255,.2);border-radius:20px;padding:3px 11px;font-size:11.5px;font-weight:800}
 .rs{padding:13px 17px;border-top:1px solid var(--line)}.rh{font-size:12.5px;font-weight:800;margin-bottom:8px}
 .made{display:flex;gap:10px;align-items:center}.ph{width:60px;height:54px;flex:none;background:var(--soft);border:1px dashed #d9cdb3;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:24px}
 .mods{display:flex;flex-wrap:wrap;gap:4px}.mod{font-size:10.5px;font-weight:700;background:#f2f0fa;color:var(--peri2);border-radius:12px;padding:2px 9px}
 .sk{display:flex;align-items:center;gap:9px;margin:7px 0}.sk .nm{width:96px;font-size:11.5px;font-weight:800;flex:none}
 .dots{display:flex;gap:3px;flex:1}.dot{width:12px;height:12px;border-radius:50%;border:1.5px solid #d8cfbb}.dot.y{background:var(--green);border-color:var(--green)}.dot.n{background:#fbe6dc;border-color:#f3d3c3}
-.st{font-size:11px;font-weight:800;width:78px;text-align:right}.st.sec{color:var(--green)}.st.gr{color:var(--peri2)}.st.js{color:var(--red)}
+.stt{font-size:11px;font-weight:800;width:78px;text-align:right}.stt.sec{color:var(--green)}.stt.gr{color:var(--peri2)}.stt.js{color:var(--red)}
 .focus{font-size:12px;line-height:1.55}.focus b{color:var(--ink)}.athome{margin-top:7px;font-size:11.5px;color:var(--mute);background:var(--soft);border-radius:10px;padding:8px 11px}.athome b{color:var(--coral)}
-.lvl{display:flex;align-items:center;gap:9px;margin-bottom:8px}.lmeter{flex:1;height:9px;background:#efeae0;border-radius:6px;overflow:hidden}.lmeter i{display:block;height:100%;background:var(--peri)}.lcount{font-size:11px;font-weight:800;color:var(--peri2)}
-.lline{font-size:12px;line-height:1.5;margin-top:6px}
-.nameinput{font-family:inherit;font-weight:800;font-size:15px;border:none;border-bottom:2px solid var(--peri);background:transparent;color:var(--ink);width:108px;padding:0 2px}
-.nameinput:focus{outline:none;border-bottom-color:var(--coral)}
 .gate{margin:9px 0}.gk{font-size:11px;font-weight:800;color:var(--mute);display:block;margin-bottom:5px}
-.cchips{display:flex;flex-wrap:wrap;gap:5px}
-.cchip{font-size:10.5px;font-weight:700;border-radius:13px;padding:3px 9px;border:1px solid}
-.cchip.ok{background:#eaf4ec;border-color:#bfe0c8;color:var(--green)}.cchip.no{background:#fff;border-color:var(--line);color:#b9ae97}
-.lline.elig{background:#eaf4ec;border:1px solid #bfe0c8;border-radius:11px;padding:9px 12px}.lline.wait{background:var(--soft);border-radius:11px;padding:9px 12px}
+.cchips{display:flex;flex-wrap:wrap;gap:5px}.cchip{font-size:10.5px;font-weight:700;border-radius:13px;padding:3px 9px;border:1px solid}.cchip.ok{background:#eaf4ec;border-color:#bfe0c8;color:var(--green)}.cchip.no{background:#fff;border-color:var(--line);color:#b9ae97}
+.lline{font-size:12px;line-height:1.5;margin-top:6px}.lline.elig{background:#eaf4ec;border:1px solid #bfe0c8;border-radius:11px;padding:9px 12px}.lline.wait{background:var(--soft);border-radius:11px;padding:9px 12px}
+.nameinput{font-family:inherit;font-weight:800;font-size:15px;border:none;border-bottom:2px solid var(--peri);background:transparent;color:var(--ink);width:108px;padding:0 2px}.nameinput:focus{outline:none;border-bottom-color:var(--coral)}
 </style></head>
 <body><div class="wrap">
 <div class="head"><h1>robotics · monthly progress note</h1></div>
-
 <div class="flow">
   <div class="col">
     <div class="tg f">✓ the teacher marks this · once a month</div>
     <div class="body">
-      <div class="fc">child: <input id="nameIn" class="nameinput" value="aanya" oninput="setName(this.value)" placeholder="child's name"> <span class="fs" style="font-weight:700">· month 4</span></div><div class="fs">mechanics · ages 5–8</div>
-      <div class="att"><span class="lab">attended</span>
-        <span class="step"><button onclick="att('a',-1)">–</button><span class="v" id="aA">7</span><button onclick="att('a',1)">+</button></span>
-        <span class="lab">of</span>
-        <span class="step"><button onclick="att('t',-1)">–</button><span class="v" id="aT">8</span><button onclick="att('t',1)">+</button></span>
-        <span class="lab">classes</span></div>
+      <div class="fc">child: <input id="nameIn" class="nameinput" value="aanya" oninput="setName(this.value)" placeholder="child's name"> <span class="fs" style="font-weight:700">· month 4</span></div>
+      <div class="progsel"><span class="pl2">programme:</span><button id="pmB" class="on" onclick="setProg('mechanics')">mechanics</button><button id="peB" onclick="setProg('electronics')">electronics</button></div>
+      <div class="fs" id="progsub"></div>
+      <div class="att"><span class="lab">attended</span><span class="step"><button onclick="att('a',-1)">–</button><span class="v" id="aA">7</span><button onclick="att('a',1)">+</button></span><span class="lab">of</span><span class="step"><button onclick="att('t',-1)">–</button><span class="v" id="aT">8</span><button onclick="att('t',1)">+</button></span><span class="lab">classes</span></div>
       <div class="flead">for each <b>model</b> built, mark each <b>skill</b>. <b>tap a cell</b> for what to watch (👁) and what to check in the book (📖).</div>
       <table><thead><tr><th class="mh">model</th><th><span class="ic">🔧</span>building</th><th><span class="ic">🔬</span>observing</th><th><span class="ic">🧩</span>solving</th><th><span class="ic">🗣️</span>presenting</th></tr></thead><tbody id="grid"></tbody></table>
       <div class="picker" id="picker"></div>
-      <div class="guide e" id="guide">tap a cell to see how to mark it — what to observe, and what to check in the book.</div>
+      <div class="guide e" id="guide"></div>
       <div class="hint">no writing. the app remembers earlier months and writes the note itself.</div>
     </div>
   </div>
-
   <div class="col">
     <div class="tg r">→ the note the parent receives</div>
-    <div class="rt"><div class="k" id="rk"></div><h2 id="rh2"></h2><div class="m">mechanics · month 4</div><span class="att2" id="ratt"></span></div>
+    <div class="rt"><div class="k" id="rk"></div><h2 id="rh2"></h2><div class="m" id="rm2"></div><span class="att2" id="ratt"></span></div>
     <div class="rs"><div class="rh" id="rmadeh"></div><div class="made"><div class="ph">🏗️</div><div class="mods" id="rmods"></div></div></div>
     <div class="rs"><div class="rh">🌱 each skill, over the month</div><div id="rsk"></div></div>
     <div class="rs"><div class="rh">💛 worth working on next</div><div class="focus" id="rfocus"></div></div>
@@ -93,52 +77,60 @@ tbody td.mn{font-size:12px;font-weight:800;padding:5px 5px 5px 2px;white-space:n
 </div></div>
 
 <script>
-let NAME="aanya";
-// real model → concept(s) from the programme's model pairings
-const MODEL_CONCEPTS={'see-saw':['levers'],'weighing scale':['levers'],'crane':['pulleys'],'fishing rod':['levers','pulleys'],'copter':['gears'],'rickshaw':['wheels & axles'],'wind turbine':['pulleys'],'drawbridge':['wheels & axles','pulleys'],'tow truck':['wheels & axles','pulleys'],'bulldozer':['gears']};
-const CONCEPTS=['levers','pulleys','gears','wheels & axles'];
-const SK={
- bm:{ic:'🔧',s:'building',f:'building & making',obs:'builds it to work + fixes a snag unprompted',bk:'build page: works, parts named',ah:'ask what they changed to make it work better'},
- ou:{ic:'🔬',s:'observing',f:'observing & understanding',obs:'predicts before testing, says why after',bk:'experiment page: readings + a "why"',ah:'ask "what will happen?" before a test'},
- ps:{ic:'🧩',s:'solving',f:'problem solving',obs:'tries a new way + keeps going',bk:'challenge page: a working fix, their way',ah:'let them try before you step in'},
- pe:{ic:'🗣️',s:'presenting',f:'presenting & explaining',obs:'says what it does + how, answers a question',bk:'show page: their explanation captured',ah:'ask "what does it do?" and listen'},
-};
 const KEYS=['bm','ou','ps','pe'];
-// the mechanics build models (in the real app these come from the programme's session plan)
-const ALL_MODELS=['see-saw','weighing scale','crane','fishing rod','copter','rickshaw','wind turbine','drawbridge','tow truck','bulldozer'];
-let MODELS=[{name:'see-saw',m:{bm:1,ou:0,ps:1,pe:0}},{name:'weighing scale',m:{bm:1,ou:1,ps:0,pe:0}},{name:'crane',m:{bm:1,ou:1,ps:1,pe:0}}];
-let A={a:7,t:8}, sel=null;
+const PROGRAMMES={
+ mechanics:{label:'mechanics',sub:'level 1 · ages 5–8',
+  SK:{bm:{ic:'🔧',s:'building',f:'building & making',obs:'builds it to work + fixes a snag unprompted',bk:'build page: works, parts named',ah:'ask what they changed to make it work better'},
+      ou:{ic:'🔬',s:'observing',f:'observing & understanding',obs:'predicts before testing, says why after',bk:'experiment page: readings + a "why"',ah:'ask "what will happen?" before a test'},
+      ps:{ic:'🧩',s:'solving',f:'problem solving',obs:'tries a new way + keeps going',bk:'challenge page: a working fix, their way',ah:'let them try before you step in'},
+      pe:{ic:'🗣️',s:'presenting',f:'presenting & explaining',obs:'says what it does + how, answers a question',bk:'show page: their explanation captured',ah:'ask "what does it do?" and listen'}},
+  ALL:['see-saw','weighing scale','crane','fishing rod','copter','rickshaw','wind turbine','drawbridge','tow truck','bulldozer'],
+  MC:{'see-saw':['levers'],'weighing scale':['levers'],'crane':['pulleys'],'fishing rod':['levers','pulleys'],'copter':['gears'],'rickshaw':['wheels & axles'],'wind turbine':['pulleys'],'drawbridge':['wheels & axles','pulleys'],'tow truck':['wheels & axles','pulleys'],'bulldozer':['gears']},
+  CONCEPTS:['levers','pulleys','gears','wheels & axles'],
+  sample:[{name:'see-saw',m:{bm:1,ou:0,ps:1,pe:0}},{name:'weighing scale',m:{bm:1,ou:1,ps:0,pe:0}},{name:'crane',m:{bm:1,ou:1,ps:1,pe:0}}]},
+ electronics:{label:'electronics',sub:'level 2 · circuits, motors & sensors',
+  SK:{bm:{ic:'🔧',s:'building',f:'building & making',obs:'snaps the blocks + completes the loop so the circuit works, unprompted',bk:'build page: the circuit works, each block named',ah:'ask what each block does in the circuit'},
+      ou:{ic:'🔬',s:'observing',f:'observing & understanding',obs:'compares two circuits + predicts if one will work, and why',bk:'experiment page: what they noticed + a prediction',ah:'ask "will this circuit work? why?" before switching on'},
+      ps:{ic:'🧩',s:'solving',f:'problem solving',obs:'when a circuit fails, tries a fix + finds the break',bk:'challenge page: a broken circuit they got working',ah:'when it doesn’t light up, let them find the break'},
+      pe:{ic:'🗣️',s:'presenting',f:'presenting & explaining',obs:'shows it, traces how the electricity flows, fields a question',bk:'show page: their walk-through captured',ah:'ask them to trace how the electricity flows'}},
+  ALL:['railway barrier','wind turbine','soccer bot','cleaning bot','sensor crane','robotic arm','carrier truck','drawbridge','light house','elevator','follow-me bot','smart stadium lights','obstacle avoider'],
+  MC:{'railway barrier':['circuits'],'wind turbine':['polarity'],'soccer bot':['polarity'],'cleaning bot':['motors'],'sensor crane':['sensors'],'robotic arm':['sensors','servo'],'carrier truck':['servo','polarity'],'drawbridge':['sensors'],'light house':['sensors'],'elevator':['sensors'],'follow-me bot':['sensors'],'smart stadium lights':['sensors'],'obstacle avoider':['sensors']},
+  CONCEPTS:['circuits','polarity','motors','sensors','servo'],
+  sample:[{name:'railway barrier',m:{bm:1,ou:1,ps:0,pe:0}},{name:'wind turbine',m:{bm:1,ou:0,ps:1,pe:0}},{name:'soccer bot',m:{bm:1,ou:1,ps:1,pe:0}}]},
+};
+let prog='mechanics', NAME='aanya', A={a:7,t:8}, sel=null, MODELS=[];
+const P=()=>PROGRAMMES[prog];
+function loadSample(){MODELS=P().sample.map(x=>({name:x.name,m:{...x.m}}));}
 
 function render(){
- const N=NAME||'the child';
+ const N=NAME||'the child', SK=P().SK, CONCEPTS=P().CONCEPTS, MC=P().MC, ALL=P().ALL;
+ document.getElementById('progsub').textContent=P().sub;
+ document.getElementById('pmB').classList.toggle('on',prog==='mechanics');document.getElementById('peB').classList.toggle('on',prog==='electronics');
  document.getElementById('aA').textContent=A.a;document.getElementById('aT').textContent=A.t;
  document.getElementById('ratt').textContent=`🗓️ at ${A.a} of ${A.t} classes`;
  document.getElementById('rk').textContent=`a note for ${N}'s family · robotics`;
  document.getElementById('rh2').textContent=`${N} this month`;
+ document.getElementById('rm2').textContent=`${P().label} · month 4`;
  document.getElementById('rmadeh').textContent=`📌 what ${N} made`;
  document.getElementById('grid').innerHTML=MODELS.map((mo,r)=>`<tr><td class="mn">${mo.name} <span class="rm" title="remove" onclick="event.stopPropagation();removeModel(${r})">✕</span></td>`+KEYS.map(k=>{const v=mo.m[k],s=(sel&&sel.r===r&&sel.k===k)?'sel':'';return `<td class="c"><span class="mk ${v?'yes':'no'} ${s}" onclick="pick(${r},'${k}')">${v?'✓':'○'}</span></td>`;}).join('')+`</tr>`).join('');
- const rest=ALL_MODELS.filter(n=>!MODELS.some(m=>m.name===n));
- document.getElementById('picker').innerHTML= rest.length?`<span class="pl">＋ built another?</span>`+rest.map(n=>`<span class="addchip" onclick="addModel('${n}')">+ ${n}</span>`).join(''):'';
+ const rest=ALL.filter(n=>!MODELS.some(m=>m.name===n));
+ document.getElementById('picker').innerHTML=rest.length?`<span class="pl">＋ built another?</span>`+rest.map(n=>`<span class="addchip" onclick="addModel('${n}')">+ ${n}</span>`).join(''):'';
  const g=document.getElementById('guide');
- if(sel){const mo=MODELS[sel.r],k=sel.k,s=SK[k],v=mo.m[k];g.className='guide';
+ if(sel&&sel.r<MODELS.length){const mo=MODELS[sel.r],k=sel.k,s=SK[k],v=mo.m[k];g.className='guide';
    g.innerHTML=`<div class="gh">${s.ic} ${s.f} · on the ${mo.name}</div><div class="two"><div class="ib o"><span class="ibh">👁 watch in class</span>${s.obs}</div><div class="ib b"><span class="ibh">📖 check the book</span>${s.bk}</div></div><div class="grule">mark <b style="color:var(--green)">✓</b> if you saw it in class <b>and</b> it's in the book · mark <b style="color:var(--red)">○ not yet</b> if <b>either</b> isn't there yet</div><div class="gbtns"><div class="gbtn a ${v?'on':''}" onclick="mark(1)">✓ achieved</div><div class="gbtn n ${v?'':'on'}" onclick="mark(0)">○ not yet</div></div>`;
- } else {g.className='guide e';g.textContent='tap a cell to see how to mark it — what to observe, and what to check in the book.';}
-
+ }else{g.className='guide e';g.textContent='tap a cell to see how to mark it — what to observe, and what to check in the book.';}
  document.getElementById('rmods').innerHTML=MODELS.map(m=>`<span class="mod">${m.name}</span>`).join('');
- document.getElementById('rsk').innerHTML=KEYS.map(k=>{const seq=MODELS.map(m=>m.m[k]),yes=seq.filter(x=>x).length,tot=seq.length;
-   const dots=seq.map(x=>`<span class="dot ${x?'y':'n'}"></span>`).join('');
-   const [w,c]= yes===tot?['steady','sec'] : yes===0?['just starting','js'] : ['growing','gr'];
-   return `<div class="sk"><div class="nm">${SK[k].ic} ${SK[k].s}</div><div class="dots">${dots}</div><div class="st ${c}">${w}</div></div>`;}).join('');
-
- const sec=KEYS.filter(k=>MODELS.every(m=>m.m[k]));
- const foc=KEYS.filter(k=>!MODELS.every(m=>m.m[k])).sort((a,b)=>MODELS.filter(m=>m.m[a]).length-MODELS.filter(m=>m.m[b]).length)[0];
- document.getElementById('rfocus').innerHTML= foc?`<b>${SK[foc].f}</b> is the next step — ${N} is not there on every build yet.<div class="athome"><b>at home, if you like:</b> ${SK[foc].ah}.</div>`:`${N} is steady across all four skills this month.`;
- // gate ① every concept explored (a model from each)
- const covered=CONCEPTS.filter(c=>MODELS.some(m=>(MODEL_CONCEPTS[m.name]||[]).includes(c)));
+ document.getElementById('rsk').innerHTML=KEYS.map(k=>{const seq=MODELS.map(m=>m.m[k]),yes=seq.filter(x=>x).length,tot=seq.length||1;
+   const dots=MODELS.map(m=>`<span class="dot ${m.m[k]?'y':'n'}"></span>`).join('');
+   const [w,c]=yes===MODELS.length&&MODELS.length?['steady','sec']:yes===0?['just starting','js']:['growing','gr'];
+   return `<div class="sk"><div class="nm">${SK[k].ic} ${SK[k].s}</div><div class="dots">${dots}</div><div class="stt ${c}">${w}</div></div>`;}).join('');
+ const sec=KEYS.filter(k=>MODELS.length&&MODELS.every(m=>m.m[k]));
+ const foc=KEYS.filter(k=>!(MODELS.length&&MODELS.every(m=>m.m[k]))).sort((a,b)=>MODELS.filter(m=>m.m[a]).length-MODELS.filter(m=>m.m[b]).length)[0];
+ document.getElementById('rfocus').innerHTML=foc?`<b>${SK[foc].f}</b> is the next step — ${N} is not there on every build yet.<div class="athome"><b>at home, if you like:</b> ${SK[foc].ah}.</div>`:`${N} is steady across all four skills this month.`;
+ const covered=CONCEPTS.filter(c=>MODELS.some(m=>(MC[m.name]||[]).includes(c)));
  document.getElementById('rconcepts').innerHTML=CONCEPTS.map(c=>{const on=covered.includes(c);return `<span class="cchip ${on?'ok':'no'}">${on?'✓ ':''}${c}</span>`;}).join('');
- // gate ② every skill steady
- document.getElementById('rskills2').innerHTML=KEYS.map(k=>{const on=MODELS.every(m=>m.m[k]);return `<span class="cchip ${on?'ok':'no'}">${SK[k].ic} ${SK[k].s}${on?' ✓':''}</span>`;}).join('');
- const missing=CONCEPTS.filter(c=>!covered.includes(c)), needSk=KEYS.length-sec.length, eligible=missing.length===0&&needSk===0;
+ document.getElementById('rskills2').innerHTML=KEYS.map(k=>{const on=MODELS.length&&MODELS.every(m=>m.m[k]);return `<span class="cchip ${on?'ok':'no'}">${SK[k].ic} ${SK[k].s}${on?' ✓':''}</span>`;}).join('');
+ const missing=CONCEPTS.filter(c=>!covered.includes(c)),needSk=KEYS.length-sec.length,eligible=missing.length===0&&needSk===0;
  const rl=document.getElementById('rline');
  if(eligible){rl.className='lline elig';rl.innerHTML=`✅ <b>eligible</b> — ${N} has explored every concept and is steady in every skill. the last step is the <b>final build-off</b>; passing it is what moves ${N} up.`;}
  else{const bits=[];if(missing.length)bits.push(`still to explore: <b>${missing.join(', ')}</b>`);if(needSk)bits.push(`<b>${needSk} skill(s)</b> still to steady`);rl.className='lline wait';rl.innerHTML=`not yet — ${N} moves up only when <b>both</b> gates are met, then the final build-off. ${bits.join(' · ')}.`;}
@@ -148,7 +140,8 @@ function mark(v){if(sel){MODELS[sel.r].m[sel.k]=v;render();}}
 function setName(v){NAME=v.trim();render();}
 function addModel(n){MODELS.push({name:n,m:{bm:0,ou:0,ps:0,pe:0}});render();}
 function removeModel(r){MODELS.splice(r,1);if(sel&&sel.r>=MODELS.length)sel=null;render();}
-function att(w,d){A[w]=Math.max(0,A[w]+d); if(w==='a'&&A.a>A.t)A.t=A.a; if(w==='t'&&A.t<A.a)A.a=A.t; render();}
-render();
+function att(w,d){A[w]=Math.max(0,A[w]+d);if(w==='a'&&A.a>A.t)A.t=A.a;if(w==='t'&&A.t<A.a)A.a=A.t;render();}
+function setProg(p){if(p===prog)return;prog=p;sel=null;loadSample();render();}
+loadSample();render();
 </script>
 </body></html>
