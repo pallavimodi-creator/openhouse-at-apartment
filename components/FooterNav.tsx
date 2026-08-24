@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { Home, BookOpen, LayoutGrid, LogOut, Notebook, CalendarDays, Building2, Newspaper } from "lucide-react";
+import { Home, BookOpen, LayoutGrid, LogOut, Notebook, CalendarDays, Building2, Newspaper, ClipboardCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { listCurriculumProgrammes } from "@/lib/content";
 import { clearTeacher, getBuilding, clearBuilding, getTeacher } from "@/lib/teacher-state";
@@ -95,6 +95,11 @@ export function FooterNav() {
       label: "newsletter",
       icon: Newspaper,
     });
+  }
+
+  // admin-only: the progress-tracker preview (test build, robotics)
+  if (isAdmin) {
+    items.push({ href: "/admin/tracker", label: "tracker", icon: ClipboardCheck });
   }
 
   const handleSignOut = () => {
