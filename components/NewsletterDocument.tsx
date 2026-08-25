@@ -75,6 +75,19 @@ const MASCOT: Record<string, string> = {
   language: "/newsletter/mascot-ps.png",
 };
 
+/**
+ * programme slug → the real experience-book cover to show in the
+ * "experience book" block. When a programme has an image here, the block
+ * flips from "coming soon" to "now ready" and shows the actual book.
+ * (robotics + art are ready; public speaking has no book yet → coming soon.)
+ */
+const EB_IMAGE: Record<string, string> = {
+  "robotics-5-8": "/newsletter/eb-robotics-5-8.png",
+  "robotics-8-12": "/newsletter/eb-robotics-8-12.png",
+  "art-design-5-8": "/experience-books/covers/art-experience-book-5-8.png",
+  "art-design-8-12": "/experience-books/covers/art-experience-book-8-12.png",
+};
+
 /** category → what a good photo shows (empty-slot hints, never faces). */
 const PHOTO_HINTS: Record<string, string[]> = {
   stem: ["a model", "a build", "a project"],
@@ -121,6 +134,7 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
   const isPublicSpeaking = programme.slug.startsWith("public-speaking");
   const isArt = programme.slug.startsWith("art-design");
   const mascot = MASCOT[category];
+  const ebImage = EB_IMAGE[programme.slug] ?? null;
   const photoHints = PHOTO_HINTS[category] ?? PHOTO_HINTS.stem;
 
   const conceptGroups = isRobotics ? groupByMechanism(pickedItems) : null;
@@ -376,18 +390,23 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
           </section>
         )}
 
-        {/* experience book — coming soon, neutral graphic (no faces) */}
+        {/* experience book — "now ready" with the real cover where the book
+            exists (robotics + art); "coming soon" neutral graphic otherwise. */}
         <section className="mt-7 px-11">
           <div className="flex items-center gap-4 rounded-xl p-4 ring-1 ring-ink/[0.09]" style={{ background: CREAM }}>
-            <div className="flex h-24 w-[64px] shrink-0 items-center justify-center" aria-hidden>
-              <BookGraphic accent={accent} />
+            <div className="flex h-24 w-[68px] shrink-0 items-center justify-center" aria-hidden>
+              {ebImage ? (
+                <img src={ebImage} alt="" className="max-h-full max-w-full rounded-md object-contain shadow-md ring-1 ring-ink/10" />
+              ) : (
+                <BookGraphic accent={accent} />
+              )}
             </div>
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-2">
-                <p className="text-[9px] font-bold uppercase tracking-[0.18em]" style={{ color: CORAL }}>coming soon</p>
+                <p className="text-[9px] font-bold uppercase tracking-[0.18em]" style={{ color: CORAL }}>{ebImage ? "now ready" : "coming soon"}</p>
                 <span className="rounded-chip bg-brand-orange/12 px-2 py-0.5 text-[9px] font-extrabold text-brand-orange">the experience book</span>
               </div>
-              <p className="mt-1.5 text-[16px] font-extrabold leading-tight text-ink">a book of their own — on its way.</p>
+              <p className="mt-1.5 text-[16px] font-extrabold leading-tight text-ink">{ebImage ? "a book of their own — now in their hands." : "a book of their own — on its way."}</p>
               <p className="mt-1 text-[12px] leading-relaxed text-ink-muted">
                 a book that travels home and back, holding everything the children draw, build, and discover.
               </p>
