@@ -76,17 +76,15 @@ const MASCOT: Record<string, string> = {
 };
 
 /**
- * programme slug → the real experience-book cover to show in the
- * "experience book" block. When a programme has an image here, the block
- * flips from "coming soon" to "now ready" and shows the actual book.
- * (robotics + art are ready; public speaking has no book yet → coming soon.)
+ * Which programmes have a ready experience book. When true, the block
+ * flips from "coming soon" to "now ready" and shows a standard,
+ * category-colour-coded cover (rendered inline — no external image that
+ * could be wrong or fail to load). robotics + art are ready; public
+ * speaking has no book yet → coming soon.
  */
-const EB_IMAGE: Record<string, string> = {
-  "robotics-5-8": "/newsletter/eb-robotics-5-8.png",
-  "robotics-8-12": "/newsletter/eb-robotics-8-12.png",
-  "art-design-5-8": "/experience-books/covers/art-experience-book-5-8.png",
-  "art-design-8-12": "/experience-books/covers/art-experience-book-8-12.png",
-};
+function hasExperienceBook(slug: string): boolean {
+  return slug.startsWith("robotics") || slug.startsWith("art-design");
+}
 
 /** category → what a good photo shows (empty-slot hints, never faces). */
 const PHOTO_HINTS: Record<string, string[]> = {
@@ -134,7 +132,7 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
   const isPublicSpeaking = programme.slug.startsWith("public-speaking");
   const isArt = programme.slug.startsWith("art-design");
   const mascot = MASCOT[category];
-  const ebImage = EB_IMAGE[programme.slug] ?? null;
+  const bookReady = hasExperienceBook(programme.slug);
   const photoHints = PHOTO_HINTS[category] ?? PHOTO_HINTS.stem;
 
   const conceptGroups = isRobotics ? groupByMechanism(pickedItems) : null;
@@ -390,23 +388,24 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
           </section>
         )}
 
-        {/* experience book — "now ready" with the real cover where the book
-            exists (robotics + art); "coming soon" neutral graphic otherwise. */}
+        {/* experience book — a standard, category-colour-coded cover when
+            the book is ready (robotics + art); "coming soon" outline graphic
+            otherwise. No external cover image (avoids wrong/broken photos). */}
         <section className="mt-7 px-11">
           <div className="flex items-center gap-4 rounded-xl p-4 ring-1 ring-ink/[0.09]" style={{ background: CREAM }}>
             <div className="flex h-24 w-[68px] shrink-0 items-center justify-center" aria-hidden>
-              {ebImage ? (
-                <img src={ebImage} alt="" className="max-h-full max-w-full rounded-md object-contain shadow-md ring-1 ring-ink/10" />
+              {bookReady ? (
+                <BookCover accent={accent} />
               ) : (
                 <BookGraphic accent={accent} />
               )}
             </div>
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-2">
-                <p className="text-[9px] font-bold uppercase tracking-[0.18em]" style={{ color: CORAL }}>{ebImage ? "now ready" : "coming soon"}</p>
+                <p className="text-[9px] font-bold uppercase tracking-[0.18em]" style={{ color: CORAL }}>{bookReady ? "now ready" : "coming soon"}</p>
                 <span className="rounded-chip bg-brand-orange/12 px-2 py-0.5 text-[9px] font-extrabold text-brand-orange">the experience book</span>
               </div>
-              <p className="mt-1.5 text-[16px] font-extrabold leading-tight text-ink">{ebImage ? "a book of their own — now in their hands." : "a book of their own — on its way."}</p>
+              <p className="mt-1.5 text-[16px] font-extrabold leading-tight text-ink">{bookReady ? "a book of their own — now in their hands." : "a book of their own — on its way."}</p>
               <p className="mt-1 text-[12px] leading-relaxed text-ink-muted">
                 a book that travels home and back, holding everything the children draw, build, and discover.
               </p>
@@ -596,6 +595,30 @@ function BookGraphic({ accent }: { accent: string }) {
       <line x1="26" y1="28" x2="44" y2="28" stroke={INK} strokeWidth="2" strokeLinecap="round" />
       <line x1="26" y1="38" x2="38" y2="38" stroke={INK} strokeWidth="2" strokeLinecap="round" />
       <path d="M34 4 v16 l4 -4 l4 4 V4 Z" fill={CORAL} stroke={INK} strokeWidth="1.5" />
+    </svg>
+  );
+}
+
+/**
+ * The standard "ready" cover — a solid, category-colour-coded book with a
+ * cream title band. Rendered inline (no photo), so it is always correct and
+ * never fails to load. The colour alone tells the parent which programme it is.
+ */
+function BookCover({ accent }: { accent: string }) {
+  return (
+    <svg viewBox="0 0 56 72" className="h-[96%] w-auto drop-shadow-[0_3px_5px_rgba(44,43,40,0.18)]" aria-hidden>
+      {/* cover */}
+      <rect x="7" y="3" width="45" height="66" rx="4.5" fill={accent} stroke={INK} strokeWidth="2.5" />
+      {/* spine */}
+      <rect x="7" y="3" width="8" height="66" rx="4.5" fill="rgba(44,43,40,0.16)" stroke={INK} strokeWidth="2.5" />
+      {/* openhouse mark */}
+      <circle cx="34" cy="15" r="3.4" fill={CREAM} stroke={INK} strokeWidth="1.2" />
+      {/* title band */}
+      <rect x="20" y="30" width="27" height="17" rx="2.5" fill={CREAM} stroke={INK} strokeWidth="1.2" />
+      <line x1="24" y1="36" x2="43" y2="36" stroke={INK} strokeWidth="1.8" strokeLinecap="round" opacity="0.75" />
+      <line x1="24" y1="41" x2="37" y2="41" stroke={INK} strokeWidth="1.8" strokeLinecap="round" opacity="0.5" />
+      {/* bookmark ribbon */}
+      <path d="M40 3 v15 l3 -3 l3 3 V3 Z" fill={CORAL} stroke={INK} strokeWidth="1.3" />
     </svg>
   );
 }
