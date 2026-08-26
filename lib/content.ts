@@ -179,6 +179,33 @@ export function getTrackLevels(slug: string): CurriculumProgramme[] {
   return levels.length > 1 ? levels : [];
 }
 
+/**
+ * The SUBJECT a programme belongs to, spanning BOTH age bands (5-8 & 8-12)
+ * and every level. Unlike `trackSlug` (which is per age-band), this groups
+ * e.g. robotics-5-8, robotics-8-12, robotics-electronics-5-8/8-12 → "robotics"
+ * so a teacher's library can show every game for what they teach, not just
+ * their own band. Storytelling stays distinct from public-speaking, and
+ * stem-3-5 stays distinct from robotics, even though they share a category.
+ */
+export function subjectKey(slug: string): string {
+  return slug
+    .replace(/-l\d+$/, "") // music level suffix: -l1 / -l2 / -l3
+    .replace(/-(?:3-5|5-8|8-12)$/, "") // age-band suffix
+    .replace(/-electronics$/, ""); // electronics is a level of robotics
+}
+
+/** Every live programme in the same SUBJECT as `slug` (both age bands). */
+export function getSubjectProgrammes(slug: string): CurriculumProgramme[] {
+  const key = subjectKey(slug);
+  return curriculumProgrammes
+    .filter((p) => subjectKey(p.slug) === key)
+    .sort(
+      (a, b) =>
+        (a.ageGroup ?? "").localeCompare(b.ageGroup ?? "") ||
+        (a.level ?? 1) - (b.level ?? 1)
+    );
+}
+
 export function getSessionPlan(
   slug: string,
   sessionNumber: number

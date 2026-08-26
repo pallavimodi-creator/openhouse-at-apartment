@@ -47,7 +47,7 @@ import {
 import {
   getCurriculumProgramme,
   listCurriculumProgrammes,
-  getTrackLevels,
+  getSubjectProgrammes,
   SEGMENT_COLORS,
   getActivityImage,
   GYM_BOOK_IMAGES,
@@ -332,11 +332,15 @@ export default function LibraryPage() {
           ? programmes
           : programmes.filter((p) => p.slug === selectedProgSlug);
     } else if (teacherSlug) {
-      // Show every level of the teacher's track — a robotics teacher gets
-      // both mechanics (level 1) and electronics (level 2) in one library.
-      const track = getTrackLevels(teacherSlug).filter((p) => p.totalSessions > 0);
+      // Show every game in the teacher's SUBJECT — across BOTH age bands
+      // (5-8 and 8-12) and all levels (a robotics teacher gets mechanics +
+      // electronics, for both bands), so the library reflects all the games
+      // for what they teach, not just their own band.
+      const subject = getSubjectProgrammes(teacherSlug).filter(
+        (p) => p.totalSessions > 0
+      );
       const p = getCurriculumProgramme(teacherSlug);
-      progsToShow = track.length ? track : p ? [p] : [];
+      progsToShow = subject.length ? subject : p ? [p] : [];
     }
 
     const items = progsToShow.flatMap(buildItemsFor);
