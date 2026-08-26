@@ -430,6 +430,11 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
       <style jsx>{`
         .page { position: relative; }
         @media print {
+          /* Force A4 so the 297mm pages map exactly to the sheet. Without
+             this, a Letter-default printer spills each A4 page onto a second
+             sheet (the 2->4 blank-pages bug). Belt-and-braces with the
+             per-page @page rule the download views also set. */
+          @page { size: A4 portrait; margin: 0; }
           .parent-doc { gap: 0 !important; margin: 0 !important; }
           /* Exactly ONE A4 sheet per page. Must be 297mm — NOT 1123px, which
              is 297.13mm and spills a ~0.5px sliver onto a blank extra sheet
