@@ -10,6 +10,7 @@
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 import { TeacherGate, useTeacher } from "@/components/TeacherGate";
+import { TrackerOverview } from "@/components/TrackerOverview";
 
 export default function AdminTrackerPage() {
   return (
@@ -49,6 +50,7 @@ function Content() {
           admin-only test build (robotics · mechanics + electronics). pick a programme up top. the teacher marks the grid; the parent note writes itself. tap cells to explore.
         </p>
       </div>
+      <TrackerOverview />
       <iframe
         src="/rtracker.html"
         title="progress tracker preview"
