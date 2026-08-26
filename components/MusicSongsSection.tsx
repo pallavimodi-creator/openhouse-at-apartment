@@ -7,6 +7,7 @@ import {
   MUSIC_BAND_SONGS_BY_LEVEL,
   MUSIC_PRACTICE_SONGS,
   MUSIC_INSTRUMENTS,
+  MUSIC_ENSEMBLE_CYCLE,
   musicNotationUrl,
   type MusicInstrumentId,
 } from "@/content/programmes/music-levels";
@@ -113,6 +114,52 @@ export function MusicSongsSection({ level }: { level: number }) {
             </div>
           ))}
         </div>
+      </div>
+
+      {/* how the band song is built, week by week */}
+      <div className="mt-8">
+        <p className="text-[11px] font-bold tracking-[0.06em] text-brand-orange">
+          how the band song comes together
+        </p>
+        <p className="mt-1.5 text-[12.5px] leading-relaxed text-ink-muted md:text-[13px]">
+          in the ~25 minutes of ensemble time each class, the group builds one
+          song up in layers — voice first, then keys, then ukulele &amp; drums,
+          then everyone together — across roughly eight weeks, closing with a
+          performance.
+        </p>
+        <ol className="mt-4 space-y-3">
+          {MUSIC_ENSEMBLE_CYCLE.map((wk) => (
+            <li
+              key={wk.weeks}
+              className="rounded-2xl bg-brand-white p-4 shadow-card ring-1 ring-ink/[0.06]"
+            >
+              <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+                <span className="shrink-0 rounded-chip bg-brand-orange/15 px-2 py-0.5 text-[10px] font-extrabold lowercase text-brand-orange">
+                  {wk.weeks}
+                </span>
+                <span className="text-[13.5px] font-extrabold lowercase text-ink">
+                  {wk.focus}
+                </span>
+              </div>
+              <ul className="mt-2 space-y-1">
+                {wk.activities.map((a) => (
+                  <li
+                    key={a}
+                    className="flex items-start gap-2 text-[12.5px] leading-relaxed text-ink-muted"
+                  >
+                    <span className="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-brand-orange/70" />
+                    <span>{a}</span>
+                  </li>
+                ))}
+              </ul>
+              {wk.teacherNote && (
+                <p className="mt-2 text-[12px] italic leading-relaxed text-ink-muted">
+                  {wk.teacherNote}
+                </p>
+              )}
+            </li>
+          ))}
+        </ol>
       </div>
 
       {/* extra practice */}

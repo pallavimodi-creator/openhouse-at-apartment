@@ -36,7 +36,7 @@ const PARTS: {
     time: "50 min",
     kind: "linear",
     kindNote: "the books go in order, page by page",
-    body: "individual play. each child works through their own level book — the books are linear, done in order. children rotate through two instruments a class by their own choice; the instrument they aren't playing in the band is practised here. a monthly assessment moves a child up a level, per instrument.",
+    body: "individual play. each child works through their own level book — the books are linear, done in order. children rotate through two instruments a class by their own choice; the instrument they aren't playing in the band is practised here. a monthly assessment moves a child up a level, per instrument. exploring a different instrument is only a gentle nudge, never a rule — a child can go as deep as they like on the instrument they love and move up the levels on that alone.",
   },
   {
     n: 3,

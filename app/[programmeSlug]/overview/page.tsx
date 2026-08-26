@@ -3649,6 +3649,11 @@ function ProgrammeOverviewContent() {
             cover: "/experience-books/covers/robotics-levelup-assessment.png",
             title: "level-up assessment", subtitle: "mechanics → electronics · the tow-truck readiness check",
           });
+          books.push({
+            kind: "route", href: "/experience-books/mechanics-level-up-exercises.pdf", newTab: true,
+            cover: "/experience-books/covers/mechanics-level-up-exercises.png",
+            title: "level-up exercises", subtitle: "mechanics · redesign each machine, keeping its job · new · aug 2026",
+          });
         }
         if (programme.slug === "robotics-8-12") {
           books.push({
@@ -3660,6 +3665,11 @@ function ProgrammeOverviewContent() {
             kind: "route", href: "/experience-books/robotics-levelup-assessment.pdf", newTab: true,
             cover: "/experience-books/covers/robotics-levelup-assessment.png",
             title: "level-up assessment", subtitle: "mechanics → electronics · the tow-truck readiness check",
+          });
+          books.push({
+            kind: "route", href: "/experience-books/mechanics-level-up-exercises.pdf", newTab: true,
+            cover: "/experience-books/covers/mechanics-level-up-exercises.png",
+            title: "level-up exercises", subtitle: "mechanics · redesign each machine, keeping its job · new · aug 2026",
           });
         }
         // Electronics (Level 2) child experience books — one per band.

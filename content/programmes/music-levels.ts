@@ -36,7 +36,7 @@ const segmentDefinitions: CurriculumSegmentDef[] = [
     name: "instrument rotation",
     durationRange: "50 min",
     objective:
-      "the heart of the class — each child rotates through two instruments a class, chosen by their own interest, working through their level book on each (keyboard, ukulele, drums or vocals), 2–4 weeks per exercise or song. the instrument a child isn't playing in the band is practised here too. children take turns playing for the educator, who moves between them and marks progress; a monthly assessment on this work moves a child up a level, per instrument.",
+      "the heart of the class — each child rotates through two instruments a class, chosen by their own interest, working through their level book on each (keyboard, ukulele, drums or vocals), 2–4 weeks per exercise or song. the instrument a child isn't playing in the band is practised here too. children take turns playing for the educator, who moves between them and marks progress; a monthly assessment on this work moves a child up a level, per instrument. trying a different instrument is only ever a gentle nudge — never a requirement: a child is encouraged to explore more instruments as one way to keep growing, but they can go as deep as they like on the instrument they love and move up the levels on that alone.",
     type: "fixed",
   },
   {
@@ -135,6 +135,66 @@ export const MUSIC_BAND_SONGS_BY_LEVEL: Record<number, MusicBandSong[]> = {
     },
   ],
 };
+
+// ── How a band song is built, week by week (ensemble-play time) ──
+// The principle every ensemble cycle follows: about 25 minutes of each
+// class, the group builds ONE song of the month up in layers — voice
+// first, then keys, then ukulele & drums, then everyone together — and
+// closes the cycle with a performance. Roughly an 8-week arc per song.
+export interface MusicEnsembleWeek {
+  weeks: string; // "week 1" / "weeks 2–4" / "week 8 · end of class"
+  focus: string;
+  activities: string[];
+  teacherNote?: string;
+}
+export const MUSIC_ENSEMBLE_CYCLE: MusicEnsembleWeek[] = [
+  {
+    weeks: "week 1",
+    focus: "listening & vocal training",
+    activities: [
+      "introduce the song of the month through active listening",
+      "sing the melody using child-friendly methods — call & response, humming",
+    ],
+    teacherNote:
+      "the teacher uses lyric-based prompts so children memorise the song naturally.",
+  },
+  {
+    weeks: "weeks 2–4",
+    focus: "keyboard training",
+    activities: [
+      "introduce the keyboard notation for the song",
+      "play the notes in sequence while keeping the rhythm",
+    ],
+    teacherNote:
+      "the teacher gradually builds up to playing along with the vocalists and the drummer.",
+  },
+  {
+    weeks: "weeks 5–6",
+    focus: "ukulele & drums",
+    activities: [
+      "introduce the ukulele or drum part for the song — choose from generic 3/4 or 4/4 patterns",
+      "strum or drum in time with the song",
+      "on the drum part, children take turns on the kit while the rest count out loud or clap in time",
+    ],
+    teacherNote:
+      "the teacher gradually builds up to playing along with the vocalists.",
+  },
+  {
+    weeks: "weeks 7–8",
+    focus: "rehearsal & instrument assignments",
+    activities: [
+      "children are assigned their parts on a rotation basis",
+      "rehearse all instruments with vocals together, holding the rhythm",
+    ],
+  },
+  {
+    weeks: "week 8 · end of class",
+    focus: "performance",
+    activities: [
+      "reserve the last 15–20 minutes of the class for the performance",
+    ],
+  },
+];
 
 // ── Approx. class counts per level, by age band ──
 // Classes run roughly weekly. 5–8 year-olds take ~20% more classes than
