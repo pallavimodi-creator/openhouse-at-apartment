@@ -268,8 +268,8 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
         {isArt && pickedArtworks.length > 0 && (
           <section className="mt-5 px-11">
             <SectionHead icon={Palette} eyebrow="the studio" title="what we made" accent={accent} />
-            <div className="grid grid-cols-3 gap-2.5">
-              {pickedArtworks.slice(0, 9).map((art, i) => (
+            <div className="grid grid-cols-4 gap-2.5">
+              {pickedArtworks.slice(0, 12).map((art, i) => (
                 <div key={`${art.label}-${i}`} className="overflow-hidden rounded-xl bg-white ring-1 ring-ink/[0.09]">
                   <div className="flex aspect-square items-center justify-center overflow-hidden" style={{ background: `${accent}22` }}>
                     {art.image ? (
