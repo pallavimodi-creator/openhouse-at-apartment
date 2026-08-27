@@ -171,7 +171,7 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
     )
   );
   const heroImages = isRobotics
-    ? Array.from(new Set([...photos, ...modelImages])).slice(0, 6)
+    ? Array.from(new Set([...photos, ...modelImages])).slice(0, 3)
     : (photos.length > 0 ? photos : genericFallback).slice(0, 3);
 
   const hasContent = pickedItems.length > 0;
@@ -184,9 +184,9 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
         <Masthead accent={accent} />
 
         {/* greeting */}
-        <div className="flex items-start justify-between gap-4 px-11 pt-7">
+        <div className="flex items-start justify-between gap-4 px-11 pt-5">
           <div className="min-w-0 flex-1">
-            <p className="text-[9.5px] font-bold uppercase tracking-[0.2em] text-ink-subtle">
+            <p className="text-[9.5px] font-bold uppercase tracking-[0.2em] text-ink-muted">
               newsletter · {programme.title} · {programme.ageLabel}
             </p>
             <h1 className="mt-2.5 font-hand text-[36px] font-bold leading-[1.04] text-ink">
@@ -219,18 +219,18 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
 
         {/* ROBOTICS — concept groups, with the actual experiments named simply */}
         {conceptGroups && conceptGroups.length > 0 && (
-          <section className="mt-7 px-11">
+          <section className="mt-5 px-11">
             <SectionHead icon={Compass} eyebrow="hands-on" title="what we explored" accent={accent} />
-            <div className="space-y-2.5">
+            <div className="space-y-2">
               {conceptGroups.map(({ mechanism, builds, experiments }) => {
                 const s = MECHANISM_STORY[mechanism];
                 return (
-                  <div key={mechanism} className="rounded-xl bg-white p-4 ring-1 ring-ink/[0.09]"
+                  <div key={mechanism} className="rounded-xl bg-white p-3.5 ring-1 ring-ink/[0.09]"
                     style={{ boxShadow: "0 1px 2px rgba(44,43,40,0.04)" }}>
                     <div className="flex items-center gap-2.5">
                       <IconChip icon={MECHANISM_ICON[mechanism] ?? Cog} accent={accent} size={32} />
                       <div className="min-w-0">
-                        <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-ink-subtle">the concept</p>
+                        <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-ink-muted">the concept</p>
                         <p className="text-[16px] font-extrabold leading-none text-ink">{s.label}</p>
                       </div>
                     </div>
@@ -266,7 +266,7 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
 
         {/* ART — artworks (listed + educator's custom additions) */}
         {isArt && pickedArtworks.length > 0 && (
-          <section className="mt-7 px-11">
+          <section className="mt-5 px-11">
             <SectionHead icon={Palette} eyebrow="the studio" title="what we made" accent={accent} />
             <div className="grid grid-cols-3 gap-2.5">
               {pickedArtworks.slice(0, 9).map((art, i) => (
@@ -288,7 +288,7 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
 
         {/* GAMES BY SEGMENT — public speaking + art games */}
         {segmentGroups && segmentGroups.length > 0 && (
-          <section className="mt-7 px-11">
+          <section className="mt-5 px-11">
             <SectionHead icon={Drama} eyebrow="in the room" title="what we did in class" accent={accent} />
             <div className="space-y-2.5">
               {segmentGroups.map(({ segment, segmentName, items }) => {
@@ -310,7 +310,7 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
         )}
 
         {!hasContent && (
-          <p className="mx-11 mt-7 rounded-xl bg-ink/[0.03] p-6 text-center text-[13px] italic text-ink-muted ring-1 ring-ink/[0.06]">
+          <p className="mx-11 mt-5 rounded-xl bg-ink/[0.03] p-6 text-center text-[13px] italic text-ink-muted ring-1 ring-ink/[0.06]">
             tick what the children did — it appears here.
           </p>
         )}
@@ -325,13 +325,13 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
 
         {/* skills — numbered, each with its own plain meaning */}
         {skillsBuilt.length > 0 && (
-          <section className="px-11 pt-7">
+          <section className="px-11 pt-5">
             <SectionHead icon={Sprout} eyebrow="growth" title="what the children got better at" accent={accent} />
             <div className="divide-y divide-ink/[0.08]">
               {skillsBuilt.map(({ skill }, idx) => {
                 const copy = parentSkillCopy(skill.id, category);
                 return (
-                  <div key={skill.id} className="flex items-start gap-3 py-3">
+                  <div key={skill.id} className="flex items-start gap-3 py-2.5">
                     <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[10px] font-extrabold"
                       style={{ background: `${accent}2e`, color: INK }}>
                       {String(idx + 1).padStart(2, "0")}
@@ -349,7 +349,7 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
 
         {/* engineering / craft foundation — one line, quiet accent rule */}
         {engineering && (
-          <section className="mx-11 mt-7">
+          <section className="mx-11 mt-5">
             <div className="rounded-xl px-4 py-3.5" style={{ background: CREAM, borderLeft: `3px solid ${accent}` }}>
               <p className="text-[9px] font-bold uppercase tracking-[0.18em]" style={{ color: CORAL }}>{engineering.headline}</p>
               <p className="mt-1.5 text-[13px] font-bold leading-snug text-ink">
@@ -363,7 +363,7 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
 
         {/* coming up — grouped by type (models / experiments / games / artworks) */}
         {nextItems.length > 0 && (
-          <section className="mt-7 px-11">
+          <section className="mt-5 px-11">
             <SectionHead icon={ArrowUpRight} eyebrow="next classes" title="coming up next" accent={accent} />
             <div className="space-y-3.5">
               {groupByCategory(nextItems).map(({ category: cat, label, items }) => {
@@ -391,7 +391,7 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
         {/* experience book — a standard, category-colour-coded cover when
             the book is ready (robotics + art); "coming soon" outline graphic
             otherwise. No external cover image (avoids wrong/broken photos). */}
-        <section className="mt-7 px-11">
+        <section className="mt-5 px-11">
           <div className="flex items-center gap-4 rounded-xl p-4 ring-1 ring-ink/[0.09]" style={{ background: CREAM }}>
             <div className="flex h-24 w-[68px] shrink-0 items-center justify-center" aria-hidden>
               {bookReady ? (
@@ -414,7 +414,7 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
         </section>
 
         {/* sign-off — the openhouse team, no name */}
-        <section className="mt-8 px-11">
+        <section className="mt-6 px-11">
           <div className="h-px w-full" style={{ background: HAIRLINE }} />
           <p className="mt-5 max-w-[52ch] text-[12.5px] leading-relaxed text-ink-muted">
             ask the children to show you one thing they built or figured out this month — in their own words. that&apos;s the best review of all.
@@ -441,11 +441,18 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
              each page to its sheet. The single page break lives only on
              page 2 (print:break-before-page); there is no page-break-after,
              so pages never double-break or leave a trailing blank sheet. */
+          /* Each page is a fixed 285mm box on the A4 sheet (which the admin
+             download prints with @page margin:0 → 297mm printable), leaving a
+             clean ~12mm bottom margin. Content is now ~270mm so nothing is
+             clipped, and because each box is well under the sheet it can never
+             spill a sliver onto a blank next sheet (the "blank page 2/4" bug). */
           .page {
-            height: 297mm;
+            height: 285mm;
             box-sizing: border-box;
             overflow: hidden;
             box-shadow: none !important;
+            break-inside: avoid;
+            page-break-inside: avoid;
           }
         }
       `}</style>
@@ -473,7 +480,7 @@ function SectionHead({ icon, eyebrow, title, accent }: { icon: LucideIcon; eyebr
       <div className="flex items-center gap-2.5">
         <IconChip icon={icon} accent={accent} size={30} />
         <div className="min-w-0">
-          {eyebrow && <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-ink-subtle">{eyebrow}</p>}
+          {eyebrow && <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-ink-muted">{eyebrow}</p>}
           <h2 className="text-[18px] font-extrabold leading-tight text-ink">{title}</h2>
         </div>
       </div>
@@ -487,13 +494,15 @@ function PhotoFeature({ images, hints }: { images: string[]; hints: string[] }) 
   const cells: (string | null)[] = images.length > 0 ? images : [null, null, null];
   const n = cells.length;
   const cols = n <= 1 ? "grid-cols-1" : n === 2 ? "grid-cols-2" : "grid-cols-3";
-  const aspect = images.length === 1 ? "16 / 9" : "4 / 3";
+  const aspect = images.length === 1 ? "16 / 9" : "3 / 2";
   return (
     <figure className="mt-6 px-11">
       <div className={`grid ${cols} gap-2.5`}>
         {cells.map((src, i) => (
           <div key={i} className="flex items-center justify-center overflow-hidden rounded-xl ring-1 ring-ink/[0.10]"
-            style={{ aspectRatio: aspect, background: "#F7F0E4" }}>
+            style={n > 1
+              ? { height: 108, background: "#F7F0E4" }        /* fixed compact row so page 1 fits one A4 sheet */
+              : { aspectRatio: aspect, background: "#F7F0E4" }}>
             {src ? (
               /* eslint-disable-next-line @next/next/no-img-element */
               <img src={src} alt="" className="h-full w-full object-contain" />
@@ -506,7 +515,7 @@ function PhotoFeature({ images, hints }: { images: string[]; hints: string[] }) 
           </div>
         ))}
       </div>
-      <figcaption className="mt-2 text-[11px] italic text-ink-subtle">a peek at what the children made this month.</figcaption>
+      <figcaption className="mt-2 text-[11px] italic text-ink-muted">a peek at what the children made this month.</figcaption>
     </figure>
   );
 }
@@ -627,7 +636,7 @@ function PageFooter({ building, pageIndex }: { building: string; pageIndex: numb
   return (
     <footer className="mt-auto px-11 pb-5 pt-8">
       <div className="h-px w-full" style={{ background: HAIRLINE }} />
-      <div className="mt-3 flex items-end justify-between text-[10px] tracking-wide text-ink-subtle">
+      <div className="mt-3 flex items-end justify-between text-[10px] tracking-wide text-ink-muted">
         <span className="font-extrabold" style={{ color: CORAL }}>openhouse · at-apartment</span>
         <span>{building} · page {pageIndex} of 2</span>
       </div>
