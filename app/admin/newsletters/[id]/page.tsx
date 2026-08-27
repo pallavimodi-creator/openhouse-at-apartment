@@ -247,6 +247,18 @@ function ViewContent() {
         @media print {
           @page { size: A4 portrait; margin: 0; }
           body { background: white !important; }
+          /* Print ONLY the newsletter. Without this the admin's top bar +
+             buttons + page wrapper print too, pushing the newsletter down and
+             spilling it onto blank sheets (the "blank pages" download bug). */
+          body * { visibility: hidden !important; }
+          .parent-doc, .parent-doc * { visibility: visible !important; }
+          .parent-doc {
+            position: absolute !important;
+            top: 0; left: 0;
+            width: 210mm !important;
+            max-width: 210mm !important;
+            margin: 0 !important;
+          }
         }
       `}</style>
     </div>
