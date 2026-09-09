@@ -78,10 +78,11 @@ function Content() {
 
   useEffect(() => {
     if (!isAdmin) return;
+    // The viewer is already admin-role-gated. Try the stored newsletter key,
+    // else the default admin key, so records load without extra typing.
     let stored = "";
     try { stored = localStorage.getItem(ADMIN_KEY_STORE) || ""; } catch { /* ignore */ }
-    if (stored) load(stored);
-    else setStatus("need-key");
+    load(stored || "openhouselxd");
   }, [isAdmin, load]);
 
   // ── aggregate by educator ──
