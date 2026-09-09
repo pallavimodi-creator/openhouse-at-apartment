@@ -101,6 +101,7 @@ const bearHunt: VocabBook = {
       type: "action",
       tier: "easy",
       synonym: "search",
+      antonym: "hide",
       modes: ["enact", "sentence", "word-pairs"],
       prompts: {
         enact:
@@ -345,6 +346,7 @@ const giraffes: VocabBook = {
       type: "action",
       tier: "easy",
       synonym: "swinging",
+      antonym: "still",
       modes: ["enact", "what-why-how"],
           inStory: "Listen to the swaying grass.",
       wordPairs: ["swaying grass", "swaying leaves", "swaying branches"],

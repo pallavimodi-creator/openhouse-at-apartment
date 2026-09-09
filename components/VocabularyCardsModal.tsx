@@ -484,6 +484,32 @@ function CardBack({ book, card }: { book: VocabBook; card: VocabCard }) {
           </p>
         </div>
 
+        {/* Same / opposite word (synonym / antonym, in 3–5-friendly words) */}
+        {(card.synonym || card.antonym) && (
+          <div className="flex flex-wrap gap-2">
+            {card.synonym && (
+              <div className="flex items-center gap-1.5 rounded-chip bg-[#E9F5EC] px-2.5 py-1 ring-1 ring-[#bfe0cb]">
+                <span className="text-[9px] font-extrabold uppercase tracking-wide text-[#3f7a52]">
+                  same
+                </span>
+                <span className="text-[12px] font-bold text-[#256b3d]">
+                  {card.synonym}
+                </span>
+              </div>
+            )}
+            {card.antonym && (
+              <div className="flex items-center gap-1.5 rounded-chip bg-[#FDEDE7] px-2.5 py-1 ring-1 ring-[#f4cdbb]">
+                <span className="text-[9px] font-extrabold uppercase tracking-wide text-[#b5471f]">
+                  opposite
+                </span>
+                <span className="text-[12px] font-bold text-[#a03a17]">
+                  {card.antonym}
+                </span>
+              </div>
+            )}
+          </div>
+        )}
+
         {/* In the story */}
         {card.inStory && (
           <div>
