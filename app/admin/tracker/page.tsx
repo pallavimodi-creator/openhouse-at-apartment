@@ -42,13 +42,21 @@ function Content() {
       >
         <ChevronLeft className="h-4 w-4" /> back
       </Link>
-      <div className="mb-3 mt-2">
+      <div className="mb-3 mt-2 flex items-start justify-between gap-3">
+        <div>
         <h1 className="text-[18px] font-extrabold lowercase text-ink">
           progress tracker · preview
         </h1>
         <p className="mt-0.5 text-[12px] text-ink-muted">
           admin-only test build (robotics · mechanics + electronics). pick a programme up top. the teacher marks the grid; the parent note writes itself. tap cells to explore.
         </p>
+        </div>
+        <Link
+          href="/admin/records"
+          className="mt-1 shrink-0 rounded-lg bg-brand-orange px-3 py-2 text-[12px] font-bold text-white transition hover:opacity-95"
+        >
+          teacher records →
+        </Link>
       </div>
       <TrackerOverview />
       <iframe

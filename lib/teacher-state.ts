@@ -35,6 +35,8 @@ export const LEGACY_BUILDING = "(default)";
  * centre's class independently.
  */
 export type TeacherCategory = "art" | "language" | "stem";
+// "older" = the 5–8 and 8–12 programmes; "3-5" = only the 3–5 programme.
+export type AgeScope = "older" | "3-5";
 
 export interface TeacherState {
   programmeSlug: string; // "*" for admin, or a single programme slug, or the default slug when category is set
@@ -42,7 +44,45 @@ export interface TeacherState {
   username?: string;
   role?: "teacher" | "admin";
   category?: TeacherCategory; // if set, teacher sees every programme in this category
+  ageScope?: AgeScope; // narrows a category teacher to an age span
   building?: string; // current building / centre — set after the /building picker
+}
+
+/** True if a programme's age band falls inside the teacher's age scope. */
+export function matchesAgeScope(
+  ageGroup: string | undefined,
+  scope: AgeScope | undefined,
+): boolean {
+  if (!scope) return true; // admin or unscoped → everything
+  if (scope === "3-5") return ageGroup === "3-5";
+  return ageGroup === "5-8" || ageGroup === "8-12"; // "older"
+}
+
+// ─── Educator name (set on first sign-in, remembered per device) ───
+const NAME_PREFIX = "oh-name-";
+/** The real name this device saved for a login id, or null. */
+export function getSavedName(username: string): string | null {
+  if (typeof window === "undefined") return null;
+  try {
+    return localStorage.getItem(NAME_PREFIX + username.toLowerCase()) || null;
+  } catch {
+    return null;
+  }
+}
+/** Persist the educator's real name for this login id on this device. */
+export function saveName(username: string, name: string): void {
+  if (typeof window === "undefined") return;
+  const n = name.trim();
+  if (!n) return;
+  try {
+    localStorage.setItem(NAME_PREFIX + username.toLowerCase(), n);
+  } catch {
+    /* ignore */
+  }
+}
+/** A generic default name still needs the educator to enter their real one. */
+export function isGenericName(name: string | undefined): boolean {
+  return !name || /^educator\s*\d+$/i.test(name.trim());
 }
 
 export function isAdmin(state: TeacherState | null): boolean {

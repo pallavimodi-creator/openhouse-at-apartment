@@ -6,7 +6,7 @@ import Link from "next/link";
 import { listHomeProgrammes, getCurriculumProgramme } from "@/lib/content";
 import { HeroBanner } from "@/components/HeroBanner";
 import { ProgrammeCard } from "@/components/ProgrammeCard";
-import { getTeacher, type TeacherState } from "@/lib/teacher-state";
+import { getTeacher, matchesAgeScope, type TeacherState } from "@/lib/teacher-state";
 
 // Three-step guide tile — consistent layout for the "how to go
 // through the website" sequence. The emoji floats gently and wobbles
@@ -99,7 +99,11 @@ export default function HomePage() {
   const programmes = isAdmin
     ? listHomeProgrammes()
     : teacher.category
-      ? listHomeProgrammes().filter((p) => p.category === teacher.category)
+      ? listHomeProgrammes().filter(
+          (p) =>
+            p.category === teacher.category &&
+            matchesAgeScope(p.ageGroup, teacher.ageScope),
+        )
       : (() => {
           const p = getCurriculumProgramme(teacher.programmeSlug);
           return p ? [p] : [];

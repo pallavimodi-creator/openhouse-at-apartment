@@ -5,8 +5,11 @@ import { useRouter } from "next/navigation";
 import { Building2, Plus, ChevronRight } from "lucide-react";
 import {
   getTeacher,
+  setTeacher,
   setBuilding,
   getKnownBuildings,
+  saveName,
+  isGenericName,
 } from "@/lib/teacher-state";
 
 /**
@@ -26,6 +29,9 @@ export default function BuildingPickerPage() {
   const [knownBuildings, setKnownBuildings] = useState<string[]>([]);
   const [newBuilding, setNewBuilding] = useState("");
   const [loading, setLoading] = useState(true);
+  // First sign-in on a generic educator login → ask for the real name.
+  const [needsName, setNeedsName] = useState(false);
+  const [nameInput, setNameInput] = useState("");
 
   useEffect(() => {
     const t = getTeacher();
@@ -42,8 +48,24 @@ export default function BuildingPickerPage() {
     setTeacherName(t.teacherName);
     setUsername(t.username ?? null);
     setKnownBuildings(t.username ? getKnownBuildings(t.username) : []);
+    setNeedsName(isGenericName(t.teacherName));
     setLoading(false);
   }, [router]);
+
+  const handleSubmitName = (e: React.FormEvent) => {
+    e.preventDefault();
+    const name = nameInput.trim();
+    if (!name) return;
+    const t = getTeacher();
+    if (!t) {
+      router.replace("/login");
+      return;
+    }
+    if (t.username) saveName(t.username, name);
+    setTeacher({ ...t, teacherName: name });
+    setTeacherName(name);
+    setNeedsName(false);
+  };
 
   const handlePick = (name: string) => {
     const trimmed = name.trim();
@@ -69,6 +91,56 @@ export default function BuildingPickerPage() {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
         <p className="text-[12px] font-medium text-ink-subtle">loading...</p>
+      </div>
+    );
+  }
+
+  // First sign-in on this device with a generic login → capture the real
+  // name before anything else. It becomes the identity in the records
+  // dashboard, and is remembered on this device for next time.
+  if (needsName) {
+    return (
+      <div className="flex min-h-[calc(100dvh-60px)] flex-col items-center px-4 pt-6 pb-8 md:px-8 md:pt-10">
+        <div className="mb-6 w-full max-w-md text-center">
+          <p className="text-[12px] font-bold tracking-widest text-brand-orange">
+            welcome
+          </p>
+          <h1 className="mt-2 text-[26px] font-extrabold leading-[1.05] tracking-tight text-ink md:text-[32px]">
+            what&apos;s your name?
+          </h1>
+          <p className="mt-3 max-w-sm text-[12.5px] leading-relaxed text-ink-muted md:text-[13px]">
+            this is the first time this login has been used on this device.
+            your name is how your class records show up for the admin — enter it
+            once and we&apos;ll remember it here.
+          </p>
+        </div>
+        <form
+          onSubmit={handleSubmitName}
+          className="w-full max-w-md rounded-card bg-brand-white p-4 shadow-card ring-1 ring-ink/5 md:p-5"
+        >
+          <label
+            htmlFor="teacher-name"
+            className="text-[10px] font-bold tracking-widest text-ink-muted"
+          >
+            your full name
+          </label>
+          <input
+            id="teacher-name"
+            type="text"
+            value={nameInput}
+            onChange={(e) => setNameInput(e.target.value)}
+            autoFocus
+            placeholder="e.g. priya sharma"
+            className="mt-2 block w-full rounded-lg border border-ink/10 bg-bg/40 px-3 py-2.5 text-[14px] focus:border-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-orange/20"
+          />
+          <button
+            type="submit"
+            disabled={!nameInput.trim()}
+            className="mt-4 w-full rounded-card bg-brand-orange py-3 text-[14px] font-extrabold text-white transition hover:opacity-95 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-40"
+          >
+            continue
+          </button>
+        </form>
       </div>
     );
   }
