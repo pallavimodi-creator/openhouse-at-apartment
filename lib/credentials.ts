@@ -49,6 +49,15 @@ export const CREDENTIALS: Credential[] = [
     role: "teacher",
     category: "stem",
   },
+  // chess teacher — sees both chess programmes (5-8 and 8-12)
+  {
+    username: "chessteacher",
+    password: "chessteacher123",
+    programmeSlug: "chess-5-8",
+    displayName: "chess teacher",
+    role: "teacher",
+    category: "chess",
+  },
 ];
 
 export function validateCredentials(

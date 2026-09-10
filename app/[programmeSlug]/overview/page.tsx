@@ -489,6 +489,7 @@ function ProgrammeOverviewContent() {
   const isRobotics = programme.category === "stem";
   const isLanguage = programme.category === "language";
   const isMusic = programme.category === "music";
+  const isChess = programme.category === "chess";
 
   // Every overview has the same four top-level sections now: daily flow
   // · skills · segments (each segment card contains its full info inline)
@@ -613,6 +614,12 @@ function ProgrammeOverviewContent() {
     bm: { color: "bg-segment-pink", accent: "border-segment-pink" },
     ps: { color: "bg-segment-blue", accent: "border-segment-blue" },
     ou: { color: "bg-segment-green", accent: "border-segment-green" },
+    // chess skill families (game mechanics · board vision · calculation · synthesis · resilience)
+    gm: { color: "bg-segment-yellow", accent: "border-segment-yellow" },
+    bv: { color: "bg-segment-blue", accent: "border-segment-blue" },
+    ca: { color: "bg-segment-pink", accent: "border-segment-pink" },
+    sy: { color: "bg-segment-green", accent: "border-segment-green" },
+    re: { color: "bg-brand-orange", accent: "border-brand-orange" },
     // language — five skill families, each with its own segment-tone colour
     listening: { color: "bg-segment-yellow", accent: "border-segment-yellow" },
     speaking: { color: "bg-brand-orange", accent: "border-brand-orange" },
@@ -768,6 +775,35 @@ function ProgrammeOverviewContent() {
         programme.segmentDefinitions.find((s) => s.id === "ensemble")?.objective ??
         "the whole group learns and plays the song of the term together — each child on their own instrument at their book level — then performs as a band.",
     },
+    // ── chess ──
+    tempo: {
+      icon: Zap,
+      durationFlex: 10,
+      meaning:
+        programme.segmentDefinitions.find((s) => s.id === "tempo")?.objective ??
+        "mind & movement exercises to get focused, then a chess-centric warm-up.",
+    },
+    chessiverse: {
+      icon: Gamepad2,
+      durationFlex: 35,
+      meaning:
+        programme.segmentDefinitions.find((s) => s.id === "chessiverse")?.objective ??
+        "curated games that teach the core concepts of chess — rotating through five games.",
+    },
+    "rising-pawns": {
+      icon: Star,
+      durationFlex: 35,
+      meaning:
+        programme.segmentDefinitions.find((s) => s.id === "rising-pawns")?.objective ??
+        "real games and mini-games to apply the concepts in play.",
+    },
+    "reflect-log": {
+      icon: Notebook,
+      durationFlex: 10,
+      meaning:
+        programme.segmentDefinitions.find((s) => s.id === "reflect-log")?.objective ??
+        "the student records their learning in their journal to refer back to next class.",
+    },
   };
   const dailyFlow = programme.segmentDefinitions.map((s) => {
     const meta = segmentMeta[s.id] ?? segmentMeta["log-book"];
@@ -916,6 +952,49 @@ function ProgrammeOverviewContent() {
       time: "8–10 min",
       type: "fixed" as const,
       games: [{ name: "personal experience book", skills: ["reflection"], rotation: "fixed" as const }],
+    },
+  ];
+
+  // Chess games table — tempo & reflect-log are fixed structural blocks;
+  // chessiverse and rising pawns arena rotate through their game pools.
+  const chessSkillLabel = (id: string) =>
+    (programme.skillAreas.find((s) => s.id === id)?.name ?? id).toLowerCase();
+  const chessSegmentGames = [
+    {
+      segment: "tempo",
+      icon: Zap,
+      color: "bg-segment-yellow",
+      time: "10 min",
+      type: "fixed" as const,
+      games: [{ name: "mind & movement + chess warm-up", skills: [] as string[], rotation: "fixed" as const }],
+    },
+    {
+      segment: "chessiverse",
+      icon: Gamepad2,
+      color: "bg-segment-green/30",
+      time: "35 min",
+      type: "rotating" as const,
+      games: Object.values(programme.activities)
+        .filter((a) => a.segment === "chessiverse")
+        .map((a) => ({ name: a.title.toLowerCase(), skills: (a.skillIds ?? []).map(chessSkillLabel), rotation: "rotating" as const })),
+    },
+    {
+      segment: "rising pawns arena",
+      icon: Star,
+      color: "bg-segment-blue/30",
+      time: "35 min",
+      type: "rotating" as const,
+      games: Object.values(programme.activities)
+        .filter((a) => a.segment === "rising-pawns")
+        .map((a) => ({ name: a.title.toLowerCase(), skills: (a.skillIds ?? []).map(chessSkillLabel), rotation: "rotating" as const })),
+    },
+    {
+      segment: "reflect & log",
+      icon: Notebook,
+      color: "bg-segment-pink/30",
+      time: "10 min",
+      type: "fixed" as const,
+      games: [{ name: "student journal", skills: ["reflection"], rotation: "fixed" as const }],
     },
   ];
 
@@ -1163,9 +1242,11 @@ function ProgrammeOverviewContent() {
       ? roboticsSegmentGames
       : isArt
         ? segmentGamesDynamic
-        : isStorytelling35
-          ? languageSegmentGames
-          : psSegmentGames;
+        : isChess
+          ? chessSegmentGames
+          : isStorytelling35
+            ? languageSegmentGames
+            : psSegmentGames;
 
   return (
     <div className="flex flex-col pb-6">

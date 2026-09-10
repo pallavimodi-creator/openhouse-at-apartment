@@ -13,6 +13,8 @@ import {
 import { languageStorytelling35 } from "./language-storytelling-3-5";
 import { stem35 } from "./stem-3-5";
 import { musicProgrammes } from "./music-levels";
+import { chess58 } from "./chess-5-8";
+import { chess812 } from "./chess-8-12";
 
 // Registry of all 8 programmes for the homepage cards.
 // Ordered: all art first (youngest → oldest), then language/speaking (youngest → oldest), then robotics (youngest → oldest).
@@ -42,4 +44,10 @@ export const curriculumProgrammes: CurriculumProgramme[] = [
   // Music — two age bands (5–8 · 8–12), each a level-based track (l1/l2/l3).
   // Level 1 of each band shows on the home grid; levels 2–3 via the switcher.
   ...musicProgrammes,
+
+  // ── Chess ──
+  // Two age bands — 5–8 (beginner) and 8–12 (intermediate). Same
+  // four-part class and game library; deeper skill ladders for 8–12.
+  chess58,
+  chess812,
 ];

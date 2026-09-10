@@ -11,6 +11,7 @@ const heroBg: Record<Category, string> = {
   music: "bg-category-music/40",
   movement: "bg-category-movement/40",
   stem: "bg-category-stem/40",
+  chess: "bg-category-chess/50",
 };
 
 export function ProgrammeHero({

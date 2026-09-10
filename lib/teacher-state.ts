@@ -34,7 +34,7 @@ export const LEGACY_BUILDING = "(default)";
  * teacher who teaches the same programme at two centres can track each
  * centre's class independently.
  */
-export type TeacherCategory = "art" | "language" | "stem";
+export type TeacherCategory = "art" | "language" | "stem" | "chess";
 
 export interface TeacherState {
   programmeSlug: string; // "*" for admin, or a single programme slug, or the default slug when category is set

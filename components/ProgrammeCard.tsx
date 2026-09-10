@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Music, Palette, BookOpen, FlaskConical, Sparkles } from "lucide-react";
+import { Music, Palette, BookOpen, FlaskConical, Sparkles, Crown } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CategoryChip } from "./CategoryChip";
@@ -14,6 +14,7 @@ const placeholderIcon: Record<Category, LucideIcon> = {
   music: Music,
   movement: Sparkles,
   stem: FlaskConical,
+  chess: Crown,
 };
 
 const cardAccent: Record<Category, string> = {
@@ -22,6 +23,7 @@ const cardAccent: Record<Category, string> = {
   music: "from-category-music/30 via-brand-orange/5 to-brand-cream",
   movement: "from-category-movement/30 via-brand-orange/5 to-brand-cream",
   stem: "from-category-stem/30 via-brand-orange/5 to-brand-cream",
+  chess: "from-category-chess/30 via-brand-orange/5 to-brand-cream",
 };
 
 const topBar: Record<Category, string> = {
@@ -30,6 +32,7 @@ const topBar: Record<Category, string> = {
   music: "bg-category-music",
   movement: "bg-category-movement",
   stem: "bg-category-stem",
+  chess: "bg-category-chess",
 };
 
 export function ProgrammeCard({

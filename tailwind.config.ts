@@ -23,6 +23,7 @@ const config: Config = {
           movement: "#EDAAB0",
           art: "#F3C520",
           stem: "#5B8FB9",
+          chess: "#B8B5DD",
         },
         // Segment palette — single source of truth for segment-coloured
         // surfaces (overview, day plan, library, popups). Every component

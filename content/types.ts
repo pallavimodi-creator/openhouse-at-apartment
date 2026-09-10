@@ -29,7 +29,7 @@ export type ResourceStatus =
   | "in-production"
   | "procurement-only";
 
-export type Category = "art" | "language" | "music" | "movement" | "stem";
+export type Category = "art" | "language" | "music" | "movement" | "stem" | "chess";
 
 export interface Skill {
   id: string;
@@ -355,6 +355,10 @@ export interface CurriculumSessionEntry {
   experiment?: string;
   build?: string;
   experienceBook?: string;
+  // Chess segments (class flow: tempo → chessiverse → rising pawns → reflect & log)
+  chessiverse?: string; // concept game id (e.g. "chain-capture") — Chessiverse
+  risingPawns?: string; // applied game id (e.g. "pawn-wars") — Rising Pawns Arena
+  chessFocus?: string; // the day's teaching headline (concept + game mode), shown above the plan
   // STEM 3-5 segments
   imaginePlayground?: string; // Build project id (e.g. "ip-train-time") or maker filler id, on Session A
   wonderWorld?: string; // workbook activity id (e.g. "ww-bread-1-punch-and-squish") or food game, on Session B
@@ -396,7 +400,7 @@ export interface CurriculumSessionEntry {
 
 export interface CurriculumActivity {
   id: string;
-  segment: "roll-call" | "playground" | "showtime" | "sign-off" | "log-book" | "art-gym" | "art-games" | "artiverse" | "art-care" | "experiment" | "build" | "experience-book" | "roll-rhyme" | "book-o-clock" | "wordsmiths" | "play-writes" | "imagine-playground" | "wonder-world" | "logic-lab" | "numbers-gym" | "warm-up" | "your-instrument" | "ensemble";
+  segment: "roll-call" | "playground" | "showtime" | "sign-off" | "log-book" | "art-gym" | "art-games" | "artiverse" | "art-care" | "experiment" | "build" | "experience-book" | "roll-rhyme" | "book-o-clock" | "wordsmiths" | "play-writes" | "imagine-playground" | "wonder-world" | "logic-lab" | "numbers-gym" | "warm-up" | "your-instrument" | "ensemble" | "tempo" | "chessiverse" | "rising-pawns" | "reflect-log";
   title: string;
   cardName?: string;
   setupLine: string;

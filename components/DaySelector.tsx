@@ -11,6 +11,7 @@ const selectedBg: Record<Category, string> = {
   music: "bg-category-music text-blue-900",
   movement: "bg-category-movement text-pink-900",
   stem: "bg-category-stem text-white",
+  chess: "bg-category-chess text-indigo-900",
 };
 
 export function DaySelector({

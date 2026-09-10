@@ -120,6 +120,7 @@ export default function HomePage() {
     { key: "language", label: "language through storytelling and public speaking" },
     { key: "stem", label: "stem & robotics" },
     { key: "music", label: "music" },
+    { key: "chess", label: "chess" },
   ];
   const programmesByCategory = categoryOrder
     .map((c) => ({

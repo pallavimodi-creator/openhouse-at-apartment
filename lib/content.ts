@@ -236,6 +236,7 @@ export const CATEGORY_COLOR_CLASS: Record<Category, string> = {
   music: "bg-category-music",
   movement: "bg-category-movement",
   stem: "bg-category-stem",
+  chess: "bg-category-chess",
 };
 
 export const CATEGORY_TEXT_CLASS: Record<Category, string> = {
@@ -244,6 +245,7 @@ export const CATEGORY_TEXT_CLASS: Record<Category, string> = {
   music: "text-category-music",
   movement: "text-category-movement",
   stem: "text-category-stem",
+  chess: "text-category-chess",
 };
 
 // ─── Activity image lookup ─────────────────────────────────
@@ -480,4 +482,9 @@ export const SEGMENT_COLORS: Record<string, string> = {
   experiment: "bg-brand-orange/12 text-brand-orange",
   build: "bg-brand-orange/12 text-brand-orange",
   "experience-book": "bg-brand-orange/12 text-brand-orange",
+  // Chess segments
+  tempo: "bg-brand-orange/12 text-brand-orange",
+  chessiverse: "bg-brand-orange/12 text-brand-orange",
+  "rising-pawns": "bg-brand-orange/12 text-brand-orange",
+  "reflect-log": "bg-brand-orange/12 text-brand-orange",
 };

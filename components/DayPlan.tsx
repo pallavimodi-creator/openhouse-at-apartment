@@ -57,6 +57,11 @@ const SEGMENT_ICONS: Record<string, React.ReactNode> = {
   experiment: <FlaskConical className="h-3.5 w-3.5" />,
   build: <Wrench className="h-3.5 w-3.5" />,
   "experience-book": <Notebook className="h-3.5 w-3.5" />,
+  // Chess segments
+  tempo: <Zap className="h-3.5 w-3.5" />,
+  chessiverse: <Gamepad2 className="h-3.5 w-3.5" />,
+  "rising-pawns": <Star className="h-3.5 w-3.5" />,
+  "reflect-log": <Notebook className="h-3.5 w-3.5" />,
 };
 
 // Labels for art-gym cycle positions
@@ -135,6 +140,9 @@ const SEGMENT_FIELD_MAP: Record<string, keyof CurriculumSessionEntry> = {
   "wonder-world": "wonderWorld",
   "logic-lab": "logicLab",
   "numbers-gym": "numbersGym",
+  // Chess segments (tempo & reflect-log are fixed — no field lookup)
+  chessiverse: "chessiverse",
+  "rising-pawns": "risingPawns",
   // Music segments (warm up → instrument rotation → ensemble play)
   "warm-up": "warmUp",
   "your-instrument": "yourInstrument",
@@ -906,6 +914,18 @@ export function DayPlan({
           </p>
           <p className="mt-1.5 text-[10px] leading-relaxed text-ink-subtle">
             one direct question. one child answers. teacher confirms in one sentence.
+          </p>
+        </div>
+      )}
+
+      {/* Today's focus (chess) — the day's teaching headline: concept + game mode */}
+      {session.chessFocus && (
+        <div className="mb-3 rounded-card bg-category-chess/15 p-3.5 ring-1 ring-category-chess/40">
+          <p className="text-[10px] font-bold text-indigo-800">
+            today&apos;s focus
+          </p>
+          <p className="mt-1 text-[12px] font-medium leading-relaxed text-ink">
+            {session.chessFocus}
           </p>
         </div>
       )}

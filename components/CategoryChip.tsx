@@ -7,6 +7,7 @@ const chipStyles: Record<Category, string> = {
   music: "bg-brand-white/80 text-blue-800 backdrop-blur-sm",
   movement: "bg-brand-white/80 text-pink-800 backdrop-blur-sm",
   stem: "bg-brand-white/80 text-blue-900 backdrop-blur-sm",
+  chess: "bg-brand-white/80 text-indigo-800 backdrop-blur-sm",
 };
 
 export function CategoryChip({
