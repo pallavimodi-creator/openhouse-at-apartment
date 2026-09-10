@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { setTeacher, getTeacher, getSavedName } from "@/lib/teacher-state";
+import { setTeacher, getTeacher } from "@/lib/teacher-state";
 import { validateCredentials } from "@/lib/credentials";
 
 export default function LoginPage() {
@@ -39,14 +39,12 @@ export default function LoginPage() {
       setSubmitting(false);
       return;
     }
-    const savedName = getSavedName(cred.username);
     setTeacher({
-      teacherName: savedName || cred.displayName,
+      teacherName: cred.displayName,
       programmeSlug: cred.programmeSlug,
       username: cred.username,
       role: cred.role,
       category: cred.category,
-      ageScope: cred.ageScope,
     });
     // Admins go straight home — they're reviewing, not teaching, so no
     // building needed. Teachers go to the building picker first.

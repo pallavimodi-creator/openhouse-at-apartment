@@ -15,9 +15,7 @@ import {
   markDayCompleted,
   unmarkDayCompleted,
   getNextDay,
-  matchesAgeScope,
 } from "@/lib/teacher-state";
-import { logProgress } from "@/lib/progress-log";
 
 export default function ProgrammeDetailPage() {
   const params = useParams();
@@ -53,8 +51,7 @@ export default function ProgrammeDetailPage() {
     const allowed =
       admin ||
       (teacher.category
-        ? programme.category === teacher.category &&
-          matchesAgeScope(programme.ageGroup, teacher.ageScope)
+        ? programme.category === teacher.category
         : teacher.programmeSlug === slug);
     if (!allowed) {
       router.replace(`/${teacher.programmeSlug}`);
@@ -114,12 +111,10 @@ export default function ProgrammeDetailPage() {
     if (isCompleted) {
       const next = unmarkDayCompleted(slug, selectedDay);
       setCompletedDays(next);
-      logProgress({ programmeSlug: slug, programmeTitle: programme.title, day: selectedDay, completed: false });
       return;
     }
     const next = markDayCompleted(slug, selectedDay);
     setCompletedDays(next);
-    logProgress({ programmeSlug: slug, programmeTitle: programme.title, day: selectedDay, completed: true });
     // Auto-advance to the next uncompleted day
     const nextDay = getNextDay(next, programme.totalSessions, hasTrialSession);
     if (nextDay !== selectedDay) {
