@@ -28,9 +28,9 @@ const skillAreas812 = [
         description: "writes down each move in algebraic notation while playing.",
       },
       {
-        name: "opens with sound principles and a named opening",
+        name: "opens with sound principles",
         description:
-          "controls the centre, develops pieces and castles early, and can play a named opening such as the italian.",
+          "controls the centre, develops pieces and castles early, avoiding common pitfalls in the opening.",
       },
       {
         name: "knows the draw and end-game rules",
@@ -38,9 +38,9 @@ const skillAreas812 = [
           "explains stalemate, threefold repetition, the 50-move rule and insufficient material.",
       },
       {
-        name: "plays a full game with clock and tournament etiquette",
+        name: "conducts a complete legal game",
         description:
-          "handles a chess clock, touch-move and fair play in a full timed game.",
+          "sets up the board accurately, strictly enforces touch-move, spots and flags illegal moves immediately.",
         isNorthStar: true,
       },
     ],
@@ -159,12 +159,12 @@ const sessionTable812: CurriculumSessionEntry[] = [
   { sessionNumber: 1, chessiverse: "board-architect", risingPawns: "paired-gameplay", chessFocus: "chess notation & board vision (board architect) · paired gameplay (placement game)", topicLayer: 1 },
   { sessionNumber: 2, chessiverse: "chain-capture", risingPawns: "pawn-wars", chessFocus: "opening principles — centre, develop, castle · chain capture · pawn wars", topicLayer: 1 },
   { sessionNumber: 3, chessiverse: "board-architect", risingPawns: "paired-gameplay", chessFocus: "reading positions from notation (board architect) · paired gameplay (the opening)", topicLayer: 1 },
-  { sessionNumber: 4, chessiverse: "lava-lilies", risingPawns: "squad-relay", chessFocus: "tactics — forks & pins (lava & lillies) · squad relay", topicLayer: 2 },
+  { sessionNumber: 4, chessiverse: "bees-lilies", risingPawns: "squad-relay", chessFocus: "tactics — forks & pins (bees & lilies) · squad relay", topicLayer: 2 },
   { sessionNumber: 5, chessiverse: "last-man-standing", risingPawns: "paired-gameplay", chessFocus: "calculation — forcing captures (last man standing) · paired gameplay", topicLayer: 2 },
   { sessionNumber: 6, chessiverse: "board-architect", risingPawns: "board-reporter", chessFocus: "stalemate vs checkmate (board architect) · board reporter (record your game)", topicLayer: 2, isCheckpoint: true },
   { sessionNumber: 7, chessiverse: "board-architect", risingPawns: "paired-gameplay", chessFocus: "two-rook checkmate (board architect) · paired gameplay", topicLayer: 2 },
   { sessionNumber: 8, chessiverse: "board-architect", risingPawns: "paired-gameplay", chessFocus: "queen checkmate (board architect) · paired gameplay (convert the win)", topicLayer: 3 },
-  { sessionNumber: 9, chessiverse: "lava-lilies", risingPawns: "squad-relay", chessFocus: "tactics in your own games — skewers & discovered attacks (lava & lillies) · squad relay", topicLayer: 3 },
+  { sessionNumber: 9, chessiverse: "bees-lilies", risingPawns: "squad-relay", chessFocus: "tactics in your own games — skewers & discovered attacks (bees & lilies) · squad relay", topicLayer: 3 },
   { sessionNumber: 10, chessiverse: "board-architect", risingPawns: "paired-gameplay", chessFocus: "mate in two (board architect) · paired gameplay", topicLayer: 3 },
   { sessionNumber: 11, chessiverse: "last-man-standing", risingPawns: "board-reporter", chessFocus: "converting a material advantage (last man standing) · board reporter (analyse your game)", topicLayer: 3 },
   { sessionNumber: 12, chessiverse: "board-architect", risingPawns: "paired-gameplay", chessFocus: "mate in two / three (challenge) · paired gameplay (full game + clock)", topicLayer: 4, isCheckpoint: true },

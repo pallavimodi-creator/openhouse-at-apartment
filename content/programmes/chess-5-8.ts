@@ -30,14 +30,14 @@ export const chessSegmentDefinitions: CurriculumSegmentDef[] = [
     name: "Chessiverse",
     durationRange: "35 min",
     objective:
-      "play curated games to learn the core concepts of chess. rotates between five games — chain capture, board architect, piece patrol, last man standing, and lava & lillies.",
+      "play curated games to learn the core concepts of chess. rotates between five games — chain capture, board architect, piece patrol, last man standing, and bees & lilies.",
     type: "rotating",
     rotationPool: [
       "chain-capture",
       "board-architect",
       "piece-patrol",
       "last-man-standing",
-      "lava-lilies",
+      "bees-lilies",
     ],
   },
   {
@@ -72,16 +72,16 @@ export const chessActivities: Record<string, CurriculumActivity> = {
     segment: "chessiverse",
     title: "chain capture",
     setupLine:
-      "capture every target on the board in one continuous chain — a legal capture on every move, never landing on an attacked square.",
+      "capture every target on the board in one continuous chain — a legal capture on every single move until all targets are removed.",
     howToPlay:
-      "set up the challenge position. the child must capture every target piece in a continuous sequence — making a legal capture on every single move, and never landing on a square that is attacked. if they land on an attacked square or run out of legal captures, the chain breaks and they reset and try again.",
-    goal: "the child clears the board by making a legal capture on every move without ever landing on an attacked square.",
+      "set up the challenge position. the child must capture every target piece in a continuous sequence — making a legal capture on every single move. if they make a non-capturing move or run out of legal captures before clearing the board, the chain breaks and they reset and try again.",
+    goal: "the child clears the board by making a legal capture on every move until all target pieces are removed.",
     materials: ["standard chess board and pieces"],
     skillIds: ["ca", "sy"],
     difficultyLevels: [
-      { level: "Intro", description: "fewer pieces, with the captures lined up in a clear route." },
-      { level: "Practice", description: "a full chain with one clear path to find." },
-      { level: "Challenge", description: "more pieces and more attacked squares to route around." },
+      { level: "Intro", description: "fewer pieces with no constraints — capture all the targets along a clear route." },
+      { level: "Practice", description: "a full chain with obvious choices; any non-capturing move triggers an immediate reset." },
+      { level: "Challenge", description: "more pieces with crossroads of choices — only one accurate sequence clears the board without running out of captures." },
     ],
     educatorNote:
       "chain capture builds calculation (seeing the whole capture sequence) and synthesis (choosing the one order that works).",
@@ -143,26 +143,28 @@ export const chessActivities: Record<string, CurriculumActivity> = {
     debriefPrompts: [],
     type: "physical-game",
   },
-  "lava-lilies": {
-    id: "lava-lilies",
+  "bees-lilies": {
+    id: "bees-lilies",
     segment: "chessiverse",
-    title: "lava & lillies",
+    title: "bees & lilies",
     setupLine:
-      "move the hero piece to the lily marker in the exact number of moves — no landing on lava, no stepping into an enemy's attack line.",
+      "route the hero piece to the lily marker in the exact number of moves — never landing on a bee token, never stepping into an enemy's attack line.",
     howToPlay:
-      "place the hero piece on its start square and the lily flower marker on its target square, with physical lava tokens and stationary enemy pieces on the board. the child moves the hero to the lily in exactly the move par printed on the challenge card — never landing on a lava token, and never stepping into a stationary enemy's attack line.",
-    goal: "the child routes the hero piece to the lily marker in the exact move count, avoiding lava tokens and enemy attack lines.",
+      "place the hero piece on its start square and the lily flower marker on its target square, with physical bee tokens and stationary enemy pieces on the board. the child moves the hero to the lily in exactly the move par printed on the challenge card — never landing on a bee token (that would be a sting), and never stepping into a stationary enemy's attack line.",
+    goal: "the child routes the hero piece to the lily marker in the exact move count, avoiding bee tokens without getting stung and dodging enemy attack lines.",
     materials: [
       "hero piece + lily flower marker",
-      "lava tokens",
+      "bee hazard tokens",
+      "stationary enemy pieces",
+      "boundary framers",
       "100 challenge flashcards",
       "master study game question bank",
     ],
     skillIds: ["bv", "ca"],
     difficultyLevels: [
-      { level: "Intro", description: "short routes with a couple of lava tokens." },
-      { level: "Practice", description: "the exact move par with a few enemy attack lines to avoid." },
-      { level: "Progression", description: "longer routes, a tighter par, and more attack lines to read." },
+      { level: "Intro", description: "short routes with a couple of bee tokens." },
+      { level: "Practice", description: "an expanded board area and more bee tokens to navigate, without any enemy pieces." },
+      { level: "Progression", description: "stationary enemy pieces are introduced alongside dense bee hazards to test calculation through active attack lines." },
     ],
     debriefPrompts: [],
     type: "physical-game",
@@ -358,7 +360,7 @@ const skillAreas58 = [
       {
         name: "names one good idea",
         description:
-          "says a simple plan out loud — control the centre, develop a piece, or castle.",
+          "states a simple plan that represents the next logical step in any stage of the game.",
       },
       {
         name: "follows a simple plan in a guided game",
@@ -415,10 +417,10 @@ const sessionTable58: CurriculumSessionEntry[] = [
   { sessionNumber: 3, chessiverse: "piece-patrol", risingPawns: "pawn-wars", chessFocus: "piece patrol (intro & practice) · pawn wars", topicLayer: 1 },
   { sessionNumber: 4, chessiverse: "chain-capture", risingPawns: "pawn-wars", chessFocus: "chain capture + piece patrol (challenge) · pawn wars", topicLayer: 1 },
   { sessionNumber: 5, chessiverse: "board-architect", risingPawns: "pawn-wars", chessFocus: "learn check & checkmate (board architect) · pawn wars", topicLayer: 2 },
-  { sessionNumber: 6, chessiverse: "lava-lilies", risingPawns: "squad-relay", chessFocus: "lava & lillies (intro & practice) · squad relay (20 moves)", topicLayer: 2, isCheckpoint: true },
+  { sessionNumber: 6, chessiverse: "bees-lilies", risingPawns: "squad-relay", chessFocus: "bees & lilies (intro & practice) · squad relay (20 moves)", topicLayer: 2, isCheckpoint: true },
   { sessionNumber: 7, chessiverse: "last-man-standing", risingPawns: "pawn-wars", chessFocus: "last man standing (intro & practice) · pawn wars", topicLayer: 2 },
-  { sessionNumber: 8, chessiverse: "lava-lilies", risingPawns: "squad-relay", chessFocus: "lava & lillies + last man standing (challenge) · squad relay (full game)", topicLayer: 2 },
-  { sessionNumber: 9, chessiverse: "lava-lilies", risingPawns: "paired-gameplay", chessFocus: "lava & lillies (progression) · paired gameplay (first 20 moves)", topicLayer: 3 },
+  { sessionNumber: 8, chessiverse: "bees-lilies", risingPawns: "squad-relay", chessFocus: "bees & lilies + last man standing (challenge) · squad relay (full game)", topicLayer: 2 },
+  { sessionNumber: 9, chessiverse: "bees-lilies", risingPawns: "paired-gameplay", chessFocus: "bees & lilies (progression) · paired gameplay (first 20 moves)", topicLayer: 3 },
   { sessionNumber: 10, chessiverse: "board-architect", risingPawns: "paired-gameplay", chessFocus: "board architect — mate in one · paired gameplay (first 20 moves)", topicLayer: 3 },
   { sessionNumber: 11, chessiverse: "last-man-standing", risingPawns: "paired-gameplay", chessFocus: "last man standing (progression) · paired gameplay (first full game)", topicLayer: 3 },
   { sessionNumber: 12, chessiverse: "board-architect", risingPawns: "paired-gameplay", chessFocus: "board architect — mate in one (challenge) · paired gameplay", topicLayer: 3, isCheckpoint: true },
