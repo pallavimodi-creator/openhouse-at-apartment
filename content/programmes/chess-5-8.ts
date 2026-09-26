@@ -451,24 +451,27 @@ const skillAreas58 = [
     shortName: "GM",
     abilities: [
       {
-        name: "names each piece and shows how it moves",
+        name: "knows the basic rules",
         description:
-          "points to the king, queen, rook, bishop, knight and pawn and shows each one's move on the board.",
+          "board setup, how each piece moves, the coordinates, and the piece values.",
       },
       {
-        name: "captures and defends pieces legally",
+        name: "understands check, capture, checkmate & stalemate",
         description:
-          "takes an enemy piece with a legal move and protects a piece that is under attack.",
+          "knows checkmate is the primary objective, and recognises a stalemate.",
       },
       {
-        name: "sets up the board and plays a full legal game",
-        description:
-          "places every piece on the right square and plays a whole game following the rules.",
+        name: "castles and promotes correctly",
+        description: "executes castling and pawn promotion by the rules.",
       },
       {
-        name: "plays a complete game with good chess manners",
+        name: "flags illegal moves during play",
+        description: "identifies and flags moves that break the rules as they happen.",
+      },
+      {
+        name: "implements the rules and game-completion criteria",
         description:
-          "finishes a full legal game, shakes hands before and after, and praises a good move.",
+          "plays by the rules and the ending conditions, and flags moves that break them as illegal — developing integrity, attention to detail, conflict resolution and accountability.",
         isNorthStar: true,
       },
     ],
@@ -479,22 +482,28 @@ const skillAreas58 = [
     shortName: "BV",
     abilities: [
       {
-        name: "names squares by their coordinate",
-        description: "finds and names a square such as e4 or d5 on the board.",
-      },
-      {
-        name: "spots which pieces attack a square",
+        name: "maps every piece's range",
         description:
-          "looks at a square and says which pieces are attacking or defending it.",
+          "sees the full range of each piece to spot hanging targets instantly.",
       },
       {
-        name: "sees a threat before it lands",
+        name: "talks through a position",
         description:
-          "notices when a piece is about to be captured and finds it a safe square.",
+          "communicates ideas clearly about a static position under discussion.",
       },
       {
-        name: "reads the whole board and keeps their king safe",
-        description: "scans the board each move and keeps their king out of danger.",
+        name: "reconstructs a position",
+        description: "rebuilds a position shown visually, verbally, or in writing.",
+      },
+      {
+        name: "tracks the spatial balance",
+        description:
+          "tracks how every move shifts control — some squares won, some left behind.",
+      },
+      {
+        name: "turns the board into a map",
+        description:
+          "sees the immediate threats of every piece — unlocking awareness, observation, spatial control and visualisation.",
         isNorthStar: true,
       },
     ],
@@ -505,22 +514,28 @@ const skillAreas58 = [
     shortName: "CA",
     abilities: [
       {
-        name: "finds a one-move capture",
-        description: "spots a piece they can take in a single legal move.",
-      },
-      {
-        name: "plans a two-move sequence",
-        description: "works out 'if i go here, then i can go there' before moving.",
-      },
-      {
-        name: "follows a short forced line",
+        name: "tracks material balance",
         description:
-          "calculates a line of checks and captures the opponent must answer.",
+          "watches the material during exchanges to make profitable trades.",
       },
       {
-        name: "calculates a short sequence to win material or give mate",
+        name: "escapes check with CPR",
         description:
-          "looks a few moves ahead to win a piece or deliver checkmate.",
+          "applies the CPR framework — capture, protect/block, run away — to get out of check.",
+      },
+      {
+        name: "holds the movement rules in mind",
+        description: "keeps the legal-movement rules active while playing.",
+      },
+      {
+        name: "evaluates who is ahead",
+        description:
+          "reads the current position to judge who has the upper hand.",
+      },
+      {
+        name: "applies working memory & one-step logic",
+        description:
+          "uses piece rules, piece values and single-step conditional logic — building decision-making, problem-solving, critical thinking and pattern recognition.",
         isNorthStar: true,
       },
     ],
@@ -531,22 +546,28 @@ const skillAreas58 = [
     shortName: "SY",
     abilities: [
       {
-        name: "names one good idea",
+        name: "follows the opening rules",
         description:
-          "states a simple plan that represents the next logical step in any stage of the game.",
+          "controls the central squares, develops minor pieces, and castles early.",
       },
       {
-        name: "follows a simple plan in a guided game",
+        name: "avoids early-game pitfalls",
         description:
-          "sticks to one idea across several moves with the educator's nudges.",
+          "sidesteps Scholar's Mate, an early queen, and unnecessary pawn moves.",
       },
       {
-        name: "chooses between two ideas",
-        description: "weighs two plans and picks the one that helps their position.",
+        name: "gives each piece a role",
+        description:
+          "coordinates pieces by assigning each a specific role in a plan.",
       },
       {
-        name: "forms and follows a plan across a whole game",
-        description: "makes a plan of their own and steers the game toward it.",
+        name: "recalls checkmate patterns",
+        description: "remembers checkmate patterns at the moment of execution.",
+      },
+      {
+        name: "develops, plans & executes cleanly",
+        description:
+          "follows sound sequential rules and techniques for clean development, planning and execution.",
         isNorthStar: true,
       },
     ],
@@ -557,23 +578,26 @@ const skillAreas58 = [
     shortName: "RE",
     abilities: [
       {
-        name: "follows the class manners and shakes hands",
-        description:
-          "greets their opponent, plays fair, and shakes hands before and after.",
+        name: "plays courteously",
+        description: "takes turns and respects the other players.",
       },
       {
-        name: "keeps playing calmly after a mistake",
-        description: "stays settled after losing a piece and plays the next move.",
+        name: "manages reactions after a blunder",
+        description: "handles the immediate feelings after a mistake or blunder.",
       },
       {
-        name: "wins and loses gracefully",
-        description:
-          "congratulates their opponent whether they win or lose.",
+        name: "stays fully focused",
+        description: "keeps complete focus during instruction and gameplay alike.",
       },
       {
-        name: "reflects on their games and plays on with a growth mindset",
+        name: "accepts the result gracefully",
         description:
-          "looks back at what they would do differently and keeps improving.",
+          "accepts outcomes calmly — “all the best!” before and “good game!” after.",
+      },
+      {
+        name: "self-regulates with good etiquette",
+        description:
+          "practises emotional self-regulation and respectful etiquette — for focused decisions, patience and good sportsmanship.",
         isNorthStar: true,
       },
     ],
