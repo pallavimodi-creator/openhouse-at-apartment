@@ -3828,6 +3828,15 @@ function ProgrammeOverviewContent() {
             subtitle: "extra design challenges — hand to a child who builds a model faster than the class",
           });
         }
+        // Chess — the child's Student Chess Journal (Level 1); same for both age bands.
+        if (programme.category === "chess") {
+          books.push({
+            kind: "route", href: "/chess/student-chess-journal.pdf", newTab: true,
+            cover: "/chess/student-chess-journal-cover.png",
+            title: "student chess journal",
+            subtitle: "the child's journal — level 1 · pawn → knight → bishop",
+          });
+        }
         // Music — the child's level book, per level (keyboard · ukulele · drums · vocals).
         // Both age bands share the same per-level books, so pull the level from
         // the slug (e.g. music-5-8-l2 / music-8-12-l2 → "2").
