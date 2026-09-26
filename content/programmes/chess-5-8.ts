@@ -66,6 +66,67 @@ export const chessSegmentDefinitions: CurriculumSegmentDef[] = [
 // as honest placeholders flagged in the educator note.
 
 export const chessActivities: Record<string, CurriculumActivity> = {
+  // ── Tempo — mind & movement warm-ups (2 min, one per class) ──
+  "mind-game-1": {
+    id: "mind-game-1",
+    segment: "tempo",
+    title: "mind game 1 · silent board scan",
+    setupLine:
+      "arms folded, scan the whole board with your eyes only for 30 seconds — no touching.",
+    howToPlay:
+      "students sit with their arms folded or held behind their backs and silently scan their chessboards using only their eyes for thirty seconds — without touching any pieces or the table. they then take a deep breath and rest their hands flat to begin play.",
+    skillIds: ["bv", "re"],
+    debriefPrompts: [],
+    type: "physical-game",
+  },
+  "mind-game-2": {
+    id: "mind-game-2",
+    segment: "tempo",
+    title: "mind game 2 · picture the board",
+    setupLine:
+      "eyes closed, build the starting position in your mind, then open to check it.",
+    howToPlay:
+      "students sit tall with their eyes closed and silently visualise an empty chessboard with its edge coordinates, then mentally arrange the complete starting army and hold the image in total focus. they open their eyes to verify their mental map against the physical board.",
+    skillIds: ["bv", "gm"],
+    debriefPrompts: [],
+    type: "physical-game",
+  },
+  "movement-game-1": {
+    id: "movement-game-1",
+    segment: "tempo",
+    title: "movement game 1 · piece poses",
+    setupLine:
+      "stand behind your chair and strike the pose for each piece the instructor calls.",
+    howToPlay:
+      "students stand behind their chairs and follow the instructor's count, executing synchronised poses that represent the different chess pieces called out — transitioning between each posture, then freezing on the final beat to take a deep breath and sit down in total silence with hands flat on the table.",
+    skillIds: ["re", "gm"],
+    debriefPrompts: [],
+    type: "physical-game",
+  },
+  "movement-game-2": {
+    id: "movement-game-2",
+    segment: "tempo",
+    title: "movement game 2 · clap-back rhythm",
+    setupLine:
+      "clap the instructor's rhythm back in unison — faster and trickier each round.",
+    howToPlay:
+      "students listen closely to a distinct rhythmic pattern clapped by the instructor and repeat it back together in unison, advancing through progressively faster and more complex sequences to lock in collective focus.",
+    skillIds: ["re"],
+    debriefPrompts: [],
+    type: "physical-game",
+  },
+  "movement-game-3": {
+    id: "movement-game-3",
+    segment: "tempo",
+    title: "movement game 3 · mirror moves",
+    setupLine:
+      "mirror the instructor's slow hand movements, then flow into your seat on the cue.",
+    howToPlay:
+      "students stand facing the instructor in complete silence, mirroring a sequence of slow, deliberate hand and arm movements with zero delay, before following a final visual cue that guides them smoothly into a seated posture at their chessboards.",
+    skillIds: ["bv", "re"],
+    debriefPrompts: [],
+    type: "physical-game",
+  },
   // ── Chessiverse — learn the concepts ──
   "chain-capture": {
     id: "chain-capture",
@@ -208,15 +269,15 @@ export const chessActivities: Record<string, CurriculumActivity> = {
     segment: "rising-pawns",
     title: "squad relay",
     setupLine:
-      "a team relay game that applies the day's concepts together — grows from 20 moves to a full game.",
+      "two teams take turns at a central board — one legal move each, then tag the next teammate.",
     howToPlay:
-      "squad relay is one of the rising pawns arena team games. it runs in stages across sessions — the first 20 moves, then a full game — so teams apply the class's concepts together. the detailed rules and scaffolds are not yet in the current OH source and will be added.",
-    goal: "teams apply the class's concepts together in a relay format.",
+      "students divide into two teams and take alternating turns stepping up to a central board in a fixed sequential line-up. each player makes exactly one legal move before tagging the next teammate — so the team collaboratively coordinates opening development, tactical attacks and checkmate defence under strict team discipline.",
+    goal: "teams coordinate a single game together, one move per player, under team discipline.",
     players: "teams",
-    skillIds: ["sy", "re"],
-    educatorNote: [
-      "SOURCE PENDING: squad relay's full how-to-play and scaffolds are not in the current curriculum source — this is a faithful placeholder to be completed once OH supplies the rules.",
-    ],
+    materials: ["standard chess board and pieces"],
+    skillIds: ["gm", "sy", "re"],
+    educatorNote:
+      "squad relay turns a game into a team sport — game mechanics (every move must be legal), synthesis (coordinating one shared plan) and resilience (waiting your turn, backing your team).",
     debriefPrompts: [],
     type: "physical-game",
   },
@@ -231,7 +292,7 @@ export const chessActivities: Record<string, CurriculumActivity> = {
     goal: "the child plays a real game against a partner, applying the day's concept.",
     players: "2 players",
     materials: ["standard chess board and pieces"],
-    skillIds: ["sy", "ca", "re"],
+    skillIds: ["gm", "re"],
     debriefPrompts: [],
     type: "physical-game",
   },
@@ -239,14 +300,14 @@ export const chessActivities: Record<string, CurriculumActivity> = {
     id: "board-reporter",
     segment: "rising-pawns",
     title: "board reporter",
-    setupLine: "record and report on a game as it is played.",
+    setupLine: "present a short recap of a game at the demo board, then take peer questions.",
     howToPlay:
-      "board reporter is one of the rising pawns arena games — children observe, record and report on a game. the detailed rules and scaffolds are not yet in the current OH source and will be added.",
-    goal: "the child observes, records and reports a game.",
-    skillIds: ["bv", "re"],
-    educatorNote: [
-      "SOURCE PENDING: board reporter's full how-to-play and scaffolds are not in the current curriculum source — this is a faithful placeholder to be completed once OH supplies the rules.",
-    ],
+      "a student steps up to the demonstration board to present a brief recap of a selected game — walking through the key positions and the decisions made — before answering questions from their peers.",
+    goal: "the child presents and explains a game at the demo board and fields peer questions.",
+    materials: ["demonstration board"],
+    skillIds: ["re", "sy"],
+    educatorNote:
+      "board reporter builds resilience (speaking up and taking questions) and synthesis (explaining why the moves were made).",
     debriefPrompts: [],
     type: "physical-game",
   },
