@@ -434,7 +434,7 @@ export const chessAgeBandComparison = {
     "play with good chess manners — shake hands, praise a good move",
   ],
   older: [
-    "record games in notation and open with sound principles and a named opening",
+    "record games in notation and open with sound principles",
     "deliver the standard checkmates (two-rook, queen) and solve mate in one and two",
     "spot and use tactics — forks, pins, skewers, discovered attacks — in their own games",
     "handle a clock and tournament etiquette, and steer a game with a plan they can explain",
