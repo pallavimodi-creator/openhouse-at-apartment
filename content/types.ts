@@ -199,6 +199,19 @@ export interface CurriculumProgramme {
   /** The component blocks a child can name and hold. */
   components?: { block: string; whatItIs: string }[];
   /**
+   * Level milestones — the named ranks a child climbs within a level
+   * (e.g. chess L1: Pawn → Knight → Bishop), each pinned to a duration
+   * window with an objective, the learnings it establishes, and the
+   * objective progression criteria that earn it. Rendered in the overview.
+   */
+  milestones?: {
+    rank: string; // "Pawn"
+    duration: string; // "3 months"
+    objective: string; // what mastering this rank means
+    learnings: string[]; // the abilities it establishes
+    progression: string[]; // the criteria that earn the rank
+  }[];
+  /**
    * How the same programme differs across its two age bands — same content,
    * different depth. Rendered as a two-column comparison in the overview.
    */

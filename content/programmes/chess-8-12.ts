@@ -7,6 +7,7 @@ import {
   chessSegmentDefinitions,
   chessActivities,
   chessAgeBandComparison,
+  chessMilestones,
 } from "./chess-5-8";
 
 // ─── Chess 8–12 (intermediate) ──────────────────────────────
@@ -234,6 +235,7 @@ export const chess812: CurriculumProgramme = {
   segmentDefinitions: chessSegmentDefinitions,
   sessionTable: sessionTable812,
   activities: chessActivities,
+  milestones: chessMilestones,
   checkpoints: checkpoints812,
   ageBandComparison: chessAgeBandComparison,
 };

@@ -3128,6 +3128,57 @@ function ProgrammeOverviewContent() {
           })()}
         </SectionTitle>
 
+        {/* Chess — the level milestones (Pawn → Knight → Bishop). Same
+            for both age bands; earned by the objective progression criteria. */}
+        {programme.milestones && programme.milestones.length > 0 && (
+          <div className="mt-4">
+            <p className="text-[11px] font-bold tracking-normal text-brand-orange">
+              level {programme.level ?? 1} milestones ·{" "}
+              {programme.milestones.map((m) => m.rank.toLowerCase()).join(" → ")}
+            </p>
+            <div className="mt-3 grid gap-3 md:grid-cols-3">
+              {programme.milestones.map((m) => (
+                <div
+                  key={m.rank}
+                  className="rounded-2xl bg-brand-white p-4 shadow-card ring-1 ring-ink/5"
+                >
+                  <div className="flex items-baseline justify-between">
+                    <h3 className="text-[16px] font-extrabold lowercase text-ink">
+                      {m.rank.toLowerCase()}
+                    </h3>
+                    <span className="text-[10.5px] font-semibold text-ink-subtle">
+                      {m.duration}
+                    </span>
+                  </div>
+                  <p className="mt-1.5 text-[12px] leading-relaxed text-ink-muted">
+                    {m.objective}
+                  </p>
+                  <p className="mt-3 text-[10.5px] font-bold tracking-normal text-brand-orange">
+                    what they can do
+                  </p>
+                  <ul className="mt-1 space-y-1">
+                    {m.learnings.map((l, i) => (
+                      <li key={i} className="text-[11.5px] leading-snug text-ink-muted">
+                        • {l}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-3 text-[10.5px] font-bold tracking-normal text-brand-orange">
+                    to earn the rank
+                  </p>
+                  <ul className="mt-1 space-y-1">
+                    {m.progression.map((p, i) => (
+                      <li key={i} className="text-[11.5px] leading-snug text-ink-muted">
+                        ☐ {p}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Music — how level progression works (instrument vs general
             milestones). Instrument milestones decide level-ups; general
             milestones are progress only. */}

@@ -443,6 +443,77 @@ export const chessAgeBandComparison = {
     "the same four-part class and the same five skills — the games and challenges simply go deeper for the older band.",
 };
 
+// ─── Chess L1 milestones (shared) — Pawn → Knight → Bishop ───
+// The named ranks a child climbs across the Level-1 beginner year (12 months).
+// Same for both age bands; sourced from the OH L1 curriculum framework.
+export const chessMilestones = [
+  {
+    rank: "Pawn",
+    duration: "3 months",
+    objective:
+      "the first purposeful steps into the chess universe — building foundational board awareness, basic piece movements, and patient discipline, and understanding the primary goal of checkmate.",
+    learnings: [
+      "sets up the board, explains piece movements, and applies their relative point values (game mechanics)",
+      "identifies hanging pieces and captures them in a given setup (calculation)",
+      "recognises and demonstrates the core concepts of check and checkmate (game mechanics)",
+      "scans the board to identify safe versus unsafe squares before moving (board vision)",
+      "follows teacher instructions during exercises, puzzles and mini-games (resilience)",
+    ],
+    progression: [
+      "challenges Stockfish Level 1 in a full game that ends in checkmate or stalemate (milestone challenge 1)",
+      "completes starting-position setup, puzzle-position setup and piece-movement drills with 100% accuracy (continuous)",
+      "plays the mini-games — chain capture, board architect (visual), bees & lilies and last man standing — with confidence (continuous)",
+      "solves mate-in-one and hanging-piece puzzles, clearly telling check from checkmate and hanging from protected pieces (continuous)",
+    ],
+  },
+  {
+    rank: "Knight",
+    duration: "4 months",
+    objective:
+      "leaping into active play and clever tactics — navigating threats, mastering core opening development, and building sharp gameplay habits, plus the basics of algebraic notation.",
+    learnings: [
+      "demonstrates core opening principles: controls the centre, develops pieces early, and castles the king (synthesis)",
+      "identifies and responds to checks using CPR — capture, protect/block, run away (calculation)",
+      "demonstrates and recognises the concept of stalemate, and executes pawn promotions correctly (game mechanics)",
+      "solves easy and medium mate-in-1 puzzles (calculation)",
+      "demonstrates elementary checkmate with queen and rook (synthesis)",
+      "understands legal versus illegal moves during active play (game mechanics)",
+      "displays courtesy by taking turns and respecting the opponent (resilience)",
+    ],
+    progression: [
+      "beats Stockfish Level 2 in a full game while adhering to competitive rules (milestone challenge 1)",
+      "participates in the mandatory showcase event and optional online tournaments for match experience (continuous)",
+      "demonstrates core opening principles while correctly applying castling and pawn-promotion rules (continuous)",
+      "confidently solves time-bound mate-in-1 and hanging-piece challenges with high accuracy (milestone challenge 2)",
+      "executes a clean queen & rook roller checkmate, finishing efficiently without stalemate (milestone challenges 3 & 4)",
+      "reads and writes basic algebraic notation to record moves — e.g. the first 10 moves of a game (continuous)",
+    ],
+  },
+  {
+    rank: "Bishop",
+    duration: "5 months",
+    objective:
+      "looking deep across the board and calculating ahead — long-range vision, decisive tactics, heavy-piece endgame mates, and stepping into the competitive arena.",
+    learnings: [
+      "identifies and flags illegal moves or setups during play (game mechanics)",
+      "demonstrates and recognises single-move tactics (calculation)",
+      "demonstrates elementary checkmate with two rooks and with a queen (synthesis)",
+      "solves harder mate-in-1 and easy mate-in-2 puzzles (calculation)",
+      "plans candidate moves instead of simply reacting to the opponent (calculation)",
+      "stays focused throughout the game and shows sportsmanship in victory and defeat (resilience)",
+    ],
+    progression: [
+      "plays 5 full competitive games in complete algebraic notation, consciously practising the touch-move rule (milestone challenge 1)",
+      "identifies illegal moves accurately and reports each as it occurs, ending the game if either player commits 3 (continuous)",
+      "executes clean two-rook roller and solo-queen checkmates efficiently without stalemate (milestone challenges 2 & 3)",
+      "understands minimum checkmating material and two draws — stalemate and insufficient material, two kings (continuous)",
+      "solves time-bound medium mate-in-1 puzzles and basic tactical patterns (milestone challenges 4 & 5)",
+      "participates in a mandatory intra/inter-Openhouse showcase plus regular online practice (continuous)",
+      "crosses a Lichess Rapid rating of 800 once — dropping below later does not break this (milestone challenge 6)",
+    ],
+  },
+];
+
 // ─── Chess 5–8 · skill ladders (LOs, ★ = milestone) ─────────
 const skillAreas58 = [
   {
@@ -689,5 +760,6 @@ export const chess58: CurriculumProgramme = {
   sessionTable: sessionTable58,
   activities: chessActivities,
   checkpoints: checkpoints58,
+  milestones: chessMilestones,
   ageBandComparison: chessAgeBandComparison,
 };
