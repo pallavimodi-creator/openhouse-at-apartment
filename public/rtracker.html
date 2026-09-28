@@ -45,6 +45,14 @@ tbody td.mn{font-size:12px;font-weight:800;padding:5px 5px 5px 2px;white-space:n
 .cchips{display:flex;flex-wrap:wrap;gap:5px}.cchip{font-size:10.5px;font-weight:700;border-radius:13px;padding:3px 9px;border:1px solid}.cchip.ok{background:#eaf4ec;border-color:#bfe0c8;color:var(--green)}.cchip.no{background:#fff;border-color:var(--line);color:#b9ae97}
 .lline{font-size:12px;line-height:1.5;margin-top:6px}.lline.elig{background:#eaf4ec;border:1px solid #bfe0c8;border-radius:11px;padding:9px 12px}.lline.wait{background:var(--soft);border-radius:11px;padding:9px 12px}
 .nameinput{font-family:inherit;font-weight:800;font-size:15px;border:none;border-bottom:2px solid var(--peri);background:transparent;color:var(--ink);width:108px;padding:0 2px}.nameinput:focus{outline:none;border-bottom-color:var(--coral)}
+.promo{margin-top:13px;border-radius:14px;padding:11px 14px;font-size:12px}
+.promo.lock{background:var(--soft);border:1px dashed var(--line)}
+.promo.elig{background:#eef7f0;border:1.5px solid #bfe0c8}
+.promo.done{background:#eaf4ec;border:1.5px solid var(--green)}
+.promo .pk{font-weight:800;display:block;font-size:12.5px}.promo.elig .pk,.promo.done .pk{color:var(--green)}
+.promo .pnote{font-size:11px;color:var(--mute);margin:3px 0 8px;line-height:1.4}
+.pbtn{border:1.6px solid var(--green);background:#fff;color:var(--green);border-radius:11px;padding:8px 15px;font-size:12.5px;font-weight:800;cursor:pointer}.pbtn:hover{background:var(--green);color:#fff}
+.undo{color:var(--coral);cursor:pointer;font-weight:800;text-decoration:underline}
 </style></head>
 <body><div class="wrap">
 <div class="head"><h1>robotics · monthly progress note</h1></div>
@@ -56,10 +64,11 @@ tbody td.mn{font-size:12px;font-weight:800;padding:5px 5px 5px 2px;white-space:n
       <div class="progsel"><span class="pl2">programme:</span><button id="pmB" class="on" onclick="setProg('mechanics')">mechanics</button><button id="peB" onclick="setProg('electronics')">electronics</button></div>
       <div class="fs" id="progsub"></div>
       <div class="att"><span class="lab">attended</span><span class="step"><button onclick="att('a',-1)">–</button><span class="v" id="aA">7</span><button onclick="att('a',1)">+</button></span><span class="lab">of</span><span class="step"><button onclick="att('t',-1)">–</button><span class="v" id="aT">8</span><button onclick="att('t',1)">+</button></span><span class="lab">classes</span></div>
-      <div class="flead">for each <b>model</b> built, mark each <b>skill</b>. <b>tap a cell</b> for what to watch (👁) and what to check in the book (📖).</div>
+      <div class="flead">for each <b>model</b>, mark each <b>skill</b>. <b>building</b> &amp; <b>observing</b> are marked from the <b>build &amp; experiment</b>; <b>solving</b> &amp; <b>presenting</b> need the <b>experience-book exercise</b>. <b>tap a cell</b> for how.</div>
       <table><thead><tr><th class="mh">model</th><th><span class="ic">🔧</span>building</th><th><span class="ic">🔬</span>observing</th><th><span class="ic">🧩</span>solving</th><th><span class="ic">🗣️</span>presenting</th></tr></thead><tbody id="grid"></tbody></table>
       <div class="picker" id="picker"></div>
       <div class="guide e" id="guide"></div>
+      <div class="promo lock" id="promo"></div>
       <div class="hint">no writing. the app remembers earlier months and writes the note itself.</div>
     </div>
   </div>
@@ -80,25 +89,25 @@ tbody td.mn{font-size:12px;font-weight:800;padding:5px 5px 5px 2px;white-space:n
 const KEYS=['bm','ou','ps','pe'];
 const PROGRAMMES={
  mechanics:{label:'mechanics',sub:'level 1 · ages 5–8',
-  SK:{bm:{ic:'🔧',s:'building',f:'building & making',obs:'builds it to work + fixes a snag unprompted',bk:'build page: works, parts named',ah:'ask what they changed to make it work better'},
-      ou:{ic:'🔬',s:'observing',f:'observing & understanding',obs:'predicts before testing, says why after',bk:'experiment page: readings + a "why"',ah:'ask "what will happen?" before a test'},
-      ps:{ic:'🧩',s:'solving',f:'problem solving',obs:'tries a new way + keeps going',bk:'challenge page: a working fix, their way',ah:'let them try before you step in'},
-      pe:{ic:'🗣️',s:'presenting',f:'presenting & explaining',obs:'says what it does + how, answers a question',bk:'show page: their explanation captured',ah:'ask "what does it do?" and listen'}},
+  SK:{bm:{ev:'do',ic:'🔧',s:'building',f:'building & making',obs:'builds it to work + fixes a snag unprompted',bk:'build page: works, parts named',ah:'ask what they changed to make it work better'},
+      ou:{ev:'do',ic:'🔬',s:'observing',f:'observing & understanding',obs:'predicts before testing, says why after',bk:'experiment page: readings + a "why"',ah:'ask "what will happen?" before a test'},
+      ps:{ev:'book',ic:'🧩',s:'solving',f:'problem solving',obs:'tries a new way + keeps going',bk:'challenge page: a working fix, their way',ah:'let them try before you step in'},
+      pe:{ev:'book',ic:'🗣️',s:'presenting',f:'presenting & explaining',obs:'says what it does + how, answers a question',bk:'show page: their explanation captured',ah:'ask "what does it do?" and listen'}},
   ALL:['see-saw','weighing scale','crane','fishing rod','copter','rickshaw','wind turbine','drawbridge','tow truck','bulldozer'],
   MC:{'see-saw':['levers'],'weighing scale':['levers'],'crane':['pulleys'],'fishing rod':['levers','pulleys'],'copter':['gears'],'rickshaw':['wheels & axles'],'wind turbine':['pulleys'],'drawbridge':['wheels & axles','pulleys'],'tow truck':['wheels & axles','pulleys'],'bulldozer':['gears']},
   CONCEPTS:['levers','pulleys','gears','wheels & axles'],
   sample:[{name:'see-saw',m:{bm:1,ou:0,ps:1,pe:0}},{name:'weighing scale',m:{bm:1,ou:1,ps:0,pe:0}},{name:'crane',m:{bm:1,ou:1,ps:1,pe:0}}]},
  electronics:{label:'electronics',sub:'level 2 · circuits, motors & sensors',
-  SK:{bm:{ic:'🔧',s:'building',f:'building & making',obs:'snaps the blocks + completes the loop so the circuit works, unprompted',bk:'build page: the circuit works, each block named',ah:'ask what each block does in the circuit'},
-      ou:{ic:'🔬',s:'observing',f:'observing & understanding',obs:'compares two circuits + predicts if one will work, and why',bk:'experiment page: what they noticed + a prediction',ah:'ask "will this circuit work? why?" before switching on'},
-      ps:{ic:'🧩',s:'solving',f:'problem solving',obs:'when a circuit fails, tries a fix + finds the break',bk:'challenge page: a broken circuit they got working',ah:'when it doesn’t light up, let them find the break'},
-      pe:{ic:'🗣️',s:'presenting',f:'presenting & explaining',obs:'shows it, traces how the electricity flows, fields a question',bk:'show page: their walk-through captured',ah:'ask them to trace how the electricity flows'}},
+  SK:{bm:{ev:'do',ic:'🔧',s:'building',f:'building & making',obs:'snaps the blocks + completes the loop so the circuit works, unprompted',bk:'build page: the circuit works, each block named',ah:'ask what each block does in the circuit'},
+      ou:{ev:'do',ic:'🔬',s:'observing',f:'observing & understanding',obs:'compares two circuits + predicts if one will work, and why',bk:'experiment page: what they noticed + a prediction',ah:'ask "will this circuit work? why?" before switching on'},
+      ps:{ev:'book',ic:'🧩',s:'solving',f:'problem solving',obs:'when a circuit fails, tries a fix + finds the break',bk:'challenge page: a broken circuit they got working',ah:'when it doesn’t light up, let them find the break'},
+      pe:{ev:'book',ic:'🗣️',s:'presenting',f:'presenting & explaining',obs:'shows it, traces how the electricity flows, fields a question',bk:'show page: their walk-through captured',ah:'ask them to trace how the electricity flows'}},
   ALL:['railway barrier','wind turbine','soccer bot','cleaning bot','sensor crane','robotic arm','carrier truck','drawbridge','light house','elevator','follow-me bot','smart stadium lights','obstacle avoider'],
   MC:{'railway barrier':['circuits'],'wind turbine':['polarity'],'soccer bot':['polarity'],'cleaning bot':['motors'],'sensor crane':['sensors'],'robotic arm':['sensors','servo'],'carrier truck':['servo','polarity'],'drawbridge':['sensors'],'light house':['sensors'],'elevator':['sensors'],'follow-me bot':['sensors'],'smart stadium lights':['sensors'],'obstacle avoider':['sensors']},
   CONCEPTS:['circuits','polarity','motors','sensors','servo'],
   sample:[{name:'railway barrier',m:{bm:1,ou:1,ps:0,pe:0}},{name:'wind turbine',m:{bm:1,ou:0,ps:1,pe:0}},{name:'soccer bot',m:{bm:1,ou:1,ps:1,pe:0}}]},
 };
-let prog='mechanics', NAME='aanya', A={a:7,t:8}, sel=null, MODELS=[];
+let prog='mechanics', NAME='aanya', A={a:7,t:8}, sel=null, MODELS=[], promoted=false;
 const P=()=>PROGRAMMES[prog];
 function loadSample(){MODELS=P().sample.map(x=>({name:x.name,m:{...x.m}}));}
 
@@ -117,8 +126,15 @@ function render(){
  document.getElementById('picker').innerHTML=rest.length?`<span class="pl">＋ built another?</span>`+rest.map(n=>`<span class="addchip" onclick="addModel('${n}')">+ ${n}</span>`).join(''):'';
  const g=document.getElementById('guide');
  if(sel&&sel.r<MODELS.length){const mo=MODELS[sel.r],k=sel.k,s=SK[k],v=mo.m[k];g.className='guide';
-   g.innerHTML=`<div class="gh">${s.ic} ${s.f} · on the ${mo.name}</div><div class="two"><div class="ib o"><span class="ibh">👁 watch in class</span>${s.obs}</div><div class="ib b"><span class="ibh">📖 check the book</span>${s.bk}</div></div><div class="grule">mark <b style="color:var(--green)">✓</b> if you saw it in class <b>and</b> it's in the book · mark <b style="color:var(--red)">○ not yet</b> if <b>either</b> isn't there yet</div><div class="gbtns"><div class="gbtn a ${v?'on':''}" onclick="mark(1)">✓ achieved</div><div class="gbtn n ${v?'':'on'}" onclick="mark(0)">○ not yet</div></div>`;
- }else{g.className='guide e';g.textContent='tap a cell to see how to mark it — what to observe, and what to check in the book.';}
+   const isBook=s.ev==='book';
+   const boxes=isBook
+     ?`<div class="two"><div class="ib o"><span class="ibh">📖 experience-book exercise · needed</span>${s.bk}</div><div class="ib b"><span class="ibh">👁 what it looks like</span>${s.obs}</div></div>`
+     :`<div class="two"><div class="ib b"><span class="ibh">✅ from the build &amp; experiment</span>${s.obs}</div><div class="ib o"><span class="ibh">📖 optional record in the book</span>${s.bk}</div></div>`;
+   const rule=isBook
+     ?`mark <b style="color:var(--green)">✓</b> when their <b>experience-book exercise</b> shows it · <b style="color:var(--red)">○ not yet</b> if it isn't there`
+     :`mark <b style="color:var(--green)">✓</b> if you saw it as they <b>built &amp; tested</b> the model · the book page is an <b>optional</b> record`;
+   g.innerHTML=`<div class="gh">${s.ic} ${s.f} · on the ${mo.name}</div>${boxes}<div class="grule">${rule}</div><div class="gbtns"><div class="gbtn a ${v?'on':''}" onclick="mark(1)">✓ achieved</div><div class="gbtn n ${v?'':'on'}" onclick="mark(0)">○ not yet</div></div>`;
+ }else{g.className='guide e';g.textContent='tap a cell to see how to mark it — built & tested in class, or checked in the experience book.';}
  document.getElementById('rmods').innerHTML=MODELS.map(m=>`<span class="mod">${m.name}</span>`).join('');
  document.getElementById('rsk').innerHTML=KEYS.map(k=>{const seq=MODELS.map(m=>m.m[k]),yes=seq.filter(x=>x).length,tot=seq.length||1;
    const dots=MODELS.map(m=>`<span class="dot ${m.m[k]?'y':'n'}"></span>`).join('');
@@ -131,17 +147,25 @@ function render(){
  document.getElementById('rconcepts').innerHTML=CONCEPTS.map(c=>{const on=covered.includes(c);return `<span class="cchip ${on?'ok':'no'}">${on?'✓ ':''}${c}</span>`;}).join('');
  document.getElementById('rskills2').innerHTML=KEYS.map(k=>{const on=MODELS.length&&MODELS.every(m=>m.m[k]);return `<span class="cchip ${on?'ok':'no'}">${SK[k].ic} ${SK[k].s}${on?' ✓':''}</span>`;}).join('');
  const missing=CONCEPTS.filter(c=>!covered.includes(c)),needSk=KEYS.length-sec.length,eligible=missing.length===0&&needSk===0;
+ if(!eligible)promoted=false;
  const rl=document.getElementById('rline');
- if(eligible){rl.className='lline elig';rl.innerHTML=`✅ <b>eligible</b> — ${N} has explored every concept and is steady in every skill. the last step is the <b>final build-off</b>; passing it is what moves ${N} up.`;}
- else{const bits=[];if(missing.length)bits.push(`still to explore: <b>${missing.join(', ')}</b>`);if(needSk)bits.push(`<b>${needSk} skill(s)</b> still to steady`);rl.className='lline wait';rl.innerHTML=`not yet — ${N} moves up only when <b>both</b> gates are met, then the final build-off. ${bits.join(' · ')}.`;}
+ if(promoted){rl.className='lline elig';rl.innerHTML=`🎉 <b>promoted</b> — after the final build-off, ${N}'s teacher has approved the move to the next level.`;}
+ else if(eligible){rl.className='lline elig';rl.innerHTML=`✅ <b>eligible</b> — ${N} has explored every concept and is steady in every skill. the last steps are the <b>final build-off</b> and the <b>teacher's sign-off</b>.`;}
+ else{const bits=[];if(missing.length)bits.push(`still to explore: <b>${missing.join(', ')}</b>`);if(needSk)bits.push(`<b>${needSk} skill(s)</b> still to steady`);rl.className='lline wait';rl.innerHTML=`not yet — ${N} moves up only when <b>both</b> gates are met, then the build-off + teacher sign-off. ${bits.join(' · ')}.`;}
+ const promo=document.getElementById('promo');
+ if(promoted){promo.className='promo done';promo.innerHTML=`<span class="pk">🎉 promotion approved</span><div class="pnote">you've approved ${N} for the next level. <span class="undo" onclick="unapprove()">undo</span></div>`;}
+ else if(eligible){promo.className='promo elig';promo.innerHTML=`<span class="pk">✅ ${N} is eligible for level-up</span><div class="pnote">the gates are met — your call. approve on your assessment at the final build-off.</div><button class="pbtn" onclick="approve()">✓ approve promotion</button>`;}
+ else{promo.className='promo lock';promo.innerHTML=`<span class="pk" style="color:var(--mute)">promotion · locked</span><div class="pnote">opens for your sign-off once both level-up gates are met (see the note →).</div>`;}
 }
+function approve(){promoted=true;render();}
+function unapprove(){promoted=false;render();}
 function pick(r,k){sel={r,k};render();}
 function mark(v){if(sel){MODELS[sel.r].m[sel.k]=v;render();}}
 function setName(v){NAME=v.trim();render();}
 function addModel(n){MODELS.push({name:n,m:{bm:0,ou:0,ps:0,pe:0}});render();}
 function removeModel(r){MODELS.splice(r,1);if(sel&&sel.r>=MODELS.length)sel=null;render();}
 function att(w,d){A[w]=Math.max(0,A[w]+d);if(w==='a'&&A.a>A.t)A.t=A.a;if(w==='t'&&A.t<A.a)A.a=A.t;render();}
-function setProg(p){if(p===prog)return;prog=p;sel=null;loadSample();render();}
+function setProg(p){if(p===prog)return;prog=p;sel=null;promoted=false;loadSample();render();}
 loadSample();render();
 </script>
 </body></html>
