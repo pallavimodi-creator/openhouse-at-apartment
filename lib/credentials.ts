@@ -58,6 +58,15 @@ export const CREDENTIALS: Credential[] = [
     role: "teacher",
     category: "chess",
   },
+  // music teacher — sees every music level (l1, l2, l3)
+  {
+    username: "musicteacher",
+    password: "musicteacher123",
+    programmeSlug: "music-l1",
+    displayName: "music teacher",
+    role: "teacher",
+    category: "music",
+  },
 ];
 
 export function validateCredentials(
