@@ -91,9 +91,16 @@ export async function GET(req: Request) {
     return NextResponse.json({ error: "invalid admin key" }, { status: 401 });
   }
 
+  // List = metadata only. The full `payload` (the whole newsletter draft) is
+  // heavy, and selecting it for every row made this query pull megabytes and
+  // hit Supabase's statement timeout (157 rows × full drafts → ~11s → 500).
+  // The dashboard list only needs these fields; the full draft loads per-row
+  // from /api/newsletters/[id] when a newsletter is opened.
   const { data, error } = await supabase
     .from(TABLE)
-    .select("*")
+    .select(
+      "id,building,programme_slug,programme_title,age_label,from_date,to_date,status,submitted_at,approved_at"
+    )
     .order("submitted_at", { ascending: false });
 
   if (error) {
