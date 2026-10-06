@@ -37,33 +37,51 @@ export const LEGACY_BUILDING = "(default)";
 export type TeacherCategory = "art" | "language" | "stem" | "chess" | "music";
 
 export interface TeacherState {
-  programmeSlug: string; // "*" for admin, or a single programme slug, or the default slug when category is set
+  programmeSlug: string; // "*" for admin, or a nominal default slug for category teachers
   teacherName: string;
   username?: string;
   role?: "teacher" | "admin";
-  category?: TeacherCategory; // if set, teacher sees every programme in this category
-  building?: string; // current building / centre — set after the /building picker
+  // NEW multi-tenant model: an apartment (shared login) + an individual teacher.
+  apartmentId?: string;
+  apartmentName?: string;
+  teacherId?: string;
+  // The subjects this teacher runs. A teacher sees every programme whose
+  // category is in this list. Admins see all.
+  categories?: TeacherCategory[];
+  // `category` (singular) is kept for backwards-compatibility with any older
+  // persisted session; new logins write `categories`.
+  category?: TeacherCategory;
+  building?: string; // mirror of apartmentName — keeps the per-centre progress scope working
 }
 
 export function isAdmin(state: TeacherState | null): boolean {
   return state?.role === "admin" || state?.programmeSlug === "*";
 }
 
+/** The teacher's subjects, tolerant of the legacy single `category` field. */
+export function teacherCategories(state: TeacherState | null): TeacherCategory[] {
+  if (!state) return [];
+  if (state.categories && state.categories.length) return state.categories;
+  if (state.category) return [state.category];
+  return [];
+}
+
 /**
- * Returns true if the teacher is allowed to access the given programme slug.
+ * Returns true if the teacher is allowed to access the given programme.
  * - admins: always
- * - category teachers: any programme whose slug starts with their category's prefix
- * - single-programme teachers: exact slug match
+ * - teachers with categories: any programme whose category is in their list
+ * - otherwise: exact slug match
  */
 export function canAccessProgramme(
   state: TeacherState | null,
   programmeSlug: string,
-  programmeCategory?: TeacherCategory,
+  programmeCategory?: string,
 ): boolean {
   if (!state) return false;
   if (isAdmin(state)) return true;
-  if (state.category && programmeCategory) {
-    return state.category === programmeCategory;
+  const cats = teacherCategories(state);
+  if (cats.length && programmeCategory) {
+    return cats.includes(programmeCategory as TeacherCategory);
   }
   return state.programmeSlug === programmeSlug;
 }

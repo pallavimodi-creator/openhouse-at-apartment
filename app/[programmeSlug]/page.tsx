@@ -15,6 +15,7 @@ import {
   markDayCompleted,
   unmarkDayCompleted,
   getNextDay,
+  canAccessProgramme,
 } from "@/lib/teacher-state";
 
 export default function ProgrammeDetailPage() {
@@ -44,17 +45,23 @@ export default function ProgrammeDetailPage() {
     }
     const admin = teacher.programmeSlug === "*" || teacher.role === "admin";
     setIsAdmin(admin);
-    // Access rules:
-    // - admin: any programme
-    // - category-scoped teacher: any programme in their category
-    // - single-programme teacher: only their own slug
-    const allowed =
-      admin ||
-      (teacher.category
-        ? programme.category === teacher.category
-        : teacher.programmeSlug === slug);
+    // Two-step sign-in guard for non-admins.
+    if (!admin) {
+      if (!teacher.apartmentId) {
+        router.replace("/login");
+        setAuthState("redirect");
+        return;
+      }
+      if (!teacher.teacherId) {
+        router.replace("/teacher");
+        setAuthState("redirect");
+        return;
+      }
+    }
+    // Access rules: admin → any; teacher → any programme in their categories.
+    const allowed = canAccessProgramme(teacher, slug, programme.category);
     if (!allowed) {
-      router.replace(`/${teacher.programmeSlug}`);
+      router.replace("/");
       setAuthState("redirect");
       return;
     }

@@ -32,15 +32,20 @@ export function TeacherGate({
       return;
     }
     const isAdmin = teacher.programmeSlug === "*" || teacher.role === "admin";
-    // Building picker is itself a protected page (you must be signed in
-    // to use it), but it's exempt from the building-required check
-    // since that's literally where the teacher picks one.
-    // Admins don't run classes — they review the platform — so they
-    // never need to pick a building.
-    if (!isAdmin && !teacher.building && pathname !== "/building") {
-      router.replace("/building");
-      setState("redirect");
-      return;
+    // Two-step sign-in: a non-admin must have completed the apartment login
+    // AND picked their individual teacher login. /teacher is exempt from the
+    // teacher-required check (that's where they pick). Admins skip both.
+    if (!isAdmin) {
+      if (!teacher.apartmentId) {
+        router.replace("/login");
+        setState("redirect");
+        return;
+      }
+      if (!teacher.teacherId && pathname !== "/teacher") {
+        router.replace("/teacher");
+        setState("redirect");
+        return;
+      }
     }
     // Admin (programmeSlug = "*") can access anything
     if (!isAdmin && requiredSlug && teacher.programmeSlug !== requiredSlug) {

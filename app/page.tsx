@@ -6,7 +6,7 @@ import Link from "next/link";
 import { listHomeProgrammes, getCurriculumProgramme } from "@/lib/content";
 import { HeroBanner } from "@/components/HeroBanner";
 import { ProgrammeCard } from "@/components/ProgrammeCard";
-import { getTeacher, type TeacherState } from "@/lib/teacher-state";
+import { getTeacher, teacherCategories, type TeacherState } from "@/lib/teacher-state";
 
 // Three-step guide tile — consistent layout for the "how to go
 // through the website" sequence. The emoji floats gently and wobbles
@@ -67,13 +67,18 @@ export default function HomePage() {
       router.replace("/login");
       return;
     }
-    // Non-admin teachers need to have picked a building this session
-    // before they can land on home. Admins skip this — they're reviewing,
-    // not running a class.
+    // Two-step sign-in: a non-admin must have completed both the apartment
+    // login and their individual teacher login before landing on home.
     const admin = t.role === "admin" || t.programmeSlug === "*";
-    if (!admin && !t.building) {
-      router.replace("/building");
-      return;
+    if (!admin) {
+      if (!t.apartmentId) {
+        router.replace("/login");
+        return;
+      }
+      if (!t.teacherId) {
+        router.replace("/teacher");
+        return;
+      }
     }
     setTeacher(t);
     setLoaded(true);
@@ -96,20 +101,15 @@ export default function HomePage() {
   // listHomeProgrammes() shows only level 1 of a multi-level track — later
   // levels (e.g. robotics level 2, electronics) are reached from inside the
   // programme via the level switcher, so the grid stays one card per name.
+  const cats = teacherCategories(teacher);
   const programmes = isAdmin
     ? listHomeProgrammes()
-    : teacher.category
-      ? listHomeProgrammes().filter((p) => p.category === teacher.category)
+    : cats.length
+      ? listHomeProgrammes().filter((p) => cats.includes(p.category as (typeof cats)[number]))
       : (() => {
           const p = getCurriculumProgramme(teacher.programmeSlug);
           return p ? [p] : [];
         })();
-
-  const sectionLabel = isAdmin
-    ? "all programmes"
-    : teacher.category
-      ? "your programmes"
-      : "your programme";
 
   // Group programmes by category. Each category gets a heading
   // ("art & design", "language through storytelling and public
@@ -129,7 +129,7 @@ export default function HomePage() {
     }))
     .filter((c) => c.items.length > 0);
 
-  const showCategoryIntro = isAdmin || !teacher.category;
+  const showCategoryIntro = isAdmin || cats.length !== 1;
 
   return (
     <div className="flex flex-col">

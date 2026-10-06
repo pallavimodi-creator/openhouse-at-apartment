@@ -13,59 +13,16 @@ export interface Credential {
   category?: TeacherCategory; // when set, teacher sees every programme in this category
 }
 
+// Teachers now live in the database (apartments → teachers), created by the
+// admin. Only the platform admin remains a static credential here.
 export const CREDENTIALS: Credential[] = [
-  // admin — sees every programme
+  // admin — sees every apartment, every programme; manages apartments/teachers
   {
     username: "admin",
     password: "openhouselxd",
     programmeSlug: "*",
     displayName: "admin",
     role: "admin",
-  },
-  // public speaking teacher — sees both PS programmes (5-8 and 8-12)
-  {
-    username: "psteacher",
-    password: "publicspeaking123",
-    programmeSlug: "public-speaking-5-8",
-    displayName: "public speaking teacher",
-    role: "teacher",
-    category: "language",
-  },
-  // art & design teacher — sees both art programmes (5-8 and 8-12)
-  {
-    username: "artteacher",
-    password: "artteacher123",
-    programmeSlug: "art-design-5-8",
-    displayName: "art & design teacher",
-    role: "teacher",
-    category: "art",
-  },
-  // robotics teacher — sees both robotics programmes (5-8 and 8-12)
-  {
-    username: "roboticsteacher",
-    password: "roboticsteacher123",
-    programmeSlug: "robotics-5-8",
-    displayName: "robotics teacher",
-    role: "teacher",
-    category: "stem",
-  },
-  // chess teacher — sees both chess programmes (5-8 and 8-12)
-  {
-    username: "chessteacher",
-    password: "chessteacher123",
-    programmeSlug: "chess-5-8",
-    displayName: "chess teacher",
-    role: "teacher",
-    category: "chess",
-  },
-  // music teacher — sees every music level (l1, l2, l3)
-  {
-    username: "musicteacher",
-    password: "musicteacher123",
-    programmeSlug: "music-l1",
-    displayName: "music teacher",
-    role: "teacher",
-    category: "music",
   },
 ];
 
