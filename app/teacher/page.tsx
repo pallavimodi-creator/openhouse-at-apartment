@@ -6,7 +6,6 @@ import { ChevronLeft, User, ChevronRight } from "lucide-react";
 import {
   getTeacher,
   setTeacher,
-  clearTeacher,
   type TeacherCategory,
 } from "@/lib/teacher-state";
 import {
@@ -49,11 +48,11 @@ export default function TeacherPickPage() {
       return;
     }
     if (!t.apartmentId) {
-      router.replace("/login");
+      router.replace("/apartment");
       return;
     }
     if (t.teacherId) {
-      router.replace("/");
+      router.replace("/dashboard");
       return;
     }
     setApartmentId(t.apartmentId);
@@ -71,7 +70,9 @@ export default function TeacherPickPage() {
     setSubmitting(true);
     try {
       const r = await teacherLogin(apartmentId, selected.id, password);
+      const existing = getTeacher();
       setTeacher({
+        ...existing,
         role: "teacher",
         apartmentId,
         apartmentName,
@@ -81,16 +82,17 @@ export default function TeacherPickPage() {
         categories: r.categories,
         programmeSlug: defaultSlug(r.categories),
       });
-      router.push("/");
+      router.push("/daily");
     } catch (err) {
       setError(err instanceof Error ? err.message : "incorrect password");
       setSubmitting(false);
     }
   };
 
+  // Go back to the apartment step (keeps the generic content session intact;
+  // a different apartment login will simply overwrite the apartment).
   const switchApartment = () => {
-    clearTeacher();
-    router.push("/login");
+    router.push("/apartment");
   };
 
   return (
@@ -100,7 +102,7 @@ export default function TeacherPickPage() {
         onClick={switchApartment}
         className="mb-4 inline-flex items-center gap-1 self-start text-[12px] font-semibold text-ink-muted transition hover:text-ink"
       >
-        <ChevronLeft className="h-4 w-4" /> switch apartment
+        <ChevronLeft className="h-4 w-4" /> change apartment
       </button>
 
       <div className="rounded-card bg-brand-white p-6 shadow-float md:p-8">

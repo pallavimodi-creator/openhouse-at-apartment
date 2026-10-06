@@ -25,7 +25,8 @@ export default function DashboardPage() {
     const t = getTeacher();
     if (!t) return void router.replace("/login");
     if (t.role === "admin" || t.programmeSlug === "*") return void router.replace("/admin/apartments");
-    if (!t.apartmentId) return void router.replace("/login");
+    // The shared dashboard needs the full apartment + teacher login (layer 2 + 3).
+    if (!t.apartmentId) return void router.replace("/apartment");
     if (!t.teacherId) return void router.replace("/teacher");
     setTeacher(t);
     setReady(true);

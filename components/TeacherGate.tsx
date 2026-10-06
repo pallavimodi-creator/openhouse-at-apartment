@@ -2,13 +2,17 @@
 
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { getTeacher, type TeacherState } from "@/lib/teacher-state";
+import { getTeacher, teacherCategories, type TeacherState } from "@/lib/teacher-state";
 
 /**
- * Wrap protected pages with this component. It redirects to /login if the
- * teacher is not signed in, to /building if they're signed in but haven't
- * picked a building this session, and to their own programme if they try
- * to access a different programme.
+ * Wrap CONTENT pages with this component. It redirects to /login if the
+ * teacher is not signed in, and to their own programme if they try to access
+ * a different one.
+ *
+ * A generic (layer-1) login reaches content, so the only requirement for a
+ * non-admin is a content session — a category or a programme slug. The daily
+ * form + shared dashboard are gated separately (they require a full apartment
+ * + teacher login); those pages do their own stronger check.
  *
  * If `requiredSlug` is passed, the teacher must be logged into that exact
  * programme. Otherwise any logged-in teacher is allowed.
@@ -32,17 +36,15 @@ export function TeacherGate({
       return;
     }
     const isAdmin = teacher.programmeSlug === "*" || teacher.role === "admin";
-    // Two-step sign-in: a non-admin must have completed the apartment login
-    // AND picked their individual teacher login. /teacher is exempt from the
-    // teacher-required check (that's where they pick). Admins skip both.
+    // Content access only needs a signed-in session with a subject (a generic
+    // login sets `category`/`programmeSlug`; a full teacher login sets
+    // `categories`). Anything less and we send them back to the generic login.
     if (!isAdmin) {
-      if (!teacher.apartmentId) {
+      const hasContent =
+        teacherCategories(teacher).length > 0 ||
+        (!!teacher.programmeSlug && teacher.programmeSlug !== "");
+      if (!hasContent) {
         router.replace("/login");
-        setState("redirect");
-        return;
-      }
-      if (!teacher.teacherId && pathname !== "/teacher") {
-        router.replace("/teacher");
         setState("redirect");
         return;
       }

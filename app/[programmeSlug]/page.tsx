@@ -45,20 +45,9 @@ export default function ProgrammeDetailPage() {
     }
     const admin = teacher.programmeSlug === "*" || teacher.role === "admin";
     setIsAdmin(admin);
-    // Two-step sign-in guard for non-admins.
-    if (!admin) {
-      if (!teacher.apartmentId) {
-        router.replace("/login");
-        setAuthState("redirect");
-        return;
-      }
-      if (!teacher.teacherId) {
-        router.replace("/teacher");
-        setAuthState("redirect");
-        return;
-      }
-    }
-    // Access rules: admin → any; teacher → any programme in their categories.
+    // Programme content is reachable by a generic (layer-1) login too, so the
+    // only gate is subject access. Access rules: admin → any; teacher → any
+    // programme in their categories (or an exact slug match).
     const allowed = canAccessProgramme(teacher, slug, programme.category);
     if (!allowed) {
       router.replace("/");

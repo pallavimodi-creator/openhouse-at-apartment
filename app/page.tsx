@@ -3,6 +3,7 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { Notebook, ChevronRight } from "lucide-react";
 import { listHomeProgrammes, getCurriculumProgramme } from "@/lib/content";
 import { HeroBanner } from "@/components/HeroBanner";
 import { ProgrammeCard } from "@/components/ProgrammeCard";
@@ -67,16 +68,15 @@ export default function HomePage() {
       router.replace("/login");
       return;
     }
-    // Two-step sign-in: a non-admin must have completed both the apartment
-    // login and their individual teacher login before landing on home.
+    // Home is a CONTENT page: a generic (layer-1) login is enough. A non-admin
+    // only needs a subject (category or programme slug); the apartment +
+    // teacher login is optional here and only unlocks the daily dashboard.
     const admin = t.role === "admin" || t.programmeSlug === "*";
     if (!admin) {
-      if (!t.apartmentId) {
+      const hasContent =
+        teacherCategories(t).length > 0 || (!!t.programmeSlug && t.programmeSlug !== "");
+      if (!hasContent) {
         router.replace("/login");
-        return;
-      }
-      if (!t.teacherId) {
-        router.replace("/teacher");
         return;
       }
     }
@@ -141,6 +141,30 @@ export default function HomePage() {
           hello, {teacher.teacherName}.
         </h2>
       </section>
+
+      {/* Daily-dashboard prompt — only for a generic (content-only) login that
+          hasn't signed into an apartment + teacher yet. */}
+      {!isAdmin && !teacher.teacherId && (
+        <section className="px-4 pt-4 md:px-8 md:pt-5">
+          <Link
+            href="/apartment"
+            className="group flex items-center gap-3 rounded-2xl bg-brand-white p-4 shadow-card ring-1 ring-brand-orange/15 transition hover:-translate-y-0.5 hover:shadow-lift md:p-5"
+          >
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-orange/12 text-brand-orange">
+              <Notebook className="h-5 w-5" />
+            </span>
+            <span className="flex-1">
+              <span className="block text-[13.5px] font-extrabold lowercase text-ink md:text-[14.5px]">
+                log what you teach each day
+              </span>
+              <span className="mt-0.5 block text-[12px] leading-relaxed text-ink-muted">
+                sign in to your apartment and your own name to fill the daily form and see the shared dashboard.
+              </span>
+            </span>
+            <ChevronRight className="h-5 w-5 shrink-0 text-ink-subtle transition group-hover:text-brand-orange" />
+          </Link>
+        </section>
+      )}
 
       {/* How to go through the website — three-step sequence with
           hand-drawn doodle squiggles connecting the steps. The emoji

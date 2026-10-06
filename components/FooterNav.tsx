@@ -42,8 +42,13 @@ export function FooterNav() {
     setHasCategories(teacherCategories(t).length > 0);
   }, [pathname]);
 
-  // Hide the footer on the sign-in pages.
-  if (pathname === "/login" || pathname === "/building" || pathname === "/teacher") {
+  // Hide the footer on the sign-in pages (generic login → apartment → teacher).
+  if (
+    pathname === "/login" ||
+    pathname === "/building" ||
+    pathname === "/apartment" ||
+    pathname === "/teacher"
+  ) {
     return null;
   }
 
