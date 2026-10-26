@@ -93,6 +93,7 @@ const TONE: Record<SegmentTone, Omit<SegmentPalette, "tone">> = {
 
 const SEGMENT_TO_TONE: Record<string, SegmentTone> = {
   // Yellow — opening / warm-up / discovery
+  "opening-circle": "yellow", // shared — hello + settling songs to start
   "art-gym": "yellow",
   "roll-call": "yellow",
   experiment: "yellow",
@@ -114,10 +115,12 @@ const SEGMENT_TO_TONE: Record<string, SegmentTone> = {
   "wonder-world": "blue", // stem — themed workbook exploration, Session B
 
   // Pink — closing / log book / reflection
+  "closing-circle": "pink", // shared — a simple fitness/movement song to close
   "log-book": "pink",
   "experience-book": "pink",
 
   // Orange — accents, art care, vocabulary practice
+  break: "orange", // at-centre only — a short mid-class rest break
   "art-care": "orange",
   "sign-off": "orange",
   wordsmiths: "orange", // language — vocabulary see → act → say

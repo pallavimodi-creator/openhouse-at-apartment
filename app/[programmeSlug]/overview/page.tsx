@@ -644,6 +644,9 @@ function ProgrammeOverviewContent() {
   // here; meaning falls back to the programme's own segment.objective when
   // a programme-specific copy is needed (e.g. 3-5 art gym).
   const segmentMeta: Record<string, { icon: typeof Dumbbell; durationFlex: number; meaning: string }> = {
+    "opening-circle": { icon: Users, durationFlex: 10, meaning: "A warm welcome together — a hello and meet-and-greet, then a settling song or two to start the class as one group." },
+    "closing-circle": { icon: Music, durationFlex: 10, meaning: "A calm close together — a simple fitness / movement song to round off the class." },
+    break: { icon: Droplet, durationFlex: 10, meaning: "A short rest and snack break in the middle of the longer two-hour class." },
     "art-gym": {
       icon: Dumbbell,
       durationFlex: 17.5,

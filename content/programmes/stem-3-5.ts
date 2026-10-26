@@ -905,6 +905,7 @@ export const stem35: CurriculumProgramme = {
     },
   ],
   segmentDefinitions: [
+    { id: "opening-circle", name: "opening circle", durationRange: "10 min", objective: "A warm start together — a hello and meet-and-greet, then a song or two to settle the group and wake up voices and bodies before the session begins. (A song playlist will be added.)", type: "fixed" },
     {
       id: "imagine-playground",
       name: "Imagine Playground",
@@ -948,6 +949,7 @@ export const stem35: CurriculumProgramme = {
         "Each child has a personal Experience Book. The educator writes one specific sentence about what the child did that day — a project they built, a question they asked, a number they counted, a 'because' they explained. The child adds a drawing or stamp. The book goes home regularly so parents can see growth. This is also where Number Sense level transitions are recorded.",
       type: "fixed",
     },
+    { id: "closing-circle", name: "closing circle", durationRange: "10 min", objective: "A calm finish together — a simple fitness / movement song to round off the class. (A song playlist will be added.)", type: "fixed" },
   ],
   sessionTable: buildSessionTable(),
   activities: {

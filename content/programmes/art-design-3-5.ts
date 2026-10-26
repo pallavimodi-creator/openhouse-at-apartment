@@ -1015,6 +1015,7 @@ export const artDesign35: CurriculumProgramme = {
     },
   ],
   segmentDefinitions: [
+    { id: "opening-circle", name: "opening circle", durationRange: "10 min", objective: "A warm start together — a hello and meet-and-greet, then a song or two to settle the group and wake up voices and bodies before the session begins. (A song playlist will be added.)", type: "fixed" },
     {
       id: "art-gym",
       name: "Art Gym",
@@ -1057,6 +1058,7 @@ export const artDesign35: CurriculumProgramme = {
         "Children take responsibility for materials and the shared space by putting everything back in place. The focus is on building care, independence, and respect for tools through consistent practice.",
       type: "fixed",
     },
+    { id: "closing-circle", name: "closing circle", durationRange: "10 min", objective: "A calm finish together — a simple fitness / movement song to round off the class. (A song playlist will be added.)", type: "fixed" },
   ],
   sessionTable,
   activities: { ...artGamesActivities },
