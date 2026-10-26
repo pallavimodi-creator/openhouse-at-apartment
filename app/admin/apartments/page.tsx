@@ -2,19 +2,34 @@
 
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
-import { ChevronLeft, Plus, Building2, User, ChevronRight, KeyRound } from "lucide-react";
+import { ChevronLeft, Plus, Building2, User, ChevronRight, KeyRound, Pencil, Trash2, Check, X } from "lucide-react";
 import { TeacherGate, useTeacher } from "@/components/TeacherGate";
 import { getAdminKey, setAdminKey } from "@/lib/newsletter-submissions";
 import {
   adminListApartments,
   adminCreateApartment,
   adminCreateTeacher,
+  adminUpdateTeacher,
+  adminDeleteTeacher,
+  adminSetIndividualLogin,
   type AdminApartment,
+  type AdminTeacher,
 } from "@/lib/apartments";
 import { isFullAdmin } from "@/lib/teacher-state";
 import type { TeacherCategory } from "@/lib/teacher-state";
 
 const CATEGORIES: TeacherCategory[] = ["art", "language", "stem", "chess", "music"];
+
+// User-facing subject names. The internal category ids stay the same
+// (they key programme access), but the admin sees the real programme names:
+// language → public speaking, stem → robotics.
+const CATEGORY_LABELS: Record<TeacherCategory, string> = {
+  art: "art",
+  language: "public speaking",
+  stem: "robotics",
+  chess: "chess",
+  music: "music",
+};
 
 export default function AdminApartmentsPage() {
   return (
@@ -49,6 +64,14 @@ function Content() {
   const [addingTeacher, setAddingTeacher] = useState(false);
   const [teacherMsg, setTeacherMsg] = useState<string | null>(null);
   const [teacherErr, setTeacherErr] = useState<string | null>(null);
+
+  // inline editing of an existing teacher login
+  const [editId, setEditId] = useState<string | null>(null);
+  const [editName, setEditName] = useState("");
+  const [editUser, setEditUser] = useState("");
+  const [editPass, setEditPass] = useState("");
+  const [editCats, setEditCats] = useState<TeacherCategory[]>([]);
+  const [rowBusy, setRowBusy] = useState<string | null>(null); // teacher/apt id being saved
 
   const refresh = useCallback(async () => {
     setLoading(true);
@@ -121,6 +144,63 @@ function Content() {
       setTeacherErr(e instanceof Error ? e.message : "could not add teacher login");
     } finally {
       setAddingTeacher(false);
+    }
+  };
+
+  const startEdit = (t: AdminTeacher) => {
+    setEditId(t.id);
+    setEditName(t.name);
+    setEditUser(t.username);
+    setEditPass(""); // blank = keep current password
+    setEditCats(t.categories);
+    setTeacherErr(null);
+  };
+  const cancelEdit = () => setEditId(null);
+  const toggleEditCat = (c: TeacherCategory) =>
+    setEditCats((prev) => (prev.includes(c) ? prev.filter((x) => x !== c) : [...prev, c]));
+
+  const saveEdit = async (t: AdminTeacher) => {
+    setRowBusy(t.id);
+    setTeacherErr(null);
+    try {
+      await adminUpdateTeacher(t.id, {
+        name: editName.trim(),
+        username: editUser.trim(),
+        ...(editPass ? { password: editPass } : {}),
+        categories: editCats,
+      });
+      setEditId(null);
+      await refresh();
+    } catch (e) {
+      setTeacherErr(e instanceof Error ? e.message : "could not save changes");
+    } finally {
+      setRowBusy(null);
+    }
+  };
+
+  const deleteTeacher = async (t: AdminTeacher) => {
+    if (!confirm(`delete the login for “${t.name}”? their daily logs are removed too.`)) return;
+    setRowBusy(t.id);
+    setTeacherErr(null);
+    try {
+      await adminDeleteTeacher(t.id);
+      await refresh();
+    } catch (e) {
+      setTeacherErr(e instanceof Error ? e.message : "could not delete");
+    } finally {
+      setRowBusy(null);
+    }
+  };
+
+  const toggleIndividual = async (apt: AdminApartment) => {
+    setRowBusy(apt.id);
+    try {
+      await adminSetIndividualLogin(apt.id, !apt.individualLoginEnabled);
+      await refresh();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "could not update");
+    } finally {
+      setRowBusy(null);
     }
   };
 
@@ -224,7 +304,7 @@ function Content() {
                     : "bg-bg/60 text-ink-muted ring-1 ring-ink/10 hover:text-ink")
                 }
               >
-                {c}
+                {CATEGORY_LABELS[c]}
               </button>
             ))}
           </div>
@@ -252,41 +332,138 @@ function Content() {
         <div className="space-y-3">
           {apartments.map((apt) => (
             <div key={apt.id} className="rounded-card bg-brand-white p-4 shadow-card">
-              <div className="flex items-center justify-between">
+              <div className="flex items-start justify-between gap-3">
                 <div className="flex items-center gap-2">
                   <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-orange/12 text-brand-orange">
                     <Building2 className="h-4 w-4" />
                   </span>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-[15px] font-extrabold lowercase text-ink">{apt.name}</p>
                     <p className="text-[11px] text-ink-subtle">
-                      login: {apt.loginUsername} · {apt.teachers.length} teacher{apt.teachers.length === 1 ? "" : "s"}
+                      shared login: <span className="font-semibold text-ink-muted">{apt.loginUsername}</span>
+                      {apt.loginPassword ? <> · pass: <span className="font-semibold text-ink-muted">{apt.loginPassword}</span></> : null}
                     </p>
                   </div>
                 </div>
-                <Link
-                  href={`/admin/apartments/${apt.id}`}
-                  className="inline-flex items-center gap-1 rounded-chip bg-brand-cream px-3 py-1.5 text-[12px] font-bold text-ink-muted transition hover:text-ink"
-                >
-                  daily logs <ChevronRight className="h-3.5 w-3.5" />
-                </Link>
+                <div className="flex shrink-0 flex-col items-end gap-1.5">
+                  <span className="rounded-chip bg-segment-green/20 px-2.5 py-1 text-[11px] font-bold text-ink">
+                    {apt.classesDone} class{apt.classesDone === 1 ? "" : "es"} done
+                  </span>
+                  <Link
+                    href={`/admin/apartments/${apt.id}`}
+                    className="inline-flex items-center gap-1 rounded-chip bg-brand-cream px-3 py-1.5 text-[12px] font-bold text-ink-muted transition hover:text-ink"
+                  >
+                    daily logs <ChevronRight className="h-3.5 w-3.5" />
+                  </Link>
+                </div>
               </div>
-              <div className="mt-3 flex flex-wrap gap-2">
+
+              {/* individual-login toggle */}
+              <button
+                type="button"
+                onClick={() => toggleIndividual(apt)}
+                disabled={rowBusy === apt.id}
+                className="mt-3 inline-flex items-center gap-2 rounded-lg px-2 py-1 text-[12px] font-bold text-ink-muted transition hover:text-ink disabled:opacity-50"
+              >
+                <span
+                  className={
+                    "relative inline-flex h-4 w-7 items-center rounded-full transition " +
+                    (apt.individualLoginEnabled ? "bg-brand-orange" : "bg-ink/20")
+                  }
+                >
+                  <span
+                    className={
+                      "inline-block h-3 w-3 transform rounded-full bg-white transition " +
+                      (apt.individualLoginEnabled ? "translate-x-3.5" : "translate-x-0.5")
+                    }
+                  />
+                </span>
+                individual teacher logins {apt.individualLoginEnabled ? "on" : "off"}
+              </button>
+
+              {/* teacher logins — records + edit/delete */}
+              <div className="mt-2 space-y-2">
                 {apt.teachers.length === 0 ? (
                   <span className="text-[12px] text-ink-subtle">no teacher logins yet.</span>
                 ) : (
-                  apt.teachers.map((t) => (
-                    <span
-                      key={t.id}
-                      className="inline-flex items-center gap-1.5 rounded-chip bg-bg/60 px-2.5 py-1 text-[12px] font-semibold text-ink"
-                    >
-                      <User className="h-3 w-3 text-brand-orange" /> {t.name}
-                      <span className="text-ink-subtle">· {apt.name}</span>
-                      {t.categories.length > 0 && (
-                        <span className="text-ink-subtle">· {t.categories.join(" · ")}</span>
-                      )}
-                    </span>
-                  ))
+                  apt.teachers.map((t) =>
+                    editId === t.id ? (
+                      <div key={t.id} className="rounded-lg bg-bg/60 p-3 ring-1 ring-brand-orange/30">
+                        <div className="grid gap-2 sm:grid-cols-3">
+                          <Field label="name" value={editName} onChange={setEditName} placeholder="name" />
+                          <Field label="login id" value={editUser} onChange={setEditUser} placeholder="login id" />
+                          <Field label="new password" value={editPass} onChange={setEditPass} placeholder="(blank = keep)" />
+                        </div>
+                        <div className="mt-2 flex flex-wrap gap-1.5">
+                          {CATEGORIES.map((c) => (
+                            <button
+                              key={c}
+                              type="button"
+                              onClick={() => toggleEditCat(c)}
+                              className={
+                                "rounded-chip px-2.5 py-1 text-[12px] font-semibold transition " +
+                                (editCats.includes(c)
+                                  ? "bg-brand-orange text-white"
+                                  : "bg-bg/60 text-ink-muted ring-1 ring-ink/10 hover:text-ink")
+                              }
+                            >
+                              {CATEGORY_LABELS[c]}
+                            </button>
+                          ))}
+                        </div>
+                        <div className="mt-2 flex gap-2">
+                          <button
+                            type="button"
+                            onClick={() => saveEdit(t)}
+                            disabled={rowBusy === t.id}
+                            className="inline-flex items-center gap-1 rounded-chip bg-brand-orange px-3 py-1.5 text-[12px] font-bold text-white disabled:opacity-50"
+                          >
+                            <Check className="h-3.5 w-3.5" /> {rowBusy === t.id ? "saving…" : "save"}
+                          </button>
+                          <button
+                            type="button"
+                            onClick={cancelEdit}
+                            className="inline-flex items-center gap-1 rounded-chip bg-ink/5 px-3 py-1.5 text-[12px] font-bold text-ink-muted hover:bg-ink/10"
+                          >
+                            <X className="h-3.5 w-3.5" /> cancel
+                          </button>
+                        </div>
+                      </div>
+                    ) : (
+                      <div key={t.id} className="flex items-center justify-between gap-2 rounded-lg bg-bg/50 px-3 py-2">
+                        <div className="min-w-0">
+                          <p className="flex items-center gap-1.5 text-[13px] font-bold text-ink">
+                            <User className="h-3 w-3 text-brand-orange" /> {t.name}
+                            <span className="text-[11px] font-semibold text-ink-subtle">· {t.classesDone ?? 0} done</span>
+                          </p>
+                          <p className="truncate text-[11px] text-ink-muted">
+                            login: <span className="font-semibold">{t.username}</span> · pass:{" "}
+                            <span className="font-semibold">{t.password ?? "—"}</span>
+                            {t.categories.length > 0 ? <> · {t.categories.map((c) => CATEGORY_LABELS[c] ?? c).join(" · ")}</> : null}
+                          </p>
+                        </div>
+                        <div className="flex shrink-0 gap-1">
+                          <button
+                            type="button"
+                            onClick={() => startEdit(t)}
+                            aria-label="edit login"
+                            className="rounded-lg p-1.5 text-ink-muted transition hover:bg-ink/5 hover:text-ink"
+                          >
+                            <Pencil className="h-3.5 w-3.5" />
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => deleteTeacher(t)}
+                            disabled={rowBusy === t.id}
+                            aria-label="delete login"
+                            className="rounded-lg p-1.5 text-ink-muted transition hover:bg-red-50 hover:text-red-600 disabled:opacity-50"
+                          >
+                            <Trash2 className="h-3.5 w-3.5" />
+                          </button>
+                        </div>
+                      </div>
+                    )
+                  )
                 )}
               </div>
             </div>

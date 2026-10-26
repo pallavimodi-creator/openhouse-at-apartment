@@ -18,6 +18,7 @@ export default function DashboardPage() {
   const [teacher, setTeacher] = useState<TeacherState | null>(null);
   const [date, setDate] = useState(today());
   const [logs, setLogs] = useState<DailyLog[]>([]);
+  const [allLogs, setAllLogs] = useState<DailyLog[]>([]); // for the running stats
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -47,6 +48,18 @@ export default function DashboardPage() {
     };
   }, [teacher, date]);
 
+  // All-time logs for the apartment, for the individual + apartment stats.
+  useEffect(() => {
+    if (!teacher?.apartmentId) return;
+    let cancelled = false;
+    listDailyLogs(teacher.apartmentId)
+      .then((l) => !cancelled && setAllLogs(l))
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, [teacher, logs]); // refetch after a day's logs change
+
   if (!ready || !teacher) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
@@ -54,6 +67,12 @@ export default function DashboardPage() {
       </div>
     );
   }
+
+  const mine = allLogs.filter((l) => l.teacherId === teacher.teacherId).length;
+  const apartmentTotal = allLogs.length;
+  const byTeacher = new Map<string, number>();
+  allLogs.forEach((l) => byTeacher.set(l.teacherName, (byTeacher.get(l.teacherName) ?? 0) + 1));
+  const perTeacher = [...byTeacher.entries()].sort((a, b) => b[1] - a[1]);
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-5 pb-28">
@@ -71,6 +90,38 @@ export default function DashboardPage() {
           <Plus className="h-4 w-4" /> my log
         </Link>
       </div>
+
+      {/* individual + apartment stats (all-time) */}
+      <div className="mt-4 grid grid-cols-2 gap-3">
+        <div className="rounded-card bg-brand-orange/[0.07] p-3.5">
+          <p className="text-[11px] font-bold text-ink-muted">your classes logged</p>
+          <p className="text-[24px] font-extrabold tabular-nums text-brand-orange">{mine}</p>
+        </div>
+        <div className="rounded-card bg-segment-green/15 p-3.5">
+          <p className="text-[11px] font-bold text-ink-muted">apartment classes logged</p>
+          <p className="text-[24px] font-extrabold tabular-nums text-ink">{apartmentTotal}</p>
+        </div>
+      </div>
+      {perTeacher.length > 0 && (
+        <div className="mt-2 rounded-card bg-brand-white p-3 ring-1 ring-ink/5">
+          <p className="text-[11px] font-bold text-ink-muted">by teacher</p>
+          <div className="mt-1.5 flex flex-wrap gap-1.5">
+            {perTeacher.map(([name, n]) => (
+              <span
+                key={name}
+                className={
+                  "rounded-chip px-2.5 py-1 text-[12px] font-semibold " +
+                  (name === teacher.teacherName
+                    ? "bg-brand-orange text-white"
+                    : "bg-bg/60 text-ink-muted ring-1 ring-ink/10")
+                }
+              >
+                {name.toLowerCase()} · {n}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div className="mt-4">
         <label className="inline-block">

@@ -21,8 +21,16 @@ create table if not exists public.apartments (
   name            text not null unique,
   login_username  text not null unique,
   login_password  text not null,
+  -- when false, the apartment uses its shared login only; when true, the
+  -- admin has turned on individual teacher logins for this apartment.
+  individual_login_enabled boolean not null default false,
   created_at      timestamptz not null default now()
 );
+
+-- Migration for apartments created before the individual-login toggle existed.
+-- Safe to run repeatedly.
+alter table public.apartments
+  add column if not exists individual_login_enabled boolean not null default false;
 
 -- ── teachers (individual logins, created by admin, inside an apartment) ──
 create table if not exists public.teachers (

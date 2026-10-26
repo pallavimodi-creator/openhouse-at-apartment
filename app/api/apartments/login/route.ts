@@ -23,12 +23,16 @@ export async function POST(req: Request) {
 
   const { data, error } = await supabase
     .from("apartments")
-    .select("id,name,login_password")
+    .select("id,name,login_password,individual_login_enabled")
     .eq("login_username", username)
     .maybeSingle();
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
   if (!data || data.login_password !== password) {
     return NextResponse.json({ error: "incorrect apartment login" }, { status: 401 });
   }
-  return NextResponse.json({ apartmentId: data.id, apartmentName: data.name });
+  return NextResponse.json({
+    apartmentId: data.id,
+    apartmentName: data.name,
+    individualLoginEnabled: data.individual_login_enabled ?? false,
+  });
 }

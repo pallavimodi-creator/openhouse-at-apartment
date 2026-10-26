@@ -40,12 +40,17 @@ export interface AdminTeacher {
   id: string;
   name: string;
   username: string;
+  password?: string;        // visible to admins so they can share credentials
   categories: TeacherCategory[];
+  classesDone?: number;     // daily-log submissions by this teacher
 }
 export interface AdminApartment {
   id: string;
   name: string;
   loginUsername: string;
+  loginPassword?: string;
+  individualLoginEnabled: boolean;
+  classesDone: number;      // total daily-log submissions for this apartment
   teachers: AdminTeacher[];
 }
 export interface DailyEntry {
@@ -87,7 +92,7 @@ export async function apartmentLogin(username: string, password: string) {
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ username, password }),
   });
-  return parse<{ apartmentId: string; apartmentName: string }>(res);
+  return parse<{ apartmentId: string; apartmentName: string; individualLoginEnabled: boolean }>(res);
 }
 
 export async function listApartmentTeachers(apartmentId: string) {
@@ -129,6 +134,35 @@ export async function adminCreateTeacher(
     body: JSON.stringify(t),
   });
   return parse<{ teacher: AdminTeacher }>(res).then((b) => b.teacher);
+}
+
+export async function adminUpdateTeacher(
+  teacherId: string,
+  patch: { name?: string; username?: string; password?: string; categories?: TeacherCategory[] }
+) {
+  const res = await fetch(`/api/teachers/${teacherId}`, {
+    method: "PATCH",
+    headers: adminHeaders(),
+    body: JSON.stringify(patch),
+  });
+  return parse<{ teacher: AdminTeacher }>(res).then((b) => b.teacher);
+}
+
+export async function adminDeleteTeacher(teacherId: string) {
+  const res = await fetch(`/api/teachers/${teacherId}`, {
+    method: "DELETE",
+    headers: adminHeaders(),
+  });
+  return parse<{ ok: boolean }>(res);
+}
+
+export async function adminSetIndividualLogin(apartmentId: string, enabled: boolean) {
+  const res = await fetch(`/api/admin/apartments/${apartmentId}`, {
+    method: "PATCH",
+    headers: adminHeaders(),
+    body: JSON.stringify({ individualLoginEnabled: enabled }),
+  });
+  return parse<{ individualLoginEnabled: boolean }>(res).then((b) => b.individualLoginEnabled);
 }
 
 // ── daily logs ────────────────────────────────────────────────────────

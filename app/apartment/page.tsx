@@ -46,7 +46,19 @@ export default function ApartmentLoginPage() {
     setError(null);
     setSubmitting(true);
     try {
-      const { apartmentId, apartmentName } = await apartmentLogin(username.trim(), password);
+      const { apartmentId, apartmentName, individualLoginEnabled } = await apartmentLogin(
+        username.trim(),
+        password
+      );
+      // Individual (per-teacher) logins are admin-controlled. Until the admin
+      // turns them on for this apartment, there is no individual step to take.
+      if (!individualLoginEnabled) {
+        setError(
+          "individual teacher logins aren't enabled for this apartment yet — ask your admin to turn them on."
+        );
+        setSubmitting(false);
+        return;
+      }
       // Keep the generic session (category / programmeSlug / username stay as
       // the content fallback) and add the apartment.
       setTeacher({

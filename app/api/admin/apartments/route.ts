@@ -21,14 +21,30 @@ export async function GET(req: Request) {
   }
   const { data: apts, error } = await supabase
     .from("apartments")
-    .select("id,name,login_username,created_at")
+    .select("id,name,login_username,login_password,individual_login_enabled,created_at")
     .order("name", { ascending: true });
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
   const { data: teachers } = await supabase
     .from("teachers")
-    .select("id,name,username,categories,apartment_id")
+    .select("id,name,username,password,categories,apartment_id")
     .order("name", { ascending: true });
+
+  // Classes done per apartment = count of daily-log submissions. We fetch
+  // the (apartment_id, teacher_id) of every log and tally in-memory — small
+  // data, and it lets us return both the apartment total and a per-teacher
+  // breakdown in one pass.
+  const { data: logs } = await supabase
+    .from("daily_logs")
+    .select("apartment_id,teacher_id");
+  const classCount: Record<string, number> = {};
+  const classByTeacher: Record<string, Record<string, number>> = {};
+  (logs ?? []).forEach((l) => {
+    classCount[l.apartment_id] = (classCount[l.apartment_id] ?? 0) + 1;
+    (classByTeacher[l.apartment_id] ||= {});
+    classByTeacher[l.apartment_id][l.teacher_id] =
+      (classByTeacher[l.apartment_id][l.teacher_id] ?? 0) + 1;
+  });
 
   const byApt: Record<string, unknown[]> = {};
   (teachers ?? []).forEach((t) => {
@@ -36,13 +52,18 @@ export async function GET(req: Request) {
       id: t.id,
       name: t.name,
       username: t.username,
+      password: t.password,
       categories: t.categories ?? [],
+      classesDone: classByTeacher[t.apartment_id]?.[t.id] ?? 0,
     });
   });
   const apartments = (apts ?? []).map((a) => ({
     id: a.id,
     name: a.name,
     loginUsername: a.login_username,
+    loginPassword: a.login_password,
+    individualLoginEnabled: a.individual_login_enabled ?? false,
+    classesDone: classCount[a.id] ?? 0,
     teachers: byApt[a.id] ?? [],
   }));
   return NextResponse.json({ apartments });

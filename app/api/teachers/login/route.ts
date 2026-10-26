@@ -24,6 +24,19 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "missing credentials" }, { status: 400 });
   }
 
+  // Individual logins must be enabled for this apartment (admin-controlled).
+  const { data: apt } = await supabase
+    .from("apartments")
+    .select("individual_login_enabled")
+    .eq("id", apartmentId)
+    .maybeSingle();
+  if (!apt?.individual_login_enabled) {
+    return NextResponse.json(
+      { error: "individual logins are not enabled for this apartment yet" },
+      { status: 403 }
+    );
+  }
+
   const { data, error } = await supabase
     .from("teachers")
     .select("id,name,password,categories")
