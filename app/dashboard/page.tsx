@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Pencil, Plus } from "lucide-react";
-import { getTeacher, type TeacherState } from "@/lib/teacher-state";
+import { getTeacher, isFullAdmin, isGuest, type TeacherState } from "@/lib/teacher-state";
 import { listDailyLogs, type DailyLog } from "@/lib/apartments";
 import { DailyLogCard } from "@/components/DailyLogCard";
 
@@ -24,7 +24,8 @@ export default function DashboardPage() {
   useEffect(() => {
     const t = getTeacher();
     if (!t) return void router.replace("/login");
-    if (t.role === "admin" || t.programmeSlug === "*") return void router.replace("/admin/apartments");
+    if (isGuest(t)) return void router.replace("/"); // guest has no dashboard
+    if (isFullAdmin(t)) return void router.replace("/admin/apartments");
     // The shared dashboard needs the full apartment + teacher login (layer 2 + 3).
     if (!t.apartmentId) return void router.replace("/apartment");
     if (!t.teacherId) return void router.replace("/teacher");

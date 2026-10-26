@@ -40,7 +40,7 @@ export interface TeacherState {
   programmeSlug: string; // "*" for admin, or a nominal default slug for category teachers
   teacherName: string;
   username?: string;
-  role?: "teacher" | "admin";
+  role?: "teacher" | "admin" | "guest";
   // NEW multi-tenant model: an apartment (shared login) + an individual teacher.
   apartmentId?: string;
   apartmentName?: string;
@@ -56,6 +56,21 @@ export interface TeacherState {
 
 export function isAdmin(state: TeacherState | null): boolean {
   return state?.role === "admin" || state?.programmeSlug === "*";
+}
+
+/** The read-only "guest" tour login. */
+export function isGuest(state: TeacherState | null): boolean {
+  return state?.role === "guest";
+}
+
+/**
+ * A FULL admin — may use the operational dashboards (apartments / tracker)
+ * and edit/approve. This is `isAdmin` minus the read-only guest, so guest
+ * (which carries programmeSlug "*" for the all-programmes content view) is
+ * excluded from every dashboard + edit gate.
+ */
+export function isFullAdmin(state: TeacherState | null): boolean {
+  return isAdmin(state) && !isGuest(state);
 }
 
 /** The teacher's subjects, tolerant of the legacy single `category` field. */

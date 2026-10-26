@@ -11,6 +11,7 @@ import {
   adminCreateTeacher,
   type AdminApartment,
 } from "@/lib/apartments";
+import { isFullAdmin } from "@/lib/teacher-state";
 import type { TeacherCategory } from "@/lib/teacher-state";
 
 const CATEGORIES: TeacherCategory[] = ["art", "language", "stem", "chess", "music"];
@@ -25,7 +26,7 @@ export default function AdminApartmentsPage() {
 
 function Content() {
   const { teacher } = useTeacher();
-  const isAdmin = !!teacher && (teacher.role === "admin" || teacher.programmeSlug === "*");
+  const isAdmin = isFullAdmin(teacher);
 
   const [apartments, setApartments] = useState<AdminApartment[]>([]);
   const [loading, setLoading] = useState(true);

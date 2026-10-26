@@ -11,6 +11,7 @@ import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 import { TeacherGate, useTeacher } from "@/components/TeacherGate";
 import { TrackerOverview } from "@/components/TrackerOverview";
+import { isFullAdmin } from "@/lib/teacher-state";
 
 export default function AdminTrackerPage() {
   return (
@@ -22,7 +23,7 @@ export default function AdminTrackerPage() {
 
 function Content() {
   const { teacher } = useTeacher();
-  const isAdmin = !!teacher && (teacher.role === "admin" || teacher.programmeSlug === "*");
+  const isAdmin = isFullAdmin(teacher);
 
   if (!isAdmin) {
     return (

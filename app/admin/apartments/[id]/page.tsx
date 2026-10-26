@@ -7,6 +7,7 @@ import { ChevronLeft } from "lucide-react";
 import { TeacherGate, useTeacher } from "@/components/TeacherGate";
 import { DailyLogCard } from "@/components/DailyLogCard";
 import { listDailyLogs, type DailyLog } from "@/lib/apartments";
+import { isFullAdmin } from "@/lib/teacher-state";
 
 function daysAgo(n: number): string {
   const d = new Date();
@@ -24,7 +25,7 @@ export default function AdminApartmentLogsPage() {
 
 function Content() {
   const { teacher } = useTeacher();
-  const isAdmin = !!teacher && (teacher.role === "admin" || teacher.programmeSlug === "*");
+  const isAdmin = isFullAdmin(teacher);
   const params = useParams<{ id: string }>();
   const apartmentId = params.id;
 

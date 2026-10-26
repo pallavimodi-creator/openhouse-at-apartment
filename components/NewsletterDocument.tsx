@@ -447,7 +447,13 @@ export function NewsletterDocument(props: NewsletterDocumentProps) {
              clipped, and because each box is well under the sheet it can never
              spill a sliver onto a blank next sheet (the "blank page 2/4" bug). */
           .page {
-            height: 285mm;
+            /* max-height (not a fixed height) so a short page shrinks to its
+               content — the footer then hugs the content instead of being
+               pushed to the sheet bottom, which left a big blank gap on a
+               short newsletter. A full page is still capped at one sheet and
+               clipped, and page 2's break-before-page keeps it on its own
+               sheet, so the 2->4 blank-pages bug stays fixed. */
+            max-height: 285mm;
             box-sizing: border-box;
             overflow: hidden;
             box-shadow: none !important;

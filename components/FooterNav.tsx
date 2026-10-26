@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { listCurriculumProgrammes } from "@/lib/content";
-import { clearTeacher, getTeacher, teacherCategories } from "@/lib/teacher-state";
+import { clearTeacher, getTeacher, isFullAdmin, teacherCategories } from "@/lib/teacher-state";
 
 export function FooterNav() {
   const pathname = usePathname();
@@ -25,6 +25,7 @@ export function FooterNav() {
   const [apartment, setApartment] = useState<string | null>(null);
   const [teacherName, setTeacherName] = useState<string | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isFull, setIsFull] = useState(false);
   const [isTeacher, setIsTeacher] = useState(false);
   const [teacherProgrammeSlug, setTeacherProgrammeSlug] = useState<string | null>(null);
   const [hasCategories, setHasCategories] = useState(false);
@@ -33,6 +34,7 @@ export function FooterNav() {
     const t = getTeacher();
     const admin = !!t && (t.role === "admin" || t.programmeSlug === "*");
     setIsAdmin(admin);
+    setIsFull(isFullAdmin(t)); // full admin only — excludes the read-only guest
     setIsTeacher(!!t?.teacherId);
     setApartment(t?.apartmentName ?? null);
     setTeacherName(t?.teacherName ?? null);
@@ -90,8 +92,9 @@ export function FooterNav() {
     });
   }
 
-  // admin-only tools
-  if (isAdmin) {
+  // admin-only tools — the operational dashboards. Full admins only; the
+  // read-only guest does not see these.
+  if (isFull) {
     items.push({ href: "/admin/apartments", label: "apartments", icon: Building2 });
     items.push({ href: "/admin/tracker", label: "tracker", icon: ClipboardCheck });
   }

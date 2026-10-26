@@ -15,6 +15,7 @@ import { useTeacher, TeacherGate } from "@/components/TeacherGate";
 import { NewsletterDocument } from "@/components/NewsletterDocument";
 import { NewsletterEditor, type Draft } from "@/components/NewsletterEditor";
 import { getNewsletterProgramme } from "@/lib/newsletter-data";
+import { isFullAdmin } from "@/lib/teacher-state";
 import {
   getSubmission,
   approveSubmission,
@@ -56,6 +57,8 @@ function ViewContent() {
   const [saving, setSaving] = useState(false);
 
   const isAdmin = !!teacher && (teacher.role === "admin" || teacher.programmeSlug === "*");
+  // Full admins may edit/approve; the read-only guest may only view + download.
+  const canEdit = isFullAdmin(teacher);
 
   useEffect(() => {
     if (teacher && !isAdmin) router.replace("/");
@@ -157,7 +160,15 @@ function ViewContent() {
         )}
         <span className="flex-1" />
 
-        {editing ? (
+        {!canEdit ? (
+          /* read-only guest — view only, download an already-approved one */
+          sub.status === "approved" ? (
+            <button type="button" onClick={() => window.print()}
+              className={cn(btn, "bg-brand-orange text-white")}>
+              <Download className="h-3.5 w-3.5" /> download as pdf
+            </button>
+          ) : null
+        ) : editing ? (
           <>
             <button type="button" onClick={() => { setDraft(toDraft(sub)); setEditing(false); }}
               className={cn(btn, "bg-ink/5 text-ink-muted hover:bg-ink/10")}>

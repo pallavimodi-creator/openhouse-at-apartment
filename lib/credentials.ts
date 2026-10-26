@@ -9,7 +9,7 @@ export interface Credential {
   password: string;
   programmeSlug: string; // "*" for admin, or a default programme slug for category teachers
   displayName: string;
-  role: "teacher" | "admin";
+  role: "teacher" | "admin" | "guest";
   category?: TeacherCategory; // when set, teacher sees every programme in this category
 }
 
@@ -73,6 +73,18 @@ export const CREDENTIALS: Credential[] = [
     displayName: "music teacher",
     role: "teacher",
     category: "music",
+  },
+  // guest — a read-only tour login. Sees everything the admin sees for
+  // CONTENT (all programmes, library) but NOT the operational dashboards
+  // (apartments / tracker / daily) and with NO edit access anywhere.
+  // programmeSlug "*" gives it the all-programmes view; role "guest" keeps
+  // it out of every full-admin gate (see isFullAdmin in teacher-state).
+  {
+    username: "guest",
+    password: "openhouseguest",
+    programmeSlug: "*",
+    displayName: "guest",
+    role: "guest",
   },
 ];
 
