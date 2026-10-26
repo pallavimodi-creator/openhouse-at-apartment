@@ -1,5 +1,5 @@
 /**
- * Lesson plans for the 8 books in Language Through Storytelling 3-5.
+ * Lesson plans for the 5 books in Language Through Storytelling 3-5.
  *
  * Each book runs across two 3-day blocks with a 2-book interval between
  * them. The first block introduces the book; the second block (Version
@@ -118,74 +118,6 @@ export const LANGUAGE_BOOK_PLANS: BookPlan[] = [
   },
 
   // 2 ───────────────────────────────────────────────────────
-  {
-    order: 2,
-    title: "Mixed: A Colorful Story",
-    author: "Arree Chung",
-    blockA: {
-      day1: {
-        when: "Before and During Reading · Print Knowledge",
-        learningObjective:
-          "To recognise that print carries meaning and to distinguish print from pictures.",
-        vocabulary: "under, beside",
-        steps: [
-          "Show the children the cover. Read the title, pointing to each word as you read it.",
-          "Ask: \"How many words are in the title of this book? Let's hold up a finger for each word.\" Read at a slow pace, holding up a finger for each word. \"There are four words in the name of this book. The words tell us what this book is about. It says 'Mixed: A Colorful Story.' What do you think it is about?\"",
-          "During reading, point to the words on each page as you read. Periodically tell the children: \"Here are the words on this page that I need to read. I am going to read each word to you.\"",
-          "Before reading the last page, ask one child to come up and show you the words on the page. \"Show me the words on this page so I know what to read.\"",
-        ],
-      },
-      day2: {
-        when: "During and After Reading · Narrative",
-        learningObjective:
-          "To identify and describe the setting and characters of a story.",
-        vocabulary: "over",
-        steps: [
-          "Read the book. During reading, summarise the major events on each page by commenting. \"A Red is singing. A Blue is driving a car.\"",
-          "After reading, place the large paper so all children can see. Ask the children to recall several major events. \"Let's talk about what the colors did in the story.\" Write their answers down. Read the list to the children.",
-          "Ask the children to put the events in order. Help as needed: \"In the beginning, all the colors lived together. Then they separated into their own groups. Next, what colors noticed each other? Last, what happened when colors started mixing?\"",
-        ],
-      },
-      day3: {
-        steps: [
-          "One quick narration of the story.",
-          "Activity session.",
-        ],
-        vocabulary: "above",
-        activity: { name: "Change story endings (group)", level: "Easy" },
-      },
-    },
-    blockB: {
-      day1: {
-        when: "Before and During Reading · Print Knowledge",
-        learningObjective:
-          "To recognise the left-to-right and top-to-bottom directionality of print.",
-        steps: [
-          "Show the cover. Ask one child to come up and show you the title. \"We have seen this book before. Does anyone remember its name?\"",
-          "Read the title and point to each word as you say it. Remind the children they have heard this book before. Ask them what the story is about. Extend each child's contribution.",
-          "With your finger, track the text on each page while reading.",
-          "Every few pages, comment on print directionality (left-to-right, top-to-bottom).",
-        ],
-      },
-      day2: {
-        when: "During and After Reading · Narrative",
-        learningObjective:
-          "To identify and describe one or more major actions or events in a story.",
-        steps: [
-          "Read the book. During reading, summarise the major events on each page (\"A Red is singing. A Blue is driving a car.\").",
-          "After reading, ask the children to recall several major events. Write their answers on the paper, then read the list back.",
-          "Ask the children to put the events in order. Help with prompts about beginning, middle, and end.",
-        ],
-      },
-      day3: {
-        steps: [
-          "Show the children the story and ask them to reconstruct it as a group, before the narration.",
-          "Activity session.",
-        ],
-        activity: { name: "Change story endings (group)", level: "Hard" },
-      },
-    },
-  },
 
   // 3 ───────────────────────────────────────────────────────
   {
@@ -404,77 +336,6 @@ export const LANGUAGE_BOOK_PLANS: BookPlan[] = [
   },
 
   // 6 ───────────────────────────────────────────────────────
-  {
-    order: 6,
-    title: "How Do Dinosaurs Go to School?",
-    author: "Jane Yolen and Mark Teague",
-    blockA: {
-      day1: {
-        when: "Before and During Reading · Print Knowledge",
-        learningObjective:
-          "To recognise the difference between letters and words.",
-        vocabulary: "drag, interrupt, car pool, yell",
-        steps: [
-          "Hold up the book. Read the title, point to each word: \"How Do Dinosaurs Go to School? Six words.\" Draw attention to the length of words. \"I see two long words and four short words in our title. Can you point to a short word? This word is 'How' — three letters: h-o-w. The words 'Dinosaurs' and 'School' are longer words with more letters.\"",
-          "Play a quick game before reading. \"When I call your name, I am going to say either a letter or a word. If I say a letter, touch a letter on the cover. If I say a word, touch a word on the cover.\" Allow at least five children to play. Help them track an entire word when you say a word, vs. point to a letter when you say a letter.",
-        ],
-      },
-      day2: {
-        when: "During and After Reading · Narrative",
-        learningObjective:
-          "To produce a fictional story that has a clear beginning, middle, and end.",
-        vocabulary: "plunk, fidget, stir up, quick",
-        steps: [
-          "Read the story and stop periodically to discuss events that happen during the school day. \"First, the dinosaurs must get to school. Some take a car, others take the bus. While they are at school, dinosaurs do a lot of things.\"",
-          "After reading, ask the children to think of all the things the dinosaurs did. Repeat and expand their answers: \"They went to recess. The dinosaurs played with their friends and growled at the bullies during recess.\"",
-          "Tell the children they are going to make up their own story about a day at school. \"Let's pretend you were a dinosaur going to school. What would your day be like?\"",
-          "Provide your own narrative: \"If I were a dinosaur going to school, first I would fly there. Then I would listen to my educator. Next, I would play with my friends at recess. Finally, I would help to clean the classroom before flying home.\"",
-          "Ask three children to share their own story. Repeat their ideas, adding details to model a story with a clear beginning, middle, and end.",
-        ],
-      },
-      day3: {
-        steps: [
-          "One quick narration of the story.",
-          "Activity session.",
-        ],
-        vocabulary: "tease, tidy",
-        activity: { name: "Change story endings (group)", level: "Easy" },
-      },
-    },
-    blockB: {
-      day1: {
-        when: "Before and During Reading · Print Knowledge",
-        learningObjective:
-          "To recognise some common sight words, including environmental print.",
-        vocabulary: "drag, interrupt, car pool, yell (revisiting)",
-        steps: [
-          "Show the cover. \"We have seen this book before. Does anyone remember its name? Help me read the words.\" Encourage participation, reading slowly and pausing between each word: \"How — Do — Dinosaurs — Go — to — School?\"",
-          "Remind children they have heard this book before. Ask them to tell what the story is about; extend each child's contribution.",
-          "Read the book. During reading, point out environmental print in the illustrations. \"Look at the picture of this dinosaur trying to catch a ride to school. I read these words up here. Look closely — there are more words on this page. Can you find them? There are more words written right here on the top of the bus. What do you think these words might say?\"",
-          "Continue reading, pointing out other examples of environmental print such as \"show and tell\" on the blackboard and alphabet letters on charts and blocks.",
-        ],
-      },
-      day2: {
-        when: "During and After Reading · Narrative",
-        learningObjective:
-          "To share feelings, ideas, or experiences in a single story that is precise and understandable.",
-        vocabulary: "plunk, fidget, stir up, quick (revisiting)",
-        steps: [
-          "At the top of a large sheet of paper, write the title \"Buster Helps Out.\" \"We have another Buster story to write. Today we will write about how Buster helps everyone in his neighbourhood. I'll write the story, but you have to tell me what to write.\"",
-          "Write the first lines: \"Buster is a big help to all the neighbours. Every week he lends a hand to people as they are doing their chores. First…\" Ask the children what Buster does first. Add details: (\"Buster brings in the newspaper.\" \"Whose newspaper? Where does he leave it? Does he ever get slobber in the newspaper? Does he get a treat?\")",
-          "Continue identifying the second and third things until the story is complete. Write \"The End\" and read with the children, pointing to each word.",
-        ],
-      },
-      day3: {
-        steps: [
-          "Show the children the story and ask them to reconstruct it as a group, before the narration.",
-          "Activity session.",
-        ],
-        vocabulary: "tease, tidy (revisiting)",
-        activity: { name: "Change story endings (group)", level: "Hard" },
-      },
-    },
-  },
 
   // 7 ───────────────────────────────────────────────────────
   {
@@ -550,77 +411,6 @@ export const LANGUAGE_BOOK_PLANS: BookPlan[] = [
   },
 
   // 8 ───────────────────────────────────────────────────────
-  {
-    order: 8,
-    title: "Bunny Cakes",
-    author: "Rosemary Wells",
-    blockA: {
-      day1: {
-        when: "Before and During Reading · Print Knowledge",
-        learningObjective:
-          "To recognise the difference between letters and words.",
-        vocabulary: "frustrated",
-        steps: [
-          "Hold up the book. Read the title, pointing to each word. \"Our title has two words: Bunny Cakes.\" Draw attention to the letters: \"Bunny is made up of five letters — B-U-N-N-Y. Cakes also has five letters — C-A-K-E-S.\"",
-          "Place the large paper where all children can see. Write \"Grocery List\" at the top. \"As we read about Max's trips to the grocery store, we will keep a list of all the things he is supposed to buy.\"",
-          "During reading, pause at each grocery list. Read the word and write it on the large paper. \"This list says 'eggs.' Let's write the word eggs on our list. E-G-G-S — four letters, a pretty short word.\" Repeat for milk, flour, birthday candles, silver stars, sugar hearts, buttercream roses. Let children judge: long or short word?",
-        ],
-      },
-      day2: {
-        when: "During and After Reading · Narrative",
-        learningObjective:
-          "To produce a personal story that has a clear beginning, middle, and end.",
-        vocabulary: "satisfied",
-        steps: [
-          "Read the story and stop periodically to discuss events relating to the theme of \"try, try again.\" Summarise after reading: \"Max tried over and over again to get his special ingredient for the cake. He kept trying and finally got the grocer to understand.\"",
-          "After reading, ask the children to think of their own experience. \"Think of a time you had to keep trying to get something you wanted.\" Provide a few moments to think, then allow a few children to share. \"You can use your experiences to make up stories.\"",
-          "Tell the children your own story: \"Last year, I taught my son how to ride his bike. I would tell him to sit in the middle of the seat and hold the handlebars tight, but that was hard for him. Yet, every day he tried different ways of sitting and holding. All his work paid off and he learned how to ride his bike in just a few weeks.\"",
-          "Ask three children to share their own stories. \"Tell me about a time you kept working until you succeeded at something.\" Repeat each story, adding details to model a clear beginning, middle, and end.",
-        ],
-      },
-      day3: {
-        steps: [
-          "One quick narration of the story.",
-          "Activity session.",
-        ],
-        vocabulary: "thrilled",
-        activity: { name: "Vocabulary reproduction (group)", level: "Easy" },
-      },
-    },
-    blockB: {
-      day1: {
-        when: "Before and During Reading · Print Knowledge",
-        learningObjective:
-          "To recognise some common sight words, including environmental print.",
-        vocabulary: "frustrated (revisiting)",
-        steps: [
-          "Show the cover. Ask one child to come up and show you the title. \"We have seen this book before. Does anyone remember its name?\"",
-          "Read the title and point to each word. Remind children they have heard this book before. Ask them to tell what the story is about; extend each child's contribution.",
-          "Read the book. During reading, pause at each grocery list after reading the text on the page. Ask children if they can \"read\" what is on the list. \"It looks like Max broke the eggs. Look, here is a grocery list that his sister Ruby must have written. It has one word on it (track the word eggs). Can you guess what this word is?\" If children have trouble, ask other class members to help or provide hints.",
-        ],
-      },
-      day2: {
-        when: "During and After Reading · Narrative",
-        learningObjective:
-          "To share feelings, ideas, or experiences in a single story that is precise and understandable.",
-        vocabulary: "satisfied (revisiting)",
-        steps: [
-          "Read the book, highlighting specific details. After reading, tell the children they are going to write another story about the dog Buster. At the top of a large sheet of paper, write the title \"Buster Solves His Problem.\"",
-          "\"Remember Buster? We wrote last week about the good day he had. Today, Buster has a problem — Buster lost his bone. We are going to write a story about how Buster found his bone. I'll write the story, but you must tell me what to write.\"",
-          "Write the first lines: \"Once upon a time there was a dog named Buster. Buster had a problem. He lost his bone. Buster decided to go and look for it. First…\" Ask the children what happened first. Add details: (\"Buster asked other dogs.\" \"Which dogs did he ask? What did the other dogs say?\")",
-          "Continue identifying the second and third things Buster did until the story is complete. Write \"The End\" and read it to the children.",
-        ],
-      },
-      day3: {
-        steps: [
-          "Show the children the story and ask them to reconstruct it as a group, before the narration.",
-          "Activity session.",
-        ],
-        vocabulary: "thrilled (revisiting)",
-        activity: { name: "Vocabulary reproduction (group)", level: "Hard" },
-      },
-    },
-  },
 ];
 
 export function getBookPlan(order: number): BookPlan | undefined {

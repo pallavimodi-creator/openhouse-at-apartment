@@ -406,7 +406,7 @@ const wordsmithsResources: Record<string, CurriculumActivity> = {
   },
 };
 
-/* ─── 8 books — the spine of the programme.
+/* ─── 5 books — the spine of the programme.
  * Each runs across 6 days with a deliberate two-book gap. ────────── */
 
 const languageBooks: LanguageBook[] = [
@@ -435,32 +435,6 @@ const languageBooks: LanguageBook[] = [
     vocabularyType: "story-calendar",
     groupActivityType: "story-re-enactment",
     heroImageUrl: "/language-books/01-bear-hunt.png",
-  },
-  {
-    order: 2,
-    title: "Mixed: A Colorful Story",
-    author: "Arree Chung",
-    ageRange: "Ages 4–6 · pre-K to grade 2 · 40 pages",
-    summary:
-      "Three colours live happily together until they fall out, separate into rival camps, and then mix to create new colours and a richer world.",
-    whyThisPosition:
-      "Short sentences, strong visual storytelling, and simple spatial vocabulary (under, beside, over). The story has a clear arc — colours together, then apart, then back together — which makes the recalls and sequences ★ observation possible early in the programme.",
-    themes: ["colours", "spatial vocabulary", "story arc"],
-    vocabulary: [
-      "under",
-      "beside",
-      "over",
-      "between",
-      "above",
-      "below",
-      "mix",
-      "blend",
-      "together",
-      "apart",
-    ],
-    vocabularyType: "story-calendar",
-    groupActivityType: "change-story-endings",
-    heroImageUrl: "/language-books/02-mixed.png",
   },
   {
     order: 3,
@@ -541,32 +515,6 @@ const languageBooks: LanguageBook[] = [
     heroImageUrl: "/language-books/05-lion-inside.png",
   },
   {
-    order: 6,
-    title: "How Do Dinosaurs Go to School?",
-    author: "Jane Yolen & Mark Teague",
-    ageRange: "Ages 4–7 · longer text with rich vocabulary",
-    summary:
-      "A class of dinosaurs shows all the wrong ways and the right ways to behave at school — interrupt, fidget, stir up, tease … or listen, share, tidy.",
-    whyThisPosition:
-      "School-behaviour vocabulary (interrupt, fidget, stir up, tease, tidy). Children are now ready to think about social and behavioural concepts. The book invites them to write their own school story — perfect for the day-5 narrative-production activity.",
-    themes: ["social vocabulary", "school routines", "longer text"],
-    vocabulary: [
-      "interrupt",
-      "fidget",
-      "stir up",
-      "tease",
-      "tidy",
-      "share",
-      "listen",
-      "polite",
-      "patient",
-      "kind",
-    ],
-    vocabularyType: "story-calendar",
-    groupActivityType: "change-story-endings",
-    heroImageUrl: "/language-books/06-dinosaurs-school.png",
-  },
-  {
     order: 7,
     title: "The Gruffalo",
     author: "Julia Donaldson & Axel Scheffler",
@@ -591,32 +539,6 @@ const languageBooks: LanguageBook[] = [
     vocabularyType: "story-calendar",
     groupActivityType: "puppet-character",
     heroImageUrl: "/language-books/07-gruffalo.png",
-  },
-  {
-    order: 8,
-    title: "Bunny Cakes",
-    author: "Rosemary Wells",
-    ageRange: "Ages 4+ · language-dense · written grocery lists",
-    summary:
-      "Max wants red-hot marshmallow squirters for his cake, but his sister Ruby keeps misreading his shopping list. Max tries again, and again, until he finds a way to be understood.",
-    whyThisPosition:
-      "Most demanding for personal storytelling. The \"try, try again\" arc is sophisticated — Max keeps trying different ways to communicate his ingredient. Comes last because the vocabulary reproduction activity and the day-5 personal-storytelling task both ask children to draw on their full speaking and vocabulary base.",
-    themes: ["communication", "persistence", "narrative voice"],
-    vocabulary: [
-      "ingredients",
-      "list",
-      "icing",
-      "scribble",
-      "marshmallow",
-      "earthworm",
-      "bake",
-      "spill",
-      "scribble",
-      "again",
-    ],
-    vocabularyType: "story-calendar",
-    groupActivityType: "vocabulary-reproduction",
-    heroImageUrl: "/language-books/08-bunny-cakes.png",
   },
 ];
 
@@ -673,42 +595,22 @@ const songs: ProgrammeSong[] = [
 ];
 
 /* ─── 48-session schedule ─────────────────────────────────────────
- * 8 books × 6 days = 48 sessions. Each book is taught in two halves:
+ * 5 books × 6 days = 30 sessions. Each book is taught in two halves:
  * days 1–3 introduce, then a two-book gap, then days 4–6 deepen.
  * The schedule below is the canonical 6-3-2 spiral for an 8-book set.
  */
 
 const BOOK_SCHEDULE: Array<{ bookOrder: number; bookDay: number }> = [
-  // Sessions 1–9: introduce books 1, 2, 3
   { bookOrder: 1, bookDay: 1 }, { bookOrder: 1, bookDay: 2 }, { bookOrder: 1, bookDay: 3 },
-  { bookOrder: 2, bookDay: 1 }, { bookOrder: 2, bookDay: 2 }, { bookOrder: 2, bookDay: 3 },
   { bookOrder: 3, bookDay: 1 }, { bookOrder: 3, bookDay: 2 }, { bookOrder: 3, bookDay: 3 },
-  // Sessions 10–12: book 1 returns (gap = 2 books)
-  { bookOrder: 1, bookDay: 4 }, { bookOrder: 1, bookDay: 5 }, { bookOrder: 1, bookDay: 6 },
-  // Sessions 13–15: introduce book 4
   { bookOrder: 4, bookDay: 1 }, { bookOrder: 4, bookDay: 2 }, { bookOrder: 4, bookDay: 3 },
-  // Sessions 16–18: book 2 returns
-  { bookOrder: 2, bookDay: 4 }, { bookOrder: 2, bookDay: 5 }, { bookOrder: 2, bookDay: 6 },
-  // Sessions 19–21: introduce book 5
+  { bookOrder: 1, bookDay: 4 }, { bookOrder: 1, bookDay: 5 }, { bookOrder: 1, bookDay: 6 },
   { bookOrder: 5, bookDay: 1 }, { bookOrder: 5, bookDay: 2 }, { bookOrder: 5, bookDay: 3 },
-  // Sessions 22–24: book 3 returns
   { bookOrder: 3, bookDay: 4 }, { bookOrder: 3, bookDay: 5 }, { bookOrder: 3, bookDay: 6 },
-  // Sessions 25–27: introduce book 6
-  { bookOrder: 6, bookDay: 1 }, { bookOrder: 6, bookDay: 2 }, { bookOrder: 6, bookDay: 3 },
-  // Sessions 28–30: book 4 returns
-  { bookOrder: 4, bookDay: 4 }, { bookOrder: 4, bookDay: 5 }, { bookOrder: 4, bookDay: 6 },
-  // Sessions 31–33: introduce book 7
   { bookOrder: 7, bookDay: 1 }, { bookOrder: 7, bookDay: 2 }, { bookOrder: 7, bookDay: 3 },
-  // Sessions 34–36: book 5 returns
+  { bookOrder: 4, bookDay: 4 }, { bookOrder: 4, bookDay: 5 }, { bookOrder: 4, bookDay: 6 },
   { bookOrder: 5, bookDay: 4 }, { bookOrder: 5, bookDay: 5 }, { bookOrder: 5, bookDay: 6 },
-  // Sessions 37–39: introduce book 8
-  { bookOrder: 8, bookDay: 1 }, { bookOrder: 8, bookDay: 2 }, { bookOrder: 8, bookDay: 3 },
-  // Sessions 40–42: book 6 returns
-  { bookOrder: 6, bookDay: 4 }, { bookOrder: 6, bookDay: 5 }, { bookOrder: 6, bookDay: 6 },
-  // Sessions 43–45: book 7 returns
   { bookOrder: 7, bookDay: 4 }, { bookOrder: 7, bookDay: 5 }, { bookOrder: 7, bookDay: 6 },
-  // Sessions 46–48: book 8 returns
-  { bookOrder: 8, bookDay: 4 }, { bookOrder: 8, bookDay: 5 }, { bookOrder: 8, bookDay: 6 },
 ];
 
 // Songs in the order they get introduced across the 48 sessions.
