@@ -454,6 +454,32 @@ export function getActivityImage(id: string): string | undefined {
   return ACTIVITY_IMAGES[id];
 }
 
+// ─── Chess game board + flippable cards ────────────────────
+// Some chessiverse games ship as a printed set: a playing board (the "mat")
+// plus a double-sided challenge card (front = the game cover, back = a
+// challenge position). The library renders these as the board image plus a
+// tap-to-flip card. Keyed by CurriculumActivity.id.
+export interface ChessGameCards {
+  board: string;
+  front: string;
+  back: string;
+}
+export const CHESS_GAME_CARDS: Record<string, ChessGameCards> = {
+  "bees-lilies": {
+    board: "/games/chess-5-8/bees-lilies-board.jpg",
+    front: "/games/chess-5-8/bees-lilies-front.jpg",
+    back: "/games/chess-5-8/bees-lilies-back.jpg",
+  },
+  "last-man-standing": {
+    board: "/games/chess-5-8/last-man-standing-board.jpg",
+    front: "/games/chess-5-8/last-man-standing-front.jpg",
+    back: "/games/chess-5-8/last-man-standing-back.jpg",
+  },
+};
+export function getChessGameCards(id: string): ChessGameCards | undefined {
+  return CHESS_GAME_CARDS[id];
+}
+
 // ─── Activity video lookup ─────────────────────────────────
 // Maps CurriculumActivity.id → video URL. Two kinds are supported:
 //   · YouTube URL — rendered as a responsive youtube-nocookie iframe

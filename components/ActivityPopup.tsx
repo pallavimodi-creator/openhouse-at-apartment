@@ -1,5 +1,11 @@
 import { cn } from "@/lib/utils";
-import { SEGMENT_COLORS, getActivityImage, getActivityVideo } from "@/lib/content";
+import {
+  SEGMENT_COLORS,
+  getActivityImage,
+  getActivityVideo,
+  getChessGameCards,
+} from "@/lib/content";
+import { ChessGameCards } from "@/components/ChessGameCards";
 import type { CurriculumActivity, CurriculumSkillArea } from "@/content/types";
 import {
   Zap,
@@ -186,14 +192,19 @@ export function ActivityPopup({
       : [];
   const img = getActivityImage(activity.id);
   const video = getActivityVideo(activity.id);
+  // Chessiverse games that ship as a printed board + flippable challenge card.
+  const chessCards = getChessGameCards(activity.id);
   // Detect YouTube URLs so we can render a responsive embed instead of a
   // <video> tag. Accepts watch?v=ID, youtu.be/ID, shorts/ID, and embed/ID.
   const youTubeId = video ? extractYouTubeId(video) : null;
 
   return (
     <div className="flex flex-col gap-5">
-      {/* Activity hero — YouTube embed > self-hosted video > image > gradient */}
-      {youTubeId ? (
+      {/* Activity hero — chess board+cards > YouTube embed > self-hosted video
+          > image > gradient */}
+      {chessCards ? (
+        <ChessGameCards cards={chessCards} title={activity.title} />
+      ) : youTubeId ? (
         <div className="relative overflow-hidden rounded-card bg-black">
           <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
             <iframe
