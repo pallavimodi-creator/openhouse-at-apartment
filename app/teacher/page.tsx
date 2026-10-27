@@ -17,10 +17,12 @@ import { listHomeProgrammes } from "@/lib/content";
 
 // A nominal default programme slug (first programme of the teacher's first
 // category) so the footer's quick "overview / plans" links have a target.
-function defaultSlug(categories: TeacherCategory[]): string {
+function defaultSlug(categories: string[]): string {
   const progs = listHomeProgrammes();
   for (const c of categories) {
-    const p = progs.find((pr) => pr.category === c);
+    // Categories may be band-scoped ("art:3-5") — match on the bare subject.
+    const subject = c.split(":")[0];
+    const p = progs.find((pr) => pr.category === subject);
     if (p) return p.slug;
   }
   return "";
