@@ -27,21 +27,22 @@ export const CLASS_PARTS: Record<TeacherCategory, string[]> = {
   music: ["warm up", "instrument rotation", "ensemble play"],
 };
 export function partsForCategory(category?: string): string[] {
-  if (category && category in CLASS_PARTS) return CLASS_PARTS[category as TeacherCategory];
+  const subject = category ? category.split(":")[0] : undefined; // "art:3-5" → "art"
+  if (subject && subject in CLASS_PARTS) return CLASS_PARTS[subject as TeacherCategory];
   return ["warm up", "main activity", "wrap up"];
 }
 
 export interface ApartmentTeacher {
   id: string;
   name: string;
-  categories: TeacherCategory[];
+  categories: string[];
 }
 export interface AdminTeacher {
   id: string;
   name: string;
   username: string;
   password?: string;        // visible to admins so they can share credentials
-  categories: TeacherCategory[];
+  categories: string[];
   classesDone?: number;     // daily-log submissions by this teacher
 }
 export interface AdminApartment {
@@ -106,7 +107,7 @@ export async function teacherLogin(apartmentId: string, teacherId: string, passw
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ apartmentId, teacherId, password }),
   });
-  return parse<{ teacherId: string; name: string; categories: TeacherCategory[] }>(res);
+  return parse<{ teacherId: string; name: string; categories: string[] }>(res);
 }
 
 // ── admin ─────────────────────────────────────────────────────────────
@@ -126,7 +127,7 @@ export async function adminCreateApartment(name: string, loginUsername: string, 
 
 export async function adminCreateTeacher(
   apartmentId: string,
-  t: { name: string; username: string; password: string; categories: TeacherCategory[] }
+  t: { name: string; username: string; password: string; categories: string[] }
 ) {
   const res = await fetch(`/api/apartments/${apartmentId}/teachers`, {
     method: "POST",
@@ -138,7 +139,7 @@ export async function adminCreateTeacher(
 
 export async function adminUpdateTeacher(
   teacherId: string,
-  patch: { name?: string; username?: string; password?: string; categories?: TeacherCategory[] }
+  patch: { name?: string; username?: string; password?: string; categories?: string[] }
 ) {
   const res = await fetch(`/api/teachers/${teacherId}`, {
     method: "PATCH",

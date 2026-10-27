@@ -18,18 +18,71 @@ import {
 import { isFullAdmin } from "@/lib/teacher-state";
 import type { TeacherCategory } from "@/lib/teacher-state";
 
-const CATEGORIES: TeacherCategory[] = ["art", "language", "stem", "chess", "music"];
+// The five subjects, with their user-facing names (internal id → real name:
+// language = public speaking, stem = robotics). Shown under each age band.
+const SUBJECTS: { id: TeacherCategory; label: string }[] = [
+  { id: "art", label: "art" },
+  { id: "language", label: "public speaking" },
+  { id: "stem", label: "robotics" },
+  { id: "chess", label: "chess" },
+  { id: "music", label: "music" },
+];
+const SUBJECT_LABEL: Record<string, string> = Object.fromEntries(SUBJECTS.map((s) => [s.id, s.label]));
 
-// User-facing subject names. The internal category ids stay the same
-// (they key programme access), but the admin sees the real programme names:
-// language → public speaking, stem → robotics.
-const CATEGORY_LABELS: Record<TeacherCategory, string> = {
-  art: "art",
-  language: "public speaking",
-  stem: "robotics",
-  chess: "chess",
-  music: "music",
-};
+// Age bands a teacher login is scoped to. Stored category values are
+// age-band-scoped, e.g. "art:3-5" / "chess:5-12".
+const BANDS: { id: string; label: string }[] = [
+  { id: "3-5", label: "3–5" },
+  { id: "5-12", label: "5–12" },
+];
+
+// "art:3-5" → "art · 3–5"; a bare "art" (legacy) → "art".
+function scopedLabel(v: string): string {
+  const [s, b] = v.split(":");
+  const subj = SUBJECT_LABEL[s] ?? s;
+  return b ? `${subj} · ${b}` : subj;
+}
+
+// Two age-band groups, each with the five subjects. A chip is a "subject:band"
+// value; selecting toggles it in the given list.
+function BandSubjectPicker({
+  selected,
+  onToggle,
+}: {
+  selected: string[];
+  onToggle: (value: string) => void;
+}) {
+  return (
+    <div className="space-y-2">
+      {BANDS.map((band) => (
+        <div key={band.id}>
+          <p className="text-[10px] font-bold uppercase tracking-wide text-ink-subtle">ages {band.label}</p>
+          <div className="mt-1 flex flex-wrap gap-1.5">
+            {SUBJECTS.map((subj) => {
+              const value = `${subj.id}:${band.id}`;
+              const on = selected.includes(value);
+              return (
+                <button
+                  key={value}
+                  type="button"
+                  onClick={() => onToggle(value)}
+                  className={
+                    "rounded-chip px-2.5 py-1 text-[12px] font-semibold transition " +
+                    (on
+                      ? "bg-brand-orange text-white"
+                      : "bg-bg/60 text-ink-muted ring-1 ring-ink/10 hover:text-ink")
+                  }
+                >
+                  {subj.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export default function AdminApartmentsPage() {
   return (
@@ -60,7 +113,7 @@ function Content() {
   const [tName, setTName] = useState("");
   const [tUser, setTUser] = useState("");
   const [tPass, setTPass] = useState("");
-  const [tCats, setTCats] = useState<TeacherCategory[]>([]);
+  const [tCats, setTCats] = useState<string[]>([]);
   const [addingTeacher, setAddingTeacher] = useState(false);
   const [teacherMsg, setTeacherMsg] = useState<string | null>(null);
   const [teacherErr, setTeacherErr] = useState<string | null>(null);
@@ -70,7 +123,7 @@ function Content() {
   const [editName, setEditName] = useState("");
   const [editUser, setEditUser] = useState("");
   const [editPass, setEditPass] = useState("");
-  const [editCats, setEditCats] = useState<TeacherCategory[]>([]);
+  const [editCats, setEditCats] = useState<string[]>([]);
   const [rowBusy, setRowBusy] = useState<string | null>(null); // teacher/apt id being saved
 
   const refresh = useCallback(async () => {
@@ -118,7 +171,7 @@ function Content() {
     }
   };
 
-  const toggleCat = (c: TeacherCategory) =>
+  const toggleCat = (c: string) =>
     setTCats((prev) => (prev.includes(c) ? prev.filter((x) => x !== c) : [...prev, c]));
 
   const createTeacher = async (e: React.FormEvent) => {
@@ -156,7 +209,7 @@ function Content() {
     setTeacherErr(null);
   };
   const cancelEdit = () => setEditId(null);
-  const toggleEditCat = (c: TeacherCategory) =>
+  const toggleEditCat = (c: string) =>
     setEditCats((prev) => (prev.includes(c) ? prev.filter((x) => x !== c) : [...prev, c]));
 
   const saveEdit = async (t: AdminTeacher) => {
@@ -290,23 +343,9 @@ function Content() {
           <Field label="password" value={tPass} onChange={setTPass} placeholder="password" type="password" />
         </div>
         <div className="mt-3">
-          <p className="text-[11px] font-bold text-ink-muted">subjects they teach</p>
-          <div className="mt-1 flex flex-wrap gap-1.5">
-            {CATEGORIES.map((c) => (
-              <button
-                key={c}
-                type="button"
-                onClick={() => toggleCat(c)}
-                className={
-                  "rounded-chip px-2.5 py-1 text-[12px] font-semibold transition " +
-                  (tCats.includes(c)
-                    ? "bg-brand-orange text-white"
-                    : "bg-bg/60 text-ink-muted ring-1 ring-ink/10 hover:text-ink")
-                }
-              >
-                {CATEGORY_LABELS[c]}
-              </button>
-            ))}
+          <p className="text-[11px] font-bold text-ink-muted">subjects &amp; ages they teach</p>
+          <div className="mt-1.5">
+            <BandSubjectPicker selected={tCats} onToggle={toggleCat} />
           </div>
         </div>
         {teacherErr && <p className="mt-2 text-[12px] font-medium text-red-700">{teacherErr}</p>}
@@ -394,22 +433,8 @@ function Content() {
                           <Field label="login id" value={editUser} onChange={setEditUser} placeholder="login id" />
                           <Field label="new password" value={editPass} onChange={setEditPass} placeholder="(blank = keep)" />
                         </div>
-                        <div className="mt-2 flex flex-wrap gap-1.5">
-                          {CATEGORIES.map((c) => (
-                            <button
-                              key={c}
-                              type="button"
-                              onClick={() => toggleEditCat(c)}
-                              className={
-                                "rounded-chip px-2.5 py-1 text-[12px] font-semibold transition " +
-                                (editCats.includes(c)
-                                  ? "bg-brand-orange text-white"
-                                  : "bg-bg/60 text-ink-muted ring-1 ring-ink/10 hover:text-ink")
-                              }
-                            >
-                              {CATEGORY_LABELS[c]}
-                            </button>
-                          ))}
+                        <div className="mt-2">
+                          <BandSubjectPicker selected={editCats} onToggle={toggleEditCat} />
                         </div>
                         <div className="mt-2 flex gap-2">
                           <button
@@ -439,7 +464,7 @@ function Content() {
                           <p className="truncate text-[11px] text-ink-muted">
                             login: <span className="font-semibold">{t.username}</span> · pass:{" "}
                             <span className="font-semibold">{t.password ?? "—"}</span>
-                            {t.categories.length > 0 ? <> · {t.categories.map((c) => CATEGORY_LABELS[c] ?? c).join(" · ")}</> : null}
+                            {t.categories.length > 0 ? <> · {t.categories.map(scopedLabel).join(" · ")}</> : null}
                           </p>
                         </div>
                         <div className="flex shrink-0 gap-1">

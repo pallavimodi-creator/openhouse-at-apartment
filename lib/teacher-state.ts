@@ -46,8 +46,10 @@ export interface TeacherState {
   apartmentName?: string;
   teacherId?: string;
   // The subjects this teacher runs. A teacher sees every programme whose
-  // category is in this list. Admins see all.
-  categories?: TeacherCategory[];
+  // category is in this list. Admins see all. Admin-created teacher logins
+  // store age-band-scoped values like "art:3-5" / "stem:5-12"; generic logins
+  // store a bare subject. teacherCategories() reduces both to bare subjects.
+  categories?: string[];
   // `category` (singular) is kept for backwards-compatibility with any older
   // persisted session; new logins write `categories`.
   category?: TeacherCategory;
@@ -76,9 +78,16 @@ export function isFullAdmin(state: TeacherState | null): boolean {
 /** The teacher's subjects, tolerant of the legacy single `category` field. */
 export function teacherCategories(state: TeacherState | null): TeacherCategory[] {
   if (!state) return [];
-  if (state.categories && state.categories.length) return state.categories;
-  if (state.category) return [state.category];
-  return [];
+  const raw =
+    state.categories && state.categories.length
+      ? state.categories
+      : state.category
+        ? [state.category]
+        : [];
+  // Reduce age-band-scoped values ("art:3-5") to the bare subject so programme
+  // access + the home grid keep working on the subject alone.
+  const subjects = raw.map((c) => c.split(":")[0]);
+  return [...new Set(subjects)] as TeacherCategory[];
 }
 
 /**
