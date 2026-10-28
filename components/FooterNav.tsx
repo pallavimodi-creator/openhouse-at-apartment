@@ -76,6 +76,7 @@ export function FooterNav() {
   if (isTeacher && !isAdmin) {
     items.push({ href: "/daily", label: "daily", icon: Notebook });
     items.push({ href: "/dashboard", label: "dashboard", icon: Users });
+    items.push({ href: "/tracker", label: "progress", icon: ClipboardCheck });
   }
 
   items.push({ href: "/library", label: "library", icon: BookOpen });

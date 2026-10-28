@@ -199,13 +199,32 @@ function rungsFor(skill){if(skill==='ou')return allExps().map(e=>s.E[e.id]||0);r
 function skillStat(skill){const a=rungsFor(skill),tot=a.length,star=a.filter(r=>r===4).length,top=a.length?Math.max(...a):0,any=a.filter(r=>r>0).length,need=Math.ceil(tot/2);
  return{tot,star,top,any,need,secure:tot>0&&star>=need,unit:skill==='ou'?'experiments':'models'};}
 
-// localStorage
+// ─── storage · shared backend when launched with ?apartmentId=…, else per-device ───
+const Q=new URLSearchParams(location.search);
+const CONN={aid:Q.get('apartmentId')||'',tid:Q.get('teacherId')||'',tname:Q.get('teacherName')||''};
+const CONNECTED=!!CONN.aid;
+const API='/api/tracker-notes';
+let REMOTE=[]; // notes fetched from the backend (connected mode)
+const monthOf=d=>(d||'').slice(0,7);
+const allSecureNow=()=>SKILLS.every(k=>skillStat(k).secure);
+
+// per-device store (fallback / standalone test link)
 const LS='oh_rtracker_v4';
-function allEntries(){try{return JSON.parse(localStorage.getItem(LS)||'{}')}catch(e){return{}}}
-function entryKey(){return (s.name.trim().toLowerCase()||'child')+'__'+s.prog+'__'+(s.date||'').slice(0,7);}
-function saveEntry(){if(!s.name.trim())return;const a=allEntries();a[entryKey()]={name:s.name,prog:s.prog,band:s.band,date:s.date,M:s.M,E:s.E,savedAt:Date.now()};try{localStorage.setItem(LS,JSON.stringify(a))}catch(e){}}
-function deleteEntry(k){const a=allEntries();delete a[k];try{localStorage.setItem(LS,JSON.stringify(a))}catch(e){}renderDashboard();}
-function openEntry(k){const e=allEntries()[k];if(!e)return;Object.assign(s,{name:e.name,prog:e.prog,band:e.band,date:e.date,M:e.M||{},E:e.E||{}});go('note');}
+function localAll(){try{return JSON.parse(localStorage.getItem(LS)||'{}')}catch(e){return{}}}
+function entryKey(){return (s.name.trim().toLowerCase()||'child')+'__'+s.prog+'__'+monthOf(s.date);}
+
+function saveEntry(){if(!s.name.trim())return;
+ if(CONNECTED){fetch(API,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({
+   apartmentId:CONN.aid,teacherId:CONN.tid||undefined,teacherName:CONN.tname||'teacher',
+   childName:s.name,subject:'robotics',level:s.prog,ageBand:s.band,month:monthOf(s.date),
+   skills:s.M,experiments:s.E,ready:allSecureNow()})}).catch(()=>{});return;}
+ const a=localAll();a[entryKey()]={name:s.name,prog:s.prog,band:s.band,date:s.date,M:s.M,E:s.E,savedAt:Date.now()};
+ try{localStorage.setItem(LS,JSON.stringify(a))}catch(e){}}
+
+function deleteLocal(k){const a=localAll();delete a[k];try{localStorage.setItem(LS,JSON.stringify(a))}catch(e){}renderDashboard();}
+function deleteRemote(id){fetch(API+'?id='+encodeURIComponent(id)+'&apartmentId='+encodeURIComponent(CONN.aid),{method:'DELETE'}).then(()=>renderDashboard()).catch(()=>{});}
+function openLocal(k){const e=localAll()[k];if(!e)return;Object.assign(s,{name:e.name,prog:e.prog,band:e.band,date:e.date,M:e.M||{},E:e.E||{}});go('note');}
+function openRemote(id){const e=REMOTE.find(n=>n.id===id);if(!e)return;Object.assign(s,{name:e.childName,prog:e.level,band:e.ageBand,date:e.month,M:e.skills||{},E:e.experiments||{}});go('note');}
 function newNote(){s.name='';s.date=new Date().toISOString().slice(0,10);s.prog='mechanics';s.band='5-8';initData();go('setup');}
 
 function renderStepper(){const steps=[['setup','set up'],['fill','fill'],['note','the note']];const idx=steps.findIndex(x=>x[0]===s.step);
@@ -289,10 +308,20 @@ function renderNote(){
   +`<div class="nsec"><div class="sh">💛 how you can help at home</div>${helpHtml}</div>`
   +`<div class="nfoot">made with love at openhouse · raising curious humans, together.</div>`;
 }
-function renderDashboard(){const all=allEntries(),keys=Object.keys(all).sort((a,b)=>all[b].savedAt-all[a].savedAt);
- if(!keys.length){document.getElementById('dashBody').innerHTML=`<div class="dempty">no notes filled yet.<br>tap <b>＋ fill a note</b> to start your first one.</div>`;return;}
- document.getElementById('dashBody').innerHTML=keys.map(k=>{const e=all[k];const sv=secureCount(e);const ready=sv===4;
-   return `<div class="drow"><div class="dinfo"><div class="dname">${e.name}</div><div class="dmeta">${LEVELNAME[e.prog]} · ${BANDLABEL[e.band]} · ${fmtDate(e.date)}</div></div><div class="dstat ${ready?'rdy':''}">${ready?'✓ all skills secure':sv+'/4 skills secure'}</div><div class="dacts"><button onclick="openEntry('${k}')">open</button><button onclick="if(confirm('remove this note?'))deleteEntry('${k}')">✕</button></div></div>`;}).join('');}
+function renderDashboard(){const body=document.getElementById('dashBody');
+ if(CONNECTED){body.innerHTML=`<div class="dempty">loading your class…</div>`;
+   fetch(API+'?apartmentId='+encodeURIComponent(CONN.aid)+'&subject=robotics').then(r=>r.json()).then(d=>{
+     if(d&&d.configured===false){body.innerHTML=`<div class="dempty">the shared class dashboard isn’t switched on yet.<br>ask your admin to enable it, then refresh.</div>`;return;}
+     REMOTE=(d&&d.notes)||[];
+     renderDashRows(REMOTE.map(n=>({key:n.id,name:n.childName,prog:n.level,band:n.ageBand,date:n.month,sec:secureCount({prog:n.level,band:n.ageBand,M:n.skills,E:n.experiments}),teacher:n.teacherName,remote:true})));
+   }).catch(()=>{body.innerHTML=`<div class="dempty">couldn’t load the class dashboard.<br>check the connection and try again.</div>`;});
+   return;}
+ const all=localAll();const rows=Object.keys(all).sort((a,b)=>all[b].savedAt-all[a].savedAt).map(k=>{const e=all[k];return{key:k,name:e.name,prog:e.prog,band:e.band,date:e.date,sec:secureCount(e),teacher:null,remote:false};});
+ renderDashRows(rows);}
+function renderDashRows(rows){const body=document.getElementById('dashBody');
+ if(!rows.length){body.innerHTML=`<div class="dempty">no notes filled yet.<br>tap <b>＋ fill a note</b> to start your first one.</div>`;return;}
+ body.innerHTML=rows.map(e=>{const ready=e.sec===4;const open=e.remote?`openRemote('${e.key}')`:`openLocal('${e.key}')`;const del=e.remote?`deleteRemote('${e.key}')`:`deleteLocal('${e.key}')`;
+   return `<div class="drow"><div class="dinfo"><div class="dname">${e.name}</div><div class="dmeta">${LEVELNAME[e.prog]||e.prog} · ${BANDLABEL[e.band]||e.band} · ${fmtDate(e.date)}${e.teacher?' · '+e.teacher:''}</div></div><div class="dstat ${ready?'rdy':''}">${ready?'✓ all skills secure':e.sec+'/4 skills secure'}</div><div class="dacts"><button onclick="${open}">open</button><button onclick="if(confirm('remove this note?')){${del}}">✕</button></div></div>`;}).join('');}
 // recompute secure-skill count for a saved entry (uses its own prog/band)
 function secureCount(e){const save={prog:s.prog,band:s.band,M:s.M,E:s.E};Object.assign(s,{prog:e.prog,band:e.band,M:e.M||{},E:e.E||{}});const n=SKILLS.filter(k=>skillStat(k).secure).length;Object.assign(s,save);return n;}
 

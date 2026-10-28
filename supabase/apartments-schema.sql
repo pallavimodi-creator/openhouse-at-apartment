@@ -64,10 +64,34 @@ create table if not exists public.daily_logs (
 create index if not exists daily_logs_apartment_date_idx
   on public.daily_logs (apartment_id, log_date desc);
 
+-- ── tracker_notes (monthly progress note, one per child/level/month) ────
+-- Backs the robotics (and later PS/art) monthly progress tracker. Shared per
+-- apartment: every teacher in the apartment sees all the children's notes.
+create table if not exists public.tracker_notes (
+  id            uuid primary key default gen_random_uuid(),
+  apartment_id  uuid not null references public.apartments(id) on delete cascade,
+  teacher_id    uuid references public.teachers(id) on delete set null,
+  teacher_name  text not null,
+  child_name    text not null,
+  subject       text not null default 'robotics',   -- robotics | public-speaking | art
+  level         text not null,                        -- robotics: mechanics|electronics
+  age_band      text not null,                        -- 5-8 | 8-12
+  note_month    text not null,                        -- YYYY-MM
+  skills        jsonb not null default '{}',          -- robotics: { model: {bm,ps,pe} }
+  experiments   jsonb not null default '{}',          -- robotics: { expId: rung }
+  ready         boolean not null default false,       -- every skill secure → ready for assessment
+  created_at    timestamptz not null default now(),
+  updated_at    timestamptz not null default now(),
+  unique (apartment_id, subject, child_name, level, note_month)
+);
+create index if not exists tracker_notes_apartment_idx
+  on public.tracker_notes (apartment_id, updated_at desc);
+
 -- ── lock it all down (server/service-role only) ─────────────────────────
-alter table public.apartments enable row level security;
-alter table public.teachers   enable row level security;
-alter table public.daily_logs enable row level security;
+alter table public.apartments    enable row level security;
+alter table public.teachers      enable row level security;
+alter table public.daily_logs    enable row level security;
+alter table public.tracker_notes enable row level security;
 -- No policies on purpose: only the service_role (server routes) may read/write.
 
 -- ── OPTIONAL seed: a demo apartment + the current teachers ──────────────
