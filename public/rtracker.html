@@ -68,6 +68,8 @@ input.t:focus,input[type=date]:focus{outline:none;border-color:var(--peri)}
 .nskill{display:flex;align-items:baseline;gap:9px;margin:9px 0}.nskill .ni{font-size:15px;flex:none}.nskill .nb{flex:1}.nskill .nt{font-size:13.5px;font-weight:800}.nskill .nd{font-size:11.5px;color:var(--mute);line-height:1.4}.nskill .nw{font-size:10.5px;font-weight:800;padding:2px 10px;border-radius:999px;white-space:nowrap}.nw.g{background:var(--goldbg);color:var(--gold)}.nw.m{background:#efedfa;color:var(--peri2)}.nw.s{background:#fdeee7;color:#b4603f}
 .nli{display:flex;gap:9px;font-size:13px;line-height:1.5;margin:7px 0}.nli .b{flex:none}
 .nbasis{font-size:11px;color:var(--mute);line-height:1.5;background:var(--soft);border-radius:10px;padding:9px 12px;margin-top:4px}
+.nready{font-size:14px;font-weight:800;color:#fff;background:linear-gradient(90deg,var(--gold),#d9b64a);border-radius:12px;padding:13px 15px;text-align:center;line-height:1.4}
+.nready .sub{display:block;font-size:11px;font-weight:700;opacity:.95;margin-top:3px}
 .nhelp{background:var(--soft);border-radius:11px;padding:7px 11px;font-size:12.5px;color:#4a443c;line-height:1.5;margin:7px 0}.nhelp b{color:var(--coral)}
 .nfoot{padding:14px 22px;font-size:11px;color:var(--mute);font-style:italic;text-align:center;border-top:1px solid var(--line)}
 .dashhead{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
@@ -271,6 +273,8 @@ function renderNote(){
  const built=allModels().filter(m=>{const o=s.M[m]||{};return (o.bm||0)>0||(o.ps||0)>0||(o.pe||0)>0;});
  const skillHtml=SKILLS.map(k=>{const st=noteSkill(k),f=FW[k];return `<div class="nskill"><span class="ni">${f.ic}</span><div class="nb"><div class="nt">${f.name}</div><div class="nd">${st.d}</div></div><span class="nw ${st.c}">${st.w}</span></div>`;}).join('');
  const secure=SKILLS.filter(k=>skillStat(k).secure);
+ const allSecure=secure.length===SKILLS.length;
+ const nextLevel=s.prog==='mechanics'?'level 2 · electronics':'the next level';
  const milesHtml=secure.length?secure.map(k=>{const st=skillStat(k);return `<div class="nli"><span class="b">🏅</span><span>secured <b>${FW[k].name}</b> — reached the <b>★ ${FW[k].ladder[3][0]}</b> north star on ${st.star} of ${st.tot} ${st.unit}</span></div>`;}).join(''):`<div class="nd" style="font-size:12.5px;color:var(--mute)">the first north stars are on their way — keep going!</div>`;
  const pend=SKILLS.filter(k=>!skillStat(k).secure);
  const pendHtml=pend.length?pend.map(k=>{const st=skillStat(k),goal=FW[k].ladder[Math.min(st.top,3)];return `<div class="nli"><span class="b">🎯</span><span><b>${FW[k].name}</b> — next: <b>${goal[0]}</b> (${goal[1]})</span></div>`;}).join(''):`<div class="nli"><span class="b">🎉</span><span>${N} has secured every skill — ready to move up!</span></div>`;
@@ -280,6 +284,7 @@ function renderNote(){
   +`<div class="nsec"><div class="sh">🏗️ what ${N} worked on this month</div>${built.length?`<div class="nmods">${built.map(m=>`<span class="m">${m}</span>`).join('')}</div>`:`<div class="nd" style="font-size:12.5px;color:var(--mute)">just getting started with the first builds.</div>`}</div>`
   +`<div class="nsec"><div class="sh">🌱 how ${N} is doing — the four skills</div>${skillHtml}</div>`
   +`<div class="nsec"><div class="sh">🏅 milestones reached</div>${milesHtml}<div class="nbasis">a skill becomes <b>secure</b> when ${N} reaches its ★ north star on half or more of the models (for observing, half or more of the experiments). secure skills are what readies ${N} for the next level.</div></div>`
+  +(allSecure?`<div class="nsec"><div class="nready">🎓 ${N} is ready for assessment to move to the next level!<span class="sub">every skill is secure — the teacher will run a short assessment to confirm the move to ${nextLevel}.</span></div></div>`:'')
   +`<div class="nsec"><div class="sh">🎯 what’s next</div>${pendHtml}</div>`
   +`<div class="nsec"><div class="sh">💛 how you can help at home</div>${helpHtml}</div>`
   +`<div class="nfoot">made with love at openhouse · raising curious humans, together.</div>`;
