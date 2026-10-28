@@ -43,6 +43,35 @@ function scopedLabel(v: string): string {
   return b ? `${subj} · ${b}` : subj;
 }
 
+// Turn a raw load/create error into a plain-language banner. The free-tier
+// Supabase project auto-pauses when idle, and schema drift (a missing column)
+// takes the whole list down — both look like "nothing loads", so name them.
+function describeLoadError(msg: string): { title: string; body: string } {
+  const m = msg.toLowerCase();
+  if (/does not exist|relation|column|schema|undefined column|42p01|42703/.test(m)) {
+    return {
+      title: "the database needs a quick update",
+      body:
+        "a required table or column is missing. open your Supabase project → SQL editor and run supabase/apartments-schema.sql (it's safe to re-run), then try again.",
+    };
+  }
+  if (/configured|not connected|service.?role|missing env/.test(m)) {
+    return {
+      title: "the backend isn't connected",
+      body:
+        "the Supabase environment variables aren't set on this deployment. add NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY, then redeploy.",
+    };
+  }
+  if (/fetch|network|timeout|timed out|etimedout|econnrefused|unreachable|50\d|load failed|failed to fetch|paused/.test(m)) {
+    return {
+      title: "the database may be asleep",
+      body:
+        "this project runs on Supabase's free tier, which pauses after about a week idle. open your Supabase dashboard once to wake it (takes ~30s), then press try again.",
+    };
+  }
+  return { title: "couldn’t load the dashboard", body: msg };
+}
+
 // Two age-band groups, each with the five subjects. A chip is a "subject:band"
 // value; selecting toggles it in the given list.
 function BandSubjectPicker({
@@ -293,7 +322,26 @@ function Content() {
         </div>
       )}
 
-      {error && <p className="mb-4 rounded-lg bg-red-50 px-3 py-2 text-[12px] font-medium text-red-700">{error}</p>}
+      {error && (() => {
+        const d = describeLoadError(error);
+        return (
+          <div className="mb-4 rounded-card border border-amber-300 bg-amber-50 p-4">
+            <p className="text-[13px] font-extrabold lowercase text-amber-900">{d.title}</p>
+            <p className="mt-1 text-[12px] leading-relaxed text-amber-800">{d.body}</p>
+            <div className="mt-2 flex items-center gap-3">
+              <button
+                type="button"
+                onClick={refresh}
+                disabled={loading}
+                className="inline-flex items-center gap-1.5 rounded-chip bg-amber-500 px-3 py-1.5 text-[12px] font-bold text-white disabled:opacity-50"
+              >
+                {loading ? "retrying…" : "try again"}
+              </button>
+              <span className="text-[10px] text-amber-700/80">details: {error}</span>
+            </div>
+          </div>
+        );
+      })()}
 
       {/* 1 · Add an apartment */}
       <form onSubmit={createApartment} className="mb-5 rounded-card bg-brand-white p-5 shadow-card">
