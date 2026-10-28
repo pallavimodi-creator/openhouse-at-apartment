@@ -1,171 +1,309 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>robotics progress note</title>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>robotics · monthly progress</title>
 <style>
-:root{--cream:#F7F3EA;--card:#fff;--ink:#2C2B28;--mute:#6b6457;--coral:#F25E35;--peri:#8E8AC9;--peri2:#6a63b8;--green:#5DA271;--red:#e07a56;--line:#ece3d2;--soft:#faf7f0}
+:root{--cream:#F7F3EA;--card:#fff;--ink:#2C2B28;--mute:#6b6457;--coral:#F25E35;--peri:#8E8AC9;--peri2:#6a63b8;--green:#5DA271;--greenbg:#e7f3ec;--red:#e07a56;--line:#ece3d2;--soft:#faf7f0;--gold:#c9a227;--goldbg:#fdf6e3}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Nunito',-apple-system,'Segoe UI',system-ui,sans-serif;background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;padding:20px 14px 60px}
-.wrap{max-width:920px;margin:0 auto}
-.head{text-align:center}.head h1{font-size:20px;font-weight:800}
-.flow{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:16px;align-items:start}
-@media(max-width:860px){.flow{grid-template-columns:1fr}}
-.col{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 8px 22px rgba(44,43,40,.05)}
-.tg{font-size:11px;font-weight:800;letter-spacing:.02em;padding:12px 16px 0}.tg.f{color:var(--peri2)}.tg.r{color:var(--coral)}
-.body{padding:11px 16px 18px}
-.fc{font-weight:800;font-size:15px}.fs{font-size:11.5px;color:var(--mute)}
-.progsel{display:flex;gap:5px;align-items:center;margin:9px 0 2px}.progsel .pl2{font-size:11px;font-weight:800;color:var(--mute)}
-.progsel button{font-size:11px;font-weight:800;border:1.4px solid var(--line);background:#faf8f3;border-radius:12px;padding:3px 11px;cursor:pointer;color:var(--mute)}.progsel button.on{background:var(--peri);border-color:var(--peri);color:#fff}
-.att{display:flex;align-items:center;gap:8px;margin:11px 0;font-size:12px;font-weight:800;flex-wrap:wrap}.att .lab{color:var(--mute);font-weight:700}
-.step{display:inline-flex;align-items:center;border:1.4px solid var(--line);border-radius:10px;overflow:hidden}.step button{width:26px;height:26px;border:none;background:#faf8f3;cursor:pointer;font-size:15px;font-weight:800;color:var(--peri2)}.step .v{min-width:26px;text-align:center;font-weight:800;font-size:13px}
-.flead{font-size:11.5px;color:var(--mute);margin:9px 0;line-height:1.45}.flead b{color:var(--ink)}
-table{width:100%;border-collapse:separate;border-spacing:0}
-thead th{font-size:9.5px;font-weight:800;color:var(--mute);text-align:center;padding:0 1px 7px;line-height:1.15}thead th.mh{text-align:left;padding-left:2px}thead th .ic{font-size:14px;display:block}
-tbody td.mn{font-size:12px;font-weight:800;padding:5px 5px 5px 2px;white-space:nowrap}tbody td.c{text-align:center;padding:3px 2px}
-.rm{color:#cbbfa8;font-weight:800;cursor:pointer;font-size:11px;margin-left:3px}.rm:hover{color:var(--red)}
-.picker{margin-top:9px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}.picker .pl{font-size:11px;font-weight:800;color:var(--mute)}
-.addchip{font-size:11px;font-weight:700;border:1.4px dashed #cfc6b4;background:#faf8f3;color:var(--peri2);border-radius:14px;padding:4px 10px;cursor:pointer}.addchip:hover{border-color:var(--peri);background:#f2f0fa}
-.mk{width:32px;height:32px;border-radius:9px;border:1.6px solid var(--line);background:#faf8f3;cursor:pointer;font-size:14px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;color:#c9bfa9;transition:.1s}
-.mk.yes{background:#eaf4ec;border-color:#bfe0c8;color:var(--green)}.mk.no{background:#fdf1ec;border-color:#f3d3c3;color:var(--red)}.mk.sel{outline:3px solid rgba(142,138,201,.45);outline-offset:1px}
-.guide{margin-top:13px;border:1.5px solid #e2dbee;background:#f6f4fb;border-radius:14px;padding:12px 14px}.guide.e{border-style:dashed;border-color:var(--line);background:var(--soft);color:var(--mute);font-size:11.5px;text-align:center;padding:15px}
-.gh{font-size:11.5px;font-weight:800;color:var(--peri2);margin-bottom:8px}
-.two{display:flex;gap:8px}@media(max-width:520px){.two{flex-direction:column}}
-.ib{flex:1;border-radius:10px;padding:8px 10px;font-size:11.5px;line-height:1.4}.ib.o{background:#eef2fb}.ib.b{background:#eef7f0}
-.ibh{display:block;font-weight:800;font-size:9.5px;margin-bottom:2px}.ib.o .ibh{color:#5a6bb0}.ib.b .ibh{color:var(--green)}
-.grule{font-size:11px;color:var(--mute);margin-top:9px;line-height:1.4;background:#fff;border:1px solid var(--line);border-radius:9px;padding:7px 10px}
-.gbtns{display:flex;gap:8px;margin-top:9px}.gbtn{flex:1;border:1.6px solid var(--line);background:#fff;border-radius:11px;padding:9px;font-size:12.5px;font-weight:800;cursor:pointer;color:var(--mute)}.gbtn.a.on{background:#eaf4ec;border-color:var(--green);color:var(--green)}.gbtn.n.on{background:#fdf1ec;border-color:var(--red);color:var(--red)}
-.hint{font-size:10.5px;color:var(--mute);margin-top:11px;font-style:italic;line-height:1.4}
-.rt{background:var(--coral);color:#fff;padding:15px 17px}.rt .k{font-size:10px;font-weight:800;opacity:.9}.rt h2{font-size:19px;font-weight:800;margin-top:2px}.rt .m{font-size:11.5px;opacity:.95;margin-top:1px}.rt .att2{display:inline-block;margin-top:8px;background:rgba(255,255,255,.2);border-radius:20px;padding:3px 11px;font-size:11.5px;font-weight:800}
-.rs{padding:13px 17px;border-top:1px solid var(--line)}.rh{font-size:12.5px;font-weight:800;margin-bottom:8px}
-.made{display:flex;gap:10px;align-items:center}.ph{width:60px;height:54px;flex:none;background:var(--soft);border:1px dashed #d9cdb3;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:24px}
-.mods{display:flex;flex-wrap:wrap;gap:4px}.mod{font-size:10.5px;font-weight:700;background:#f2f0fa;color:var(--peri2);border-radius:12px;padding:2px 9px}
-.sk{display:flex;align-items:center;gap:9px;margin:7px 0}.sk .nm{width:96px;font-size:11.5px;font-weight:800;flex:none}
-.dots{display:flex;gap:3px;flex:1}.dot{width:12px;height:12px;border-radius:50%;border:1.5px solid #d8cfbb}.dot.y{background:var(--green);border-color:var(--green)}.dot.n{background:#fbe6dc;border-color:#f3d3c3}
-.stt{font-size:11px;font-weight:800;width:78px;text-align:right}.stt.sec{color:var(--green)}.stt.gr{color:var(--peri2)}.stt.js{color:var(--red)}
-.focus{font-size:12px;line-height:1.55}.focus b{color:var(--ink)}.athome{margin-top:7px;font-size:11.5px;color:var(--mute);background:var(--soft);border-radius:10px;padding:8px 11px}.athome b{color:var(--coral)}
-.gate{margin:9px 0}.gk{font-size:11px;font-weight:800;color:var(--mute);display:block;margin-bottom:5px}
-.cchips{display:flex;flex-wrap:wrap;gap:5px}.cchip{font-size:10.5px;font-weight:700;border-radius:13px;padding:3px 9px;border:1px solid}.cchip.ok{background:#eaf4ec;border-color:#bfe0c8;color:var(--green)}.cchip.no{background:#fff;border-color:var(--line);color:#b9ae97}
-.lline{font-size:12px;line-height:1.5;margin-top:6px}.lline.elig{background:#eaf4ec;border:1px solid #bfe0c8;border-radius:11px;padding:9px 12px}.lline.wait{background:var(--soft);border-radius:11px;padding:9px 12px}
-.nameinput{font-family:inherit;font-weight:800;font-size:15px;border:none;border-bottom:2px solid var(--peri);background:transparent;color:var(--ink);width:108px;padding:0 2px}.nameinput:focus{outline:none;border-bottom-color:var(--coral)}
-.promo{margin-top:13px;border-radius:14px;padding:11px 14px;font-size:12px}
-.promo.lock{background:var(--soft);border:1px dashed var(--line)}
-.promo.elig{background:#eef7f0;border:1.5px solid #bfe0c8}
-.promo.done{background:#eaf4ec;border:1.5px solid var(--green)}
-.promo .pk{font-weight:800;display:block;font-size:12.5px}.promo.elig .pk,.promo.done .pk{color:var(--green)}
-.promo .pnote{font-size:11px;color:var(--mute);margin:3px 0 8px;line-height:1.4}
-.pbtn{border:1.6px solid var(--green);background:#fff;color:var(--green);border-radius:11px;padding:8px 15px;font-size:12.5px;font-weight:800;cursor:pointer}.pbtn:hover{background:var(--green);color:#fff}
-.undo{color:var(--coral);cursor:pointer;font-weight:800;text-decoration:underline}
+body{font-family:'Nunito',-apple-system,'Segoe UI',system-ui,sans-serif;background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;padding:22px 14px 70px;line-height:1.5}
+.wrap{max-width:660px;margin:0 auto}
+.brand{text-align:center}.brand .lg{font-weight:800;font-size:13px;color:var(--coral)}
+h1{font-size:21px;font-weight:800;text-align:center}
+.oncewrap{text-align:center}.once{font-size:12px;color:var(--mute);background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 14px;display:inline-block;margin:8px auto 0}
+.topnav{text-align:center;margin:9px 0 2px;font-size:12px;font-weight:800}.topnav a{color:var(--peri2);cursor:pointer;margin:0 7px}.topnav a:hover{text-decoration:underline}.topnav span{color:#cbbfa8}
+.steps{display:flex;gap:6px;justify-content:center;margin:16px 0}
+.stp{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:800;color:#b4ab98}
+.stp .n{width:22px;height:22px;border-radius:50%;background:#eee6d7;color:#b4ab98;display:grid;place-items:center;font-size:11px}
+.stp.on{color:var(--coral)}.stp.on .n{background:var(--coral);color:#fff}.stp.done{color:var(--green)}.stp.done .n{background:var(--green);color:#fff}.stp .bar{width:16px;height:2px;background:#e6ddcc;border-radius:2px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:0 10px 26px rgba(44,43,40,.06);padding:22px;margin-bottom:14px}
+.card h2{font-size:17px;font-weight:800;margin-bottom:3px}.card .lead{font-size:12.5px;color:var(--mute);margin-bottom:16px}
+label.f{display:block;margin-bottom:14px}label.f .lab{font-size:11px;font-weight:800;color:var(--mute);display:block;margin-bottom:5px}
+input.t,input[type=date]{width:100%;font-family:inherit;font-size:15px;font-weight:700;color:var(--ink);border:1.5px solid var(--line);background:#fcfaf5;border-radius:12px;padding:11px 13px}
+input.t:focus,input[type=date]:focus{outline:none;border-color:var(--peri)}
+.seg{display:flex;gap:7px;flex-wrap:wrap}.seg button{font-family:inherit;font-size:13px;font-weight:800;border:1.5px solid var(--line);background:#fcfaf5;color:var(--mute);border-radius:12px;padding:9px 15px;cursor:pointer}.seg button.on{background:var(--peri);border-color:var(--peri);color:#fff}
+.btn{font-family:inherit;font-size:14px;font-weight:800;border:none;border-radius:13px;padding:12px 20px;cursor:pointer}
+.btn.pri{background:var(--coral);color:#fff}.btn.pri:disabled{opacity:.4;cursor:not-allowed}.btn.sec{background:#f0ece3;color:var(--mute)}.btn.gr{background:var(--green);color:#fff}
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:6px;flex-wrap:wrap}
+.help{background:#f3f1fb;border:1px solid #e2dbee;border-radius:13px;padding:13px 15px;margin-bottom:18px}.help .ht{font-size:11px;font-weight:800;color:var(--peri2);display:block;margin-bottom:6px}.help ul{margin:0;padding-left:17px}.help li{font-size:12px;color:#4a4668;line-height:1.55;margin:5px 0}.help b{color:var(--peri2)}
+/* framework reference */
+.fwref{background:#f7f6fc;border:1px solid #e2dbee;border-radius:14px;padding:14px 15px;margin-bottom:16px}
+.fwref .ft{font-size:11px;font-weight:800;color:var(--peri2);margin-bottom:3px}
+.fwref .fsub{font-size:11px;color:var(--mute);margin-bottom:10px;line-height:1.5}
+.fwskill{padding:8px 0;border-top:1px dashed #e2dbee}.fwskill:first-of-type{border-top:none}
+.fwskill .fn{font-size:12.5px;font-weight:800}.fwskill .fn .via{font-weight:700;color:var(--mute);font-size:10.5px}
+.fwrungs{font-size:10.5px;color:#4a4668;line-height:1.6;margin-top:3px}
+.fwrungs b{color:var(--peri2)}.fwrungs .st{color:var(--gold)}
+/* skill summary */
+.sblk{margin-bottom:22px}.sh{font-size:15px;font-weight:800;margin-bottom:3px}.ssub{font-size:11.5px;color:var(--mute);margin-bottom:12px;line-height:1.5}
+.prog{display:flex;align-items:center;gap:9px;margin:9px 0}
+.prog .pn{font-size:12px;font-weight:800;flex:none;width:140px}
+.prog .pn .ic{margin-right:4px}
+.prog .pbarw{flex:1;min-width:70px}.prog .pbar{height:8px;background:#eee6d7;border-radius:5px;overflow:hidden}.prog .pf{height:100%;background:var(--peri);border-radius:5px;transition:width .2s}.prog .pf.done{background:var(--gold)}
+.prog .pmeta{font-size:9.5px;color:var(--mute);font-weight:700;margin-top:3px}
+.prog .pm{font-size:9.5px;font-weight:800;flex:none;white-space:nowrap;border-radius:999px;padding:3px 9px}.pm.secure{color:var(--gold);background:var(--goldbg)}.pm.grow{color:var(--peri2);background:#efedfa}
+/* concepts */
+.concept{margin-bottom:20px}.chead{display:flex;align-items:center;gap:8px;margin-bottom:9px}.cdot{color:var(--peri2);font-size:12px}.cname{font-size:14.5px;font-weight:800;color:var(--peri2)}.ctag{font-size:9.5px;font-weight:800;color:#b4603f;background:#fdeee7;border-radius:999px;padding:2px 8px}
+.grouplab{font-size:10px;font-weight:800;color:#b4ab98;letter-spacing:.04em;margin:4px 0 7px}
+/* model + experiment cards */
+.item{border:1px solid var(--line);border-radius:13px;padding:12px 13px;margin-bottom:10px;background:#fff}
+.item.exp{background:var(--soft)}
+.itop{display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap;margin-bottom:9px}
+.itype{font-size:9px;font-weight:800;border-radius:6px;padding:3px 6px;flex:none;margin-top:1px}.itype.mod{color:var(--peri2);background:#efedfa}.itype.exp{color:#b4603f;background:#fdeee7}
+.ititle{font-size:13.5px;font-weight:800;flex:1;min-width:120px;line-height:1.3}
+.pgchips{display:flex;gap:5px;flex-wrap:wrap;width:100%}
+.pg{font-size:9.5px;font-weight:800;border-radius:9px;padding:3px 8px;cursor:pointer}.pg.man{color:var(--coral);background:#fff4ef;border:1px solid #f3d3c3}.pg.book{color:var(--peri2);background:#f3f1fb;border:1px solid #e2dbee}.pg.card{color:#b4603f;background:#fdeee7;border:1px solid #f3d3c3}
+.lad{margin-top:9px}
+.ladlab{font-size:10.5px;font-weight:800;color:var(--mute);margin-bottom:4px;display:flex;gap:5px;align-items:center}.ladlab .ic{font-size:12px}
+.clad{display:flex;gap:5px}
+.crung{flex:1;min-width:0;border:1.4px solid var(--line);background:#fcfaf5;border-radius:9px;padding:6px 3px;cursor:pointer;text-align:center;font-size:10.5px;font-weight:800;color:var(--mute);line-height:1.2}
+.crung .cs{font-size:8px;display:block;color:#b4ab98;font-weight:800}
+.crung.on{background:var(--greenbg);border-color:#bfe0c8;color:var(--green)}
+.crung.star.on{background:var(--goldbg);border-color:#f0e3b8;color:var(--gold)}.crung.star.on .cs{color:var(--gold)}
+/* popup */
+.pgmodal{position:fixed;inset:0;z-index:50;background:rgba(28,27,24,.8);display:none;align-items:center;justify-content:center;padding:18px;cursor:zoom-out}.pgmodal.on{display:flex}
+.pgm-in{max-width:620px;width:100%;display:flex;flex-direction:column;align-items:center}.pgm-cap{color:#fff;font-size:12.5px;font-weight:800;margin-bottom:8px;text-align:center}.pgm-in img{max-width:100%;max-height:80vh;border-radius:10px;background:#fff;box-shadow:0 12px 44px rgba(0,0,0,.45)}.pgm-in iframe{width:100%;height:80vh;border:none;border-radius:10px;background:#fff}.pgm-x{color:#fff;font-size:11.5px;font-weight:700;margin-top:10px;opacity:.85}.pgm-err{color:#fff;font-size:13px;font-weight:700;background:rgba(0,0,0,.3);border-radius:10px;padding:26px 20px;display:none}
+/* parent note */
+.note{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.note .nhead{background:var(--coral);color:#fff;padding:20px 22px}.note .nbrand{font-size:11px;font-weight:800;opacity:.9}.note .nhead h2{font-size:21px;font-weight:800;margin-top:3px;color:#fff}.note .nsub{font-size:12.5px;opacity:.95;margin-top:2px}
+.nsec{padding:16px 22px;border-top:1px solid var(--line)}.nsec .sh{font-size:13px;font-weight:800;margin-bottom:8px}
+.nmods{display:flex;flex-wrap:wrap;gap:6px}.nmods .m{font-size:12px;font-weight:700;background:#f2f0fa;color:var(--peri2);border-radius:12px;padding:3px 11px}
+.nskill{display:flex;align-items:baseline;gap:9px;margin:9px 0}.nskill .ni{font-size:15px;flex:none}.nskill .nb{flex:1}.nskill .nt{font-size:13.5px;font-weight:800}.nskill .nd{font-size:11.5px;color:var(--mute);line-height:1.4}.nskill .nw{font-size:10.5px;font-weight:800;padding:2px 10px;border-radius:999px;white-space:nowrap}.nw.g{background:var(--goldbg);color:var(--gold)}.nw.m{background:#efedfa;color:var(--peri2)}.nw.s{background:#fdeee7;color:#b4603f}
+.nli{display:flex;gap:9px;font-size:13px;line-height:1.5;margin:7px 0}.nli .b{flex:none}
+.nbasis{font-size:11px;color:var(--mute);line-height:1.5;background:var(--soft);border-radius:10px;padding:9px 12px;margin-top:4px}
+.nhelp{background:var(--soft);border-radius:11px;padding:7px 11px;font-size:12.5px;color:#4a443c;line-height:1.5;margin:7px 0}.nhelp b{color:var(--coral)}
+.nfoot{padding:14px 22px;font-size:11px;color:var(--mute);font-style:italic;text-align:center;border-top:1px solid var(--line)}
+.dashhead{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.drow{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:13px;padding:12px 13px;margin-bottom:9px}
+.dinfo{flex:1;min-width:0}.dname{font-size:15px;font-weight:800}.dmeta{font-size:11px;color:var(--mute);margin-top:2px}
+.dstat{font-size:10px;font-weight:800;color:var(--peri2);background:#efedfa;border-radius:999px;padding:3px 10px;white-space:nowrap}.dstat.rdy{color:var(--gold);background:var(--goldbg)}
+.dacts{display:flex;gap:6px;flex:none}.dacts button{font-family:inherit;font-size:11px;font-weight:800;border:1.4px solid var(--line);background:#fcfaf5;color:var(--mute);border-radius:9px;padding:6px 9px;cursor:pointer}
+.dempty{text-align:center;color:var(--mute);font-size:13px;line-height:1.7;padding:22px 10px}
+.hidden{display:none}
+@media print{body{background:#fff;padding:0}.wrap>*{display:none!important}#screen-note{display:block!important}#screen-note>*:not(.note){display:none!important}.note{border:none;box-shadow:none;border-radius:0}.nav,.printbar{display:none!important}}
 </style></head>
 <body><div class="wrap">
-<div class="head"><h1>robotics · monthly progress note</h1></div>
-<div class="flow">
-  <div class="col">
-    <div class="tg f">✓ the teacher marks this · once a month</div>
-    <div class="body">
-      <div class="fc">child: <input id="nameIn" class="nameinput" value="aanya" oninput="setName(this.value)" placeholder="child's name"> <span class="fs" style="font-weight:700">· month 4</span></div>
-      <div class="progsel"><span class="pl2">programme:</span><button id="pmB" class="on" onclick="setProg('mechanics')">mechanics</button><button id="peB" onclick="setProg('electronics')">electronics</button></div>
-      <div class="fs" id="progsub"></div>
-      <div class="att"><span class="lab">attended</span><span class="step"><button onclick="att('a',-1)">–</button><span class="v" id="aA">7</span><button onclick="att('a',1)">+</button></span><span class="lab">of</span><span class="step"><button onclick="att('t',-1)">–</button><span class="v" id="aT">8</span><button onclick="att('t',1)">+</button></span><span class="lab">classes</span></div>
-      <div class="flead">for each <b>model</b>, mark each <b>skill</b>. <b>building</b> &amp; <b>observing</b> are marked from the <b>build &amp; experiment</b>; <b>solving</b> &amp; <b>presenting</b> need the <b>experience-book exercise</b>. <b>tap a cell</b> for how.</div>
-      <table><thead><tr><th class="mh">model</th><th><span class="ic">🔧</span>building</th><th><span class="ic">🔬</span>observing</th><th><span class="ic">🧩</span>solving</th><th><span class="ic">🗣️</span>presenting</th></tr></thead><tbody id="grid"></tbody></table>
-      <div class="picker" id="picker"></div>
-      <div class="guide e" id="guide"></div>
-      <div class="promo lock" id="promo"></div>
-      <div class="hint">no writing. the app remembers earlier months and writes the note itself.</div>
-    </div>
+<div class="brand"><span class="lg">openhouse · at home</span></div>
+<h1>robotics · monthly progress</h1>
+<div class="oncewrap"><span class="once">🗓️ fill this once a month</span></div>
+<div class="topnav"><a onclick="go('dashboard')">📋 class dashboard</a><span>·</span><a onclick="newNote()">＋ new note</a></div>
+<div class="steps" id="stepper"></div>
+
+<!-- STEP 1 · SET UP -->
+<div id="screen-setup" class="card">
+  <h2>let’s set up this month’s note</h2>
+  <div class="lead">a few details — then the whole form opens on one page.</div>
+  <label class="f"><span class="lab">child’s name</span><input id="nameIn" class="t" placeholder="e.g. aanya" oninput="s.name=this.value;syncSetup()"></label>
+  <label class="f"><span class="lab">level</span><div class="seg" id="progSeg"></div></label>
+  <label class="f"><span class="lab">how old is the child?</span><div class="seg" id="bandSeg"></div></label>
+  <label class="f"><span class="lab">date you’re filling this</span><input id="dateIn" type="date" oninput="s.date=this.value;syncSetup()"></label>
+  <div class="nav"><span></span><button class="btn pri" id="startBtn" onclick="go('fill')" disabled>open the form →</button></div>
+</div>
+
+<!-- STEP 2 · FILL -->
+<div id="screen-fill" class="card hidden">
+  <div class="help"><span class="ht">how to fill this · once a month</span>
+    <ul>
+      <li>the work is grouped by <b>concept</b> (levers, pulleys, gears…). under each concept are the <b>models</b> the child builds and the <b>experiments</b> they do.</li>
+      <li>on each <b>model</b>, tap how far the child is on three ladders — <b>building & making</b>, <b>problem solving</b>, <b>presenting & explaining</b>.</li>
+      <li>on each <b>experiment</b>, tap how far they are on the <b>observing & understanding</b> ladder.</li>
+      <li>the last rung of every ladder is the <b>★ north star</b>. a skill is <b>secure</b> once the child reaches ★ on <b>half or more</b> of its models (or, for observing, half or more of the experiments) — then they can move up.</li>
+      <li>tap any <b>🔧 manual</b>, <b>📖 book page</b> or <b>🔬 card</b> to open the exact page that tracks it.</li>
+    </ul>
   </div>
-  <div class="col">
-    <div class="tg r">→ the note the parent receives</div>
-    <div class="rt"><div class="k" id="rk"></div><h2 id="rh2"></h2><div class="m" id="rm2"></div><span class="att2" id="ratt"></span></div>
-    <div class="rs"><div class="rh" id="rmadeh"></div><div class="made"><div class="ph">🏗️</div><div class="mods" id="rmods"></div></div></div>
-    <div class="rs"><div class="rh">🌱 each skill, over the month</div><div id="rsk"></div></div>
-    <div class="rs"><div class="rh">💛 worth working on next</div><div class="focus" id="rfocus"></div></div>
-    <div class="rs"><div class="rh">🎓 the road to level-up</div>
-      <div class="gate"><span class="gk">① a model from every concept</span><div class="cchips" id="rconcepts"></div></div>
-      <div class="gate"><span class="gk">② every skill steady</span><div class="cchips" id="rskills2"></div></div>
-      <div class="lline" id="rline"></div></div>
-  </div>
-</div></div>
+  <div id="fillbody"></div>
+  <div class="nav"><button class="btn sec" onclick="go('setup')">← set up</button><button class="btn pri" onclick="go('note')">see the parent note →</button></div>
+</div>
+
+<!-- STEP 3 · NOTE -->
+<div id="screen-note" class="hidden">
+  <div class="help" style="margin-bottom:12px"><span class="ht">✓ all done</span><ul><li>here’s the note for the family — simple and warm.</li><li><b>download it as a PDF</b> to send home, or go back to change anything.</li></ul></div>
+  <div class="note" id="noteCard"></div>
+  <div class="nav printbar" style="margin-top:14px"><button class="btn sec" onclick="go('fill')">← edit</button><div style="display:flex;gap:8px;margin-left:auto"><button class="btn gr" onclick="window.print()">⬇ download PDF</button><button class="btn pri" onclick="go('dashboard')">✓ done</button></div></div>
+</div>
+
+<!-- STEP 4 · DASHBOARD -->
+<div id="screen-dashboard" class="card hidden">
+  <div class="dashhead"><div><h2>your class</h2><div class="lead" style="margin-bottom:0">who’s had this month’s note filled — saved on this device.</div></div><button class="btn pri" onclick="newNote()">＋ fill a note</button></div>
+  <div id="dashBody" style="margin-top:16px"></div>
+</div>
+
+</div>
+<div id="pgModal" class="pgmodal" onclick="closePage()"><div class="pgm-in" onclick="event.stopPropagation()"><div class="pgm-cap" id="pgCap"></div><img id="pgImg" src="" alt="page" onerror="this.style.display='none';document.getElementById('pgErr').style.display='block'"><iframe id="pgFrame" style="display:none"></iframe><div class="pgm-err" id="pgErr">this page isn’t available yet.</div><div class="pgm-x" onclick="closePage()">tap anywhere to close ✕</div></div></div>
 
 <script>
-const KEYS=['bm','ou','ps','pe'];
-const PROGRAMMES={
- mechanics:{label:'mechanics',sub:'level 1 · ages 5–8',
-  SK:{bm:{ev:'do',ic:'🔧',s:'building',f:'building & making',obs:'builds it to work + fixes a snag unprompted',bk:'build page: works, parts named',ah:'ask what they changed to make it work better'},
-      ou:{ev:'do',ic:'🔬',s:'observing',f:'observing & understanding',obs:'predicts before testing, says why after',bk:'experiment page: readings + a "why"',ah:'ask "what will happen?" before a test'},
-      ps:{ev:'book',ic:'🧩',s:'solving',f:'problem solving',obs:'tries a new way + keeps going',bk:'challenge page: a working fix, their way',ah:'let them try before you step in'},
-      pe:{ev:'book',ic:'🗣️',s:'presenting',f:'presenting & explaining',obs:'says what it does + how, answers a question',bk:'show page: their explanation captured',ah:'ask "what does it do?" and listen'}},
-  ALL:['see-saw','weighing scale','crane','fishing rod','copter','rickshaw','wind turbine','drawbridge','tow truck','bulldozer'],
-  MC:{'see-saw':['levers'],'weighing scale':['levers'],'crane':['pulleys'],'fishing rod':['levers','pulleys'],'copter':['gears'],'rickshaw':['wheels & axles'],'wind turbine':['pulleys'],'drawbridge':['wheels & axles','pulleys'],'tow truck':['wheels & axles','pulleys'],'bulldozer':['gears']},
-  CONCEPTS:['levers','pulleys','gears','wheels & axles'],
-  sample:[{name:'see-saw',m:{bm:1,ou:0,ps:1,pe:0}},{name:'weighing scale',m:{bm:1,ou:1,ps:0,pe:0}},{name:'crane',m:{bm:1,ou:1,ps:1,pe:0}}]},
- electronics:{label:'electronics',sub:'level 2 · circuits, motors & sensors',
-  SK:{bm:{ev:'do',ic:'🔧',s:'building',f:'building & making',obs:'snaps the blocks + completes the loop so the circuit works, unprompted',bk:'build page: the circuit works, each block named',ah:'ask what each block does in the circuit'},
-      ou:{ev:'do',ic:'🔬',s:'observing',f:'observing & understanding',obs:'compares two circuits + predicts if one will work, and why',bk:'experiment page: what they noticed + a prediction',ah:'ask "will this circuit work? why?" before switching on'},
-      ps:{ev:'book',ic:'🧩',s:'solving',f:'problem solving',obs:'when a circuit fails, tries a fix + finds the break',bk:'challenge page: a broken circuit they got working',ah:'when it doesn’t light up, let them find the break'},
-      pe:{ev:'book',ic:'🗣️',s:'presenting',f:'presenting & explaining',obs:'shows it, traces how the electricity flows, fields a question',bk:'show page: their walk-through captured',ah:'ask them to trace how the electricity flows'}},
-  ALL:['railway barrier','wind turbine','soccer bot','cleaning bot','sensor crane','robotic arm','carrier truck','drawbridge','light house','elevator','follow-me bot','smart stadium lights','obstacle avoider'],
-  MC:{'railway barrier':['circuits'],'wind turbine':['polarity'],'soccer bot':['polarity'],'cleaning bot':['motors'],'sensor crane':['sensors'],'robotic arm':['sensors','servo'],'carrier truck':['servo','polarity'],'drawbridge':['sensors'],'light house':['sensors'],'elevator':['sensors'],'follow-me bot':['sensors'],'smart stadium lights':['sensors'],'obstacle avoider':['sensors']},
-  CONCEPTS:['circuits','polarity','motors','sensors','servo'],
-  sample:[{name:'railway barrier',m:{bm:1,ou:1,ps:0,pe:0}},{name:'wind turbine',m:{bm:1,ou:0,ps:1,pe:0}},{name:'soccer bot',m:{bm:1,ou:1,ps:1,pe:0}}]},
+const MAN='/robotics-manuals/',BOOK='rtracker_pages/';
+const MODSK=['bm','ps','pe'];          // skills assessed on a MODEL
+const SKILLS=['bm','ps','pe','ou'];    // all four skills
+// ─── the at-apartment framework · each skill = a 4-rung ability ladder (the LOs); the 4th is ★ north star ───
+// DIFFERENT for mechanics and electronics (same four skills, different ladders) — verbatim from the at-apartment overview.
+const FW_MECH={
+ bm:{ic:'🔧',name:'building & making',via:'on each model',ladder:[['Fit','connects parts so they sit right & work'],['Follow','builds in order from the step card'],['Adjust','fixes a connection within the design'],['Improve','makes one change to work better — and checks']]},
+ ps:{ic:'🧩',name:'problem solving',via:'on each model',ladder:[['Notice','spots something isn’t working, untold'],['Try','tries a different approach'],['Change','a new way beyond the given steps'],['Persist','keeps working through difficulty']]},
+ pe:{ic:'🗣️',name:'presenting & explaining',via:'on each model',ladder:[['Name','names the model & its parts'],['Say','says what the model does'],['Explain','explains how it works in their words'],['Answer','shows it & answers a question about it']]},
+ ou:{ic:'🔬',name:'observing & understanding',via:'on each experiment',ladder:[['Observe','looks closely at what happens in the test'],['Measure','takes accurate readings & records them'],['Predict','says what will happen before testing'],['Explain','explains why it happened, with a reason']]},
 };
-let prog='mechanics', NAME='aanya', A={a:7,t:8}, sel=null, MODELS=[], promoted=false;
-const P=()=>PROGRAMMES[prog];
-function loadSample(){MODELS=P().sample.map(x=>({name:x.name,m:{...x.m}}));}
+const FW_ELEC={
+ bm:{ic:'🔧',name:'building & making',via:'on each model',ladder:[['Snap','snaps the blocks together from the card'],['Complete','completes the loop so it works'],['Name','builds it and names each block’s job'],['Change','adds or swaps a block to change what it does']]},
+ ps:{ic:'🧩',name:'problem solving',via:'on each model',ladder:[['Notice','notices the circuit isn’t working'],['Try','tries a fix instead of repeating what failed'],['Adjust','changes one thing and sees if it helps'],['Fix','finds the break and gets the circuit working']]},
+ pe:{ic:'🗣️',name:'presenting & explaining',via:'on each model',ladder:[['Present','shows it working and names each block'],['Walk through','traces how the electricity flows, step by step'],['Justify','explains why it’s built this way'],['Field','fields a question or coaches a peer']]},
+ ou:{ic:'🔬',name:'observing & understanding',via:'on each circuit',ladder:[['Notice','notices when the circuit works & when it doesn’t'],['Describe','describes the pattern in words'],['Compare','compares two circuits — brighter/dimmer, faster/slower'],['Predict','predicts whether a circuit will work, and says why']]},
+};
+// ─── MECHANICS · concept → models + experiments (l1 = ages 5–8 qualitative · l2 = ages 8–12 measurement) ───
+// experiment = [label, card-file]; model manuals + book pages derive from the model name.
+const MECH_CONCEPTS=[
+ {c:'levers',models:['see-saw','weighing scale'],
+  l1:[['how the lever’s length changes the effort','l1-levers-e1'],['how a heavier load changes the effort','l1-levers-e2'],['when equal weights make it balance','l1-levers-e3'],['which objects balance a 0.5kg weight','l1-levers-e4']],
+  l2:[['lifting a load with a lever vs by hand','l2-levers-e1'],['moving the fulcrum so 0.5kg balances 1.5kg','l2-levers-e5'],['which lever length needs the least effort','l2-levers-e6']]},
+ {c:'pulleys',models:['crane','wind turbine'],
+  l1:[['how a heavier load changes the effort','l1-pulley-e1'],['how a pulley switches the direction you pull','l1-pulley-e2'],['does the pulley’s height change the effort','l1-pulley-e3'],['does the pull direction change the reading','l1-pulley-e4'],['how a double pulley makes lifting easier','l1-pulley-e5']],
+  l2:[['measuring double-pulley effort across weights','l2-pulley-e1'],['does pulley height change the effort (3kg)','l2-pulley-e4'],['the effort when you pull from three sides','l2-pulley-e5']]},
+ {c:'gears',models:['copter','bulldozer'],
+  l1:[['which way a touching gear turns','l1-gears-e1'],['small gear drives big — counting the turns','l1-gears-e2'],['big gear drives small — counting the turns','l1-gears-e3'],['equal gears — how their turns compare','l1-gears-e4']],
+  l2:[['working out the gear ratio','l2-gears-e1']]},
+ {c:'wheels & axles',models:['rickshaw'],
+  l1:[['how the load changes how far it rolls','l1-wheel-axle-e2'],['how the load’s position changes the roll','l1-wheel-axle-e3']],
+  l2:[['measuring the distance across heavier loads','l2-wheel-axle-e2'],['how the axle steers the cart','l2-wheel-axle-e3'],['centred vs back load — which rolls further','l2-wheel-axle-e4'],['how axle spacing changes the roll','l2-wheel-axle-e5']]},
+ {c:'combined machines',models:['fishing rod','drawbridge','tow truck'],l1:[],l2:[],
+  note:'these bring two machines together — the experiments live under the concepts above.'},
+];
+// ─── ELECTRONICS · circuits grouped by tier (observing) + the build models (building/solving/presenting) ───
+const ELEC_CONCEPTS=[
+ {c:'easy · the basics',models:[],exps:[['complete the loop so the LED lights','elec-c-resistor-led'],['a switch turns the LED on and off','elec-c-switch'],['run the motor, then reverse it','elec-c-motor'],['reverse the motor with one press','elec-c-dpdt'],['give each motor its own direction switch','elec-c-dual-dpdt'],['dial the motor faster and slower','elec-c-pot'],['a sensor runs the motor through a driver','elec-c-driver-ir']]},
+ {c:'medium · combining',models:[],exps:[['flip one motor while another keeps running','elec-c-dpdt-motor'],['one shared path — break it, all stops','elec-c-series'],['each part its own path','elec-c-parallel'],['speed of two motors sharing a path','elec-c-pot-dual-motor-series'],['two motors, own paths — speed & switch','elec-c-pot-switch-parallel'],['turn the wheel by hand to light the LED','elec-c-motor-led-generator'],['move a servo to an exact position','elec-c-servo']]},
+ {c:'difficult · sensors',models:[],exps:[['the sensor decides which way the motor turns','elec-c-ir-motor-direction'],['tune the sensor to trigger only when close','elec-c-ir-range'],['two sensors — one forward, one back','elec-c-dual-ir-fwd-back'],['two sensor–motor pairs','elec-c-dual-ir-circuit'],['two motors opposite ways so the bot turns','elec-c-dual-motor-ir-turn'],['a light sensor switches the LED','elec-c-ldr-led'],['combine a light & IR sensor in one driver','elec-c-ldr-ir-led']]},
+ {c:'the build models',models:['railway barrier','wind turbine','soccer bot','cleaning bot','sensor crane','robotic arm','carrier truck','drawbridge','light house','elevator','follow-me bot','smart stadium lights','obstacle avoider'],exps:[]},
+];
+const ELEC_MAN={'railway barrier':'elec-build-railway-barrier.png','wind turbine':'elec-build-wind-turbine.png','soccer bot':'elec-build-soccer-bot.png','cleaning bot':'elec-build-cleaning-bot.png','sensor crane':'elec-build-sensor-crane.png','robotic arm':'elec-model-robotic-arm.pdf','carrier truck':'elec-model-carrier-truck.pdf','drawbridge':'elec-model-drawbridge.pdf','light house':'elec-model-light-house.pdf','elevator':'elec-model-elevator.pdf','follow-me bot':'elec-model-follow-me-bot.pdf','smart stadium lights':'elec-model-smart-stadium-lights.pdf','obstacle avoider':'elec-model-obstacle-avoider.pdf'};
+const PROGS={mechanics:{label:'mechanics',bands:['5-8','8-12'],fw:FW_MECH,hasBook:true},electronics:{label:'electronics',bands:['8-12'],fw:FW_ELEC,hasBook:false}};
+const curFW=()=>PROGS[s.prog].fw;
+const BANDLABEL={'5-8':'ages 5–8','8-12':'ages 8–12'};
+const LEVELNAME={mechanics:'level 1 · mechanics',electronics:'level 2 · electronics'};
+const ATHOME={bm:'ask what they changed to make it work better',ou:'before a test, ask “what do you think will happen, and why?”',ps:'when something doesn’t work, let them try a fix before you step in',pe:'ask them to show you and explain — “what does it do, and how?”'};
 
-function render(){
- const N=NAME||'the child', SK=P().SK, CONCEPTS=P().CONCEPTS, MC=P().MC, ALL=P().ALL;
- document.getElementById('progsub').textContent=P().sub;
- document.getElementById('pmB').classList.toggle('on',prog==='mechanics');document.getElementById('peB').classList.toggle('on',prog==='electronics');
- document.getElementById('aA').textContent=A.a;document.getElementById('aT').textContent=A.t;
- document.getElementById('ratt').textContent=`🗓️ at ${A.a} of ${A.t} classes`;
- document.getElementById('rk').textContent=`a note for ${N}'s family · robotics`;
- document.getElementById('rh2').textContent=`${N} this month`;
- document.getElementById('rm2').textContent=`${P().label} · month 4`;
- document.getElementById('rmadeh').textContent=`📌 what ${N} made`;
- document.getElementById('grid').innerHTML=MODELS.map((mo,r)=>`<tr><td class="mn">${mo.name} <span class="rm" title="remove" onclick="event.stopPropagation();removeModel(${r})">✕</span></td>`+KEYS.map(k=>{const v=mo.m[k],s=(sel&&sel.r===r&&sel.k===k)?'sel':'';return `<td class="c"><span class="mk ${v?'yes':'no'} ${s}" onclick="pick(${r},'${k}')">${v?'✓':'○'}</span></td>`;}).join('')+`</tr>`).join('');
- const rest=ALL.filter(n=>!MODELS.some(m=>m.name===n));
- document.getElementById('picker').innerHTML=rest.length?`<span class="pl">＋ built another?</span>`+rest.map(n=>`<span class="addchip" onclick="addModel('${n}')">+ ${n}</span>`).join(''):'';
- const g=document.getElementById('guide');
- if(sel&&sel.r<MODELS.length){const mo=MODELS[sel.r],k=sel.k,s=SK[k],v=mo.m[k];g.className='guide';
-   const isBook=s.ev==='book';
-   const boxes=isBook
-     ?`<div class="two"><div class="ib o"><span class="ibh">📖 experience-book exercise · needed</span>${s.bk}</div><div class="ib b"><span class="ibh">👁 what it looks like</span>${s.obs}</div></div>`
-     :`<div class="two"><div class="ib b"><span class="ibh">✅ from the build &amp; experiment</span>${s.obs}</div><div class="ib o"><span class="ibh">📖 optional record in the book</span>${s.bk}</div></div>`;
-   const rule=isBook
-     ?`mark <b style="color:var(--green)">✓</b> when their <b>experience-book exercise</b> shows it · <b style="color:var(--red)">○ not yet</b> if it isn't there`
-     :`mark <b style="color:var(--green)">✓</b> if you saw it as they <b>built &amp; tested</b> the model · the book page is an <b>optional</b> record`;
-   g.innerHTML=`<div class="gh">${s.ic} ${s.f} · on the ${mo.name}</div>${boxes}<div class="grule">${rule}</div><div class="gbtns"><div class="gbtn a ${v?'on':''}" onclick="mark(1)">✓ achieved</div><div class="gbtn n ${v?'':'on'}" onclick="mark(0)">○ not yet</div></div>`;
- }else{g.className='guide e';g.textContent='tap a cell to see how to mark it — built & tested in class, or checked in the experience book.';}
- document.getElementById('rmods').innerHTML=MODELS.map(m=>`<span class="mod">${m.name}</span>`).join('');
- document.getElementById('rsk').innerHTML=KEYS.map(k=>{const seq=MODELS.map(m=>m.m[k]),yes=seq.filter(x=>x).length,tot=seq.length||1;
-   const dots=MODELS.map(m=>`<span class="dot ${m.m[k]?'y':'n'}"></span>`).join('');
-   const [w,c]=yes===MODELS.length&&MODELS.length?['steady','sec']:yes===0?['just starting','js']:['growing','gr'];
-   return `<div class="sk"><div class="nm">${SK[k].ic} ${SK[k].s}</div><div class="dots">${dots}</div><div class="stt ${c}">${w}</div></div>`;}).join('');
- const sec=KEYS.filter(k=>MODELS.length&&MODELS.every(m=>m.m[k]));
- const foc=KEYS.filter(k=>!(MODELS.length&&MODELS.every(m=>m.m[k]))).sort((a,b)=>MODELS.filter(m=>m.m[a]).length-MODELS.filter(m=>m.m[b]).length)[0];
- document.getElementById('rfocus').innerHTML=foc?`<b>${SK[foc].f}</b> is the next step — ${N} is not there on every build yet.<div class="athome"><b>at home, if you like:</b> ${SK[foc].ah}.</div>`:`${N} is steady across all four skills this month.`;
- const covered=CONCEPTS.filter(c=>MODELS.some(m=>(MC[m.name]||[]).includes(c)));
- document.getElementById('rconcepts').innerHTML=CONCEPTS.map(c=>{const on=covered.includes(c);return `<span class="cchip ${on?'ok':'no'}">${on?'✓ ':''}${c}</span>`;}).join('');
- document.getElementById('rskills2').innerHTML=KEYS.map(k=>{const on=MODELS.length&&MODELS.every(m=>m.m[k]);return `<span class="cchip ${on?'ok':'no'}">${SK[k].ic} ${SK[k].s}${on?' ✓':''}</span>`;}).join('');
- const missing=CONCEPTS.filter(c=>!covered.includes(c)),needSk=KEYS.length-sec.length,eligible=missing.length===0&&needSk===0;
- if(!eligible)promoted=false;
- const rl=document.getElementById('rline');
- if(promoted){rl.className='lline elig';rl.innerHTML=`🎉 <b>promoted</b> — after the final build-off, ${N}'s teacher has approved the move to the next level.`;}
- else if(eligible){rl.className='lline elig';rl.innerHTML=`✅ <b>eligible</b> — ${N} has explored every concept and is steady in every skill. the last steps are the <b>final build-off</b> and the <b>teacher's sign-off</b>.`;}
- else{const bits=[];if(missing.length)bits.push(`still to explore: <b>${missing.join(', ')}</b>`);if(needSk)bits.push(`<b>${needSk} skill(s)</b> still to steady`);rl.className='lline wait';rl.innerHTML=`not yet — ${N} moves up only when <b>both</b> gates are met, then the build-off + teacher sign-off. ${bits.join(' · ')}.`;}
- const promo=document.getElementById('promo');
- if(promoted){promo.className='promo done';promo.innerHTML=`<span class="pk">🎉 promotion approved</span><div class="pnote">you've approved ${N} for the next level. <span class="undo" onclick="unapprove()">undo</span></div>`;}
- else if(eligible){promo.className='promo elig';promo.innerHTML=`<span class="pk">✅ ${N} is eligible for level-up</span><div class="pnote">the gates are met — your call. approve on your assessment at the final build-off.</div><button class="pbtn" onclick="approve()">✓ approve promotion</button>`;}
- else{promo.className='promo lock';promo.innerHTML=`<span class="pk" style="color:var(--mute)">promotion · locked</span><div class="pnote">opens for your sign-off once both level-up gates are met (see the note →).</div>`;}
+let s={step:'setup',prog:'mechanics',band:'5-8',name:'',date:new Date().toISOString().slice(0,10),M:{},E:{}};
+const P=()=>PROGS[s.prog];
+const slug=m=>m.replace(/ /g,'-');
+// concepts for the current programme + band (experiments switch l1↔l2 for mechanics)
+function concepts(){
+ if(s.prog==='electronics')return ELEC_CONCEPTS.map(g=>({c:g.c,models:g.models||[],exps:g.exps||[],note:g.note}));
+ return MECH_CONCEPTS.map(g=>({c:g.c,models:g.models,exps:(s.band==='8-12'?g.l2:g.l1),note:g.note}));}
+function allModels(){return concepts().flatMap(g=>g.models);}
+function allExps(){return concepts().flatMap(g=>g.exps.map(e=>({id:e[1],label:e[0],card:e[1],concept:g.c})));}
+function initData(){const oM=s.M||{},oE=s.E||{};s.M={};s.E={};
+ allModels().forEach(m=>{s.M[m]=oM[m]||{bm:0,ps:0,pe:0};});
+ allExps().forEach(e=>{s.E[e.id]=oE[e.id]||0;});}
+function modelManual(m){if(s.prog==='mechanics')return MAN+slug(m)+'.png';return ELEC_MAN[m]?MAN+ELEC_MAN[m]:'';}
+function bookPage(m,k){return BOOK+slug(m)+'-'+k+'.jpg';}
+// skill stats — reached ★ on half or more of its items = secure (acquired)
+function rungsFor(skill){if(skill==='ou')return allExps().map(e=>s.E[e.id]||0);return allModels().map(m=>(s.M[m]||{})[skill]||0);}
+function skillStat(skill){const a=rungsFor(skill),tot=a.length,star=a.filter(r=>r===4).length,top=a.length?Math.max(...a):0,any=a.filter(r=>r>0).length,need=Math.ceil(tot/2);
+ return{tot,star,top,any,need,secure:tot>0&&star>=need,unit:skill==='ou'?'experiments':'models'};}
+
+// localStorage
+const LS='oh_rtracker_v4';
+function allEntries(){try{return JSON.parse(localStorage.getItem(LS)||'{}')}catch(e){return{}}}
+function entryKey(){return (s.name.trim().toLowerCase()||'child')+'__'+s.prog+'__'+(s.date||'').slice(0,7);}
+function saveEntry(){if(!s.name.trim())return;const a=allEntries();a[entryKey()]={name:s.name,prog:s.prog,band:s.band,date:s.date,M:s.M,E:s.E,savedAt:Date.now()};try{localStorage.setItem(LS,JSON.stringify(a))}catch(e){}}
+function deleteEntry(k){const a=allEntries();delete a[k];try{localStorage.setItem(LS,JSON.stringify(a))}catch(e){}renderDashboard();}
+function openEntry(k){const e=allEntries()[k];if(!e)return;Object.assign(s,{name:e.name,prog:e.prog,band:e.band,date:e.date,M:e.M||{},E:e.E||{}});go('note');}
+function newNote(){s.name='';s.date=new Date().toISOString().slice(0,10);s.prog='mechanics';s.band='5-8';initData();go('setup');}
+
+function renderStepper(){const steps=[['setup','set up'],['fill','fill'],['note','the note']];const idx=steps.findIndex(x=>x[0]===s.step);
+ document.getElementById('stepper').style.display=s.step==='dashboard'?'none':'flex';
+ document.getElementById('stepper').innerHTML=steps.map((x,i)=>{const cls=i<idx?'done':i===idx?'on':'';return `<div class="stp ${cls}"><span class="n">${i<idx?'✓':i+1}</span>${x[1]}</div>`+(i<2?'<div class="bar"></div>':'');}).join('');}
+function renderSetup(){document.getElementById('nameIn').value=s.name;document.getElementById('dateIn').value=s.date;
+ document.getElementById('progSeg').innerHTML=Object.keys(PROGS).map(p=>`<button class="${s.prog===p?'on':''}" onclick="setProg('${p}')">${LEVELNAME[p]}</button>`).join('');
+ document.getElementById('bandSeg').innerHTML=P().bands.map(b=>`<button class="${s.band===b?'on':''}" onclick="setBand('${b}')">${BANDLABEL[b]}</button>`).join('');syncSetup();}
+function setProg(p){s.prog=p;s.band=P().bands.includes(s.band)?s.band:PROGS[p].bands[0];initData();renderSetup();}
+function setBand(b){s.band=b;initData();renderSetup();}
+function syncSetup(){document.getElementById('startBtn').disabled=!(s.name.trim());}
+
+// ─── step 2 · the one-page form ───
+function esc(t){return String(t).replace(/'/g,"\\'").replace(/"/g,'&quot;');}
+function ladderHtml(skill,cur,setExpr){const f=curFW()[skill];
+ return `<div class="clad">`+f.ladder.map((a,i)=>{const n=i+1,on=cur>=n,star=n===4;
+  return `<div class="crung ${star?'star':''} ${on?'on':''}" title="${esc(a[1])}" onclick="${setExpr}(${cur===n?n-1:n})">${star?'<span class="cs">★ north star</span>':''}${a[0]}</div>`;}).join('')+`</div>`;}
+function renderFill(){
+ const N=s.name||'the child',P0=P();let h='';
+ // framework reference
+ h+=`<div class="fwref"><div class="ft">the openhouse ${P0.label} framework · skills & learning outcomes</div><div class="fsub">four skills. each is a ladder of learning outcomes — the last rung is the <b>★ north star</b>. building, problem solving and presenting are judged <b>on each model</b>; observing is judged <b>on each experiment</b>.</div>`;
+ SKILLS.forEach(k=>{const f=curFW()[k];
+  h+=`<div class="fwskill"><div class="fn">${f.ic} ${f.name} <span class="via">· ${f.via}</span></div><div class="fwrungs">`+f.ladder.map((a,i)=>`${i<3?'<b>'+a[0]+'</b>':'<b class="st">★ '+a[0]+'</b>'} — ${a[1]}`).join(' &nbsp;→&nbsp; ')+`</div></div>`;});
+ h+=`</div>`;
+ // skill summary (milestones)
+ h+=`<div class="sblk"><div class="sh">where each skill stands</div><div class="ssub">a skill turns <b>secure</b> when ${N} reaches its ★ north star on <b>half or more</b> of its ${P0.label==='mechanics'?'models / experiments':'models / circuits'}.</div>`;
+ SKILLS.forEach(k=>{const f=curFW()[k],st=skillStat(k),pct=st.tot?Math.round(st.star/st.tot*100):0;
+  h+=`<div class="prog"><div class="pn"><span class="ic">${f.ic}</span>${f.name}</div><div class="pbarw"><div class="pbar"><div class="pf ${st.secure?'done':''}" style="width:${pct}%"></div></div><div class="pmeta">${st.star} of ${st.tot} at ★ · needs ${st.need}</div></div><div class="pm ${st.secure?'secure':'grow'}">${st.secure?'✓ secure':'growing'}</div></div>`;});
+ h+=`</div>`;
+ // concepts
+ h+=`<div class="sblk"><div class="sh">the work — by concept</div><div class="ssub">under each concept: the <b>models</b> ${N} builds and the <b>experiments</b> they do.</div>`;
+ concepts().forEach(g=>{
+  const hasItems=g.models.length||g.exps.length;if(!hasItems&&!g.note)return;
+  h+=`<div class="concept"><div class="chead"><span class="cdot">◆</span><span class="cname">${g.c}</span></div>`;
+  if(g.note)h+=`<div class="ssub" style="margin:-4px 0 8px">${g.note}</div>`;
+  // models
+  if(g.models.length){
+   h+=`<div class="grouplab">models</div>`;
+   g.models.forEach(m=>{const man=modelManual(m),mk=esc(m);
+    let chips=man?`<span class="pg man" onclick="openPage('${man}','how to build the ${mk}')">🔧 build manual</span>`:'';
+    if(P0.hasBook)chips+=`<span class="pg book" onclick="openPage('${bookPage(m,'bm')}','build in real life · ${mk}')">📖 build</span><span class="pg book" onclick="openPage('${bookPage(m,'ps')}','make it help · ${mk}')">📖 solve</span><span class="pg book" onclick="openPage('${bookPage(m,'pe')}','show & tell · ${mk}')">📖 present</span>`;
+    h+=`<div class="item"><div class="itop"><span class="itype mod">model</span><span class="ititle">${m}</span><div class="pgchips">${chips}</div></div>`;
+    MODSK.forEach(k=>{const f=curFW()[k];h+=`<div class="lad"><div class="ladlab"><span class="ic">${f.ic}</span>${f.name}</div>${ladderHtml(k,(s.M[m]||{})[k]||0,`setM('${mk}','${k}')`)}</div>`;});
+    h+=`</div>`;});}
+  // experiments
+  if(g.exps.length){
+   h+=`<div class="grouplab" style="margin-top:12px">experiments · observing & understanding</div>`;
+   g.exps.forEach(e=>{const[lo,card]=e;const f=curFW().ou;
+    h+=`<div class="item exp"><div class="itop"><span class="itype exp">experiment</span><span class="ititle">${lo}</span><div class="pgchips"><span class="pg card" onclick="openPage('${MAN+card}.png','${esc(lo)}')">🔬 ${s.prog==='mechanics'?'experiment':'circuit'} card</span></div></div><div class="lad"><div class="ladlab"><span class="ic">${f.ic}</span>${f.name}</div>${ladderHtml('ou',s.E[card]||0,`setE('${card}')`)}</div></div>`;});}
+  h+=`</div>`;});
+ h+=`</div>`;
+ document.getElementById('fillbody').innerHTML=h;
 }
-function approve(){promoted=true;render();}
-function unapprove(){promoted=false;render();}
-function pick(r,k){sel={r,k};render();}
-function mark(v){if(sel){MODELS[sel.r].m[sel.k]=v;render();}}
-function setName(v){NAME=v.trim();render();}
-function addModel(n){MODELS.push({name:n,m:{bm:0,ou:0,ps:0,pe:0}});render();}
-function removeModel(r){MODELS.splice(r,1);if(sel&&sel.r>=MODELS.length)sel=null;render();}
-function att(w,d){A[w]=Math.max(0,A[w]+d);if(w==='a'&&A.a>A.t)A.t=A.a;if(w==='t'&&A.t<A.a)A.a=A.t;render();}
-function setProg(p){if(p===prog)return;prog=p;sel=null;promoted=false;loadSample();render();}
-loadSample();render();
+function setM(m,k,v){if(!s.M[m])s.M[m]={bm:0,ps:0,pe:0};s.M[m][k]=v;renderFill();}
+function setE(id,v){s.E[id]=v;renderFill();}
+
+// ─── step 3 · parent note ───
+const fmtDate=d=>{if(!d)return'';const p=d.split('-');if(p.length<3)return new Date(p[0],p[1]-1,1).toLocaleDateString('en-GB',{month:'long',year:'numeric'});return new Date(p[0],p[1]-1,p[2]).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});};
+function noteSkill(k){const f=curFW()[k],st=skillStat(k);
+ if(st.secure)return{w:`★ secure`,c:'g',d:`reaching the ★ ${f.ladder[3][0]} north star — ${f.ladder[3][1]} (on ${st.star} of ${st.tot} ${st.unit})`};
+ if(st.top>=1){const r=f.ladder[st.top-1];return{w:`at “${r[0]}”`,c:'m',d:`${r[1]}${st.top<4?` · next: ${f.ladder[st.top][0]}`:''}`};}
+ return{w:'just starting',c:'s',d:'beginning this skill — '+f.ladder[0][1]};}
+function renderNote(){
+ const N=s.name||'your child',FW=curFW();
+ const built=allModels().filter(m=>{const o=s.M[m]||{};return (o.bm||0)>0||(o.ps||0)>0||(o.pe||0)>0;});
+ const skillHtml=SKILLS.map(k=>{const st=noteSkill(k),f=FW[k];return `<div class="nskill"><span class="ni">${f.ic}</span><div class="nb"><div class="nt">${f.name}</div><div class="nd">${st.d}</div></div><span class="nw ${st.c}">${st.w}</span></div>`;}).join('');
+ const secure=SKILLS.filter(k=>skillStat(k).secure);
+ const milesHtml=secure.length?secure.map(k=>{const st=skillStat(k);return `<div class="nli"><span class="b">🏅</span><span>secured <b>${FW[k].name}</b> — reached the <b>★ ${FW[k].ladder[3][0]}</b> north star on ${st.star} of ${st.tot} ${st.unit}</span></div>`;}).join(''):`<div class="nd" style="font-size:12.5px;color:var(--mute)">the first north stars are on their way — keep going!</div>`;
+ const pend=SKILLS.filter(k=>!skillStat(k).secure);
+ const pendHtml=pend.length?pend.map(k=>{const st=skillStat(k),goal=FW[k].ladder[Math.min(st.top,3)];return `<div class="nli"><span class="b">🎯</span><span><b>${FW[k].name}</b> — next: <b>${goal[0]}</b> (${goal[1]})</span></div>`;}).join(''):`<div class="nli"><span class="b">🎉</span><span>${N} has secured every skill — ready to move up!</span></div>`;
+ const helpHtml=(pend.length?pend:SKILLS).slice(0,2).map(k=>`<div class="nhelp"><b>${FW[k].name}:</b> ${ATHOME[k]}.</div>`).join('');
+ document.getElementById('noteCard').innerHTML=
+  `<div class="nhead"><div class="nbrand">openhouse · robotics · a note for the family</div><h2>${N}’s robotics month</h2><div class="nsub">${LEVELNAME[s.prog]} · ${BANDLABEL[s.band]} · filled ${fmtDate(s.date)}</div></div>`
+  +`<div class="nsec"><div class="sh">🏗️ what ${N} worked on this month</div>${built.length?`<div class="nmods">${built.map(m=>`<span class="m">${m}</span>`).join('')}</div>`:`<div class="nd" style="font-size:12.5px;color:var(--mute)">just getting started with the first builds.</div>`}</div>`
+  +`<div class="nsec"><div class="sh">🌱 how ${N} is doing — the four skills</div>${skillHtml}</div>`
+  +`<div class="nsec"><div class="sh">🏅 milestones reached</div>${milesHtml}<div class="nbasis">a skill becomes <b>secure</b> when ${N} reaches its ★ north star on half or more of the models (for observing, half or more of the experiments). secure skills are what readies ${N} for the next level.</div></div>`
+  +`<div class="nsec"><div class="sh">🎯 what’s next</div>${pendHtml}</div>`
+  +`<div class="nsec"><div class="sh">💛 how you can help at home</div>${helpHtml}</div>`
+  +`<div class="nfoot">made with love at openhouse · raising curious humans, together.</div>`;
+}
+function renderDashboard(){const all=allEntries(),keys=Object.keys(all).sort((a,b)=>all[b].savedAt-all[a].savedAt);
+ if(!keys.length){document.getElementById('dashBody').innerHTML=`<div class="dempty">no notes filled yet.<br>tap <b>＋ fill a note</b> to start your first one.</div>`;return;}
+ document.getElementById('dashBody').innerHTML=keys.map(k=>{const e=all[k];const sv=secureCount(e);const ready=sv===4;
+   return `<div class="drow"><div class="dinfo"><div class="dname">${e.name}</div><div class="dmeta">${LEVELNAME[e.prog]} · ${BANDLABEL[e.band]} · ${fmtDate(e.date)}</div></div><div class="dstat ${ready?'rdy':''}">${ready?'✓ all skills secure':sv+'/4 skills secure'}</div><div class="dacts"><button onclick="openEntry('${k}')">open</button><button onclick="if(confirm('remove this note?'))deleteEntry('${k}')">✕</button></div></div>`;}).join('');}
+// recompute secure-skill count for a saved entry (uses its own prog/band)
+function secureCount(e){const save={prog:s.prog,band:s.band,M:s.M,E:s.E};Object.assign(s,{prog:e.prog,band:e.band,M:e.M||{},E:e.E||{}});const n=SKILLS.filter(k=>skillStat(k).secure).length;Object.assign(s,save);return n;}
+
+function go(step){s.step=step;
+ ['setup','fill','note','dashboard'].forEach(x=>document.getElementById('screen-'+x).classList.toggle('hidden',x!==step));
+ renderStepper();
+ if(step==='setup')renderSetup();if(step==='fill')renderFill();if(step==='note'){renderNote();saveEntry();}if(step==='dashboard')renderDashboard();
+ window.scrollTo(0,0);
+}
+function openPage(src,cap){if(!src)return;const img=document.getElementById('pgImg'),fr=document.getElementById('pgFrame'),err=document.getElementById('pgErr');
+ document.getElementById('pgCap').textContent=cap;err.style.display='none';
+ if(/\.pdf($|\?)/i.test(src)){img.style.display='none';img.src='';fr.style.display='block';fr.src=src;}
+ else{fr.style.display='none';fr.src='';img.style.display='block';img.src=src;}
+ document.getElementById('pgModal').classList.add('on');}
+function closePage(){document.getElementById('pgModal').classList.remove('on');document.getElementById('pgImg').src='';document.getElementById('pgFrame').src='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closePage();});
+initData();go('setup');
 </script>
 </body></html>
