@@ -6,7 +6,14 @@ import { useParams } from "next/navigation";
 import { ChevronLeft } from "lucide-react";
 import { TeacherGate, useTeacher } from "@/components/TeacherGate";
 import { DailyLogCard } from "@/components/DailyLogCard";
-import { listDailyLogs, type DailyLog } from "@/lib/apartments";
+import {
+  listDailyLogs,
+  listTrackerNotes,
+  listClassCompletions,
+  type DailyLog,
+  type TrackerNote,
+  type ClassCompletion,
+} from "@/lib/apartments";
 import { isFullAdmin } from "@/lib/teacher-state";
 
 function daysAgo(n: number): string {
@@ -32,6 +39,8 @@ function Content() {
   const [from, setFrom] = useState(daysAgo(13));
   const [to, setTo] = useState(daysAgo(0));
   const [logs, setLogs] = useState<DailyLog[]>([]);
+  const [notes, setNotes] = useState<TrackerNote[]>([]);
+  const [completions, setCompletions] = useState<ClassCompletion[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -50,6 +59,13 @@ function Content() {
   useEffect(() => {
     if (isAdmin) refresh();
   }, [isAdmin, refresh]);
+
+  // Shared progress notes + class completions (not date-ranged — load once).
+  useEffect(() => {
+    if (!isAdmin) return;
+    listTrackerNotes(apartmentId).then(setNotes).catch(() => {});
+    listClassCompletions(apartmentId).then(setCompletions).catch(() => {});
+  }, [isAdmin, apartmentId]);
 
   if (!isAdmin) {
     return (
@@ -103,6 +119,56 @@ function Content() {
                   <DailyLogCard key={l.id} log={l} showTeacher showDate={false} />
                 ))}
               </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* ── monthly progress notes (shared) ── */}
+      <div className="mb-3 mt-10">
+        <h2 className="text-[18px] font-extrabold lowercase text-ink">progress notes</h2>
+        <p className="mt-0.5 text-[12px] text-ink-muted">every monthly tracker note filled for this apartment.</p>
+      </div>
+      {notes.length === 0 ? (
+        <p className="rounded-lg bg-brand-cream px-3 py-3 text-[12px] font-medium text-ink-muted">no progress notes yet.</p>
+      ) : (
+        <div className="space-y-2">
+          {notes.map((n) => (
+            <div key={n.id} className="flex flex-wrap items-center gap-x-3 gap-y-1 rounded-card bg-brand-white px-3 py-2.5 shadow-card">
+              <span className="text-[14px] font-extrabold text-ink">{n.childName}</span>
+              <span className="text-[11px] font-semibold text-ink-muted">
+                {n.subject} · {n.level} · ages {n.ageBand} · {n.month}
+              </span>
+              {n.ready && (
+                <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-extrabold text-amber-700">
+                  ready for assessment
+                </span>
+              )}
+              <span className="ml-auto text-[11px] text-ink-subtle">{n.teacherName}</span>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* ── classes completed (shared) ── */}
+      <div className="mb-3 mt-10">
+        <h2 className="text-[18px] font-extrabold lowercase text-ink">classes completed</h2>
+        <p className="mt-0.5 text-[12px] text-ink-muted">how many session days each teacher has marked done, per programme.</p>
+      </div>
+      {completions.length === 0 ? (
+        <p className="rounded-lg bg-brand-cream px-3 py-3 text-[12px] font-medium text-ink-muted">no completed classes recorded yet.</p>
+      ) : (
+        <div className="space-y-2">
+          {completions.map((c) => (
+            <div key={c.id} className="flex flex-wrap items-center gap-x-3 gap-y-1 rounded-card bg-brand-white px-3 py-2.5 shadow-card">
+              <span className="text-[14px] font-extrabold text-ink">{c.teacherName}</span>
+              <span className="text-[11px] font-semibold text-ink-muted">{c.programmeTitle}</span>
+              <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-extrabold text-emerald-700">
+                {c.completedDays.length} classes done
+              </span>
+              <span className="ml-auto text-[11px] text-ink-subtle">
+                {c.completedDays.length ? `up to day ${Math.max(...c.completedDays)}` : "—"}
+              </span>
             </div>
           ))}
         </div>

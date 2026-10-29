@@ -192,3 +192,41 @@ export async function upsertDailyLog(input: {
   });
   return parse<{ log: DailyLog }>(res).then((b) => b.log);
 }
+
+// ── tracker notes (monthly progress notes, shared per apartment) ───────
+export interface TrackerNote {
+  id: string;
+  apartmentId: string;
+  teacherId: string | null;
+  teacherName: string;
+  childName: string;
+  subject: string;
+  level: string;
+  ageBand: string;
+  month: string;
+  ready: boolean;
+  updatedAt: string;
+}
+export async function listTrackerNotes(apartmentId: string, subject?: string) {
+  const qs = new URLSearchParams({ apartmentId });
+  if (subject) qs.set("subject", subject);
+  const res = await fetch(`/api/tracker-notes?${qs.toString()}`);
+  return parse<{ notes: TrackerNote[] }>(res).then((b) => b.notes);
+}
+
+// ── class completions (which session days each teacher has marked done) ─
+export interface ClassCompletion {
+  id: string;
+  apartmentId: string;
+  teacherId: string | null;
+  teacherName: string;
+  programmeSlug: string;
+  programmeTitle: string;
+  building: string;
+  completedDays: number[];
+  updatedAt: string;
+}
+export async function listClassCompletions(apartmentId: string) {
+  const res = await fetch(`/api/class-completions?apartmentId=${encodeURIComponent(apartmentId)}`);
+  return parse<{ completions: ClassCompletion[] }>(res).then((b) => b.completions);
+}

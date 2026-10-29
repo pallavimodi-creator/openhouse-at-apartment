@@ -222,6 +222,35 @@ export function getCompletedDays(programmeSlug: string): number[] {
   }
 }
 
+/**
+ * Mirror the teacher's completed-days to the shared backend so an admin can
+ * see class progress across the apartment (not just on this device). Only
+ * runs for a full apartment+teacher login; fire-and-forget, never blocks the
+ * UI, and silently no-ops when the backend is unconfigured or offline.
+ * localStorage stays the working store for the teacher's own view.
+ */
+function syncCompletions(programmeSlug: string, days: number[]): void {
+  if (typeof window === "undefined") return;
+  const t = getTeacher();
+  if (!t || !t.apartmentId || !t.teacherId) return;
+  try {
+    fetch("/api/class-completions", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        apartmentId: t.apartmentId,
+        teacherId: t.teacherId,
+        teacherName: t.teacherName,
+        programmeSlug,
+        building: t.building || t.apartmentName || "",
+        completedDays: days,
+      }),
+    }).catch(() => {});
+  } catch {
+    /* ignore */
+  }
+}
+
 export function markDayCompleted(programmeSlug: string, day: number): number[] {
   if (typeof window === "undefined") return [];
   const building = getBuilding();
@@ -229,6 +258,7 @@ export function markDayCompleted(programmeSlug: string, day: number): number[] {
   if (current.includes(day)) return current;
   const next = [...current, day].sort((a, b) => a - b);
   localStorage.setItem(completedKey(building, programmeSlug), JSON.stringify(next));
+  syncCompletions(programmeSlug, next);
   return next;
 }
 
@@ -237,6 +267,7 @@ export function unmarkDayCompleted(programmeSlug: string, day: number): number[]
   const building = getBuilding();
   const next = getCompletedDays(programmeSlug).filter((d) => d !== day);
   localStorage.setItem(completedKey(building, programmeSlug), JSON.stringify(next));
+  syncCompletions(programmeSlug, next);
   return next;
 }
 

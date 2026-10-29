@@ -87,11 +87,30 @@ create table if not exists public.tracker_notes (
 create index if not exists tracker_notes_apartment_idx
   on public.tracker_notes (apartment_id, updated_at desc);
 
+-- ── class_completions (which session days a teacher has marked done) ────
+-- Backs the "mark class completed" progress so an admin sees it across the
+-- apartment instead of it living only in each teacher's browser.
+create table if not exists public.class_completions (
+  id              uuid primary key default gen_random_uuid(),
+  apartment_id    uuid not null references public.apartments(id) on delete cascade,
+  teacher_id      uuid not null references public.teachers(id) on delete cascade,
+  teacher_name    text not null,
+  programme_slug  text not null,
+  programme_title text,
+  building        text,
+  completed_days  integer[] not null default '{}',
+  updated_at      timestamptz not null default now(),
+  unique (apartment_id, teacher_id, programme_slug)
+);
+create index if not exists class_completions_apartment_idx
+  on public.class_completions (apartment_id, updated_at desc);
+
 -- ── lock it all down (server/service-role only) ─────────────────────────
-alter table public.apartments    enable row level security;
-alter table public.teachers      enable row level security;
-alter table public.daily_logs    enable row level security;
-alter table public.tracker_notes enable row level security;
+alter table public.apartments        enable row level security;
+alter table public.teachers          enable row level security;
+alter table public.daily_logs        enable row level security;
+alter table public.tracker_notes     enable row level security;
+alter table public.class_completions enable row level security;
 -- No policies on purpose: only the service_role (server routes) may read/write.
 
 -- ── OPTIONAL seed: a demo apartment + the current teachers ──────────────
