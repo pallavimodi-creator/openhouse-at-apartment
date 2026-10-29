@@ -436,11 +436,17 @@ function Content() {
                   <span className="rounded-chip bg-segment-green/20 px-2.5 py-1 text-[11px] font-bold text-ink">
                     {apt.classesDone} class{apt.classesDone === 1 ? "" : "es"} done
                   </span>
+                  {(apt.notesCount ?? 0) > 0 && (
+                    <span className="rounded-chip bg-brand-orange/12 px-2.5 py-1 text-[11px] font-bold text-ink">
+                      {apt.notesCount} note{apt.notesCount === 1 ? "" : "s"}
+                      {(apt.readyCount ?? 0) > 0 ? <> · {apt.readyCount} ready</> : null}
+                    </span>
+                  )}
                   <Link
                     href={`/admin/apartments/${apt.id}`}
                     className="inline-flex items-center gap-1 rounded-chip bg-brand-cream px-3 py-1.5 text-[12px] font-bold text-ink-muted transition hover:text-ink"
                   >
-                    daily logs <ChevronRight className="h-3.5 w-3.5" />
+                    open <ChevronRight className="h-3.5 w-3.5" />
                   </Link>
                 </div>
               </div>

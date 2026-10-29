@@ -88,8 +88,8 @@ function Content() {
         <ChevronLeft className="h-4 w-4" /> all apartments
       </Link>
       <div className="mb-4 mt-2">
-        <h1 className="text-[20px] font-extrabold lowercase text-ink">daily logs</h1>
-        <p className="mt-0.5 text-[12px] text-ink-muted">every teacher&apos;s daily entry for this apartment.</p>
+        <h1 className="text-[20px] font-extrabold lowercase text-ink">apartment activity</h1>
+        <p className="mt-0.5 text-[12px] text-ink-muted">daily logs, monthly progress notes and classes completed for this apartment.</p>
       </div>
 
       <div className="mb-5 flex flex-wrap items-end gap-3 rounded-card bg-brand-white p-3 shadow-card">

@@ -52,6 +52,8 @@ export interface AdminApartment {
   loginPassword?: string;
   individualLoginEnabled: boolean;
   classesDone: number;      // total daily-log submissions for this apartment
+  notesCount?: number;      // monthly progress notes filled for this apartment
+  readyCount?: number;      // of those, how many are "ready for assessment"
   teachers: AdminTeacher[];
 }
 export interface DailyEntry {

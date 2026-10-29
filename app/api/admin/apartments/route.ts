@@ -46,6 +46,19 @@ export async function GET(req: Request) {
       (classByTeacher[l.apartment_id][l.teacher_id] ?? 0) + 1;
   });
 
+  // Monthly progress notes per apartment (count + how many are "ready for
+  // assessment"). Ignore errors so a missing tracker_notes table (operator
+  // hasn't run the schema yet) just shows zeroes instead of failing the list.
+  const { data: notes } = await supabase
+    .from("tracker_notes")
+    .select("apartment_id,ready");
+  const noteCount: Record<string, number> = {};
+  const readyCount: Record<string, number> = {};
+  (notes ?? []).forEach((n) => {
+    noteCount[n.apartment_id] = (noteCount[n.apartment_id] ?? 0) + 1;
+    if (n.ready) readyCount[n.apartment_id] = (readyCount[n.apartment_id] ?? 0) + 1;
+  });
+
   const byApt: Record<string, unknown[]> = {};
   (teachers ?? []).forEach((t) => {
     (byApt[t.apartment_id] ||= []).push({
@@ -64,6 +77,8 @@ export async function GET(req: Request) {
     loginPassword: a.login_password,
     individualLoginEnabled: a.individual_login_enabled ?? false,
     classesDone: classCount[a.id] ?? 0,
+    notesCount: noteCount[a.id] ?? 0,
+    readyCount: readyCount[a.id] ?? 0,
     teachers: byApt[a.id] ?? [],
   }));
   return NextResponse.json({ apartments });
